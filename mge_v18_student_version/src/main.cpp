@@ -2,7 +2,7 @@
 
 #include "mge/core/AbstractGame.hpp"
 #include "mge/MGEDemo.hpp"
-#include "C:\Users\Igli\Desktop\Rendering\mge_v18_student_version\_vs2015\TestWorld.h"
+#include "../_vs2015/TestWorld.h"
 
 /**
  * Main entry point for the Micro Engine.
