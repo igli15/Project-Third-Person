@@ -11,7 +11,7 @@
 class Light : public GameObject
 {
 	public:
-		Light(const std::string& aName = nullptr, const glm::vec3& aPosition = glm::vec3( 2.0f, 10.0f, 5.0f ) );
+		Light();
 		virtual ~Light();
 
         //override set parent to register/deregister light...

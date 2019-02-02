@@ -2,13 +2,15 @@
 #include "mge/core/GameObject.hpp"
 
 
-Transform::Transform()
+Transform::Transform() : m_transform(glm::mat4(1))
 {
+	std::cout << "Transform is created" << std::endl;
 }
 
 
 Transform::~Transform()
 {
+	std::cout << "destroyed" << std::endl;
 }
 
 glm::vec3 Transform::WorldPosition() const

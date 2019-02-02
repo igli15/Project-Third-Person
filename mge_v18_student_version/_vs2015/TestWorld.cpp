@@ -35,27 +35,15 @@ void TestWorld::_initializeScene()
 	AbstractMaterial* planeMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "runicfloor.png"));
 	AbstractMaterial* colorMat = new ColorMaterial(glm::vec3(0, 1, 1));
 
-	Camera* camera = new Camera("camera", glm::vec3(0, 6, 7));
-	camera->rotate(glm::radians(-40.0f), glm::vec3(1, 0, 0));
-	_world->add(camera);
+	Camera* camera = _world->Instantiate<Camera>();
+	camera->transform->SetLocalPosition(glm::vec3(0, 4, 6));
+	camera->transform->Rotate(glm::radians(-40.0f), glm::vec3(1, 0, 0));
 	_world->setMainCamera(camera);
 
-	GameObject* plane = new GameObject("plane", glm::vec3(0, 0, 0));
-	plane->scale(glm::vec3(5, 5, 5));
-	plane->setMesh(planeMeshDefault);
-	plane->setMaterial(planeMat);
-	_world->add(plane);
-
-	GameObject* suzana = new GameObject("suzana", glm::vec3(0, 1, 0));
-	suzana->setMesh(suzanaMesh);
-	suzana->setMaterial(colorMat);
-	_world->add(suzana);
-	suzana->AddComponent<TestComponent>();
-
-	GameObject* cube = new GameObject("cube", glm::vec3(0, 2, 0));
+	GameObject* cube = _world->Instantiate<GameObject>();
+	cube->transform->SetLocalPosition(glm::vec3(0,0,0));
 	cube->setMesh(cubeMesh);
 	cube->setMaterial(brickMat);
 	cube->setBehaviour(new KeysBehaviour(30));
-	cube->add(camera);
-	_world->add(cube);
+
 }

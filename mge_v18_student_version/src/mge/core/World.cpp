@@ -4,7 +4,7 @@
 #include "mge/core/World.hpp"
 #include "mge/core/Light.hpp"
 
-World::World():GameObject("root"), _mainCamera(0)
+World::World()
 {
 	_world = this;
 }

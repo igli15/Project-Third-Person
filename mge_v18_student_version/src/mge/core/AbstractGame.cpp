@@ -95,10 +95,6 @@ void AbstractGame::run()
 	sf::Clock updateClock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
-	_world->Load();
-	_world->Awake();
-	_world->Start();
-
 	while (_window->isOpen()) {
 		timeSinceLastUpdate += updateClock.restart();
 

@@ -2,11 +2,12 @@
 #include "GameObject.hpp"
 #include "mge/behaviours/AbstractBehaviour.hpp"
 
-GameObject::GameObject(const std::string& pName, const glm::vec3& pPosition )
-:	_name( pName ), _transform( glm::translate( pPosition ) ), _parent(nullptr), _children(),
+GameObject::GameObject()
+:	_name( "" ), _parent(nullptr), _children(),
     _mesh( nullptr ),_behaviour( nullptr ), _material(nullptr), _world(nullptr)
 
 {
+	transform = AddComponent<Transform>();
 }
 
 GameObject::~GameObject()
@@ -24,6 +25,11 @@ GameObject::~GameObject()
 }
 
 
+World * GameObject::GetWorld()
+{
+	return _world;
+}
+
 void GameObject::setName (const std::string& pName)
 {
     _name = pName;
@@ -34,25 +40,6 @@ std::string GameObject::getName() const
 	return _name;
 }
 
-void GameObject::setTransform (const glm::mat4& pTransform)
-{
-    _transform = pTransform;
-}
-
-const glm::mat4& GameObject::getTransform() const
-{
-    return _transform;
-}
-
-void GameObject::setLocalPosition (glm::vec3 pPosition)
-{
-    _transform[3] = glm::vec4 (pPosition,1);
-}
-
-glm::vec3 GameObject::getLocalPosition() const
-{
-	return glm::vec3(_transform[3]);
-}
 
 void GameObject::setMaterial(AbstractMaterial* pMaterial)
 {
@@ -86,9 +73,7 @@ AbstractBehaviour* GameObject::getBehaviour() const
 }
 
 void GameObject::Load()
-{
-	transform = AddComponent<Transform>();
-
+{	
 	for (int i = _children.size() - 1; i >= 0; --i) {
 		_children[i]->Load();
 	}
@@ -170,37 +155,7 @@ GameObject* GameObject::getParent() const {
     return _parent;
 }
 
-////////////
 
-//costly operation, use with care
-glm::vec3 GameObject::getWorldPosition() const
-{
-	return glm::vec3(getWorldTransform()[3]);
-}
-
-//costly operation, use with care
-glm::mat4 GameObject::getWorldTransform() const
-{
-	if (_parent == nullptr) return _transform;
-	else return _parent->getWorldTransform() * _transform;
-}
-
-////////////
-
-void GameObject::translate(glm::vec3 pTranslation)
-{
-	setTransform(glm::translate(_transform, pTranslation));
-}
-
-void GameObject::scale(glm::vec3 pScale)
-{
-	setTransform(glm::scale(_transform, pScale));
-}
-
-void GameObject::rotate(float pAngle, glm::vec3 pAxis)
-{
-	setTransform(glm::rotate(_transform, pAngle, pAxis));
-}
 
 void GameObject::Update(float pStep)
 {

@@ -1,7 +1,7 @@
 #include "mge/core/Light.hpp"
 #include "mge/core/World.hpp"
 
-Light::Light(const std::string& pName, const glm::vec3& pPosition):GameObject(pName, pPosition)
+Light::Light()
 {}
 
 Light::~Light() {

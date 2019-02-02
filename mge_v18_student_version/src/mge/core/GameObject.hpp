@@ -19,30 +19,15 @@ class Transform;
 class GameObject
 {
 	public:
-		GameObject(const std::string& pName = nullptr, const glm::vec3& pPosition = glm::vec3( 0.0f, 0.0f, 0.0f ));
+		GameObject();
 		virtual ~GameObject();
 
 		Transform* transform;
 
+		World* GetWorld();
+
         void setName (const std::string& pName);
         std::string getName() const;
-
-        //contains local rotation, scale, position
-		void setTransform (const glm::mat4& pTransform);
-        const glm::mat4& getTransform() const;
-
-        //access just the local position
-		void setLocalPosition (glm::vec3 pPosition);
-		glm::vec3 getLocalPosition() const;
-
-        //get the objects world position by combining transforms, SLOW use with care
-		glm::vec3 getWorldPosition() const;
-		glm::mat4 getWorldTransform() const;
-
-        //change LOCAL position, rotation, scaling
-		void translate(glm::vec3 pTranslation);
-		void rotate(float pAngle, glm::vec3 pAxis);
-		void scale(glm::vec3 pScale);
 
         //mesh and material should be shared as much as possible
 		void setMesh(Mesh* pMesh);
@@ -91,8 +76,10 @@ class GameObject
 			else
 			{
 				std::cout << "you can only attach a component" << std::endl;
+				return nullptr;
 				throw;
 			}
+
 		}
 		
 		//Get a Component attached to this GameObject
@@ -113,7 +100,6 @@ class GameObject
 
 	protected:
 		std::string _name;
-		glm::mat4 _transform;
 
         GameObject* _parent;
 		std::vector<GameObject*> _children;

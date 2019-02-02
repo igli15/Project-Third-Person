@@ -21,6 +21,18 @@ class World : public GameObject
         Light* getLightAt (int pIndex);
         int getLightCount();
 
+		template <typename T>
+		T* Instantiate()
+		{
+			T* gameObject = new T;
+		
+			gameObject->Load();
+			gameObject->Awake();
+			gameObject->Start();
+			add(gameObject);
+			return gameObject;
+		}
+
 	private:
 	    Camera* _mainCamera;
 	    std::vector<Light*> _lights;
