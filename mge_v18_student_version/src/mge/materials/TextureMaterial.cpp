@@ -8,6 +8,7 @@
 #include "mge/core/GameObject.hpp"
 #include "mge/core/ShaderProgram.hpp"
 #include "mge/config.hpp"
+#include "../components/MeshRenderer.h"
 
 ShaderProgram* TextureMaterial::_shader = NULL;
 
@@ -45,7 +46,7 @@ void TextureMaterial::setDiffuseTexture (Texture* pDiffuseTexture) {
     _diffuseTexture = pDiffuseTexture;
 }
 
-void TextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
+void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
     if (!_diffuseTexture) return;
 
     _shader->use();
@@ -68,5 +69,5 @@ void TextureMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModel
     glUniformMatrix4fv ( _uMVPMatrix, 1, GL_FALSE, glm::value_ptr(mvpMatrix));
 
     //now inform mesh of where to stream its data
-    pMesh->streamToOpenGL(_aVertex, _aNormal, _aUV);
+    meshRenderer->StreamToOpenGL(_aVertex, _aNormal, _aUV);
 }

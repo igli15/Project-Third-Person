@@ -9,6 +9,7 @@ class GameObject;
 class Mesh;
 class AbstractMaterial;
 class Camera;
+class MeshRenderer;
 
 /**
 * Renderer implements a default single pass forward renderer.
@@ -69,12 +70,12 @@ public:
 	* @param pViewMatrix the view matrix of the camera
 	* @param pProjectionMatrix the projectionmatrix of the camera
 	*/
-	void render(World* pWorld, Mesh* pMesh, AbstractMaterial* pMaterial, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix);
+	void render(World* pWorld, MeshRenderer* pMesh, AbstractMaterial* pMaterial, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix);
 
 	/**
 	 * Helper method to render debug info for a mesh
 	 */
-	void renderMeshDebugInfo(Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix);
+	void renderMeshDebugInfo(MeshRenderer* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix);
 
 protected:
 

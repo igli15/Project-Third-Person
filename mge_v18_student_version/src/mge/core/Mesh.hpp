@@ -4,6 +4,7 @@
 #include <vector>
 #include <GL/glew.h>
 #include "glm.hpp"
+#include "Component.h"
 
 class World;
 
@@ -14,6 +15,9 @@ class World;
 class Mesh
 {
 	public:
+		Mesh();
+		virtual ~Mesh();
+
         /**
          * Loads a mesh from an .obj file. The file has to have:
          * vertexes, uvs, normals and face indexes. See load source
@@ -21,19 +25,12 @@ class Mesh
          */
 		static Mesh* load(std::string pFilename);
 
-        /**
-         * Streams the mesh to opengl using the given indexes for the different attributes
-         */
-        void streamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib);
-
-        /**
-         * Draws debug info (normals) for the mesh using the given matrices)
-         */
-        void drawDebugInfo(const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix);
+		std::vector<glm::vec3> Vertices() const;
+		std::vector<glm::vec3> Normals() const;
+		std::vector<glm::vec2> UVs() const;
+		std::vector<unsigned> Indices() const;
 
 	protected:
-		Mesh();
-		virtual ~Mesh();
 
         //OpenGL id's for the different buffers created for this mesh
 		GLuint _indexBufferId;
@@ -48,9 +45,6 @@ class Mesh
 
 		//references to the vertices/normals & uvs in previous vectors
 		std::vector<unsigned> _indices;
-
-        //buffer vertices, normals, and uv's
-		void _buffer();
 
         //Please read the "load" function documentation on the .obj file format first.
         //FaceVertexTriplet  is a helper class for loading and converting to obj file to

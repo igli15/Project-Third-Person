@@ -5,6 +5,7 @@
 #include "glm.hpp"
 #include "Component.h"
 #include "../components/Transform.h"
+#include "../components/MeshRenderer.h"
 
 class AbstractCollider;
 class AbstractBehaviour;
@@ -22,7 +23,7 @@ class GameObject
 		GameObject();
 		virtual ~GameObject();
 
-		Transform* transform;
+		Transform* transform = nullptr;
 
 		World* GetWorld();
 
@@ -32,6 +33,9 @@ class GameObject
         //mesh and material should be shared as much as possible
 		void setMesh(Mesh* pMesh);
 		Mesh* getMesh() const;
+
+		void SetMeshRenderer(MeshRenderer* meshRenderer);
+		MeshRenderer* GetMeshRenderer() const;
 
         //mesh and material should be shared as much as possible
 		void setMaterial (AbstractMaterial* pMaterial);
@@ -71,7 +75,7 @@ class GameObject
 			{
 				T* component = new T();
 				m_attachedComponents.push_back(component);
-				m_attachedComponents.at(m_attachedComponents.size() - 1)->SetGameObject(this);
+				component->SetGameObject(this);
 			}
 			else
 			{
@@ -101,10 +105,12 @@ class GameObject
 	protected:
 		std::string _name;
 
-        GameObject* _parent;
+        GameObject* _parent = nullptr;
 		std::vector<GameObject*> _children;
 
         Mesh* _mesh;
+		MeshRenderer* m_meshRenderer = nullptr;
+
 		AbstractBehaviour* _behaviour;
 		AbstractMaterial* _material;
 		World* _world;

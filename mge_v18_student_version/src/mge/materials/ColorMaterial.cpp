@@ -5,6 +5,7 @@
 #include "mge/core/GameObject.hpp"
 #include "mge/core/Mesh.hpp"
 #include "mge/core/ShaderProgram.hpp"
+#include "../components/MeshRenderer.h"
 
 ShaderProgram* ColorMaterial::_shader = NULL;
 
@@ -33,7 +34,7 @@ void ColorMaterial::setDiffuseColor(glm::vec3 pDiffuseColor) {
     _diffuseColor = pDiffuseColor;
 }
 
-void ColorMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
+void ColorMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
     _shader->use();
 
     //set the material color
@@ -45,7 +46,7 @@ void ColorMaterial::render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMa
     glUniformMatrix4fv ( _shader->getUniformLocation("modelMatrix"),        1, GL_FALSE, glm::value_ptr(pModelMatrix));
 
     //now inform mesh of where to stream its data
-    pMesh->streamToOpenGL(
+    meshRenderer->StreamToOpenGL(
         _shader->getAttribLocation("vertex"),
         _shader->getAttribLocation("normal"),
         _shader->getAttribLocation("uv")

@@ -97,6 +97,9 @@
     <ClInclude Include="..\src\mge\components\Transform.h">
       <Filter>MGE Source files\mge\components</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\components\MeshRenderer.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -163,6 +166,9 @@
       <Filter>MGE Source files\mge\test</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\components\Transform.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\MeshRenderer.cpp">
       <Filter>MGE Source files\mge\components</Filter>
     </ClCompile>
   </ItemGroup>

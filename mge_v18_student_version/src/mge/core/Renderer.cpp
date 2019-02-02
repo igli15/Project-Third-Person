@@ -4,6 +4,7 @@
 #include "Mesh.hpp"
 #include "World.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
+#include "../components/MeshRenderer.h"
 
 Renderer::Renderer():debug(false)
 {
@@ -51,8 +52,8 @@ void Renderer::render(World* pWorld, GameObject* pGameObject, AbstractMaterial* 
 }
 
 void Renderer::renderSelf(World* pWorld, GameObject* pGameObject, AbstractMaterial* pMaterial, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
-	render(pWorld, pGameObject->getMesh(), pMaterial, pModelMatrix, pViewMatrix, pProjectionMatrix);
-	if (debug) renderMeshDebugInfo(pGameObject->getMesh(), pModelMatrix, pViewMatrix, pProjectionMatrix);
+	render(pWorld, pGameObject->GetMeshRenderer(), pMaterial, pModelMatrix, pViewMatrix, pProjectionMatrix);
+	if (debug) renderMeshDebugInfo(pGameObject->GetMeshRenderer(), pModelMatrix, pViewMatrix, pProjectionMatrix);
 }
 
 void Renderer::renderChildren(World* pWorld, GameObject* pGameObject, AbstractMaterial* pMaterial, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix, bool pRecursive) {
@@ -67,11 +68,11 @@ void Renderer::renderChildren(World* pWorld, GameObject* pGameObject, AbstractMa
 	}
 }
 
-void Renderer::render(World* pWorld, Mesh* pMesh, AbstractMaterial* pMaterial, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
-	if (pMesh != nullptr && pMaterial != nullptr) pMaterial->render(pWorld, pMesh, pModelMatrix, pViewMatrix, pProjectionMatrix);
+void Renderer::render(World* pWorld, MeshRenderer* meshRenderer, AbstractMaterial* pMaterial, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
+	if (meshRenderer != nullptr && pMaterial != nullptr) pMaterial->render(pWorld, meshRenderer, pModelMatrix, pViewMatrix, pProjectionMatrix);
 }
 
-void Renderer::renderMeshDebugInfo(Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
-	if (pMesh != nullptr) pMesh->drawDebugInfo(pModelMatrix, pViewMatrix, pProjectionMatrix);
+void Renderer::renderMeshDebugInfo(MeshRenderer* meshRenderer, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
+	if (meshRenderer != nullptr) meshRenderer->DrawMeshDebugInfo(pModelMatrix, pViewMatrix, pProjectionMatrix);
 }
 

@@ -61,6 +61,16 @@ Mesh * GameObject::getMesh() const
     return _mesh;
 }
 
+void GameObject::SetMeshRenderer(MeshRenderer * meshRenderer)
+{
+	m_meshRenderer = meshRenderer;
+}
+
+MeshRenderer * GameObject::GetMeshRenderer() const
+{
+	return m_meshRenderer;
+}
+
 void GameObject::setBehaviour(AbstractBehaviour* pBehaviour)
 {
 	_behaviour = pBehaviour;
@@ -73,7 +83,7 @@ AbstractBehaviour* GameObject::getBehaviour() const
 }
 
 void GameObject::Load()
-{	
+{
 	for (int i = _children.size() - 1; i >= 0; --i) {
 		_children[i]->Load();
 	}

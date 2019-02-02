@@ -42,7 +42,9 @@ void TestWorld::_initializeScene()
 
 	GameObject* cube = _world->Instantiate<GameObject>();
 	cube->transform->SetLocalPosition(glm::vec3(0,0,0));
-	cube->setMesh(cubeMesh);
+	cube->AddComponent<MeshRenderer>();
+	cube->Awake();
+	cube->GetMeshRenderer()->SetMesh(cubeMesh);
 	cube->setMaterial(brickMat);
 	cube->setBehaviour(new KeysBehaviour(30));
 
