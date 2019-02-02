@@ -84,6 +84,37 @@ AbstractBehaviour* GameObject::getBehaviour() const
     return _behaviour;
 }
 
+void GameObject::Load()
+{
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Load();
+	}
+}
+
+void GameObject::Awake()
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->Awake();
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Awake();
+	}
+}
+
+void GameObject::Start()
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->Start();
+	}
+	
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Start();
+	}
+}
+
 void GameObject::setParent (GameObject* pParent) {
     //remove from previous parent
     if (_parent != nullptr) {
@@ -168,16 +199,21 @@ void GameObject::rotate(float pAngle, glm::vec3 pAxis)
 	setTransform(glm::rotate(_transform, pAngle, pAxis));
 }
 
-void GameObject::update(float pStep)
+void GameObject::Update(float pStep)
 {
     //make sure behaviour is updated after worldtransform is set
 	if (_behaviour) {
 		_behaviour->update(pStep);
 	}
 
-    for (int i = _children.size()-1; i >= 0; --i ) {
-        _children[i]->update(pStep);
-    }
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->Update(pStep);
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Update(pStep);
+	}
 }
 
 void GameObject::_setWorldRecursively (World* pWorld) {

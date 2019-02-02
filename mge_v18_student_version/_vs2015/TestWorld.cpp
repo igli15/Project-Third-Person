@@ -9,6 +9,7 @@
 #include "mge/core/GameObject.hpp"
 #include "mge/materials/ColorMaterial.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
+#include "mge/test/TestComponent.h"
 
 TestWorld::TestWorld()
 {
@@ -49,6 +50,7 @@ void TestWorld::_initializeScene()
 	suzana->setMesh(suzanaMesh);
 	suzana->setMaterial(colorMat);
 	_world->add(suzana);
+	suzana->AddComponent<TestComponent>();
 
 	GameObject* cube = new GameObject("cube", glm::vec3(0, 2, 0));
 	cube->setMesh(cubeMesh);

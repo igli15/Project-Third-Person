@@ -20,6 +20,9 @@
     <Filter Include="MGE Source files\mge\util">
       <UniqueIdentifier>{7d824c34-4bb6-43a4-a48a-0d68b7aad6e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MGE Source files\mge\test">
+      <UniqueIdentifier>{be8e6ab2-3305-4569-8461-8855fc21a916}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp">
@@ -82,6 +85,12 @@
     <ClInclude Include="TestWorld.h">
       <Filter>MGE Source files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\core\Component.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\test\TestComponent.h">
+      <Filter>MGE Source files\mge\test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -140,6 +149,12 @@
     </ClCompile>
     <ClCompile Include="TestWorld.cpp">
       <Filter>MGE Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\Component.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\test\TestComponent.cpp">
+      <Filter>MGE Source files\mge\test</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

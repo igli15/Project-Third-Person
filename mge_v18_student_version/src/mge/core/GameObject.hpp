@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "glm.hpp"
+#include "Component.h"
 
 class AbstractCollider;
 class AbstractBehaviour;
@@ -51,7 +52,10 @@ class GameObject
 		void setBehaviour(AbstractBehaviour* pBehaviour);
 		AbstractBehaviour* getBehaviour() const;
 
-		virtual void update(float pStep);
+		virtual void Load();
+		virtual void Awake();
+		virtual void Start();
+		virtual void Update(float pStep);
 
         //child management, note that add/remove and setParent are closely coupled.
         //a.add(b) has the same effect as b.setParent(a)
@@ -67,6 +71,38 @@ class GameObject
 
         int getChildCount() const;
         GameObject* getChildAt (int pIndex) const;
+
+
+		template<typename T>
+		Component* AddComponent()
+		{
+			if (std::is_base_of<Component, T>())
+			{
+				T* component = new T();
+				m_attachedComponents.push_back(component);
+				m_attachedComponents.at(m_attachedComponents.size() - 1)->SetGameObject(this);
+			}
+			else
+			{
+				std::cout << "you can only attach a component" << std::endl;
+				throw;
+			}
+		}
+
+		template<typename T>
+		T* GetComponent()     //Gets a component from the list of attached components
+		{
+			for (int i = 0; i < m_attachedComponents.size(); ++i)
+			{
+				if (typeid(T) == typeid(*m_attachedComponents[i]))
+				{
+					return (T*)m_attachedComponents[i];
+				}
+			}
+
+			std::cout << "could not find an component of that type" << std::endl;
+			return nullptr;
+		}
 
 	protected:
 		std::string _name;
@@ -90,6 +126,8 @@ class GameObject
     private:
         GameObject (const GameObject&);
 		GameObject& operator= (const GameObject&);
+
+		std::vector<Component*> m_attachedComponents;
 };
 
 #endif // GAMEOBJECT_HPP

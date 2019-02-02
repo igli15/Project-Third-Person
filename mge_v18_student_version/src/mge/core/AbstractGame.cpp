@@ -95,6 +95,10 @@ void AbstractGame::run()
 	sf::Clock updateClock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
+	_world->Load();
+	_world->Awake();
+	_world->Start();
+
 	while (_window->isOpen()) {
 		timeSinceLastUpdate += updateClock.restart();
 
@@ -127,7 +131,7 @@ void AbstractGame::run()
 }
 
 void AbstractGame::_update(float pStep) {
-    _world->update(pStep);
+    _world->Update(pStep);
 }
 
 void AbstractGame::_render () {
