@@ -8,7 +8,7 @@ Component::Component()
 
 Component::~Component()
 {
-	//dtor
+	m_gameObject = nullptr;
 }
 
 void Component::Awake()

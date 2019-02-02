@@ -52,7 +52,9 @@ class GameObject
 		void setBehaviour(AbstractBehaviour* pBehaviour);
 		AbstractBehaviour* getBehaviour() const;
 
+		//Load is used to attach comonents only!!
 		virtual void Load();
+
 		virtual void Awake();
 		virtual void Start();
 		virtual void Update(float pStep);
@@ -72,7 +74,7 @@ class GameObject
         int getChildCount() const;
         GameObject* getChildAt (int pIndex) const;
 
-
+		//Add a Component of the specified type to the GameObject
 		template<typename T>
 		Component* AddComponent()
 		{
@@ -88,7 +90,8 @@ class GameObject
 				throw;
 			}
 		}
-
+		
+		//Get a Component attached to this GameObject
 		template<typename T>
 		T* GetComponent()     //Gets a component from the list of attached components
 		{
