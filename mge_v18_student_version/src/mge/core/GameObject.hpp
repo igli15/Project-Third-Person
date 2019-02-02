@@ -4,12 +4,14 @@
 #include <vector>
 #include "glm.hpp"
 #include "Component.h"
+#include "../components/Transform.h"
 
 class AbstractCollider;
 class AbstractBehaviour;
 class AbstractMaterial;
 class World;
 class Mesh;
+class Transform;
 
 /**
  * A GameObject wraps all data required to display an object, but knows nothing about OpenGL or rendering.
@@ -19,6 +21,8 @@ class GameObject
 	public:
 		GameObject(const std::string& pName = nullptr, const glm::vec3& pPosition = glm::vec3( 0.0f, 0.0f, 0.0f ));
 		virtual ~GameObject();
+
+		Transform* transform;
 
         void setName (const std::string& pName);
         std::string getName() const;
@@ -76,7 +80,7 @@ class GameObject
 
 		//Add a Component of the specified type to the GameObject
 		template<typename T>
-		Component* AddComponent()
+		T* AddComponent()
 		{
 			if (std::is_base_of<Component, T>())
 			{

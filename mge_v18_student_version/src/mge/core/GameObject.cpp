@@ -23,6 +23,7 @@ GameObject::~GameObject()
     //do not forget to delete behaviour, material, mesh, collider manually if required!
 }
 
+
 void GameObject::setName (const std::string& pName)
 {
     _name = pName;
@@ -86,6 +87,8 @@ AbstractBehaviour* GameObject::getBehaviour() const
 
 void GameObject::Load()
 {
+	transform = AddComponent<Transform>();
+
 	for (int i = _children.size() - 1; i >= 0; --i) {
 		_children[i]->Load();
 	}
