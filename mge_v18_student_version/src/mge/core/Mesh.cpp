@@ -5,7 +5,7 @@
 
 #include "mge/core/Mesh.hpp"
 
-Mesh::Mesh(): _indexBufferId(0), _vertexBufferId(0), _normalBufferId(0), _uvBufferId(0),  _vertices(), _normals(), _uvs(), _indices()
+Mesh::Mesh(): _vertices(), _normals(), _uvs(), _indices()
 {
 	//ctor
 }
@@ -177,7 +177,6 @@ Mesh* Mesh::load(std::string pFilename)
 		}
 
 		file.close();
-		//mesh->_buffer();
 
 		std::cout << "Mesh loaded and buffered:" << (mesh->_indices.size()/3.0f) << " triangles." << std::endl;
 		return mesh;
