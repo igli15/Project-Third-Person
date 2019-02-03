@@ -103,6 +103,9 @@
     <ClInclude Include="..\src\mge\components\CameraComponent.h">
       <Filter>MGE Source files\mge\components</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\components\LightComponent.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -175,6 +178,9 @@
       <Filter>MGE Source files\mge\components</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\components\CameraComponent.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\LightComponent.cpp">
       <Filter>MGE Source files\mge\components</Filter>
     </ClCompile>
   </ItemGroup>
