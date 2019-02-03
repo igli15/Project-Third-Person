@@ -30,10 +30,6 @@ class GameObject
         void setName (const std::string& pName);
         std::string getName() const;
 
-        //mesh and material should be shared as much as possible
-		void setMesh(Mesh* pMesh);
-		Mesh* getMesh() const;
-
 		void SetMeshRenderer(MeshRenderer* meshRenderer);
 		MeshRenderer* GetMeshRenderer() const;
 
@@ -108,7 +104,6 @@ class GameObject
         GameObject* _parent = nullptr;
 		std::vector<GameObject*> _children;
 
-        Mesh* _mesh;
 		MeshRenderer* m_meshRenderer = nullptr;
 
 		AbstractBehaviour* _behaviour;

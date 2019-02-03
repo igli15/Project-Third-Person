@@ -11,8 +11,6 @@ MeshRenderer::MeshRenderer()
 
 MeshRenderer::~MeshRenderer()
 {
-	//TODO: This may cause problems in the future.
-	delete m_currentMesh;
 	m_currentMesh = nullptr;
 }
 

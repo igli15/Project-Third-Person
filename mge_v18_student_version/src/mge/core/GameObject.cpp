@@ -4,7 +4,7 @@
 
 GameObject::GameObject()
 :	_name( "" ), _parent(nullptr), _children(),
-    _mesh( nullptr ),_behaviour( nullptr ), _material(nullptr), _world(nullptr)
+    _behaviour( nullptr ), _material(nullptr), _world(nullptr)
 
 {
 	transform = AddComponent<Transform>();
@@ -49,16 +49,6 @@ void GameObject::setMaterial(AbstractMaterial* pMaterial)
 AbstractMaterial * GameObject::getMaterial() const
 {
     return _material;
-}
-
-void GameObject::setMesh(Mesh* pMesh)
-{
-	_mesh = pMesh;
-}
-
-Mesh * GameObject::getMesh() const
-{
-    return _mesh;
 }
 
 void GameObject::SetMeshRenderer(MeshRenderer * meshRenderer)
