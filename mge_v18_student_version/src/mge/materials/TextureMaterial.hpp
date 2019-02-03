@@ -20,10 +20,13 @@ class TextureMaterial : public AbstractMaterial
         virtual void render(World* pWorld, MeshRenderer* meshRenderer, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) override;
 
         void setDiffuseTexture (Texture* pDiffuseTexture);
+		void SetSpecularTexture(Texture* specularTexture);
+		void SetDiffuseColor(glm::vec3 color);
+		void SetShininess(float shininess);
 
     protected:
     private:
-        static ShaderProgram* _shader;
+        static ShaderProgram* m_shaderProgram;
         static void _lazyInitializeShader();
 
         //in this example we cache all identifiers for uniforms & attributes
@@ -35,6 +38,11 @@ class TextureMaterial : public AbstractMaterial
         static GLint _aUV ;
 
         Texture* _diffuseTexture;
+		Texture* m_spcecularTexture;
+
+		float m_shineness = 32;
+
+		glm::vec3 m_diffuseColor = glm::vec3(1, 1, 1);
 
         TextureMaterial(const TextureMaterial&);
         TextureMaterial& operator=(const TextureMaterial&);
