@@ -9,19 +9,20 @@
  * The camera's own transform is used to generate a world-to-view matrix by taking the inverse of the camera transform.
  * The camera's perspective matrix is used in the MVP matrix creation.
  */
+class CameraComponent;
 class Camera : public GameObject
 {
 	public:
-		Camera();
+ 		Camera();
 
 		virtual ~Camera();
 
-        glm::mat4& getProjection();
+		void Load() override;
 
+		CameraComponent* GetCameraComponent();
 	private:
-		glm::mat4 _projection;
+		CameraComponent* m_cameraComponent;
 
-    private:
         Camera (const Camera&);
 		Camera& operator= (const Camera&);
 };

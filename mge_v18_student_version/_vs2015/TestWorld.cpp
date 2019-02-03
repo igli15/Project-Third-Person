@@ -10,6 +10,7 @@
 #include "mge/materials/ColorMaterial.hpp"
 #include "mge/behaviours/KeysBehaviour.hpp"
 #include "mge/test/TestComponent.h"
+#include "mge/components/CameraComponent.h"
 
 TestWorld::TestWorld()
 {
@@ -38,6 +39,7 @@ void TestWorld::_initializeScene()
 	Camera* camera = _world->Instantiate<Camera>();
 	camera->transform->SetLocalPosition(glm::vec3(0, 4, 6));
 	camera->transform->Rotate(glm::radians(-40.0f), glm::vec3(1, 0, 0));
+	camera->GetCameraComponent()->SetFOV(80); //Set Camera Properties via its component
 	_world->setMainCamera(camera);
 
 	GameObject* cube = _world->Instantiate<GameObject>();

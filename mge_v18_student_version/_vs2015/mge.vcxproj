@@ -170,6 +170,7 @@
     <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
     <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
+    <ClInclude Include="..\src\mge\components\CameraComponent.h" />
     <ClInclude Include="..\src\mge\components\MeshRenderer.h" />
     <ClInclude Include="..\src\mge\components\Transform.h" />
     <ClInclude Include="..\src\mge\config.hpp" />
@@ -196,6 +197,7 @@
     <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp" />
     <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
+    <ClCompile Include="..\src\mge\components\CameraComponent.cpp" />
     <ClCompile Include="..\src\mge\components\MeshRenderer.cpp" />
     <ClCompile Include="..\src\mge\components\Transform.cpp" />
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp" />
