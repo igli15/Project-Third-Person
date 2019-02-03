@@ -47,8 +47,8 @@ private:
 	float m_intensity = 1;
 	float m_ambientContribution = 1;
 	float m_specularContribution = 32;
-	float m_cutoffAngle = 0;
-	float m_outerCutoffAngle = 0;
+	float m_cutoffAngle = 10;
+	float m_outerCutoffAngle = 45;
 	glm::vec3 m_attenuationConstants = glm::vec3(1,1,0);
 
 };

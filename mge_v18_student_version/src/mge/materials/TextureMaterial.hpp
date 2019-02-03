@@ -14,7 +14,7 @@ class Texture;
 class TextureMaterial : public AbstractMaterial
 {
     public:
-        TextureMaterial (Texture* pDiffuseTexture);
+        TextureMaterial (Texture* pDiffuseTexture,Texture* specularTexture );
         virtual ~TextureMaterial ();
 
         virtual void render(World* pWorld, MeshRenderer* meshRenderer, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) override;
@@ -37,8 +37,8 @@ class TextureMaterial : public AbstractMaterial
         static GLint _aNormal;
         static GLint _aUV ;
 
-        Texture* _diffuseTexture;
-		Texture* m_spcecularTexture;
+        Texture* _diffuseTexture = nullptr;
+		Texture* m_spcecularTexture = nullptr;
 
 		float m_shineness = 32;
 

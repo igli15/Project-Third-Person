@@ -46,10 +46,7 @@ void ColorMaterial::render(World * pWorld, MeshRenderer* meshRenderer , const gl
 		{
 			spotLightCount += 1;
 		}
-	}
 
-	for (int i = 0; i < pWorld->getLightCount(); i++)
-	{
 		std::string pointLightstring = "pointLight[" + std::to_string(pointLightCount - 1) + "].";
 
 		std::string dirLightstring = "directionalLight[" + std::to_string(directionalLightCount - 1) + "].";
@@ -116,6 +113,11 @@ void ColorMaterial::render(World * pWorld, MeshRenderer* meshRenderer , const gl
 		m_shaderProgram->getAttribLocation("uv")
 	);
 
+}
+
+void ColorMaterial::SetDiffuseColor(glm::vec3 pDiffuseColor)
+{
+	m_diffuseColor = pDiffuseColor;
 }
 
 void ColorMaterial::InitializeShader()

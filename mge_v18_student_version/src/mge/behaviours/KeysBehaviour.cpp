@@ -16,10 +16,10 @@ void KeysBehaviour::update( float pStep )
 	float turnSpeed = 0.0f;
 
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Up )) {
-		moveSpeed = -_moveSpeed;
+		moveSpeed = _moveSpeed;
 	}
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Down )) {
-		moveSpeed = _moveSpeed;
+		moveSpeed = -_moveSpeed;
 	}
 	if ( sf::Keyboard::isKeyPressed( sf::Keyboard::Right )) {
 		turnSpeed = -_turnSpeed;

@@ -20,11 +20,10 @@ GLint TextureMaterial::_aVertex = 0;
 GLint TextureMaterial::_aNormal = 0;
 GLint TextureMaterial::_aUV = 0;
 
-TextureMaterial::TextureMaterial(Texture * pDiffuseTexture):_diffuseTexture(pDiffuseTexture) {
+TextureMaterial::TextureMaterial(Texture * pDiffuseTexture , Texture* specularTexture = nullptr):_diffuseTexture(pDiffuseTexture),m_spcecularTexture(specularTexture) {
     _lazyInitializeShader();
 
-    _diffuseTexture = Texture::load(config::MGE_TEXTURE_PATH + "container2.png");
-	m_spcecularTexture = Texture::load(config::MGE_TEXTURE_PATH + "container2_specular.png");
+ 
 }
 
 TextureMaterial::~TextureMaterial() {}
@@ -76,16 +75,20 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 	//tell the shader the texture slot for the diffuse texture is slot 0
 	glUniform1i(_uDiffuseTexture, 0);
 
-	//setup texture slot 1
-	glActiveTexture(GL_TEXTURE1);
-	//bind the texture to the current active slot
-	glBindTexture(GL_TEXTURE_2D, m_spcecularTexture->getId());
-	//tell the shader the texture slot for the specular texture is slot 1
-	glUniform1i(m_shaderProgram->getUniformLocation("specularTexture"), 1);
+	if (m_spcecularTexture != nullptr)
+	{
+		//setup texture slot 1
+		glActiveTexture(GL_TEXTURE1);
+		//bind the texture to the current active slot
+		glBindTexture(GL_TEXTURE_2D, m_spcecularTexture->getId());
+		//tell the shader the texture slot for the specular texture is slot 1
+		glUniform1i(m_shaderProgram->getUniformLocation("specularTexture"), 1);
+	}
 
 	int pointLightCount = 0;
 	int spotLightCount = 0;
 	int directionalLightCount = 0;
+
 
 	for (int i = 0; i < pWorld->getLightCount(); i++)
 	{
@@ -101,10 +104,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		{
 			spotLightCount += 1;
 		}
-	}
 
-	for (int i = 0; i < pWorld->getLightCount(); i++)
-	{
 		std::string pointLightstring = "pointLight[" + std::to_string(pointLightCount - 1) + "].";
 
 		std::string dirLightstring = "directionalLight[" + std::to_string(directionalLightCount - 1) + "].";
@@ -132,6 +132,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		else if (currentLight->GetType() == LightType::SPOTLIGHT)
 		{
 			//spotLightCount += 1;
+			std::cout << spotLightstring << std::endl;
 			glUniform3fv(m_shaderProgram->getUniformLocation(spotLightstring + "lightColor"), 1, glm::value_ptr(currentLight->GetColor() * currentLight->GetIntensity()));
 			glUniform3fv(m_shaderProgram->getUniformLocation(spotLightstring + "lightPos"), 1, glm::value_ptr(pViewMatrix *currentLight->GetGameObject()->transform->WorldTransform()[3]));
 			glUniform3fv(m_shaderProgram->getUniformLocation(spotLightstring + "direction"), 1, glm::value_ptr(currentLight->GetGameObject()->transform->LocalTransform()[2]));
