@@ -54,7 +54,7 @@ void MGEDemo::_initializeScene()
     //MATERIALS
 
     //create some materials to display the cube, the plane and the light
-    AbstractMaterial* lightMaterial = new ColorMaterial (glm::vec3(1,1,0));
+    AbstractMaterial* lightMaterial = new ColorMaterial ();
     AbstractMaterial* runicStoneMaterial = new TextureMaterial (Texture::load (config::MGE_TEXTURE_PATH+"runicfloor.png"));
 
     //SCENE SETUP

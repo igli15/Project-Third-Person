@@ -11,6 +11,8 @@
 #include "mge/behaviours/KeysBehaviour.hpp"
 #include "mge/test/TestComponent.h"
 #include "mge/components/CameraComponent.h"
+#include "mge/core/Light.hpp"
+#include "mge/components/LightComponent.h"
 
 TestWorld::TestWorld()
 {
@@ -34,7 +36,7 @@ void TestWorld::_initializeScene()
 
 	AbstractMaterial* brickMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "bricks.jpg"));
 	AbstractMaterial* planeMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "runicfloor.png"));
-	AbstractMaterial* colorMat = new ColorMaterial(glm::vec3(0, 1, 1));
+	AbstractMaterial* colorMat = new ColorMaterial();
 
 	Camera* camera = _world->Instantiate<Camera>();
 	camera->transform->SetLocalPosition(glm::vec3(0, 4, 6));
@@ -46,7 +48,10 @@ void TestWorld::_initializeScene()
 	cube->transform->SetLocalPosition(glm::vec3(0,0,0));
 	cube->SetMeshRenderer(cube->AddComponent<MeshRenderer>());
 	cube->GetMeshRenderer()->SetMesh(cubeMesh);
-	cube->setMaterial(brickMat);
+	cube->setMaterial(colorMat);
 	cube->setBehaviour(new KeysBehaviour(30));
 
+	Light* l = _world->Instantiate<Light>();
+	l->transform->SetLocalPosition(glm::vec3(0, 2, 0));
+	l->GetLightComponent()->SetType(LightType::POINT);
 }
