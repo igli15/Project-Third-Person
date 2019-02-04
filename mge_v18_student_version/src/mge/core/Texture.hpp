@@ -5,12 +5,20 @@
 #include <string>
 #include <GL/glew.h>
 
+enum TextureType
+{
+	DIFFUSE,
+	SPECULAR
+};
+
 class Texture
 {
 	public:
-		static Texture* load(const std::string& pTexturePath);
+		static Texture* load(const std::string& pTexturePath, TextureType type = TextureType::DIFFUSE);
 
 		GLuint getId();
+
+		TextureType Type();
 
 	protected:
 	    Texture();
@@ -20,6 +28,8 @@ class Texture
 
 	    //OpenGL id for texture buffer
 		GLuint _id;
+
+		TextureType m_type;
 };
 
 #endif // TEXTURE_HPP

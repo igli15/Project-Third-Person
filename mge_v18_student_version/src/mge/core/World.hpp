@@ -5,6 +5,7 @@
 
 class Camera;
 class Light;
+class LightComponent;
 
 class World : public GameObject
 {
@@ -15,15 +16,27 @@ class World : public GameObject
 		Camera* getMainCamera();
 
         //only used internally, do not use from outside
-        void registerLight (Light* pLight);
-        void unregisterLight (Light* pLight);
+        void registerLight (LightComponent* pLight);
+        void unregisterLight (LightComponent* pLight);
 
-        Light* getLightAt (int pIndex);
+        LightComponent* getLightAt (int pIndex);
         int getLightCount();
+
+		template <typename T>
+		T* Instantiate()
+		{
+			T* gameObject = new T;
+		
+			gameObject->Load();
+			gameObject->Awake();
+			gameObject->Start();
+			add(gameObject);
+			return gameObject;
+		}
 
 	private:
 	    Camera* _mainCamera;
-	    std::vector<Light*> _lights;
+	    std::vector<LightComponent*> _lights;
 
         World(const World&);
         World& operator=(const World&);

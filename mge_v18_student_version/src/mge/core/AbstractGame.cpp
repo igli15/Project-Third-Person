@@ -32,7 +32,7 @@ void AbstractGame::initialize() {
 
 void AbstractGame::_initializeWindow() {
 	std::cout << "Initializing window..." << std::endl;
-	_window = new sf::RenderWindow( sf::VideoMode(800,600), "My Game!", sf::Style::Default, sf::ContextSettings(24,8,0,3,3));
+	_window = new sf::RenderWindow( sf::VideoMode(1920,1080), "My Game!", sf::Style::Default, sf::ContextSettings(24,8,0,3,3));
 	//_window->setVerticalSyncEnabled(true);
     std::cout << "Window initialized." << std::endl << std::endl;
 }
@@ -127,7 +127,7 @@ void AbstractGame::run()
 }
 
 void AbstractGame::_update(float pStep) {
-    _world->update(pStep);
+    _world->Update(pStep);
 }
 
 void AbstractGame::_render () {

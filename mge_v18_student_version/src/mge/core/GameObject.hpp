@@ -3,12 +3,16 @@
 
 #include <vector>
 #include "glm.hpp"
+#include "Component.h"
+#include "../components/Transform.h"
+#include "../components/MeshRenderer.h"
 
 class AbstractCollider;
 class AbstractBehaviour;
 class AbstractMaterial;
 class World;
 class Mesh;
+class Transform;
 
 /**
  * A GameObject wraps all data required to display an object, but knows nothing about OpenGL or rendering.
@@ -16,32 +20,18 @@ class Mesh;
 class GameObject
 {
 	public:
-		GameObject(const std::string& pName = nullptr, const glm::vec3& pPosition = glm::vec3( 0.0f, 0.0f, 0.0f ));
+		GameObject();
 		virtual ~GameObject();
+
+		Transform* transform = nullptr;
+
+		World* GetWorld();
 
         void setName (const std::string& pName);
         std::string getName() const;
 
-        //contains local rotation, scale, position
-		void setTransform (const glm::mat4& pTransform);
-        const glm::mat4& getTransform() const;
-
-        //access just the local position
-		void setLocalPosition (glm::vec3 pPosition);
-		glm::vec3 getLocalPosition() const;
-
-        //get the objects world position by combining transforms, SLOW use with care
-		glm::vec3 getWorldPosition() const;
-		glm::mat4 getWorldTransform() const;
-
-        //change LOCAL position, rotation, scaling
-		void translate(glm::vec3 pTranslation);
-		void rotate(float pAngle, glm::vec3 pAxis);
-		void scale(glm::vec3 pScale);
-
-        //mesh and material should be shared as much as possible
-		void setMesh(Mesh* pMesh);
-		Mesh* getMesh() const;
+		void SetMeshRenderer(MeshRenderer* meshRenderer);
+		MeshRenderer* GetMeshRenderer() const;
 
         //mesh and material should be shared as much as possible
 		void setMaterial (AbstractMaterial* pMaterial);
@@ -51,7 +41,12 @@ class GameObject
 		void setBehaviour(AbstractBehaviour* pBehaviour);
 		AbstractBehaviour* getBehaviour() const;
 
-		virtual void update(float pStep);
+		//Load is used to attach comonents only!!
+		virtual void Load();
+
+		virtual void Awake();
+		virtual void Start();
+		virtual void Update(float pStep);
 
         //child management, note that add/remove and setParent are closely coupled.
         //a.add(b) has the same effect as b.setParent(a)
@@ -68,14 +63,49 @@ class GameObject
         int getChildCount() const;
         GameObject* getChildAt (int pIndex) const;
 
+		//Add a Component of the specified type to the GameObject
+		template<typename T>
+		T* AddComponent()
+		{
+			if (std::is_base_of<Component, T>())
+			{
+				T* component = new T();
+				m_attachedComponents.push_back(component);
+				component->SetGameObject(this);
+			}
+			else
+			{
+				std::cout << "you can only attach a component" << std::endl;
+				return nullptr;
+				throw;
+			}
+
+		}
+		
+		//Get a Component attached to this GameObject
+		template<typename T>
+		T* GetComponent()     //Gets a component from the list of attached components
+		{
+			for (int i = 0; i < m_attachedComponents.size(); ++i)
+			{
+				if (typeid(T) == typeid(*m_attachedComponents[i]))
+				{
+					return (T*)m_attachedComponents[i];
+				}
+			}
+
+			std::cout << "could not find an component of that type" << std::endl;
+			return nullptr;
+		}
+
 	protected:
 		std::string _name;
-		glm::mat4 _transform;
 
-        GameObject* _parent;
+        GameObject* _parent = nullptr;
 		std::vector<GameObject*> _children;
 
-        Mesh* _mesh;
+		MeshRenderer* m_meshRenderer = nullptr;
+
 		AbstractBehaviour* _behaviour;
 		AbstractMaterial* _material;
 		World* _world;
@@ -90,6 +120,8 @@ class GameObject
     private:
         GameObject (const GameObject&);
 		GameObject& operator= (const GameObject&);
+
+		std::vector<Component*> m_attachedComponents;
 };
 
 #endif // GAMEOBJECT_HPP

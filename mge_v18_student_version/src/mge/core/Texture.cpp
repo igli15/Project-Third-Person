@@ -17,8 +17,13 @@ GLuint Texture::getId() {
 	return _id;
 }
 
+TextureType Texture::Type()
+{
+	return m_type;
+}
+
 // importer for textures
-Texture* Texture::load(const std::string& pFilename)
+Texture* Texture::load(const std::string& pFilename , TextureType ptype)
 {
     // load from file and store in cache
     sf::Image image;
@@ -28,8 +33,20 @@ Texture* Texture::load(const std::string& pFilename)
         //create a wrapper for the id (texture is nothing more than that) and
         //load corresponding data into opengl using this id
         Texture * texture = new Texture();
+		
         glBindTexture (GL_TEXTURE_2D, texture->getId());
-        glTexImage2D (GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+
+		//TODO If we want specular / normals maps we still have to use rgba instead of SRGB
+		//TODO fix this soon.
+
+		if (ptype == TextureType::SPECULAR)
+		{
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+		}
+		else if (ptype == TextureType::DIFFUSE)
+		{
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+		}
         glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri (GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glBindTexture(GL_TEXTURE_2D, 0);

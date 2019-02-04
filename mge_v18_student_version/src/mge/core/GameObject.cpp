@@ -2,11 +2,12 @@
 #include "GameObject.hpp"
 #include "mge/behaviours/AbstractBehaviour.hpp"
 
-GameObject::GameObject(const std::string& pName, const glm::vec3& pPosition )
-:	_name( pName ), _transform( glm::translate( pPosition ) ), _parent(nullptr), _children(),
-    _mesh( nullptr ),_behaviour( nullptr ), _material(nullptr), _world(nullptr)
+GameObject::GameObject()
+:	_name( "" ), _parent(nullptr), _children(),
+    _behaviour( nullptr ), _material(nullptr), _world(nullptr)
 
 {
+	transform = AddComponent<Transform>();
 }
 
 GameObject::~GameObject()
@@ -23,6 +24,12 @@ GameObject::~GameObject()
     //do not forget to delete behaviour, material, mesh, collider manually if required!
 }
 
+
+World * GameObject::GetWorld()
+{
+	return _world;
+}
+
 void GameObject::setName (const std::string& pName)
 {
     _name = pName;
@@ -33,25 +40,6 @@ std::string GameObject::getName() const
 	return _name;
 }
 
-void GameObject::setTransform (const glm::mat4& pTransform)
-{
-    _transform = pTransform;
-}
-
-const glm::mat4& GameObject::getTransform() const
-{
-    return _transform;
-}
-
-void GameObject::setLocalPosition (glm::vec3 pPosition)
-{
-    _transform[3] = glm::vec4 (pPosition,1);
-}
-
-glm::vec3 GameObject::getLocalPosition() const
-{
-	return glm::vec3(_transform[3]);
-}
 
 void GameObject::setMaterial(AbstractMaterial* pMaterial)
 {
@@ -63,14 +51,14 @@ AbstractMaterial * GameObject::getMaterial() const
     return _material;
 }
 
-void GameObject::setMesh(Mesh* pMesh)
+void GameObject::SetMeshRenderer(MeshRenderer * meshRenderer)
 {
-	_mesh = pMesh;
+	m_meshRenderer = meshRenderer;
 }
 
-Mesh * GameObject::getMesh() const
+MeshRenderer * GameObject::GetMeshRenderer() const
 {
-    return _mesh;
+	return m_meshRenderer;
 }
 
 void GameObject::setBehaviour(AbstractBehaviour* pBehaviour)
@@ -82,6 +70,37 @@ void GameObject::setBehaviour(AbstractBehaviour* pBehaviour)
 AbstractBehaviour* GameObject::getBehaviour() const
 {
     return _behaviour;
+}
+
+void GameObject::Load()
+{
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Load();
+	}
+}
+
+void GameObject::Awake()
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->Awake();
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Awake();
+	}
+}
+
+void GameObject::Start()
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->Start();
+	}
+	
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Start();
+	}
 }
 
 void GameObject::setParent (GameObject* pParent) {
@@ -136,48 +155,23 @@ GameObject* GameObject::getParent() const {
     return _parent;
 }
 
-////////////
 
-//costly operation, use with care
-glm::vec3 GameObject::getWorldPosition() const
-{
-	return glm::vec3(getWorldTransform()[3]);
-}
 
-//costly operation, use with care
-glm::mat4 GameObject::getWorldTransform() const
-{
-	if (_parent == nullptr) return _transform;
-	else return _parent->getWorldTransform() * _transform;
-}
-
-////////////
-
-void GameObject::translate(glm::vec3 pTranslation)
-{
-	setTransform(glm::translate(_transform, pTranslation));
-}
-
-void GameObject::scale(glm::vec3 pScale)
-{
-	setTransform(glm::scale(_transform, pScale));
-}
-
-void GameObject::rotate(float pAngle, glm::vec3 pAxis)
-{
-	setTransform(glm::rotate(_transform, pAngle, pAxis));
-}
-
-void GameObject::update(float pStep)
+void GameObject::Update(float pStep)
 {
     //make sure behaviour is updated after worldtransform is set
 	if (_behaviour) {
 		_behaviour->update(pStep);
 	}
 
-    for (int i = _children.size()-1; i >= 0; --i ) {
-        _children[i]->update(pStep);
-    }
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->Update(pStep);
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Update(pStep);
+	}
 }
 
 void GameObject::_setWorldRecursively (World* pWorld) {
