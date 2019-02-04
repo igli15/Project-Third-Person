@@ -10,7 +10,7 @@ Transform::Transform() : m_transform(glm::mat4(1))
 
 Transform::~Transform()
 {
-	
+	std::cout << "transform is destroyed" << std::endl;
 }
 
 glm::vec3 Transform::WorldPosition() const

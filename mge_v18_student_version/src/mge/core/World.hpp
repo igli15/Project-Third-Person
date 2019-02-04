@@ -34,6 +34,9 @@ class World : public GameObject
 			return gameObject;
 		}
 
+		void DestroyObject(GameObject* object);
+
+
 	private:
 	    Camera* _mainCamera;
 	    std::vector<LightComponent*> _lights;

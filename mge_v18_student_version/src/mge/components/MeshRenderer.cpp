@@ -11,6 +11,7 @@ MeshRenderer::MeshRenderer()
 
 MeshRenderer::~MeshRenderer()
 {
+	std::cout << "mesh is destroyed" << std::endl;
 	m_currentMesh = nullptr;
 }
 

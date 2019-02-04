@@ -21,6 +21,16 @@ GameObject::~GameObject()
         delete child;
     }
 
+	//erase all attached components;
+	for (unsigned int i = m_attachedComponents.size(); i > 0;) {
+		--i;
+		delete m_attachedComponents[i];
+		m_attachedComponents.pop_back();
+	}
+	delete getBehaviour();
+
+	std::cout <<"Components Left "<< m_attachedComponents.size()<<std::endl;
+
     //do not forget to delete behaviour, material, mesh, collider manually if required!
 }
 

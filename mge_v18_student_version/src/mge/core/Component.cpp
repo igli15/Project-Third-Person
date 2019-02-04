@@ -8,6 +8,7 @@ Component::Component()
 
 Component::~Component()
 {
+	std::cout << "Component is destroyed" << std::endl;
 	m_gameObject = nullptr;
 }
 

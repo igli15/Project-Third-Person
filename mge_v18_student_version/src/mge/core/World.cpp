@@ -37,3 +37,12 @@ LightComponent* World::getLightAt (int pIndex) {
 int World::getLightCount() {
     return _lights.size();
 }
+
+void World::DestroyObject(GameObject * object)
+{
+	if (object != this)
+	{
+		remove(object);
+		delete object;
+	}
+}
