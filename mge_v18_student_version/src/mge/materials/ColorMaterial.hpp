@@ -29,7 +29,7 @@ class ColorMaterial : public AbstractMaterial
 
         //this one is unique per instance of color material
         glm::vec3 m_diffuseColor = glm::vec3(1,1,1);
-		float m_shineness = 32;
+		float m_shineness = 8;
 };
 
 #endif // COLORMATERIAL_HPP

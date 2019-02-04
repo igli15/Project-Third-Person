@@ -40,7 +40,7 @@ class TextureMaterial : public AbstractMaterial
         Texture* _diffuseTexture = nullptr;
 		Texture* m_spcecularTexture = nullptr;
 
-		float m_shineness = 32;
+		float m_shineness = 8;
 
 		glm::vec3 m_diffuseColor = glm::vec3(1, 1, 1);
 
