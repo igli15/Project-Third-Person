@@ -120,6 +120,11 @@ void ColorMaterial::SetDiffuseColor(glm::vec3 pDiffuseColor)
 	m_diffuseColor = pDiffuseColor;
 }
 
+void ColorMaterial::SetShineness(float shineValue)
+{
+	m_shineness = shineValue;
+}
+
 void ColorMaterial::InitializeShader()
 {
 	m_shaderProgram = new ShaderProgram();

@@ -82,6 +82,10 @@ for(int i =0 ; i<spotLightCount;i++)
 {	
 	 outputColor += CalculateSpotLight(spotLight[i],n,fragPos);
 }
+
+	float gamma = 2.2;
+    
+	outputColor.rgb = pow(outputColor.rgb, vec3(1.0/gamma));
 	
 	fragment_color = vec4 (outputColor,1);
 }
