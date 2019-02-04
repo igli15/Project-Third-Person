@@ -101,7 +101,9 @@ vec3 CalculatePointLight(PointLight pointLight,vec3 normal,vec3 fragPos)
 	
 	vec3 viewDir = normalize(-fragPos);
 	vec3 reflectDir = reflect(-lightDir,normal);
-	float spec = pow(max(dot(viewDir,reflectDir),0),shineness);
+	vec3 halfwayDir = normalize(lightDir + viewDir);
+	//float spec = pow(max(dot(viewDir,reflectDir),0),shineness);
+	float spec = pow(max(dot(normal,halfwayDir),0),shineness);
 	
 	vec3 specular = spec * pointLight.specularContribution * pointLight.lightColor;
 	
@@ -127,7 +129,9 @@ vec3 CalculateDirectionalLight(DirectionalLight dirLight,vec3 normal)
 	
 	vec3 viewDir = normalize(-fragPos);
 	vec3 reflectDir = reflect(-lightDir,normal);
-	float spec = pow(max(dot(viewDir,reflectDir),0),shineness);
+	vec3 halfwayDir = normalize(lightDir + viewDir);
+	//float spec = pow(max(dot(viewDir,reflectDir),0),shineness);
+	float spec = pow(max(dot(normal,halfwayDir),0),shineness);
 	
 	vec3 specular = spec * dirLight.specularContribution * dirLight.lightColor;
 	
@@ -149,7 +153,9 @@ vec3 CalculateSpotLight(SpotLight spotLight,vec3 normal,vec3 fragPos)
 	
 	vec3 viewDir = normalize(-fragPos);
 	vec3 reflectDir = reflect(-lightDir,normal);
-	float spec = pow(max(dot(viewDir,reflectDir),0),shineness);
+	vec3 halfwayDir = normalize(lightDir + viewDir);
+	//float spec = pow(max(dot(viewDir,reflectDir),0),shineness);
+	float spec = pow(max(dot(normal,halfwayDir),0),shineness);
 	
 	vec3 specular = spec * spotLight.specularContribution * spotLight.lightColor;
 	

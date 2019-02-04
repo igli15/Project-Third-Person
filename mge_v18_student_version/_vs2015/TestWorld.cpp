@@ -89,6 +89,7 @@ void TestWorld::_initializeScene()
 	l->transform->Rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
 	l->transform->Rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
 	l->GetLightComponent()->SetType(LightType::POINT);
+	l->GetLightComponent()->SetIntensity(0.5f);
 	l->GetLightComponent()->SetColor(glm::vec3(1,1,0.8f));
 	l->GetLightComponent()->SetSpecularContribution(0.4f);
 	l->GetLightComponent()->SetAttenuationConstants(glm::vec3(1, 0.2f, 0.3f));
