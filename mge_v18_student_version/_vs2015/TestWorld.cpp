@@ -35,6 +35,7 @@ void TestWorld::_initializeScene()
 	Mesh* cubeMesh = Mesh::load(config::MGE_MODEL_PATH + "cube_smooth.obj");
 	Mesh* Car = Mesh::load(config::MGE_MODEL_PATH + "Car.obj");
 	Mesh* modelMesh = Mesh::load(config::MGE_MODEL_PATH + "jeep.obj");
+	Mesh* gunMesh = Mesh::load(config::MGE_MODEL_PATH + "gun.obj");
 
 	AbstractMaterial* brickMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "bricks.jpg"),nullptr);
 	TextureMaterial* carMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "carTex.png"), nullptr);
@@ -81,7 +82,7 @@ void TestWorld::_initializeScene()
 	GameObject* cube2 = _world->Instantiate<GameObject>();
 	cube2->transform->SetLocalPosition(glm::vec3(-3, 0.2f, 0));
 	cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
-	cube2->GetMeshRenderer()->SetMesh(cubeMesh);
+	cube2->GetMeshRenderer()->SetMesh(gunMesh);
 	ColorMaterial* color = new ColorMaterial();
 	color->SetShineness(128);
 	color->SetDiffuseColor(glm::vec3(0.1f,0.1f,0.1f));
@@ -114,7 +115,7 @@ void TestWorld::_initializeScene()
 	l2->transform->SetLocalPosition(glm::vec3(2, 2, 0));
 	l2->transform->Rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
 	l2->transform->Rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
-	l2->GetLightComponent()->SetType(LightType::POINT);
+	l2->GetLightComponent()->SetType(LightType::SPOTLIGHT);
 	l2->GetLightComponent()->SetColor(glm::vec3(1, 1, 0.8f));
 	l2->GetLightComponent()->SetSpecularContribution(0.4f);
 	l2->GetLightComponent()->SetAttenuationConstants(glm::vec3(1, 1, 0.2f));
