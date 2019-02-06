@@ -3,6 +3,8 @@
 #include "AbstractGame.hpp"
 #include "mge/core/Renderer.hpp"
 #include "mge/core/World.hpp"
+#include "mge/core/WorldManager.h"
+
 
 AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_world(NULL), _fps(0)
 {
@@ -23,6 +25,7 @@ void AbstractGame::initialize() {
     _printVersionInfo();
     _initializeGlew();
     _initializeRenderer();
+	initializeWorldManager();
     _initializeWorld();
     _initializeScene();
     std::cout << std::endl << "Engine initialized." << std::endl << std::endl;
@@ -77,8 +80,16 @@ void AbstractGame::_initializeRenderer() {
 void AbstractGame::_initializeWorld() {
     //setup the world
 	std::cout << "Initializing world..." << std::endl;
-	_world = new World();
+	//_world = new World();
+	_world = m_worldManager->LoadScene<World>("Scene0");
     std::cout << "World initialized." << std::endl << std::endl;
+}
+
+void AbstractGame::initializeWorldManager()
+{
+	std::cout << "Creating World Manager" << std::endl;
+	m_worldManager = new WorldManager();
+	std::cout << "World Manager is Created" << std::endl;
 }
 
 ///MAIN GAME LOOP
@@ -127,11 +138,11 @@ void AbstractGame::run()
 }
 
 void AbstractGame::_update(float pStep) {
-    _world->Update(pStep);
+    m_worldManager->GetCurrentWorld()->Update(pStep);
 }
 
 void AbstractGame::_render () {
-    _renderer->render(_world);
+    _renderer->render(m_worldManager->GetCurrentWorld());
 }
 
 void AbstractGame::_processEvents()

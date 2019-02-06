@@ -27,6 +27,7 @@ GameObject::~GameObject()
 		delete m_attachedComponents[i];
 		m_attachedComponents.pop_back();
 	}
+
 	delete getBehaviour();
 
 	std::cout <<"Components Left "<< m_attachedComponents.size()<<std::endl;

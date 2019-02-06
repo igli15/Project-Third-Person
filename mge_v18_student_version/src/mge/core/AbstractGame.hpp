@@ -7,6 +7,7 @@
 
 class World;
 class Renderer;
+class WorldManager;
 
 /**
  * Defines the basic structure for a game, with defaults already filled in.
@@ -40,6 +41,8 @@ class AbstractGame
         //initialize a scene root to which we can attach/add objects
         virtual void _initializeWorld();
 
+		virtual void initializeWorldManager();
+
         //initialize the actual scene, HAS to be done by a subclass
         virtual void _initializeScene() = 0;
 
@@ -53,6 +56,7 @@ class AbstractGame
 		sf::RenderWindow* _window;  //sfml window to render into
 		Renderer* _renderer;        //the renderer class to render the world
 		World* _world;              //the root game object that represents our scene
+		WorldManager* m_worldManager;
 		float _fps;                 //stores the real fps
 
     private:
