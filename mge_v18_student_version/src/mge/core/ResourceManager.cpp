@@ -52,6 +52,56 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 	}
 }
 
+
+/**
+ * Load reads the obj data into a new mesh using C++ combined with c style coding.
+ * The result is an indexed mesh for use with glDrawElements.
+ * Expects a obj file with following layout v/vt/vn/f eg
+ *
+ * For example the obj file for a simple plane describes two triangles, based on
+ * four vertices, with 4 uv's all having the same vertex normals (NOT FACE NORMALS!)
+ *
+ * v 10.000000 0.000000 10.000000              //vertex 1
+ * v -10.000000 0.000000 10.000000             //vertex 2
+ * v 10.000000 0.000000 -10.000000             //vertex 3
+ * v -10.000000 0.000000 -10.000000            //vertex 4
+ * vt 0.000000 0.000000                        //uv 1
+ * vt 1.000000 0.000000                        //uv 2
+ * vt 1.000000 1.000000                        //uv 3
+ * vt 0.000000 1.000000                        //uv 4
+ * vn 0.000000 1.000000 -0.000000              //normal 1 (normal for each vertex is same)
+ * s off
+ *
+ * Using these vertices, uvs and normals we can construct faces, made up of 3 triplets (vertex, uv, normal)
+ * f 2/1/1 1/2/1 3/3/1                         //face 1 (triangle 1)
+ * f 4/4/1 2/1/1 3/3/1                         //face 2 (triangle 2)
+ *
+ * So although this is a good format for blender and other tools reading .obj files, this is
+ * not an index mechanism that OpenGL supports out of the box.
+ * The reason is that OpenGL supports only one indexbuffer, and the value at a certain point in the indexbuffer, eg 3
+ * refers to all three other buffers (v, vt, vn) at once,
+ * eg if index[0] = 5, opengl will stream vertexBuffer[5], uvBuffer[5], normalBuffer[5] into the shader.
+ *
+ * So what we have to do after reading the file with all vertices, is construct unique indexes for
+ * all pairs that are described by the faces in the object file, eg if you have
+ * f 2/1/1 1/2/1 3/3/1                         //face 1 (triangle 1)
+ * f 4/4/1 2/1/1 3/3/1                         //face 2 (triangle 2)
+ *
+ * v/vt/vn[0] will represent 2/1/1
+ * v/vt/vn[1] will represent 1/2/1
+ * v/vt/vn[2] will represent 3/3/1
+ * v/vt/vn[3] will represent 4/4/1
+ *
+ * and that are all unique pairs, after which our index buffer can contain:
+ *
+ * 0,1,2,3,0,2
+ *
+ * So the basic process is, read ALL data into separate arrays, then use the faces to
+ * create unique entries in a new set of arrays and create the indexbuffer to go along with it.
+ *
+ * Note that loading this mesh isn't cached like we do with texturing, this is an exercise left for the students.
+ */
+
 Mesh * ResourceManager::LoadMesh(const std::string & path, const std::string & tag)
 {
 	std::cout << "Loading " << path << "...";

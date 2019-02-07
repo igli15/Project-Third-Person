@@ -19,13 +19,6 @@ class Mesh
 		Mesh();
 		virtual ~Mesh();
 
-        /**
-         * Loads a mesh from an .obj file. The file has to have:
-         * vertexes, uvs, normals and face indexes. See load source
-         * for more format information.
-         */
-		static Mesh* load(std::string pFilename);
-
 		std::vector<glm::vec3> Vertices();
 		std::vector<glm::vec3> Normals() ;
 		std::vector<glm::vec2> UVs() ;

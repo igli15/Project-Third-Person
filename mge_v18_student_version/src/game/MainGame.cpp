@@ -31,6 +31,10 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 {
 	AbstractGame::LoadResources(resourceManager);
 	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "plane.obj", "planeMesh");
+	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "cube_smooth.obj", "cubeMesh");
+	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "Car.obj", "carMesh");
+	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "jeep.obj", "jeepMesh");
+	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "stuff.obj", "testMesh");
 }
 
 void MainGame::Initialize()

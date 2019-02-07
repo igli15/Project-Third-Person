@@ -27,10 +27,10 @@ MainWorld::MainWorld()
 void MainWorld::Initialize()
 {
 	Mesh* planeMeshDefault = AbstractGame::Instance()->GetResourceManager()->GetMesh("planeMesh");
-	Mesh* cubeMesh = Mesh::load(config::MGE_MODEL_PATH + "cube_smooth.obj");
-	Mesh* Car = Mesh::load(config::MGE_MODEL_PATH + "Car.obj");
-	Mesh* modelMesh = Mesh::load(config::MGE_MODEL_PATH + "jeep.obj");
-	Mesh* gunMesh = Mesh::load(config::MGE_MODEL_PATH + "stuff.obj");
+	Mesh* cubeMesh = AbstractGame::Instance()->GetResourceManager()->GetMesh("cubeMesh");;
+	Mesh* Car = AbstractGame::Instance()->GetResourceManager()->GetMesh("carMesh");;
+	Mesh* modelMesh = AbstractGame::Instance()->GetResourceManager()->GetMesh("jeepMesh");;
+	Mesh* gunMesh = AbstractGame::Instance()->GetResourceManager()->GetMesh("testMesh");;
 
 	AbstractMaterial* brickMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "bricks.jpg"), nullptr);
 	TextureMaterial* carMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "carTex.png"), nullptr);
@@ -41,7 +41,6 @@ void MainWorld::Initialize()
 	ColorMaterial* lightMat = new ColorMaterial();
 	lightMat->SetDiffuseColor(glm::vec3(1, 1, 0.8f));
 
-	//planeMat->setDiffuseColor(glm::vec3(0.4f,1,0));
 	AbstractMaterial* containerMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "container2.png"), Texture::load(config::MGE_TEXTURE_PATH + "container2_specular.png", TextureType::DIFFUSE));
 	TextureMaterial* radioMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "stuffTex.png"), Texture::load(config::MGE_TEXTURE_PATH + "stuffSpec.png", TextureType::DIFFUSE));
 
