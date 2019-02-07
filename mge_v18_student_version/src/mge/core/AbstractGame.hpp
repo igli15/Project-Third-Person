@@ -44,7 +44,7 @@ class AbstractGame
 		virtual void initializeWorldManager();
 
         //initialize the actual scene, HAS to be done by a subclass
-        virtual void _initializeScene() = 0;
+        virtual void Initialize() = 0;
 
         //call update on all game objects in the display root
         virtual void _update(float pStep);

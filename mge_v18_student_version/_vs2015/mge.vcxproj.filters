@@ -26,6 +26,9 @@
     <Filter Include="MGE Source files\mge\components">
       <UniqueIdentifier>{b0fac4cd-0544-4181-b086-6650be19eadd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{36d3b9b2-f9ce-4b3d-93f9-1f2be72a4716}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp">
@@ -85,9 +88,6 @@
     <ClInclude Include="..\src\mge\core\Light.hpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
-    <ClInclude Include="TestWorld.h">
-      <Filter>MGE Source files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mge\core\Component.h">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
@@ -108,6 +108,12 @@
     </ClInclude>
     <ClInclude Include="..\src\mge\core\WorldManager.h">
       <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\MainWorld.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\MainGame.h">
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -165,9 +171,6 @@
     <ClCompile Include="..\src\mge\core\Light.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
-    <ClCompile Include="TestWorld.cpp">
-      <Filter>MGE Source files</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\mge\core\Component.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
@@ -188,6 +191,12 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\core\WorldManager.cpp">
       <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\MainWorld.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\MainGame.cpp">
+      <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

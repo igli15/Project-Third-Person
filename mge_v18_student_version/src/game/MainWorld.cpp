@@ -1,4 +1,4 @@
-#include "TestWorld.h"
+#include "MainWorld.h"
 #include "mge/core/Mesh.hpp"
 #include "mge/config.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
@@ -16,21 +16,14 @@
 #include "mge/components/LightComponent.h"
 #include "mge/core/WorldManager.h"
 
-TestWorld::TestWorld()
+
+MainWorld::MainWorld()
 {
+
 }
 
 
-TestWorld::~TestWorld()
-{
-}
-
-void TestWorld::initialize()
-{
-	AbstractGame::initialize();
-}
-
-void TestWorld::_initializeScene()
+void MainWorld::Initialize()
 {
 	Mesh* planeMeshDefault = Mesh::load(config::MGE_MODEL_PATH + "plane.obj");
 	Mesh* cubeMesh = Mesh::load(config::MGE_MODEL_PATH + "cube_smooth.obj");
@@ -38,17 +31,17 @@ void TestWorld::_initializeScene()
 	Mesh* modelMesh = Mesh::load(config::MGE_MODEL_PATH + "jeep.obj");
 	Mesh* gunMesh = Mesh::load(config::MGE_MODEL_PATH + "stuff.obj");
 
-	AbstractMaterial* brickMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "bricks.jpg"),nullptr);
+	AbstractMaterial* brickMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "bricks.jpg"), nullptr);
 	TextureMaterial* carMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "carTex.png"), nullptr);
 	AbstractMaterial* modelMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "jeepTex.jpg"), nullptr);
 	ColorMaterial* planeMat = new ColorMaterial();
 	planeMat->SetShineness(126);
 	planeMat->SetDiffuseColor(glm::vec3(0.13f, 0.54f, 0.130f));
 	ColorMaterial* lightMat = new ColorMaterial();
-	lightMat->SetDiffuseColor(glm::vec3(1,1,0.8f));
+	lightMat->SetDiffuseColor(glm::vec3(1, 1, 0.8f));
 
 	//planeMat->setDiffuseColor(glm::vec3(0.4f,1,0));
-	AbstractMaterial* containerMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "container2.png"), Texture::load(config::MGE_TEXTURE_PATH + "container2_specular.png",TextureType::DIFFUSE));
+	AbstractMaterial* containerMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "container2.png"), Texture::load(config::MGE_TEXTURE_PATH + "container2_specular.png", TextureType::DIFFUSE));
 	TextureMaterial* radioMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "stuffTex.png"), Texture::load(config::MGE_TEXTURE_PATH + "stuffSpec.png", TextureType::DIFFUSE));
 
 	Camera* camera = _world->Instantiate<Camera>();
@@ -63,7 +56,7 @@ void TestWorld::_initializeScene()
 	//car->GetMeshRenderer()->SetMesh(Car);
 	//car->setMaterial(carMat);
 	//car->transform->Scale(glm::vec3(1, 1, 1));
-	
+
 	//GameObject* model = _world->Instantiate<GameObject>();
 	//model->transform->SetLocalPosition(glm::vec3(-6, 0.2, 0));
 	//model->SetMeshRenderer(model->AddComponent<MeshRenderer>());
@@ -85,9 +78,9 @@ void TestWorld::_initializeScene()
 	cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
 	cube2->GetMeshRenderer()->SetMesh(gunMesh);
 	radioMat->SetShininess(256);
-	
+
 	cube2->setMaterial(radioMat);
-	
+
 	cube2->transform->Scale(glm::vec3(1.0f, 1.0f, 1.0f));
 	//cube2->setBehaviour(new KeysBehaviour());
 
@@ -96,7 +89,7 @@ void TestWorld::_initializeScene()
 	plane->SetMeshRenderer(plane->AddComponent<MeshRenderer>());
 	plane->GetMeshRenderer()->SetMesh(planeMeshDefault);
 	plane->setMaterial(planeMat);
-	plane->transform->Scale(glm::vec3(50,50,50));
+	plane->transform->Scale(glm::vec3(50, 50, 50));
 
 	Light* l = _world->Instantiate<Light>();
 	l->transform->SetLocalPosition(glm::vec3(-2, 2, 0));
@@ -104,7 +97,7 @@ void TestWorld::_initializeScene()
 	l->transform->Rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
 	l->GetLightComponent()->SetType(LightType::POINT);
 	l->GetLightComponent()->SetIntensity(1.0f);
-	l->GetLightComponent()->SetColor(glm::vec3(1,1,0.95f));
+	l->GetLightComponent()->SetColor(glm::vec3(1, 1, 0.95f));
 	l->GetLightComponent()->SetSpecularContribution(1.0f);
 	l->GetLightComponent()->SetAttenuationConstants(glm::vec3(1, 0.7f, 1.8f));
 	l->SetMeshRenderer(l->AddComponent<MeshRenderer>());
@@ -125,31 +118,10 @@ void TestWorld::_initializeScene()
 	l2->setMaterial(lightMat);
 	l2->transform->Scale(glm::vec3(0.2f, 0.2f, 0.2f));
 
-	World* world = m_worldManager->LoadScene<World>("test");
-
-	world->setMainCamera(camera);
-
-	plane = world->Instantiate<GameObject>();
-
-	plane->transform->SetLocalPosition(glm::vec3(0, -1, 0));
-	plane->SetMeshRenderer(plane->AddComponent<MeshRenderer>());
-	plane->GetMeshRenderer()->SetMesh(planeMeshDefault);
-	plane->setMaterial(planeMat);
-	plane->transform->Scale(glm::vec3(50, 50, 50));
-
-	l = world->Instantiate<Light>();
-	l->transform->SetLocalPosition(glm::vec3(-2, 2, 0));
-	l->transform->Rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
-	l->transform->Rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
-	l->GetLightComponent()->SetType(LightType::DIRECTIONAL);
-	l->GetLightComponent()->SetIntensity(1.0f);
-	l->GetLightComponent()->SetColor(glm::vec3(1, 1, 0.95f));
-	l->GetLightComponent()->SetSpecularContribution(1.0f);
-	l->GetLightComponent()->SetAttenuationConstants(glm::vec3(1, 0.7f, 1.8f));
-	l->SetMeshRenderer(l->AddComponent<MeshRenderer>());
-	l->GetMeshRenderer()->SetMesh(cubeMesh);
-	l->setMaterial(lightMat);
-	l->transform->Scale(glm::vec3(0.2f, 0.2f, 0.2f));
-
 	//_world->DestroyObject(l2);
+}
+
+MainWorld::~MainWorld()
+{
+
 }

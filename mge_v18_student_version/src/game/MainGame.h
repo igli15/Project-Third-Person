@@ -3,17 +3,17 @@
 
 #include "mge/core/AbstractGame.hpp"
 
-class TestWorld : public AbstractGame
+class MainGame : public AbstractGame
 {
 public:
-	TestWorld();
-	virtual ~TestWorld();
+	MainGame();
+	virtual ~MainGame();
 
 	virtual void initialize() override;
 
 protected:
 
-	virtual void _initializeScene() override;
+	virtual void Initialize() override;
 	//virtual void _render() override;
 
 };

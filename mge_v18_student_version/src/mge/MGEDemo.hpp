@@ -21,7 +21,7 @@ class MGEDemo: public AbstractGame
 
 	protected:
 	    //override so we can construct the actual scene
-        virtual void _initializeScene();
+        virtual void Initialize();
 
 	    //override render to render the hud as well.
 	    virtual void _render();

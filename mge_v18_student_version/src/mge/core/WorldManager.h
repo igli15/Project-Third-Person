@@ -16,14 +16,16 @@ public:
 		{
 			T* world = new T();
 			m_currentWorld = world;
-			return m_currentWorld;
+			world->Initialize();
+			return world;
 		}
 		else
 		{
 			m_currentWorld->DestroyObject(m_currentWorld);
 			T* world = new T();
 			m_currentWorld = world;
-			return m_currentWorld;
+			world->Initialize();
+			return world;
 		}
 	}
 

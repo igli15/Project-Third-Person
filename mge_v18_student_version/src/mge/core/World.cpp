@@ -10,6 +10,10 @@ World::World()
 	_world = this;
 }
 
+void World::Initialize()
+{
+}
+
 void World::setMainCamera (Camera* pCamera) {
     if (pCamera != NULL) _mainCamera = pCamera;
 }
