@@ -132,7 +132,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		else if (currentLight->GetType() == LightType::SPOTLIGHT)
 		{
 			//spotLightCount += 1;
-			std::cout << spotLightstring << std::endl;
+			//std::cout << spotLightstring << std::endl;
 			glUniform3fv(m_shaderProgram->getUniformLocation(spotLightstring + "lightColor"), 1, glm::value_ptr(currentLight->GetColor() * currentLight->GetIntensity()));
 			glUniform3fv(m_shaderProgram->getUniformLocation(spotLightstring + "lightPos"), 1, glm::value_ptr(pViewMatrix *currentLight->GetGameObject()->transform->WorldTransform()[3]));
 			glUniform3fv(m_shaderProgram->getUniformLocation(spotLightstring + "direction"), 1, glm::value_ptr(currentLight->GetGameObject()->transform->LocalTransform()[2]));

@@ -7,6 +7,7 @@
 
 class World;
 class Renderer;
+class WorldManager;
 
 /**
  * Defines the basic structure for a game, with defaults already filled in.
@@ -25,6 +26,10 @@ class AbstractGame
         //run the actual process of updating all objects, rendering them and processing events
         virtual void run();
 
+		static AbstractGame* Instance();
+
+		WorldManager* GetWorldManager();
+
     protected:
 
         //methods above delegate behaviour to the methods below so that you can override it in a subclass
@@ -40,8 +45,10 @@ class AbstractGame
         //initialize a scene root to which we can attach/add objects
         virtual void _initializeWorld();
 
+		virtual void initializeWorldManager();
+
         //initialize the actual scene, HAS to be done by a subclass
-        virtual void _initializeScene() = 0;
+        virtual void Initialize() = 0;
 
         //call update on all game objects in the display root
         virtual void _update(float pStep);
@@ -53,12 +60,14 @@ class AbstractGame
 		sf::RenderWindow* _window;  //sfml window to render into
 		Renderer* _renderer;        //the renderer class to render the world
 		World* _world;              //the root game object that represents our scene
+		WorldManager* m_worldManager;
 		float _fps;                 //stores the real fps
+
+		static AbstractGame* m_instance;
 
     private:
         AbstractGame(const AbstractGame&);
         AbstractGame& operator=(const AbstractGame&);
-
 
 };
 

@@ -2,7 +2,7 @@
 
 #include "mge/core/AbstractGame.hpp"
 #include "mge/MGEDemo.hpp"
-#include "../_vs2015/TestWorld.h"
+#include "../src/game/MainGame.h"
 
 /**
  * Main entry point for the Micro Engine.
@@ -23,7 +23,7 @@ int main()
 {
     std::cout << "Starting Game" << std::endl;
 
-    AbstractGame* game = new TestWorld();
+    AbstractGame* game = new MainGame();
     game->initialize();
     game->run();
 

@@ -21,6 +21,17 @@ GameObject::~GameObject()
         delete child;
     }
 
+	//erase all attached components;
+	for (unsigned int i = m_attachedComponents.size(); i > 0;) {
+		--i;
+		delete m_attachedComponents[i];
+		m_attachedComponents.pop_back();
+	}
+
+	delete getBehaviour();
+
+	std::cout <<"Components Left "<< m_attachedComponents.size()<<std::endl;
+
     //do not forget to delete behaviour, material, mesh, collider manually if required!
 }
 
@@ -49,6 +60,17 @@ void GameObject::setMaterial(AbstractMaterial* pMaterial)
 AbstractMaterial * GameObject::getMaterial() const
 {
     return _material;
+}
+
+void GameObject::Destroy()
+{
+	m_markedForDestruction = true;
+	OnDestroy();
+}
+
+bool GameObject::IsMarkedForDestruction()
+{
+	return m_markedForDestruction;
 }
 
 void GameObject::SetMeshRenderer(MeshRenderer * meshRenderer)
@@ -171,6 +193,18 @@ void GameObject::Update(float pStep)
 
 	for (int i = _children.size() - 1; i >= 0; --i) {
 		_children[i]->Update(pStep);
+	}
+}
+
+void GameObject::OnDestroy()
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->OnDestroy();
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->OnDestroy();
 	}
 }
 

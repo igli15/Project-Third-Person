@@ -30,6 +30,9 @@ class GameObject
         void setName (const std::string& pName);
         std::string getName() const;
 
+		void Destroy();
+		bool IsMarkedForDestruction();
+
 		void SetMeshRenderer(MeshRenderer* meshRenderer);
 		MeshRenderer* GetMeshRenderer() const;
 
@@ -47,6 +50,7 @@ class GameObject
 		virtual void Awake();
 		virtual void Start();
 		virtual void Update(float pStep);
+		virtual void OnDestroy();
 
         //child management, note that add/remove and setParent are closely coupled.
         //a.add(b) has the same effect as b.setParent(a)
@@ -122,6 +126,8 @@ class GameObject
 		GameObject& operator= (const GameObject&);
 
 		std::vector<Component*> m_attachedComponents;
+
+		bool m_markedForDestruction = false;
 };
 
 #endif // GAMEOBJECT_HPP

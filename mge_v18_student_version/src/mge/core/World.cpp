@@ -10,6 +10,10 @@ World::World()
 	_world = this;
 }
 
+void World::Initialize()
+{
+}
+
 void World::setMainCamera (Camera* pCamera) {
     if (pCamera != NULL) _mainCamera = pCamera;
 }
@@ -36,4 +40,21 @@ LightComponent* World::getLightAt (int pIndex) {
 
 int World::getLightCount() {
     return _lights.size();
+}
+
+void World::ClearMarkedGameObject()
+{
+	for (int i = _children.size() - 1; i >= 0; --i)
+	{
+		if (_children[i]->IsMarkedForDestruction())
+		{
+			InnerDestroy(_children[i]);
+		}
+	}
+}
+
+void World::InnerDestroy(GameObject * object)
+{
+	remove(object);
+	delete object;
 }

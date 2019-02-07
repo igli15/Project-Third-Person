@@ -13,6 +13,11 @@ Transform::~Transform()
 	
 }
 
+void Transform::OnDestroy()
+{
+	//std::cout << "transform is destroyed" << std::endl;
+}
+
 glm::vec3 Transform::WorldPosition() const
 {
 	return glm::vec3(WorldTransform()[3]);

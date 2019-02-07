@@ -8,6 +8,7 @@ Component::Component()
 
 Component::~Component()
 {
+	std::cout << "Component is destroyed" << std::endl;
 	m_gameObject = nullptr;
 }
 
@@ -22,6 +23,11 @@ void Component::Start()
 }
 
 void Component::Update(float timeStep)
+{
+
+}
+
+void Component::OnDestroy()
 {
 
 }

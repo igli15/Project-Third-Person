@@ -11,7 +11,7 @@ class World : public GameObject
 {
 	public:
         World();
-
+		virtual void Initialize() ;
 		void setMainCamera (Camera* pCamera);
 		Camera* getMainCamera();
 
@@ -33,6 +33,10 @@ class World : public GameObject
 			add(gameObject);
 			return gameObject;
 		}
+
+		void ClearMarkedGameObject();
+		void InnerDestroy(GameObject* object);
+
 
 	private:
 	    Camera* _mainCamera;

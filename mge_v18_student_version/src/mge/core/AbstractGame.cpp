@@ -3,6 +3,10 @@
 #include "AbstractGame.hpp"
 #include "mge/core/Renderer.hpp"
 #include "mge/core/World.hpp"
+#include "mge/core/WorldManager.h"
+#include "game/MainWorld.h"
+
+AbstractGame* AbstractGame::m_instance = nullptr;
 
 AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_world(NULL), _fps(0)
 {
@@ -19,12 +23,15 @@ AbstractGame::~AbstractGame()
 
 void AbstractGame::initialize() {
     std::cout << "Initializing engine..." << std::endl << std::endl;
+	m_instance = this;
+
     _initializeWindow();
     _printVersionInfo();
     _initializeGlew();
     _initializeRenderer();
+	initializeWorldManager();
     _initializeWorld();
-    _initializeScene();
+    Initialize();
     std::cout << std::endl << "Engine initialized." << std::endl << std::endl;
 }
 
@@ -77,8 +84,16 @@ void AbstractGame::_initializeRenderer() {
 void AbstractGame::_initializeWorld() {
     //setup the world
 	std::cout << "Initializing world..." << std::endl;
-	_world = new World();
+	//_world = new World();
+	_world = m_worldManager->CreateWorld<MainWorld>("MainWorld");
     std::cout << "World initialized." << std::endl << std::endl;
+}
+
+void AbstractGame::initializeWorldManager()
+{
+	std::cout << "Creating World Manager" << std::endl;
+	m_worldManager = new WorldManager();
+	std::cout << "World Manager is Created" << std::endl;
 }
 
 ///MAIN GAME LOOP
@@ -89,7 +104,7 @@ void AbstractGame::run()
 	sf::Clock renderClock;
     int frameCount = 0;
     float timeSinceLastFPSCalculation = 0;
-
+	
 	//settings to make sure the update loop runs at 60 fps
 	sf::Time timePerFrame = sf::seconds(1.0f / 60.0f);
 	sf::Clock updateClock;
@@ -101,6 +116,13 @@ void AbstractGame::run()
 		if (timeSinceLastUpdate > timePerFrame)
 		{
             glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
+			if (m_worldManager->GetCurrentWorld()->IsMarkedForDestruction())
+			{
+				m_worldManager->GetCurrentWorld()->InnerDestroy(m_worldManager->GetCurrentWorld());
+			}
+
+			m_worldManager->GetCurrentWorld()->ClearMarkedGameObject();
 
 		    while (timeSinceLastUpdate > timePerFrame) {
                 timeSinceLastUpdate -= timePerFrame;
@@ -126,12 +148,22 @@ void AbstractGame::run()
     }
 }
 
+AbstractGame * AbstractGame::Instance()
+{
+	return m_instance;
+}
+
+WorldManager * AbstractGame::GetWorldManager()
+{
+	return m_worldManager;
+}
+
 void AbstractGame::_update(float pStep) {
-    _world->Update(pStep);
+    m_worldManager->GetCurrentWorld()->Update(pStep);
 }
 
 void AbstractGame::_render () {
-    _renderer->render(_world);
+    _renderer->render(m_worldManager->GetCurrentWorld());
 }
 
 void AbstractGame::_processEvents()
