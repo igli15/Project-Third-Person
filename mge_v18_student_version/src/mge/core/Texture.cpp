@@ -36,8 +36,7 @@ Texture* Texture::load(const std::string& pFilename , TextureType ptype)
 		
         glBindTexture (GL_TEXTURE_2D, texture->getId());
 
-		//TODO If we want specular / normals maps we still have to use rgba instead of SRGB
-		//TODO fix this soon.
+		//If we want specular / normals maps we still have to use rgba instead of SRGB
 
 		if (ptype == TextureType::SPECULAR)
 		{
