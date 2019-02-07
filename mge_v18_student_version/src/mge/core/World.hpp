@@ -34,7 +34,8 @@ class World : public GameObject
 			return gameObject;
 		}
 
-		void DestroyObject(GameObject* object);
+		void ClearMarkedGameObject();
+		void InnerDestroy(GameObject* object);
 
 
 	private:

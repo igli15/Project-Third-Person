@@ -33,5 +33,5 @@ void MainGame::initialize()
 
 void MainGame::Initialize()
 {
-	m_worldManager->LoadScene<MainWorld>("World0");
+	//m_worldManager->CreateWorld<MainWorld>("World0");
 }

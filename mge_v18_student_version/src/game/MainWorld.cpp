@@ -82,7 +82,7 @@ void MainWorld::Initialize()
 	cube2->setMaterial(radioMat);
 
 	cube2->transform->Scale(glm::vec3(1.0f, 1.0f, 1.0f));
-	//cube2->setBehaviour(new KeysBehaviour());
+	cube2->setBehaviour(new KeysBehaviour());
 
 	GameObject* plane = _world->Instantiate<GameObject>();
 	plane->transform->SetLocalPosition(glm::vec3(0, -1, 0));
@@ -118,7 +118,7 @@ void MainWorld::Initialize()
 	l2->setMaterial(lightMat);
 	l2->transform->Scale(glm::vec3(0.2f, 0.2f, 0.2f));
 
-	//_world->DestroyObject(l2);
+	//l2->Destroy();
 }
 
 MainWorld::~MainWorld()

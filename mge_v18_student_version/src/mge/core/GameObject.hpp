@@ -30,6 +30,9 @@ class GameObject
         void setName (const std::string& pName);
         std::string getName() const;
 
+		void Destroy();
+		bool IsMarkedForDestruction();
+
 		void SetMeshRenderer(MeshRenderer* meshRenderer);
 		MeshRenderer* GetMeshRenderer() const;
 
@@ -122,6 +125,8 @@ class GameObject
 		GameObject& operator= (const GameObject&);
 
 		std::vector<Component*> m_attachedComponents;
+
+		bool m_markedForDestruction = false;
 };
 
 #endif // GAMEOBJECT_HPP

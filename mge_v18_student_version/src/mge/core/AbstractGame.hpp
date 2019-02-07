@@ -26,6 +26,10 @@ class AbstractGame
         //run the actual process of updating all objects, rendering them and processing events
         virtual void run();
 
+		static AbstractGame* Instance();
+
+		WorldManager* GetWorldManager();
+
     protected:
 
         //methods above delegate behaviour to the methods below so that you can override it in a subclass
@@ -59,10 +63,11 @@ class AbstractGame
 		WorldManager* m_worldManager;
 		float _fps;                 //stores the real fps
 
+		static AbstractGame* m_instance;
+
     private:
         AbstractGame(const AbstractGame&);
         AbstractGame& operator=(const AbstractGame&);
-
 
 };
 

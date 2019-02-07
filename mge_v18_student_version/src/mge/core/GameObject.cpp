@@ -62,6 +62,16 @@ AbstractMaterial * GameObject::getMaterial() const
     return _material;
 }
 
+void GameObject::Destroy()
+{
+	m_markedForDestruction = true;
+}
+
+bool GameObject::IsMarkedForDestruction()
+{
+	return m_markedForDestruction;
+}
+
 void GameObject::SetMeshRenderer(MeshRenderer * meshRenderer)
 {
 	m_meshRenderer = meshRenderer;

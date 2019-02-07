@@ -42,11 +42,19 @@ int World::getLightCount() {
     return _lights.size();
 }
 
-void World::DestroyObject(GameObject * object)
+void World::ClearMarkedGameObject()
 {
-	if (object != this)
+	for (int i = _children.size() - 1; i >= 0; --i)
 	{
-		remove(object);
-		delete object;
+		if (_children[i]->IsMarkedForDestruction())
+		{
+			InnerDestroy(_children[i]);
+		}
 	}
+}
+
+void World::InnerDestroy(GameObject * object)
+{
+	remove(object);
+	delete object;
 }

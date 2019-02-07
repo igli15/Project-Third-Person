@@ -61,9 +61,9 @@ void Renderer::renderChildren(World* pWorld, GameObject* pGameObject, AbstractMa
 	int childCount = pGameObject->getChildCount();
 	if (childCount < 1) return;
 
-	//note that with a loop like this, deleting children during rendering is not a good idea :)
+	//note that with a loop like this, deleting children during rendering is not a good idea :')
 	GameObject* child = 0;
-	for (int i = 0; i < childCount; i++) {
+	for (int i = childCount -1 ; i >= 0; --i) {
 		child = pGameObject->getChildAt(i);
 		render(pWorld, child, pMaterial, pModelMatrix * child->transform->LocalTransform(), pViewMatrix, pProjectionMatrix, pRecursive);
 	}

@@ -2,6 +2,9 @@
 #include "mge/core/GameObject.hpp"
 #include "mge/core/World.hpp"
 #include <SFML/Window/Keyboard.hpp>
+#include "game/MainGame.h"
+#include "game/MainWorld.h"
+#include "mge/core/WorldManager.h"
 
 KeysBehaviour::KeysBehaviour(float pMoveSpeed, float pTurnSpeed) : AbstractBehaviour(), _moveSpeed(pMoveSpeed), _turnSpeed(pTurnSpeed)
 {
@@ -49,5 +52,8 @@ void KeysBehaviour::update(float pStep)
 	//is that we use the _owner->translate / rotate shortcuts which in turn call glm::rotate / glm::translate
 	//The methods multiply the current transform with the translation/rotation matrix from left to right
 	//meaning everything happens in local space.
-
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+	{
+		AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("Level1");
+	}
 }

@@ -10,7 +10,7 @@ public:
 	virtual ~WorldManager();
 
 	template<typename T>
-	T* LoadScene(const std::string& name)
+	T* CreateWorld(const std::string& name)
 	{
 		if (m_currentWorld == nullptr)
 		{
@@ -21,7 +21,7 @@ public:
 		}
 		else
 		{
-			m_currentWorld->DestroyObject(m_currentWorld);
+			m_currentWorld->Destroy();
 			T* world = new T();
 			m_currentWorld = world;
 			world->Initialize();
