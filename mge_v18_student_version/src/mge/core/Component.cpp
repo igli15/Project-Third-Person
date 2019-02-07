@@ -27,6 +27,11 @@ void Component::Update(float timeStep)
 
 }
 
+void Component::OnDestroy()
+{
+
+}
+
 void Component::SetGameObject(GameObject* obj)
 {
 	m_gameObject = obj;

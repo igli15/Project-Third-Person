@@ -18,6 +18,8 @@ public:
 	//Update loop
 	virtual void Update(float timeSteps);
 
+	virtual void OnDestroy();
+
 	//Get the parent Gameobject of the Component
 	GameObject* GetGameObject();
 

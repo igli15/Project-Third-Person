@@ -65,6 +65,7 @@ AbstractMaterial * GameObject::getMaterial() const
 void GameObject::Destroy()
 {
 	m_markedForDestruction = true;
+	OnDestroy();
 }
 
 bool GameObject::IsMarkedForDestruction()
@@ -192,6 +193,18 @@ void GameObject::Update(float pStep)
 
 	for (int i = _children.size() - 1; i >= 0; --i) {
 		_children[i]->Update(pStep);
+	}
+}
+
+void GameObject::OnDestroy()
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->OnDestroy();
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->OnDestroy();
 	}
 }
 

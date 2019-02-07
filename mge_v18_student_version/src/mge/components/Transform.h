@@ -10,6 +10,8 @@ public:
 	Transform();
 	virtual ~Transform();
 
+	virtual void OnDestroy() override;
+
 	glm::vec3 WorldPosition() const;
 	glm::vec3 LocalPosition() const; 
 

@@ -54,6 +54,7 @@ void KeysBehaviour::update(float pStep)
 	//meaning everything happens in local space.
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("Level1");
+		MainGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("Level1");
+		//_owner->Destroy();
 	}
 }

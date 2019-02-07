@@ -50,6 +50,7 @@ class GameObject
 		virtual void Awake();
 		virtual void Start();
 		virtual void Update(float pStep);
+		virtual void OnDestroy();
 
         //child management, note that add/remove and setParent are closely coupled.
         //a.add(b) has the same effect as b.setParent(a)
