@@ -31,7 +31,7 @@ MGEDemo::MGEDemo():AbstractGame (),_hud(0)
 
 void MGEDemo::initialize() {
     //setup the core part
-    AbstractGame::initialize();
+    AbstractGame::Initialize();
 
     //setup the custom part so we can display some text
 	std::cout << "Initializing HUD" << std::endl;

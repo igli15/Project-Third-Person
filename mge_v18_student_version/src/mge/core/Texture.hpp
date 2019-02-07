@@ -14,6 +14,9 @@ enum TextureType
 class Texture
 {
 	public:
+		Texture();
+		virtual ~Texture();
+
 		static Texture* load(const std::string& pTexturePath, TextureType type = TextureType::DIFFUSE);
 
 		GLuint getId();
@@ -21,8 +24,7 @@ class Texture
 		TextureType Type();
 
 	protected:
-	    Texture();
-		virtual ~Texture();
+	   
 
         static Texture* _loadFromFile(const std::string pTexturePath);
 

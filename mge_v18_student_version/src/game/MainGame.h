@@ -9,10 +9,10 @@ public:
 	MainGame();
 	virtual ~MainGame();
 
-	virtual void initialize() override;
 
 protected:
 
+	virtual void LoadResources(ResourceManager* resourceManager);
 	virtual void Initialize() override;
 	//virtual void _render() override;
 

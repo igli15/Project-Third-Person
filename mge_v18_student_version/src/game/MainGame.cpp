@@ -16,6 +16,7 @@
 #include "mge/components/LightComponent.h"
 #include "mge/core/WorldManager.h"
 #include "game/MainWorld.h"
+#include "mge/core/ResourceManager.h"
 
 MainGame::MainGame()
 {
@@ -26,12 +27,14 @@ MainGame::~MainGame()
 {
 }
 
-void MainGame::initialize()
+void MainGame::LoadResources(ResourceManager * resourceManager)
 {
-	AbstractGame::initialize();
+	AbstractGame::LoadResources(resourceManager);
+	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "plane.obj", "planeMesh");
 }
 
 void MainGame::Initialize()
 {
-	//m_worldManager->CreateWorld<MainWorld>("World0");
+	AbstractGame::Initialize();
 }
+

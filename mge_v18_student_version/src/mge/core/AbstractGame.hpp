@@ -8,6 +8,7 @@
 class World;
 class Renderer;
 class WorldManager;
+class ResourceManager;
 
 /**
  * Defines the basic structure for a game, with defaults already filled in.
@@ -22,13 +23,17 @@ class AbstractGame
         virtual ~AbstractGame();
 
         //creates a window, initializes glew, a renderer and a world instance
-        virtual void initialize();
+        virtual void Initialize();
+
+		virtual void LoadResources(ResourceManager* resourceManager);
+
         //run the actual process of updating all objects, rendering them and processing events
         virtual void run();
 
 		static AbstractGame* Instance();
 
 		WorldManager* GetWorldManager();
+		ResourceManager* GetResourceManager();
 
     protected:
 
@@ -45,10 +50,7 @@ class AbstractGame
         //initialize a scene root to which we can attach/add objects
         virtual void _initializeWorld();
 
-		virtual void initializeWorldManager();
-
-        //initialize the actual scene, HAS to be done by a subclass
-        virtual void Initialize() = 0;
+		virtual void InitializeWorldManager();
 
         //call update on all game objects in the display root
         virtual void _update(float pStep);
@@ -61,9 +63,12 @@ class AbstractGame
 		Renderer* _renderer;        //the renderer class to render the world
 		World* _world;              //the root game object that represents our scene
 		WorldManager* m_worldManager;
+		ResourceManager* m_resourceManager;
+
 		float _fps;                 //stores the real fps
 
 		static AbstractGame* m_instance;
+		
 
     private:
         AbstractGame(const AbstractGame&);

@@ -115,6 +115,9 @@
     <ClInclude Include="..\src\game\MainGame.h">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\core\ResourceManager.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -197,6 +200,9 @@
     </ClCompile>
     <ClCompile Include="..\src\game\MainGame.cpp">
       <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\ResourceManager.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

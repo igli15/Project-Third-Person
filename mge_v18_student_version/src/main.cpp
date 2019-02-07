@@ -24,7 +24,8 @@ int main()
     std::cout << "Starting Game" << std::endl;
 
     AbstractGame* game = new MainGame();
-    game->initialize();
+	game->LoadResources(AbstractGame::Instance()->GetResourceManager());
+    game->Initialize();
     game->run();
 
 	delete game;

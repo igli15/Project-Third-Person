@@ -15,7 +15,8 @@
 #include "mge/core/Light.hpp"
 #include "mge/components/LightComponent.h"
 #include "mge/core/WorldManager.h"
-
+#include "mge/core/ResourceManager.h"
+#include "MainGame.h"
 
 MainWorld::MainWorld()
 {
@@ -25,7 +26,7 @@ MainWorld::MainWorld()
 
 void MainWorld::Initialize()
 {
-	Mesh* planeMeshDefault = Mesh::load(config::MGE_MODEL_PATH + "plane.obj");
+	Mesh* planeMeshDefault = AbstractGame::Instance()->GetResourceManager()->GetMesh("planeMesh");
 	Mesh* cubeMesh = Mesh::load(config::MGE_MODEL_PATH + "cube_smooth.obj");
 	Mesh* Car = Mesh::load(config::MGE_MODEL_PATH + "Car.obj");
 	Mesh* modelMesh = Mesh::load(config::MGE_MODEL_PATH + "jeep.obj");
