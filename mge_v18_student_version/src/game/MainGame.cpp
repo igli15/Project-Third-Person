@@ -16,6 +16,7 @@
 #include "mge/components/LightComponent.h"
 #include "mge/core/WorldManager.h"
 #include "game/MainWorld.h"
+#include "mge/core/ResourceManager.h"
 
 MainGame::MainGame()
 {
@@ -26,12 +27,35 @@ MainGame::~MainGame()
 {
 }
 
-void MainGame::initialize()
+void MainGame::LoadResources(ResourceManager * resourceManager)
 {
-	AbstractGame::initialize();
+	AbstractGame::LoadResources(resourceManager);
+	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "plane.obj", "planeMesh");
+	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "cube_smooth.obj", "cubeMesh");
+	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "Car.obj", "carMesh");
+	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "jeep.obj", "jeepMesh");
+	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "stuff.obj", "testMesh");
+	
+	AbstractMaterial* brickMat = new TextureMaterial(resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "bricks.jpg", "brickTex", TextureType::DIFFUSE), nullptr);
+	TextureMaterial* carMat = new TextureMaterial(resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "carTex.png", "carTex", TextureType::DIFFUSE) , nullptr);
+	//AbstractMaterial* modelMat = new TextureMaterial(resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "jeepTex.jpg", "carTex", TextureType::DIFFUSE), nullptr);
+	ColorMaterial* planeMat = new ColorMaterial();
+	ColorMaterial* lightMat = new ColorMaterial();
+
+	TextureMaterial* containerMat = new TextureMaterial(resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "container2.png", "containerDiffuse", TextureType::DIFFUSE), resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "container2_specular.png", "containerSpecular", TextureType::SPECULAR));
+	TextureMaterial* stuffMat = new TextureMaterial(resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "stuffTex.png", "stuffDiffuse", TextureType::DIFFUSE), resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "stuffSpec.png", "stuffSpecular", TextureType::SPECULAR));
+
+	resourceManager->RegisterMaterial(brickMat, "brickMat");
+	resourceManager->RegisterMaterial(carMat, "carMat");
+	//resourceManager->RegisterMaterial(modelMat, "modelMat");
+	resourceManager->RegisterMaterial(planeMat, "planeMat");
+	resourceManager->RegisterMaterial(lightMat, "lightMat");
+	resourceManager->RegisterMaterial(containerMat, "containerMat");
+	resourceManager->RegisterMaterial(stuffMat, "stuffMat");
 }
 
-void MainGame::Initialize()
+void MainGame::CreateWorld()
 {
-	//m_worldManager->CreateWorld<MainWorld>("World0");
+	AbstractGame::CreateWorld();
 }
+

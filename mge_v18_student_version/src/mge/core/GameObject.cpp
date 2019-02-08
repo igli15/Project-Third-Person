@@ -1,6 +1,7 @@
 #include <iostream>
 #include "GameObject.hpp"
 #include "mge/behaviours/AbstractBehaviour.hpp"
+#include "mge/materials/AbstractMaterial.hpp"
 
 GameObject::GameObject()
 :	_name( "" ), _parent(nullptr), _children(),
@@ -54,6 +55,11 @@ std::string GameObject::getName() const
 
 void GameObject::setMaterial(AbstractMaterial* pMaterial)
 {
+	if (!pMaterial->IsRegistered())
+	{
+		std::cout << "Material has to be registered by the ResourceManager in order to be used" << std::endl;
+		throw;
+	}
     _material = pMaterial;
 }
 

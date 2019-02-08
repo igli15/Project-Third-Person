@@ -28,6 +28,13 @@ class AbstractMaterial
          * Render the given mesh in the given world using the given mvp matrices. Implement in subclass.
          */
         virtual void render(World* pWorld, MeshRenderer* meshRenderer, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pPerspectiveMatrix) = 0;
+		void Register();
+		bool IsRegistered();
+
+protected:
+
+	bool m_isRegistered = false;
+
 };
 
 #endif // ABSTRACTMATERIAL_HPP

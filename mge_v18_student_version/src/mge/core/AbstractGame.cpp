@@ -5,12 +5,17 @@
 #include "mge/core/World.hpp"
 #include "mge/core/WorldManager.h"
 #include "game/MainWorld.h"
+#include "ResourceManager.h"
 
 AbstractGame* AbstractGame::m_instance = nullptr;
 
 AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_world(NULL), _fps(0)
 {
-    //ctor
+	m_instance = this;
+
+	std::cout << "Creating Resource Manager" << std::endl;
+	m_resourceManager = new ResourceManager();
+	std::cout << "Resource Manager is Created" << std::endl;
 }
 
 AbstractGame::~AbstractGame()
@@ -21,18 +26,20 @@ AbstractGame::~AbstractGame()
     delete _world;
 }
 
-void AbstractGame::initialize() {
+void AbstractGame::Initialize() {
     std::cout << "Initializing engine..." << std::endl << std::endl;
-	m_instance = this;
 
     _initializeWindow();
     _printVersionInfo();
     _initializeGlew();
     _initializeRenderer();
-	initializeWorldManager();
-    _initializeWorld();
-    Initialize();
+	
     std::cout << std::endl << "Engine initialized." << std::endl << std::endl;
+}
+
+void AbstractGame::LoadResources(ResourceManager * resourceManager)
+{
+	
 }
 
 ///SETUP
@@ -89,11 +96,17 @@ void AbstractGame::_initializeWorld() {
     std::cout << "World initialized." << std::endl << std::endl;
 }
 
-void AbstractGame::initializeWorldManager()
+void AbstractGame::InitializeWorldManager()
 {
 	std::cout << "Creating World Manager" << std::endl;
 	m_worldManager = new WorldManager();
 	std::cout << "World Manager is Created" << std::endl;
+}
+
+void AbstractGame::CreateWorld()
+{
+	InitializeWorldManager();
+	_initializeWorld();
 }
 
 ///MAIN GAME LOOP
@@ -156,6 +169,11 @@ AbstractGame * AbstractGame::Instance()
 WorldManager * AbstractGame::GetWorldManager()
 {
 	return m_worldManager;
+}
+
+ResourceManager * AbstractGame::GetResourceManager()
+{
+	return m_resourceManager;
 }
 
 void AbstractGame::_update(float pStep) {

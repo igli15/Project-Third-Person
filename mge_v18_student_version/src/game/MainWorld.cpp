@@ -15,7 +15,8 @@
 #include "mge/core/Light.hpp"
 #include "mge/components/LightComponent.h"
 #include "mge/core/WorldManager.h"
-
+#include "mge/core/ResourceManager.h"
+#include "MainGame.h"
 
 MainWorld::MainWorld()
 {
@@ -25,24 +26,23 @@ MainWorld::MainWorld()
 
 void MainWorld::Initialize()
 {
-	Mesh* planeMeshDefault = Mesh::load(config::MGE_MODEL_PATH + "plane.obj");
-	Mesh* cubeMesh = Mesh::load(config::MGE_MODEL_PATH + "cube_smooth.obj");
-	Mesh* Car = Mesh::load(config::MGE_MODEL_PATH + "Car.obj");
-	Mesh* modelMesh = Mesh::load(config::MGE_MODEL_PATH + "jeep.obj");
-	Mesh* gunMesh = Mesh::load(config::MGE_MODEL_PATH + "stuff.obj");
+	Mesh* planeMeshDefault = AbstractGame::Instance()->GetResourceManager()->GetMesh("planeMesh");
+	Mesh* cubeMesh = AbstractGame::Instance()->GetResourceManager()->GetMesh("cubeMesh");;
+	Mesh* Car = AbstractGame::Instance()->GetResourceManager()->GetMesh("carMesh");;
+	Mesh* modelMesh = AbstractGame::Instance()->GetResourceManager()->GetMesh("jeepMesh");;
+	Mesh* gunMesh = AbstractGame::Instance()->GetResourceManager()->GetMesh("testMesh");;
 
-	AbstractMaterial* brickMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "bricks.jpg"), nullptr);
-	TextureMaterial* carMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "carTex.png"), nullptr);
-	AbstractMaterial* modelMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "jeepTex.jpg"), nullptr);
-	ColorMaterial* planeMat = new ColorMaterial();
+	AbstractMaterial* brickMat = AbstractGame::Instance()->GetResourceManager()->GetMaterial("brickMat");
+	TextureMaterial* carMat =  dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("carMat"));
+	AbstractMaterial* modelMat = (AbstractGame::Instance()->GetResourceManager()->GetMaterial("modelMat"));
+	ColorMaterial* planeMat = dynamic_cast<ColorMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("planeMat"));
 	planeMat->SetShineness(126);
 	planeMat->SetDiffuseColor(glm::vec3(0.13f, 0.54f, 0.130f));
-	ColorMaterial* lightMat = new ColorMaterial();
+	ColorMaterial* lightMat = dynamic_cast<ColorMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lightMat"));
 	lightMat->SetDiffuseColor(glm::vec3(1, 1, 0.8f));
 
-	//planeMat->setDiffuseColor(glm::vec3(0.4f,1,0));
-	AbstractMaterial* containerMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "container2.png"), Texture::load(config::MGE_TEXTURE_PATH + "container2_specular.png", TextureType::DIFFUSE));
-	TextureMaterial* radioMat = new TextureMaterial(Texture::load(config::MGE_TEXTURE_PATH + "stuffTex.png"), Texture::load(config::MGE_TEXTURE_PATH + "stuffSpec.png", TextureType::DIFFUSE));
+	TextureMaterial* containerMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("containerMat"));
+	TextureMaterial* radioMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("stuffMat"));
 
 	Camera* camera = _world->Instantiate<Camera>();
 	camera->transform->SetLocalPosition(glm::vec3(0, 6, 20));
@@ -77,7 +77,7 @@ void MainWorld::Initialize()
 	cube2->transform->SetLocalPosition(glm::vec3(-0.25f, 0.2f, 0));
 	cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
 	cube2->GetMeshRenderer()->SetMesh(gunMesh);
-	radioMat->SetShininess(256);
+	//radioMat->SetShininess(256);
 
 	cube2->setMaterial(radioMat);
 

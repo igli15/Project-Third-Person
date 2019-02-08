@@ -184,6 +184,7 @@
     <ClInclude Include="..\src\mge\core\Light.hpp" />
     <ClInclude Include="..\src\mge\core\Mesh.hpp" />
     <ClInclude Include="..\src\mge\core\Renderer.hpp" />
+    <ClInclude Include="..\src\mge\core\ResourceManager.h" />
     <ClInclude Include="..\src\mge\core\ShaderProgram.hpp" />
     <ClInclude Include="..\src\mge\core\Texture.hpp" />
     <ClInclude Include="..\src\mge\core\World.hpp" />
@@ -191,7 +192,6 @@
     <ClInclude Include="..\src\mge\materials\AbstractMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\ColorMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
-    <ClInclude Include="..\src\mge\MGEDemo.hpp" />
     <ClInclude Include="..\src\mge\test\TestComponent.h" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
   </ItemGroup>
@@ -213,6 +213,7 @@
     <ClCompile Include="..\src\mge\core\Light.cpp" />
     <ClCompile Include="..\src\mge\core\Mesh.cpp" />
     <ClCompile Include="..\src\mge\core\Renderer.cpp" />
+    <ClCompile Include="..\src\mge\core\ResourceManager.cpp" />
     <ClCompile Include="..\src\mge\core\ShaderProgram.cpp" />
     <ClCompile Include="..\src\mge\core\Texture.cpp" />
     <ClCompile Include="..\src\mge\core\World.cpp" />
@@ -220,7 +221,6 @@
     <ClCompile Include="..\src\mge\materials\AbstractMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\ColorMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
-    <ClCompile Include="..\src\mge\MGEDemo.cpp" />
     <ClCompile Include="..\src\mge\test\TestComponent.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
   </ItemGroup>
