@@ -76,6 +76,7 @@ class GameObject
 				T* component = new T();
 				m_attachedComponents.push_back(component);
 				component->SetGameObject(this);
+				return component;
 			}
 			else
 			{

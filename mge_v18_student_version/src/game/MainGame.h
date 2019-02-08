@@ -13,7 +13,7 @@ public:
 protected:
 
 	virtual void LoadResources(ResourceManager* resourceManager);
-	virtual void Initialize() override;
+	virtual void CreateWorld() override;
 	//virtual void _render() override;
 
 };

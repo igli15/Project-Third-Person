@@ -18,6 +18,13 @@ ResourceManager::~ResourceManager()
 
 Texture * ResourceManager::LoadTexture(const std::string & path, const std::string & tag, TextureType textureType)
 {
+
+	if (m_textureMap.find(tag) != m_textureMap.end())
+	{
+		std::cout << "A texture with that tag is already created" << std::endl;
+		throw;
+	}
+
 	// load from file and store in cache
 	sf::Image image;
 	if (image.loadFromFile(path)) {
@@ -105,6 +112,12 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 Mesh * ResourceManager::LoadMesh(const std::string & path, const std::string & tag)
 {
 	std::cout << "Loading " << path << "...";
+
+	if (m_meshMap.find(tag) != m_meshMap.end())
+	{
+		std::cout << "A mesh with that tag is already created" << std::endl;
+		throw;
+	}
 
 	Mesh* mesh = new Mesh();
 
@@ -263,4 +276,29 @@ Mesh * ResourceManager::GetMesh(const std::string & tag)
 	}
 
 	return m_meshMap[tag];
+}
+
+AbstractMaterial * ResourceManager::RegisterMaterial(AbstractMaterial * mat, const std::string & tag)
+{
+	if (mat->IsRegistered() || m_materialMap.find(tag) != m_materialMap.end())
+	{
+		std::cout << "Material Is already Registered" << std::endl;
+		throw;
+	}
+	mat->Register();
+	m_materialMap[tag] = mat;
+	return mat;
+}
+
+AbstractMaterial * ResourceManager::GetMaterial(const std::string & tag)
+{
+	if (m_materialMap.find(tag) == m_materialMap.end())
+	{
+		std::cout << "There is no Material resource with that name!" << std::endl;
+
+		return nullptr;
+		//return GetTexture("ErrorTexture");
+	}
+
+	return m_materialMap[tag];
 }

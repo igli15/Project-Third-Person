@@ -23,7 +23,8 @@ class AbstractGame
         virtual ~AbstractGame();
 
         //creates a window, initializes glew, a renderer and a world instance
-        virtual void Initialize();
+        void Initialize();
+		virtual void CreateWorld();
 
 		virtual void LoadResources(ResourceManager* resourceManager);
 

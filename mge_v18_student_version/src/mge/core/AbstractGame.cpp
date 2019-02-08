@@ -33,8 +33,7 @@ void AbstractGame::Initialize() {
     _printVersionInfo();
     _initializeGlew();
     _initializeRenderer();
-	InitializeWorldManager();
-    _initializeWorld();
+	
     std::cout << std::endl << "Engine initialized." << std::endl << std::endl;
 }
 
@@ -102,6 +101,12 @@ void AbstractGame::InitializeWorldManager()
 	std::cout << "Creating World Manager" << std::endl;
 	m_worldManager = new WorldManager();
 	std::cout << "World Manager is Created" << std::endl;
+}
+
+void AbstractGame::CreateWorld()
+{
+	InitializeWorldManager();
+	_initializeWorld();
 }
 
 ///MAIN GAME LOOP
