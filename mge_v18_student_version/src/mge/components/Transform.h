@@ -15,7 +15,7 @@ public:
 	glm::vec3 WorldPosition() const;
 	glm::vec3 LocalPosition() const; 
 
-	glm::mat4 LocalTransform() const ;
+	glm::mat4 LocalTransform() const;
 	glm::mat4 WorldTransform() const;
 
 	void SetTransform(const glm::mat4& transform);
