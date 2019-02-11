@@ -1,11 +1,10 @@
 #include <iostream>
 #include "GameObject.hpp"
-#include "mge/behaviours/AbstractBehaviour.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
 
 GameObject::GameObject()
 :	_name( "" ), _parent(nullptr), _children(),
-    _behaviour( nullptr ), _material(nullptr), _world(nullptr)
+    _material(nullptr), _world(nullptr)
 
 {
 	transform = AddComponent<Transform>();
@@ -28,8 +27,6 @@ GameObject::~GameObject()
 		delete m_attachedComponents[i];
 		m_attachedComponents.pop_back();
 	}
-
-	delete getBehaviour();
 
 	std::cout <<"Components Left "<< m_attachedComponents.size()<<std::endl;
 
@@ -87,17 +84,6 @@ void GameObject::SetMeshRenderer(MeshRenderer * meshRenderer)
 MeshRenderer * GameObject::GetMeshRenderer() const
 {
 	return m_meshRenderer;
-}
-
-void GameObject::setBehaviour(AbstractBehaviour* pBehaviour)
-{
-	_behaviour = pBehaviour;
-	_behaviour->setOwner(this);
-}
-
-AbstractBehaviour* GameObject::getBehaviour() const
-{
-    return _behaviour;
 }
 
 void GameObject::Load()
@@ -187,10 +173,6 @@ GameObject* GameObject::getParent() const {
 
 void GameObject::Update(float pStep)
 {
-    //make sure behaviour is updated after worldtransform is set
-	if (_behaviour) {
-		_behaviour->update(pStep);
-	}
 
 	for (int i = 0; i < m_attachedComponents.size(); ++i) {
 

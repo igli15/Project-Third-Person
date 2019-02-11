@@ -1,4 +1,4 @@
-#include "mge/behaviours/KeysBehaviour.hpp"
+#include "../components/KeyMoveComponent.h"
 #include "mge/core/GameObject.hpp"
 #include "mge/core/World.hpp"
 #include <SFML/Window/Keyboard.hpp>
@@ -6,35 +6,38 @@
 #include "game/MainWorld.h"
 #include "mge/core/WorldManager.h"
 
-KeysBehaviour::KeysBehaviour(float pMoveSpeed, float pTurnSpeed) : AbstractBehaviour(), _moveSpeed(pMoveSpeed), _turnSpeed(pTurnSpeed)
+KeyMoveComponent::KeyMoveComponent() 
 {
 }
 
-KeysBehaviour::~KeysBehaviour()
+KeyMoveComponent::~KeyMoveComponent()
 {
 }
 
-void KeysBehaviour::update(float pStep)
+void KeyMoveComponent::Update(float timeStep)
 {
 	float moveSpeed = 0.0f; //default if no keys
 	float turnSpeed = 0.0f;
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		moveSpeed = _moveSpeed;
-
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) 
+	{
+		moveSpeed = m_moveSpeed;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		moveSpeed = -_moveSpeed;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) 
+	{
+		moveSpeed = -m_moveSpeed;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		turnSpeed = -_turnSpeed;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) 
+	{
+		turnSpeed = - m_turnSpeed;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		turnSpeed = +_turnSpeed;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) 
+	{
+		turnSpeed = +m_turnSpeed;
 	}
 
 	//translate the object in its own local space
-	_owner->transform->Translate(glm::vec3(0.0f, 0.0f, moveSpeed*pStep));
+	m_gameObject->transform->Translate(glm::vec3(0.0f, 0.0f, moveSpeed * timeStep));
 
 
 	//we can also translate directly, basically we take the z axis from the matrix
@@ -45,7 +48,7 @@ void KeysBehaviour::update(float pStep)
 	//_owner->setTransform(transform);
 
 	//rotate the object in its own local space
-	_owner->transform->Rotate(glm::radians(turnSpeed*pStep), glm::vec3(0.0f, 1.0f, 0.0f));
+	m_gameObject->transform->Rotate(glm::radians(turnSpeed*timeStep), glm::vec3(0.0f, 1.0f, 0.0f));
 
 	//NOTE:
 	//The reason the above happens in the local space of the object and not in the world space

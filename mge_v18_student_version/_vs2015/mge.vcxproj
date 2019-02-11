@@ -166,12 +166,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\game\components\KeyMoveComponent.h" />
+    <ClInclude Include="..\src\game\components\RotatingComponent.h" />
     <ClInclude Include="..\src\game\MainGame.h" />
     <ClInclude Include="..\src\game\MainWorld.h" />
     <ClInclude Include="..\src\glm.hpp" />
-    <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp" />
-    <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
-    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
     <ClInclude Include="..\src\mge\components\CameraComponent.h" />
     <ClInclude Include="..\src\mge\components\LightComponent.h" />
     <ClInclude Include="..\src\mge\components\MeshRenderer.h" />
@@ -196,12 +195,11 @@
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp" />
+    <ClCompile Include="..\src\game\components\RotatingComponent.cpp" />
     <ClCompile Include="..\src\game\MainGame.cpp" />
     <ClCompile Include="..\src\game\MainWorld.cpp" />
     <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp" />
-    <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp" />
-    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
     <ClCompile Include="..\src\mge\components\CameraComponent.cpp" />
     <ClCompile Include="..\src\mge\components\LightComponent.cpp" />
     <ClCompile Include="..\src\mge\components\MeshRenderer.cpp" />

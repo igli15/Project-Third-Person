@@ -1,6 +1,8 @@
 #include "MainWorld.h"
 #include "mge/core/Mesh.hpp"
 #include "mge/config.hpp"
+#include "components/KeyMoveComponent.h"
+#include "components/RotatingComponent.h"
 #include "mge/materials/AbstractMaterial.hpp"
 #include "mge/materials/TextureMaterial.hpp"
 #include "mge/core/Texture.hpp"
@@ -8,8 +10,6 @@
 #include "mge/core/World.hpp"
 #include "mge/core/GameObject.hpp"
 #include "mge/materials/ColorMaterial.hpp"
-#include "mge/behaviours/KeysBehaviour.hpp"
-#include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/test/TestComponent.h"
 #include "mge/components/CameraComponent.h"
 #include "mge/core/Light.hpp"
@@ -82,7 +82,8 @@ void MainWorld::Initialize()
 	cube2->setMaterial(radioMat);
 
 	cube2->transform->Scale(glm::vec3(1.0f, 1.0f, 1.0f));
-	cube2->setBehaviour(new KeysBehaviour());
+	cube2->AddComponent<KeyMoveComponent>();
+	//cube2->setBehaviour(new KeysBehaviour());
 
 	GameObject* plane = _world->Instantiate<GameObject>();
 	plane->transform->SetLocalPosition(glm::vec3(0, -1, 0));

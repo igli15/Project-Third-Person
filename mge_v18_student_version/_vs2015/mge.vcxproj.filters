@@ -8,9 +8,6 @@
     <Filter Include="MGE Source files\mge">
       <UniqueIdentifier>{5808a1e3-17c6-41a4-bf66-b872468a8c7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MGE Source files\mge\behaviours">
-      <UniqueIdentifier>{62606aaf-8ae3-4195-9a83-22a2c9d20af1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MGE Source files\mge\core">
       <UniqueIdentifier>{4394d90a-ffa0-485d-98ea-1e91842edda6}</UniqueIdentifier>
     </Filter>
@@ -29,13 +26,13 @@
     <Filter Include="game">
       <UniqueIdentifier>{36d3b9b2-f9ce-4b3d-93f9-1f2be72a4716}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\components">
+      <UniqueIdentifier>{d844faa5-0523-493a-a973-835d7da1d702}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp">
       <Filter>MGE Source files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
     </ClInclude>
     <ClInclude Include="..\src\mge\core\AbstractGame.hpp">
       <Filter>MGE Source files\mge\core</Filter>
@@ -55,9 +52,6 @@
     <ClInclude Include="..\src\mge\core\GameObject.hpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mge\core\Mesh.hpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
@@ -72,9 +66,6 @@
     </ClInclude>
     <ClInclude Include="..\src\mge\core\World.hpp">
       <Filter>MGE Source files\mge\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
     </ClInclude>
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp">
       <Filter>MGE Source files\mge\materials</Filter>
@@ -115,13 +106,16 @@
     <ClInclude Include="..\src\mge\core\ResourceManager.h">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game\components\KeyMoveComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\RotatingComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
       <Filter>MGE Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp">
       <Filter>MGE Source files\mge\core</Filter>
@@ -141,9 +135,6 @@
     <ClCompile Include="..\src\mge\core\GameObject.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\mge\core\Mesh.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
@@ -158,9 +149,6 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\core\World.cpp">
       <Filter>MGE Source files\mge\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
@@ -197,6 +185,12 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\core\ResourceManager.cpp">
       <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\RotatingComponent.cpp">
+      <Filter>game\components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

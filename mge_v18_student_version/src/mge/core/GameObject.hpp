@@ -8,7 +8,6 @@
 #include "../components/MeshRenderer.h"
 
 class AbstractCollider;
-class AbstractBehaviour;
 class AbstractMaterial;
 class World;
 class Mesh;
@@ -39,10 +38,6 @@ class GameObject
         //mesh and material should be shared as much as possible
 		void setMaterial (AbstractMaterial* pMaterial);
 		AbstractMaterial* getMaterial() const;
-
-        //behaviour is expected to be unique per game object, in general do NOT share them between objects
-		void setBehaviour(AbstractBehaviour* pBehaviour);
-		AbstractBehaviour* getBehaviour() const;
 
 		//Load is used to attach comonents only!!
 		virtual void Load();
@@ -111,7 +106,6 @@ class GameObject
 
 		MeshRenderer* m_meshRenderer = nullptr;
 
-		AbstractBehaviour* _behaviour;
 		AbstractMaterial* _material;
 		World* _world;
 

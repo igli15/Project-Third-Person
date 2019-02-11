@@ -8,8 +8,6 @@
 #include "mge/core/World.hpp"
 #include "mge/core/GameObject.hpp"
 #include "mge/materials/ColorMaterial.hpp"
-#include "mge/behaviours/KeysBehaviour.hpp"
-#include "mge/behaviours/RotatingBehaviour.hpp"
 #include "mge/test/TestComponent.h"
 #include "mge/components/CameraComponent.h"
 #include "mge/core/Light.hpp"
