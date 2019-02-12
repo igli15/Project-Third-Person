@@ -31,5 +31,7 @@ public:
 
 	void LoadResourcesFromLua();
 	void LuaLoadMeshes();
+	void LuaLoadDiffuseTextures();
+	void LuaLoadSpecularTexutres();
 };
 

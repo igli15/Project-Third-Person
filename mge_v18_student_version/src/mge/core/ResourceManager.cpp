@@ -11,7 +11,7 @@ ResourceManager::ResourceManager()
 	m_luaProgram = new LuaProgram("../src/game/Resources.Lua");
 	m_luaProgram->CallCurrentProgram();
 
-	LoadResourcesFromLua();
+	
 }
 
 
@@ -37,7 +37,7 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 		//create a wrapper for the id (texture is nothing more than that) and
 		//load corresponding data into opengl using this id
 		Texture * texture = new Texture();
-
+		texture->SetType(textureType);
 		glBindTexture(GL_TEXTURE_2D, texture->getId());
 
 		//If we want specular / normals maps we still have to use rgba instead of SRGB
@@ -260,7 +260,7 @@ Texture * ResourceManager::GetTexture(const std::string & tag)
 {
 	if (m_textureMap.find(tag) == m_textureMap.end())
 	{
-		std::cout << "There is no Texture resource with that name!" << std::endl;
+		std::cout << "There is no Texture resource with: " << tag << " as a name" << std::endl;
 
 		return nullptr;
 		//return GetTexture("ErrorTexture");
@@ -273,7 +273,7 @@ Mesh * ResourceManager::GetMesh(const std::string & tag)
 {
 	if (m_meshMap.find(tag) == m_meshMap.end())
 	{
-		std::cout << "There is no Mesh resource with that name!" << std::endl;
+		std::cout << "There is no Mesh resource with: " << tag << " as a name" << std::endl;
 
 		return nullptr;
 		//return GetTexture("ErrorTexture");
@@ -298,7 +298,7 @@ AbstractMaterial * ResourceManager::GetMaterial(const std::string & tag)
 {
 	if (m_materialMap.find(tag) == m_materialMap.end())
 	{
-		std::cout << "There is no Material resource with that name!" << std::endl;
+		std::cout << "There is no Material resource with: " <<tag<< " as a name"<< std::endl;
 
 		return nullptr;
 		//return GetTexture("ErrorTexture");
@@ -310,6 +310,8 @@ AbstractMaterial * ResourceManager::GetMaterial(const std::string & tag)
 void ResourceManager::LoadResourcesFromLua()
 {
 	LuaLoadMeshes();
+	LuaLoadDiffuseTextures();
+	LuaLoadSpecularTexutres();
 }
 
 void ResourceManager::LuaLoadMeshes()
@@ -326,6 +328,46 @@ void ResourceManager::LuaLoadMeshes()
 		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
 		//std::cout << name <<" "<< path<<  std::endl;
 		LoadMesh(path, name);
+		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
+	}
+
+	m_luaProgram->PopCurrentTable();
+}
+
+void ResourceManager::LuaLoadDiffuseTextures()
+{
+	m_luaProgram->GetGlobalTable("diffuseTextures");
+
+	lua_pushnil(m_luaProgram->GetCurrentLuaState());
+	lua_gettable(m_luaProgram->GetCurrentLuaState(), -2);
+
+	while (lua_next(m_luaProgram->GetCurrentLuaState(), -2) != 0)
+	{
+
+		std::string name = lua_tostring(m_luaProgram->GetCurrentLuaState(), -2);
+		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
+		//std::cout << name <<" "<< path<<  std::endl;
+		LoadTexture(path, name, TextureType::DIFFUSE);
+		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
+	}
+
+	m_luaProgram->PopCurrentTable();
+}
+
+void ResourceManager::LuaLoadSpecularTexutres()
+{
+	m_luaProgram->GetGlobalTable("specularTextures");
+
+	lua_pushnil(m_luaProgram->GetCurrentLuaState());
+	lua_gettable(m_luaProgram->GetCurrentLuaState(), -2);
+
+	while (lua_next(m_luaProgram->GetCurrentLuaState(), -2) != 0)
+	{
+
+		std::string name = lua_tostring(m_luaProgram->GetCurrentLuaState(), -2);
+		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
+		//std::cout << name <<" "<< path<<  std::endl;
+		LoadTexture(path, name, TextureType::SPECULAR);
 		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
 	}
 
