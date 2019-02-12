@@ -25,6 +25,11 @@ lua_State* LuaProgram::GenerateProgram(const std::string &filename)
     return luaState;
 }
 
+lua_State * LuaProgram::GetCurrentLuaState()
+{
+	return m_currentLuaState;
+}
+
 double LuaProgram::GetGlobalDouble(std::string varName)
 {
     lua_getglobal(m_currentLuaState,varName.c_str());
@@ -154,6 +159,36 @@ void LuaProgram::CallGlobalFunction(std::string funcName)
 
     lua_call(m_currentLuaState,m_totalArgumentNumber,m_totalReturnNumber);
     m_isFuncBeingCalled = true;
+
+}
+
+void LuaProgram::GetGlobalTable(std::string tableName)
+{
+	lua_getglobal(m_currentLuaState, tableName.c_str());
+	m_isTableBound = true;
+
+	lua_pushnil(m_currentLuaState);
+	lua_gettable(m_currentLuaState, -2);
+
+	while (lua_next(m_currentLuaState, -2) != 0)
+	{
+		std::cout << "Lua stack count: " << GetStackCount() << std::endl;
+		std::string t = lua_tostring(m_currentLuaState, -1);
+		std::cout << t << std::endl;
+		lua_pop(m_currentLuaState, 1);
+	}
+
+	lua_pop(m_currentLuaState, 1);
+	std::cout << "Lua stack count: " << GetStackCount() << std::endl;
+}
+
+void LuaProgram::PopCurrentTable()
+{
+	if (!m_isTableBound)
+	{
+		std::cout << "There is no table in the stack!!" << std::endl;
+		throw;
+	}
 
 }
 

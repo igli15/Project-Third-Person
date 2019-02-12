@@ -10,12 +10,22 @@
 #include <tuple>
 #include <type_traits>
 
+extern "C"
+{
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
+}
+
 
     class LuaProgram {
 
     public:
         LuaProgram(const std::string& filename);
 
+		//use with care!!
+		lua_State* GetCurrentLuaState();
+		
         double GetGlobalDouble(std::string varName);
         int GetGlobalInt(std::string varName);
         std::string GetGlobalString(std::string varName);
@@ -43,6 +53,9 @@
 
         void GetGlobalFunction(std::string funcName,int NrOfArguments, int NrOfReturns);
         void CallGlobalFunction(std::string funcName);
+
+		void GetGlobalTable(std::string table);
+		void PopCurrentTable();
 
         template <typename T>
         void PushFunctionArgument(T argument)
@@ -363,7 +376,7 @@
        int m_totalReturnNumber = 0;
        int m_currentReturnNumber = 0;
        bool m_isFuncBeingCalled = false;
-
+	   bool  m_isTableBound = false;
 
     };
 

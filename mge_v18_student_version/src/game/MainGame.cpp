@@ -30,7 +30,10 @@ MainGame::~MainGame()
 void MainGame::LoadResources(ResourceManager * resourceManager)
 {
 	LuaProgram* program = new LuaProgram("../src/game/Resources.Lua");
+	
 	program->CallCurrentProgram();
+
+	program->GetGlobalTable("meshes");
 	
 	AbstractGame::LoadResources(resourceManager);
 	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "plane.obj", "planeMesh");
