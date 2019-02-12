@@ -10,7 +10,6 @@
 #include <tuple>
 #include <type_traits>
 
-namespace Engine {
 
     class LuaProgram {
 
@@ -367,7 +366,6 @@ namespace Engine {
 
 
     };
-}
 
 
 #endif //LUAASSIGNMENT_LUAPROGRAM_H

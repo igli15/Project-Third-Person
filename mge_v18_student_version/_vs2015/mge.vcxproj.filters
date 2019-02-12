@@ -204,5 +204,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="..\src\game\Resources.lua">
+      <Filter>game</Filter>
+    </None>
   </ItemGroup>
 </Project>

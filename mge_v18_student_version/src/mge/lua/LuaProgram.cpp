@@ -5,9 +5,9 @@
 #include "LuaProgram.h"
 #include <string>
 
-int (*Engine::LuaProgram::function)(lua_State* l) = nullptr;
+int (*LuaProgram::function)(lua_State* l) = nullptr;
 
-Engine::LuaProgram::LuaProgram(const std::string &filename)
+LuaProgram::LuaProgram(const std::string &filename)
 {
     m_currentLuaState = GenerateProgram(filename);
     //Test<int,int>([](int i) { std::cout<<"WORKS: "<< i <<std::endl; return 1;},2);
@@ -16,7 +16,7 @@ Engine::LuaProgram::LuaProgram(const std::string &filename)
    //    function(m_currentLuaState);
 }
 
-lua_State *Engine::LuaProgram::GenerateProgram(const std::string &filename)
+lua_State* LuaProgram::GenerateProgram(const std::string &filename)
 {
     lua_State* luaState = luaL_newstate();
     luaL_openlibs(luaState);
@@ -25,7 +25,7 @@ lua_State *Engine::LuaProgram::GenerateProgram(const std::string &filename)
     return luaState;
 }
 
-double Engine::LuaProgram::GetGlobalDouble(std::string varName)
+double LuaProgram::GetGlobalDouble(std::string varName)
 {
     lua_getglobal(m_currentLuaState,varName.c_str());
 
@@ -41,7 +41,7 @@ double Engine::LuaProgram::GetGlobalDouble(std::string varName)
     }
 }
 
-int Engine::LuaProgram::GetGlobalBoolean(std::string varName)
+int LuaProgram::GetGlobalBoolean(std::string varName)
 {
     lua_getglobal(m_currentLuaState,varName.c_str());
 
@@ -57,7 +57,7 @@ int Engine::LuaProgram::GetGlobalBoolean(std::string varName)
     }
 }
 
-int Engine::LuaProgram::GetGlobalInt(std::string varName)
+int LuaProgram::GetGlobalInt(std::string varName)
 {
     lua_getglobal(m_currentLuaState,varName.c_str());
 
@@ -73,7 +73,7 @@ int Engine::LuaProgram::GetGlobalInt(std::string varName)
     }
 }
 
-std::string Engine::LuaProgram::GetGlobalString(std::string varName)
+std::string LuaProgram::GetGlobalString(std::string varName)
 {
     lua_getglobal(m_currentLuaState,varName.c_str());
 
@@ -90,7 +90,7 @@ std::string Engine::LuaProgram::GetGlobalString(std::string varName)
 }
 
 
-void Engine::LuaProgram::CallCurrentProgram()
+void LuaProgram::CallCurrentProgram()
 {
     if(lua_pcall(m_currentLuaState,0,0,0) != 0)         //only if its zero it is called correctly
     {
@@ -101,31 +101,31 @@ void Engine::LuaProgram::CallCurrentProgram()
     }
 }
 
-void Engine::LuaProgram::SetGlobalDouble(std::string varName,double d)
+void LuaProgram::SetGlobalDouble(std::string varName,double d)
 {
     lua_pushnumber(m_currentLuaState,d);
     lua_setglobal(m_currentLuaState,varName.c_str());
 }
 
-void Engine::LuaProgram::SetGlobalInt(std::string varName, int i)
+void LuaProgram::SetGlobalInt(std::string varName, int i)
 {
     lua_pushinteger(m_currentLuaState,i);
     lua_setglobal(m_currentLuaState,varName.c_str());
 }
 
-void Engine::LuaProgram::SetGlobalString(std::string varName, std::string s)
+void LuaProgram::SetGlobalString(std::string varName, std::string s)
 {
     lua_pushstring(m_currentLuaState,s.c_str());
     lua_setglobal(m_currentLuaState,varName.c_str());
 }
 
-void Engine::LuaProgram::SetGlobalBool(std::string varName,bool b)
+void LuaProgram::SetGlobalBool(std::string varName,bool b)
 {
     lua_pushboolean(m_currentLuaState,b);
     lua_setglobal(m_currentLuaState,varName.c_str());
 }
 
-void Engine::LuaProgram::GetGlobalFunction(std::string funcName, int NrOfArguments, int NrOfReturns)
+void LuaProgram::GetGlobalFunction(std::string funcName, int NrOfArguments, int NrOfReturns)
 {
     if(m_isFuncBeingCalled == true)
     {
@@ -139,12 +139,12 @@ void Engine::LuaProgram::GetGlobalFunction(std::string funcName, int NrOfArgumen
     lua_getglobal(m_currentLuaState,funcName.c_str());
 }
 
-int Engine::LuaProgram::GetStackCount()
+int LuaProgram::GetStackCount()
 {
     return lua_gettop(m_currentLuaState);
 }
 
-void Engine::LuaProgram::CallGlobalFunction(std::string funcName)
+void LuaProgram::CallGlobalFunction(std::string funcName)
 {
     if(m_currentArgumentPassed > m_totalArgumentNumber)
     {
@@ -157,7 +157,7 @@ void Engine::LuaProgram::CallGlobalFunction(std::string funcName)
 
 }
 
-void Engine::LuaProgram::CallFunctionInTable(std::string tableName, std::string fieldName)
+void LuaProgram::CallFunctionInTable(std::string tableName, std::string fieldName)
 {
     lua_getglobal(m_currentLuaState,tableName.c_str());
     lua_getfield(m_currentLuaState,-1,fieldName.c_str());

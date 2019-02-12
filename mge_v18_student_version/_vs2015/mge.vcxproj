@@ -225,6 +225,7 @@
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\src\game\Resources.lua" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

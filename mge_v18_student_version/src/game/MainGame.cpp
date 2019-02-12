@@ -15,6 +15,8 @@
 #include "mge/core/WorldManager.h"
 #include "game/MainWorld.h"
 #include "mge/core/ResourceManager.h"
+#include "mge/lua/LuaProgram.h"
+
 
 MainGame::MainGame()
 {
@@ -27,6 +29,9 @@ MainGame::~MainGame()
 
 void MainGame::LoadResources(ResourceManager * resourceManager)
 {
+	LuaProgram* program = new LuaProgram("../src/game/Resources.Lua");
+	program->CallCurrentProgram();
+	
 	AbstractGame::LoadResources(resourceManager);
 	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "plane.obj", "planeMesh");
 	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "cube_smooth.obj", "cubeMesh");
