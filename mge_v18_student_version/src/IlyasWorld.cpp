@@ -68,16 +68,18 @@ void IlyasWorld::Initialize()
 	cylinder1->setMaterial(brickMat);
 	cylinder1->transform->Scale(glm::vec3(1 ,1 ,1));
 	cylinder1->AddComponent<KeyMoveComponent>();
-	cylinder1->AddComponent<SphereCollider>();
 
+	cylinder1->AddComponent<SphereCollider>();
+	cylinder1->Awake();
 	//Test object 2
 	GameObject* cylinder2 = _world->Instantiate<GameObject>();
-	cylinder2->transform->SetLocalPosition(glm::vec3(10, 0, 0));
-	cylinder2->SetMeshRenderer(cylinder1->AddComponent<MeshRenderer>());
+	cylinder2->transform->SetLocalPosition(glm::vec3(10, 0, 3));
+	cylinder2->SetMeshRenderer(cylinder2->AddComponent<MeshRenderer>());
 	cylinder2->GetMeshRenderer()->SetMesh(cylinderMesh);
 	cylinder2->setMaterial(brickMat);
 	cylinder2->transform->Scale(glm::vec3(1, 1, 1));
-	cylinder1->AddComponent<SphereCollider>();
+	cylinder2->AddComponent<SphereCollider>();
+	cylinder2->Awake();
 
 	Light* l = _world->Instantiate<Light>();
 	l->transform->SetLocalPosition(glm::vec3(-2, 2, 0));

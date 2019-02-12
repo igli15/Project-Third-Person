@@ -1,21 +1,19 @@
 #include "CollisionManager.h"
 
-void CollisionManager::AddCollider(ColliderComponent * newCollider)
+int CollisionManager::AddCollider(ColliderComponent * newCollider)
 {
+	std::cout << "Add collider" << std::endl;
 	m_colliders.push_back(newCollider);
+	return m_colliders.size();
 }
 
 bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 {
 	for (int i = m_colliders.size() - 1; i >= 0; --i)
 	{
-		if (targetCollider == m_colliders[i])
+		//if its not me and I am colliding with other object
+		if (targetCollider->id != m_colliders[i]->id  &&  targetCollider->IsColliding(m_colliders[i]))
 		{
-			//Dont check collision with itself
-		}
-		if (targetCollider->IsColliding(m_colliders[i]))
-		{
-			std::cout << "CollisionManager => Collision detected ";
 			return true;
 		}
 	}

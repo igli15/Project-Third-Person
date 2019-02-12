@@ -17,5 +17,5 @@ public:
 	virtual bool IsColliding(ColliderComponent* collider) = 0; //Redispatching...
 
 	virtual bool IsColliding(SphereCollider* sphereCollider) = 0; // Sphere
-
+	int id = 0;
 };

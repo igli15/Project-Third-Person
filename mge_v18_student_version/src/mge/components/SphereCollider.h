@@ -7,7 +7,7 @@ class ColliderComponent;
 class SphereCollider :public ColliderComponent
 {
 public:
-	float radius = 2.0f;
+	float radius = 1.0f;
 
 	void Update(float timeSteps);
 	glm::vec2 GetWorld2Dposition();
