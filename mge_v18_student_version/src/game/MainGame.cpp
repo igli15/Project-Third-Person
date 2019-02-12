@@ -33,7 +33,8 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "Car.obj", "carMesh");
 	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "jeep.obj", "jeepMesh");
 	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "stuff.obj", "testMesh");
-	
+	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "cylinder_smooth.obj", "cylinderMesh");
+
 	AbstractMaterial* brickMat = new TextureMaterial(resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "bricks.jpg", "brickTex", TextureType::DIFFUSE), nullptr);
 	TextureMaterial* carMat = new TextureMaterial(resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "carTex.png", "carTex", TextureType::DIFFUSE) , nullptr);
 	//AbstractMaterial* modelMat = new TextureMaterial(resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "jeepTex.jpg", "carTex", TextureType::DIFFUSE), nullptr);

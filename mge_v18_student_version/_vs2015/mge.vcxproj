@@ -171,6 +171,7 @@
     <ClInclude Include="..\src\game\MainGame.h" />
     <ClInclude Include="..\src\game\MainWorld.h" />
     <ClInclude Include="..\src\glm.hpp" />
+    <ClInclude Include="..\src\IlyasWorld.h" />
     <ClInclude Include="..\src\mge\components\CameraComponent.h" />
     <ClInclude Include="..\src\mge\components\ColliderComponent.hpp" />
     <ClInclude Include="..\src\mge\components\LightComponent.h" />
@@ -180,6 +181,7 @@
     <ClInclude Include="..\src\mge\config.hpp" />
     <ClInclude Include="..\src\mge\core\AbstractGame.hpp" />
     <ClInclude Include="..\src\mge\core\Camera.hpp" />
+    <ClInclude Include="..\src\mge\core\CollisionManager.h" />
     <ClInclude Include="..\src\mge\core\Component.h" />
     <ClInclude Include="..\src\mge\core\GameObject.hpp" />
     <ClInclude Include="..\src\mge\core\Light.hpp" />
@@ -201,6 +203,7 @@
     <ClCompile Include="..\src\game\components\RotatingComponent.cpp" />
     <ClCompile Include="..\src\game\MainGame.cpp" />
     <ClCompile Include="..\src\game\MainWorld.cpp" />
+    <ClCompile Include="..\src\IlyasWorld.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mge\components\CameraComponent.cpp" />
     <ClCompile Include="..\src\mge\components\ColliderComponent.cpp" />
@@ -210,6 +213,7 @@
     <ClCompile Include="..\src\mge\components\Transform.cpp" />
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp" />
     <ClCompile Include="..\src\mge\core\Camera.cpp" />
+    <ClCompile Include="..\src\mge\core\CollisionManager.cpp" />
     <ClCompile Include="..\src\mge\core\Component.cpp" />
     <ClCompile Include="..\src\mge\core\GameObject.cpp" />
     <ClCompile Include="..\src\mge\core\Light.cpp" />
