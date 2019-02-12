@@ -28,19 +28,13 @@ MainGame::~MainGame()
 }
 
 void MainGame::LoadResources(ResourceManager * resourceManager)
-{
-	LuaProgram* program = new LuaProgram("../src/game/Resources.Lua");
-	
-	program->CallCurrentProgram();
-
-	program->GetGlobalTable("meshes");
-	
+{	
 	AbstractGame::LoadResources(resourceManager);
-	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "plane.obj", "planeMesh");
-	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "cube_smooth.obj", "cubeMesh");
-	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "Car.obj", "carMesh");
-	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "jeep.obj", "jeepMesh");
-	resourceManager->LoadMesh(config::MGE_MODEL_PATH + "stuff.obj", "testMesh");
+	//resourceManager->LoadMesh(config::MGE_MODEL_PATH + "plane.obj", "planeMesh");
+	//resourceManager->LoadMesh(config::MGE_MODEL_PATH + "cube_smooth.obj", "cubeMesh");
+	//resourceManager->LoadMesh(config::MGE_MODEL_PATH + "Car.obj", "carMesh");
+	//resourceManager->LoadMesh(config::MGE_MODEL_PATH + "jeep.obj", "jeepMesh");
+	//resourceManager->LoadMesh(config::MGE_MODEL_PATH + "stuff.obj", "testMesh");
 	
 	AbstractMaterial* brickMat = new TextureMaterial(resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "bricks.jpg", "brickTex", TextureType::DIFFUSE), nullptr);
 	TextureMaterial* carMat = new TextureMaterial(resourceManager->LoadTexture(config::MGE_TEXTURE_PATH + "carTex.png", "carTex", TextureType::DIFFUSE) , nullptr);

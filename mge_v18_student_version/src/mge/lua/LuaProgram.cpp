@@ -166,20 +166,6 @@ void LuaProgram::GetGlobalTable(std::string tableName)
 {
 	lua_getglobal(m_currentLuaState, tableName.c_str());
 	m_isTableBound = true;
-
-	lua_pushnil(m_currentLuaState);
-	lua_gettable(m_currentLuaState, -2);
-
-	while (lua_next(m_currentLuaState, -2) != 0)
-	{
-		std::cout << "Lua stack count: " << GetStackCount() << std::endl;
-		std::string t = lua_tostring(m_currentLuaState, -1);
-		std::cout << t << std::endl;
-		lua_pop(m_currentLuaState, 1);
-	}
-
-	lua_pop(m_currentLuaState, 1);
-	std::cout << "Lua stack count: " << GetStackCount() << std::endl;
 }
 
 void LuaProgram::PopCurrentTable()
@@ -190,6 +176,7 @@ void LuaProgram::PopCurrentTable()
 		throw;
 	}
 
+	lua_pop(m_currentLuaState, 1);
 }
 
 void LuaProgram::CallFunctionInTable(std::string tableName, std::string fieldName)

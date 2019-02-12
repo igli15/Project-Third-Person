@@ -1,6 +1,6 @@
 #include "ResourceManager.h"
 #include "SFML/Graphics.hpp"
- 
+#include "mge/config.hpp"
 #include <iostream>
 #include <map>
 #include <string>
@@ -8,6 +8,10 @@
 
 ResourceManager::ResourceManager()
 {
+	m_luaProgram = new LuaProgram("../src/game/Resources.Lua");
+	m_luaProgram->CallCurrentProgram();
+
+	LoadResourcesFromLua();
 }
 
 
@@ -301,4 +305,29 @@ AbstractMaterial * ResourceManager::GetMaterial(const std::string & tag)
 	}
 
 	return m_materialMap[tag];
+}
+
+void ResourceManager::LoadResourcesFromLua()
+{
+	LuaLoadMeshes();
+}
+
+void ResourceManager::LuaLoadMeshes()
+{
+	m_luaProgram->GetGlobalTable("meshes");
+
+	lua_pushnil(m_luaProgram->GetCurrentLuaState());
+	lua_gettable(m_luaProgram->GetCurrentLuaState(), -2);
+
+	while (lua_next(m_luaProgram->GetCurrentLuaState(), -2) != 0)
+	{
+
+		std::string name = lua_tostring(m_luaProgram->GetCurrentLuaState(), -2);
+		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
+		//std::cout << name <<" "<< path<<  std::endl;
+		LoadMesh(path, name);
+		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
+	}
+
+	m_luaProgram->PopCurrentTable();
 }
