@@ -29,6 +29,9 @@
     <Filter Include="game\components">
       <UniqueIdentifier>{d844faa5-0523-493a-a973-835d7da1d702}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MGE Source files\mge\lua">
+      <UniqueIdentifier>{28a611e6-2be2-4fbf-9e2a-83571269532b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp">
@@ -112,6 +115,9 @@
     <ClInclude Include="..\src\game\components\RotatingComponent.h">
       <Filter>game\components</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\lua\LuaProgram.h">
+      <Filter>MGE Source files\mge\lua</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -191,6 +197,9 @@
     </ClCompile>
     <ClCompile Include="..\src\game\components\RotatingComponent.cpp">
       <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\lua\LuaProgram.cpp">
+      <Filter>MGE Source files\mge\lua</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
