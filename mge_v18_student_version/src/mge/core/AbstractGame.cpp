@@ -4,6 +4,7 @@
 #include "mge/core/Renderer.hpp"
 #include "mge/core/World.hpp"
 #include "mge/core/WorldManager.h"
+#include "mge/core//CollisionManager.h"
 #include "game/MainWorld.h"
 #include "ResourceManager.h"
 
@@ -174,6 +175,11 @@ WorldManager * AbstractGame::GetWorldManager()
 ResourceManager * AbstractGame::GetResourceManager()
 {
 	return m_resourceManager;
+}
+
+CollisionManager * AbstractGame::GetCollisionManager()
+{
+	return m_collisionManager;
 }
 
 void AbstractGame::_update(float pStep) {

@@ -9,7 +9,7 @@ class World;
 class Renderer;
 class WorldManager;
 class ResourceManager;
-
+class CollisionManager;
 /**
  * Defines the basic structure for a game, with defaults already filled in.
  * The only item that MUST be overridden/implemented is _initializeScene()
@@ -35,6 +35,7 @@ class AbstractGame
 
 		WorldManager* GetWorldManager();
 		ResourceManager* GetResourceManager();
+		CollisionManager* GetCollisionManager();
 
     protected:
 
@@ -65,6 +66,7 @@ class AbstractGame
 		World* _world;              //the root game object that represents our scene
 		WorldManager* m_worldManager;
 		ResourceManager* m_resourceManager;
+		CollisionManager* m_collisionManager;
 
 		float _fps;                 //stores the real fps
 

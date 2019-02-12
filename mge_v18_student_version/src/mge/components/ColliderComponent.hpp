@@ -5,5 +5,6 @@
 class ColliderComponent : public Component
 {
 public:
+	void Awake() override;
 	void Update(float timeSteps) override;
 };
