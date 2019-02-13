@@ -176,7 +176,7 @@
     <ClInclude Include="..\src\mge\components\ColliderComponent.hpp" />
     <ClInclude Include="..\src\mge\components\LightComponent.h" />
     <ClInclude Include="..\src\mge\components\MeshRenderer.h" />
-    <ClInclude Include="..\src\mge\components\SphereCollider.h" />
+    <ClInclude Include="..\src\mge\components\CircleCollider.h" />
     <ClInclude Include="..\src\mge\components\Transform.h" />
     <ClInclude Include="..\src\mge\config.hpp" />
     <ClInclude Include="..\src\mge\core\AbstractGame.hpp" />
@@ -210,7 +210,7 @@
     <ClCompile Include="..\src\mge\components\ColliderComponent.cpp" />
     <ClCompile Include="..\src\mge\components\LightComponent.cpp" />
     <ClCompile Include="..\src\mge\components\MeshRenderer.cpp" />
-    <ClCompile Include="..\src\mge\components\SphereCollider.cpp" />
+    <ClCompile Include="..\src\mge\components\CircleCollider.cpp" />
     <ClCompile Include="..\src\mge\components\Transform.cpp" />
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp" />
     <ClCompile Include="..\src\mge\core\Camera.cpp" />

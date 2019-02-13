@@ -1,7 +1,5 @@
 #include "ColliderComponent.hpp"
 
-
-
 void ColliderComponent::Awake()
 {
 	id=AbstractGame::Instance()->GetCollisionManager()->AddCollider(this);
@@ -9,6 +7,5 @@ void ColliderComponent::Awake()
 
 void ColliderComponent::Update(float timeSteps)
 {
-
 	//Update
 }

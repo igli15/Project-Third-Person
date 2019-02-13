@@ -17,7 +17,7 @@
 #include "mge/core/WorldManager.h"
 #include "mge/core/ResourceManager.h"
 #include "game/MainGame.h"
-#include "mge/components/SphereCollider.h"
+#include "mge/components/CircleCollider.h"
 
 IlyasWorld::IlyasWorld()
 {
@@ -69,7 +69,7 @@ void IlyasWorld::Initialize()
 	cylinder1->transform->Scale(glm::vec3(1 ,1 ,1));
 	cylinder1->AddComponent<KeyMoveComponent>();
 
-	cylinder1->AddComponent<SphereCollider>();
+	cylinder1->AddComponent<CircleCollider>();
 	cylinder1->Awake();
 	//Test object 2
 	GameObject* cylinder2 = _world->Instantiate<GameObject>();
@@ -78,7 +78,7 @@ void IlyasWorld::Initialize()
 	cylinder2->GetMeshRenderer()->SetMesh(cylinderMesh);
 	cylinder2->setMaterial(brickMat);
 	cylinder2->transform->Scale(glm::vec3(1, 1, 1));
-	cylinder2->AddComponent<SphereCollider>();
+	cylinder2->AddComponent<CircleCollider>();
 	cylinder2->Awake();
 
 	Light* l = _world->Instantiate<Light>();
