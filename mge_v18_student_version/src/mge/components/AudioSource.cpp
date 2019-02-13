@@ -45,6 +45,7 @@ AudioSource::~AudioSource()
 
 void AudioSource::SetVolume(const float &volume)
 {
+	if(m_music != nullptr) m_music->setVolume(volume);
     m_volume = volume;
 }
 

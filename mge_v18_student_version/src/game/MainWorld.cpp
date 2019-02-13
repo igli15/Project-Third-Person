@@ -82,8 +82,9 @@ void MainWorld::Initialize()
 	//radioMat->SetShininess(256);
 
 	cube2->setMaterial(radioMat);
-	//cube2->AddComponent<AudioSource>()->SetMusic(AbstractGame::Instance()->GetResourceManager()->GetMusic("expmusic"));
-	//cube2->GetComponent<AudioSource>()->PlayMusic();
+	cube2->AddComponent<AudioSource>()->SetMusic(AbstractGame::Instance()->GetResourceManager()->GetMusic("expmusic"));
+	cube2->GetComponent<AudioSource>()->PlayMusic();
+	cube2->GetComponent<AudioSource>()->PlayOneShotSound("cannonShot");
 
 	cube2->transform->Scale(glm::vec3(1.0f, 1.0f, 1.0f));
 	cube2->AddComponent<KeyMoveComponent>();

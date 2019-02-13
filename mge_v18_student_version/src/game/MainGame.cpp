@@ -34,9 +34,6 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 
 	resourceManager->LoadResourcesFromLua();
 
-	resourceManager->LoadSound(config::MGE_MUSIC_PATH +"cannonShot.wav","cannonShot");
-	resourceManager->LoadMusic(config::MGE_MUSIC_PATH + "expmusic.wav", "expmusic");
-
 	AbstractMaterial* brickMat = new TextureMaterial(resourceManager->GetTexture("brickTex"), nullptr);
 	TextureMaterial* carMat = new TextureMaterial(resourceManager->GetTexture("carTex"), nullptr);
 	

@@ -12,7 +12,7 @@
     class AudioSource : public Component {
 
     private:
-        sf::Music *m_music;
+        sf::Music *m_music = nullptr;
         float m_volume = 100;                           //default full volume
 
     public:

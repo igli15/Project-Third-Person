@@ -1,7 +1,10 @@
 print("Hello LUA");
 
+--DONT FORGET TO PUT A COMMA AFTER EVERY RESOURCE!!!
+
 meshesLoadPath = "../assets/mge/models/"
 texturesLoadPath = "../assets/mge/textures/"
+musicLoadPath = "../assets/mge/music/"
 
 meshes = 
 {
@@ -26,4 +29,17 @@ specularTextures =
 {
 	["containerSpecular"] = texturesLoadPath.."container2_specular.png",
 	["buildingSpec"] = texturesLoadPath.."stuffSpec.png",
+}
+
+--Yes sound and music are 2 diffrent things...
+--Sounds Are small clips that are played from a buffer in high quality ex: SFX
+--Music are big chunks of memory that play music. This is used for music that loops or that is large
+sounds = 
+{
+	["cannonShot"] = musicLoadPath.."cannonShot.wav",
+}
+
+musics =
+{
+	["expmusic"] = musicLoadPath.."expmusic.wav",
 }
