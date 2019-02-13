@@ -10,17 +10,19 @@ public:
 	float radius = 1.0f;
 	void Start();
 	void Update(float timeSteps);
-	glm::vec2 GetWorld2Dposition();
+
 
 	bool IsColliding(ColliderComponent * collider);
 
-	bool IsColliding(CircleCollider* otherCollider); //Sphere - Sphere
-
-protected:
+	bool IsColliding(CircleCollider* otherCollider); //Circle - Circle
+	bool IsColliding(RectangleCollider * rectangleCollider); //Circle - Rectangle
 	glm::vec2 m_oldPos;
 
-	// Inherited via ColliderComponent
 	void DetectCollision();
+
+
+
+	// Inherited via ColliderComponent
 
 
 };

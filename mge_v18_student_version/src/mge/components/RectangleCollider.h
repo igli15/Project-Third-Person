@@ -1,20 +1,26 @@
 #pragma once
 #include "ColliderComponent.hpp"
-class RectangleCollider :
-	public ColliderComponent
+
+class ColliderComponent;
+
+class RectangleCollider :public ColliderComponent
 {
 public:
-	RectangleCollider();
+	float width = 2;
+	float height = 2;
+	
+	int i = 0;
+
 	virtual ~RectangleCollider();
 
-
+	void Update(float timeSteps);
 	// Inherited via ColliderComponent
-	virtual void DetectCollision() override;
+	void DetectCollision();
 
-	virtual bool IsColliding(ColliderComponent * collider) override;
+	bool IsColliding(ColliderComponent * collider);
 
-	virtual bool IsColliding(CircleCollider * circleCollider) override;
-	virtual bool IsColliding(RectangleCollider * rectangleCollider) override;
+	bool IsColliding(CircleCollider * circleCollider);
+	bool IsColliding(RectangleCollider * rectangleCollider);
 
 };
 

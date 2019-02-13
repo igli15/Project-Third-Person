@@ -13,14 +13,6 @@ void CircleCollider::Update(float timeSteps)
 	DetectCollision();
 }
 
-glm::vec2 CircleCollider::GetWorld2Dposition()
-{
-	//Removing y positiong from gameObject position
-	glm::vec3 pos3d=m_gameObject->transform->WorldPosition();
-
-	return glm::vec2(pos3d.x, pos3d.z);
-}
-
 void CircleCollider::DetectCollision()
 {
 	bool isColliding=AbstractGame::Instance()->GetCollisionManager()->CheckCollisionInWorld(this);
@@ -43,4 +35,9 @@ bool CircleCollider::IsColliding(CircleCollider * otherCollider)
 	return (length <= otherCollider->radius + radius);
 }
 
+bool CircleCollider::IsColliding(RectangleCollider * rectangleCollider)
+{
+	std::cout << "NO CIRCLE-RECT" << std::endl;
+	return false;
+}
 

@@ -130,6 +130,9 @@
     <ClInclude Include="..\src\mge\components\CircleCollider.h">
       <Filter>MGE Source files\mge\components</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\components\RectangleCollider.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -140,9 +143,6 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\materials\AbstractMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\core\Camera.cpp">
-      <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\materials\ColorMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
@@ -224,6 +224,12 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\components\CircleCollider.cpp">
       <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\RectangleCollider.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\Camera.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
