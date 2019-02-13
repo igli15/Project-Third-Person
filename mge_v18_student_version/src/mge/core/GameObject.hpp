@@ -6,6 +6,7 @@
 #include "Component.h"
 #include "../components/Transform.h"
 #include "../components/MeshRenderer.h"
+#include "../core/CollisionInfo.h"
 
 class AbstractCollider;
 class AbstractMaterial;
@@ -46,6 +47,7 @@ class GameObject
 		virtual void Start();
 		virtual void Update(float pStep);
 		virtual void OnDestroy();
+		virtual void OnTriggerStay(CollisionInfo* collisionInfo);
 
         //child management, note that add/remove and setParent are closely coupled.
         //a.add(b) has the same effect as b.setParent(a)

@@ -1,4 +1,6 @@
 #include "CollisionManager.h"
+#include "CollisionInfo.h"
+#include "GameObject.hpp"
 
 int CollisionManager::AddCollider(ColliderComponent * newCollider)
 {
@@ -14,6 +16,10 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 		//if its not me and I am colliding with other object
 		if (targetCollider->id != m_colliders[i]->id  &&  targetCollider->IsColliding(m_colliders[i]))
 		{
+			CollisionInfo newCollisionInfo;
+			newCollisionInfo.collider = m_colliders[i]->GetGameObject();
+			targetCollider->GetGameObject()->OnTriggerStay(&newCollisionInfo);
+
 			return true;
 		}
 	}

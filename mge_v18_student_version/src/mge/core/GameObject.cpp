@@ -202,6 +202,10 @@ void GameObject::OnDestroy()
 	}
 }
 
+void GameObject::OnTriggerStay(CollisionInfo * collisionInfo)
+{
+}
+
 void GameObject::_setWorldRecursively (World* pWorld) {
     _world = pWorld;
 
