@@ -9,6 +9,7 @@ meshes =
 	["cubeMesh"] = meshesLoadPath.."cube_smooth.obj",
 	["carMesh"] = meshesLoadPath.."Car.obj",
 	["testMesh"] = meshesLoadPath.."stuff.obj",
+	["cylinderMesh"] = meshesLoadPath.."cylinder_smooth.obj",
 }
 
 

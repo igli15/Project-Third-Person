@@ -6,7 +6,6 @@
 #include "mge/core/WorldManager.h"
 #include "mge/core//CollisionManager.h"
 #include "game/MainWorld.h"
-#include "IlyasWorld.h"
 #include "ResourceManager.h"
 
 AbstractGame* AbstractGame::m_instance = nullptr;
@@ -98,7 +97,7 @@ void AbstractGame::_initializeWorld() {
     //setup the world
 	std::cout << "Initializing world..." << std::endl;
 	//_world = new World();
-	_world = m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
+	_world = m_worldManager->CreateWorld<MainWorld>("MainWorld");
     std::cout << "World initialized." << std::endl << std::endl;
 }
 

@@ -16,6 +16,7 @@
 #include "game/MainWorld.h"
 #include "mge/core/ResourceManager.h"
 #include "mge/lua/LuaProgram.h"
+#include "IlyasWorld.h"
 
 
 MainGame::MainGame()
@@ -53,5 +54,6 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 void MainGame::CreateWorld()
 {
 	AbstractGame::CreateWorld();
+	m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
 }
 
