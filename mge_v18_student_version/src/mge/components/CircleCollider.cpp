@@ -1,5 +1,5 @@
 #include "CircleCollider.h"
-
+#include "RectangleCollider.h"
 void CircleCollider::Start()
 {
 
@@ -18,7 +18,7 @@ void CircleCollider::DetectCollision()
 	bool isColliding=AbstractGame::Instance()->GetCollisionManager()->CheckCollisionInWorld(this);
 	if (isColliding)
 	{
-		std::cout << "COLLISION" << std::endl;
+		std::cout << "COLLISION_CIRCLE "<<m_gameObject->ID() << std::endl;
 	}
 }
 
@@ -36,8 +36,17 @@ bool CircleCollider::IsColliding(CircleCollider * otherCollider)
 }
 
 bool CircleCollider::IsColliding(RectangleCollider * rectangleCollider)
-{
-	std::cout << "NO CIRCLE-RECT" << std::endl;
-	return false;
+{	
+	glm::vec2 rectPos = rectangleCollider->GetWorld2Dposition();
+	float rectWidth=rectangleCollider->width;
+	float rectHeight=rectangleCollider->height;
+
+	float deltaX = GetWorld2Dposition().x - 
+		glm::max(rectPos.x-rectWidth/2, glm::min(GetWorld2Dposition().x, rectPos.x + rectWidth/2));
+
+	float deltaY = GetWorld2Dposition().y - 
+		glm::max(rectPos.y-rectHeight/2, glm::min(GetWorld2Dposition().y, rectPos.y + rectHeight/2));
+
+	return (deltaX * deltaX + deltaY * deltaY) < (radius*radius);
 }
 

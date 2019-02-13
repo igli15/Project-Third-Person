@@ -1,5 +1,5 @@
 #include "RectangleCollider.h"
-
+#include "CircleCollider.h"
 
 RectangleCollider::~RectangleCollider()
 {
@@ -15,8 +15,7 @@ void RectangleCollider::DetectCollision()
 	bool isColliding = AbstractGame::Instance()->GetCollisionManager()->CheckCollisionInWorld(this);
 	if (isColliding)
 	{
-		int id = m_gameObject->ID();
-		std::cout << "COLLISION _ RECT "<< id <<"/ "  << i << std::endl;
+		std::cout << "COLLISION _ RECT "<< m_gameObject->ID() << std::endl;
 		i++;
 	}
 }
@@ -27,10 +26,17 @@ bool RectangleCollider::IsColliding(ColliderComponent * collider)
 	return collider->IsColliding(this);
 }
 
-bool RectangleCollider::IsColliding(CircleCollider * sphereCollider)
+bool RectangleCollider::IsColliding(CircleCollider * circle)
 {
-	std::cout << "NO REC-CIRCLE COLLISION" << std::endl;
-	return false;
+	glm::vec2 circlePos = circle->GetWorld2Dposition();
+
+	float deltaX = circlePos.x -
+		glm::max(GetWorld2Dposition().x - width / 2, glm::min(circlePos.x, GetWorld2Dposition().x + width / 2));
+
+	float deltaY = circlePos.y -
+		glm::max(GetWorld2Dposition().y - height / 2, glm::min(circlePos.y, GetWorld2Dposition().y + height / 2));
+
+	return (deltaX * deltaX + deltaY * deltaY) < (circle->radius*circle->radius);
 }
 
 bool RectangleCollider::IsColliding(RectangleCollider * rectangleCollider)

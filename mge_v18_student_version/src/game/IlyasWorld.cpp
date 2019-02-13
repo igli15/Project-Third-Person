@@ -62,7 +62,7 @@ void IlyasWorld::Initialize()
 	plane->GetMeshRenderer()->SetMesh(planeMeshDefault);
 	plane->setMaterial(planeMat);
 	plane->transform->Scale(glm::vec3(50, 50, 50));
-	/*
+
 	//TEST object1 
 	GameObject* cylinder1 = _world->Instantiate<GameObject>();
 	cylinder1->transform->SetLocalPosition(glm::vec3(5, 0, 0));
@@ -92,9 +92,9 @@ void IlyasWorld::Initialize()
 	cylinder3->transform->Scale(glm::vec3(1, 1, 1));
 	cylinder3->AddComponent<CircleCollider>();
 	cylinder3->Awake();
-	*/
 
-	GameObject* cube1 = _world->Instantiate<GameObject>();
+
+	/*GameObject* cube1 = _world->Instantiate<GameObject>();
 	cube1->transform->SetLocalPosition(glm::vec3(10, 0, -5));
 	cube1->SetMeshRenderer(cube1->AddComponent<MeshRenderer>());
 	cube1->GetMeshRenderer()->SetMesh(cubeMesh);
@@ -102,7 +102,7 @@ void IlyasWorld::Initialize()
 	cube1->transform->Scale(glm::vec3(1, 1, 1));
 	cube1->AddComponent<RectangleCollider>();
 	cube1->AddComponent<KeyMoveComponent>();
-	cube1->Awake();
+	cube1->Awake();*/
 
 	GameObject* cube2 = _world->Instantiate<GameObject>();
 	cube2->transform->SetLocalPosition(glm::vec3(5, 0, -5));
@@ -112,7 +112,7 @@ void IlyasWorld::Initialize()
 	cube2->transform->Scale(glm::vec3(1, 1, 1));
 	cube2->AddComponent<RectangleCollider>();
 	cube2->Awake();
-
+	/*
 	GameObject* cube3 = _world->Instantiate<GameObject>();
 	cube3->transform->SetLocalPosition(glm::vec3(2, 0,4));
 	cube3->SetMeshRenderer(cube3->AddComponent<MeshRenderer>());
@@ -130,7 +130,7 @@ void IlyasWorld::Initialize()
 	cube4->setMaterial(brickMat);
 	cube4->transform->Scale(glm::vec3(1, 1, 1));
 	cube4->AddComponent<RectangleCollider>();
-	cube4->Awake();
+	cube4->Awake(); */
 
 	Light* l = _world->Instantiate<Light>();
 	l->transform->SetLocalPosition(glm::vec3(-2, 2, 0));
