@@ -10,6 +10,8 @@ class Renderer;
 class WorldManager;
 class ResourceManager;
 class CollisionManager;
+class EventQueue;
+
 /**
  * Defines the basic structure for a game, with defaults already filled in.
  * The only item that MUST be overridden/implemented is _initializeScene()
@@ -36,6 +38,7 @@ class AbstractGame
 		WorldManager* GetWorldManager();
 		ResourceManager* GetResourceManager();
 		CollisionManager* GetCollisionManager();
+		EventQueue* GetEventQueue();
 
     protected:
 
@@ -65,6 +68,7 @@ class AbstractGame
 		Renderer* _renderer;        //the renderer class to render the world
 		World* _world;              //the root game object that represents our scene
 		WorldManager* m_worldManager;
+		EventQueue* m_eventQueue;
 		ResourceManager* m_resourceManager;
 		CollisionManager* m_collisionManager;
 

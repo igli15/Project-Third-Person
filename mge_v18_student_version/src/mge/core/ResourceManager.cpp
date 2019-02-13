@@ -10,8 +10,6 @@ ResourceManager::ResourceManager()
 {
 	m_luaProgram = new LuaProgram("../src/game/Resources.Lua");
 	m_luaProgram->CallCurrentProgram();
-
-	
 }
 
 
@@ -307,11 +305,73 @@ AbstractMaterial * ResourceManager::GetMaterial(const std::string & tag)
 	return m_materialMap[tag];
 }
 
+sf::Music * ResourceManager::LoadMusic(const std::string & path, const std::string & tag)
+{
+	if (m_musicMap.find(tag) != m_musicMap.end())
+	{
+		std::cout << "A Music Resource with that tag is already created" << std::endl;
+		throw;
+	}
+
+	sf::Music* music = new sf::Music();
+	music->openFromFile(path);
+	m_musicMap[tag] = music;
+	return music;
+}
+
+sf::Music * ResourceManager::GetMusic(const std::string & tag)
+{
+	if (m_musicMap.find(tag) == m_musicMap.end())
+	{
+		std::cout << "There is no Music resource with: " << tag << " as a name" << std::endl;
+
+		return nullptr;
+		//return GetTexture("ErrorTexture");
+	}
+
+	return m_musicMap[tag];
+}
+
+sf::Sound * ResourceManager::LoadSound(const std::string & path, const std::string & tag)
+{
+
+	if (m_soundMap.find(tag) != m_soundMap.end())
+	{
+		std::cout << "A Sound Resource with that tag is already created" << std::endl;
+		throw;
+	}
+
+	sf::SoundBuffer* buffer = new sf::SoundBuffer();
+	buffer->loadFromFile(path);
+	m_soundBuffers.push_back(buffer);
+
+	sf::Sound* s = new sf::Sound();
+
+	s->setBuffer(*buffer);
+	m_soundMap[tag] = s;
+	return s;
+}
+
+sf::Sound * ResourceManager::GetSound(const std::string & tag)
+{
+	if (m_soundMap.find(tag) == m_soundMap.end())
+	{
+		std::cout << "There is no Sound resource with: " << tag << " as a name" << std::endl;
+
+		return nullptr;
+		//return GetTexture("ErrorTexture");
+	}
+
+	return m_soundMap[tag];
+}
+
 void ResourceManager::LoadResourcesFromLua()
 {
 	LuaLoadMeshes();
 	LuaLoadDiffuseTextures();
 	LuaLoadSpecularTexutres();
+	LuaLoadSounds();
+	LuaLoadMusics();
 }
 
 void ResourceManager::LuaLoadMeshes()
@@ -368,6 +428,46 @@ void ResourceManager::LuaLoadSpecularTexutres()
 		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
 		//std::cout << name <<" "<< path<<  std::endl;
 		LoadTexture(path, name, TextureType::SPECULAR);
+		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
+	}
+
+	m_luaProgram->PopCurrentTable();
+}
+
+void ResourceManager::LuaLoadSounds()
+{
+	m_luaProgram->GetGlobalTable("sounds");
+
+	lua_pushnil(m_luaProgram->GetCurrentLuaState());
+	lua_gettable(m_luaProgram->GetCurrentLuaState(), -2);
+
+	while (lua_next(m_luaProgram->GetCurrentLuaState(), -2) != 0)
+	{
+
+		std::string name = lua_tostring(m_luaProgram->GetCurrentLuaState(), -2);
+		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
+		//std::cout << name <<" "<< path<<  std::endl;
+		LoadSound(path, name);
+		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
+	}
+
+	m_luaProgram->PopCurrentTable();
+}
+
+void ResourceManager::LuaLoadMusics()
+{
+	m_luaProgram->GetGlobalTable("musics");
+
+	lua_pushnil(m_luaProgram->GetCurrentLuaState());
+	lua_gettable(m_luaProgram->GetCurrentLuaState(), -2);
+
+	while (lua_next(m_luaProgram->GetCurrentLuaState(), -2) != 0)
+	{
+
+		std::string name = lua_tostring(m_luaProgram->GetCurrentLuaState(), -2);
+		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
+		//std::cout << name <<" "<< path<<  std::endl;
+		LoadMusic(path, name);
 		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
 	}
 
