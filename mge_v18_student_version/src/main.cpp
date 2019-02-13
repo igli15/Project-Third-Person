@@ -29,7 +29,8 @@ int main()
 	game->CreateWorld();
     game->run();
 
-	delete game;
+	//TODO: Check this.
+	//delete game;
 
     return 0;
 }

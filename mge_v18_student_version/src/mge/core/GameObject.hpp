@@ -62,6 +62,8 @@ class GameObject
         int getChildCount() const;
         GameObject* getChildAt (int pIndex) const;
 
+		unsigned ID() const; //Get ID
+
 		//Add a Component of the specified type to the GameObject
 		template<typename T>
 		T* AddComponent()
@@ -119,10 +121,15 @@ class GameObject
     private:
         GameObject (const GameObject&);
 		GameObject& operator= (const GameObject&);
+		bool operator == (const GameObject & other);
 
 		std::vector<Component*> m_attachedComponents;
 
 		bool m_markedForDestruction = false;
+
+		static unsigned m_idCounter; 
+
+		unsigned m_id;
 };
 
 #endif // GAMEOBJECT_HPP

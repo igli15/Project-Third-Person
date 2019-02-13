@@ -2,12 +2,18 @@
 #include "GameObject.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
 
+unsigned GameObject::m_idCounter = 0;
+
 GameObject::GameObject()
 :	_name( "" ), _parent(nullptr), _children(),
     _material(nullptr), _world(nullptr)
 
 {
+
+	m_idCounter += 1;
+	m_id = m_idCounter;
 	transform = AddComponent<Transform>();
+
 }
 
 GameObject::~GameObject()
@@ -204,11 +210,22 @@ void GameObject::_setWorldRecursively (World* pWorld) {
     }
 }
 
+bool GameObject::operator==(const GameObject & other)
+{
+	return m_id == other.ID();
+		
+}
+
 int GameObject::getChildCount() const {
     return _children.size();
 }
 
 GameObject* GameObject::getChildAt(int pIndex) const {
     return _children[pIndex];
+}
+
+unsigned GameObject::ID() const
+{
+	return m_id;
 }
 

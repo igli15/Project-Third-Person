@@ -168,10 +168,10 @@
   <ItemGroup>
     <ClInclude Include="..\src\game\components\KeyMoveComponent.h" />
     <ClInclude Include="..\src\game\components\RotatingComponent.h" />
+    <ClInclude Include="..\src\game\IlyasWorld.h" />
     <ClInclude Include="..\src\game\MainGame.h" />
     <ClInclude Include="..\src\game\MainWorld.h" />
     <ClInclude Include="..\src\glm.hpp" />
-    <ClInclude Include="..\src\IlyasWorld.h" />
     <ClInclude Include="..\src\mge\components\CameraComponent.h" />
     <ClInclude Include="..\src\mge\components\ColliderComponent.hpp" />
     <ClInclude Include="..\src\mge\components\LightComponent.h" />
@@ -202,9 +202,9 @@
   <ItemGroup>
     <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp" />
     <ClCompile Include="..\src\game\components\RotatingComponent.cpp" />
+    <ClCompile Include="..\src\game\IlyasWorld.cpp" />
     <ClCompile Include="..\src\game\MainGame.cpp" />
     <ClCompile Include="..\src\game\MainWorld.cpp" />
-    <ClCompile Include="..\src\IlyasWorld.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mge\components\CameraComponent.cpp" />
     <ClCompile Include="..\src\mge\components\ColliderComponent.cpp" />
