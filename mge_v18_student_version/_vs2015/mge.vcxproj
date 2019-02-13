@@ -184,6 +184,8 @@
     <ClInclude Include="..\src\mge\core\Camera.hpp" />
     <ClInclude Include="..\src\mge\core\CollisionManager.h" />
     <ClInclude Include="..\src\mge\core\Component.h" />
+    <ClInclude Include="..\src\mge\core\EventQueue.h" />
+    <ClInclude Include="..\src\mge\core\EventType.h" />
     <ClInclude Include="..\src\mge\core\GameObject.hpp" />
     <ClInclude Include="..\src\mge\core\Light.hpp" />
     <ClInclude Include="..\src\mge\core\Mesh.hpp" />
@@ -193,6 +195,7 @@
     <ClInclude Include="..\src\mge\core\Texture.hpp" />
     <ClInclude Include="..\src\mge\core\World.hpp" />
     <ClInclude Include="..\src\mge\core\WorldManager.h" />
+    <ClInclude Include="..\src\mge\eventTypes\TestEvent.h" />
     <ClInclude Include="..\src\mge\lua\LuaProgram.h" />
     <ClInclude Include="..\src\mge\materials\AbstractMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\ColorMaterial.hpp" />
@@ -218,6 +221,8 @@
     <ClCompile Include="..\src\mge\core\Camera.cpp" />
     <ClCompile Include="..\src\mge\core\CollisionManager.cpp" />
     <ClCompile Include="..\src\mge\core\Component.cpp" />
+    <ClCompile Include="..\src\mge\core\EventQueue.cpp" />
+    <ClCompile Include="..\src\mge\core\EventType.cpp" />
     <ClCompile Include="..\src\mge\core\GameObject.cpp" />
     <ClCompile Include="..\src\mge\core\Light.cpp" />
     <ClCompile Include="..\src\mge\core\Mesh.cpp" />
@@ -227,6 +232,7 @@
     <ClCompile Include="..\src\mge\core\Texture.cpp" />
     <ClCompile Include="..\src\mge\core\World.cpp" />
     <ClCompile Include="..\src\mge\core\WorldManager.cpp" />
+    <ClCompile Include="..\src\mge\eventTypes\TestEvent.cpp" />
     <ClCompile Include="..\src\mge\lua\LuaProgram.cpp" />
     <ClCompile Include="..\src\mge\materials\AbstractMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\ColorMaterial.cpp" />

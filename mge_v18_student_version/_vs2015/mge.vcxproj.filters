@@ -32,6 +32,9 @@
     <Filter Include="MGE Source files\mge\lua">
       <UniqueIdentifier>{28a611e6-2be2-4fbf-9e2a-83571269532b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MGE Source files\mge\eventTypes">
+      <UniqueIdentifier>{70ddbfaf-777b-400b-b24c-6e7b06b744ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp">
@@ -133,6 +136,15 @@
     <ClInclude Include="..\src\mge\components\AudioSource.h">
       <Filter>MGE Source files\mge\components</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\core\EventQueue.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\EventType.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\eventTypes\TestEvent.h">
+      <Filter>MGE Source files\mge\eventTypes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -230,6 +242,15 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\components\AudioSource.cpp">
       <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\EventQueue.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\EventType.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\eventTypes\TestEvent.cpp">
+      <Filter>MGE Source files\mge\eventTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

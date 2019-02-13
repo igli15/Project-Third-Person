@@ -7,6 +7,7 @@
 #include "mge/core//CollisionManager.h"
 #include "game/MainWorld.h"
 #include "ResourceManager.h"
+#include "mge/core/EventQueue.h"
 
 AbstractGame* AbstractGame::m_instance = nullptr;
 
@@ -21,6 +22,11 @@ AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_world(NULL), _fps(0)
 	std::cout << "Creating Collision Manager" << std::endl;
 	m_collisionManager = new CollisionManager();
 	std::cout << "Resource Collision is Created" << std::endl;
+
+	std::cout << "Creating Event Queue" << std::endl;
+	m_eventQueue = new EventQueue();
+	std::cout << "EventQueue Created" << std::endl;
+
 }
 
 AbstractGame::~AbstractGame()
@@ -142,6 +148,8 @@ void AbstractGame::run()
 
 			m_worldManager->GetCurrentWorld()->ClearMarkedGameObject();
 
+			m_eventQueue->HandleEvents();
+
 		    while (timeSinceLastUpdate > timePerFrame) {
                 timeSinceLastUpdate -= timePerFrame;
                 _update(timePerFrame.asSeconds());
@@ -184,6 +192,11 @@ ResourceManager * AbstractGame::GetResourceManager()
 CollisionManager * AbstractGame::GetCollisionManager()
 {
 	return m_collisionManager;
+}
+
+EventQueue * AbstractGame::GetEventQueue()
+{
+	return m_eventQueue;
 }
 
 void AbstractGame::_update(float pStep) {

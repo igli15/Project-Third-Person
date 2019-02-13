@@ -90,6 +90,8 @@ void MainWorld::Initialize()
 	cube2->AddComponent<KeyMoveComponent>();
 	//cube2->setBehaviour(new KeysBehaviour());
 
+
+
 	GameObject* plane = _world->Instantiate<GameObject>();
 	plane->transform->SetLocalPosition(glm::vec3(0, -1, 0));
 	plane->SetMeshRenderer(plane->AddComponent<MeshRenderer>());

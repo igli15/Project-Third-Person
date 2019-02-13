@@ -17,7 +17,9 @@
 #include "mge/core/ResourceManager.h"
 #include "mge/lua/LuaProgram.h"
 #include "IlyasWorld.h"
-
+#include "mge/eventTypes/TestEvent.h"
+#include "mge/core/EventQueue.h"
+#include <iostream>
 
 MainGame::MainGame()
 {
@@ -55,5 +57,10 @@ void MainGame::CreateWorld()
 {
 	AbstractGame::CreateWorld();
 	//m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
+
+	//m_eventQueue->RegisterEvent<TestEvent>([](EventType* t) {std::cout << dynamic_cast<TestEvent*>(t)->test << std::endl; });
+	//TestEvent* t = new TestEvent();
+	//t->test = "TTTTT";
+	//m_eventQueue->QueueEventType(t);
 }
 
