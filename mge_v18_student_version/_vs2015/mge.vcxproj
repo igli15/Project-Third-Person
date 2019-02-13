@@ -172,6 +172,7 @@
     <ClInclude Include="..\src\game\MainGame.h" />
     <ClInclude Include="..\src\game\MainWorld.h" />
     <ClInclude Include="..\src\glm.hpp" />
+    <ClInclude Include="..\src\mge\components\AudioSource.h" />
     <ClInclude Include="..\src\mge\components\CameraComponent.h" />
     <ClInclude Include="..\src\mge\components\ColliderComponent.hpp" />
     <ClInclude Include="..\src\mge\components\LightComponent.h" />
@@ -206,6 +207,7 @@
     <ClCompile Include="..\src\game\MainGame.cpp" />
     <ClCompile Include="..\src\game\MainWorld.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\mge\components\AudioSource.cpp" />
     <ClCompile Include="..\src\mge\components\CameraComponent.cpp" />
     <ClCompile Include="..\src\mge\components\ColliderComponent.cpp" />
     <ClCompile Include="..\src\mge\components\LightComponent.cpp" />

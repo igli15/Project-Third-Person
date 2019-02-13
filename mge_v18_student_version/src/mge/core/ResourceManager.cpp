@@ -307,6 +307,37 @@ AbstractMaterial * ResourceManager::GetMaterial(const std::string & tag)
 	return m_materialMap[tag];
 }
 
+sf::Music * ResourceManager::LoadMusic(const std::string & path, const std::string & tag)
+{
+	sf::Music* music = new sf::Music();
+	music->openFromFile(path);
+	m_musicMap[tag] = music;
+	return music;
+}
+
+sf::Music * ResourceManager::GetMusic(const std::string & tag)
+{
+	return m_musicMap[tag];
+}
+
+sf::Sound * ResourceManager::LoadSound(const std::string & path, const std::string & tag)
+{
+	sf::SoundBuffer* buffer = new sf::SoundBuffer();
+	buffer->loadFromFile(path);
+	m_soundBuffers.push_back(buffer);
+
+	sf::Sound* s = new sf::Sound();
+
+	s->setBuffer(*buffer);
+	m_soundMap[tag] = s;
+	return s;
+}
+
+sf::Sound * ResourceManager::GetSound(const std::string & tag)
+{
+	return m_soundMap[tag];
+}
+
 void ResourceManager::LoadResourcesFromLua()
 {
 	LuaLoadMeshes();

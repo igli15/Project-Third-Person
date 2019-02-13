@@ -34,6 +34,9 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 
 	resourceManager->LoadResourcesFromLua();
 
+	resourceManager->LoadSound(config::MGE_MUSIC_PATH +"cannonShot.wav","cannonShot");
+	resourceManager->LoadMusic(config::MGE_MUSIC_PATH + "expmusic.wav", "expmusic");
+
 	AbstractMaterial* brickMat = new TextureMaterial(resourceManager->GetTexture("brickTex"), nullptr);
 	TextureMaterial* carMat = new TextureMaterial(resourceManager->GetTexture("carTex"), nullptr);
 	
@@ -54,6 +57,6 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 void MainGame::CreateWorld()
 {
 	AbstractGame::CreateWorld();
-	m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
+	//m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
 }
 

@@ -130,6 +130,9 @@
     <ClInclude Include="..\src\game\IlyasWorld.h">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\components\AudioSource.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -224,6 +227,9 @@
     </ClCompile>
     <ClCompile Include="..\src\game\IlyasWorld.cpp">
       <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\AudioSource.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
