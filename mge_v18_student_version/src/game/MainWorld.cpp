@@ -17,6 +17,7 @@
 #include "mge/core/WorldManager.h"
 #include "mge/core/ResourceManager.h"
 #include "MainGame.h"
+#include "lua.h"
 
 MainWorld::MainWorld()
 {

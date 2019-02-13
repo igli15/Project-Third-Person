@@ -23,6 +23,8 @@ class Texture
 
 		TextureType Type();
 
+		void SetType(TextureType type);
+
 	protected:
 	   
 

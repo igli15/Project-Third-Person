@@ -22,6 +22,11 @@ TextureType Texture::Type()
 	return m_type;
 }
 
+void Texture::SetType(TextureType type)
+{
+	m_type = type;
+}
+
 // importer for textures
 Texture* Texture::load(const std::string& pFilename , TextureType ptype)
 {

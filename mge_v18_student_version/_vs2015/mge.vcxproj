@@ -192,6 +192,7 @@
     <ClInclude Include="..\src\mge\core\Texture.hpp" />
     <ClInclude Include="..\src\mge\core\World.hpp" />
     <ClInclude Include="..\src\mge\core\WorldManager.h" />
+    <ClInclude Include="..\src\mge\lua\LuaProgram.h" />
     <ClInclude Include="..\src\mge\materials\AbstractMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\ColorMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
@@ -224,13 +225,27 @@
     <ClCompile Include="..\src\mge\core\Texture.cpp" />
     <ClCompile Include="..\src\mge\core\World.cpp" />
     <ClCompile Include="..\src\mge\core\WorldManager.cpp" />
+    <ClCompile Include="..\src\mge\lua\LuaProgram.cpp" />
     <ClCompile Include="..\src\mge\materials\AbstractMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\ColorMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\test\TestComponent.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\game\Resources.lua" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\lua.redist.5.3.5\build\native\lua.redist.targets" Condition="Exists('packages\lua.redist.5.3.5\build\native\lua.redist.targets')" />
+    <Import Project="packages\lua.5.3.5\build\native\lua.targets" Condition="Exists('packages\lua.5.3.5\build\native\lua.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\lua.redist.5.3.5\build\native\lua.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\lua.redist.5.3.5\build\native\lua.redist.targets'))" />
+    <Error Condition="!Exists('packages\lua.5.3.5\build\native\lua.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\lua.5.3.5\build\native\lua.targets'))" />
+  </Target>
 </Project>
