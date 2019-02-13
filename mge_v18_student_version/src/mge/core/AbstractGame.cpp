@@ -4,7 +4,9 @@
 #include "mge/core/Renderer.hpp"
 #include "mge/core/World.hpp"
 #include "mge/core/WorldManager.h"
+#include "mge/core//CollisionManager.h"
 #include "game/MainWorld.h"
+#include "IlyasWorld.h"
 #include "ResourceManager.h"
 
 AbstractGame* AbstractGame::m_instance = nullptr;
@@ -16,6 +18,10 @@ AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_world(NULL), _fps(0)
 	std::cout << "Creating Resource Manager" << std::endl;
 	m_resourceManager = new ResourceManager();
 	std::cout << "Resource Manager is Created" << std::endl;
+
+	std::cout << "Creating Collision Manager" << std::endl;
+	m_collisionManager = new CollisionManager();
+	std::cout << "Resource Collision is Created" << std::endl;
 }
 
 AbstractGame::~AbstractGame()
@@ -92,7 +98,7 @@ void AbstractGame::_initializeWorld() {
     //setup the world
 	std::cout << "Initializing world..." << std::endl;
 	//_world = new World();
-	_world = m_worldManager->CreateWorld<MainWorld>("MainWorld");
+	_world = m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
     std::cout << "World initialized." << std::endl << std::endl;
 }
 
@@ -174,6 +180,11 @@ WorldManager * AbstractGame::GetWorldManager()
 ResourceManager * AbstractGame::GetResourceManager()
 {
 	return m_resourceManager;
+}
+
+CollisionManager * AbstractGame::GetCollisionManager()
+{
+	return m_collisionManager;
 }
 
 void AbstractGame::_update(float pStep) {
