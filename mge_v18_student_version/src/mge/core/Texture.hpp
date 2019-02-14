@@ -4,6 +4,7 @@
 #include <map>
 #include <string>
 #include <GL/glew.h>
+#include "SFML/Graphics.hpp"
 
 enum TextureType
 {
@@ -17,23 +18,25 @@ class Texture
 		Texture();
 		virtual ~Texture();
 
-		static Texture* load(const std::string& pTexturePath, TextureType type = TextureType::DIFFUSE);
-
 		GLuint getId();
 
 		TextureType Type();
 
 		void SetType(TextureType type);
 
-	protected:
-	   
+		void InnerSetImage(sf::Image* image);
 
-        static Texture* _loadFromFile(const std::string pTexturePath);
+		sf::Image* Image();
+
+	protected:
 
 	    //OpenGL id for texture buffer
 		GLuint _id;
 
 		TextureType m_type;
+
+		sf::Image* m_image;
+
 };
 
 #endif // TEXTURE_HPP

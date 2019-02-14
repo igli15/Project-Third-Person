@@ -48,8 +48,8 @@ void MainWorld::Initialize()
 	TextureMaterial* radioMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("stuffMat"));
 
 	Camera* camera = _world->Instantiate<Camera>();
-	camera->transform->SetLocalPosition(glm::vec3(0, 6, 20));
-	camera->transform->Rotate(glm::radians(-20.0f), glm::vec3(1, 0, 0));
+	camera->transform->SetLocalPosition(glm::vec3(0, 22, 22));
+	camera->transform->Rotate(glm::radians(-65.0f), glm::vec3(1, 0, 0));
 	camera->GetCameraComponent()->SetFOV(60); //Set Camera Properties via its component
 	_world->setMainCamera(camera);
 
@@ -77,7 +77,7 @@ void MainWorld::Initialize()
 	//cube->setBehaviour(new RotatingBehaviour());
 
 	GameObject* cube2 = _world->Instantiate<GameObject>();
-	cube2->transform->SetLocalPosition(glm::vec3(-0.25f, 0.2f, 0));
+	cube2->transform->SetLocalPosition(glm::vec3(0.5, 0.0f, 4));
 	cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
 	cube2->GetMeshRenderer()->SetMesh(gunMesh);
 	//radioMat->SetShininess(256);
@@ -89,7 +89,7 @@ void MainWorld::Initialize()
 	canvas->Awake();
 
 	GameObject* sprite = _world->Instantiate<GameObject>();
-	sprite->AddComponent<UISpriteRenderer>()->ApplyTextureToSprite(Text);
+	//sprite->AddComponent<UISpriteRenderer>()->ApplyTextureToSprite(Text);
 	sprite->Awake();
 
 
@@ -98,24 +98,17 @@ void MainWorld::Initialize()
 	cube2->GetComponent<AudioSource>()->PlayMusic();
 	cube2->GetComponent<AudioSource>()->PlayOneShotSound("cannonShot");
 	*/
-	cube2->transform->Scale(glm::vec3(1.0f, 1.0f, 1.0f));
+	cube2->transform->Scale(glm::vec3(1.0f,1.0f, 1.0f));
 	cube2->AddComponent<KeyMoveComponent>();
 	//cube2->setBehaviour(new KeysBehaviour());
 
 
 
-	GameObject* plane = _world->Instantiate<GameObject>();
-	plane->transform->SetLocalPosition(glm::vec3(0, -1, 0));
-	plane->SetMeshRenderer(plane->AddComponent<MeshRenderer>());
-	plane->GetMeshRenderer()->SetMesh(planeMeshDefault);
-	plane->setMaterial(planeMat);
-	plane->transform->Scale(glm::vec3(50, 50, 50));
-
 	Light* l = _world->Instantiate<Light>();
 	l->transform->SetLocalPosition(glm::vec3(-2, 2, 0));
 	l->transform->Rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
 	l->transform->Rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
-	l->GetLightComponent()->SetType(LightType::POINT);
+	l->GetLightComponent()->SetType(LightType::DIRECTIONAL);
 	l->GetLightComponent()->SetIntensity(1.0f);
 	l->GetLightComponent()->SetColor(glm::vec3(1, 1, 0.95f));
 	l->GetLightComponent()->SetSpecularContribution(1.0f);

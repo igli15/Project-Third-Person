@@ -11,7 +11,7 @@ meshes =
 	["planeMesh"] = meshesLoadPath.."plane.obj",
 	["cubeMesh"] = meshesLoadPath.."cube_smooth.obj",
 	["carMesh"] = meshesLoadPath.."Car.obj",
-	["testMesh"] = meshesLoadPath.."stuff.obj",
+	["testMesh"] = meshesLoadPath.."arena.obj",
 	["cylinderMesh"] = meshesLoadPath.."cylinder_smooth.obj",
 }
 
@@ -21,7 +21,7 @@ diffuseTextures =
 	["brickTex"] = texturesLoadPath.."bricks.jpg",
 	["carTex"] = texturesLoadPath.."carTex.png",
 	["containerDiffuse"] = texturesLoadPath.."container2.png",
-	["buildingTex"] = texturesLoadPath.."stuffTex.png",
+	["buildingTex"] = texturesLoadPath.."arenaDiffuse.png",
 	
 }
 
