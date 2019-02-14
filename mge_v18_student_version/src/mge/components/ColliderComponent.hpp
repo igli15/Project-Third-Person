@@ -15,8 +15,11 @@ public:
 	void Update(float timeSteps) override;
 
 	void SetCollisionLayerTag(std::string layerTag);
-	void AddCollisionFilterTag(std::string filterTag);
+	std::string GetCollisionLayerTag();
 
+	void AddCollisionFilterTag(std::string filterTag);
+	std::vector<std::string> GetCollisionFilterTags();
+	
 	glm::vec2 GetWorld2Dposition();
 
 	virtual void DetectCollision() = 0;

@@ -73,6 +73,7 @@ void IlyasWorld::Initialize()
 	cylinder1->AddComponent<KeyMoveComponent>();
 	cylinder1->AddComponent<CircleCollider>();
 	cylinder1->Awake();
+	cylinder1->GetComponent<CircleCollider>()->AddCollisionFilterTag("default");
 	
 	//Test object 2
 	GameObject* cylinder2 = _world->Instantiate<GameObject>();
@@ -80,7 +81,7 @@ void IlyasWorld::Initialize()
 	cylinder2->SetMeshRenderer(cylinder2->AddComponent<MeshRenderer>());
 	cylinder2->GetMeshRenderer()->SetMesh(cylinderMesh);
 	cylinder2->setMaterial(brickMat);
-	cylinder2->transform->Scale(glm::vec3(1, 1, 1));
+	cylinder2->transform->Scale(glm::vec3(1, 2, 1));
 	cylinder2->AddComponent<CircleCollider>();
 	cylinder2->Awake();
 	//Test object 3
@@ -89,8 +90,9 @@ void IlyasWorld::Initialize()
 	cylinder3->SetMeshRenderer(cylinder3->AddComponent<MeshRenderer>());
 	cylinder3->GetMeshRenderer()->SetMesh(cylinderMesh);
 	cylinder3->setMaterial(brickMat);
-	cylinder3->transform->Scale(glm::vec3(1, 1, 1));
+	cylinder3->transform->Scale(glm::vec3(1, 4, 1));
 	cylinder3->AddComponent<CircleCollider>();
+	
 	cylinder3->Awake();
 
 
