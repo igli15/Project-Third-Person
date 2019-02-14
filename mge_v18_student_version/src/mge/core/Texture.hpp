@@ -9,7 +9,9 @@
 enum TextureType
 {
 	DIFFUSE,
-	SPECULAR
+	SPECULAR,
+	EMISSION,
+	REPLACEMENT
 };
 
 class Texture

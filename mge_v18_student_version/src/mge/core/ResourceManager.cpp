@@ -10,6 +10,9 @@ ResourceManager::ResourceManager()
 {
 	m_luaProgram = new LuaProgram("../src/game/Resources.Lua");
 	m_luaProgram->CallCurrentProgram();
+
+	LoadTexture(config::MGE_TEXTURE_PATH + "whiteTex.png", "whiteTex",TextureType::REPLACEMENT);
+	LoadTexture(config::MGE_TEXTURE_PATH + "blackTex.png", "blackTex", TextureType::REPLACEMENT);
 }
 
 
@@ -40,7 +43,7 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 
 		//If we want specular / normals maps we still have to use rgba instead of SRGB
 
-		if (textureType == TextureType::SPECULAR)
+		if (textureType == TextureType::SPECULAR || textureType == TextureType::EMISSION)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
@@ -48,6 +51,11 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
+		else if (textureType == TextureType::REPLACEMENT)
+		{
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+		}
+
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glBindTexture(GL_TEXTURE_2D, 0);
@@ -370,6 +378,7 @@ void ResourceManager::LoadResourcesFromLua()
 	LuaLoadMeshes();
 	LuaLoadDiffuseTextures();
 	LuaLoadSpecularTexutres();
+	LuaLoadEmissionTextures();
 	LuaLoadSounds();
 	LuaLoadMusics();
 }
@@ -428,6 +437,26 @@ void ResourceManager::LuaLoadSpecularTexutres()
 		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
 		//std::cout << name <<" "<< path<<  std::endl;
 		LoadTexture(path, name, TextureType::SPECULAR);
+		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
+	}
+
+	m_luaProgram->PopCurrentTable();
+}
+
+void ResourceManager::LuaLoadEmissionTextures()
+{
+	m_luaProgram->GetGlobalTable("emissionTextures");
+
+	lua_pushnil(m_luaProgram->GetCurrentLuaState());
+	lua_gettable(m_luaProgram->GetCurrentLuaState(), -2);
+
+	while (lua_next(m_luaProgram->GetCurrentLuaState(), -2) != 0)
+	{
+
+		std::string name = lua_tostring(m_luaProgram->GetCurrentLuaState(), -2);
+		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
+		//std::cout << name <<" "<< path<<  std::endl;
+		LoadTexture(path, name, TextureType::EMISSION);
 		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
 	}
 

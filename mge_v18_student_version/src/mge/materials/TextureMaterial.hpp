@@ -14,7 +14,7 @@ class Texture;
 class TextureMaterial : public AbstractMaterial
 {
     public:
-        TextureMaterial (Texture* pDiffuseTexture,Texture* specularTexture );
+        TextureMaterial (Texture* pDiffuseTexture,Texture* specularTexture,Texture* emissionTexture);
         virtual ~TextureMaterial ();
 
         virtual void render(World* pWorld, MeshRenderer* meshRenderer, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) override;
@@ -39,6 +39,7 @@ class TextureMaterial : public AbstractMaterial
 
         Texture* _diffuseTexture = nullptr;
 		Texture* m_spcecularTexture = nullptr;
+		Texture* m_emissionTexture = nullptr;
 
 		float m_shineness = 8;
 
@@ -46,6 +47,9 @@ class TextureMaterial : public AbstractMaterial
 
         TextureMaterial(const TextureMaterial&);
         TextureMaterial& operator=(const TextureMaterial&);
+
+		Texture* m_whiteTex;
+		Texture* m_blackTex;
 
 };
 

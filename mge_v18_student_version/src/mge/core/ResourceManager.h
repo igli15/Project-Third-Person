@@ -43,6 +43,7 @@ public:
 	void LuaLoadMeshes();
 	void LuaLoadDiffuseTextures();
 	void LuaLoadSpecularTexutres();
+	void LuaLoadEmissionTextures();
 	void LuaLoadSounds();
 	void LuaLoadMusics();
 };

@@ -103,6 +103,13 @@ void MainWorld::Initialize()
 	//cube2->setBehaviour(new KeysBehaviour());
 
 
+	GameObject* cube = _world->Instantiate<GameObject>();
+	cube->transform->SetLocalPosition(glm::vec3(0, 15, 15));
+	cube->SetMeshRenderer(cube->AddComponent<MeshRenderer>());
+	cube->GetMeshRenderer()->SetMesh(cubeMesh);
+	cube->AddComponent<RotatingComponent>();
+	cube->setMaterial(containerMat);
+
 
 	Light* l = _world->Instantiate<Light>();
 	l->transform->SetLocalPosition(glm::vec3(-2, 2, 0));

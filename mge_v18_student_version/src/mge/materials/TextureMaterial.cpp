@@ -10,6 +10,7 @@
 #include "mge/config.hpp"
 #include "../components/MeshRenderer.h"
 #include "../components/LightComponent.h"
+#include "mge/core/ResourceManager.h"
 
 ShaderProgram* TextureMaterial::m_shaderProgram = NULL;
 
@@ -20,10 +21,13 @@ GLint TextureMaterial::_aVertex = 0;
 GLint TextureMaterial::_aNormal = 0;
 GLint TextureMaterial::_aUV = 0;
 
-TextureMaterial::TextureMaterial(Texture * pDiffuseTexture , Texture* specularTexture = nullptr):_diffuseTexture(pDiffuseTexture),m_spcecularTexture(specularTexture) {
+TextureMaterial::TextureMaterial(Texture * pDiffuseTexture , Texture* specularTexture = nullptr, Texture* emissionTexture = nullptr)
+	:_diffuseTexture(pDiffuseTexture),m_spcecularTexture(specularTexture),m_emissionTexture(emissionTexture)
+{
     _lazyInitializeShader();
-
  
+	m_whiteTex = AbstractGame::Instance()->GetResourceManager()->GetTexture("whiteTex");
+	m_blackTex = AbstractGame::Instance()->GetResourceManager()->GetTexture("blackTex");
 }
 
 TextureMaterial::~TextureMaterial() {}
@@ -83,6 +87,34 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		glBindTexture(GL_TEXTURE_2D, m_spcecularTexture->getId());
 		//tell the shader the texture slot for the specular texture is slot 1
 		glUniform1i(m_shaderProgram->getUniformLocation("specularTexture"), 1);
+	}
+	else
+	{
+		//setup texture slot 1
+		glActiveTexture(GL_TEXTURE1);
+		//bind the texture to the current active slot
+		glBindTexture(GL_TEXTURE_2D, m_whiteTex->getId());
+		//tell the shader the texture slot for the specular texture is slot 1
+		glUniform1i(m_shaderProgram->getUniformLocation("specularTexture"), 1);
+	}
+
+	if (m_emissionTexture != nullptr)
+	{
+		//setup texture slot 2
+		glActiveTexture(GL_TEXTURE2);
+		//bind the texture to the current active slot
+		glBindTexture(GL_TEXTURE_2D, m_emissionTexture->getId());
+		//tell the shader the texture slot for the specular texture is slot 2
+		glUniform1i(m_shaderProgram->getUniformLocation("emissionTexture"), 2);
+	}
+	else
+	{
+		//setup texture slot 2
+		glActiveTexture(GL_TEXTURE2);
+		//bind the texture to the current active slot
+		glBindTexture(GL_TEXTURE_2D, m_blackTex->getId());
+		//tell the shader the texture slot for the specular texture is slot 2
+		glUniform1i(m_shaderProgram->getUniformLocation("emissionTexture"), 2);
 	}
 
 	int pointLightCount = 0;
