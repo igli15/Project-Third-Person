@@ -19,6 +19,7 @@
 #include "MainGame.h"
 #include "lua.h"
 #include"mge/components/AudioSource.h"
+#include "mge\components\UISpriteRenderer.h"
 
 MainWorld::MainWorld()
 {
@@ -81,11 +82,22 @@ void MainWorld::Initialize()
 	cube2->GetMeshRenderer()->SetMesh(gunMesh);
 	//radioMat->SetShininess(256);
 
+	GameObject* canvas = _world->Instantiate<GameObject>();
+	sf::Texture* Text = new sf::Texture();
+	Text->loadFromFile(config::MGE_TEXTURE_PATH + "bricks.jpg");
+	canvas->AddComponent<CanvasComponent>();
+	canvas->Awake();
+
+	GameObject* sprite = _world->Instantiate<GameObject>();
+	sprite->AddComponent<UISpriteRenderer>()->ApplyTextureToSprite(Text);
+	sprite->Awake();
+
+
 	cube2->setMaterial(radioMat);
-	cube2->AddComponent<AudioSource>()->SetMusic(AbstractGame::Instance()->GetResourceManager()->GetMusic("expmusic"));
+	/*cube2->AddComponent<AudioSource>()->SetMusic(AbstractGame::Instance()->GetResourceManager()->GetMusic("expmusic"));
 	cube2->GetComponent<AudioSource>()->PlayMusic();
 	cube2->GetComponent<AudioSource>()->PlayOneShotSound("cannonShot");
-
+	*/
 	cube2->transform->Scale(glm::vec3(1.0f, 1.0f, 1.0f));
 	cube2->AddComponent<KeyMoveComponent>();
 	//cube2->setBehaviour(new KeysBehaviour());

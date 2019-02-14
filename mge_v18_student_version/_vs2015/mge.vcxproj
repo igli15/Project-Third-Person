@@ -174,11 +174,13 @@
     <ClInclude Include="..\src\glm.hpp" />
     <ClInclude Include="..\src\mge\components\AudioSource.h" />
     <ClInclude Include="..\src\mge\components\CameraComponent.h" />
+    <ClInclude Include="..\src\mge\components\CanvasComponent.h" />
     <ClInclude Include="..\src\mge\components\ColliderComponent.hpp" />
     <ClInclude Include="..\src\mge\components\LightComponent.h" />
     <ClInclude Include="..\src\mge\components\MeshRenderer.h" />
     <ClInclude Include="..\src\mge\components\SphereCollider.h" />
     <ClInclude Include="..\src\mge\components\Transform.h" />
+    <ClInclude Include="..\src\mge\components\UISpriteRenderer.h" />
     <ClInclude Include="..\src\mge\config.hpp" />
     <ClInclude Include="..\src\mge\core\AbstractGame.hpp" />
     <ClInclude Include="..\src\mge\core\Camera.hpp" />
@@ -212,11 +214,13 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mge\components\AudioSource.cpp" />
     <ClCompile Include="..\src\mge\components\CameraComponent.cpp" />
+    <ClCompile Include="..\src\mge\components\CanvasComponent.cpp" />
     <ClCompile Include="..\src\mge\components\ColliderComponent.cpp" />
     <ClCompile Include="..\src\mge\components\LightComponent.cpp" />
     <ClCompile Include="..\src\mge\components\MeshRenderer.cpp" />
     <ClCompile Include="..\src\mge\components\SphereCollider.cpp" />
     <ClCompile Include="..\src\mge\components\Transform.cpp" />
+    <ClCompile Include="..\src\mge\components\UISpriteRenderer.cpp" />
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp" />
     <ClCompile Include="..\src\mge\core\Camera.cpp" />
     <ClCompile Include="..\src\mge\core\CollisionManager.cpp" />

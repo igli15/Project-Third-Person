@@ -58,3 +58,13 @@ void World::InnerDestroy(GameObject * object)
 	remove(object);
 	delete object;
 }
+
+void World::SetCanvas(CanvasComponent * canvas)
+{
+	m_mainCanvas = canvas;
+}
+
+CanvasComponent* World::GetCanvasComponent()
+{
+	return m_mainCanvas;
+}
