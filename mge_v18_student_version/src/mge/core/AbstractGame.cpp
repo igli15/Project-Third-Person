@@ -144,7 +144,6 @@ void AbstractGame::run()
 
 		if (timeSinceLastUpdate > timePerFrame)
 		{
-			//_window->clear();
             glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
 			if (m_worldManager->GetCurrentWorld()->IsMarkedForDestruction())
@@ -163,12 +162,11 @@ void AbstractGame::run()
 
 			_render();
 			
-		/*	if(m_worldManager->GetCurrentWorld()->GetCanvasComponent() != nullptr)
+			if(m_worldManager->GetCurrentWorld()->GetCanvasComponent() != nullptr)
 			{
-				m_worldManager->GetCurrentWorld()->GetCanvasComponent()->DrawAllUISprites();
-			}*/
-		
-            _window->display();
+				//m_worldManager->GetCurrentWorld()->GetCanvasComponent()->DrawAllUISprites();
+			}
+	
 		
 
             //fps count is updated once every 1 second

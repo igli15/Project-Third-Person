@@ -20,7 +20,7 @@ UISpriteRenderer::~UISpriteRenderer()
 }
 
 
-void UISpriteRenderer::DrawSprite()
+void UISpriteRenderer::DrawSprite(glm::mat4 projection)
 {
 	//AbstractGame::Instance()->GetWindow()->draw(*m_sprite);
 	m_shaderProgram->use();
@@ -36,7 +36,18 @@ void UISpriteRenderer::DrawSprite()
 	model = glm::translate(model, glm::vec3(-0.5f * m_texture->Image()->getSize().x, -0.5f * m_texture->Image()->getSize().y, 0.0f));
 
 	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("model"),1,GL_FALSE,glm::value_ptr(model));
+	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("projection"), 1, GL_FALSE, glm::value_ptr(projection));
+	glUniform3fv(m_shaderProgram->getUniformLocation("spriteColor"), 1, glm::value_ptr(m_tintColor));
 
+	glActiveTexture(GL_TEXTURE0);
+	//bind the texture to the current active slot
+	glBindTexture(GL_TEXTURE_2D, m_texture->getId());
+	//tell the shader the texture slot for the diffuse texture is slot 0
+	glUniform1i(m_shaderProgram->getUniformLocation("image"), 0);
+
+	glBindVertexArray(this->m_quadVAO);
+	glDrawArrays(GL_TRIANGLES, 0, 6);
+	glBindVertexArray(0);
 }
 
 void UISpriteRenderer::InitRenderingQuad()
@@ -71,6 +82,16 @@ void UISpriteRenderer::Awake()
 	InitShaderProgram();
 	InitRenderingQuad();
 	m_gameObject->GetWorld()->GetCanvasComponent()->AddSpriteRenderer(this);
+}
+
+void UISpriteRenderer::SetTexture(Texture * tex)
+{
+	m_texture = tex;
+}
+
+void UISpriteRenderer::SetTintColor(glm::vec3 tint)
+{
+	m_tintColor = tint;
 }
 
 void UISpriteRenderer::InitShaderProgram()

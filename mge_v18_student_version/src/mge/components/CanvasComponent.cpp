@@ -23,7 +23,7 @@ void CanvasComponent::DrawAllUISprites()
 {
 	for (int i = m_uISpriteRenderers.size()-1; i >=0; i--)
 	{
-		m_uISpriteRenderers[i]->DrawSprite();
+		m_uISpriteRenderers[i]->DrawSprite(m_projectionMat);
 	}
 }
 
