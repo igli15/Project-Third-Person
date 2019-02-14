@@ -2,7 +2,7 @@
 #define WORLD_HPP
 
 #include "mge/core/GameObject.hpp"
-
+#include "mge\components\CanvasComponent.h"
 class Camera;
 class Light;
 class LightComponent;
@@ -36,9 +36,11 @@ class World : public GameObject
 
 		void ClearMarkedGameObject();
 		void InnerDestroy(GameObject* object);
-
-
+		void SetCanvas(CanvasComponent* canvas);
+		CanvasComponent* GetCanvasComponent();
 	private:
+
+		CanvasComponent * m_mainCanvas = nullptr;
 	    Camera* _mainCamera;
 	    std::vector<LightComponent*> _lights;
 

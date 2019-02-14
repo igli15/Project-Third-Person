@@ -34,6 +34,7 @@ class AbstractGame
         virtual void run();
 
 		static AbstractGame* Instance();
+		sf::RenderWindow * GetWindow();
 
 		WorldManager* GetWorldManager();
 		ResourceManager* GetResourceManager();
