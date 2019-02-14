@@ -56,7 +56,7 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 void MainGame::CreateWorld()
 {
 	AbstractGame::CreateWorld();
-	//m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
+	m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
 
 	//m_eventQueue->RegisterEvent<TestEvent>([](EventType* t) {std::cout << dynamic_cast<TestEvent*>(t)->test << std::endl; });
 	//TestEvent* t = new TestEvent();
