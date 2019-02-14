@@ -124,9 +124,6 @@
     <ClInclude Include="..\src\mge\components\ColliderComponent.hpp">
       <Filter>MGE Source files\mge\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\mge\components\SphereCollider.h">
-      <Filter>MGE Source files\mge\components</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mge\core\CollisionManager.h">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
@@ -144,6 +141,12 @@
     </ClInclude>
     <ClInclude Include="..\src\mge\eventTypes\TestEvent.h">
       <Filter>MGE Source files\mge\eventTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\RectangleCollider.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\CircleCollider.h">
+      <Filter>MGE Source files\mge\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -228,9 +231,6 @@
     <ClCompile Include="..\src\mge\lua\LuaProgram.cpp">
       <Filter>MGE Source files\mge\lua</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\mge\components\SphereCollider.cpp">
-      <Filter>MGE Source files\mge\components</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\mge\core\CollisionManager.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
@@ -251,6 +251,12 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\eventTypes\TestEvent.cpp">
       <Filter>MGE Source files\mge\eventTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\RectangleCollider.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\CircleCollider.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
