@@ -164,10 +164,10 @@ void AbstractGame::run()
 			
 			if(m_worldManager->GetCurrentWorld()->GetCanvasComponent() != nullptr)
 			{
-				//m_worldManager->GetCurrentWorld()->GetCanvasComponent()->DrawAllUISprites();
+				m_worldManager->GetCurrentWorld()->GetCanvasComponent()->DrawAllUISprites();
 			}
 	
-		
+			_window->display();
 
             //fps count is updated once every 1 second
             frameCount++;

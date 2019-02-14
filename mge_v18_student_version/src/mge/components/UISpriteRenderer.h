@@ -5,6 +5,7 @@
 #include "mge/core/ShaderProgram.hpp"
 #include "mge/core/Texture.hpp"
 #include "glm.hpp"
+#include "GL/glew.h"
 
 class CanvasComponent;
 

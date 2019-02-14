@@ -82,15 +82,15 @@ void MainWorld::Initialize()
 	cube2->GetMeshRenderer()->SetMesh(gunMesh);
 	//radioMat->SetShininess(256);
 
-	//GameObject* canvas = _world->Instantiate<GameObject>();
+	GameObject* canvas = _world->Instantiate<GameObject>();
 	//sf::Texture* Text = new sf::Texture();
 	//Text->loadFromFile(config::MGE_TEXTURE_PATH + "bricks.jpg");
-	//canvas->AddComponent<CanvasComponent>();
-	//canvas->Awake();
+	canvas->AddComponent<CanvasComponent>();
+	canvas->Awake();
 
-	//GameObject* sprite = _world->Instantiate<GameObject>();
-	//sprite->AddComponent<UISpriteRenderer>()->SetTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture("brickTex"));
-	//sprite->Awake();
+	GameObject* sprite = _world->Instantiate<GameObject>();
+	sprite->AddComponent<UISpriteRenderer>()->SetTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture("containerDiffuse"));
+	sprite->Awake();
 
 
 	cube2->setMaterial(radioMat);

@@ -4,6 +4,7 @@
 #include<vector>
 #include "mge\core\Component.h"
 #include "glm.hpp"
+#include "GL/glew.h"
 
 class UISpriteRenderer;
 

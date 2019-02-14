@@ -1,13 +1,17 @@
 #version 330 core
-layout (location = 0)
 
-//vec 2 pos, vec2 uvs
+
+layout (location = 0)
 in vec4 vertex; 
+
+uniform sampler2D image;
 
 out vec2 TexCoords;
 
+
 uniform mat4 model;
 uniform mat4 projection;
+uniform vec3 spriteColor;
 
 void main()
 {
