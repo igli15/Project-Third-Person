@@ -6,7 +6,8 @@ class KeyMoveComponent : public Component
 
 private:
 	float m_moveSpeed = 5;
-	float m_turnSpeed = 10;
+	float m_horizontalMoveSpeed = 5;
+	float m_turnSpeed = 60;
 
 public:
 	KeyMoveComponent();

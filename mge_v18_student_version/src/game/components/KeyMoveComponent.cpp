@@ -18,7 +18,7 @@ void KeyMoveComponent::Update(float timeStep)
 {
 	float moveSpeed = 0.0f; //default if no keys
 	float turnSpeed = 0.0f;
-
+	m_horizontalMoveSpeed = 0.0f;
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) 
 	{
 		moveSpeed = m_moveSpeed;
@@ -36,8 +36,24 @@ void KeyMoveComponent::Update(float timeStep)
 		turnSpeed = +m_turnSpeed;
 	}
 
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	{
+		moveSpeed = m_moveSpeed;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		moveSpeed = -m_moveSpeed;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		m_horizontalMoveSpeed = -m_moveSpeed;
+	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		m_horizontalMoveSpeed = +m_moveSpeed;
+	}
 	//translate the object in its own local space
-	m_gameObject->transform->Translate(glm::vec3(0.0f, 0.0f, moveSpeed * timeStep));
+	m_gameObject->transform->Translate(glm::vec3(m_horizontalMoveSpeed*timeStep, 0.0f, moveSpeed * timeStep));
 
 
 	//we can also translate directly, basically we take the z axis from the matrix
