@@ -148,6 +148,12 @@
     <ClInclude Include="..\src\mge\components\CircleCollider.h">
       <Filter>MGE Source files\mge\components</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\components\UISpriteRenderer.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\CanvasComponent.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -256,6 +262,12 @@
       <Filter>MGE Source files\mge\components</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\components\CircleCollider.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\UISpriteRenderer.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\CanvasComponent.cpp">
       <Filter>MGE Source files\mge\components</Filter>
     </ClCompile>
   </ItemGroup>
