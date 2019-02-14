@@ -26,8 +26,8 @@ void ColliderComponent::AddCollisionFilterTag(std::string filterTag)
 {
 	if (m_collisionFilterTags.size() ==1 && m_collisionFilterTags[0]=="default")
 	{
-		//std::cout << "Removing default from filter tags" << std::endl;
-		//m_collisionFilterTags.clear();
+		std::cout << "Removing default from filter tags" << std::endl;
+		m_collisionFilterTags.clear();
 	}
 	m_collisionFilterTags.push_back(filterTag);
 
