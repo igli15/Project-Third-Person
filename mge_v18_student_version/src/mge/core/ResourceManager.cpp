@@ -28,10 +28,10 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 	}
 
 	// load from file and store in cache
-	sf::Image image;
-	if (image.loadFromFile(path)) {
+	sf::Image* image = new sf::Image;
+	if (image->loadFromFile(path)) {
 		//normal image 0,0 is top left, but opengl considers 0,0 to be bottom left, so we flip the image internally
-		image.flipVertically();
+		image->flipVertically();
 		//create a wrapper for the id (texture is nothing more than that) and
 		//load corresponding data into opengl using this id
 		Texture * texture = new Texture();
@@ -42,18 +42,18 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 
 		if (textureType == TextureType::SPECULAR)
 		{
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
 		else if (textureType == TextureType::DIFFUSE)
 		{
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	
 		m_textureMap[tag] = texture;
-
+		texture->InnerSetImage(image);
 		return texture;
 	}
 	else {
