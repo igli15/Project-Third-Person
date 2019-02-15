@@ -144,7 +144,9 @@ void AbstractGame::run()
 
 		if (timeSinceLastUpdate > timePerFrame)
 		{
+
             glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+			_window->clear();
 
 			if (m_worldManager->GetCurrentWorld()->IsMarkedForDestruction())
 			{
@@ -164,7 +166,7 @@ void AbstractGame::run()
 			
 			if(m_worldManager->GetCurrentWorld()->GetCanvasComponent() != nullptr)
 			{
-				m_worldManager->GetCurrentWorld()->GetCanvasComponent()->DrawAllUISprites();
+				m_worldManager->GetCurrentWorld()->GetCanvasComponent()->DrawAllUISprites(_window);
 			}
 	
 			_window->display();

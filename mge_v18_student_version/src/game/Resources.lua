@@ -33,7 +33,7 @@ specularTextures =
 
 emissionTextures = 
 {
-	["matrix"] = texturesLoadPath.."matrix.jpg",
+	["matrix"] = texturesLoadPath.."lavaEmission.png",
 }
 
 --Yes sound and music are 2 diffrent things...

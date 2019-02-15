@@ -15,14 +15,14 @@ public:
 	CanvasComponent();
 	~CanvasComponent();
 	void AddSpriteRenderer(UISpriteRenderer* pUISpriteRenderer);
-	void DrawAllUISprites();
+	void DrawAllUISprites(sf::RenderWindow* window);
 	void Awake() override;
 
 private:
 	std::vector<UISpriteRenderer*> m_uISpriteRenderers;
 	
-	unsigned m_canvasWidth = 800;
-	unsigned m_canvasHeight = 600;
+	float m_canvasWidth = 800;
+	float m_canvasHeight = 600;
 
 	//just for init is set to identity matrix
 	glm::mat4 m_projectionMat;

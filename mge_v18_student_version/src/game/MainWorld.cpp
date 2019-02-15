@@ -83,13 +83,13 @@ void MainWorld::Initialize()
 	//radioMat->SetShininess(256);
 
 	GameObject* canvas = _world->Instantiate<GameObject>();
-	//sf::Texture* Text = new sf::Texture();
-	//Text->loadFromFile(config::MGE_TEXTURE_PATH + "bricks.jpg");
+	sf::Texture* Text = new sf::Texture();
+	Text->loadFromFile(config::MGE_TEXTURE_PATH + "bricks.jpg");
 	canvas->AddComponent<CanvasComponent>();
 	canvas->Awake();
 
 	GameObject* sprite = _world->Instantiate<GameObject>();
-	sprite->AddComponent<UISpriteRenderer>()->SetTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture("containerDiffuse"));
+	sprite->AddComponent<UISpriteRenderer>()->ApplyTexture(Text);
 	sprite->Awake();
 
 
@@ -112,7 +112,7 @@ void MainWorld::Initialize()
 
 
 	Light* l = _world->Instantiate<Light>();
-	l->transform->SetLocalPosition(glm::vec3(-2, 2, 0));
+	l->transform->SetLocalPosition(glm::vec3(0, 16,16));
 	l->transform->Rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
 	l->transform->Rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
 	l->GetLightComponent()->SetType(LightType::DIRECTIONAL);

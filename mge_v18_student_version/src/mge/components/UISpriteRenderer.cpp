@@ -10,20 +10,33 @@ ShaderProgram* UISpriteRenderer::m_shaderProgram = nullptr;
 
 UISpriteRenderer::UISpriteRenderer()
 {
-	InitShaderProgram();
-	InitRenderingQuad();
+	//Used for the custom rendering... 
+	//not needed if using SFML
+
+	//InitShaderProgram();
+	//InitRenderingQuad();
 }
 
 
 UISpriteRenderer::~UISpriteRenderer()
 {
 	m_texture = nullptr;
+
+	delete m_sprite;
+	m_sprite = nullptr;
 }
 
 
-void UISpriteRenderer::DrawSprite(glm::mat4 projection)
+void UISpriteRenderer::DrawSprite(sf::RenderWindow* window)
 {
-	//AbstractGame::Instance()->GetWindow()->draw(*m_sprite);
+
+	glActiveTexture(GL_TEXTURE0);
+	window->pushGLStates();
+	window->draw(*m_sprite);
+	window->popGLStates();
+
+	//Custom rendering
+	/*
 	m_shaderProgram->use();
 	glm::mat4 model;
 	glm::vec3 pos;
@@ -33,7 +46,7 @@ void UISpriteRenderer::DrawSprite(glm::mat4 projection)
 	pos = glm::vec3(0, 0, 0);
 	glm::translate(model,pos);
 
-	glm::scale(model, glm::vec3(300, 300, 1));
+	model = glm::scale(model, glm::vec3(m_texture->Image()->getSize().x, m_texture->Image()->getSize().y, 1));
 
 	glActiveTexture(GL_TEXTURE0);
 	//bind the texture to the current active slot
@@ -48,6 +61,8 @@ void UISpriteRenderer::DrawSprite(glm::mat4 projection)
 	glBindVertexArray(m_quadVAO);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	glBindVertexArray(0);
+
+	*/
 }
 
 void UISpriteRenderer::InitRenderingQuad()
@@ -55,13 +70,13 @@ void UISpriteRenderer::InitRenderingQuad()
 	GLuint VBO;
 	GLfloat vertices[] = {
 		// Pos      // Tex
-		0.0f, 1.0f, 0.0f, 1.0f,
-		1.0f, 0.0f, 1.0f, 0.0f,
 		0.0f, 0.0f, 0.0f, 0.0f,
-
+		1.0f, 0.0f, 1.0f, 0.0f,
 		0.0f, 1.0f, 0.0f, 1.0f,
+
+		1.0f, 0.0f, 1.0f, 0.0f,
 		1.0f, 1.0f, 1.0f, 1.0f,
-		1.0f, 0.0f, 1.0f, 0.0f
+		0.0f, 1.0f, 0.0f, 1.0f
 	};
 
 	/*
@@ -82,9 +97,9 @@ void UISpriteRenderer::InitRenderingQuad()
 
 	glBindVertexArray(m_quadVAO);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 4 * sizeof(GL_FLOAT), (GLvoid*)0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+	glVertexAttribPointer(0, 4, GL_FLOAT, GL_FALSE, 0, (GLvoid*)0);
 	glBindVertexArray(0);
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void UISpriteRenderer::Awake()
@@ -92,14 +107,29 @@ void UISpriteRenderer::Awake()
 	m_gameObject->GetWorld()->GetCanvasComponent()->AddSpriteRenderer(this);
 }
 
-void UISpriteRenderer::SetTexture(Texture * tex)
-{
-	m_texture = tex;
-}
-
 void UISpriteRenderer::SetTintColor(glm::vec3 tint)
 {
 	m_tintColor = tint;
+}
+
+sf::Sprite* UISpriteRenderer::ApplyTexture(sf::Texture * texture)
+{
+		if (m_sprite == nullptr)
+		{
+			m_texture = texture;
+			m_sprite = new sf::Sprite();
+			m_sprite->setTexture(*m_texture);
+			//we might wanna check /apply here for parent position
+			return m_sprite;
+		}
+		else
+		{
+			delete m_sprite;
+			m_texture = texture;
+			m_sprite = new sf::Sprite();
+			m_sprite->setTexture(*m_texture);
+			return m_sprite;
+		}
 }
 
 void UISpriteRenderer::InitShaderProgram()

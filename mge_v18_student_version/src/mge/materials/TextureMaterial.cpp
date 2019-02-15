@@ -57,6 +57,11 @@ void TextureMaterial::SetSpecularTexture(Texture * specularTexture)
 	m_spcecularTexture = specularTexture;
 }
 
+void TextureMaterial::SetEmissionTexture(Texture * emissionTexture)
+{
+	m_emissionTexture = emissionTexture;
+}
+
 void TextureMaterial::SetDiffuseColor(glm::vec3 color)
 {
 	m_diffuseColor = color;

@@ -14,15 +14,20 @@ class UISpriteRenderer : public Component
 public:
 	UISpriteRenderer();
 	virtual ~UISpriteRenderer();
-	void DrawSprite(glm::mat4 projection);
+	void DrawSprite(sf::RenderWindow* window);
 	void InitRenderingQuad();
 	void Awake() override;
-	void SetTexture(Texture* tex);
 	void SetTintColor(glm::vec3 tint);
+
+	sf::Sprite* ApplyTexture(sf::Texture* texture);
 
 private:
 
-	Texture* m_texture = nullptr;
+	//Texture* m_texture = nullptr;
+
+	sf::Sprite* m_sprite = nullptr;
+	sf::Texture* m_texture = nullptr;
+
 	glm::vec3 m_tintColor = glm::vec3(1, 1, 1);
 	static ShaderProgram* m_shaderProgram;
 	static void InitShaderProgram();

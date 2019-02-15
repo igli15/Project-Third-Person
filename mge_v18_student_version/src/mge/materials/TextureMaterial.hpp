@@ -21,6 +21,7 @@ class TextureMaterial : public AbstractMaterial
 
         void setDiffuseTexture (Texture* pDiffuseTexture);
 		void SetSpecularTexture(Texture* specularTexture);
+		void SetEmissionTexture(Texture* emissionTexture);
 		void SetDiffuseColor(glm::vec3 color);
 		void SetShininess(float shininess);
 
