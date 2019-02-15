@@ -11,6 +11,7 @@ class ResourceManager
 
 private:
 	std::map<std::string, Texture*> m_textureMap;
+	std::map<std::string, sf::Texture*> m_sfmlTextures;
 	std::map<std::string, Mesh*> m_meshMap;
 	std::map<std::string, AbstractMaterial*> m_materialMap;
 	std::map<std::string, sf::Music*> m_musicMap;
@@ -28,6 +29,9 @@ public:
 	
 	Texture* GetTexture(const std::string &tag);
 	Mesh* GetMesh(const std::string &tag);
+
+	sf::Texture* LoadSFMLTexture(const std::string &path, const std::string &tag);
+	sf::Texture* GetFMLTexture(const std::string &tag);
 	
 	AbstractMaterial* RegisterMaterial(AbstractMaterial* mat, const std::string &tag);
 	AbstractMaterial* GetMaterial(const std::string &tag);
@@ -44,6 +48,7 @@ public:
 	void LuaLoadDiffuseTextures();
 	void LuaLoadSpecularTexutres();
 	void LuaLoadEmissionTextures();
+	void LuaLoadSFMLTextures();
 	void LuaLoadSounds();
 	void LuaLoadMusics();
 };

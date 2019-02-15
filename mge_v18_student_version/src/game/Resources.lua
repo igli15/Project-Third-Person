@@ -36,6 +36,12 @@ emissionTextures =
 	["matrix"] = texturesLoadPath.."lavaEmission.png",
 }
 
+--Since we are using SFML for ui textures we need to load the sepperatly here!
+sfmlTextures = 
+{
+	["brickTex"] = texturesLoadPath.."bricks.jpg",
+}
+
 --Yes sound and music are 2 diffrent things...
 --Sounds Are small clips that are played from a buffer in high quality ex: SFX
 --Music are big chunks of memory that play music. This is used for music that loops or that is large

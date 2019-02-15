@@ -83,15 +83,11 @@ void MainWorld::Initialize()
 	//radioMat->SetShininess(256);
 
 	GameObject* canvas = _world->Instantiate<GameObject>();
-	sf::Texture* Text = new sf::Texture();
-	Text->loadFromFile(config::MGE_TEXTURE_PATH + "bricks.jpg");
 	canvas->AddComponent<CanvasComponent>();
 	canvas->Awake();
 
-	
-
 	GameObject* sprite = _world->Instantiate<GameObject>();
-	sprite->AddComponent<UISpriteRenderer>()->ApplyTexture(Text);
+	sprite->AddComponent<UISpriteRenderer>()->ApplyTexture(AbstractGame::Instance()->GetResourceManager()->GetFMLTexture("brickTex"));
 	sprite->Awake();
 
 	cube2->setMaterial(radioMat);
