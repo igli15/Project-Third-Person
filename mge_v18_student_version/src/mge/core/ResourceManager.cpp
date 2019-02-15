@@ -10,6 +10,9 @@ ResourceManager::ResourceManager()
 {
 	m_luaProgram = new LuaProgram("../src/game/Resources.Lua");
 	m_luaProgram->CallCurrentProgram();
+
+	LoadTexture(config::MGE_TEXTURE_PATH + "whiteTex.png", "whiteTex",TextureType::REPLACEMENT);
+	LoadTexture(config::MGE_TEXTURE_PATH + "blackTex.png", "blackTex", TextureType::REPLACEMENT);
 }
 
 
@@ -28,10 +31,10 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 	}
 
 	// load from file and store in cache
-	sf::Image image;
-	if (image.loadFromFile(path)) {
+	sf::Image* image = new sf::Image;
+	if (image->loadFromFile(path)) {
 		//normal image 0,0 is top left, but opengl considers 0,0 to be bottom left, so we flip the image internally
-		image.flipVertically();
+		image->flipVertically();
 		//create a wrapper for the id (texture is nothing more than that) and
 		//load corresponding data into opengl using this id
 		Texture * texture = new Texture();
@@ -40,20 +43,26 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 
 		//If we want specular / normals maps we still have to use rgba instead of SRGB
 
-		if (textureType == TextureType::SPECULAR)
+		if (textureType == TextureType::SPECULAR || textureType == TextureType::EMISSION)
 		{
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
-		else if (textureType == TextureType::DIFFUSE)
+		else if (textureType == TextureType::DIFFUSE || TextureType::REPLACEMENT)
 		{
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image.getSize().x, image.getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image.getPixelsPtr());
+			glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
+
+		if (textureType == TextureType::REPLACEMENT)
+		{
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+		}
+
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	
 		m_textureMap[tag] = texture;
-
+		texture->InnerSetImage(image);
 		return texture;
 	}
 	else {
@@ -280,6 +289,42 @@ Mesh * ResourceManager::GetMesh(const std::string & tag)
 	return m_meshMap[tag];
 }
 
+sf::Texture * ResourceManager::LoadSFMLTexture(const std::string & path, const std::string & tag)
+{
+	if (m_sfmlTextures.find(tag) != m_sfmlTextures.end())
+	{
+		std::cout << "A SFML Texture Resource with that tag is already created" << std::endl;
+		throw;
+	}
+
+	sf::Texture* tex = new sf::Texture();
+	if (tex->loadFromFile(path))
+	{
+		m_sfmlTextures[tag] = tex;
+		return tex;
+	}
+	else
+	{
+		std::cout << "could not load the sfml texture" << std::endl;
+		throw;
+	}
+}
+
+sf::Texture * ResourceManager::GetSFMLTexture(const std::string & tag)
+{
+	if (m_sfmlTextures.find(tag) == m_sfmlTextures.end())
+	{
+		std::cout << "There is no SFML Texture resource with: " << tag << " as a name" << std::endl;
+
+		return nullptr;
+		//return GetTexture("ErrorTexture");
+	}
+	else
+	{
+		return m_sfmlTextures[tag];
+	}
+}
+
 AbstractMaterial * ResourceManager::RegisterMaterial(AbstractMaterial * mat, const std::string & tag)
 {
 	if (mat->IsRegistered() || m_materialMap.find(tag) != m_materialMap.end())
@@ -370,8 +415,11 @@ void ResourceManager::LoadResourcesFromLua()
 	LuaLoadMeshes();
 	LuaLoadDiffuseTextures();
 	LuaLoadSpecularTexutres();
+	LuaLoadEmissionTextures();
 	LuaLoadSounds();
 	LuaLoadMusics();
+
+	LuaLoadSFMLTextures();
 }
 
 void ResourceManager::LuaLoadMeshes()
@@ -428,6 +476,46 @@ void ResourceManager::LuaLoadSpecularTexutres()
 		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
 		//std::cout << name <<" "<< path<<  std::endl;
 		LoadTexture(path, name, TextureType::SPECULAR);
+		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
+	}
+
+	m_luaProgram->PopCurrentTable();
+}
+
+void ResourceManager::LuaLoadEmissionTextures()
+{
+	m_luaProgram->GetGlobalTable("emissionTextures");
+
+	lua_pushnil(m_luaProgram->GetCurrentLuaState());
+	lua_gettable(m_luaProgram->GetCurrentLuaState(), -2);
+
+	while (lua_next(m_luaProgram->GetCurrentLuaState(), -2) != 0)
+	{
+
+		std::string name = lua_tostring(m_luaProgram->GetCurrentLuaState(), -2);
+		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
+		//std::cout << name <<" "<< path<<  std::endl;
+		LoadTexture(path, name, TextureType::EMISSION);
+		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
+	}
+
+	m_luaProgram->PopCurrentTable();
+}
+
+void ResourceManager::LuaLoadSFMLTextures()
+{
+	m_luaProgram->GetGlobalTable("sfmlTextures");
+
+	lua_pushnil(m_luaProgram->GetCurrentLuaState());
+	lua_gettable(m_luaProgram->GetCurrentLuaState(), -2);
+
+	while (lua_next(m_luaProgram->GetCurrentLuaState(), -2) != 0)
+	{
+
+		std::string name = lua_tostring(m_luaProgram->GetCurrentLuaState(), -2);
+		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
+		//std::cout << name <<" "<< path<<  std::endl;
+		LoadSFMLTexture(path, name);
 		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
 	}
 

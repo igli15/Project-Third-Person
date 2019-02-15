@@ -41,6 +41,9 @@ class AbstractGame
 		CollisionManager* GetCollisionManager();
 		EventQueue* GetEventQueue();
 
+		unsigned WindowWidth() const;
+		unsigned WindowHeight() const;
+
     protected:
 
         //methods above delegate behaviour to the methods below so that you can override it in a subclass
@@ -77,6 +80,8 @@ class AbstractGame
 
 		static AbstractGame* m_instance;
 		
+		unsigned m_windowWidth = 800;
+		unsigned m_windowHeight = 600;
 
     private:
         AbstractGame(const AbstractGame&);

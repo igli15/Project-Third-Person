@@ -55,9 +55,14 @@ void AbstractGame::LoadResources(ResourceManager * resourceManager)
 
 ///SETUP
 
-void AbstractGame::_initializeWindow() {
-	std::cout << "Initializing window..." << std::endl;
-	_window = new sf::RenderWindow( sf::VideoMode(1920,1080), "My Game!", sf::Style::Default, sf::ContextSettings(24,8,0,3,3));
+void AbstractGame::_initializeWindow() 
+{
+	float m_windowWidth = 1920;
+	float m_windowHeight = 1080;
+
+	std::cout << "Initializing window with Width: "<<m_windowWidth<<" and Height: "<<m_windowHeight << std::endl;
+
+	_window = new sf::RenderWindow( sf::VideoMode(m_windowWidth,m_windowHeight), "My Game!", sf::Style::Default, sf::ContextSettings(24,8,0,3,3));
 	//_window->setVerticalSyncEnabled(true);
     std::cout << "Window initialized." << std::endl << std::endl;
 }
@@ -139,8 +144,9 @@ void AbstractGame::run()
 
 		if (timeSinceLastUpdate > timePerFrame)
 		{
-			//_window->clear();
+
             glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+			_window->clear();
 
 			if (m_worldManager->GetCurrentWorld()->IsMarkedForDestruction())
 			{
@@ -158,13 +164,12 @@ void AbstractGame::run()
 
 			_render();
 			
-		/*	if(m_worldManager->GetCurrentWorld()->GetCanvasComponent() != nullptr)
+			if(m_worldManager->GetCurrentWorld()->GetCanvasComponent() != nullptr)
 			{
-				m_worldManager->GetCurrentWorld()->GetCanvasComponent()->DrawAllUISprites();
-			}*/
-		
-            _window->display();
-		
+				m_worldManager->GetCurrentWorld()->GetCanvasComponent()->DrawAllUISprites(_window);
+			}
+	
+			_window->display();
 
             //fps count is updated once every 1 second
             frameCount++;
@@ -210,6 +215,16 @@ CollisionManager * AbstractGame::GetCollisionManager()
 EventQueue * AbstractGame::GetEventQueue()
 {
 	return m_eventQueue;
+}
+
+unsigned AbstractGame::WindowWidth() const
+{
+	return m_windowWidth;
+}
+
+unsigned AbstractGame::WindowHeight() const
+{
+	return m_windowHeight;
 }
 
 void AbstractGame::_update(float pStep) {

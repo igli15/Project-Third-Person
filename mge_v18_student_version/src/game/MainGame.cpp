@@ -36,14 +36,14 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 
 	resourceManager->LoadResourcesFromLua();
 
-	AbstractMaterial* brickMat = new TextureMaterial(resourceManager->GetTexture("brickTex"), nullptr);
-	TextureMaterial* carMat = new TextureMaterial(resourceManager->GetTexture("carTex"), nullptr);
+	AbstractMaterial* brickMat = new TextureMaterial(resourceManager->GetTexture("brickTex"), nullptr,nullptr);
+	TextureMaterial* carMat = new TextureMaterial(resourceManager->GetTexture("carTex"), nullptr, nullptr);
 	
 	ColorMaterial* planeMat = new ColorMaterial();
 	ColorMaterial* lightMat = new ColorMaterial();
 
-	TextureMaterial* containerMat = new TextureMaterial(resourceManager->GetTexture("containerDiffuse"),resourceManager->GetTexture("containerSpecular"));
-	TextureMaterial* stuffMat = new TextureMaterial(resourceManager->GetTexture("buildingTex"),resourceManager->GetTexture("buildingSpec"));
+	TextureMaterial* containerMat = new TextureMaterial(resourceManager->GetTexture("containerDiffuse"),resourceManager->GetTexture("containerSpecular"), resourceManager->GetTexture("matrix"));
+	TextureMaterial* stuffMat = new TextureMaterial(resourceManager->GetTexture("buildingTex"),resourceManager->GetTexture("buildingSpec"), nullptr);
 
 	resourceManager->RegisterMaterial(brickMat, "brickMat");
 	resourceManager->RegisterMaterial(carMat, "carMat");

@@ -7,6 +7,7 @@ uniform	mat4 	modelMatrix;
 
 uniform sampler2D diffuseTexture;
 uniform sampler2D specularTexture;
+uniform sampler2D emissionTexture;
 
 in vec3 vertex;
 in vec3 normal;
