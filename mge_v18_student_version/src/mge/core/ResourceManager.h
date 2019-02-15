@@ -31,7 +31,7 @@ public:
 	Mesh* GetMesh(const std::string &tag);
 
 	sf::Texture* LoadSFMLTexture(const std::string &path, const std::string &tag);
-	sf::Texture* GetFMLTexture(const std::string &tag);
+	sf::Texture* GetSFMLTexture(const std::string &tag);
 	
 	AbstractMaterial* RegisterMaterial(AbstractMaterial* mat, const std::string &tag);
 	AbstractMaterial* GetMaterial(const std::string &tag);

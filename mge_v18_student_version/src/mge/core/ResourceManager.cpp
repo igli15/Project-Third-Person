@@ -310,7 +310,7 @@ sf::Texture * ResourceManager::LoadSFMLTexture(const std::string & path, const s
 	}
 }
 
-sf::Texture * ResourceManager::GetFMLTexture(const std::string & tag)
+sf::Texture * ResourceManager::GetSFMLTexture(const std::string & tag)
 {
 	if (m_sfmlTextures.find(tag) == m_sfmlTextures.end())
 	{

@@ -140,6 +140,11 @@ sf::Sprite* UISpriteRenderer::ApplyTexture(sf::Texture * texture)
 		}
 }
 
+sf::Sprite * UISpriteRenderer::GetSprite()
+{
+	return m_sprite;
+}
+
 void UISpriteRenderer::InitShaderProgram()
 {
 	m_shaderProgram = new ShaderProgram();

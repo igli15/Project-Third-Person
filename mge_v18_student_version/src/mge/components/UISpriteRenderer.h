@@ -23,6 +23,7 @@ public:
 
 	sf::Sprite* ApplyTexture(sf::Texture* texture);
 
+	sf::Sprite* GetSprite();
 private:
 
 	//Texture* m_texture = nullptr;

@@ -87,7 +87,7 @@ void MainWorld::Initialize()
 	canvas->Awake();
 
 	GameObject* sprite = _world->Instantiate<GameObject>();
-	sprite->AddComponent<UISpriteRenderer>()->ApplyTexture(AbstractGame::Instance()->GetResourceManager()->GetFMLTexture("brickTex"));
+	sprite->AddComponent<UISpriteRenderer>()->ApplyTexture(AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("brickTex"));
 	sprite->Awake();
 
 	cube2->setMaterial(radioMat);
