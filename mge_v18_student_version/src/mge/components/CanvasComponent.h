@@ -5,6 +5,7 @@
 #include "mge\core\Component.h"
 #include "glm.hpp"
 #include "GL/glew.h"
+#include <algorithm>
 
 class UISpriteRenderer;
 
@@ -15,6 +16,7 @@ public:
 	CanvasComponent();
 	~CanvasComponent();
 	void AddSpriteRenderer(UISpriteRenderer* pUISpriteRenderer);
+	void RemoveSpriteRenderer(UISpriteRenderer* pUISpriteRenderer);
 	void DrawAllUISprites(sf::RenderWindow* window);
 	void Awake() override;
 

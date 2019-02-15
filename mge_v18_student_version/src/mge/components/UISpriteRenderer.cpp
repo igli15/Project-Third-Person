@@ -22,8 +22,8 @@ UISpriteRenderer::~UISpriteRenderer()
 {
 	m_texture = nullptr;
 
-	delete m_sprite;
 	m_sprite = nullptr;
+	delete m_sprite;
 }
 
 
@@ -31,10 +31,13 @@ void UISpriteRenderer::DrawSprite(sf::RenderWindow* window)
 {
 
 	glActiveTexture(GL_TEXTURE0);
-	window->pushGLStates();
-	window->draw(*m_sprite);
-	window->popGLStates();
 
+	if (m_sprite != nullptr)
+	{
+		window->pushGLStates();
+		window->draw(*m_sprite);
+		window->popGLStates();
+	}
 	//Custom rendering
 	/*
 	m_shaderProgram->use();
@@ -110,6 +113,11 @@ void UISpriteRenderer::Awake()
 void UISpriteRenderer::SetTintColor(glm::vec3 tint)
 {
 	m_tintColor = tint;
+}
+
+void UISpriteRenderer::OnDestroy()
+{
+	m_gameObject->GetWorld()->GetCanvasComponent()->RemoveSpriteRenderer(this);
 }
 
 sf::Sprite* UISpriteRenderer::ApplyTexture(sf::Texture * texture)

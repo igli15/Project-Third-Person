@@ -19,6 +19,8 @@ public:
 	void Awake() override;
 	void SetTintColor(glm::vec3 tint);
 
+	void OnDestroy() override;
+
 	sf::Sprite* ApplyTexture(sf::Texture* texture);
 
 private:

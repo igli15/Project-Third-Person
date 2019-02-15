@@ -88,10 +88,11 @@ void MainWorld::Initialize()
 	canvas->AddComponent<CanvasComponent>();
 	canvas->Awake();
 
+	
+
 	GameObject* sprite = _world->Instantiate<GameObject>();
 	sprite->AddComponent<UISpriteRenderer>()->ApplyTexture(Text);
 	sprite->Awake();
-
 
 	cube2->setMaterial(radioMat);
 	/*cube2->AddComponent<AudioSource>()->SetMusic(AbstractGame::Instance()->GetResourceManager()->GetMusic("expmusic"));

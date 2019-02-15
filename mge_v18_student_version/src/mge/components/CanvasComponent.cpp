@@ -3,6 +3,8 @@
 #include "mge\core\World.hpp"
 #include "mge\components\UISpriteRenderer.h"
 #include "CanvasComponent.h"
+#include <vector>
+#include <algorithm>
 
 CanvasComponent::CanvasComponent()
 {
@@ -31,6 +33,15 @@ CanvasComponent::~CanvasComponent()
 void CanvasComponent::AddSpriteRenderer(UISpriteRenderer * pUISpriteRenderer)
 {
 	m_uISpriteRenderers.push_back(pUISpriteRenderer);
+}
+
+void CanvasComponent::RemoveSpriteRenderer(UISpriteRenderer * pUISpriteRenderer)
+{
+	auto it = std::find(m_uISpriteRenderers.begin(), m_uISpriteRenderers.end(), pUISpriteRenderer);
+	if (it != m_uISpriteRenderers.end())
+	{
+		m_uISpriteRenderers.erase(it);
+	}
 }
 
 void CanvasComponent::DrawAllUISprites(sf::RenderWindow* window)
