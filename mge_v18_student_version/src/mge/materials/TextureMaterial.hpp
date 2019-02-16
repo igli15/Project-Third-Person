@@ -28,7 +28,7 @@ class TextureMaterial : public AbstractMaterial
     protected:
     private:
         static ShaderProgram* m_shaderProgram;
-        static void _lazyInitializeShader(bool normalMap);
+        static void _lazyInitializeShader();
 
         //in this example we cache all identifiers for uniforms & attributes
         static GLint _uMVPMatrix;
@@ -52,6 +52,7 @@ class TextureMaterial : public AbstractMaterial
 
 		Texture* m_whiteTex;
 		Texture* m_blackTex;
+		Texture* m_normalFlatTex;
 
 };
 

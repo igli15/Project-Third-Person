@@ -11,8 +11,9 @@ ResourceManager::ResourceManager()
 	m_luaProgram = new LuaProgram("../src/game/Resources.Lua");
 	m_luaProgram->CallCurrentProgram();
 
-	LoadTexture(config::MGE_TEXTURE_PATH + "whiteTex.png", "whiteTex",TextureType::REPLACEMENT);
-	LoadTexture(config::MGE_TEXTURE_PATH + "blackTex.png", "blackTex", TextureType::REPLACEMENT);
+	LoadTexture(config::MGE_TEXTURE_PATH + "whiteTex.png", "whiteTex",TextureType::RGBAREPLACEMENT);
+	LoadTexture(config::MGE_TEXTURE_PATH + "blackTex.png", "blackTex", TextureType::RGBAREPLACEMENT);
+	LoadTexture(config::MGE_TEXTURE_PATH + "defaultNormal.png", "flatNormalTex", TextureType::RGBAREPLACEMENT);
 }
 
 
@@ -43,16 +44,18 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 
 		//If we want specular / normals maps we still have to use rgba instead of SRGB
 
-		if (textureType == TextureType::SPECULAR || textureType == TextureType::EMISSION)
+		if (textureType == TextureType::SPECULAR || textureType == TextureType::EMISSION || textureType == TextureType::NORMAL || textureType == TextureType::RGBAREPLACEMENT)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
-		else if (textureType == TextureType::DIFFUSE || TextureType::REPLACEMENT)
+		else if (textureType == TextureType::DIFFUSE || TextureType::SRGBREPLACEMENT)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
 
-		if (textureType == TextureType::REPLACEMENT)
+		//wrap the default tex
+		if (textureType == TextureType::RGBAREPLACEMENT || textureType == TextureType::SRGBREPLACEMENT)
+		
 		{
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
 		}

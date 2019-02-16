@@ -26,22 +26,17 @@ TextureMaterial::TextureMaterial(Texture * pDiffuseTexture , Texture* specularTe
 {
 	m_normalMap = normalTex;
 
-	if (m_normalMap == nullptr)
-	{
-		_lazyInitializeShader(false);
-	}
-	else
-	{
-		_lazyInitializeShader(true);
-	}
+	_lazyInitializeShader();
+	
  
 	m_whiteTex = AbstractGame::Instance()->GetResourceManager()->GetTexture("whiteTex");
 	m_blackTex = AbstractGame::Instance()->GetResourceManager()->GetTexture("blackTex");
+	m_normalFlatTex = AbstractGame::Instance()->GetResourceManager()->GetTexture("flatNormalTex");
 }
 
 TextureMaterial::~TextureMaterial() {}
 
-void TextureMaterial::_lazyInitializeShader(bool normalMap) {
+void TextureMaterial::_lazyInitializeShader() {
     if (!m_shaderProgram) 
 	{
         m_shaderProgram = new ShaderProgram();
@@ -49,7 +44,6 @@ void TextureMaterial::_lazyInitializeShader(bool normalMap) {
 		m_shaderProgram->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH + "textureNormal.vs");
 		m_shaderProgram->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH + "textureNormal.fs");
 		m_shaderProgram->finalize();
-		
 
         //cache all the uniform and attribute indexes
         _uDiffuseTexture = m_shaderProgram->getUniformLocation("diffuseTexture");
@@ -134,12 +128,22 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		glUniform1i(m_shaderProgram->getUniformLocation("emissionTexture"), 2);
 	}
 
+
 	if (m_normalMap != nullptr)
 	{
 		//setup texture slot 3
 		glActiveTexture(GL_TEXTURE3);
 		//bind the texture to the current active slot
 		glBindTexture(GL_TEXTURE_2D, m_normalMap->getId());
+		//tell the shader the texture slot for the specular texture is slot 3
+		glUniform1i(m_shaderProgram->getUniformLocation("normalMap"), 3);
+	}
+	else
+	{
+		//setup texture slot 3
+		glActiveTexture(GL_TEXTURE3);
+		//bind the texture to the current active slot
+		glBindTexture(GL_TEXTURE_2D, m_normalFlatTex->getId());
 		//tell the shader the texture slot for the specular texture is slot 3
 		glUniform1i(m_shaderProgram->getUniformLocation("normalMap"), 3);
 	}
