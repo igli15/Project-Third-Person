@@ -30,12 +30,17 @@ specularTextures =
 {
 	["containerSpecular"] = texturesLoadPath.."container2_specular.png",
 	["buildingSpec"] = texturesLoadPath.."stuffSpec.png",
-	["brickWallNormal"] = texturesLoadPath.."wallNormal.png"
 }
 
 emissionTextures = 
 {
 	["matrix"] = texturesLoadPath.."lavaEmission.png",
+}
+
+--normal maps here
+normalMapTextures = 
+{
+	["brickWallNormal"] = texturesLoadPath.."wallNormal.png"
 }
 
 --Since we are using SFML for ui textures we need to load the sepperatly here!

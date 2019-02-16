@@ -441,6 +441,7 @@ void ResourceManager::LoadResourcesFromLua()
 	LuaLoadDiffuseTextures();
 	LuaLoadSpecularTexutres();
 	LuaLoadEmissionTextures();
+	LuaLoadNormalMaps();
 	LuaLoadSounds();
 	LuaLoadMusics();
 
@@ -521,6 +522,26 @@ void ResourceManager::LuaLoadEmissionTextures()
 		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
 		//std::cout << name <<" "<< path<<  std::endl;
 		LoadTexture(path, name, TextureType::EMISSION);
+		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
+	}
+
+	m_luaProgram->PopCurrentTable();
+}
+
+void ResourceManager::LuaLoadNormalMaps()
+{
+	m_luaProgram->GetGlobalTable("normalMapTextures");
+
+	lua_pushnil(m_luaProgram->GetCurrentLuaState());
+	lua_gettable(m_luaProgram->GetCurrentLuaState(), -2);
+
+	while (lua_next(m_luaProgram->GetCurrentLuaState(), -2) != 0)
+	{
+
+		std::string name = lua_tostring(m_luaProgram->GetCurrentLuaState(), -2);
+		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
+		//std::cout << name <<" "<< path<<  std::endl;
+		LoadTexture(path, name, TextureType::NORMAL);
 		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
 	}
 
