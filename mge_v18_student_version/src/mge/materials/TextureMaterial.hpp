@@ -14,7 +14,7 @@ class Texture;
 class TextureMaterial : public AbstractMaterial
 {
     public:
-        TextureMaterial (Texture* pDiffuseTexture,Texture* specularTexture,Texture* emissionTexture);
+        TextureMaterial (Texture* pDiffuseTexture,Texture* specularTexture,Texture* emissionTexture,Texture* normalMap = nullptr);
         virtual ~TextureMaterial ();
 
         virtual void render(World* pWorld, MeshRenderer* meshRenderer, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) override;
@@ -28,7 +28,7 @@ class TextureMaterial : public AbstractMaterial
     protected:
     private:
         static ShaderProgram* m_shaderProgram;
-        static void _lazyInitializeShader();
+        static void _lazyInitializeShader(bool normalMap);
 
         //in this example we cache all identifiers for uniforms & attributes
         static GLint _uMVPMatrix;
@@ -41,6 +41,7 @@ class TextureMaterial : public AbstractMaterial
         Texture* _diffuseTexture = nullptr;
 		Texture* m_spcecularTexture = nullptr;
 		Texture* m_emissionTexture = nullptr;
+		Texture* m_normalMap = nullptr;
 
 		float m_shineness = 8;
 

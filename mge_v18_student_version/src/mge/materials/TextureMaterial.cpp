@@ -21,10 +21,19 @@ GLint TextureMaterial::_aVertex = 0;
 GLint TextureMaterial::_aNormal = 0;
 GLint TextureMaterial::_aUV = 0;
 
-TextureMaterial::TextureMaterial(Texture * pDiffuseTexture , Texture* specularTexture = nullptr, Texture* emissionTexture = nullptr)
+TextureMaterial::TextureMaterial(Texture * pDiffuseTexture , Texture* specularTexture , Texture* emissionTexture,Texture* normalTex)
 	:_diffuseTexture(pDiffuseTexture),m_spcecularTexture(specularTexture),m_emissionTexture(emissionTexture)
 {
-    _lazyInitializeShader();
+	m_normalMap = normalTex;
+
+	if (m_normalMap == nullptr)
+	{
+		_lazyInitializeShader(false);
+	}
+	else
+	{
+		_lazyInitializeShader(true);
+	}
  
 	m_whiteTex = AbstractGame::Instance()->GetResourceManager()->GetTexture("whiteTex");
 	m_blackTex = AbstractGame::Instance()->GetResourceManager()->GetTexture("blackTex");
@@ -32,12 +41,15 @@ TextureMaterial::TextureMaterial(Texture * pDiffuseTexture , Texture* specularTe
 
 TextureMaterial::~TextureMaterial() {}
 
-void TextureMaterial::_lazyInitializeShader() {
-    if (!m_shaderProgram) {
+void TextureMaterial::_lazyInitializeShader(bool normalMap) {
+    if (!m_shaderProgram) 
+	{
         m_shaderProgram = new ShaderProgram();
-        m_shaderProgram->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH+"texture.vs");
-        m_shaderProgram->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH+"texture.fs");
-        m_shaderProgram->finalize();
+
+		m_shaderProgram->addShader(GL_VERTEX_SHADER, config::MGE_SHADER_PATH + "textureNormal.vs");
+		m_shaderProgram->addShader(GL_FRAGMENT_SHADER, config::MGE_SHADER_PATH + "textureNormal.fs");
+		m_shaderProgram->finalize();
+		
 
         //cache all the uniform and attribute indexes
         _uDiffuseTexture = m_shaderProgram->getUniformLocation("diffuseTexture");
@@ -120,6 +132,16 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		glBindTexture(GL_TEXTURE_2D, m_blackTex->getId());
 		//tell the shader the texture slot for the specular texture is slot 2
 		glUniform1i(m_shaderProgram->getUniformLocation("emissionTexture"), 2);
+	}
+
+	if (m_normalMap != nullptr)
+	{
+		//setup texture slot 3
+		glActiveTexture(GL_TEXTURE3);
+		//bind the texture to the current active slot
+		glBindTexture(GL_TEXTURE_2D, m_normalMap->getId());
+		//tell the shader the texture slot for the specular texture is slot 3
+		glUniform1i(m_shaderProgram->getUniformLocation("normalMap"), 3);
 	}
 
 	int pointLightCount = 0;
@@ -215,5 +237,5 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("modelMatrix"), 1, GL_FALSE, glm::value_ptr(pModelMatrix));
 
     //now inform mesh of where to stream its data
-    meshRenderer->StreamToOpenGL(_aVertex, _aNormal, _aUV);
+    meshRenderer->StreamToOpenGL(_aVertex, _aNormal, _aUV, m_shaderProgram->getAttribLocation("tangent"), m_shaderProgram->getAttribLocation("bitangent"));
 }

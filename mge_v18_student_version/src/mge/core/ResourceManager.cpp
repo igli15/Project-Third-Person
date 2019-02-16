@@ -228,6 +228,28 @@ Mesh * ResourceManager::LoadMesh(const std::string & path, const std::string & t
 							mesh->AddVertex(vertices[vertexIndex[i] - 1]);
 							mesh->AddNormal(normals[normalIndex[i] - 1]);
 							mesh->AddUVs(uvs[uvIndex[i] - 1]);
+
+							glm::vec3 v0 = vertices[vertexIndex[0] -1];
+							glm::vec3 v1 = vertices[vertexIndex[1] - 1];
+							glm::vec3 v2 = vertices[vertexIndex[2] - 1];
+
+							glm::vec2 u0 = uvs[uvIndex[0] - 1];
+							glm::vec2 u1 = uvs[uvIndex[1] - 1];
+							glm::vec2 u2 = uvs[uvIndex[2] - 1];
+
+							glm::vec3 deltaPos1 = v1 - v0;
+							glm::vec3 deltaPos2 = v2 - v0;
+
+							glm::vec2 deltaUV1 = u1 - u0;
+							glm::vec2 deltaUV2 = u2 - u0;
+
+							float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y * deltaUV2.x);
+							glm::vec3 tangent = (deltaPos1 * deltaUV2.y - deltaPos2 * deltaUV1.y)*r;
+							glm::vec3 bitangent = (deltaPos2 * deltaUV1.x - deltaPos1 * deltaUV2.x)*r;
+
+							mesh->AddTangent(tangent);
+							mesh->AddBiTangent(bitangent);
+
 						}
 						else
 						{

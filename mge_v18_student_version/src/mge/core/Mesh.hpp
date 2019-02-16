@@ -22,6 +22,10 @@ class Mesh
 		std::vector<glm::vec3> Vertices();
 		std::vector<glm::vec3> Normals() ;
 		std::vector<glm::vec2> UVs() ;
+
+		std::vector<glm::vec3> Tangents();
+		std::vector<glm::vec3> BiTangents();
+
 		std::vector<unsigned> Indices() ;
 
 		void AddVertex(glm::vec3 v);
@@ -29,12 +33,18 @@ class Mesh
 		void AddUVs(glm::vec2 uv);
 		void AddIndex(unsigned i);
 
+		void AddTangent(glm::vec3 t);
+		void AddBiTangent(glm::vec3 b);
+
 	protected:
 
 	    //the actual data
 		std::vector<glm::vec3> _vertices;       //vec3 with 3d coords for all vertices
 		std::vector<glm::vec3> _normals;        //vec3 with 3d normal data
 		std::vector<glm::vec2> _uvs;            //vec2 for uv
+
+		std::vector<glm::vec3> m_tangents;
+		std::vector<glm::vec3> m_biTangents;
 
 		//references to the vertices/normals & uvs in previous vectors
 		std::vector<unsigned> _indices;

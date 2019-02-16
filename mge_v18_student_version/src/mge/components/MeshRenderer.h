@@ -10,7 +10,7 @@ public:
 
 	void Awake() override;
 	void SetMesh(Mesh* mesh);
-	void StreamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib);
+	void StreamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib, GLint pTangentsAttrib = -1, GLint pBiTangentsAttrib = -1);
 	void DrawMeshDebugInfo(const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix);
 	
 private:
@@ -27,6 +27,8 @@ private:
 	GLuint m_normalBufferId;
 	GLuint m_uvBufferId;
 
+	GLuint m_tangentBufferId;
+	GLuint m_biTangentBufferId;
 
 };
 

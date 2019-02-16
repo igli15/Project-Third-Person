@@ -22,6 +22,7 @@ diffuseTextures =
 	["carTex"] = texturesLoadPath.."carTex.png",
 	["containerDiffuse"] = texturesLoadPath.."container2.png",
 	["buildingTex"] = texturesLoadPath.."arenaDiffuse.png",
+	["brickWall"] = texturesLoadPath.."wall.png"
 	
 }
 
@@ -29,6 +30,7 @@ specularTextures =
 {
 	["containerSpecular"] = texturesLoadPath.."container2_specular.png",
 	["buildingSpec"] = texturesLoadPath.."stuffSpec.png",
+	["brickWallNormal"] = texturesLoadPath.."wallNormal.png"
 }
 
 emissionTextures = 
