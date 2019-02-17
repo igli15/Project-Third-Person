@@ -42,6 +42,9 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 	ColorMaterial* planeMat = new ColorMaterial();
 	ColorMaterial* lightMat = new ColorMaterial();
 
+	ColorMaterial* whiteColor = new ColorMaterial();
+	whiteColor->SetDiffuseColor(glm::vec3(1, 1, 1));
+
 	TextureMaterial* containerMat = new TextureMaterial(resourceManager->GetTexture("containerDiffuse"),resourceManager->GetTexture("containerSpecular"), resourceManager->GetTexture("matrix"));
 	TextureMaterial* stuffMat = new TextureMaterial(resourceManager->GetTexture("buildingTex"),resourceManager->GetTexture("buildingSpec"), nullptr);
 
@@ -58,6 +61,7 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 	resourceManager->RegisterMaterial(stuffMat, "stuffMat");
 	resourceManager->RegisterMaterial(wallMatNON, "wallNON");
 	resourceManager->RegisterMaterial(goodBoyMat, "goodBoyMat");
+	resourceManager->RegisterMaterial(whiteColor, "whiteMat");
 }
 
 void MainGame::CreateWorld()

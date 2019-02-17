@@ -4,7 +4,7 @@
 
 CameraComponent::CameraComponent()
 {
-	
+	m_projection = glm::perspective(glm::radians(m_FOV), m_aspectRatio, m_nearClipPlane, m_farClipPlane);
 }
 
 
@@ -14,7 +14,7 @@ CameraComponent::~CameraComponent()
 
 void CameraComponent::Awake()
 {
-	m_projection = glm::perspective(glm::radians(m_FOV), m_aspectRatio, m_nearClipPlane, m_farClipPlane);
+	
 }
 
 glm::mat4 & CameraComponent::GetProjection()
