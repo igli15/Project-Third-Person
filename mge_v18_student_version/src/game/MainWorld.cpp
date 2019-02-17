@@ -34,7 +34,7 @@ MainWorld::MainWorld()
 
 void MainWorld::LoadXmlWorld()
 {
-	std::ifstream myXml("mge/scene.xml");
+	std::ifstream myXml(config::MGE_SCENE_PATH+"scene.xml");
 	std::vector<char> buffer((std::istreambuf_iterator<char>(myXml)),std::istreambuf_iterator<char>());
 	buffer.push_back('\0');
 
@@ -43,7 +43,7 @@ void MainWorld::LoadXmlWorld()
 	
 	rapidxml::xml_node<>* rootNode = doc.first_node("root");
 
-
+	ParseGameObject(rootNode, _world);
 }
 
 void MainWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObject)
@@ -119,6 +119,13 @@ GameObject* MainWorld::ConverGameObject(rapidxml::xml_node<>* node, GameObject *
 			sscanf(a->value(), "%f,%f,%f", &scale.x, &scale.y, &scale.z);
 			gameObject->transform->Scale(scale);
 		}
+		else if (attributeName == "mesh")
+		{
+			Mesh* mesh = AbstractGame::Instance()->GetResourceManager()->GetMesh(a->value());
+			gameObject->SetMeshRenderer(gameObject->AddComponent<MeshRenderer>());
+			gameObject->GetMeshRenderer()->SetMesh(mesh);
+		}
+
 
 	}
 
@@ -128,6 +135,9 @@ GameObject* MainWorld::ConverGameObject(rapidxml::xml_node<>* node, GameObject *
 
 void MainWorld::Initialize()
 {
+
+	LoadXmlWorld();
+
 	Mesh* planeMeshDefault = AbstractGame::Instance()->GetResourceManager()->GetMesh("planeMesh");
 	Mesh* cubeMesh = AbstractGame::Instance()->GetResourceManager()->GetMesh("cubeMesh");;
 	Mesh* Car = AbstractGame::Instance()->GetResourceManager()->GetMesh("carMesh");;
@@ -144,32 +154,39 @@ void MainWorld::Initialize()
 	TextureMaterial* radioMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("stuffMat"));
 
 	Camera* camera = Instantiate<Camera>();
-	camera->transform->SetLocalPosition(glm::vec3(0, 22, 22));
-	camera->transform->Rotate(glm::radians(-65.0f), glm::vec3(1, 0, 0));
+	camera->transform->SetLocalPosition(glm::vec3(0, 0, 10));
+	//camera->transform->Rotate(glm::radians(-65.0f), glm::vec3(1, 0, 0));
 	camera->GetCameraComponent()->SetFOV(60); //Set Camera Properties via its component
 	_world->setMainCamera(camera);
 
+
+	/*
 	GameObject* cube2 = _world->Instantiate<GameObject>();
 	cube2->transform->SetLocalPosition(glm::vec3(0.5, 0.0f, 4));
 	cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
 	cube2->GetMeshRenderer()->SetMesh(gunMesh);
+	cube2->setMaterial(radioMat);
+	cube2->transform->Scale(glm::vec3(1.0f,1.0f, 1.0f));
+	cube2->AddComponent<KeyMoveComponent>();
 	//radioMat->SetShininess(256);
+	*/
 
 	GameObject* canvas = _world->Instantiate<GameObject>();
 	canvas->AddComponent<CanvasComponent>();
 	canvas->Awake();
 
+	/*
 	GameObject* sprite = _world->Instantiate<GameObject>();
 	sprite->AddComponent<UISpriteRenderer>()->ApplyTexture(AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("brickTex"));
 	sprite->Awake();
 
-	cube2->setMaterial(radioMat);
+	*/
+
 	/*cube2->AddComponent<AudioSource>()->SetMusic(AbstractGame::Instance()->GetResourceManager()->GetMusic("expmusic"));
 	cube2->GetComponent<AudioSource>()->PlayMusic();
 	cube2->GetComponent<AudioSource>()->PlayOneShotSound("cannonShot");
 	*/
-	cube2->transform->Scale(glm::vec3(1.0f,1.0f, 1.0f));
-	cube2->AddComponent<KeyMoveComponent>();
+	
 	//cube2->setBehaviour(new KeysBehaviour());
 
 
@@ -222,6 +239,7 @@ void MainWorld::Initialize()
 	l2->transform->Scale(glm::vec3(0.2f, 0.2f, 0.2f));
 
 	//l2->Destroy();
+
 }
 
 MainWorld::~MainWorld()
