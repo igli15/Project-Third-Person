@@ -74,6 +74,7 @@ void MainWorld::Initialize()
 	//cube2->setBehaviour(new KeysBehaviour());
 
 
+	
 	GameObject* cube = _world->Instantiate<GameObject>();
 	cube->transform->SetLocalPosition(glm::vec3(0, 16, 19));
 	//cube->transform->Rotate(glm::radians(45.0f),glm::vec3(1, 0,1));
@@ -81,7 +82,18 @@ void MainWorld::Initialize()
 	cube->GetMeshRenderer()->SetMesh(cubeMesh);
 	cube->AddComponent<RotatingComponent>();
 	cube->setMaterial(containerMat);
+	
 
+	/*
+	GameObject* goodBoy = _world->Instantiate<GameObject>();
+	goodBoy->transform->SetLocalPosition(glm::vec3(0, 20, 21));
+	//goodBoy->transform->Scale(glm::vec3(2,5,2));
+	goodBoy->SetMeshRenderer(goodBoy->AddComponent<MeshRenderer>());
+	goodBoy->GetMeshRenderer()->SetMesh(AbstractGame::Instance()->GetResourceManager()->GetMesh("goodBoyMesh"));
+	goodBoy->AddComponent<RotatingComponent>();
+
+	goodBoy->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("goodBoyMat"));
+	*/
 
 	Light* l = _world->Instantiate<Light>();
 	l->transform->SetLocalPosition(glm::vec3(0, 19,19));

@@ -13,6 +13,7 @@ meshes =
 	["carMesh"] = meshesLoadPath.."Car.obj",
 	["testMesh"] = meshesLoadPath.."arena.obj",
 	["cylinderMesh"] = meshesLoadPath.."cylinder_smooth.obj",
+	["goodBoyMesh"] = meshesLoadPath.."goodBoy.obj",
 }
 
 
@@ -22,7 +23,8 @@ diffuseTextures =
 	["carTex"] = texturesLoadPath.."carTex.png",
 	["containerDiffuse"] = texturesLoadPath.."container2.png",
 	["buildingTex"] = texturesLoadPath.."arenaDiffuse.png",
-	["brickWall"] = texturesLoadPath.."wall.png"
+	["brickWall"] = texturesLoadPath.."wall.png",
+	["goodBoyDiffuse"] = texturesLoadPath.."goodBoyDiffuse.png"
 	
 }
 
@@ -35,6 +37,7 @@ specularTextures =
 emissionTextures = 
 {
 	["matrix"] = texturesLoadPath.."lavaEmission.png",
+	["goodBoyEmission"] = texturesLoadPath.."goodBoyEmission.png",
 }
 
 --normal maps here
