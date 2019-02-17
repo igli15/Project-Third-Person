@@ -32,12 +32,9 @@ void MainWorld::Initialize()
 	Mesh* planeMeshDefault = AbstractGame::Instance()->GetResourceManager()->GetMesh("planeMesh");
 	Mesh* cubeMesh = AbstractGame::Instance()->GetResourceManager()->GetMesh("cubeMesh");;
 	Mesh* Car = AbstractGame::Instance()->GetResourceManager()->GetMesh("carMesh");;
-	Mesh* modelMesh = AbstractGame::Instance()->GetResourceManager()->GetMesh("jeepMesh");;
 	Mesh* gunMesh = AbstractGame::Instance()->GetResourceManager()->GetMesh("testMesh");;
 
 	AbstractMaterial* brickMat = AbstractGame::Instance()->GetResourceManager()->GetMaterial("brickMat");
-	TextureMaterial* carMat =  dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("carMat"));
-	AbstractMaterial* modelMat = (AbstractGame::Instance()->GetResourceManager()->GetMaterial("modelMat"));
 	ColorMaterial* planeMat = dynamic_cast<ColorMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("planeMat"));
 	planeMat->SetShineness(126);
 	planeMat->SetDiffuseColor(glm::vec3(0.13f, 0.54f, 0.130f));
@@ -52,29 +49,6 @@ void MainWorld::Initialize()
 	camera->transform->Rotate(glm::radians(-65.0f), glm::vec3(1, 0, 0));
 	camera->GetCameraComponent()->SetFOV(60); //Set Camera Properties via its component
 	_world->setMainCamera(camera);
-
-	//GameObject* car = _world->Instantiate<GameObject>();
-	//car->transform->SetLocalPosition(glm::vec3(0,0.2f,0));
-	//car->SetMeshRenderer(car->AddComponent<MeshRenderer>());
-	//car->GetMeshRenderer()->SetMesh(Car);
-	//car->setMaterial(carMat);
-	//car->transform->Scale(glm::vec3(1, 1, 1));
-
-	//GameObject* model = _world->Instantiate<GameObject>();
-	//model->transform->SetLocalPosition(glm::vec3(-6, 0.2, 0));
-	//model->SetMeshRenderer(model->AddComponent<MeshRenderer>());
-	//model->GetMeshRenderer()->SetMesh(modelMesh);
-	//model->setMaterial(modelMat);
-	//model->transform->Scale(glm::vec3(1, 1, 1));
-	//model->setBehaviour(new RotatingBehaviour());
-
-	//GameObject* cube = _world->Instantiate<GameObject>();
-	//cube->transform->SetLocalPosition(glm::vec3(5, 0.2f, 0));
-	//cube->SetMeshRenderer(cube->AddComponent<MeshRenderer>());
-	//cube->GetMeshRenderer()->SetMesh(cubeMesh);
-	//cube->setMaterial(containerMat);
-	//cube->transform->Scale(glm::vec3(1, 1, 1));
-	//cube->setBehaviour(new RotatingBehaviour());
 
 	GameObject* cube2 = _world->Instantiate<GameObject>();
 	cube2->transform->SetLocalPosition(glm::vec3(0.5, 0.0f, 4));
@@ -101,7 +75,8 @@ void MainWorld::Initialize()
 
 
 	GameObject* cube = _world->Instantiate<GameObject>();
-	cube->transform->SetLocalPosition(glm::vec3(0, 15, 15));
+	cube->transform->SetLocalPosition(glm::vec3(0, 16, 19));
+	//cube->transform->Rotate(glm::radians(45.0f),glm::vec3(1, 0,1));
 	cube->SetMeshRenderer(cube->AddComponent<MeshRenderer>());
 	cube->GetMeshRenderer()->SetMesh(cubeMesh);
 	cube->AddComponent<RotatingComponent>();
@@ -109,9 +84,9 @@ void MainWorld::Initialize()
 
 
 	Light* l = _world->Instantiate<Light>();
-	l->transform->SetLocalPosition(glm::vec3(0, 16,16));
+	l->transform->SetLocalPosition(glm::vec3(0, 19,19));
 	l->transform->Rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
-	l->transform->Rotate(glm::radians(45.0f), glm::vec3(0, 1, 0));
+	l->transform->Rotate(glm::radians(45.0f), glm::vec3(0, 1, 1));
 	l->GetLightComponent()->SetType(LightType::DIRECTIONAL);
 	l->GetLightComponent()->SetIntensity(1.0f);
 	l->GetLightComponent()->SetColor(glm::vec3(1, 1, 0.95f));

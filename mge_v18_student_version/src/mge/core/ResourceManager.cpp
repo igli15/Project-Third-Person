@@ -11,8 +11,9 @@ ResourceManager::ResourceManager()
 	m_luaProgram = new LuaProgram("../src/game/Resources.Lua");
 	m_luaProgram->CallCurrentProgram();
 
-	LoadTexture(config::MGE_TEXTURE_PATH + "whiteTex.png", "whiteTex",TextureType::REPLACEMENT);
-	LoadTexture(config::MGE_TEXTURE_PATH + "blackTex.png", "blackTex", TextureType::REPLACEMENT);
+	LoadTexture(config::MGE_TEXTURE_PATH + "whiteTex.png", "whiteTex",TextureType::RGBAREPLACEMENT);
+	LoadTexture(config::MGE_TEXTURE_PATH + "blackTex.png", "blackTex", TextureType::RGBAREPLACEMENT);
+	LoadTexture(config::MGE_TEXTURE_PATH + "defaultNormal.png", "flatNormalTex", TextureType::RGBAREPLACEMENT);
 }
 
 
@@ -43,16 +44,18 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 
 		//If we want specular / normals maps we still have to use rgba instead of SRGB
 
-		if (textureType == TextureType::SPECULAR || textureType == TextureType::EMISSION)
+		if (textureType == TextureType::SPECULAR || textureType == TextureType::EMISSION || textureType == TextureType::NORMAL || textureType == TextureType::RGBAREPLACEMENT)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
-		else if (textureType == TextureType::DIFFUSE || TextureType::REPLACEMENT)
+		else if (textureType == TextureType::DIFFUSE || TextureType::SRGBREPLACEMENT)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
 
-		if (textureType == TextureType::REPLACEMENT)
+		//wrap the default tex
+		if (textureType == TextureType::RGBAREPLACEMENT || textureType == TextureType::SRGBREPLACEMENT)
+		
 		{
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
 		}
@@ -228,6 +231,28 @@ Mesh * ResourceManager::LoadMesh(const std::string & path, const std::string & t
 							mesh->AddVertex(vertices[vertexIndex[i] - 1]);
 							mesh->AddNormal(normals[normalIndex[i] - 1]);
 							mesh->AddUVs(uvs[uvIndex[i] - 1]);
+
+							glm::vec3 v0 = vertices[vertexIndex[0] -1];
+							glm::vec3 v1 = vertices[vertexIndex[1] - 1];
+							glm::vec3 v2 = vertices[vertexIndex[2] - 1];
+
+							glm::vec2 u0 = uvs[uvIndex[0] - 1];
+							glm::vec2 u1 = uvs[uvIndex[1] - 1];
+							glm::vec2 u2 = uvs[uvIndex[2] - 1];
+
+							glm::vec3 deltaPos1 = v1 - v0;
+							glm::vec3 deltaPos2 = v2 - v0;
+
+							glm::vec2 deltaUV1 = u1 - u0;
+							glm::vec2 deltaUV2 = u2 - u0;
+
+							float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y * deltaUV2.x);
+							glm::vec3 tangent = (deltaPos1 * deltaUV2.y - deltaPos2 * deltaUV1.y)*r;
+							glm::vec3 bitangent = (deltaPos2 * deltaUV1.x - deltaPos1 * deltaUV2.x)*r;
+
+							mesh->AddTangent(tangent);
+							mesh->AddBiTangent(bitangent);
+
 						}
 						else
 						{
@@ -416,6 +441,7 @@ void ResourceManager::LoadResourcesFromLua()
 	LuaLoadDiffuseTextures();
 	LuaLoadSpecularTexutres();
 	LuaLoadEmissionTextures();
+	LuaLoadNormalMaps();
 	LuaLoadSounds();
 	LuaLoadMusics();
 
@@ -496,6 +522,26 @@ void ResourceManager::LuaLoadEmissionTextures()
 		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
 		//std::cout << name <<" "<< path<<  std::endl;
 		LoadTexture(path, name, TextureType::EMISSION);
+		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
+	}
+
+	m_luaProgram->PopCurrentTable();
+}
+
+void ResourceManager::LuaLoadNormalMaps()
+{
+	m_luaProgram->GetGlobalTable("normalMapTextures");
+
+	lua_pushnil(m_luaProgram->GetCurrentLuaState());
+	lua_gettable(m_luaProgram->GetCurrentLuaState(), -2);
+
+	while (lua_next(m_luaProgram->GetCurrentLuaState(), -2) != 0)
+	{
+
+		std::string name = lua_tostring(m_luaProgram->GetCurrentLuaState(), -2);
+		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
+		//std::cout << name <<" "<< path<<  std::endl;
+		LoadTexture(path, name, TextureType::NORMAL);
 		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
 	}
 

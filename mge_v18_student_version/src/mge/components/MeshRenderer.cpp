@@ -26,14 +26,14 @@ void MeshRenderer::SetMesh(Mesh * mesh)
 	BufferMesh();
 }
 
-void MeshRenderer::StreamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib)
+void MeshRenderer::StreamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, GLint pUVsAttrib, GLint pTangentsAttrib, GLint pBiTangentsAttrib)
 {
 	if (m_currentMesh == nullptr)
 	{
 		std::cout << "No Mesh is Assigned to the Mesh Renderer" << std::endl;
 		return;
 	}
-
+	
 	//std::cout << "buffered" << std::endl;
 
 	if (pVerticesAttrib != -1) {
@@ -54,6 +54,18 @@ void MeshRenderer::StreamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, G
 		glVertexAttribPointer(pUVsAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
 	}
 
+	if (pTangentsAttrib != -1) {
+		glBindBuffer(GL_ARRAY_BUFFER, m_tangentBufferId);
+		glEnableVertexAttribArray(pTangentsAttrib);
+		glVertexAttribPointer(pTangentsAttrib, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	}
+
+	if (pBiTangentsAttrib != -1) {
+		glBindBuffer(GL_ARRAY_BUFFER, m_biTangentBufferId);
+		glEnableVertexAttribArray(pBiTangentsAttrib);
+		glVertexAttribPointer(pBiTangentsAttrib, 3, GL_FLOAT, GL_FALSE, 0, 0);
+	}
+
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_indexBufferId);
 
 	glDrawElements(GL_TRIANGLES, m_currentMesh->Indices().size(), GL_UNSIGNED_INT, (GLvoid*)0);
@@ -66,6 +78,9 @@ void MeshRenderer::StreamToOpenGL(GLint pVerticesAttrib, GLint pNormalsAttrib, G
 	if (pUVsAttrib != -1) glDisableVertexAttribArray(pUVsAttrib);
 	if (pNormalsAttrib != -1) glDisableVertexAttribArray(pNormalsAttrib);
 	if (pVerticesAttrib != -1) glDisableVertexAttribArray(pVerticesAttrib);
+
+	if (pTangentsAttrib != -1)glDisableVertexAttribArray(pTangentsAttrib);
+	if (pBiTangentsAttrib != -1)glDisableVertexAttribArray(pBiTangentsAttrib);
 }
 
 void MeshRenderer::DrawMeshDebugInfo(const glm::mat4 & pModelMatrix, const glm::mat4 & pViewMatrix, const glm::mat4 & pProjectionMatrix)
@@ -119,6 +134,14 @@ void MeshRenderer::BufferMesh()
 	glGenBuffers(1, &m_uvBufferId);
 	glBindBuffer(GL_ARRAY_BUFFER, m_uvBufferId);
 	glBufferData(GL_ARRAY_BUFFER, m_currentMesh->UVs().size() * sizeof(glm::vec2), &m_currentMesh->UVs()[0], GL_STATIC_DRAW);
+
+	glGenBuffers(1, &m_tangentBufferId);
+	glBindBuffer(GL_ARRAY_BUFFER, m_tangentBufferId);
+	glBufferData(GL_ARRAY_BUFFER, m_currentMesh->Tangents().size() * sizeof(glm::vec2), &m_currentMesh->Tangents()[0], GL_STATIC_DRAW);
+
+	glGenBuffers(1, &m_biTangentBufferId);
+	glBindBuffer(GL_ARRAY_BUFFER, m_biTangentBufferId);
+	glBufferData(GL_ARRAY_BUFFER, m_currentMesh->BiTangents().size() * sizeof(glm::vec2), &m_currentMesh->BiTangents()[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }

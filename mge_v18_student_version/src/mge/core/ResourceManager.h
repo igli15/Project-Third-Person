@@ -48,6 +48,7 @@ public:
 	void LuaLoadDiffuseTextures();
 	void LuaLoadSpecularTexutres();
 	void LuaLoadEmissionTextures();
+	void LuaLoadNormalMaps();
 	void LuaLoadSFMLTextures();
 	void LuaLoadSounds();
 	void LuaLoadMusics();

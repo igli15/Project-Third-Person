@@ -45,12 +45,16 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 	TextureMaterial* containerMat = new TextureMaterial(resourceManager->GetTexture("containerDiffuse"),resourceManager->GetTexture("containerSpecular"), resourceManager->GetTexture("matrix"));
 	TextureMaterial* stuffMat = new TextureMaterial(resourceManager->GetTexture("buildingTex"),resourceManager->GetTexture("buildingSpec"), nullptr);
 
+	TextureMaterial* wallMat = new TextureMaterial(resourceManager->GetTexture("brickWall"), nullptr,nullptr, resourceManager->GetTexture("brickWallNormal"));
+	TextureMaterial* wallMatNON = new TextureMaterial(resourceManager->GetTexture("brickWall"), nullptr, nullptr, nullptr);
+
 	resourceManager->RegisterMaterial(brickMat, "brickMat");
 	resourceManager->RegisterMaterial(carMat, "carMat");
 	resourceManager->RegisterMaterial(planeMat, "planeMat");
 	resourceManager->RegisterMaterial(lightMat, "lightMat");
-	resourceManager->RegisterMaterial(containerMat, "containerMat");
+	resourceManager->RegisterMaterial(wallMat, "containerMat");
 	resourceManager->RegisterMaterial(stuffMat, "stuffMat");
+	resourceManager->RegisterMaterial(wallMatNON, "wallNON");
 }
 
 void MainGame::CreateWorld()

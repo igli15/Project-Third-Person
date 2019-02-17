@@ -20,6 +20,9 @@ out vec2 texCoord; //make sure the texture coord is interpolated
 out vec3 fragPos;
 out vec3 fnormal;
 
+
+out mat3 TBN;
+
 void main( void ){
     
 	gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(vertex, 1.0);
@@ -28,4 +31,15 @@ void main( void ){
 	fnormal = mat3(transpose(inverse(viewMatrix * modelMatrix))) * normal;
 		
 	fragPos = vec3(viewMatrix * modelMatrix * vec4(vertex,1.0));
+	
+	vec3 T = normalize(vec3(modelMatrix * vec4(tangent, 0.0)));
+	vec3 N = normalize(vec3(modelMatrix * vec4(normal, 0.0)));
+
+	T = normalize(T - dot(T, N) * N);
+
+	vec3 B = cross(N, T);
+	
+	TBN = mat3(T,B,N);
+	
+	
 }

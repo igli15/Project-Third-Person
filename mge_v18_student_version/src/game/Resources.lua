@@ -22,6 +22,7 @@ diffuseTextures =
 	["carTex"] = texturesLoadPath.."carTex.png",
 	["containerDiffuse"] = texturesLoadPath.."container2.png",
 	["buildingTex"] = texturesLoadPath.."arenaDiffuse.png",
+	["brickWall"] = texturesLoadPath.."wall.png"
 	
 }
 
@@ -34,6 +35,12 @@ specularTextures =
 emissionTextures = 
 {
 	["matrix"] = texturesLoadPath.."lavaEmission.png",
+}
+
+--normal maps here
+normalMapTextures = 
+{
+	["brickWallNormal"] = texturesLoadPath.."wallNormal.png"
 }
 
 --Since we are using SFML for ui textures we need to load the sepperatly here!
