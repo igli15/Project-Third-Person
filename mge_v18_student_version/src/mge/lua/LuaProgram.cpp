@@ -52,7 +52,7 @@ int LuaProgram::GetGlobalBoolean(std::string varName)
 
     if(lua_isboolean(m_currentLuaState,-1))
     {
-        double b = lua_toboolean(m_currentLuaState,-1);
+        int b = lua_toboolean(m_currentLuaState,-1);
         lua_pop(m_currentLuaState,1);
         return b;
     }
