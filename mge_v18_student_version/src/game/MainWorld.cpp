@@ -85,7 +85,6 @@ GameObject* MainWorld::ConverGameObject(rapidxml::xml_node<>* node, GameObject *
 	//just for testing
 	GameObject* gameObject = Instantiate<GameObject>();
 	ColorMaterial* defaultMat = dynamic_cast<ColorMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("whiteMat"));
-	gameObject->setMaterial(defaultMat);
 
 	for (rapidxml::xml_attribute<>* a = node->first_attribute();
 		a != nullptr;
@@ -102,32 +101,35 @@ GameObject* MainWorld::ConverGameObject(rapidxml::xml_node<>* node, GameObject *
 		{
 			glm::vec3 pos;
 			//seperate the value into 3 floats anf buffer them to pos vector...
-			sscanf(a->value(), "%f,%f,%f", &pos.x, &pos.y, &pos.z);
+			sscanf(a->value(), "(%f,%f,%f)", &pos.x, &pos.y, &pos.z);
+			std::cout << "POs::::::: " << pos << std::endl;
 			gameObject->transform->SetLocalPosition(pos);
 		}
 		else if (attributeName == "rotation")
 		{
 			glm::quat rot;
 			//seperate the value into 4 floats anf buffer them to quaternion...
-			sscanf(a->value(), "%f,%f,%f,%f", &rot.x, &rot.y, &rot.z,&rot.w);
+			sscanf(a->value(), "(%f,%f,%f,%f)", &rot.x, &rot.y, &rot.z,&rot.w);
+			std::cout << "Rot::::::: " << rot << std::endl;
 			gameObject->transform->Rotate(glm::angle(rot),glm::axis(rot));
 		}
 		else if (attributeName == "scale")
 		{
 			glm::vec3 scale;
 			//seperate the value into 3 floats anf buffer them to scale vector...
-			sscanf(a->value(), "%f,%f,%f", &scale.x, &scale.y, &scale.z);
+			sscanf(a->value(), "(%f,%f,%f)", &scale.x, &scale.y, &scale.z);
+			std::cout << "Scale::::::: " << scale << std::endl;
 			gameObject->transform->Scale(scale);
 		}
 		else if (attributeName == "mesh")
 		{
 			Mesh* mesh = AbstractGame::Instance()->GetResourceManager()->GetMesh(a->value());
+			std::cout << mesh->Vertices().size() << std::endl;
 			gameObject->SetMeshRenderer(gameObject->AddComponent<MeshRenderer>());
 			gameObject->GetMeshRenderer()->SetMesh(mesh);
 		}
-
-
 	}
+	gameObject->setMaterial(defaultMat);
 
 	return gameObject;
 
@@ -154,8 +156,8 @@ void MainWorld::Initialize()
 	TextureMaterial* radioMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("stuffMat"));
 
 	Camera* camera = Instantiate<Camera>();
-	camera->transform->SetLocalPosition(glm::vec3(0, 0, 10));
-	//camera->transform->Rotate(glm::radians(-65.0f), glm::vec3(1, 0, 0));
+	camera->transform->SetLocalPosition(glm::vec3(0, 15, 10));
+	camera->transform->Rotate(glm::radians(-65.0f), glm::vec3(1, 0, 0));
 	camera->GetCameraComponent()->SetFOV(60); //Set Camera Properties via its component
 	_world->setMainCamera(camera);
 

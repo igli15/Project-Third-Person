@@ -1,13 +1,13 @@
 <root>
-  <GameObject name="Directional Light" position="(0.0, -21.6, 0.0)" rotation="(0.4, -0.2, 0.1, 0.9)" scale="(1.0, 1.0, 1.0)" />
-  <GameObject name="Main Camera" position="(0.0, 3.0, -10.0)" rotation="(0.0, 0.0, -1.0, 0.0)" scale="(1.0, -1.0, -1.0)" />
-  <GameObject name="model" position="(2.0, 0.0, 2.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="model" />
-  <GameObject name="model" position="(2.0, 0.0, -2.0)" rotation="(0.0, 0.7, 0.0, 0.7)" scale="(1.0, 1.0, 1.0)" mesh="model" />
-  <GameObject name="model" position="(-2.0, 0.0, -2.0)" rotation="(0.0, 1.0, 0.0, 0.0)" scale="(1.0, 1.0, 1.0)" mesh="model" />
-  <GameObject name="model" position="(-2.0, 0.0, 2.0)" rotation="(0.0, -0.7, 0.0, 0.7)" scale="(1.0, 1.0, 1.0)" mesh="model" />
-  <GameObject name="Cube" position="(1.8, 0.0, -1.5)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Cube">
+  <GameObject name="Directional Light" position="(0.0, -21.6, 0.0)" rotation="(0.4, 0.2, -0.1, 0.9)" scale="(1.0, 1.0, 1.0)" />
+  <GameObject name="Main Camera" position="(0.0, 6.9, -13.0)" rotation="(0.2, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" />
+  <GameObject name="model" position="(-6.0, 0.0, 6.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="model" />
+  <GameObject name="model" position="(-6.0, 0.0, -6.0)" rotation="(0.0, -0.7, 0.0, 0.7)" scale="(1.0, 1.0, 1.0)" mesh="model" />
+  <GameObject name="model" position="(6.0, 0.0, -6.0)" rotation="(0.0, -1.0, 0.0, 0.0)" scale="(1.0, 1.0, 1.0)" mesh="model" />
+  <GameObject name="model" position="(6.0, 0.0, 6.0)" rotation="(0.0, 0.7, 0.0, 0.7)" scale="(1.0, 1.0, 1.0)" mesh="model" />
+  <GameObject name="Cube" position="(-3.8, 0.0, -3.5)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Cube">
     <GameObject name="Cube" position="(0.0, 0.0, 1.9)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Cube" />
   </GameObject>
-  <GameObject name="Sphere" position="(2.0, 0.0, 1.7)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Sphere" />
-  <GameObject name="Cube" position="(-1.6, 0.0, -2.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Cube" />
+  <GameObject name="Sphere" position="(-4.0, 0.0, 3.7)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Sphere" />
+  <GameObject name="Cube" position="(3.6, 0.0, -4.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Cube" />
 </root>
