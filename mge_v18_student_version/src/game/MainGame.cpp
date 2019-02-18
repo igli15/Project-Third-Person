@@ -68,7 +68,7 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 void MainGame::CreateWorld()
 {
 	AbstractGame::CreateWorld();
-	//m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
+	m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
 
 	//Loading an XML parsed world
 	//Don't forget to call The "LoadXMLWorld" function.

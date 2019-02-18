@@ -2,8 +2,13 @@
   <GameObject name="Directional Light" position="(0.0, -21.6, 0.0)" rotation="(0.4, 0.2, -0.1, 0.9)" scale="(1.0, 1.0, 1.0)">
     <Components />
   </GameObject>
-  <GameObject name="Main Camera" position="(0.0, 6.2, -12.7)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
+  <GameObject name="Main Camera" position="(0.0, 6.4, 19.5)" rotation="(0.0, -1.0, 0.1, 0.0)" scale="(1.0, 1.0, 1.0)">
     <Components />
+    <GameObject name="MGECAM" position="(0.0, 0.0, 0.0)" rotation="(0.0, 1.0, 0.0, 0.0)" scale="(1.0, 1.0, 1.0)">
+      <Components>
+        <CameraComponent FOV="60" aspectRatio="1.333333" nearClipPlane="0.1" farClipPlane="1000" />
+      </Components>
+    </GameObject>
   </GameObject>
   <GameObject name="model" position="(-3.4, -1.0, 6.0)" rotation="(0.0, 0.0, 0.4, 0.9)" scale="(1.0, 1.0, 1.0)" mesh="model">
     <Components>

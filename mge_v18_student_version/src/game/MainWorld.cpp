@@ -53,10 +53,10 @@ void MainWorld::Initialize()
 	camera->transform->SetLocalPosition(glm::vec3(0, 15, 10));
 	camera->transform->Rotate(glm::radians(-65.0f), glm::vec3(1, 0, 0));
 	camera->GetCameraComponent()->SetFOV(60); //Set Camera Properties via its component
-	_world->setMainCamera(camera);
+	_world->setMainCamera(camera->GetCameraComponent());
 
 
-	/*
+	
 	GameObject* cube2 = _world->Instantiate<GameObject>();
 	cube2->transform->SetLocalPosition(glm::vec3(0.5, 0.0f, 4));
 	cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
@@ -65,7 +65,7 @@ void MainWorld::Initialize()
 	cube2->transform->Scale(glm::vec3(1.0f,1.0f, 1.0f));
 	cube2->AddComponent<KeyMoveComponent>();
 	//radioMat->SetShininess(256);
-	*/
+	
 
 	GameObject* canvas = _world->Instantiate<GameObject>();
 	canvas->AddComponent<CanvasComponent>();

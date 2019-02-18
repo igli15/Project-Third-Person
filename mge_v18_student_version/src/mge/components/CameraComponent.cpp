@@ -65,3 +65,30 @@ float CameraComponent::GetFarCLipPlane() const
 {
 	return m_farClipPlane;
 }
+
+void CameraComponent::Parse(rapidxml::xml_node<>* compNode)
+{
+	for (rapidxml::xml_attribute<>* a = compNode->first_attribute();
+		a != nullptr;
+		a = a->next_attribute())
+	{
+		std::cout << a->name() << " " << a->value() << std::endl;
+		std::string attributeName = a->name();
+		if (attributeName == "FOV")
+		{
+			SetFOV(strtof(a->value(),0));
+		}
+		else if (attributeName == "aspectRatio")
+		{
+			SetApsectRatio(strtof(a->value(), 0));
+		}
+		else if (attributeName == "nearClipPlane")
+		{
+			SetNearClipPlane(strtof(a->value(), 0));
+		}
+		else if (attributeName == "farClipPlane")
+		{
+			SetFarClipPlane(strtof(a->value(), 0));
+		}
+	}
+}

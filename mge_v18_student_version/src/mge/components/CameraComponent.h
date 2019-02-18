@@ -1,8 +1,9 @@
 #pragma once
 #include "glm.hpp"
 #include "../core/Component.h"
+#include "../core/XMLComponent.h"
 
-class CameraComponent : public Component
+class CameraComponent : public XMLComponent
 {
 public:
 	CameraComponent();
@@ -20,6 +21,8 @@ public:
 	float GetAspectRatio() const;
 	float GetNearClipPlane() const;
 	float GetFarCLipPlane() const;
+
+	void Parse(rapidxml::xml_node<>* compNode) override;
 
 private:
 	float m_FOV = 60.0f;

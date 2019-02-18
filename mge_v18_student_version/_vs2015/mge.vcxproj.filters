@@ -157,6 +157,9 @@
     <ClInclude Include="..\src\mge\core\XMLWorld.h">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\core\XMLComponent.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -274,6 +277,9 @@
       <Filter>MGE Source files\mge\components</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\core\XMLWorld.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\XMLComponent.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
   </ItemGroup>

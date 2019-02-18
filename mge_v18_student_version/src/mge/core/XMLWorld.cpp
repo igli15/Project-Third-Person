@@ -46,6 +46,10 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 	//if it read GameObject
 	if (strcmp(node->name(), "GameObject") == 0)
 	{
+		
+
+		GameObject* newNode = ConvertGameObject(node, gameObject);
+
 		if (strcmp(node->first_node()->name(), "Components") == 0)
 		{
 			rapidxml::xml_node<>* compNode = node->first_node();
@@ -63,11 +67,16 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 						std::cout << a->name() << " " << a->value() << std::endl;
 					}
 				}
+				else if (strcmp(com->name(), "CameraComponent") == 0)
+				{
+					//gameObject->AddComponent<CameraComponent>()->Parse(com);
+					(newNode)->AddComponent<CameraComponent>()->Parse(com);
+					std::cout << "AAAAAAAAAAAA: " << newNode->transform->LocalPosition()<< std::endl;
+					_world->setMainCamera(newNode->GetComponent<CameraComponent>());
+				}
 
 			}
 		}
-
-		GameObject* newNode = ConvertGameObject(node, gameObject);
 
 		//TODO Change this
 		if (gameObject != this)
@@ -148,12 +157,13 @@ GameObject * XMLWorld::ConvertGameObject(rapidxml::xml_node<>* node, GameObject 
 
 void XMLWorld::Initialize()
 {
+	/*
 	Camera* camera = Instantiate<Camera>();
 	camera->transform->SetLocalPosition(glm::vec3(0, 15, 10));
 	camera->transform->Rotate(glm::radians(-65.0f), glm::vec3(1, 0, 0));
 	camera->GetCameraComponent()->SetFOV(60); //Set Camera Properties via its component
 	_world->setMainCamera(camera);
-
+	*/
 
 	Light* l = _world->Instantiate<Light>();
 	l->transform->SetLocalPosition(glm::vec3(0, 19, 19));
