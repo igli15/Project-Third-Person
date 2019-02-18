@@ -20,6 +20,7 @@
 #include "mge/eventTypes/TestEvent.h"
 #include "mge/core/EventQueue.h"
 #include <iostream>
+#include "mge/core/XMLWorld.h"
 
 MainGame::MainGame()
 {
@@ -68,6 +69,12 @@ void MainGame::CreateWorld()
 {
 	AbstractGame::CreateWorld();
 	//m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
+
+	//Loading an XML parsed world
+	//Don't forget to call The "LoadXMLWorld" function.
+	XMLWorld* world = m_worldManager->CreateWorld<XMLWorld>("UNITYWORLD");
+	world->LoadXmlWorld("sceneTest.xml");
+
 
 	//m_eventQueue->RegisterEvent<TestEvent>([](EventType* t) {std::cout << dynamic_cast<TestEvent*>(t)->test << std::endl; });
 	//TestEvent* t = new TestEvent();
