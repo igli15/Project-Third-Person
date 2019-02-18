@@ -34,7 +34,7 @@ MainWorld::MainWorld()
 
 void MainWorld::LoadXmlWorld()
 {
-	std::ifstream myXml(config::MGE_SCENE_PATH+"scene.xml");
+	std::ifstream myXml(config::MGE_SCENE_PATH+"sceneTest.xml");
 	std::vector<char> buffer((std::istreambuf_iterator<char>(myXml)),std::istreambuf_iterator<char>());
 	buffer.push_back('\0');
 
@@ -55,7 +55,28 @@ void MainWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObj
 	//if it read GameObject
 	if (strcmp(node->name(), "GameObject") == 0)
 	{
-		GameObject* newNode = ConverGameObject(node,gameObject);
+		if (strcmp(node->first_node()->name(), "Components") == 0)
+		{
+			rapidxml::xml_node<>* compNode = node->first_node();
+			std::cout << "Reading Components" << std::endl;
+			for (rapidxml::xml_node<>* com = compNode->first_node(); com != nullptr; com = com->next_sibling())
+			{
+				std::cout << com->name() << std::endl;
+				
+				if (strcmp(com->name(), "TestComponent") == 0)
+				{
+					for (rapidxml::xml_attribute<>* a = com->first_attribute();
+						a != nullptr;
+						a = a->next_attribute())
+					{
+						std::cout << a->name() << " " << a->value() << std::endl;
+					}
+				}
+
+			}
+		}
+
+		GameObject* newNode = ConvertGameObject(node,gameObject);
 
 		//TODO Change this
 		if (gameObject != this)
@@ -79,7 +100,7 @@ void MainWorld::ParseChilderen(rapidxml::xml_node<>* node, GameObject * gameObje
 	}
 }
 
-GameObject* MainWorld::ConverGameObject(rapidxml::xml_node<>* node, GameObject * objNode)
+GameObject* MainWorld::ConvertGameObject(rapidxml::xml_node<>* node, GameObject * objNode)
 {
 
 	//just for testing
