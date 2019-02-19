@@ -73,9 +73,17 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 					(newNode)->AddComponent<CameraComponent>()->Parse(com);
 					_world->setMainCamera(newNode->GetComponent<CameraComponent>());
 				}
+				else if (strcmp(com->name(), "LightComponent") == 0)
+				{
+					//gameObject->AddComponent<CameraComponent>()->Parse(com);
+					(newNode)->AddComponent<LightComponent>()->Parse(com);
+					registerLight(newNode->GetComponent<LightComponent>());
+				}
 
 			}
 		}
+		newNode->Awake();
+		newNode->Start();
 
 		//TODO Change this
 		if (gameObject != this)
@@ -162,7 +170,7 @@ void XMLWorld::Initialize()
 	camera->transform->Rotate(glm::radians(-65.0f), glm::vec3(1, 0, 0));
 	camera->GetCameraComponent()->SetFOV(60); //Set Camera Properties via its component
 	_world->setMainCamera(camera);
-	*/
+	
 
 	Light* l = _world->Instantiate<Light>();
 	l->transform->SetLocalPosition(glm::vec3(0, 19, 19));
@@ -177,4 +185,6 @@ void XMLWorld::Initialize()
 	//l->GetMeshRenderer()->SetMesh(cubeMesh);
 	//l->setMaterial(lightMat);
 	l->transform->Scale(glm::vec3(0.2f, 0.2f, 0.2f));
+
+	*/
 }

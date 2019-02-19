@@ -1,7 +1,7 @@
 <root>
-  <GameObject name="Directional Light" position="(0.0, -21.6, 0.0)" rotation="(0.4, 0.2, -0.1, 0.9)" scale="(1.0, 1.0, 1.0)">
+  <GameObject name="Directional Light" position="(0.0, 16.0, 0.0)" rotation="(0.3, 0.7, -0.3, 0.7)" scale="(1.0, 1.0, 1.0)">
     <Components>
-      <LightComponent />
+      <LightComponent type="DIRECTIONAL" color="(1.0, 1.0, 0.8)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.7" ambientContribution="0.4" specularContribution="0.6" attenuationConstants="(1.0, 0.7, 1.8)" cutoffAngle="10" outercutoffAngle="45" />
     </Components>
   </GameObject>
   <GameObject name="Main Camera" position="(0.0, 21.3, 24.5)" rotation="(0.0, -0.9, 0.4, 0.0)" scale="(1.0, 1.0, 1.0)">

@@ -1,5 +1,7 @@
 #pragma once
 #include "../src/mge/core/Component.h"
+#include "../src/mge/core/XMLComponent.h"
+
 #include "glm.hpp"
 enum LightType
 {
@@ -8,14 +10,14 @@ enum LightType
 	SPOTLIGHT
 };
 
-class LightComponent : public Component
+class LightComponent : public XMLComponent
 
 {
 public:
 
 	LightComponent();
 	virtual ~LightComponent();
-
+	void Awake() override;
 	LightType GetType();
 	glm::vec3 GetColor();
 	glm::vec3 GetAmbient();
@@ -38,6 +40,8 @@ public:
 	float GetCutoffAngle();
 	float GetOuterCutoffAngle();
 	glm::vec3 GetAttenuationConstants();
+
+	void Parse(rapidxml::xml_node<>* compNode) override;
 
 private:
 
