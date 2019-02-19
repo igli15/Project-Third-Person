@@ -71,7 +71,6 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 				{
 					//gameObject->AddComponent<CameraComponent>()->Parse(com);
 					(newNode)->AddComponent<CameraComponent>()->Parse(com);
-					std::cout << "AAAAAAAAAAAA: " << newNode->transform->LocalPosition()<< std::endl;
 					_world->setMainCamera(newNode->GetComponent<CameraComponent>());
 				}
 

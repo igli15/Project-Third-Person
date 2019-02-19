@@ -1,8 +1,10 @@
 <root>
   <GameObject name="Directional Light" position="(0.0, -21.6, 0.0)" rotation="(0.4, 0.2, -0.1, 0.9)" scale="(1.0, 1.0, 1.0)">
-    <Components />
+    <Components>
+      <LightComponent />
+    </Components>
   </GameObject>
-  <GameObject name="Main Camera" position="(0.0, 16.1, 27.2)" rotation="(0.0, -1.0, 0.2, 0.0)" scale="(1.0, 1.0, 1.0)">
+  <GameObject name="Main Camera" position="(0.0, 21.3, 24.5)" rotation="(0.0, -0.9, 0.4, 0.0)" scale="(1.0, 1.0, 1.0)">
     <Components />
     <GameObject name="MGECAM" position="(0.0, 0.0, 0.0)" rotation="(0.0, 1.0, 0.0, 0.0)" scale="(1.0, 1.0, 1.0)">
       <Components>
