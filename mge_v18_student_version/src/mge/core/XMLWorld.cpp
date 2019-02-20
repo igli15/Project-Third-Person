@@ -49,6 +49,8 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 		
 
 		GameObject* newNode = ConvertGameObject(node, gameObject);
+		ColorMaterial* defaultMat = dynamic_cast<ColorMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("whiteMat"));
+		newNode->setMaterial(defaultMat);
 
 		if (strcmp(node->first_node()->name(), "Components") == 0)
 		{
@@ -78,6 +80,38 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 					//gameObject->AddComponent<CameraComponent>()->Parse(com);
 					(newNode)->AddComponent<LightComponent>()->Parse(com);
 					registerLight(newNode->GetComponent<LightComponent>());
+				}
+				else if (strcmp(com->name(), "ColorMaterial") == 0)
+				{
+					ColorMaterial* colorMat = nullptr;
+					for (rapidxml::xml_attribute<>* a = com->first_attribute();
+						a != nullptr;
+						a = a->next_attribute())
+					{
+						std::string attributeName(a->name());
+						std::string value(a->value());
+						if (attributeName == "materialName")
+						{
+							colorMat = dynamic_cast<ColorMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial(value));
+							if (colorMat == nullptr)
+							{
+								colorMat = new ColorMaterial();
+								AbstractGame::Instance()->GetResourceManager()->RegisterMaterial(colorMat, value);
+							}
+						}
+						else if (attributeName == "shininess")
+						{
+							colorMat->SetShineness(strtof(a->value(), 0));
+						}
+						else if (attributeName == "diffuseColor")
+						{
+							glm::vec3 color;
+							sscanf(a->value(), "(%f,%f,%f)", &color.x, &color.y, &color.z);
+							colorMat->SetDiffuseColor(color);
+						}
+					}
+
+					newNode->setMaterial(colorMat);
 				}
 
 			}
@@ -112,7 +146,6 @@ GameObject * XMLWorld::ConvertGameObject(rapidxml::xml_node<>* node, GameObject 
 
 	//just for testing
 	GameObject* gameObject = Instantiate<GameObject>();
-	ColorMaterial* defaultMat = dynamic_cast<ColorMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("whiteMat"));
 
 	for (rapidxml::xml_attribute<>* a = node->first_attribute();
 		a != nullptr;
@@ -158,7 +191,7 @@ GameObject * XMLWorld::ConvertGameObject(rapidxml::xml_node<>* node, GameObject 
 		}
 	}
 	//gameObject->setMaterial(defaultMat);
-	gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
+	//gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceMat"));
 	return gameObject;
 }
 

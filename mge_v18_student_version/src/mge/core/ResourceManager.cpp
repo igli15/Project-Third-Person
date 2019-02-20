@@ -44,11 +44,11 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 
 		//If we want specular / normals maps we still have to use rgba instead of SRGB
 
-		if (textureType == TextureType::SPECULAR || textureType == TextureType::EMISSION || textureType == TextureType::NORMAL || textureType == TextureType::RGBAREPLACEMENT)
+		if (textureType == TextureType::SPECULAR  || textureType == TextureType::NORMAL || textureType == TextureType::RGBAREPLACEMENT)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
-		else if (textureType == TextureType::DIFFUSE || TextureType::SRGBREPLACEMENT)
+		else if (textureType == TextureType::DIFFUSE || TextureType::SRGBREPLACEMENT|| textureType == TextureType::EMISSION)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}

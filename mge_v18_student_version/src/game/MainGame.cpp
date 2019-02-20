@@ -54,7 +54,8 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 
 	TextureMaterial* goodBoyMat = new TextureMaterial(resourceManager->GetTexture("goodBoyDiffuse"), nullptr, resourceManager->GetTexture("goodBoyEmission"), nullptr);
 
-	TextureMaterial* lavaMat = new TextureMaterial(resourceManager->GetTexture("lavaEmission"),nullptr,nullptr, resourceManager->GetTexture("lavaNormal"));
+	TextureMaterial* lavaMat = new TextureMaterial(resourceManager->GetTexture("lavaDiffuse"), resourceManager->GetTexture("lavaSpecular"), resourceManager->GetTexture("lavaEmission"), resourceManager->GetTexture("lavaNormal"));
+	TextureMaterial* iceMat = new TextureMaterial(resourceManager->GetTexture("iceDiffuse"), resourceManager->GetTexture("iceSpecular"), resourceManager->GetTexture("iceEmission"), resourceManager->GetTexture("iceNormal"));
 
 	resourceManager->RegisterMaterial(brickMat, "brickMat");
 	resourceManager->RegisterMaterial(carMat, "carMat");
@@ -66,6 +67,7 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 	resourceManager->RegisterMaterial(goodBoyMat, "goodBoyMat");
 	resourceManager->RegisterMaterial(whiteColor, "whiteMat");
 	resourceManager->RegisterMaterial(lavaMat, "lavaMat");
+	resourceManager->RegisterMaterial(iceMat, "iceMat");
 }
 
 void MainGame::CreateWorld()
