@@ -355,7 +355,7 @@ AbstractMaterial * ResourceManager::RegisterMaterial(AbstractMaterial * mat, con
 	if (mat->IsRegistered() || m_materialMap.find(tag) != m_materialMap.end())
 	{
 		std::cout << "Material Is already Registered" << std::endl;
-		throw;
+		return m_materialMap[tag];
 	}
 	mat->Register();
 	m_materialMap[tag] = mat;

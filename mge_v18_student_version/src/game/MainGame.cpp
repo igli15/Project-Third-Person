@@ -54,6 +54,8 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 
 	TextureMaterial* goodBoyMat = new TextureMaterial(resourceManager->GetTexture("goodBoyDiffuse"), nullptr, resourceManager->GetTexture("goodBoyEmission"), nullptr);
 
+	TextureMaterial* lavaMat = new TextureMaterial(resourceManager->GetTexture("lavaEmission"),nullptr,nullptr, resourceManager->GetTexture("lavaNormal"));
+
 	resourceManager->RegisterMaterial(brickMat, "brickMat");
 	resourceManager->RegisterMaterial(carMat, "carMat");
 	resourceManager->RegisterMaterial(planeMat, "planeMat");
@@ -63,18 +65,18 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 	resourceManager->RegisterMaterial(wallMatNON, "wallNON");
 	resourceManager->RegisterMaterial(goodBoyMat, "goodBoyMat");
 	resourceManager->RegisterMaterial(whiteColor, "whiteMat");
+	resourceManager->RegisterMaterial(lavaMat, "lavaMat");
 }
 
 void MainGame::CreateWorld()
 {
 	AbstractGame::CreateWorld();
-	m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
+	//m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
 
 	//Loading an XML parsed world
 	//Don't forget to call The "LoadXMLWorld" function.
 	XMLWorld* world = m_worldManager->CreateWorld<XMLWorld>("UNITYWORLD");
 	world->LoadXmlWorld("scene.xml");
-
 
 	//m_eventQueue->RegisterEvent<TestEvent>([](EventType* t) {std::cout << dynamic_cast<TestEvent*>(t)->test << std::endl; });
 	//TestEvent* t = new TestEvent();

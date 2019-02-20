@@ -27,7 +27,8 @@ diffuseTextures =
 	["containerDiffuse"] = texturesLoadPath.."container2.png",
 	["buildingTex"] = texturesLoadPath.."arenaDiffuse.png",
 	["brickWall"] = texturesLoadPath.."wall.png",
-	["goodBoyDiffuse"] = texturesLoadPath.."goodBoyDiffuse.png"
+	["goodBoyDiffuse"] = texturesLoadPath.."goodBoyDiffuse.png",
+	["lavaDiffuse"] = texturesLoadPath.."lavaDiffuse.jpg"
 	
 }
 
@@ -35,18 +36,20 @@ specularTextures =
 {
 	["containerSpecular"] = texturesLoadPath.."container2_specular.png",
 	["buildingSpec"] = texturesLoadPath.."stuffSpec.png",
+	["lavaSpecular"] = texturesLoadPath.."lavaSpecular.jpg",
 }
 
 emissionTextures = 
 {
-	["matrix"] = texturesLoadPath.."lavaEmission.png",
+	["lavaEmission"] = texturesLoadPath.."lavaEmission.jpg",
 	["goodBoyEmission"] = texturesLoadPath.."goodBoyEmission.png",
 }
 
 --normal maps here
 normalMapTextures = 
 {
-	["brickWallNormal"] = texturesLoadPath.."wallNormal.png"
+	["brickWallNormal"] = texturesLoadPath.."wallNormal.png",
+	["lavaNormal"] = texturesLoadPath.."lavaNormal.jpg",
 }
 
 --Since we are using SFML for ui textures we need to load the sepperatly here!

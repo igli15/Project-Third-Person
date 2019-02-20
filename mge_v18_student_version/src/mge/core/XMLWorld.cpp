@@ -157,13 +157,14 @@ GameObject * XMLWorld::ConvertGameObject(rapidxml::xml_node<>* node, GameObject 
 			gameObject->GetMeshRenderer()->SetMesh(mesh);
 		}
 	}
-	gameObject->setMaterial(defaultMat);
-
+	//gameObject->setMaterial(defaultMat);
+	gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
 	return gameObject;
 }
 
 void XMLWorld::Initialize()
 {
+
 	/*
 	Camera* camera = Instantiate<Camera>();
 	camera->transform->SetLocalPosition(glm::vec3(0, 15, 10));

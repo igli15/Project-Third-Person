@@ -111,7 +111,7 @@ void MainWorld::Initialize()
 	l->transform->SetLocalPosition(glm::vec3(0, 19,19));
 	l->transform->Rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
 	l->transform->Rotate(glm::radians(45.0f), glm::vec3(0, 1, 1));
-	l->GetLightComponent()->SetType(LightType::DIRECTIONAL);
+	l->GetLightComponent()->SetType(LightType::POINT);
 	l->GetLightComponent()->SetIntensity(1.0f);
 	l->GetLightComponent()->SetColor(glm::vec3(1, 1, 0.95f));
 	l->GetLightComponent()->SetSpecularContribution(1.0f);

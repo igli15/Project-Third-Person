@@ -1,8 +1,6 @@
 <root>
   <GameObject name="Directional Light" position="(-1.9, 3.9, 0.0)" rotation="(0.3, 0.7, -0.3, 0.7)" scale="(1.0, 1.0, 1.0)">
-    <Components>
-      <LightComponent type="DIRECTIONAL" color="(1.0, 1.0, 0.8)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.7" ambientContribution="0.4" specularContribution="0.6" attenuationConstants="(1.0, 0.7, 1.8)" cutoffAngle="10" outercutoffAngle="45" />
-    </Components>
+    <Components />
   </GameObject>
   <GameObject name="MGECAM" position="(0.8, 20.6, 6.0)" rotation="(-0.6, 0.0, 0.0, 0.8)" scale="(1.0, 1.0, 1.0)">
     <Components>
@@ -36,6 +34,19 @@
     </GameObject>
   </GameObject>
   <GameObject name="Sphere" position="(-4.0, 0.0, 3.7)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Sphere">
+    <Components />
+  </GameObject>
+  <GameObject name="pointLight" position="(3.1, 17.5, 5.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
+    <Components>
+      <LightComponent type="POINT" color="(1.0, 1.0, 0.8)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.34" ambientContribution="0.4" specularContribution="0.6" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
+    </Components>
+  </GameObject>
+  <GameObject name="pointLight (1)" position="(-1.1, 16.1, 5.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
+    <Components>
+      <LightComponent type="POINT" color="(1.0, 1.0, 0.8)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.34" ambientContribution="0.4" specularContribution="0.6" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube" position="(1.0, 16.7, 5.1)" rotation="(0.1, -0.3, 0.4, 0.8)" scale="(1.0, 1.0, 1.0)" mesh="Cube">
     <Components />
   </GameObject>
   <GameObject name="Cube" position="(3.2, 1.4, -3.3)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Cube">

@@ -62,7 +62,7 @@ void AbstractGame::_initializeWindow()
 
 	std::cout << "Initializing window with Width: "<<m_windowWidth<<" and Height: "<<m_windowHeight << std::endl;
 
-	_window = new sf::RenderWindow( sf::VideoMode(m_windowWidth,m_windowHeight), "My Game!", sf::Style::Default, sf::ContextSettings(24,8,16,3,3));
+	_window = new sf::RenderWindow( sf::VideoMode(m_windowWidth,m_windowHeight), "My Game!", sf::Style::Default, sf::ContextSettings(24,8,8,3,3));
 	//_window->setVerticalSyncEnabled(true);
     std::cout << "Window initialized." << std::endl << std::endl;
 }

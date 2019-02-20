@@ -119,10 +119,24 @@ void LightComponent::Parse(rapidxml::xml_node<>* compNode)
 		std::string attributeName = a->name();
 		if (attributeName == "type")
 		{
-			std::string value = a->value();
-			if (value == "DIRECTIONAL") SetType(LightType::DIRECTIONAL);
-			else if (value == "POINT") SetType(LightType::POINT);
-			else if (value == "SPOTLIGHT") SetType(LightType::SPOTLIGHT);
+			std::string value(a->value());
+			if (value == "DIRECTIONAL")
+			{
+				std::cout << "DIRECTIONAL LIGHT TYPE IS SETTTT" << std::endl;
+				m_type = LightType::DIRECTIONAL;
+			}
+			else if (value == "POINT")
+			{
+				m_type = LightType::POINT;
+				std::cout << "POINT LIGHT TYPE IS SETTTT" << std::endl;
+			}
+			else if (value == "SPOTLIGHT")
+			{
+				m_type = LightType::SPOTLIGHT;
+				std::cout << "SPOT LIGHT TYPE IS SETTTT" << std::endl;
+			}
+
+			std::cout << a->name() << " " << m_type << std::endl;
 		}
 		else if (attributeName == "color")
 		{
