@@ -7,6 +7,7 @@ uniform sampler2D emissionTexture;
 
 uniform vec3 diffuseColor;
 uniform float shineness;
+uniform float emissionScale;
 
 uniform float pointLightCount;
 uniform float directionalLightCount;
@@ -122,7 +123,7 @@ vec3 CalculatePointLight(PointLight pointLight,vec3 normal,vec3 fragPos)
 	specular *= attenuation;
 	}
 	
-	vec3 emission = texture(emissionTexture, texCoord).rgb;
+	vec3 emission = texture(emissionTexture, texCoord).rgb * emissionScale;
 	 
 	vec3 finalColor = (ambient + diffuse + specular + emission) * diffuseColor;
 	return finalColor;
@@ -145,7 +146,7 @@ vec3 CalculateDirectionalLight(DirectionalLight dirLight,vec3 normal)
 	
 	vec3 specular = spec * dirLight.specularContribution * dirLight.lightColor * vec3(texture(specularTexture,texCoord));
 	
-	vec3 emission = texture(emissionTexture, texCoord).rgb;
+	vec3 emission = texture(emissionTexture, texCoord).rgb * emissionScale;
 	
 	vec3 finalColor = (ambient + diffuse + specular + emission) * diffuseColor;
 	return finalColor;
@@ -182,7 +183,7 @@ vec3 CalculateSpotLight(SpotLight spotLight,vec3 normal,vec3 fragPos)
 	specular *= attenuation * spotIntensity;
 	}
 	
-	vec3 emission = texture(emissionTexture, texCoord).rgb;
+	vec3 emission = texture(emissionTexture, texCoord).rgb * emissionScale;
 	
 	vec3 finalColor = (ambient + diffuse + specular + emission) * diffuseColor;
 	return finalColor;

@@ -22,8 +22,10 @@ class TextureMaterial : public AbstractMaterial
         void setDiffuseTexture (Texture* pDiffuseTexture);
 		void SetSpecularTexture(Texture* specularTexture);
 		void SetEmissionTexture(Texture* emissionTexture);
+		void SetNormalTexture(Texture* normalTexture);
 		void SetDiffuseColor(glm::vec3 color);
 		void SetShininess(float shininess);
+		void SetEmissionScale(float emissionScale);
 
     protected:
     private:
@@ -44,6 +46,7 @@ class TextureMaterial : public AbstractMaterial
 		Texture* m_normalMap = nullptr;
 
 		float m_shineness = 8;
+		float m_emissionScale = 0.8f;
 
 		glm::vec3 m_diffuseColor = glm::vec3(1, 1, 1);
 

@@ -4,6 +4,7 @@
 #include <streambuf>
 #include "mge/config.hpp"
 #include "mge/materials/ColorMaterial.hpp"
+#include "mge/materials/TextureMaterial.hpp"
 #include "mge/core/AbstractGame.hpp"
 #include "mge/core/ResourceManager.h"
 #include "mge/core/Camera.hpp"
@@ -112,6 +113,66 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 					}
 
 					newNode->setMaterial(colorMat);
+				}
+				else if (strcmp(com->name(), "TextureMaterial") == 0)
+				{
+					TextureMaterial* texMat = nullptr;
+					for (rapidxml::xml_attribute<>* a = com->first_attribute();
+						a != nullptr;
+						a = a->next_attribute())
+					{
+						std::string attributeName(a->name());
+						std::string value(a->value());
+						if (attributeName == "materialName")
+						{
+							texMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial(value));
+							if (texMat == nullptr)
+							{
+								texMat = new TextureMaterial(nullptr,nullptr,nullptr,nullptr);
+								AbstractGame::Instance()->GetResourceManager()->RegisterMaterial(texMat, value);
+							}
+						}
+						else if (attributeName == "shininess")
+						{
+							texMat->SetShininess(strtof(a->value(), 0));
+						}
+						else if (attributeName == "diffuseColor")
+						{
+							glm::vec3 color;
+							sscanf(a->value(), "(%f,%f,%f)", &color.x, &color.y, &color.z);
+							texMat->SetDiffuseColor(color);
+						}
+						else if (attributeName == "shininess")
+						{
+							texMat->SetShininess(strtof(a->value(), 0));
+						}
+						else if (attributeName == "emissionScale")
+						{
+							texMat->SetEmissionScale(strtof(a->value(), 0));
+						}
+						else if (attributeName == "diffuseTexture")
+						{
+							std::cout << "Getting Diffuse Texture" << std::endl;
+							texMat->setDiffuseTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
+						}
+						else if (attributeName == "specularTexture")
+						{
+							std::cout << "Getting Specular Texture" << std::endl;
+							texMat->SetSpecularTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
+						}
+						else if (attributeName == "emissionTexture")
+						{
+							std::cout << "Getting Emission Texture" << std::endl;
+							texMat->SetEmissionTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
+						}
+						else if (attributeName == "normalTexture")
+						{
+							std::cout << "Getting Nromal Texture" << std::endl;
+							texMat->SetNormalTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
+						}
+					}
+
+					newNode->setMaterial(texMat);
 				}
 
 			}

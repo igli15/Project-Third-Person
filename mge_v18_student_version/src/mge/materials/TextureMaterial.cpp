@@ -68,6 +68,11 @@ void TextureMaterial::SetEmissionTexture(Texture * emissionTexture)
 	m_emissionTexture = emissionTexture;
 }
 
+void TextureMaterial::SetNormalTexture(Texture * normalTexture)
+{
+	m_normalMap = normalTexture;
+}
+
 void TextureMaterial::SetDiffuseColor(glm::vec3 color)
 {
 	m_diffuseColor = color;
@@ -76,6 +81,11 @@ void TextureMaterial::SetDiffuseColor(glm::vec3 color)
 void TextureMaterial::SetShininess(float shininess)
 {
 	m_shineness;
+}
+
+void TextureMaterial::SetEmissionScale(float emissionScale)
+{
+	m_emissionScale = emissionScale;
 }
 
 void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
@@ -223,6 +233,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 	glUniform1f(m_shaderProgram->getUniformLocation("spotLightCount"), spotLightCount);
 
 	glUniform1f(m_shaderProgram->getUniformLocation("shineness"), m_shineness);
+	glUniform1f(m_shaderProgram->getUniformLocation("emissionScale"), m_emissionScale);
 	glUniform3fv(m_shaderProgram->getUniformLocation("diffuseColor"), 1, glm::value_ptr(m_diffuseColor));
 	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("projectionMatrix"), 1, GL_FALSE, glm::value_ptr(pProjectionMatrix));
 	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("viewMatrix"), 1, GL_FALSE, glm::value_ptr(pViewMatrix));
