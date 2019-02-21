@@ -47,8 +47,6 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 	//if it read GameObject
 	if (strcmp(node->name(), "GameObject") == 0)
 	{
-		
-
 		GameObject* newNode = ConvertGameObject(node, gameObject);
 		ColorMaterial* defaultMat = dynamic_cast<ColorMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("whiteMat"));
 		newNode->setMaterial(defaultMat);
