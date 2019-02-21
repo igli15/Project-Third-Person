@@ -20,6 +20,7 @@
 #include "mge/eventTypes/TestEvent.h"
 #include "mge/core/EventQueue.h"
 #include <iostream>
+#include "mge/core/XMLWorld.h"
 
 MainGame::MainGame()
 {
@@ -42,11 +43,19 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 	ColorMaterial* planeMat = new ColorMaterial();
 	ColorMaterial* lightMat = new ColorMaterial();
 
+	ColorMaterial* whiteColor = new ColorMaterial();
+	whiteColor->SetDiffuseColor(glm::vec3(1, 1, 1));
+
 	TextureMaterial* containerMat = new TextureMaterial(resourceManager->GetTexture("containerDiffuse"),resourceManager->GetTexture("containerSpecular"), resourceManager->GetTexture("matrix"));
 	TextureMaterial* stuffMat = new TextureMaterial(resourceManager->GetTexture("buildingTex"),resourceManager->GetTexture("buildingSpec"), nullptr);
 
 	TextureMaterial* wallMat = new TextureMaterial(resourceManager->GetTexture("brickWall"), nullptr,nullptr, resourceManager->GetTexture("brickWallNormal"));
 	TextureMaterial* wallMatNON = new TextureMaterial(resourceManager->GetTexture("brickWall"), nullptr, nullptr, nullptr);
+
+	TextureMaterial* goodBoyMat = new TextureMaterial(resourceManager->GetTexture("goodBoyDiffuse"), nullptr, resourceManager->GetTexture("goodBoyEmission"), nullptr);
+
+	TextureMaterial* lavaMat = new TextureMaterial(resourceManager->GetTexture("lavaDiffuse"), resourceManager->GetTexture("lavaSpecular"), resourceManager->GetTexture("lavaEmission"), resourceManager->GetTexture("lavaNormal"));
+	TextureMaterial* iceMat = new TextureMaterial(resourceManager->GetTexture("iceDiffuse"), resourceManager->GetTexture("iceSpecular"), resourceManager->GetTexture("iceEmission"), resourceManager->GetTexture("iceNormal"));
 
 	resourceManager->RegisterMaterial(brickMat, "brickMat");
 	resourceManager->RegisterMaterial(carMat, "carMat");
@@ -55,12 +64,20 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 	resourceManager->RegisterMaterial(wallMat, "containerMat");
 	resourceManager->RegisterMaterial(stuffMat, "stuffMat");
 	resourceManager->RegisterMaterial(wallMatNON, "wallNON");
+	resourceManager->RegisterMaterial(goodBoyMat, "goodBoyMat");
+	resourceManager->RegisterMaterial(whiteColor, "whiteMat");
+	resourceManager->RegisterMaterial(lavaMat, "lavaMat");
+	resourceManager->RegisterMaterial(iceMat, "iceMat");
 }
 
 void MainGame::CreateWorld()
 {
 	AbstractGame::CreateWorld();
-	//m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
+
+	//Loading an XML parsed world
+	//Don't forget to call The "LoadXMLWorld" function.
+	XMLWorld* world = m_worldManager->CreateWorld<XMLWorld>("UNITYWORLD");
+	world->LoadXmlWorld("scene.xml");
 
 	//m_eventQueue->RegisterEvent<TestEvent>([](EventType* t) {std::cout << dynamic_cast<TestEvent*>(t)->test << std::endl; });
 	//TestEvent* t = new TestEvent();

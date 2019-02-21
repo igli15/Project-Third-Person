@@ -1,14 +1,21 @@
 #include "LightComponent.h"
-
-
+#include "mge/core/GameObject.hpp"
+#include "mge/core/World.hpp"
 
 LightComponent::LightComponent()
 {
+	
 }
 
 
 LightComponent::~LightComponent()
 {
+	m_gameObject->GetWorld()->unregisterLight(this);
+}
+
+void LightComponent::Awake()
+{
+
 }
 
 
@@ -100,4 +107,80 @@ float LightComponent::GetOuterCutoffAngle()
 glm::vec3 LightComponent::GetAttenuationConstants()
 {
 	return m_attenuationConstants;
+}
+
+void LightComponent::Parse(rapidxml::xml_node<>* compNode)
+{
+	for (rapidxml::xml_attribute<>* a = compNode->first_attribute();
+		a != nullptr;
+		a = a->next_attribute())
+	{
+		std::cout << a->name() << " " << a->value() << std::endl;
+		std::string attributeName = a->name();
+		if (attributeName == "type")
+		{
+			std::string value(a->value());
+			if (value == "DIRECTIONAL")
+			{
+				std::cout << "DIRECTIONAL LIGHT TYPE IS SETTTT" << std::endl;
+				m_type = LightType::DIRECTIONAL;
+			}
+			else if (value == "POINT")
+			{
+				m_type = LightType::POINT;
+				std::cout << "POINT LIGHT TYPE IS SETTTT" << std::endl;
+			}
+			else if (value == "SPOTLIGHT")
+			{
+				m_type = LightType::SPOTLIGHT;
+				std::cout << "SPOT LIGHT TYPE IS SETTTT" << std::endl;
+			}
+
+			std::cout << a->name() << " " << m_type << std::endl;
+		}
+		else if (attributeName == "color")
+		{
+			glm::vec3 color;
+			sscanf(a->value(), "(%f,%f,%f)", &color.x, &color.y, &color.z);
+			std::cout << "LIGHT COLOR:::::" << color << std::endl;
+			SetColor(color);
+		}
+		else if (attributeName == "ambientColor")
+		{
+			glm::vec3 color;
+			sscanf(a->value(), "(%f,%f,%f)", &color.x, &color.y, &color.z);
+			SetColor(color);
+		}
+		else if (attributeName == "outercutoffAngle")
+		{
+			SetOuterCutoffAngle(strtof(a->value(), 0));
+		}
+		else if (attributeName == "intensity")
+		{
+			SetIntensity(strtof(a->value(), 0));
+		}
+		else if (attributeName == "ambientContribution")
+		{
+			SetAmbientcontribution(strtof(a->value(), 0));
+		}
+		else if (attributeName == "specularContribution")
+		{
+			SetSpecularContribution(strtof(a->value(), 0));
+		}
+		else if (attributeName == "attenuationConstants")
+		{
+			glm::vec3 consts;
+			sscanf(a->value(), "(%f,%f,%f)", &consts.x, &consts.y, &consts.z);
+			SetAttenuationConstants(consts);
+		}
+		else if (attributeName == "cutoffAngle")
+		{
+			SetCutoffAngle(strtof(a->value(), 0));
+		}
+		else if (attributeName == "outercutoffAngle")
+		{
+			SetOuterCutoffAngle(strtof(a->value(), 0));
+		}
+
+	}
 }

@@ -4,6 +4,7 @@
 #include "mge/core/World.hpp"
 #include "mge/core/Light.hpp"
 #include "mge/components/LightComponent.h"
+#include "mge/components/CameraComponent.h"
 
 World::World()
 {
@@ -14,12 +15,13 @@ void World::Initialize()
 {
 }
 
-void World::setMainCamera (Camera* pCamera) {
-    if (pCamera != NULL) _mainCamera = pCamera;
+void World::setMainCamera (CameraComponent* pCamera) {
+    if (pCamera != NULL) m_mainCameraComponent = pCamera;
 }
 
-Camera* World::getMainCamera () {
-    return _mainCamera;
+
+CameraComponent* World::getMainCamera () {
+    return m_mainCameraComponent;
 }
 
 

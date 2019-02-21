@@ -3,17 +3,20 @@
 
 #include "mge/core/GameObject.hpp"
 #include "mge\components\CanvasComponent.h"
+
 class Camera;
 class Light;
 class LightComponent;
+class CameraComponent;
 
 class World : public GameObject
 {
 	public:
         World();
 		virtual void Initialize() ;
-		void setMainCamera (Camera* pCamera);
-		Camera* getMainCamera();
+		void setMainCamera (CameraComponent* pCamera);
+		CameraComponent* getMainCamera();
+
 
         //only used internally, do not use from outside
         void registerLight (LightComponent* pLight);
@@ -42,6 +45,7 @@ class World : public GameObject
 
 		CanvasComponent * m_mainCanvas = nullptr;
 	    Camera* _mainCamera;
+		CameraComponent* m_mainCameraComponent;
 	    std::vector<LightComponent*> _lights;
 
         World(const World&);

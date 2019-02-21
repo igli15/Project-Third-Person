@@ -6,6 +6,7 @@
 #include "World.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
 #include "../components/MeshRenderer.h"
+#include "mge/components/CameraComponent.h"
 
 Renderer::Renderer():debug(false)
 {
@@ -42,9 +43,9 @@ void Renderer::render(World* pWorld) {
 	render(pWorld, pWorld, nullptr, pWorld->getMainCamera(), true);
 }
 
-void Renderer::render(World* pWorld, GameObject* pGameObject, AbstractMaterial* pMaterial, Camera* pCamera, bool pRecursive)
+void Renderer::render(World* pWorld, GameObject* pGameObject, AbstractMaterial* pMaterial, CameraComponent* pCamera, bool pRecursive)
 {
-	render(pWorld, pGameObject, pMaterial, pGameObject->transform->WorldTransform(), glm::inverse(pCamera->transform->WorldTransform()), pCamera->GetCameraComponent()->GetProjection(), pRecursive);
+	render(pWorld, pGameObject, pMaterial, pGameObject->transform->WorldTransform(), glm::inverse(pCamera->GetGameObject()->transform->WorldTransform()), pCamera->GetProjection(), pRecursive);
 }
 
 void Renderer::render(World* pWorld, GameObject* pGameObject, AbstractMaterial* pMaterial, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix, bool pRecursive) {

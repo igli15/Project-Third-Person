@@ -10,6 +10,7 @@ class Mesh;
 class AbstractMaterial;
 class Camera;
 class MeshRenderer;
+class CameraComponent;
 
 /**
 * Renderer implements a default single pass forward renderer.
@@ -43,7 +44,7 @@ public:
 	 * @param pCamera used for the view and perspective matrix
      * @param pRecursive render everything recursively
 	 */
-	void render(World* pWorld, GameObject* pGameObject, AbstractMaterial* pMaterial, Camera* pCamera, bool pRecursive);
+	void render(World* pWorld, GameObject* pGameObject, AbstractMaterial* pMaterial, CameraComponent* pCamera, bool pRecursive);
 
 	/**
 	 * Renders a specific game object in the world by calling:

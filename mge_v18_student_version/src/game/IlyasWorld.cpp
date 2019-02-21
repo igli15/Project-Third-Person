@@ -53,7 +53,7 @@ void IlyasWorld::Initialize()
 	camera->transform->SetLocalPosition(glm::vec3(0, 6, 20));
 	camera->transform->Rotate(glm::radians(-20.0f), glm::vec3(1, 0, 0));
 	camera->GetCameraComponent()->SetFOV(60); //Set Camera Properties via its component
-	_world->setMainCamera(camera);
+	_world->setMainCamera(camera->GetCameraComponent());
 
 
 	GameObject* plane = _world->Instantiate<GameObject>();

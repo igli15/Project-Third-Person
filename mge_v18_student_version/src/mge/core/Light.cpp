@@ -23,7 +23,7 @@ void Light::_setWorldRecursively (World* pWorld) {
     World* newWorld = _world;
 
     //check whether we need to register or unregister
-    if (previousWorld != nullptr) previousWorld->unregisterLight(m_lightComponent);
+   // if (previousWorld != nullptr) previousWorld->unregisterLight(m_lightComponent);
 	if (newWorld != nullptr) newWorld->registerLight(m_lightComponent);
 
 }
