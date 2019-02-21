@@ -18,24 +18,31 @@ void CircleCollider::DetectCollision()
 	bool isColliding=AbstractGame::Instance()->GetCollisionManager()->CheckCollisionInWorld(this);
 	if (isColliding)
 	{
-		//std::cout << "COLLISION_CIRCLE "<<m_gameObject->ID() << std::endl;
+		std::cout << "COLLISION_CIRCLE "<<m_gameObject->ID() << std::endl;
 	}
 }
 
-bool CircleCollider::IsColliding(ColliderComponent * collider)
+CollisionInfo* CircleCollider::IsColliding(ColliderComponent * collider)
 {
 	//Redispatching...
 	return collider->IsColliding(this);
 }
 
-bool CircleCollider::IsColliding(CircleCollider * otherCollider)
+CollisionInfo* CircleCollider::IsColliding(CircleCollider * otherCollider)
 {
 	glm::vec2 distance = otherCollider->GetWorld2Dposition() - GetWorld2Dposition();
 	float length = glm::length(distance);
-	return (length <= otherCollider->radius + radius);
+
+	if ( (length <= otherCollider->radius + radius) )
+	{
+		CollisionInfo* collisionInfo = new CollisionInfo();
+		collisionInfo->hitPoints.push_back(GetWorld2Dposition() + glm::normalize(distance)*radius);
+		return collisionInfo;
+	}
+	return nullptr;
 }
 
-bool CircleCollider::IsColliding(RectangleCollider * rectangleCollider)
+CollisionInfo* CircleCollider::IsColliding(RectangleCollider * rectangleCollider)
 {	
 	glm::vec2 rectPos = rectangleCollider->GetWorld2Dposition();
 	float rectWidth=rectangleCollider->width;
@@ -47,6 +54,12 @@ bool CircleCollider::IsColliding(RectangleCollider * rectangleCollider)
 	float deltaY = GetWorld2Dposition().y - 
 		glm::max(rectPos.y-rectHeight/2, glm::min(GetWorld2Dposition().y, rectPos.y + rectHeight/2));
 
-	return (deltaX * deltaX + deltaY * deltaY) < (radius*radius);
+	if( (deltaX * deltaX + deltaY * deltaY) < (radius*radius) )
+	{
+		CollisionInfo* collisionInfo = new CollisionInfo();
+		collisionInfo->hitPoints.push_back(glm::vec2(deltaX,deltaY));
+		return collisionInfo;
+	}
+	return nullptr;
 }
 

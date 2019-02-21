@@ -185,6 +185,7 @@
     <ClInclude Include="..\src\mge\config.hpp" />
     <ClInclude Include="..\src\mge\core\AbstractGame.hpp" />
     <ClInclude Include="..\src\mge\core\Camera.hpp" />
+    <ClInclude Include="..\src\mge\core\CollisionInfo.h" />
     <ClInclude Include="..\src\mge\core\CollisionManager.h" />
     <ClInclude Include="..\src\mge\core\Component.h" />
     <ClInclude Include="..\src\mge\core\EventQueue.h" />
@@ -207,7 +208,6 @@
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\test\TestComponent.h" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
-    <ClInclude Include="CollisionInfo.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp" />
@@ -228,6 +228,7 @@
     <ClCompile Include="..\src\mge\components\UISpriteRenderer.cpp" />
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp" />
     <ClCompile Include="..\src\mge\core\Camera.cpp" />
+    <ClCompile Include="..\src\mge\core\CollisionInfo.cpp" />
     <ClCompile Include="..\src\mge\core\CollisionManager.cpp" />
     <ClCompile Include="..\src\mge\core\Component.cpp" />
     <ClCompile Include="..\src\mge\core\EventQueue.cpp" />
@@ -250,7 +251,6 @@
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\test\TestComponent.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
-    <ClCompile Include="CollisionInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\game\Resources.lua" />

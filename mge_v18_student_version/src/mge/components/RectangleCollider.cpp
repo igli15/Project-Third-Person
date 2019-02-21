@@ -15,17 +15,17 @@ void RectangleCollider::DetectCollision()
 	bool isColliding = AbstractGame::Instance()->GetCollisionManager()->CheckCollisionInWorld(this);
 	if (isColliding)
 	{
-		//std::cout << "COLLISION _ RECT "<< m_gameObject->ID() << std::endl;
+		std::cout << "COLLISION _ RECT "<< m_gameObject->ID() << std::endl;
 	}
 }
 
-bool RectangleCollider::IsColliding(ColliderComponent * collider)
+CollisionInfo* RectangleCollider::IsColliding(ColliderComponent * collider)
 {
 	//Redispatching...
 	return collider->IsColliding(this);
 }
 
-bool RectangleCollider::IsColliding(CircleCollider * circle)
+CollisionInfo* RectangleCollider::IsColliding(CircleCollider * circle)
 {
 	glm::vec2 circlePos = circle->GetWorld2Dposition();
 
@@ -35,10 +35,16 @@ bool RectangleCollider::IsColliding(CircleCollider * circle)
 	float deltaY = circlePos.y -
 		glm::max(GetWorld2Dposition().y - height / 2, glm::min(circlePos.y, GetWorld2Dposition().y + height / 2));
 
-	return (deltaX * deltaX + deltaY * deltaY) < (circle->radius*circle->radius);
+	if ((deltaX * deltaX + deltaY * deltaY) < (circle->radius*circle->radius))
+	{
+		CollisionInfo* collisionInfo = new CollisionInfo();
+		collisionInfo->hitPoints.push_back(glm::vec2(deltaX, deltaY));
+		return collisionInfo;
+	}
+	return nullptr;
 }
 
-bool RectangleCollider::IsColliding(RectangleCollider * rectangleCollider)
+CollisionInfo* RectangleCollider::IsColliding(RectangleCollider * rectangleCollider)
 {
 	glm::vec2 myPos = GetWorld2Dposition();
 	glm::vec2 otherPos = rectangleCollider->GetWorld2Dposition();
@@ -48,8 +54,16 @@ bool RectangleCollider::IsColliding(RectangleCollider * rectangleCollider)
 		myPos.y + height / 2 >= otherPos.y - rectangleCollider->height / 2 &&
 		myPos.y - height / 2 <= otherPos.y + rectangleCollider->height / 2 )
 	{
-		return true;
+
+		glm::vec2 pointOfCollision;
+		pointOfCollision.x= (myPos.x < otherPos.x) ? myPos.x + width : myPos.x - width;
+		pointOfCollision.y = (myPos.y < otherPos.y) ? myPos.y + height : myPos.y - height;
+
+		CollisionInfo* collisionInfo = new CollisionInfo();
+		collisionInfo->hitPoints.push_back(pointOfCollision);
+
+		return collisionInfo;
 	}
 
-	return false;
+	return nullptr;
 }

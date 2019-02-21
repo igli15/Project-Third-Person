@@ -160,7 +160,7 @@
     <ClInclude Include="..\src\mge\core\XMLComponent.h">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
-    <ClInclude Include="CollisionInfo.h">
+    <ClInclude Include="..\src\mge\core\CollisionInfo.h">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
   </ItemGroup>
@@ -285,7 +285,7 @@
     <ClCompile Include="..\src\mge\core\XMLComponent.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
-    <ClCompile Include="CollisionInfo.cpp">
+    <ClCompile Include="..\src\mge\core\CollisionInfo.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
   </ItemGroup>
