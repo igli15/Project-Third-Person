@@ -72,7 +72,6 @@ void CameraComponent::Parse(rapidxml::xml_node<>* compNode)
 		a != nullptr;
 		a = a->next_attribute())
 	{
-		std::cout << a->name() << " " << a->value() << std::endl;
 		std::string attributeName = a->name();
 		if (attributeName == "FOV")
 		{
