@@ -18,7 +18,7 @@ void CircleCollider::DetectCollision()
 	bool isColliding=AbstractGame::Instance()->GetCollisionManager()->CheckCollisionInWorld(this);
 	if (isColliding)
 	{
-		std::cout << "COLLISION_CIRCLE "<<m_gameObject->ID() << std::endl;
+		//std::cout << "COLLISION_CIRCLE "<<m_gameObject->ID() << std::endl;
 	}
 }
 

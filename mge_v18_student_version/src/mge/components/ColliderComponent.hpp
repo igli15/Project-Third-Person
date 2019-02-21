@@ -14,6 +14,12 @@ public:
 	void Awake() override;
 	void Update(float timeSteps) override;
 
+	void SetCollisionLayerTag(std::string layerTag);
+	std::string GetCollisionLayerTag();
+
+	void AddCollisionFilterTag(std::string filterTag);
+	std::vector<std::string> GetCollisionFilterTags();
+	
 	glm::vec2 GetWorld2Dposition();
 
 	virtual void DetectCollision() = 0;
@@ -22,4 +28,11 @@ public:
 	virtual bool IsColliding(CircleCollider* circleCollider) = 0; // Circlee
 	virtual bool IsColliding(RectangleCollider* rectangleCollider) = 0; // Rectangle
 	int id = 0;
+private:
+	//In which layer is collider ex( Wall in layer Obstacle )
+	//Only one layer per collider
+	std::string m_collisionLayerTag; 
+	//With what collider collides ex(Player has filter Bullets, so player will detect all collisions with Bullets)
+	//You can add multiple collision filters to collider
+	std::vector<std::string> m_collisionFilterTags;
 };
