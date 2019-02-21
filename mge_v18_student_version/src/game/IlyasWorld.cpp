@@ -74,7 +74,9 @@ void IlyasWorld::Initialize()
 	cylinder1->AddComponent<CircleCollider>();
 	cylinder1->Awake();
 	cylinder1->GetComponent<CircleCollider>()->AddCollisionFilterTag("DIF");
-	
+	cylinder1->GetComponent<CircleCollider>()->AddCollisionFilterTag("DIF1");
+	cylinder1->GetComponent<CircleCollider>()->AddCollisionFilterTag("DIF2");
+
 	//Test object 2
 	GameObject* cylinder2 = _world->Instantiate<GameObject>();
 	cylinder2->transform->SetLocalPosition(glm::vec3(10, 0, 3));
@@ -84,6 +86,7 @@ void IlyasWorld::Initialize()
 	cylinder2->transform->Scale(glm::vec3(1, 2, 1));
 	cylinder2->AddComponent<CircleCollider>();
 	cylinder2->Awake();
+	cylinder2->GetComponent<CircleCollider>()->SetCollisionLayerTag("DIF2");
 	//cylinder2->GetComponent<CircleCollider>()->AddCollisionFilterTag("test_cylender2");
 	//Test object 3
 	GameObject* cylinder3 = _world->Instantiate<GameObject>();
@@ -94,7 +97,7 @@ void IlyasWorld::Initialize()
 	cylinder3->transform->Scale(glm::vec3(1, 4, 1));
 	cylinder3->AddComponent<CircleCollider>();
 	cylinder3->Awake();
-	cylinder3->GetComponent<CircleCollider>()->SetCollisionLayerTag("DIF");
+	cylinder3->GetComponent<CircleCollider>()->SetCollisionLayerTag("DIF1");
 
 
 	/*GameObject* cube1 = _world->Instantiate<GameObject>();
