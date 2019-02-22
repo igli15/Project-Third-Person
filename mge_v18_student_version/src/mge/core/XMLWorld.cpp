@@ -67,6 +67,17 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 					(newNode)->AddComponent<LightComponent>()->Parse(com);
 					registerLight(newNode->GetComponent<LightComponent>());
 				}
+				else if (strcmp(com->name(), "GridComponent") == 0)
+				{
+					std::cout << "Parsing Grid Component...." << std::endl;
+					for (rapidxml::xml_attribute<>* a = com->first_attribute();
+						a != nullptr;
+						a = a->next_attribute())
+					{
+						std::cout << a->name() << " : " << a->value() << std::endl;
+					}
+
+				}
 				else if (strcmp(com->name(), "ColorMaterial") == 0)
 				{
 					ColorMaterial* colorMat = nullptr;

@@ -148,7 +148,7 @@ void LightComponent::Parse(rapidxml::xml_node<>* compNode)
 		{
 			SetOuterCutoffAngle(strtof(a->value(), 0));
 		}
-		else if (attributeName == "intensity")
+		else if (attributeName == "intensity")	
 		{
 			SetIntensity(strtof(a->value(), 0));
 		}
