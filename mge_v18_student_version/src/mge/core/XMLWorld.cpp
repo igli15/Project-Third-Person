@@ -35,14 +35,13 @@ void XMLWorld::LoadXmlWorld(const std::string& fileName)
 
 	rapidxml::xml_node<>* rootNode = doc.first_node("root");
 
+	std::cout << "PARSING LEVEL....." << std::endl;
 	ParseGameObject(rootNode, _world);
 }
 
 void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObject)
 {
 	GameObject* currentNode = gameObject;
-
-	std::cout << "Processing: " << gameObject->getName() << std::endl;
 
 	//if it read GameObject
 	if (strcmp(node->name(), "GameObject") == 0)
@@ -54,21 +53,9 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 		if (strcmp(node->first_node()->name(), "Components") == 0)
 		{
 			rapidxml::xml_node<>* compNode = node->first_node();
-			std::cout << "Reading Components" << std::endl;
 			for (rapidxml::xml_node<>* com = compNode->first_node(); com != nullptr; com = com->next_sibling())
 			{
-				std::cout << com->name() << std::endl;
-
-				if (strcmp(com->name(), "TestComponent") == 0)
-				{
-					for (rapidxml::xml_attribute<>* a = com->first_attribute();
-						a != nullptr;
-						a = a->next_attribute())
-					{
-						std::cout << a->name() << " " << a->value() << std::endl;
-					}
-				}
-				else if (strcmp(com->name(), "CameraComponent") == 0)
+				if (strcmp(com->name(), "CameraComponent") == 0)
 				{
 					//gameObject->AddComponent<CameraComponent>()->Parse(com);
 					(newNode)->AddComponent<CameraComponent>()->Parse(com);
@@ -79,6 +66,17 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 					//gameObject->AddComponent<CameraComponent>()->Parse(com);
 					(newNode)->AddComponent<LightComponent>()->Parse(com);
 					registerLight(newNode->GetComponent<LightComponent>());
+				}
+				else if (strcmp(com->name(), "GridComponent") == 0)
+				{
+					std::cout << "Parsing Grid Component...." << std::endl;
+					for (rapidxml::xml_attribute<>* a = com->first_attribute();
+						a != nullptr;
+						a = a->next_attribute())
+					{
+						std::cout << a->name() << " : " << a->value() << std::endl;
+					}
+
 				}
 				else if (strcmp(com->name(), "ColorMaterial") == 0)
 				{
@@ -150,22 +148,18 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 						}
 						else if (attributeName == "diffuseTexture")
 						{
-							std::cout << "Getting Diffuse Texture" << std::endl;
 							texMat->setDiffuseTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
 						}
 						else if (attributeName == "specularTexture")
 						{
-							std::cout << "Getting Specular Texture" << std::endl;
 							texMat->SetSpecularTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
 						}
 						else if (attributeName == "emissionTexture")
 						{
-							std::cout << "Getting Emission Texture" << std::endl;
 							texMat->SetEmissionTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
 						}
 						else if (attributeName == "normalTexture")
 						{
-							std::cout << "Getting Nromal Texture" << std::endl;
 							texMat->SetNormalTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
 						}
 					}
@@ -183,8 +177,6 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 		{
 			currentNode->add(newNode);
 		}
-
-		std::cout << newNode->getName() << " is added to " << currentNode->getName() << std::endl;
 
 		currentNode = newNode;
 	}
@@ -210,7 +202,6 @@ GameObject * XMLWorld::ConvertGameObject(rapidxml::xml_node<>* node, GameObject 
 		a != nullptr;
 		a = a->next_attribute())
 	{
-		std::cout << a->name() << " = " << a->value() << std::endl;
 		std::string attributeName = a->name();
 
 		if (attributeName == "name")
@@ -222,7 +213,6 @@ GameObject * XMLWorld::ConvertGameObject(rapidxml::xml_node<>* node, GameObject 
 			glm::vec3 pos;
 			//seperate the value into 3 floats anf buffer them to pos vector...
 			sscanf(a->value(), "(%f,%f,%f)", &pos.x, &pos.y, &pos.z);
-			std::cout << "POs::::::: " << pos << std::endl;
 			gameObject->transform->SetLocalPosition(pos);
 		}
 		else if (attributeName == "rotation")
@@ -230,7 +220,6 @@ GameObject * XMLWorld::ConvertGameObject(rapidxml::xml_node<>* node, GameObject 
 			glm::quat rot;
 			//seperate the value into 4 floats anf buffer them to quaternion...
 			sscanf(a->value(), "(%f,%f,%f,%f)", &rot.x, &rot.y, &rot.z, &rot.w);
-			std::cout << "Rot::::::: " << rot << std::endl;
 			gameObject->transform->Rotate(glm::angle(rot), glm::axis(rot));
 		}
 		else if (attributeName == "scale")
@@ -238,13 +227,11 @@ GameObject * XMLWorld::ConvertGameObject(rapidxml::xml_node<>* node, GameObject 
 			glm::vec3 scale;
 			//seperate the value into 3 floats anf buffer them to scale vector...
 			sscanf(a->value(), "(%f,%f,%f)", &scale.x, &scale.y, &scale.z);
-			std::cout << "Scale::::::: " << scale << std::endl;
 			gameObject->transform->Scale(scale);
 		}
 		else if (attributeName == "mesh")
 		{
 			Mesh* mesh = AbstractGame::Instance()->GetResourceManager()->GetMesh(a->value());
-			std::cout << mesh->Vertices().size() << std::endl;
 			gameObject->SetMeshRenderer(gameObject->AddComponent<MeshRenderer>());
 			gameObject->GetMeshRenderer()->SetMesh(mesh);
 		}
