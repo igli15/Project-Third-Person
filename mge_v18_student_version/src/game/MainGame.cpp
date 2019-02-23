@@ -76,8 +76,12 @@ void MainGame::CreateWorld()
 
 	//Loading an XML parsed world
 	//Don't forget to call The "LoadXMLWorld" function.
-	XMLWorld* world = m_worldManager->CreateWorld<XMLWorld>("UNITYWORLD");
-	world->LoadXmlWorld("scene.xml");
+
+	//XMLWorld* world = m_worldManager->CreateWorld<XMLWorld>("UNITYWORLD");
+	//world->LoadXmlWorld("scene.xml");
+
+	//Main World is now an XMLWorld...
+	m_worldManager->CreateWorld<MainWorld>("MainWorld");
 
 	//m_eventQueue->RegisterEvent<TestEvent>([](EventType* t) {std::cout << dynamic_cast<TestEvent*>(t)->test << std::endl; });
 	//TestEvent* t = new TestEvent();

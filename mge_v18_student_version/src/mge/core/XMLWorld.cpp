@@ -53,7 +53,10 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 		if (strcmp(node->first_node()->name(), "Components") == 0)
 		{
 			rapidxml::xml_node<>* compNode = node->first_node();
-			ParseComponents(compNode, newNode);
+			for (rapidxml::xml_node<>* com = compNode->first_node(); com != nullptr; com = com->next_sibling())
+			{
+				ParseComponents(com, newNode);
+			}
 		}
 
 		//awake and start manually after attaching all components...
@@ -124,43 +127,16 @@ GameObject * XMLWorld::ConvertGameObject(rapidxml::xml_node<>* node, GameObject 
 			gameObject->GetMeshRenderer()->SetMesh(mesh);
 		}
 	}
-	//gameObject->setMaterial(defaultMat);
-	//gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceMat"));
+	
 	return gameObject;
 }
 
 void XMLWorld::Initialize()
 {
-
-	/*
-	Camera* camera = Instantiate<Camera>();
-	camera->transform->SetLocalPosition(glm::vec3(0, 15, 10));
-	camera->transform->Rotate(glm::radians(-65.0f), glm::vec3(1, 0, 0));
-	camera->GetCameraComponent()->SetFOV(60); //Set Camera Properties via its component
-	_world->setMainCamera(camera);
-	
-
-	Light* l = _world->Instantiate<Light>();
-	l->transform->SetLocalPosition(glm::vec3(0, 19, 19));
-	l->transform->Rotate(glm::radians(90.0f), glm::vec3(1, 0, 0));
-	l->transform->Rotate(glm::radians(45.0f), glm::vec3(0, 1, 1));
-	l->GetLightComponent()->SetType(LightType::DIRECTIONAL);
-	l->GetLightComponent()->SetIntensity(1.0f);
-	l->GetLightComponent()->SetColor(glm::vec3(1, 1, 0.95f));
-	l->GetLightComponent()->SetSpecularContribution(1.0f);
-	l->GetLightComponent()->SetAttenuationConstants(glm::vec3(1, 0.7f, 1.8f));
-	l->SetMeshRenderer(l->AddComponent<MeshRenderer>());
-	//l->GetMeshRenderer()->SetMesh(cubeMesh);
-	//l->setMaterial(lightMat);
-	l->transform->Scale(glm::vec3(0.2f, 0.2f, 0.2f));
-
-	*/
 }
 
-void XMLWorld::ParseComponents(rapidxml::xml_node<>* compNode,GameObject* newNode)
+void XMLWorld::ParseComponents(rapidxml::xml_node<>* com,GameObject* newNode)
 {
-	for (rapidxml::xml_node<>* com = compNode->first_node(); com != nullptr; com = com->next_sibling())
-	{
 		if (strcmp(com->name(), "CameraComponent") == 0)
 		{
 			//gameObject->AddComponent<CameraComponent>()->Parse(com);
@@ -172,17 +148,6 @@ void XMLWorld::ParseComponents(rapidxml::xml_node<>* compNode,GameObject* newNod
 			//gameObject->AddComponent<CameraComponent>()->Parse(com);
 			(newNode)->AddComponent<LightComponent>()->Parse(com);
 			registerLight(newNode->GetComponent<LightComponent>());
-		}
-		else if (strcmp(com->name(), "GridComponent") == 0)
-		{
-			std::cout << "Parsing Grid Component...." << std::endl;
-			for (rapidxml::xml_attribute<>* a = com->first_attribute();
-				a != nullptr;
-				a = a->next_attribute())
-			{
-				std::cout << a->name() << " : " << a->value() << std::endl;
-			}
-
 		}
 		else if (strcmp(com->name(), "ColorMaterial") == 0)
 		{
@@ -273,5 +238,4 @@ void XMLWorld::ParseComponents(rapidxml::xml_node<>* compNode,GameObject* newNod
 			newNode->setMaterial(texMat);
 		}
 
-	}
 }
