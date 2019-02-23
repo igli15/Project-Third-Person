@@ -53,122 +53,10 @@ void XMLWorld::ParseGameObject(rapidxml::xml_node<>* node, GameObject * gameObje
 		if (strcmp(node->first_node()->name(), "Components") == 0)
 		{
 			rapidxml::xml_node<>* compNode = node->first_node();
-			for (rapidxml::xml_node<>* com = compNode->first_node(); com != nullptr; com = com->next_sibling())
-			{
-				if (strcmp(com->name(), "CameraComponent") == 0)
-				{
-					//gameObject->AddComponent<CameraComponent>()->Parse(com);
-					(newNode)->AddComponent<CameraComponent>()->Parse(com);
-					_world->setMainCamera(newNode->GetComponent<CameraComponent>());
-				}
-				else if (strcmp(com->name(), "LightComponent") == 0)
-				{
-					//gameObject->AddComponent<CameraComponent>()->Parse(com);
-					(newNode)->AddComponent<LightComponent>()->Parse(com);
-					registerLight(newNode->GetComponent<LightComponent>());
-				}
-				else if (strcmp(com->name(), "GridComponent") == 0)
-				{
-					std::cout << "Parsing Grid Component...." << std::endl;
-					for (rapidxml::xml_attribute<>* a = com->first_attribute();
-						a != nullptr;
-						a = a->next_attribute())
-					{
-						std::cout << a->name() << " : " << a->value() << std::endl;
-					}
-
-				}
-				else if (strcmp(com->name(), "ColorMaterial") == 0)
-				{
-					ColorMaterial* colorMat = nullptr;
-					for (rapidxml::xml_attribute<>* a = com->first_attribute();
-						a != nullptr;
-						a = a->next_attribute())
-					{
-						std::string attributeName(a->name());
-						std::string value(a->value());
-						if (attributeName == "materialName")
-						{
-							colorMat = dynamic_cast<ColorMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial(value));
-							if (colorMat == nullptr)
-							{
-								colorMat = new ColorMaterial();
-								AbstractGame::Instance()->GetResourceManager()->RegisterMaterial(colorMat, value);
-							}
-						}
-						else if (attributeName == "shininess")
-						{
-							colorMat->SetShineness(strtof(a->value(), 0));
-						}
-						else if (attributeName == "diffuseColor")
-						{
-							glm::vec3 color;
-							sscanf(a->value(), "(%f,%f,%f)", &color.x, &color.y, &color.z);
-							colorMat->SetDiffuseColor(color);
-						}
-					}
-
-					newNode->setMaterial(colorMat);
-				}
-				else if (strcmp(com->name(), "TextureMaterial") == 0)
-				{
-					TextureMaterial* texMat = nullptr;
-					for (rapidxml::xml_attribute<>* a = com->first_attribute();
-						a != nullptr;
-						a = a->next_attribute())
-					{
-						std::string attributeName(a->name());
-						std::string value(a->value());
-						if (attributeName == "materialName")
-						{
-							texMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial(value));
-							if (texMat == nullptr)
-							{
-								texMat = new TextureMaterial(nullptr,nullptr,nullptr,nullptr);
-								AbstractGame::Instance()->GetResourceManager()->RegisterMaterial(texMat, value);
-							}
-						}
-						else if (attributeName == "shininess")
-						{
-							texMat->SetShininess(strtof(a->value(), 0));
-						}
-						else if (attributeName == "diffuseColor")
-						{
-							glm::vec3 color;
-							sscanf(a->value(), "(%f,%f,%f)", &color.x, &color.y, &color.z);
-							texMat->SetDiffuseColor(color);
-						}
-						else if (attributeName == "shininess")
-						{
-							texMat->SetShininess(strtof(a->value(), 0));
-						}
-						else if (attributeName == "emissionScale")
-						{
-							texMat->SetEmissionScale(strtof(a->value(), 0));
-						}
-						else if (attributeName == "diffuseTexture")
-						{
-							texMat->setDiffuseTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
-						}
-						else if (attributeName == "specularTexture")
-						{
-							texMat->SetSpecularTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
-						}
-						else if (attributeName == "emissionTexture")
-						{
-							texMat->SetEmissionTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
-						}
-						else if (attributeName == "normalTexture")
-						{
-							texMat->SetNormalTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
-						}
-					}
-
-					newNode->setMaterial(texMat);
-				}
-
-			}
+			ParseComponents(compNode, newNode);
 		}
+
+		//awake and start manually after attaching all components...
 		newNode->Awake();
 		newNode->Start();
 
@@ -267,4 +155,123 @@ void XMLWorld::Initialize()
 	l->transform->Scale(glm::vec3(0.2f, 0.2f, 0.2f));
 
 	*/
+}
+
+void XMLWorld::ParseComponents(rapidxml::xml_node<>* compNode,GameObject* newNode)
+{
+	for (rapidxml::xml_node<>* com = compNode->first_node(); com != nullptr; com = com->next_sibling())
+	{
+		if (strcmp(com->name(), "CameraComponent") == 0)
+		{
+			//gameObject->AddComponent<CameraComponent>()->Parse(com);
+			(newNode)->AddComponent<CameraComponent>()->Parse(com);
+			_world->setMainCamera(newNode->GetComponent<CameraComponent>());
+		}
+		else if (strcmp(com->name(), "LightComponent") == 0)
+		{
+			//gameObject->AddComponent<CameraComponent>()->Parse(com);
+			(newNode)->AddComponent<LightComponent>()->Parse(com);
+			registerLight(newNode->GetComponent<LightComponent>());
+		}
+		else if (strcmp(com->name(), "GridComponent") == 0)
+		{
+			std::cout << "Parsing Grid Component...." << std::endl;
+			for (rapidxml::xml_attribute<>* a = com->first_attribute();
+				a != nullptr;
+				a = a->next_attribute())
+			{
+				std::cout << a->name() << " : " << a->value() << std::endl;
+			}
+
+		}
+		else if (strcmp(com->name(), "ColorMaterial") == 0)
+		{
+			ColorMaterial* colorMat = nullptr;
+			for (rapidxml::xml_attribute<>* a = com->first_attribute();
+				a != nullptr;
+				a = a->next_attribute())
+			{
+				std::string attributeName(a->name());
+				std::string value(a->value());
+				if (attributeName == "materialName")
+				{
+					colorMat = dynamic_cast<ColorMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial(value));
+					if (colorMat == nullptr)
+					{
+						colorMat = new ColorMaterial();
+						AbstractGame::Instance()->GetResourceManager()->RegisterMaterial(colorMat, value);
+					}
+				}
+				else if (attributeName == "shininess")
+				{
+					colorMat->SetShineness(strtof(a->value(), 0));
+				}
+				else if (attributeName == "diffuseColor")
+				{
+					glm::vec3 color;
+					sscanf(a->value(), "(%f,%f,%f)", &color.x, &color.y, &color.z);
+					colorMat->SetDiffuseColor(color);
+				}
+			}
+
+			newNode->setMaterial(colorMat);
+		}
+		else if (strcmp(com->name(), "TextureMaterial") == 0)
+		{
+			TextureMaterial* texMat = nullptr;
+			for (rapidxml::xml_attribute<>* a = com->first_attribute();
+				a != nullptr;
+				a = a->next_attribute())
+			{
+				std::string attributeName(a->name());
+				std::string value(a->value());
+				if (attributeName == "materialName")
+				{
+					texMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial(value));
+					if (texMat == nullptr)
+					{
+						texMat = new TextureMaterial(nullptr, nullptr, nullptr, nullptr);
+						AbstractGame::Instance()->GetResourceManager()->RegisterMaterial(texMat, value);
+					}
+				}
+				else if (attributeName == "shininess")
+				{
+					texMat->SetShininess(strtof(a->value(), 0));
+				}
+				else if (attributeName == "diffuseColor")
+				{
+					glm::vec3 color;
+					sscanf(a->value(), "(%f,%f,%f)", &color.x, &color.y, &color.z);
+					texMat->SetDiffuseColor(color);
+				}
+				else if (attributeName == "shininess")
+				{
+					texMat->SetShininess(strtof(a->value(), 0));
+				}
+				else if (attributeName == "emissionScale")
+				{
+					texMat->SetEmissionScale(strtof(a->value(), 0));
+				}
+				else if (attributeName == "diffuseTexture")
+				{
+					texMat->setDiffuseTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
+				}
+				else if (attributeName == "specularTexture")
+				{
+					texMat->SetSpecularTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
+				}
+				else if (attributeName == "emissionTexture")
+				{
+					texMat->SetEmissionTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
+				}
+				else if (attributeName == "normalTexture")
+				{
+					texMat->SetNormalTexture(AbstractGame::Instance()->GetResourceManager()->GetTexture(value));
+				}
+			}
+
+			newNode->setMaterial(texMat);
+		}
+
+	}
 }

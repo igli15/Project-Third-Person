@@ -160,6 +160,12 @@
     <ClInclude Include="..\src\mge\core\XMLComponent.h">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game\components\GridComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\TileComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -281,6 +287,12 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\core\XMLComponent.cpp">
       <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\GridComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\TileComponent.cpp">
+      <Filter>game\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
