@@ -1,6 +1,7 @@
 #pragma once
 #include "mge/core/XMLComponent.h"
 #include <vector>
+#include "glm.hpp"
 
 class TileComponent;
 
@@ -24,6 +25,8 @@ public:
 	void Parse(rapidxml::xml_node<>* compNode) override;
 
 	TileComponent* GetTileAt(int x, int y);
+
+	TileComponent* GetTilePlayerIsOn(glm::vec3 playerPos);
 
 private:
 

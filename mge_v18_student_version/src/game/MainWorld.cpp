@@ -47,7 +47,7 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 	{
 		newNode->AddComponent<TileComponent>()->Parse(componentNode);
 		levelGrid->AddTile(newNode->GetComponent<TileComponent>());
-		std::cout << "Added Tile At Pos: " << newNode->transform->WorldPosition()<< std::endl;
+		//std::cout << "Added Tile At Pos: " << newNode->transform->WorldPosition()<< std::endl;
 	}
 }
 
@@ -57,7 +57,9 @@ void MainWorld::Initialize()
 	//Load the xml world.
 	LoadXmlWorld("scene.xml");
 
-	std::cout << "tile Pos is: " << levelGrid->GetTileAt(0, 7)->GetGameObject()->transform->WorldPosition()<<std::endl;
+	//std::cout << "tile Pos is: " << levelGrid->GetTileAt(0, 7)->GetGameObject()->transform->WorldPosition()<<std::endl;
+	std::cout << "tile Pos is: " << levelGrid->GetTilePlayerIsOn(glm::vec3(15,0,15))->GetGameObject()->transform->WorldPosition() << std::endl;
+	levelGrid->GetTilePlayerIsOn(glm::vec3(15, 0, 15))->GetGameObject()->Destroy();
 }
 
 MainWorld::~MainWorld()
