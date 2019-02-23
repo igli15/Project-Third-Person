@@ -58,6 +58,7 @@ void MainWorld::Initialize()
 	LoadXmlWorld("scene.xml");
 
 	//std::cout << "tile Pos is: " << levelGrid->GetTileAt(0, 7)->GetGameObject()->transform->WorldPosition()<<std::endl;
+	//Get tile pos and destroy it based on a "test position"
 	std::cout << "tile Pos is: " << levelGrid->GetTilePlayerIsOn(glm::vec3(15,0,15))->GetGameObject()->transform->WorldPosition() << std::endl;
 	levelGrid->GetTilePlayerIsOn(glm::vec3(15, 0, 15))->GetGameObject()->Destroy();
 }
