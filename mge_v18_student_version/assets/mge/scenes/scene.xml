@@ -42,7 +42,7 @@
   </GameObject>
   <GameObject name="Grid" position="(0.0, 0.0, 0.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
     <Components>
-      <GridComponent gridSizeX="30" gridSizeY="30" tileRadius="5" />
+      <GridComponent gridSizeX="30" gridSizeY="20" tileRadius="5" />
     </Components>
   </GameObject>
   <GameObject name="Main Camera" position="(126.0, 228.0, 94.0)" rotation="(0.7, 0.0, 0.0, 0.7)" scale="(1.0, 1.0, 1.0)">

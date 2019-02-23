@@ -12,6 +12,8 @@ public:
 	void LoadXmlWorld(const std::string& fileName);
 
 	virtual void Initialize() override;
+
+	//override this to parse your game related components
 	virtual void ParseComponents(rapidxml::xml_node<>* componentNode, GameObject* newNode);
 
 private :

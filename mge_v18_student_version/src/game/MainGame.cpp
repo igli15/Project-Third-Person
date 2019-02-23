@@ -81,7 +81,7 @@ void MainGame::CreateWorld()
 	//world->LoadXmlWorld("scene.xml");
 
 	//Main World is now an XMLWorld...
-	m_worldManager->CreateWorld<MainWorld>("MainWorld");
+	//m_worldManager->CreateWorld<MainWorld>("MainWorld");
 
 	//m_eventQueue->RegisterEvent<TestEvent>([](EventType* t) {std::cout << dynamic_cast<TestEvent*>(t)->test << std::endl; });
 	//TestEvent* t = new TestEvent();

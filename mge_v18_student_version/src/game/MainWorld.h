@@ -8,6 +8,7 @@
 
 
 class GameObject;
+class GridComponent;
 
 class MainWorld : public XMLWorld
 {
@@ -17,5 +18,8 @@ public:
 	void ParseComponents(rapidxml::xml_node<>* componentNode, GameObject* newNode) override;
 	virtual void Initialize() override;
 	virtual ~MainWorld();
+
+private:
+	GridComponent* levelGrid = nullptr;
 };
 

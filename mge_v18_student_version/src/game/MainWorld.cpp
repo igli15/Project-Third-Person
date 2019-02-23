@@ -20,6 +20,8 @@
 #include "lua.h"
 #include"mge/components/AudioSource.h"
 #include "mge\components\UISpriteRenderer.h"
+#include "game/components/GridComponent.h"
+#include"game/components/TileComponent.h"
 
 MainWorld::MainWorld()
 {
@@ -29,25 +31,33 @@ MainWorld::MainWorld()
 
 void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject * newNode)
 {
-
+	/*
+		parses mge related components under the hood.
+		do not forget to put this line!!
+	*/
 	XMLWorld::ParseComponents(componentNode, newNode);
 
+	//Parse your game related components here.
 	if (strcmp(componentNode->name(), "GridComponent") == 0)
 	{
-		std::cout << "Parsing Grid Component...." << std::endl;
-		for (rapidxml::xml_attribute<>* a = componentNode->first_attribute();
-			a != nullptr;
-			a = a->next_attribute())
-		{
-			std::cout << a->name() << " : " << a->value() << std::endl;
-		}
-
+		newNode->AddComponent<GridComponent>()->Parse(componentNode);
+		levelGrid = newNode->GetComponent<GridComponent>();
+	}
+	else if (strcmp(componentNode->name(), "TileComponent") == 0)
+	{
+		newNode->AddComponent<TileComponent>()->Parse(componentNode);
+		levelGrid->AddTile(newNode->GetComponent<TileComponent>());
+		std::cout << "Added Tile At Pos: " << newNode->transform->WorldPosition()<< std::endl;
 	}
 }
 
 void MainWorld::Initialize()
 {
+	
+	//Load the xml world.
 	LoadXmlWorld("scene.xml");
+
+	std::cout << "tile Pos is: " << levelGrid->GetTileAt(0, 7)->GetGameObject()->transform->WorldPosition()<<std::endl;
 }
 
 MainWorld::~MainWorld()

@@ -10,6 +10,7 @@ public:
 	GridComponent();
 	virtual ~GridComponent();
 
+	void Awake();
 	void SetWidth(int width);
 	void SetHeight(int height);
 	void SetTileRadius(int r);
@@ -22,6 +23,8 @@ public:
 	void AddTile(TileComponent* tile);
 	void Parse(rapidxml::xml_node<>* compNode) override;
 
+	TileComponent* GetTileAt(int x, int y);
+
 private:
 
 	int m_width = 0;
@@ -29,5 +32,6 @@ private:
 	int m_tileRadius = 0;
 
 	std::vector< std::vector<TileComponent*> > m_tileGrid;
+
 
 };
