@@ -1,0 +1,17 @@
+#pragma once
+#include "mge/core/GameObject.hpp"
+#include "mge/components//RigidBody.h"
+
+class PhysicsTestObject :public GameObject
+{
+public:
+	PhysicsTestObject();
+	~PhysicsTestObject();
+
+	void Load();
+	void Start();
+	void Update(float timeStep);
+
+	RigidBody* rigidbody;
+};
+

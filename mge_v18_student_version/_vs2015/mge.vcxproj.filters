@@ -163,6 +163,12 @@
     <ClInclude Include="..\src\mge\core\CollisionInfo.h">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\components\RigidBody.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\PhysicsTestObject.h">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -287,6 +293,12 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\core\CollisionInfo.cpp">
       <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\RigidBody.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\PhysicsTestObject.cpp">
+      <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

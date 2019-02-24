@@ -171,6 +171,7 @@
     <ClInclude Include="..\src\game\IlyasWorld.h" />
     <ClInclude Include="..\src\game\MainGame.h" />
     <ClInclude Include="..\src\game\MainWorld.h" />
+    <ClInclude Include="..\src\game\PhysicsTestObject.h" />
     <ClInclude Include="..\src\glm.hpp" />
     <ClInclude Include="..\src\mge\components\AudioSource.h" />
     <ClInclude Include="..\src\mge\components\CameraComponent.h" />
@@ -180,6 +181,7 @@
     <ClInclude Include="..\src\mge\components\MeshRenderer.h" />
     <ClInclude Include="..\src\mge\components\CircleCollider.h" />
     <ClInclude Include="..\src\mge\components\RectangleCollider.h" />
+    <ClInclude Include="..\src\mge\components\RigidBody.h" />
     <ClInclude Include="..\src\mge\components\Transform.h" />
     <ClInclude Include="..\src\mge\components\UISpriteRenderer.h" />
     <ClInclude Include="..\src\mge\config.hpp" />
@@ -215,6 +217,7 @@
     <ClCompile Include="..\src\game\IlyasWorld.cpp" />
     <ClCompile Include="..\src\game\MainGame.cpp" />
     <ClCompile Include="..\src\game\MainWorld.cpp" />
+    <ClCompile Include="..\src\game\PhysicsTestObject.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mge\components\AudioSource.cpp" />
     <ClCompile Include="..\src\mge\components\CameraComponent.cpp" />
@@ -224,6 +227,7 @@
     <ClCompile Include="..\src\mge\components\MeshRenderer.cpp" />
     <ClCompile Include="..\src\mge\components\CircleCollider.cpp" />
     <ClCompile Include="..\src\mge\components\RectangleCollider.cpp" />
+    <ClCompile Include="..\src\mge\components\RigidBody.cpp" />
     <ClCompile Include="..\src\mge\components\Transform.cpp" />
     <ClCompile Include="..\src\mge\components\UISpriteRenderer.cpp" />
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp" />

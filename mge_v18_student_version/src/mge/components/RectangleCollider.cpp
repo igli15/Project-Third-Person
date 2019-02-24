@@ -7,7 +7,7 @@ RectangleCollider::~RectangleCollider()
 
 void RectangleCollider::Update(float timeSteps)
 {
-	DetectCollision();
+	//DetectCollision();
 }
 
 void RectangleCollider::DetectCollision()
@@ -37,8 +37,10 @@ CollisionInfo* RectangleCollider::IsColliding(CircleCollider * circle)
 
 	if ((deltaX * deltaX + deltaY * deltaY) < (circle->radius*circle->radius))
 	{
+		glm::vec2 distance = circle->GetWorld2Dposition() - GetWorld2Dposition();
 		CollisionInfo* collisionInfo = new CollisionInfo();
 		collisionInfo->hitPoints.push_back(glm::vec2(deltaX, deltaY));
+		collisionInfo->distance = glm::vec2(width / 2 + circle->radius-glm::abs(distance.x), height / 2 + circle->radius- glm::abs(distance.y));
 		return collisionInfo;
 	}
 	return nullptr;
@@ -47,6 +49,7 @@ CollisionInfo* RectangleCollider::IsColliding(CircleCollider * circle)
 CollisionInfo* RectangleCollider::IsColliding(RectangleCollider * rectangleCollider)
 {
 	glm::vec2 myPos = GetWorld2Dposition();
+
 	glm::vec2 otherPos = rectangleCollider->GetWorld2Dposition();
 	if(
 		myPos.x + width / 2 >= otherPos.x - rectangleCollider->width / 2 &&
@@ -59,9 +62,12 @@ CollisionInfo* RectangleCollider::IsColliding(RectangleCollider * rectangleColli
 		pointOfCollision.x= (myPos.x < otherPos.x) ? myPos.x + width : myPos.x - width;
 		pointOfCollision.y = (myPos.y < otherPos.y) ? myPos.y + height : myPos.y - height;
 
+		glm::vec2 distance = rectangleCollider->GetWorld2Dposition() - GetWorld2Dposition();
+
 		CollisionInfo* collisionInfo = new CollisionInfo();
 		collisionInfo->hitPoints.push_back(pointOfCollision);
 
+		collisionInfo->distance = glm::vec2(width/2 + rectangleCollider->width/2-glm::abs(distance.x), height/2 + rectangleCollider->height/2- glm::abs(distance.x));
 		return collisionInfo;
 	}
 

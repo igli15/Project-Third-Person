@@ -34,6 +34,7 @@ MainWorld::MainWorld()
 
 void MainWorld::Initialize()
 {
+	return;
 	Mesh* planeMeshDefault = AbstractGame::Instance()->GetResourceManager()->GetMesh("planeMesh");
 	Mesh* cubeMesh = AbstractGame::Instance()->GetResourceManager()->GetMesh("cubeMesh");;
 	Mesh* Car = AbstractGame::Instance()->GetResourceManager()->GetMesh("carMesh");;
