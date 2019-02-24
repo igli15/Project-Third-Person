@@ -47,7 +47,7 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 	{
 		newNode->AddComponent<TileComponent>()->Parse(componentNode);
 		levelGrid->AddTile(newNode->GetComponent<TileComponent>());
-		//std::cout << "Added Tile At Pos: " << newNode->transform->WorldPosition()<< std::endl;
+		std::cout << "Added Tile At Pos: " << newNode->transform->WorldPosition()<< std::endl;
 	}
 }
 
@@ -60,7 +60,16 @@ void MainWorld::Initialize()
 	//std::cout << "tile Pos is: " << levelGrid->GetTileAt(0, 7)->GetGameObject()->transform->WorldPosition()<<std::endl;
 	//Get tile pos and destroy it based on a "test position"
 	std::cout << "tile Pos is: " << levelGrid->GetTilePlayerIsOn(glm::vec3(15,0,15))->GetGameObject()->transform->WorldPosition() << std::endl;
-	levelGrid->GetTilePlayerIsOn(glm::vec3(15, 0, 15))->GetGameObject()->Destroy();
+	std::cout << "tile Index is: " << levelGrid->GetTilePlayerIsOn(glm::vec3(15, 0, 15))->GridPos() << std::endl;
+	//levelGrid->GetTilePlayerIsOn(glm::vec3(15, 0, 15))->GetGameObject()->Destroy();
+
+	//to test if neighbour tile works..
+	auto tiles = levelGrid->GetNeighbourTiles(glm::vec3(15, 0, 15),3,false,false);
+
+	for (size_t i = 0; i < tiles.size(); i++)
+	{
+		tiles[i]->GetGameObject()->Destroy();
+	}
 }
 
 MainWorld::~MainWorld()

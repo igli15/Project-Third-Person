@@ -53,6 +53,7 @@ void GridComponent::AddTile(TileComponent * tile)
 		if (m_tileGrid.at(i).size() < m_width)
 		{
 			m_tileGrid.at(i).push_back(tile);
+			tile->SetGridPos(glm::vec2(m_tileGrid.at(i).size() -1 ,i));
 			return;
 		}
 	}
@@ -95,4 +96,38 @@ TileComponent * GridComponent::GetTilePlayerIsOn(glm::vec3 playerPos)
 	int y = playerPos.z / (m_tileRadius * 2);
 
 	return GetTileAt(x,y);
+}
+
+std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos,int amount, bool horizontal, bool positiveDir)
+{
+	std::vector<TileComponent*> tiles;
+	TileComponent* currentTile = GetTilePlayerIsOn(playerPos);
+
+	for (size_t i = 1; i <= amount; i++)
+	{
+		if (horizontal)
+		{
+			if (positiveDir && currentTile->GridPos().x + i < m_width)
+			{
+				tiles.push_back(GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y));
+			}
+			else if (!positiveDir && currentTile->GridPos().x - i >= 0)
+			{
+				tiles.push_back(GetTileAt(currentTile->GridPos().x - i, currentTile->GridPos().y));
+			}
+		}
+		else
+		{
+			if (positiveDir && currentTile->GridPos().y + i < m_height)
+			{
+				tiles.push_back(GetTileAt(currentTile->GridPos().x , currentTile->GridPos().y + i));
+			}
+			else if (!positiveDir && currentTile->GridPos().y - i >= 0)
+			{
+				tiles.push_back(GetTileAt(currentTile->GridPos().x , currentTile->GridPos().y - 1));
+			}
+		}
+	}
+
+	return tiles;
 }
