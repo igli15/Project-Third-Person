@@ -27,7 +27,7 @@ public:
 	//Get a Tile by array index.
 	TileComponent* GetTileAt(int x, int y);
 
-	//Returns the tile the player is currently on based on his world position!
+	//Returns the tile based on the provided world position!
 	TileComponent* GetTilePlayerIsOn(glm::vec3 playerPos);
 
 	/*
