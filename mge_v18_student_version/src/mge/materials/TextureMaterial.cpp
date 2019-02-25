@@ -21,17 +21,21 @@ GLint TextureMaterial::_aVertex = 0;
 GLint TextureMaterial::_aNormal = 0;
 GLint TextureMaterial::_aUV = 0;
 
+GLint TextureMaterial::m_uSpecularTexture = 0;
+GLint TextureMaterial::m_uEmissionTexture = 0;
+GLint TextureMaterial::m_uNormalTexture = 0;
+
 TextureMaterial::TextureMaterial(Texture * pDiffuseTexture , Texture* specularTexture , Texture* emissionTexture,Texture* normalTex)
 	:_diffuseTexture(pDiffuseTexture),m_spcecularTexture(specularTexture),m_emissionTexture(emissionTexture)
 {
 	m_normalMap = normalTex;
-
-	_lazyInitializeShader();
 	
  
 	m_whiteTex = AbstractGame::Instance()->GetResourceManager()->GetTexture("whiteTex");
 	m_blackTex = AbstractGame::Instance()->GetResourceManager()->GetTexture("blackTex");
 	m_normalFlatTex = AbstractGame::Instance()->GetResourceManager()->GetTexture("flatNormalTex");
+
+	_lazyInitializeShader();
 }
 
 TextureMaterial::~TextureMaterial() {}
@@ -51,6 +55,11 @@ void TextureMaterial::_lazyInitializeShader() {
         _aVertex = m_shaderProgram->getAttribLocation("vertex");
         _aNormal = m_shaderProgram->getAttribLocation("normal");
         _aUV =     m_shaderProgram->getAttribLocation("uv");
+
+
+		m_uSpecularTexture = m_shaderProgram->getUniformLocation("specularTexture");
+		m_uEmissionTexture = m_shaderProgram->getUniformLocation("emissionTexture");
+		m_uNormalTexture = m_shaderProgram->getUniformLocation("normalMap");
     }
 }
 
@@ -107,7 +116,8 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		//bind the texture to the current active slot
 		glBindTexture(GL_TEXTURE_2D, m_spcecularTexture->getId());
 		//tell the shader the texture slot for the specular texture is slot 1
-		glUniform1i(m_shaderProgram->getUniformLocation("specularTexture"), 1);
+		//glUniform1i(m_shaderProgram->getUniformLocation("specularTexture"), 1);
+		glUniform1i(m_uSpecularTexture, 1);
 	}
 	else
 	{
@@ -116,7 +126,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		//bind the texture to the current active slot
 		glBindTexture(GL_TEXTURE_2D, m_whiteTex->getId());
 		//tell the shader the texture slot for the specular texture is slot 1
-		glUniform1i(m_shaderProgram->getUniformLocation("specularTexture"), 1);
+		glUniform1i(m_uSpecularTexture, 1);
 	}
 
 	if (m_emissionTexture != nullptr)
@@ -126,7 +136,8 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		//bind the texture to the current active slot
 		glBindTexture(GL_TEXTURE_2D, m_emissionTexture->getId());
 		//tell the shader the texture slot for the specular texture is slot 2
-		glUniform1i(m_shaderProgram->getUniformLocation("emissionTexture"), 2);
+		//glUniform1i(m_shaderProgram->getUniformLocation("emissionTexture"), 2);
+		glUniform1i(m_uEmissionTexture, 2);
 	}
 	else
 	{
@@ -135,7 +146,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		//bind the texture to the current active slot
 		glBindTexture(GL_TEXTURE_2D, m_blackTex->getId());
 		//tell the shader the texture slot for the specular texture is slot 2
-		glUniform1i(m_shaderProgram->getUniformLocation("emissionTexture"), 2);
+		glUniform1i(m_uEmissionTexture, 2);
 	}
 
 	
@@ -146,7 +157,8 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		//bind the texture to the current active slot
 		glBindTexture(GL_TEXTURE_2D, m_normalMap->getId());
 		//tell the shader the texture slot for the specular texture is slot 3
-		glUniform1i(m_shaderProgram->getUniformLocation("normalMap"), 3);
+		//glUniform1i(m_shaderProgram->getUniformLocation("normalMap"), 3);
+		glUniform1i(m_uNormalTexture, 3);
 	}
 	else
 	{
@@ -155,7 +167,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		//bind the texture to the current active slot
 		glBindTexture(GL_TEXTURE_2D, m_normalFlatTex->getId());
 		//tell the shader the texture slot for the specular texture is slot 3
-		glUniform1i(m_shaderProgram->getUniformLocation("normalMap"), 3);
+		glUniform1i(m_uNormalTexture, 3);
 	}
 
 	int pointLightCount = 0;

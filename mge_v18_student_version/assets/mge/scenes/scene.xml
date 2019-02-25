@@ -27,24 +27,12 @@
   <GameObject name="Sphere" position="(-4.0, 0.0, 3.7)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Sphere">
     <Components />
   </GameObject>
-  <GameObject name="pointLight" position="(3.1, 17.5, 5.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
-    <Components>
-      <LightComponent type="POINT" color="(1.0, 1.0, 0.8)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.34" ambientContribution="0.4" specularContribution="0.1" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
-    </Components>
-  </GameObject>
-  <GameObject name="pointLight (1)" position="(-1.1, 16.1, 5.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
-    <Components>
-      <LightComponent type="POINT" color="(1.0, 1.0, 0.8)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.34" ambientContribution="0.4" specularContribution="0.1" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
-    </Components>
-  </GameObject>
   <GameObject name="Cube" position="(3.2, 6.7, -3.3)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Cube">
     <Components />
   </GameObject>
   <GameObject name="Grid" position="(0.0, 0.0, 0.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
     <Components>
       <GridComponent gridSizeX="30" gridSizeY="20" tileRadius="5" />
-      <RigidBodyComponent friction="0" maxSpeed="0.5" />
-      <RectangleCollider width="1" height="1" />
     </Components>
   </GameObject>
   <GameObject name="Main Camera" position="(126.0, 228.0, 94.0)" rotation="(0.7, 0.0, 0.0, 0.7)" scale="(1.0, 1.0, 1.0)">

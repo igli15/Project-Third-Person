@@ -40,6 +40,10 @@ class TextureMaterial : public AbstractMaterial
         static GLint _aNormal;
         static GLint _aUV ;
 
+		static GLint m_uSpecularTexture;
+		static GLint m_uEmissionTexture;
+		static GLint m_uNormalTexture;
+
         Texture* _diffuseTexture = nullptr;
 		Texture* m_spcecularTexture = nullptr;
 		Texture* m_emissionTexture = nullptr;
