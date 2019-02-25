@@ -90,7 +90,7 @@ void TextureMaterial::SetEmissionScale(float emissionScale)
 
 void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) {
     if (!_diffuseTexture) return;
-
+	
     m_shaderProgram->use();
 
 	//setup texture slot 0
@@ -99,7 +99,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 	glBindTexture(GL_TEXTURE_2D, _diffuseTexture->getId());
 	//tell the shader the texture slot for the diffuse texture is slot 0
 	glUniform1i(_uDiffuseTexture, 0);
-
+	
 	if (m_spcecularTexture != nullptr)
 	{
 		//setup texture slot 1
@@ -138,7 +138,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		glUniform1i(m_shaderProgram->getUniformLocation("emissionTexture"), 2);
 	}
 
-
+	
 	if (m_normalMap != nullptr)
 	{
 		//setup texture slot 3
@@ -250,7 +250,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("projectionMatrix"), 1, GL_FALSE, glm::value_ptr(pProjectionMatrix));
 	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("viewMatrix"), 1, GL_FALSE, glm::value_ptr(pViewMatrix));
 	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("modelMatrix"), 1, GL_FALSE, glm::value_ptr(pModelMatrix));
-
+	
     //now inform mesh of where to stream its data
     meshRenderer->StreamToOpenGL(_aVertex, _aNormal, _aUV, m_shaderProgram->getAttribLocation("tangent"), m_shaderProgram->getAttribLocation("bitangent"));
 }

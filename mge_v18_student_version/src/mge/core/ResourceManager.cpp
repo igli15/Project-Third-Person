@@ -11,7 +11,7 @@ ResourceManager::ResourceManager()
 	m_luaProgram = new LuaProgram("../src/game/Resources.Lua");
 	m_luaProgram->CallCurrentProgram();
 
-	LoadTexture(config::MGE_TEXTURE_PATH + "whiteTex.png", "whiteTex",TextureType::RGBAREPLACEMENT);
+	LoadTexture(config::MGE_TEXTURE_PATH + "whiteTex.png", "whiteTex", TextureType::RGBAREPLACEMENT);
 	LoadTexture(config::MGE_TEXTURE_PATH + "blackTex.png", "blackTex", TextureType::RGBAREPLACEMENT);
 	LoadTexture(config::MGE_TEXTURE_PATH + "defaultNormal.png", "flatNormalTex", TextureType::RGBAREPLACEMENT);
 }
@@ -44,18 +44,18 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 
 		//If we want specular / normals maps we still have to use rgba instead of SRGB
 
-		if (textureType == TextureType::SPECULAR  || textureType == TextureType::NORMAL || textureType == TextureType::RGBAREPLACEMENT)
+		if (textureType == TextureType::SPECULAR || textureType == TextureType::NORMAL || textureType == TextureType::RGBAREPLACEMENT)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
-		else if (textureType == TextureType::DIFFUSE || TextureType::SRGBREPLACEMENT|| textureType == TextureType::EMISSION)
+		else if (textureType == TextureType::DIFFUSE || TextureType::SRGBREPLACEMENT || textureType == TextureType::EMISSION)
 		{
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_SRGB, image->getSize().x, image->getSize().y, 0, GL_RGBA, GL_UNSIGNED_BYTE, image->getPixelsPtr());
 		}
 
 		//wrap the default tex
 		if (textureType == TextureType::RGBAREPLACEMENT || textureType == TextureType::SRGBREPLACEMENT)
-		
+
 		{
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
 		}
@@ -63,7 +63,7 @@ Texture * ResourceManager::LoadTexture(const std::string & path, const std::stri
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glBindTexture(GL_TEXTURE_2D, 0);
-	
+
 		m_textureMap[tag] = texture;
 		texture->InnerSetImage(image);
 		return texture;
@@ -231,28 +231,28 @@ Mesh * ResourceManager::LoadMesh(const std::string & path, const std::string & t
 							mesh->AddVertex(vertices[vertexIndex[i] - 1]);
 							mesh->AddNormal(normals[normalIndex[i] - 1]);
 							mesh->AddUVs(uvs[uvIndex[i] - 1]);
+							/*
+														glm::vec3 v0 = vertices[vertexIndex[0] -1];
+														glm::vec3 v1 = vertices[vertexIndex[1] - 1];
+														glm::vec3 v2 = vertices[vertexIndex[2] - 1];
 
-							glm::vec3 v0 = vertices[vertexIndex[0] -1];
-							glm::vec3 v1 = vertices[vertexIndex[1] - 1];
-							glm::vec3 v2 = vertices[vertexIndex[2] - 1];
+														glm::vec2 u0 = uvs[uvIndex[0] - 1];
+														glm::vec2 u1 = uvs[uvIndex[1] - 1];
+														glm::vec2 u2 = uvs[uvIndex[2] - 1];
 
-							glm::vec2 u0 = uvs[uvIndex[0] - 1];
-							glm::vec2 u1 = uvs[uvIndex[1] - 1];
-							glm::vec2 u2 = uvs[uvIndex[2] - 1];
+														glm::vec3 deltaPos1 = v1 - v0;
+														glm::vec3 deltaPos2 = v2 - v0;
 
-							glm::vec3 deltaPos1 = v1 - v0;
-							glm::vec3 deltaPos2 = v2 - v0;
+														glm::vec2 deltaUV1 = u1 - u0;
+														glm::vec2 deltaUV2 = u2 - u0;
 
-							glm::vec2 deltaUV1 = u1 - u0;
-							glm::vec2 deltaUV2 = u2 - u0;
+														float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y * deltaUV2.x);
+														glm::vec3 tangent = (deltaPos1 * deltaUV2.y - deltaPos2 * deltaUV1.y)*r;
+														glm::vec3 bitangent = (deltaPos2 * deltaUV1.x - deltaPos1 * deltaUV2.x)*r;
 
-							float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y * deltaUV2.x);
-							glm::vec3 tangent = (deltaPos1 * deltaUV2.y - deltaPos2 * deltaUV1.y)*r;
-							glm::vec3 bitangent = (deltaPos2 * deltaUV1.x - deltaPos1 * deltaUV2.x)*r;
-
-							mesh->AddTangent(tangent);
-							mesh->AddBiTangent(bitangent);
-
+														mesh->AddTangent(tangent);
+														mesh->AddBiTangent(bitangent);
+														*/
 						}
 						else
 						{
@@ -271,11 +271,45 @@ Mesh * ResourceManager::LoadMesh(const std::string & path, const std::string & t
 					delete mesh;
 					return NULL;
 				}
+
+
 			}
+
 
 		}
 
 		file.close();
+
+		for (size_t i = 0; i < mesh->Indices().size(); i += 3)
+		{
+
+			int index0 = mesh->Indices()[i];
+			int index1 = mesh->Indices()[i + 1];
+			int index2 = mesh->Indices()[i + 2];
+
+			glm::vec3 v0 = mesh->Vertices()[index0];
+			glm::vec3 v1 = mesh->Vertices()[index1];
+			glm::vec3 v2 = mesh->Vertices()[index2];
+
+			glm::vec2 u0 = mesh->UVs()[index0];
+			glm::vec2 u1 = mesh->UVs()[index1];
+			glm::vec2 u2 = mesh->UVs()[index2];
+
+			glm::vec3 deltaPos1 = v1 - v0;
+			glm::vec3 deltaPos2 = v2 - v0;
+
+			glm::vec2 deltaUV1 = u1 - u0;
+			glm::vec2 deltaUV2 = u2 - u0;
+
+			float r = 1.0f / (deltaUV1.x * deltaUV2.y - deltaUV1.y * deltaUV2.x);
+			glm::vec3 tangent = (deltaPos1 * deltaUV2.y - deltaPos2 * deltaUV1.y)*r;
+			glm::vec3 bitangent = (deltaPos2 * deltaUV1.x - deltaPos1 * deltaUV2.x)*r;
+
+			mesh->AddTangent(tangent);
+			mesh->AddBiTangent(bitangent);
+
+		}
+
 
 		std::cout << "Mesh loaded and buffered:" << (mesh->Indices().size() / 3.0f) << " triangles." << std::endl;
 		m_meshMap[tag] = mesh;
@@ -366,7 +400,7 @@ AbstractMaterial * ResourceManager::GetMaterial(const std::string & tag)
 {
 	if (m_materialMap.find(tag) == m_materialMap.end())
 	{
-		std::cout << "There is no Material resource with: " <<tag<< " as a name"<< std::endl;
+		std::cout << "There is no Material resource with: " << tag << " as a name" << std::endl;
 
 		return nullptr;
 		//return GetTexture("ErrorTexture");
