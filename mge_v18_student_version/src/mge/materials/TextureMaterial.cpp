@@ -25,6 +25,21 @@ GLint TextureMaterial::m_uSpecularTexture = 0;
 GLint TextureMaterial::m_uEmissionTexture = 0;
 GLint TextureMaterial::m_uNormalTexture = 0;
 
+GLint TextureMaterial::m_uPointLightCount = 0;
+GLint TextureMaterial::m_uSpotLightCount = 0;
+GLint TextureMaterial::m_uDirectionalLightCount = 0;
+
+GLint TextureMaterial::m_uShineness = 0;
+GLint TextureMaterial::m_uEmissionScale = 0;
+GLint TextureMaterial::m_uDiffuseColor = 0;
+
+GLint TextureMaterial::m_uProjectionMatrix = 0;
+GLint TextureMaterial::m_uViewMatrix = 0;
+GLint TextureMaterial::m_uModelMatrix = 0;
+
+GLint TextureMaterial::m_aTangent = 0;
+GLint TextureMaterial::m_aBiTangent = 0;
+
 TextureMaterial::TextureMaterial(Texture * pDiffuseTexture , Texture* specularTexture , Texture* emissionTexture,Texture* normalTex)
 	:_diffuseTexture(pDiffuseTexture),m_spcecularTexture(specularTexture),m_emissionTexture(emissionTexture)
 {
@@ -56,10 +71,24 @@ void TextureMaterial::_lazyInitializeShader() {
         _aNormal = m_shaderProgram->getAttribLocation("normal");
         _aUV =     m_shaderProgram->getAttribLocation("uv");
 
+		m_aTangent = m_shaderProgram->getAttribLocation("tangent");
+		m_aBiTangent = m_shaderProgram->getAttribLocation("bitangent");
 
 		m_uSpecularTexture = m_shaderProgram->getUniformLocation("specularTexture");
 		m_uEmissionTexture = m_shaderProgram->getUniformLocation("emissionTexture");
 		m_uNormalTexture = m_shaderProgram->getUniformLocation("normalMap");
+
+		m_uDirectionalLightCount = m_shaderProgram->getUniformLocation("directionalLightCount");
+		m_uPointLightCount = m_shaderProgram->getUniformLocation("pointLightCount");
+		m_uSpotLightCount = m_shaderProgram->getUniformLocation("spotLightCount");
+
+		m_uShineness = m_shaderProgram->getUniformLocation("shineness");
+		m_uEmissionScale = m_shaderProgram->getUniformLocation("emissionScale");
+		m_uDiffuseColor = m_shaderProgram->getUniformLocation("diffuseColor");
+
+		m_uModelMatrix = m_shaderProgram->getUniformLocation("modelMatrix");
+		m_uProjectionMatrix = m_shaderProgram->getUniformLocation("projectionMatrix");
+		m_uViewMatrix = m_shaderProgram->getUniformLocation("viewMatrix");
     }
 }
 
@@ -197,6 +226,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		std::string spotLightstring = "spotLight[" + std::to_string(spotLightCount - 1) + "].";
 
 		LightComponent* currentLight = pWorld->getLightAt(i);
+
 		if (currentLight->GetType() == LightType::POINT)
 		{
 			//pointLightCount += 1;
@@ -209,10 +239,12 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		else if (currentLight->GetType() == LightType::DIRECTIONAL)
 		{
 			//directionalLightCount += 1;
+		
 			glUniform3fv(m_shaderProgram->getUniformLocation(dirLightstring + "lightColor"), 1, glm::value_ptr(currentLight->GetColor() * currentLight->GetIntensity()));
 			glUniform3fv(m_shaderProgram->getUniformLocation(dirLightstring + "direction"), 1, glm::value_ptr(currentLight->GetGameObject()->transform->LocalTransform()[2]));
 			glUniform1f(m_shaderProgram->getUniformLocation(dirLightstring + "ambientContribution"), currentLight->GetAmbientContribution());
 			glUniform1f(m_shaderProgram->getUniformLocation(dirLightstring + "specularContribution"), currentLight->GetSpecularContribution());
+			
 		}
 		else if (currentLight->GetType() == LightType::SPOTLIGHT)
 		{
@@ -229,6 +261,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 			glUniform1f(m_shaderProgram->getUniformLocation(spotLightstring + "outerCutoff"), glm::cos(glm::radians(currentLight->GetOuterCutoffAngle())));
 		}
 
+		
 		glm::vec3 attenuationConstants = currentLight->GetAttenuationConstants();
 		glUniform1f(m_shaderProgram->getUniformLocation(pointLightstring + "constant"), attenuationConstants.x);
 		glUniform1f(m_shaderProgram->getUniformLocation(pointLightstring + "linear"), attenuationConstants.y);
@@ -237,32 +270,39 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		glUniform1f(m_shaderProgram->getUniformLocation(spotLightstring + "constant"), attenuationConstants.x);
 		glUniform1f(m_shaderProgram->getUniformLocation(spotLightstring + "linear"), attenuationConstants.y);
 		glUniform1f(m_shaderProgram->getUniformLocation(spotLightstring + "quadratic"), attenuationConstants.z);
+		
 	}
 
 	//std::cout << pointLightCount << "  " << directionalLightCount << std::endl;
+	/*
 	glUniform1f(m_shaderProgram->getUniformLocation("pointLightCount"), pointLightCount);
 	glUniform1f(m_shaderProgram->getUniformLocation("directionalLightCount"), directionalLightCount);
 	glUniform1f(m_shaderProgram->getUniformLocation("spotLightCount"), spotLightCount);
+	*/
+	glUniform1f(m_uPointLightCount, pointLightCount);
+	glUniform1f(m_uDirectionalLightCount, directionalLightCount);
+	glUniform1f(m_uSpotLightCount, spotLightCount);
 
+	/*
 	glUniform1f(m_shaderProgram->getUniformLocation("shineness"), m_shineness);
 	glUniform1f(m_shaderProgram->getUniformLocation("emissionScale"), m_emissionScale);
 	glUniform3fv(m_shaderProgram->getUniformLocation("diffuseColor"), 1, glm::value_ptr(m_diffuseColor));
+	*/
+
+	glUniform1f(m_uShineness, m_shineness);
+	glUniform1f(m_uEmissionScale, m_emissionScale);
+	glUniform3fv(m_uDiffuseColor, 1, glm::value_ptr(m_diffuseColor));
+
+	/*
 	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("projectionMatrix"), 1, GL_FALSE, glm::value_ptr(pProjectionMatrix));
 	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("viewMatrix"), 1, GL_FALSE, glm::value_ptr(pViewMatrix));
 	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("modelMatrix"), 1, GL_FALSE, glm::value_ptr(pModelMatrix));
+	*/
 
+	glUniformMatrix4fv(m_uProjectionMatrix, 1, GL_FALSE, glm::value_ptr(pProjectionMatrix));
+	glUniformMatrix4fv(m_uViewMatrix, 1, GL_FALSE, glm::value_ptr(pViewMatrix));
+	glUniformMatrix4fv(m_uModelMatrix, 1, GL_FALSE, glm::value_ptr(pModelMatrix));
 
-    //Print the number of lights in the scene and the position of the first light.
-    //It is not used, but this demo is just meant to show you THAT materials can access the lights in a world
-    //if (pWorld->getLightCount() > 0) {
-    //    std::cout << "TextureMaterial has discovered light is at position:" << pWorld->getLightAt(0)->getLocalPosition() << std::endl;
-    //}
-
-
-	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("projectionMatrix"), 1, GL_FALSE, glm::value_ptr(pProjectionMatrix));
-	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("viewMatrix"), 1, GL_FALSE, glm::value_ptr(pViewMatrix));
-	glUniformMatrix4fv(m_shaderProgram->getUniformLocation("modelMatrix"), 1, GL_FALSE, glm::value_ptr(pModelMatrix));
-	
     //now inform mesh of where to stream its data
-    meshRenderer->StreamToOpenGL(_aVertex, _aNormal, _aUV, m_shaderProgram->getAttribLocation("tangent"), m_shaderProgram->getAttribLocation("bitangent"));
+    meshRenderer->StreamToOpenGL(_aVertex, _aNormal, _aUV, m_aTangent, m_aBiTangent);
 }

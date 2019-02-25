@@ -44,6 +44,21 @@ class TextureMaterial : public AbstractMaterial
 		static GLint m_uEmissionTexture;
 		static GLint m_uNormalTexture;
 
+		static GLint m_uPointLightCount;
+		static GLint m_uDirectionalLightCount;
+		static GLint m_uSpotLightCount;
+
+		static GLint m_uShineness;
+		static GLint m_uEmissionScale;
+		static GLint m_uDiffuseColor;
+
+		static GLint m_uProjectionMatrix;
+		static GLint m_uModelMatrix;
+		static GLint m_uViewMatrix;
+
+		static GLint m_aTangent;
+		static GLint m_aBiTangent;
+
         Texture* _diffuseTexture = nullptr;
 		Texture* m_spcecularTexture = nullptr;
 		Texture* m_emissionTexture = nullptr;
