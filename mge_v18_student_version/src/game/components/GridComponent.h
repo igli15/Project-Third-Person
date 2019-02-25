@@ -38,7 +38,7 @@ public:
 
 		Note: if the border of the map are reached then it will limit the amount to that size.
 
-		it returns all the tiles found.
+		It returns a vector of all the tiles found.
 	*/
 	std::vector<TileComponent*> GetNeighbourTiles(glm::vec3 playerPos,int amount, bool horizontal, bool positiveDir);
 
