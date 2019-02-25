@@ -3,6 +3,7 @@
 #include <glm.hpp>
 
 class ColliderComponent;
+class RectangleCollider;
 
 class CircleCollider :public ColliderComponent
 {
