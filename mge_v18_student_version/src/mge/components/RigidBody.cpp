@@ -34,6 +34,11 @@ void RigidBody::SetCollider(ColliderComponent * collider)
 	m_collider = collider;
 }
 
+ColliderComponent * RigidBody::GetCollider()
+{
+	return m_collider;
+}
+
 void RigidBody::OnCollisionStay(CollisionInfo * collisionInfo)
 {
 	float vx = (velocity.x == 0)? 0.00001f :velocity.x;

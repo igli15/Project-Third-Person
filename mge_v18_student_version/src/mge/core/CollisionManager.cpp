@@ -18,7 +18,6 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 	{
 		for (int i = 0; i < filters.size(); i++)
 		{
-				
 			if (//Comparing curretn filter with layer of object	
 				m_colliders[colliderIndex]->GetCollisionLayerTag() == filters[i]  && 
 				//Check if object isnt checking itself

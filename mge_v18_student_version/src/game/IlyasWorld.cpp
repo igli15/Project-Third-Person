@@ -116,17 +116,20 @@ void IlyasWorld::Initialize()
 	cube1->AddComponent<KeyMoveComponent>();
 	cube1->Awake();
 	*/
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 7; i++)
 	{
-		GameObject* cube2 = _world->Instantiate<GameObject>();
-		cube2->transform->SetLocalPosition(glm::vec3(2*i, 0, -5));
-		cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
-		cube2->GetMeshRenderer()->SetMesh(cubeMesh);
-		cube2->setMaterial(brickMat);
-		cube2->transform->Scale(glm::vec3(1, 1, 1));
-		cube2->AddComponent<RectangleCollider>();
-		cube2->Awake();
-		cube2->GetComponent<RectangleCollider>()->SetCollisionLayerTag("DIF");
+		for (int j = 0; j < 5; j++)
+		{
+			GameObject* cube2 = _world->Instantiate<GameObject>();
+			cube2->transform->SetLocalPosition(glm::vec3(-20+6* i, 0,20 -6*j));
+			cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
+			cube2->GetMeshRenderer()->SetMesh(cubeMesh);
+			cube2->setMaterial(brickMat);
+			cube2->transform->Scale(glm::vec3(1, 1, 1));
+			cube2->AddComponent<RectangleCollider>();
+			cube2->Awake();
+			cube2->GetComponent<RectangleCollider>()->SetCollisionLayerTag("DIF");
+		}
 	}
 
 	

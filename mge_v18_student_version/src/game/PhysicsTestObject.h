@@ -15,6 +15,7 @@ public:
 	void SetPlayer(float playerNumber);
 
 	RigidBody* rigidbody;
+	CircleCollider* circleCollider;
 private:
 	float m_playerNumber;
 };

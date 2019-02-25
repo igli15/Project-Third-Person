@@ -15,16 +15,18 @@ PhysicsTestObject::~PhysicsTestObject()
 void PhysicsTestObject::Load()
 {
 	//AddComponets here
-	ColliderComponent* collider= AddComponent<CircleCollider>();
-	collider->SetCollisionLayerTag("players");
-	collider->AddCollisionFilterTag("players");
+	circleCollider= AddComponent<CircleCollider>();
+	
 	rigidbody=AddComponent<RigidBody>();
-	rigidbody->SetCollider(collider);
+	rigidbody->SetCollider(circleCollider);
 }
 
 void PhysicsTestObject::Start()
 {
 	GameObject::Start();
+	
+	circleCollider->SetCollisionLayerTag("players");
+	circleCollider->AddCollisionFilterTag("players");
 
 	transform->SetLocalPosition(glm::vec3(5, 0, 0));
 	SetMeshRenderer(this->AddComponent<MeshRenderer>());
