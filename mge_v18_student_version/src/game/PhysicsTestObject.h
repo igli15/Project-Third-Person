@@ -12,6 +12,11 @@ public:
 	void Start();
 	void Update(float timeStep);
 
+	void SetPlayer(float playerNumber);
+
 	RigidBody* rigidbody;
+	CircleCollider* circleCollider;
+private:
+	float m_playerNumber;
 };
 

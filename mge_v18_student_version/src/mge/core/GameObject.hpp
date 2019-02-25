@@ -6,8 +6,8 @@
 #include "Component.h"
 #include "../components/Transform.h"
 #include "../components/MeshRenderer.h"
+#include "../components/RigidBody.h"
 
-class AbstractCollider;
 class AbstractMaterial;
 class World;
 class Mesh;
@@ -28,6 +28,9 @@ class GameObject
 
         void setName (const std::string& pName);
         std::string getName() const;
+
+		void SetRigidBody(RigidBody* rigidBody);
+		RigidBody* GetRigidBody();
 
 		void Destroy();
 		bool IsMarkedForDestruction();
@@ -108,6 +111,7 @@ class GameObject
 
 		MeshRenderer* m_meshRenderer = nullptr;
 
+		RigidBody* _rigidBody;
 		AbstractMaterial* _material;
 		World* _world;
 

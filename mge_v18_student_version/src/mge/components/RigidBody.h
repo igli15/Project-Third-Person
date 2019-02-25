@@ -17,6 +17,7 @@ public:
 	void Update(float timeStep);
 
 	void SetCollider(ColliderComponent* collider);
+	ColliderComponent* GetCollider();
 	void OnCollisionStay(CollisionInfo* collisionInfo);
 private:
 	ColliderComponent* m_collider;

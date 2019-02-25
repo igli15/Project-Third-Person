@@ -15,14 +15,18 @@ PhysicsTestObject::~PhysicsTestObject()
 void PhysicsTestObject::Load()
 {
 	//AddComponets here
-	ColliderComponent* collider= AddComponent<CircleCollider>();
+	circleCollider= AddComponent<CircleCollider>();
+	
 	rigidbody=AddComponent<RigidBody>();
-	rigidbody->SetCollider(collider);
+	rigidbody->SetCollider(circleCollider);
 }
 
 void PhysicsTestObject::Start()
 {
 	GameObject::Start();
+	
+	circleCollider->SetCollisionLayerTag("players");
+	circleCollider->AddCollisionFilterTag("players");
 
 	transform->SetLocalPosition(glm::vec3(5, 0, 0));
 	SetMeshRenderer(this->AddComponent<MeshRenderer>());
@@ -36,22 +40,27 @@ void PhysicsTestObject::Update(float timeStep)
 	GameObject::Update(timeStep);
 	
 
-	float speed = 0.5;
+	float speed = 0.1;
 	rigidbody->velocity = glm::vec2(0, 0);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::D: sf::Keyboard::Right))
 	{
 		rigidbody->velocity.x = speed;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::A : sf::Keyboard::Left))
 	{
 		rigidbody->velocity.x = -speed;
 	}
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
 	{
 		rigidbody->velocity.y = speed;
 	}
-	 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::W : sf::Keyboard::Up))
 	{
 		 rigidbody->velocity.y = -speed;
 	}
+}
+
+void PhysicsTestObject::SetPlayer(float playerNumber)
+{
+	m_playerNumber = playerNumber;
 }

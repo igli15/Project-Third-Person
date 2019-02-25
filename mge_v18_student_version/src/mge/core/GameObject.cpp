@@ -55,6 +55,16 @@ std::string GameObject::getName() const
 	return _name;
 }
 
+void GameObject::SetRigidBody(RigidBody * rigidBody)
+{
+	_rigidBody = rigidBody;
+}
+
+RigidBody * GameObject::GetRigidBody()
+{
+	return _rigidBody;
+}
+
 
 void GameObject::setMaterial(AbstractMaterial* pMaterial)
 {
