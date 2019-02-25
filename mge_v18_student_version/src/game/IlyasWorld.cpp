@@ -116,9 +116,9 @@ void IlyasWorld::Initialize()
 	cube1->AddComponent<KeyMoveComponent>();
 	cube1->Awake();
 	*/
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 8; i++)
 	{
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < 8; j++)
 		{
 			GameObject* cube2 = _world->Instantiate<GameObject>();
 			cube2->transform->SetLocalPosition(glm::vec3(-20+6* i, 0,20 -6*j));

@@ -13,6 +13,7 @@ RigidBody::~RigidBody()
 
 void RigidBody::Start()
 {
+	m_gameObject->SetRigidBody(this);
 	//m_transform =;
 	//m_collider  = m_gameObject->GetComponent<ColliderComponent>();
 }
@@ -43,6 +44,7 @@ void RigidBody::OnCollisionStay(CollisionInfo * collisionInfo)
 {
 	float vx = (velocity.x == 0)? 0.00001f :velocity.x;
 	float vy = (velocity.y == 0) ? 0.00001f : velocity.y;
+
 	float ratio=glm::min(collisionInfo->distance.x / glm::abs(vx), collisionInfo->distance.y / glm::abs(vy));
 	if (ratio > 1) ratio = 1;
 	glm::vec3 displacement = -glm::vec3(velocity.x, 0, velocity.y) * ratio;
@@ -53,8 +55,6 @@ void RigidBody::OnCollisionStay(CollisionInfo * collisionInfo)
 	//std::cout << "Displacement: " << displacement << std::endl;
 
 	m_gameObject->transform->Translate(displacement);
-
-	//velocity = velocity*-bounciness;
 
 	delete collisionInfo;
 }
