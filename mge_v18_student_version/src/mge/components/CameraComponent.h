@@ -3,6 +3,11 @@
 #include "../core/Component.h"
 #include "../core/XMLComponent.h"
 
+
+/*
+	Camera component takes care of all camera functionallity and values
+	Needs to be registered in a world in order to work.
+*/
 class CameraComponent : public XMLComponent
 {
 public:

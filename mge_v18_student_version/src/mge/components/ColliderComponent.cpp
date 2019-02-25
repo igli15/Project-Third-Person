@@ -1,4 +1,6 @@
 #include "ColliderComponent.hpp"
+#include "CircleCollider.h"
+#include "RectangleCollider.h"
 
 void ColliderComponent::Awake()
 {
