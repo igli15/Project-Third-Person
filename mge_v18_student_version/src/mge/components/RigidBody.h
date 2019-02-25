@@ -1,11 +1,12 @@
 #pragma once
-#include "../core/Component.h"
+#include "../core/XMLComponent.h"
 #include "../core/CollisionInfo.h"
 #include "ColliderComponent.hpp"
 #include "glm.hpp"
 #include "../core/GameObject.hpp"
 #include "../components/Transform.h"
-class RigidBody : public Component
+
+class RigidBody : public XMLComponent
 {
 public:
 	glm::vec2 velocity;
@@ -25,6 +26,8 @@ public:
 
 	glm::vec2 GetAcceleration();
 	float GetMaxSpeed();
+
+	void Parse(rapidxml::xml_node<>* compNode) override;
 
 private:
 	ColliderComponent* m_collider;

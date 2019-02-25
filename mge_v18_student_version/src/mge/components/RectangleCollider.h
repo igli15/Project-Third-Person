@@ -1,7 +1,6 @@
 #pragma once
 #include "ColliderComponent.hpp"
 
-class ColliderComponent;
 
 class RectangleCollider :public ColliderComponent
 {
@@ -21,6 +20,8 @@ public:
 
 	CollisionInfo* IsColliding(CircleCollider * circleCollider);
 	CollisionInfo* IsColliding(RectangleCollider * rectangleCollider);
+
+	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 
 };
 

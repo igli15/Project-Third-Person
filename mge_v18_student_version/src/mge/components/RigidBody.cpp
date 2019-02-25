@@ -92,3 +92,23 @@ float RigidBody::GetMaxSpeed()
 {
 	return m_maxSpeed;
 }
+
+void RigidBody::Parse(rapidxml::xml_node<>* compNode)
+{
+	for (rapidxml::xml_attribute<>* a = compNode->first_attribute();
+		a != nullptr;
+		a = a->next_attribute())
+	{
+		std::string attributeName = a->name();
+
+		if (attributeName == "friction")
+		{
+			m_friction = strtof(a->value(), 0);
+		}
+		else if (attributeName == "maxSpeed")
+		{
+			m_maxSpeed = strtof(a->value(), 0);
+		}
+		
+	}
+}

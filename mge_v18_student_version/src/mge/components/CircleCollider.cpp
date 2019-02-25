@@ -15,6 +15,23 @@ void CircleCollider::DetectCollision()
 	bool isColliding=AbstractGame::Instance()->GetCollisionManager()->CheckCollisionInWorld(this);
 }
 
+void CircleCollider::Parse(rapidxml::xml_node<>* compNode)
+{
+	for (rapidxml::xml_attribute<>* a = compNode->first_attribute();
+		a != nullptr;
+		a = a->next_attribute())
+	{
+		std::string attributeName = a->name();
+		std::cout << attributeName << " : " << a->value() << std::endl;
+
+		if (attributeName == "radius")
+		{
+			radius = strtof(a->value(), 0);
+		}
+	}
+}
+
+
 CollisionInfo* CircleCollider::IsColliding(ColliderComponent * collider)
 {
 	//Redispatching...

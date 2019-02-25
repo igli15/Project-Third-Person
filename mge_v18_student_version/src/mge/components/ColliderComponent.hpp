@@ -4,11 +4,12 @@
 #include "../core/AbstractGame.hpp"
 #include "../core/CollisionManager.h"
 #include "../core/CollisionInfo.h"
+#include "mge/core/XMLComponent.h"
 
 class CircleCollider;
 class RectangleCollider;
 
-class ColliderComponent : public Component
+class ColliderComponent : public XMLComponent
 {
 public:
 	void Awake() override;
@@ -35,4 +36,7 @@ private:
 	//With what collider collides ex(Player has filter Bullets, so player will detect all collisions with Bullets)
 	//You can add multiple collision filters to collider
 	std::vector<std::string> m_collisionFilterTags;
+
+	// Inherited via XMLComponent
+	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 };

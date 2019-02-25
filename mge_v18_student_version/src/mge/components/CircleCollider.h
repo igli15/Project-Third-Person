@@ -1,11 +1,12 @@
 #pragma once
 #include "ColliderComponent.hpp"
+
 #include <glm.hpp>
 
 class ColliderComponent;
 class RectangleCollider;
 
-class CircleCollider :public ColliderComponent
+class CircleCollider : public ColliderComponent
 {
 public:
 	float radius = 1.0f;
@@ -25,5 +26,9 @@ public:
 
 	// Inherited via ColliderComponent
 
+
+
+	// Inherited via XMLComponent
+	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 
 };

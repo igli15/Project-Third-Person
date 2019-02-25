@@ -73,3 +73,23 @@ CollisionInfo* RectangleCollider::IsColliding(RectangleCollider * rectangleColli
 
 	return nullptr;
 }
+
+void RectangleCollider::Parse(rapidxml::xml_node<>* compNode)
+{
+	for (rapidxml::xml_attribute<>* a = compNode->first_attribute();
+		a != nullptr;
+		a = a->next_attribute())
+	{
+		std::string attributeName = a->name();
+		std::cout << attributeName << " : " << a->value() << std::endl;
+
+		if (attributeName == "width")
+		{
+			width = strtof(a->value(), 0);
+		}
+		else if (attributeName == "height")
+		{
+			height = strtof(a->value(), 0);
+		}
+	}
+}

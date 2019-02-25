@@ -14,6 +14,9 @@
 #include "mge/core/Mesh.hpp"
 #include "mge/components/MeshRenderer.h"
 #include "mge/core/GameObject.hpp"
+#include "mge/components/RigidBody.h"
+#include "mge/components/CircleCollider.h"
+#include "mge/components/RectangleCollider.h"
 
 XMLWorld::XMLWorld()
 {
@@ -148,6 +151,18 @@ void XMLWorld::ParseComponents(rapidxml::xml_node<>* com,GameObject* newNode)
 			//gameObject->AddComponent<CameraComponent>()->Parse(com);
 			(newNode)->AddComponent<LightComponent>()->Parse(com);
 			registerLight(newNode->GetComponent<LightComponent>());
+		}
+		else if (strcmp(com->name(), "RigidBodyComponent") == 0)
+		{
+			(newNode)->AddComponent<RigidBody>()->Parse(com);
+		}
+		else if (strcmp(com->name(), "CircleCollider") == 0)
+		{
+			(newNode)->AddComponent<CircleCollider>()->Parse(com);
+		}
+		else if (strcmp(com->name(), "RectangleCollider") == 0)
+		{
+			(newNode)->AddComponent<RectangleCollider>()->Parse(com);
 		}
 		else if (strcmp(com->name(), "ColorMaterial") == 0)
 		{

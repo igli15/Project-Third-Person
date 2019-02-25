@@ -70,8 +70,6 @@ void PhysicsTestObject::Update(float timeStep)
 		rigidbody->SetAcceleration(glm::vec2(0, 0));
 		rigidbody->velocity = glm::vec2(0, 0);
 	}
-
-	std::cout << rigidbody->velocity << std::endl;
 	
 }
 

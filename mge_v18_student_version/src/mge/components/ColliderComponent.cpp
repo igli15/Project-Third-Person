@@ -51,3 +51,7 @@ glm::vec2 ColliderComponent::GetWorld2Dposition()
 
 	return glm::vec2(pos3d.x, pos3d.z);
 }
+
+void ColliderComponent::Parse(rapidxml::xml_node<>* compNode)
+{
+}
