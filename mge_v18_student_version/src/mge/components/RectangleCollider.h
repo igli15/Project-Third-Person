@@ -17,10 +17,10 @@ public:
 	// Inherited via ColliderComponent
 	void DetectCollision();
 
-	bool IsColliding(ColliderComponent * collider);
+	CollisionInfo* IsColliding(ColliderComponent * collider);
 
-	bool IsColliding(CircleCollider * circleCollider);
-	bool IsColliding(RectangleCollider * rectangleCollider);
+	CollisionInfo* IsColliding(CircleCollider * circleCollider);
+	CollisionInfo* IsColliding(RectangleCollider * rectangleCollider);
 
 };
 

@@ -1,4 +1,5 @@
 #include "CollisionManager.h"
+#include "../components//RigidBody.h"
 
 int CollisionManager::AddCollider(ColliderComponent * newCollider)
 {
@@ -17,14 +18,21 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 	{
 		for (int i = 0; i < filters.size(); i++)
 		{
-			if (m_colliders[colliderIndex]->GetCollisionLayerTag() == filters[i]  && 
-				targetCollider->GetGameObject()->ID() != m_colliders[colliderIndex]->GetGameObject()->ID())
+				
+			if (//Comparing curretn filter with layer of object	
+				m_colliders[colliderIndex]->GetCollisionLayerTag() == filters[i]  && 
+				//Check if object isnt checking itself
+				targetCollider->GetGameObject()->ID() != m_colliders[colliderIndex]->GetGameObject()->ID()
+				)
 			{
-
-				if (targetCollider->IsColliding(m_colliders[colliderIndex]))
+				CollisionInfo* collisionInfo = targetCollider->IsColliding(m_colliders[colliderIndex]);
+				if (collisionInfo!=nullptr)
 				{
+					//TODO: replace by add direct reference to rb in gameobject
+					targetCollider->GetGameObject()->GetComponent<RigidBody>()->OnCollisionStay(collisionInfo);
 					return true;
 				}
+				
 			}
 			
 		}

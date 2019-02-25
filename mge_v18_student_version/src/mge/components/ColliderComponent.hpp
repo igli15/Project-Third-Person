@@ -3,7 +3,7 @@
 #include "../core/GameObject.hpp"
 #include "../core/AbstractGame.hpp"
 #include "../core/CollisionManager.h"
-
+#include "../core/CollisionInfo.h"
 
 class CircleCollider;
 class RectangleCollider;
@@ -23,10 +23,10 @@ public:
 	glm::vec2 GetWorld2Dposition();
 
 	virtual void DetectCollision() = 0;
-	virtual bool IsColliding(ColliderComponent* collider) = 0; //Redispatching...
+	virtual CollisionInfo* IsColliding(ColliderComponent* collider) = 0; //Redispatching...
 
-	virtual bool IsColliding(CircleCollider* circleCollider) = 0; // Circlee
-	virtual bool IsColliding(RectangleCollider* rectangleCollider) = 0; // Rectangle
+	virtual CollisionInfo* IsColliding(CircleCollider* circleCollider) = 0; // Circlee
+	virtual CollisionInfo* IsColliding(RectangleCollider* rectangleCollider) = 0; // Rectangle
 	int id = 0;
 private:
 	//In which layer is collider ex( Wall in layer Obstacle )

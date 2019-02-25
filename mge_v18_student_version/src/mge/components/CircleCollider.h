@@ -12,10 +12,10 @@ public:
 	void Update(float timeSteps);
 
 
-	bool IsColliding(ColliderComponent * collider);
+	CollisionInfo* IsColliding(ColliderComponent * collider);
 
-	bool IsColliding(CircleCollider* otherCollider); //Circle - Circle
-	bool IsColliding(RectangleCollider * rectangleCollider); //Circle - Rectangle
+	CollisionInfo* IsColliding(CircleCollider* otherCollider); //Circle - Circle
+	CollisionInfo* IsColliding(RectangleCollider * rectangleCollider); //Circle - Rectangle
 	glm::vec2 m_oldPos;
 
 	void DetectCollision();

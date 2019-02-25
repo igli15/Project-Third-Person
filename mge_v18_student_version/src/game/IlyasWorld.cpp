@@ -19,8 +19,8 @@
 #include "game/MainGame.h"
 #include "mge/components/CircleCollider.h"
 #include "mge/components/RectangleCollider.h"
-
-
+#include "mge/components//RigidBody.h"
+#include "PhysicsTestObject.h"
 
 IlyasWorld::IlyasWorld()
 {
@@ -50,8 +50,8 @@ void IlyasWorld::Initialize()
 	TextureMaterial* radioMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("stuffMat"));
 
 	Camera* camera = _world->Instantiate<Camera>();
-	camera->transform->SetLocalPosition(glm::vec3(0, 6, 20));
-	camera->transform->Rotate(glm::radians(-20.0f), glm::vec3(1, 0, 0));
+	camera->transform->SetLocalPosition(glm::vec3(5, 40, 0));
+	camera->transform->Rotate(glm::radians(-90.0f), glm::vec3(1, 0, 0));
 	camera->GetCameraComponent()->SetFOV(60); //Set Camera Properties via its component
 	_world->setMainCamera(camera->GetCameraComponent());
 
@@ -64,19 +64,14 @@ void IlyasWorld::Initialize()
 	plane->transform->Scale(glm::vec3(50, 50, 50));
 
 	//TEST object1 
-	GameObject* cylinder1 = _world->Instantiate<GameObject>();
-	cylinder1->transform->SetLocalPosition(glm::vec3(5, 0, 0));
-	cylinder1->SetMeshRenderer(cylinder1->AddComponent<MeshRenderer>());
-	cylinder1->GetMeshRenderer()->SetMesh(cylinderMesh);
-	cylinder1->setMaterial(brickMat);
-	cylinder1->transform->Scale(glm::vec3(1 ,1 ,1));
-	cylinder1->AddComponent<KeyMoveComponent>();
-	cylinder1->AddComponent<CircleCollider>();
-	cylinder1->Awake();
-	cylinder1->GetComponent<CircleCollider>()->AddCollisionFilterTag("DIF");
-	cylinder1->GetComponent<CircleCollider>()->AddCollisionFilterTag("DIF1");
-	cylinder1->GetComponent<CircleCollider>()->AddCollisionFilterTag("DIF2");
+	GameObject* pto1 = _world->Instantiate<PhysicsTestObject>();
 
+	pto1->GetMeshRenderer()->SetMesh(cylinderMesh);
+	pto1->setMaterial(brickMat);
+
+	pto1->GetComponent<RigidBody>()->velocity=glm::vec2(0.1f,0);
+	pto1->GetComponent<CircleCollider>()->AddCollisionFilterTag("DIF");
+	/*
 	//Test object 2
 	GameObject* cylinder2 = _world->Instantiate<GameObject>();
 	cylinder2->transform->SetLocalPosition(glm::vec3(10, 0, 3));
@@ -86,7 +81,7 @@ void IlyasWorld::Initialize()
 	cylinder2->transform->Scale(glm::vec3(1, 2, 1));
 	cylinder2->AddComponent<CircleCollider>();
 	cylinder2->Awake();
-	cylinder2->GetComponent<CircleCollider>()->SetCollisionLayerTag("DIF2");
+	cylinder2->GetComponent<CircleCollider>()->SetCollisionLayerTag("DIF");
 	//cylinder2->GetComponent<CircleCollider>()->AddCollisionFilterTag("test_cylender2");
 	//Test object 3
 	GameObject* cylinder3 = _world->Instantiate<GameObject>();
@@ -97,8 +92,8 @@ void IlyasWorld::Initialize()
 	cylinder3->transform->Scale(glm::vec3(1, 4, 1));
 	cylinder3->AddComponent<CircleCollider>();
 	cylinder3->Awake();
-	cylinder3->GetComponent<CircleCollider>()->SetCollisionLayerTag("DIF1");
-
+	cylinder3->GetComponent<CircleCollider>()->SetCollisionLayerTag("DIF");
+	*/
 
 	/*GameObject* cube1 = _world->Instantiate<GameObject>();
 	cube1->transform->SetLocalPosition(glm::vec3(10, 0, -5));
@@ -110,15 +105,30 @@ void IlyasWorld::Initialize()
 	cube1->AddComponent<KeyMoveComponent>();
 	cube1->Awake();*/
 
-	GameObject* cube2 = _world->Instantiate<GameObject>();
-	cube2->transform->SetLocalPosition(glm::vec3(5, 0, -5));
-	cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
-	cube2->GetMeshRenderer()->SetMesh(cubeMesh);
-	cube2->setMaterial(brickMat);
-	cube2->transform->Scale(glm::vec3(1, 1, 1));
-	cube2->AddComponent<RectangleCollider>();
-	cube2->Awake();
-	cube2->GetComponent<RectangleCollider>()->SetCollisionLayerTag("DIF");
+	for (int i = 0; i < 50; i++)
+	{
+		GameObject* cube2 = _world->Instantiate<GameObject>();
+		cube2->transform->SetLocalPosition(glm::vec3(2*i, 0, -5));
+		cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
+		cube2->GetMeshRenderer()->SetMesh(cubeMesh);
+		cube2->setMaterial(brickMat);
+		cube2->transform->Scale(glm::vec3(1, 1, 1));
+		cube2->AddComponent<RectangleCollider>();
+		cube2->Awake();
+		cube2->GetComponent<RectangleCollider>()->SetCollisionLayerTag("DIF1");
+	}
+	for (int i = 0; i < 50; i++)
+	{
+		GameObject* cube2 = _world->Instantiate<GameObject>();
+		cube2->transform->SetLocalPosition(glm::vec3(2 , 0, -2*i));
+		cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
+		cube2->GetMeshRenderer()->SetMesh(cubeMesh);
+		cube2->setMaterial(brickMat);
+		cube2->transform->Scale(glm::vec3(1, 1, 1));
+		cube2->AddComponent<RectangleCollider>();
+		cube2->Awake();
+		cube2->GetComponent<RectangleCollider>()->SetCollisionLayerTag("DIF");
+	}
 	/*
 	GameObject* cube3 = _world->Instantiate<GameObject>();
 	cube3->transform->SetLocalPosition(glm::vec3(2, 0,4));
