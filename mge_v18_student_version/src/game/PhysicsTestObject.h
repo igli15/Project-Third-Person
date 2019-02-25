@@ -12,6 +12,10 @@ public:
 	void Start();
 	void Update(float timeStep);
 
+	void SetPlayer(float playerNumber);
+
 	RigidBody* rigidbody;
+private:
+	float m_playerNumber;
 };
 

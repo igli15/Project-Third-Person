@@ -2,5 +2,5 @@
 
 CollisionInfo::~CollisionInfo()
 {
-	std::cout << "CollisionInfo Destructor" << std::endl;
+	//std::cout << "CollisionInfo Destructor" << std::endl;
 }
