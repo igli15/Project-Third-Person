@@ -36,25 +36,14 @@ void RigidBody::SetCollider(ColliderComponent * collider)
 
 void RigidBody::OnCollisionStay(CollisionInfo * collisionInfo)
 {
-	//Resolve Collision HERE
-	std::cout << std::endl<< "RB STAY:" << std::endl;
-
-	float vx = velocity.x;
-	float vy = velocity.y;
-
-	if (velocity.x == 0)  vx = 0.00001f;
-	if (velocity.y == 0)  vy = 0.00001f;
-
-
-
+	float vx = (velocity.x == 0)? 0.00001f :velocity.x;
+	float vy = (velocity.y == 0) ? 0.00001f : velocity.y;
 	float ratio=glm::min(collisionInfo->distance.x / glm::abs(vx), collisionInfo->distance.y / glm::abs(vy));
 
-	std::cout << "Distance: " << collisionInfo->distance << std::endl;
-	std::cout << "Ratio: " << ratio << std::endl;
 	glm::vec3 displacement = -glm::vec3(velocity.x, 0, velocity.y) * ratio;
 	m_gameObject->transform->Translate(displacement);
-	std::cout << "NewPos: " << m_gameObject->transform->LocalPosition() << std::endl;
+
 	//velocity = velocity*-bounciness;
 
-	//delete CollisionInfo
+	delete collisionInfo;
 }

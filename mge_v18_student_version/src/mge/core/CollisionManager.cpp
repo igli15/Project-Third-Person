@@ -28,7 +28,6 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 				CollisionInfo* collisionInfo = targetCollider->IsColliding(m_colliders[colliderIndex]);
 				if (collisionInfo!=nullptr)
 				{
-					std::cout << "COLLISION" << std::endl;
 					//TODO: replace by add direct reference to rb in gameobject
 					targetCollider->GetGameObject()->GetComponent<RigidBody>()->OnCollisionStay(collisionInfo);
 					return true;

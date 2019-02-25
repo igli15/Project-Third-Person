@@ -34,6 +34,7 @@ void PhysicsTestObject::Start()
 void PhysicsTestObject::Update(float timeStep)
 {
 	GameObject::Update(timeStep);
+	
 
 	float speed = 0.5;
 	rigidbody->velocity = glm::vec2(0, 0);

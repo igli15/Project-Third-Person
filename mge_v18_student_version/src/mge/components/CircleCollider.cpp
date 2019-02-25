@@ -38,10 +38,6 @@ CollisionInfo* CircleCollider::IsColliding(CircleCollider * otherCollider)
 		float a = length - radius;
 		float b = length - otherCollider->radius;
 
-		std::cout << "	Length: " << length << std::endl;
-		std::cout << "	A: " << a << std::endl;
-		std::cout << "	B: " << b << std::endl;
-
 		collisionInfo->distance = glm::vec2(length - a - b, length - a - b);
 		return collisionInfo;
 	}
