@@ -4,7 +4,7 @@
 #include "ColliderComponent.hpp"
 #include "glm.hpp"
 #include "../core/GameObject.hpp"
-#include "Transform.h"
+#include "../components/Transform.h"
 class RigidBody : public Component
 {
 public:

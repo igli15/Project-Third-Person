@@ -1,6 +1,8 @@
 #include <iostream>
 #include "GameObject.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
+#include "../components/RigidBody.h"
+
 
 unsigned GameObject::m_idCounter = 0;
 

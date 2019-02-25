@@ -6,12 +6,11 @@
 #include "Component.h"
 #include "../components/Transform.h"
 #include "../components/MeshRenderer.h"
-#include "../components/RigidBody.h"
-
 class AbstractMaterial;
 class World;
 class Mesh;
 class Transform;
+class RigidBody;
 
 /**
  * A GameObject wraps all data required to display an object, but knows nothing about OpenGL or rendering.
