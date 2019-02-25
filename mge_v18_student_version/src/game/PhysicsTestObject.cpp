@@ -19,6 +19,8 @@ void PhysicsTestObject::Load()
 	
 	rigidbody=AddComponent<RigidBody>();
 	rigidbody->SetCollider(circleCollider);
+
+
 }
 
 void PhysicsTestObject::Start()
@@ -33,6 +35,7 @@ void PhysicsTestObject::Start()
 	//GetMeshRenderer()->SetMesh(cylinderMesh);
 	//setMaterial(brickMat);
 	transform->Scale(glm::vec3(1, 1, 1));
+	rigidbody->SetMaxSpeed(0.5f);
 }
 
 void PhysicsTestObject::Update(float timeStep)
@@ -40,24 +43,36 @@ void PhysicsTestObject::Update(float timeStep)
 	GameObject::Update(timeStep);
 	
 
-	float speed = 0.1;
-	rigidbody->velocity = glm::vec2(0, 0);
+	float speed = 0.1f;
+
 	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::D: sf::Keyboard::Right))
 	{
-		rigidbody->velocity.x = speed;
+		//rigidbody->velocity.x = speed;
+		rigidbody->SetAcceleration(glm::vec2(speed,0));
 	}
-	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::A : sf::Keyboard::Left))
+	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::A : sf::Keyboard::Left))
 	{
-		rigidbody->velocity.x = -speed;
+		//rigidbody->velocity.x = -speed;
+		rigidbody->SetAcceleration(glm::vec2(-speed, 0));
 	}
-	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
+	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
 	{
-		rigidbody->velocity.y = speed;
+		//rigidbody->velocity.y = speed;
+		rigidbody->SetAcceleration(glm::vec2(0, speed));
 	}
-	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::W : sf::Keyboard::Up))
+	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::W : sf::Keyboard::Up))
 	{
-		 rigidbody->velocity.y = -speed;
+		 //rigidbody->velocity.y = -speed;
+		rigidbody->SetAcceleration(glm::vec2(0, -speed));
 	}
+	else
+	{
+		rigidbody->SetAcceleration(glm::vec2(0, 0));
+		rigidbody->velocity = glm::vec2(0, 0);
+	}
+
+	std::cout << rigidbody->velocity << std::endl;
+	
 }
 
 void PhysicsTestObject::SetPlayer(float playerNumber)

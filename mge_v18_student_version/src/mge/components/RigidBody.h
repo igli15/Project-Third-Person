@@ -9,7 +9,7 @@ class RigidBody : public Component
 {
 public:
 	glm::vec2 velocity;
-	float bounciness = 1;
+	
 	RigidBody();
 	virtual ~RigidBody();
 
@@ -19,10 +19,20 @@ public:
 	void SetCollider(ColliderComponent* collider);
 	ColliderComponent* GetCollider();
 	void OnCollisionStay(CollisionInfo* collisionInfo);
+
+	void SetAcceleration(glm::vec2 a);
+	void SetMaxSpeed(float maxSpeed);
+
+	glm::vec2 GetAcceleration();
+	float GetMaxSpeed();
+
 private:
 	ColliderComponent* m_collider;
 	Transform* m_transform;
-	glm::vec3 m_oldPos;
 
+	glm::vec3 m_oldPos;
+	glm::vec2 m_acceleration;
+	float m_maxSpeed = 3;
+	float m_friction = 0;
 };
 
