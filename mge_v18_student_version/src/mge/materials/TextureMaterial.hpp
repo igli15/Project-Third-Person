@@ -76,6 +76,10 @@ class TextureMaterial : public AbstractMaterial
 		Texture* m_blackTex;
 		Texture* m_normalFlatTex;
 
+		std::string pointLightstring;
+		std::string dirLightstring;
+		std::string spotLightstring;
+
 };
 
 #endif // TEXTUREMATERIAL_HPP

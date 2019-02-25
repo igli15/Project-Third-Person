@@ -219,11 +219,11 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 			spotLightCount += 1;
 		}
 
-		std::string pointLightstring = "pointLight[" + std::to_string(pointLightCount - 1) + "].";
+		pointLightstring = "pointLight[" + std::to_string(pointLightCount - 1) + "].";
 
-		std::string dirLightstring = "directionalLight[" + std::to_string(directionalLightCount - 1) + "].";
+		dirLightstring = "directionalLight[" + std::to_string(directionalLightCount - 1) + "].";
 
-		std::string spotLightstring = "spotLight[" + std::to_string(spotLightCount - 1) + "].";
+		spotLightstring = "spotLight[" + std::to_string(spotLightCount - 1) + "].";
 
 		LightComponent* currentLight = pWorld->getLightAt(i);
 
