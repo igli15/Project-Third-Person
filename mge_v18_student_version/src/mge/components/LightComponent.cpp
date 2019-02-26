@@ -200,8 +200,10 @@ void LightComponent::AssignUnifromLocation()
 	uDirection = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "direction");
 	uAmbientContribution = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "ambientContribution");
 	uSpecularContribution = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "specularContribution");
-
+	uLightPos = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "lightPos");
 	uConstant = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "constant");
 	uLinear = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "linear");
 	uQuadratic = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "quadratic");
+	uCutoff = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "cutoff");
+	uOuterCutoff = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "outerCutoff");
 }

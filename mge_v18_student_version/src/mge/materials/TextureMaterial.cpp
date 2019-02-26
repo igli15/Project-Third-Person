@@ -227,7 +227,6 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 
 		//spotLightstring = "spotLight[" + std::to_string(spotLightCount - 1) + "].";
 
-		
 
 		LightComponent* currentLight = pWorld->getLightAt(i);
 
@@ -235,10 +234,17 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		{
 			//pointLightCount += 1;
 			//std::cout << pointLightstring << std::endl;
+			/*
 			glUniform3fv(m_shaderProgram->getUniformLocation(pWorld->getLightAt(i)->GetMaterialIndexString() + "lightColor"), 1, glm::value_ptr(currentLight->GetColor() * currentLight->GetIntensity()));
 			glUniform3fv(m_shaderProgram->getUniformLocation(pWorld->getLightAt(i)->GetMaterialIndexString() + "lightPos"), 1, glm::value_ptr(pViewMatrix * currentLight->GetGameObject()->transform->WorldTransform()[3]));
 			glUniform1f(m_shaderProgram->getUniformLocation(pWorld->getLightAt(i)->GetMaterialIndexString() + "ambientContribution"), currentLight->GetAmbientContribution());
 			glUniform1f(m_shaderProgram->getUniformLocation(pWorld->getLightAt(i)->GetMaterialIndexString() + "specularContribution"), currentLight->GetSpecularContribution());
+			*/
+
+			glUniform3fv(currentLight->uLightColor, 1, glm::value_ptr(currentLight->GetColor() * currentLight->GetIntensity()));
+			glUniform3fv(currentLight->uLightPos, 1, glm::value_ptr(pViewMatrix * currentLight->GetGameObject()->transform->WorldTransform()[3]));
+			glUniform1f(currentLight->uAmbientContribution, currentLight->GetAmbientContribution());
+			glUniform1f(currentLight->uSpecularContribution, currentLight->GetSpecularContribution());
 		}
 		else if (currentLight->GetType() == LightType::DIRECTIONAL)
 		{
@@ -256,6 +262,7 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 		{
 			//spotLightCount += 1;
 			//std::cout << spotLightstring << std::endl;
+			/*
 			glUniform3fv(m_shaderProgram->getUniformLocation(pWorld->getLightAt(i)->GetMaterialIndexString() + "lightColor"), 1, glm::value_ptr(currentLight->GetColor() * currentLight->GetIntensity()));
 			glUniform3fv(m_shaderProgram->getUniformLocation(pWorld->getLightAt(i)->GetMaterialIndexString() + "lightPos"), 1, glm::value_ptr(pViewMatrix *currentLight->GetGameObject()->transform->WorldTransform()[3]));
 			glUniform3fv(m_shaderProgram->getUniformLocation(pWorld->getLightAt(i)->GetMaterialIndexString() + "direction"), 1, glm::value_ptr(currentLight->GetGameObject()->transform->LocalTransform()[2]));
@@ -265,6 +272,18 @@ void TextureMaterial::render(World* pWorld, MeshRenderer* meshRenderer, const gl
 
 			glUniform1f(m_shaderProgram->getUniformLocation(pWorld->getLightAt(i)->GetMaterialIndexString() + "cutoff"), glm::cos(glm::radians(currentLight->GetCutoffAngle())));
 			glUniform1f(m_shaderProgram->getUniformLocation(pWorld->getLightAt(i)->GetMaterialIndexString() + "outerCutoff"), glm::cos(glm::radians(currentLight->GetOuterCutoffAngle())));
+			*/
+
+			glUniform3fv(currentLight->uLightColor, 1, glm::value_ptr(currentLight->GetColor() * currentLight->GetIntensity()));
+			glUniform3fv(currentLight->uLightPos, 1, glm::value_ptr(pViewMatrix *currentLight->GetGameObject()->transform->WorldTransform()[3]));
+			glUniform3fv(currentLight->uDirection, 1, glm::value_ptr(currentLight->GetGameObject()->transform->LocalTransform()[2]));
+
+
+			glUniform1f(currentLight->uAmbientContribution, currentLight->GetAmbientContribution());
+			glUniform1f(currentLight->uSpecularContribution, currentLight->GetSpecularContribution());
+
+			glUniform1f(currentLight->uCutoff, glm::cos(glm::radians(currentLight->GetCutoffAngle())));
+			glUniform1f(currentLight->uOuterCutoff, glm::cos(glm::radians(currentLight->GetOuterCutoffAngle())));
 		}
 
 		
