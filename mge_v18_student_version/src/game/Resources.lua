@@ -60,6 +60,7 @@ normalMapTextures =
 sfmlTextures = 
 {
 	["brickTex"] = texturesLoadPath.."bricks.jpg",
+	["playerInk"] = texturesLoadPath.."playerInk.png",
 }
 
 --Yes sound and music are 2 diffrent things...
