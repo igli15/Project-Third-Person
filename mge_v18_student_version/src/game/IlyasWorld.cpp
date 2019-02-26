@@ -51,7 +51,7 @@ void IlyasWorld::Initialize()
 	TextureMaterial* radioMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("stuffMat"));
 
 	Camera* camera = _world->Instantiate<Camera>();
-	camera->transform->SetLocalPosition(glm::vec3(5, 40, 0));
+	camera->transform->SetLocalPosition(glm::vec3(0, 40, 0));
 	camera->transform->Rotate(glm::radians(-90.0f), glm::vec3(1, 0, 0));
 	camera->GetCameraComponent()->SetFOV(60); //Set Camera Properties via its component
 	_world->setMainCamera(camera->GetCameraComponent());
@@ -69,12 +69,14 @@ void IlyasWorld::Initialize()
 	player1->GetMeshRenderer()->SetMesh(cylinderMesh);
 	player1->setMaterial(carMat);
 	player1->SetPlayerNumber(1);
+	player1->GetComponent<PlayerMovementComponent>()->SetArenaData(glm::vec2(30, -20), glm::vec2(60, 40));
 
 	Player* player2 = _world->Instantiate<Player>();
 	player2->transform->Translate(glm::vec3(1, 0, 0));
 	player2->GetMeshRenderer()->SetMesh(cylinderMesh);
 	player2->setMaterial(carMat);
-	player1->SetPlayerNumber(2);
+	player2->SetPlayerNumber(2);
+	player2->GetComponent<PlayerMovementComponent>()->SetArenaData(glm::vec2(30, -20), glm::vec2(60, 40));
 	/*
 	//Test object 2
 	GameObject* cylinder2 = _world->Instantiate<GameObject>();
@@ -110,12 +112,12 @@ void IlyasWorld::Initialize()
 	cube1->AddComponent<KeyMoveComponent>();
 	cube1->Awake();
 	*/
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i <10; i++)
 	{
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < 6; j++)
 		{
 			GameObject* cube2 = _world->Instantiate<GameObject>();
-			cube2->transform->SetLocalPosition(glm::vec3(-20+8* i, 0,20 -8*j));
+			cube2->transform->SetLocalPosition(glm::vec3(-30+7* i, 0,-20 +7*j));
 			cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
 			cube2->GetMeshRenderer()->SetMesh(cubeMesh);
 			cube2->setMaterial(brickMat);
