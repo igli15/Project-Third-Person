@@ -33,6 +33,7 @@ private:
 	ColliderComponent* m_collider;
 	Transform* m_transform;
 
+
 	glm::vec3 m_oldPos;
 	glm::vec2 m_acceleration;
 	float m_maxSpeed = 3;
