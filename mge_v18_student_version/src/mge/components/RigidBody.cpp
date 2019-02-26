@@ -15,17 +15,13 @@ RigidBody::~RigidBody()
 
 void RigidBody::Start()
 {
-	m_gameObject->SetRigidBody(this);
-	std::cout << "HEREERRERERERERERERERER" << std::endl;
+	RigidBody* rb= m_gameObject->GetRigidBody();
 	m_collider = m_gameObject->GetComponent<CircleCollider>();
-	//m_transform =;
-	//m_collider  = m_gameObject->GetComponent<ColliderComponent>();
 }
 
 void RigidBody::Update(float timeStep)
 {
 	//FirstMove then resolve collision
-
 	m_oldPos = m_gameObject->transform->LocalPosition();
 
 	velocity += m_acceleration - m_friction * velocity;
@@ -55,16 +51,13 @@ ColliderComponent * RigidBody::GetCollider()
 
 void RigidBody::OnCollisionStay(CollisionInfo * collisionInfo)
 {
-
 	float vx = (velocity.x == 0)? 0.1f :velocity.x;
 	float vy = (velocity.y == 0) ? 0.1f : velocity.y;
-
 
 	float ratio=glm::min(collisionInfo->distance.x / glm::abs(vx), collisionInfo->distance.y / glm::abs(vy));
 	if (ratio > 1) ratio = 1;
 	if (ratio < 0.01f) ratio = -0.001f;
 	glm::vec3 displacement = -glm::vec3(velocity.x, 0, velocity.y) * ratio;
-
 
 	//std::cout << std::endl;
 	//std::cout << "Ratio X: " << collisionInfo->distance.x / glm::abs(vx) << std::endl;
@@ -78,7 +71,9 @@ void RigidBody::OnCollisionStay(CollisionInfo * collisionInfo)
 
 	m_gameObject->transform->Translate(displacement);
 
-
+	//Parsing collisionInfo to gameobject
+	m_gameObject->OnCollision(collisionInfo);
+	//Making sure to clear CollisionInfo in the end
 	delete collisionInfo;
 }
 

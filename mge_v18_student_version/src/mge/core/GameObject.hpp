@@ -6,12 +6,13 @@
 #include "Component.h"
 #include "../components/Transform.h"
 #include "../components/MeshRenderer.h"
+
 class AbstractMaterial;
 class World;
 class Mesh;
 class Transform;
 class RigidBody;
-
+class CollisionInfo;
 /**
  * A GameObject wraps all data required to display an object, but knows nothing about OpenGL or rendering.
  */
@@ -47,6 +48,7 @@ class GameObject
 		virtual void Awake();
 		virtual void Start();
 		virtual void Update(float pStep);
+		virtual void OnCollision(CollisionInfo* collisionInfo);
 		virtual void OnDestroy();
 
         //child management, note that add/remove and setParent are closely coupled.

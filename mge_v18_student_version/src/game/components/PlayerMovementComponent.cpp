@@ -1,7 +1,6 @@
 #include "PlayerMovementComponent.h"
 
 
-
 void PlayerMovementComponent::Awake()
 {
 	m_rigidbody = m_gameObject->GetComponent<RigidBody>();
@@ -13,11 +12,13 @@ void PlayerMovementComponent::Start()
 
 void PlayerMovementComponent::Update(float timeStep)
 {
-
 	float speed = 0.1f;
+
+	std::cout << "DIRECTION: " << currentDirection << std::endl;
+
+	//Prevent player moving out of arena boundaries
 	if (IsOutOfBorder())
 	{
-		
 		m_rigidbody->SetAcceleration(glm::vec2(0, 0));
 		m_gameObject->transform->Translate(-glm::vec3(m_rigidbody->velocity.x, 0, m_rigidbody->velocity.y));
 		m_rigidbody->velocity = glm::vec2(0, 0);
@@ -25,22 +26,22 @@ void PlayerMovementComponent::Update(float timeStep)
 	}
 	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::D : sf::Keyboard::Right))
 	{
-		//rigidbody->velocity.x = speed;
+		currentDirection = RIGHT;
 		m_rigidbody->SetAcceleration(glm::vec2(speed, 0));
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::A : sf::Keyboard::Left))
 	{
-		//rigidbody->velocity.x = -speed;
+		currentDirection = LEFT;
 		m_rigidbody->SetAcceleration(glm::vec2(-speed, 0));
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
 	{
-		//rigidbody->velocity.y = speed;
+		currentDirection = BACKWARD;
 		m_rigidbody->SetAcceleration(glm::vec2(0, speed));
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::W : sf::Keyboard::Up))
 	{
-		//rigidbody->velocity.y = -speed;
+		currentDirection = FORWARD;
 		m_rigidbody->SetAcceleration(glm::vec2(0, -speed));
 	}
 	else
@@ -48,6 +49,11 @@ void PlayerMovementComponent::Update(float timeStep)
 		m_rigidbody->SetAcceleration(glm::vec2(0, 0));
 		m_rigidbody->velocity = glm::vec2(0, 0);
 	}
+}
+
+void PlayerMovementComponent::OnCollision(CollisionInfo * collisionInfo)
+{
+	//std::cout << "COLLISION IS CALLED IN COMPONENT" << std::endl;
 }
 
 void PlayerMovementComponent::SetPlayerNumber(int playerNumber)

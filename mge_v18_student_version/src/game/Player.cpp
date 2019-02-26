@@ -15,6 +15,7 @@ void Player::Load()
 {
 	m_circleCollider = AddComponent<CircleCollider>();
 	m_rigidBody= AddComponent<RigidBody>();
+	SetRigidBody(m_rigidBody);
 	m_movementComponent = AddComponent<PlayerMovementComponent>();
 	m_meshRenderer = AddComponent<MeshRenderer>();
 

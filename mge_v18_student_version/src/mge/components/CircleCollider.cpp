@@ -50,7 +50,6 @@ CollisionInfo* CircleCollider::IsColliding(CircleCollider * otherCollider)
 
 		//Packing ColliaionInfo for RigidBody
 		CollisionInfo* collisionInfo = new CollisionInfo();
-		collisionInfo->hitPoints.push_back(GetWorld2Dposition() + glm::normalize(distance)*radius);
 		collisionInfo->distance = glm::vec2(length - a - b, length - a - b);
 		collisionInfo->normal = glm::normalize(distance);
 		return collisionInfo;
@@ -77,7 +76,6 @@ CollisionInfo* CircleCollider::IsColliding(RectangleCollider * rectangleCollider
 		//Packing ColliaionInfo for RigidBody
 		//DeltaX,DeltaY is point of collision
 		CollisionInfo* collisionInfo = new CollisionInfo();
-		collisionInfo->hitPoints.push_back(glm::vec2(deltaX,deltaY));
 		collisionInfo->distance = glm::vec2(radius + rectangleCollider->width/2-glm::abs(distance.x), radius + rectangleCollider->height/2-glm::abs(distance.y));
 		collisionInfo->normal = glm::normalize(rectangleCollider->GetWorld2Dposition() - GetWorld2Dposition());
 		return collisionInfo;

@@ -2,6 +2,7 @@
 #define COMPONENT_H
 
 class GameObject;
+class CollisionInfo;
 
 class Component
 {
@@ -17,6 +18,9 @@ public:
 
 	//Update loop
 	virtual void Update(float timeSteps);
+
+	//OnCollision is called each frame when gameObject is colliding
+	virtual void OnCollision(CollisionInfo* collisionInfo);
 
 	virtual void OnDestroy();
 

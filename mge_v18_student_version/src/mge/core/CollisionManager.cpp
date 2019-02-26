@@ -27,8 +27,9 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 				CollisionInfo* collisionInfo = targetCollider->IsColliding(m_colliders[colliderIndex]);
 				if (collisionInfo!=nullptr)
 				{
-					//TODO: replace by add direct reference to rb in gameobject
-					targetCollider->GetGameObject()->GetComponent<RigidBody>()->OnCollisionStay(collisionInfo);
+					//Calling RigidBody to resolve collision
+					collisionInfo->collider = m_colliders[colliderIndex]->GetGameObject();
+					targetCollider->GetGameObject()->GetRigidBody()->OnCollisionStay(collisionInfo);
 					output= true;
 				}
 				
