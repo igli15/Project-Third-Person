@@ -168,12 +168,14 @@
   <ItemGroup>
     <ClInclude Include="..\src\game\components\GridComponent.h" />
     <ClInclude Include="..\src\game\components\KeyMoveComponent.h" />
+    <ClInclude Include="..\src\game\components\PlayerMovementComponent.h" />
     <ClInclude Include="..\src\game\components\RotatingComponent.h" />
     <ClInclude Include="..\src\game\components\TileComponent.h" />
     <ClInclude Include="..\src\game\IlyasWorld.h" />
     <ClInclude Include="..\src\game\MainGame.h" />
     <ClInclude Include="..\src\game\MainWorld.h" />
     <ClInclude Include="..\src\game\PhysicsTestObject.h" />
+    <ClInclude Include="..\src\game\Player.h" />
     <ClInclude Include="..\src\glm.hpp" />
     <ClInclude Include="..\src\mge\components\AudioSource.h" />
     <ClInclude Include="..\src\mge\components\CameraComponent.h" />
@@ -216,12 +218,14 @@
   <ItemGroup>
     <ClCompile Include="..\src\game\components\GridComponent.cpp" />
     <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp" />
+    <ClCompile Include="..\src\game\components\PlayerMovementComponent.cpp" />
     <ClCompile Include="..\src\game\components\RotatingComponent.cpp" />
     <ClCompile Include="..\src\game\components\TileComponent.cpp" />
     <ClCompile Include="..\src\game\IlyasWorld.cpp" />
     <ClCompile Include="..\src\game\MainGame.cpp" />
     <ClCompile Include="..\src\game\MainWorld.cpp" />
     <ClCompile Include="..\src\game\PhysicsTestObject.cpp" />
+    <ClCompile Include="..\src\game\Player.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mge\components\AudioSource.cpp" />
     <ClCompile Include="..\src\mge\components\CameraComponent.cpp" />

@@ -62,12 +62,13 @@ void RigidBody::OnCollisionStay(CollisionInfo * collisionInfo)
 	glm::vec3 displacement = -glm::vec3(velocity.x, 0, velocity.y) * ratio;
 
 
-	std::cout << std::endl;
-	std::cout << "Ratio X: " << collisionInfo->distance.x / glm::abs(vx) << std::endl;
-	std::cout << "Ratio Y: " << collisionInfo->distance.y / glm::abs(vy) << std::endl;
-	std::cout << "velocity: " << velocity << std::endl;
-	std::cout << "Displacement: " << displacement << std::endl;
-	std::cout << "Normal" << collisionInfo->normal << std::endl;
+	//std::cout << std::endl;
+	//std::cout << "Ratio X: " << collisionInfo->distance.x / glm::abs(vx) << std::endl;
+	//std::cout << "Ratio Y: " << collisionInfo->distance.y / glm::abs(vy) << std::endl;
+	//std::cout << "velocity: " << velocity << std::endl;
+	//std::cout << "Displacement: " << displacement << std::endl;
+	//std::cout << "Normal" << collisionInfo->normal << std::endl;
+	
 	velocity = collisionInfo->normal*bounciness;
 	SetAcceleration(glm::vec2(0, 0));
 

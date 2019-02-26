@@ -175,6 +175,12 @@
     <ClInclude Include="..\src\game\PhysicsTestObject.h">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game\Player.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\PlayerMovementComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -311,6 +317,12 @@
     </ClCompile>
     <ClCompile Include="..\src\game\PhysicsTestObject.cpp">
       <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\Player.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\PlayerMovementComponent.cpp">
+      <Filter>game\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
