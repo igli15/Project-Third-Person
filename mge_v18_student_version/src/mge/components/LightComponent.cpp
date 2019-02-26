@@ -1,6 +1,9 @@
 #include "LightComponent.h"
 #include "mge/core/GameObject.hpp"
 #include "mge/core/World.hpp"
+#include "mge/materials/TextureMaterial.hpp"
+#include "mge/core/ShaderProgram.hpp"
+
 
 LightComponent::LightComponent()
 {
@@ -52,6 +55,9 @@ float LightComponent::GetSpecularContribution()
 void LightComponent::SetType(LightType type)
 {
 	m_type = type;
+
+	m_gameObject->GetWorld()->InnerDeRegisterLightByType(this);
+	m_gameObject->GetWorld()->InnerRegisterLightByType(this);
 }
 
 void LightComponent::SetColor(glm::vec3 color)
@@ -176,4 +182,28 @@ void LightComponent::Parse(rapidxml::xml_node<>* compNode)
 		}
 
 	}
+}
+
+std::string LightComponent::GetMaterialIndexString() const
+{
+	return m_materialIndexString;
+}
+
+void LightComponent::SetMaterialIndexString(const std::string & indexString)
+{
+	m_materialIndexString = indexString;
+}
+
+void LightComponent::AssignUnifromLocation()
+{
+	uLightColor = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "lightColor");
+	uDirection = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "direction");
+	uAmbientContribution = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "ambientContribution");
+	uSpecularContribution = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "specularContribution");
+	uLightPos = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "lightPos");
+	uConstant = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "constant");
+	uLinear = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "linear");
+	uQuadratic = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "quadratic");
+	uCutoff = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "cutoff");
+	uOuterCutoff = TextureMaterial::m_shaderProgram->getUniformLocation(m_materialIndexString + "outerCutoff");
 }

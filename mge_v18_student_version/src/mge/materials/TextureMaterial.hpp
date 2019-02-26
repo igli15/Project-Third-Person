@@ -27,9 +27,11 @@ class TextureMaterial : public AbstractMaterial
 		void SetShininess(float shininess);
 		void SetEmissionScale(float emissionScale);
 
+		static ShaderProgram* m_shaderProgram;
+
     protected:
     private:
-        static ShaderProgram* m_shaderProgram;
+       
         static void _lazyInitializeShader();
 
         //in this example we cache all identifiers for uniforms & attributes
@@ -39,6 +41,25 @@ class TextureMaterial : public AbstractMaterial
         static GLint _aVertex ;
         static GLint _aNormal;
         static GLint _aUV ;
+
+		static GLint m_uSpecularTexture;
+		static GLint m_uEmissionTexture;
+		static GLint m_uNormalTexture;
+
+		static GLint m_uPointLightCount;
+		static GLint m_uDirectionalLightCount;
+		static GLint m_uSpotLightCount;
+
+		static GLint m_uShineness;
+		static GLint m_uEmissionScale;
+		static GLint m_uDiffuseColor;
+
+		static GLint m_uProjectionMatrix;
+		static GLint m_uModelMatrix;
+		static GLint m_uViewMatrix;
+
+		static GLint m_aTangent;
+		static GLint m_aBiTangent;
 
         Texture* _diffuseTexture = nullptr;
 		Texture* m_spcecularTexture = nullptr;
@@ -56,6 +77,11 @@ class TextureMaterial : public AbstractMaterial
 		Texture* m_whiteTex;
 		Texture* m_blackTex;
 		Texture* m_normalFlatTex;
+
+		std::string pointLightstring;
+		std::string dirLightstring;
+		std::string spotLightstring;
+		std::string lightString;
 
 };
 

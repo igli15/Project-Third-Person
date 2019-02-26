@@ -138,7 +138,7 @@ void XMLWorld::Initialize()
 {
 }
 
-void XMLWorld::ParseComponents(rapidxml::xml_node<>* com,GameObject* newNode)
+void XMLWorld::ParseComponents(rapidxml::xml_node<>* com,GameObject* newNode) 
 {
 		if (strcmp(com->name(), "CameraComponent") == 0)
 		{
