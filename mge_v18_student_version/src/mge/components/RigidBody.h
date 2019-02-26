@@ -37,5 +37,6 @@ private:
 	glm::vec2 m_acceleration;
 	float m_maxSpeed = 3;
 	float m_friction = 0;
+	float bounciness = 0.1f;
 };
 

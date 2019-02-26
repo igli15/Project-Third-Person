@@ -13,7 +13,7 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 	std::vector<std::string> filters = targetCollider->GetCollisionFilterTags();
 
 	if (filters.size() == 0) return false;
-
+	bool output = false;
 	for (int colliderIndex = m_colliders.size() - 1; colliderIndex >= 0; --colliderIndex)
 	{
 		for (int i = 0; i < filters.size(); i++)
@@ -29,7 +29,7 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 				{
 					//TODO: replace by add direct reference to rb in gameobject
 					targetCollider->GetGameObject()->GetComponent<RigidBody>()->OnCollisionStay(collisionInfo);
-					return true;
+					output= true;
 				}
 				
 			}
@@ -37,5 +37,5 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 		}
 
 	}
-	return false;
+	return output;
 }

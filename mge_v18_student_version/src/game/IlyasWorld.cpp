@@ -65,16 +65,16 @@ void IlyasWorld::Initialize()
 
 	//TEST object1 
 	PhysicsTestObject* pto1 = _world->Instantiate<PhysicsTestObject>();
-
+	pto1->transform->Translate(glm::vec3(0.001f, 0, 6));
 	pto1->GetMeshRenderer()->SetMesh(cylinderMesh);
 	pto1->setMaterial(brickMat);
 
-	pto1->GetComponent<RigidBody>()->velocity=glm::vec2(0.1f,0);
+	//pto1->GetComponent<RigidBody>()->velocity=glm::vec2(0.1f,0);
 	pto1->GetComponent<CircleCollider>()->AddCollisionFilterTag("DIF");
 	pto1->SetPlayer(1);
 
 	PhysicsTestObject* pto2 = _world->Instantiate<PhysicsTestObject>();
-	pto2->transform->Translate(glm::vec3(3, 0,3));
+	pto2->transform->Translate(glm::vec3(0.001f, 0,0));
 	pto2->GetMeshRenderer()->SetMesh(cylinderMesh);
 	pto2->setMaterial(brickMat);
 
@@ -121,13 +121,14 @@ void IlyasWorld::Initialize()
 		for (int j = 0; j < 8; j++)
 		{
 			GameObject* cube2 = _world->Instantiate<GameObject>();
-			cube2->transform->SetLocalPosition(glm::vec3(-20+6* i, 0,20 -6*j));
+			cube2->transform->SetLocalPosition(glm::vec3(-20+8* i, 0,20 -8*j));
 			cube2->SetMeshRenderer(cube2->AddComponent<MeshRenderer>());
 			cube2->GetMeshRenderer()->SetMesh(cubeMesh);
 			cube2->setMaterial(brickMat);
 			cube2->transform->Scale(glm::vec3(1, 1, 1));
 			cube2->AddComponent<RectangleCollider>();
 			cube2->Awake();
+
 			cube2->GetComponent<RectangleCollider>()->SetCollisionLayerTag("DIF");
 		}
 	}

@@ -1,6 +1,6 @@
 #include "RectangleCollider.h"
 #include "CircleCollider.h"
-
+#include <cmath>
 RectangleCollider::~RectangleCollider()
 {
 }
@@ -41,6 +41,16 @@ CollisionInfo* RectangleCollider::IsColliding(CircleCollider * circle)
 		CollisionInfo* collisionInfo = new CollisionInfo();
 		collisionInfo->hitPoints.push_back(glm::vec2(deltaX, deltaY));
 		collisionInfo->distance = glm::vec2(width / 2 + circle->radius-glm::abs(distance.x), height / 2 + circle->radius- glm::abs(distance.y));
+
+		glm::vec2 collisionNormal;
+
+		if (glm::abs(deltaY) >glm::abs( deltaX)) collisionNormal.y = glm::sign(deltaY); 
+		else				 collisionNormal.x = glm::sign(deltaX);
+
+		std::cout << "DeltaX: " << deltaX <<"/"<<  width/2 << std::endl;
+		std::cout << "DeltaY: " << deltaY << "/" << height / 2 << std::endl;
+		collisionInfo->normal = (collisionNormal);
+
 		return collisionInfo;
 	}
 	return nullptr;
@@ -62,12 +72,18 @@ CollisionInfo* RectangleCollider::IsColliding(RectangleCollider * rectangleColli
 		pointOfCollision.x= (myPos.x < otherPos.x) ? myPos.x + width : myPos.x - width;
 		pointOfCollision.y = (myPos.y < otherPos.y) ? myPos.y + height : myPos.y - height;
 
+		glm::vec2 collisionNormal;
+		collisionNormal.x=  (myPos.x < otherPos.x) ? -1 : 1;
+		collisionNormal.y = (myPos.y < otherPos.y) ?-1 :  1;
+
 		glm::vec2 distance = rectangleCollider->GetWorld2Dposition() - GetWorld2Dposition();
 
 		CollisionInfo* collisionInfo = new CollisionInfo();
 		collisionInfo->hitPoints.push_back(pointOfCollision);
 
 		collisionInfo->distance = glm::vec2(width/2 + rectangleCollider->width/2-glm::abs(distance.x), height/2 + rectangleCollider->height/2- glm::abs(distance.x));
+		collisionInfo->normal = glm::normalize(collisionNormal);
+
 		return collisionInfo;
 	}
 

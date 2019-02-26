@@ -9,6 +9,7 @@ public:
 	std::vector<GameObject*> colliders;
 	std::vector<glm::vec2> hitPoints;
 	glm::vec2 distance;
+	glm::vec2 normal;
 	~CollisionInfo();
 };
 

@@ -140,7 +140,7 @@ void AbstractGame::run()
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
 	while (_window->isOpen()) {
-		std::cout << "FPS: " << _fps << std::endl;
+		//std::cout << "FPS: " << _fps << std::endl;
 		timeSinceLastUpdate += updateClock.restart();
 
 		if (timeSinceLastUpdate > timePerFrame)
@@ -178,7 +178,7 @@ void AbstractGame::run()
             if (timeSinceLastFPSCalculation > 1) {
                 _fps = frameCount/timeSinceLastFPSCalculation;
                 timeSinceLastFPSCalculation -= 1;
-				std::cout << _fps << std::endl;
+				//std::cout << _fps << std::endl;
                 frameCount = 0;
             }
 
