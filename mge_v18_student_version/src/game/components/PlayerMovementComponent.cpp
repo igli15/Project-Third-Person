@@ -1,5 +1,5 @@
 #include "PlayerMovementComponent.h"
-
+#include "mge/core/GameObject.hpp"
 
 void PlayerMovementComponent::Awake()
 {
@@ -14,7 +14,7 @@ void PlayerMovementComponent::Update(float timeStep)
 {
 	float speed = 0.1f;
 
-	std::cout << "DIRECTION: " << currentDirection << std::endl;
+	//std::cout << "DIRECTION: " << currentDirection << std::endl;
 
 	//Prevent player moving out of arena boundaries
 	if (IsOutOfBorder())
@@ -28,21 +28,25 @@ void PlayerMovementComponent::Update(float timeStep)
 	{
 		currentDirection = RIGHT;
 		m_rigidbody->SetAcceleration(glm::vec2(speed, 0));
+		SetRotation(270);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::A : sf::Keyboard::Left))
 	{
 		currentDirection = LEFT;
 		m_rigidbody->SetAcceleration(glm::vec2(-speed, 0));
+		SetRotation(90);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
 	{
 		currentDirection = BACKWARD;
 		m_rigidbody->SetAcceleration(glm::vec2(0, speed));
+		SetRotation(180);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::W : sf::Keyboard::Up))
 	{
 		currentDirection = FORWARD;
 		m_rigidbody->SetAcceleration(glm::vec2(0, -speed));
+		SetRotation(0);
 	}
 	else
 	{
@@ -92,4 +96,22 @@ bool PlayerMovementComponent::IsOutOfBorder()
 	if (newPos.y<m_arenaPosition.y|| newPos.y > m_arenaPosition.y+m_arenaSize.y) return true;
 
 	return false;
+}
+
+void PlayerMovementComponent::SetRotation(float angle)
+{
+	//COMPARE LEFT TO LEFT
+	//RIGHT TO RIGHT
+	//UP TO UP
+	
+	glm::vec3 worldForward = glm::vec3(0,0, -1);
+	glm::vec3 localForward =  m_gameObject->transform->LocalTransform()[2];
+
+	float currentAngle = glm::degrees( glm::acos(glm::dot(worldForward, localForward)) );
+	if (angle == currentAngle) return;
+	m_gameObject->transform->Rotate(glm::radians(angle - currentAngle), glm::vec3(0, 1, 0));
+
+	std::cout <<std::endl<< "CurrentAngle: " << currentAngle << std::endl;
+	std::cout << "TargetAngle : " << angle << std::endl;
+	std::cout << "ROTATION : " << angle - currentAngle << std::endl;
 }

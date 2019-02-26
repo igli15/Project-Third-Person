@@ -34,7 +34,7 @@ void RigidBody::Update(float timeStep)
 
 	glm::vec3 velocity3d = glm::vec3(velocity.x, 0, velocity.y);
 
-	m_gameObject->transform->Translate(velocity3d);
+	m_gameObject->transform->SetLocalPosition(m_gameObject->transform->LocalPosition() + velocity3d);
 	m_collider->DetectCollision();
 
 }

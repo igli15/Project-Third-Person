@@ -64,12 +64,21 @@ void IlyasWorld::Initialize()
 	plane->setMaterial(planeMat);
 	plane->transform->Scale(glm::vec3(50, 50, 50));
 
+	GameObject* playerDirection = _world->Instantiate<GameObject>();
+	playerDirection->transform->SetLocalPosition(glm::vec3(0, 0, 1));
+	playerDirection->SetMeshRenderer(playerDirection->AddComponent<MeshRenderer>());
+	playerDirection->GetMeshRenderer()->SetMesh(cubeMesh);
+	playerDirection->setMaterial(brickMat);
+	playerDirection->transform->Scale(glm::vec3(1, 1, 1));
+
 	Player* player1 = _world->Instantiate<Player>();
 	player1->transform->Translate(glm::vec3(1, 0, 4));
 	player1->GetMeshRenderer()->SetMesh(cylinderMesh);
 	player1->setMaterial(carMat);
 	player1->SetPlayerNumber(1);
 	player1->GetComponent<PlayerMovementComponent>()->SetArenaData(glm::vec2(30, -20), glm::vec2(60, 40));
+	player1->add(playerDirection);
+
 
 	Player* player2 = _world->Instantiate<Player>();
 	player2->transform->Translate(glm::vec3(1, 0, 0));

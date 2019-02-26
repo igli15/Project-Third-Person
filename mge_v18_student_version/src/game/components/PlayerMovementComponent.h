@@ -25,6 +25,7 @@ private:
 	glm::vec2 m_arenaSize;
 
 	bool IsOutOfBorder();
+	void SetRotation(float angle);
 
 };
 
