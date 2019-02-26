@@ -159,6 +159,7 @@ void XMLWorld::ParseComponents(rapidxml::xml_node<>* com,GameObject* newNode)
 		else if (strcmp(com->name(), "CircleCollider") == 0)
 		{
 			(newNode)->AddComponent<CircleCollider>()->Parse(com);
+			std::cout << "READ CIRCLE COLLIDER" << std::endl;
 		}
 		else if (strcmp(com->name(), "RectangleCollider") == 0)
 		{

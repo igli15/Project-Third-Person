@@ -1,7 +1,7 @@
 <root>
   <GameObject name="Directional Light" position="(-1.9, 3.9, 0.0)" rotation="(0.3, 0.7, -0.3, 0.7)" scale="(1.0, 1.0, 1.0)">
     <Components>
-      <LightComponent type="DIRECTIONAL" color="(0.9, 0.0, 0.8)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.34" ambientContribution="0.4" specularContribution="0.8" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
+      <LightComponent type="DIRECTIONAL" color="(1.0, 1.0, 0.8)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.34" ambientContribution="0.4" specularContribution="0.8" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
     </Components>
   </GameObject>
   <GameObject name="Grid" position="(0.0, 0.0, 0.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
@@ -3615,6 +3615,358 @@
     <Components>
       <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
       <TileComponent />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (1)" position="(136.0, 13.6, 96.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (2)" position="(146.0, 13.6, 96.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (3)" position="(156.0, 13.6, 96.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (4)" position="(166.0, 13.6, 96.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (5)" position="(136.0, 13.6, 53.2)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (6)" position="(146.0, 13.6, 53.2)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (7)" position="(156.0, 13.6, 53.2)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (8)" position="(166.0, 13.6, 53.2)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (9)" position="(83.3, 13.6, 95.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (10)" position="(93.3, 13.6, 95.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (11)" position="(103.3, 13.6, 95.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (12)" position="(113.3, 13.6, 95.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (13)" position="(240.5, 13.6, 145.5)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (14)" position="(250.5, 13.6, 145.5)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (15)" position="(260.5, 13.6, 145.5)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (16)" position="(270.5, 13.6, 145.5)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (17)" position="(240.5, 13.6, 102.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (18)" position="(250.5, 13.6, 102.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (19)" position="(260.5, 13.6, 102.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (20)" position="(270.5, 13.6, 102.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (21)" position="(187.8, 13.6, 145.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (22)" position="(197.8, 13.6, 145.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (23)" position="(207.8, 13.6, 145.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (24)" position="(217.8, 13.6, 145.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (25)" position="(136.0, 13.6, 96.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (26)" position="(146.0, 13.6, 96.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (27)" position="(156.0, 13.6, 96.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (28)" position="(166.0, 13.6, 96.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (29)" position="(136.0, 13.6, 53.2)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (30)" position="(146.0, 13.6, 53.2)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (31)" position="(156.0, 13.6, 53.2)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (32)" position="(166.0, 13.6, 53.2)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (33)" position="(83.3, 13.6, 95.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (34)" position="(93.3, 13.6, 95.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (35)" position="(103.3, 13.6, 95.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (36)" position="(113.3, 13.6, 95.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (37)" position="(65.0, 13.6, 66.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (38)" position="(75.0, 13.6, 66.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (39)" position="(85.0, 13.6, 66.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (40)" position="(95.0, 13.6, 66.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (41)" position="(65.0, 13.6, 23.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (42)" position="(75.0, 13.6, 23.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (43)" position="(85.0, 13.6, 23.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (44)" position="(95.0, 13.6, 23.1)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (45)" position="(12.3, 13.6, 65.5)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (46)" position="(22.3, 13.6, 65.5)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (47)" position="(32.3, 13.6, 65.5)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="LavaMat" shininess="16" emissionScale="0.11" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (48)" position="(42.3, 13.6, 65.5)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="IceMat" shininess="16" emissionScale="0.12" diffuseTexture="iceDiffuse" specularTexture="iceSpecular" emissionTexture="iceEmission" normalTexture="iceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <RectangleCollider width="10" height="10" />
+    </Components>
+  </GameObject>
+  <GameObject name="Player1" position="(265.0, 13.6, 22.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="playermat" shininess="16" emissionScale="0.11" diffuseTexture="carTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <CircleCollider radius="10" />
+      <RigidBodyComponent friction="0" maxSpeed="0.5" />
+    </Components>
+  </GameObject>
+  <GameObject name="Player 2" position="(232.0, 13.6, 23.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 5.0, 5.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="playermat" shininess="16" emissionScale="0.12" diffuseTexture="carTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TileComponent />
+      <CircleCollider radius="10" />
+      <RigidBodyComponent friction="0" maxSpeed="0.5" />
     </Components>
   </GameObject>
 </root>

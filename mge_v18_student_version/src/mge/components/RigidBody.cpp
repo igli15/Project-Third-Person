@@ -1,6 +1,8 @@
 #include "RigidBody.h"
 
-
+#include "CircleCollider.h"
+#include "ColliderComponent.hpp"
+#include "RectangleCollider.h"
 
 RigidBody::RigidBody()
 {
@@ -14,6 +16,8 @@ RigidBody::~RigidBody()
 void RigidBody::Start()
 {
 	m_gameObject->SetRigidBody(this);
+	std::cout << "HEREERRERERERERERERERER" << std::endl;
+	m_collider = m_gameObject->GetComponent<CircleCollider>();
 	//m_transform =;
 	//m_collider  = m_gameObject->GetComponent<ColliderComponent>();
 }
