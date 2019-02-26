@@ -40,6 +40,10 @@ class World : public GameObject
 		void ClearMarkedGameObject();
 		void InnerDestroy(GameObject* object);
 		void SetCanvas(CanvasComponent* canvas);
+
+		void InnerRegisterLightByType(LightComponent* light);
+		void InnerDeRegisterLightByType(LightComponent* light);
+
 		CanvasComponent* GetCanvasComponent();
 	private:
 
@@ -47,6 +51,10 @@ class World : public GameObject
 	    Camera* _mainCamera;
 		CameraComponent* m_mainCameraComponent;
 	    std::vector<LightComponent*> _lights;
+
+		std::vector<LightComponent*> m_pointLights;
+		std::vector<LightComponent*> m_spotLights;
+		std::vector<LightComponent*> m_dirLights;
 
         World(const World&);
         World& operator=(const World&);

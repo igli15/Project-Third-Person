@@ -1,8 +1,12 @@
 #pragma once
-#include "../src/mge/core/Component.h"
+
 #include "../src/mge/core/XMLComponent.h"
 
 #include "glm.hpp"
+#include <string>
+#include "rapidxml/rapidxml.hpp"
+#include "GL/glew.h"
+
 enum LightType
 {
 	DIRECTIONAL,
@@ -36,12 +40,27 @@ public:
 	void SetCutoffAngle(float angle);
 	void SetOuterCutoffAngle(float angle);
 
-
 	float GetCutoffAngle();
 	float GetOuterCutoffAngle();
 	glm::vec3 GetAttenuationConstants();
 
 	void Parse(rapidxml::xml_node<>* compNode) override;
+
+	std::string GetMaterialIndexString() const;
+	void SetMaterialIndexString(const std::string& indexString);
+
+	GLint uLightColor = 0;
+	GLint uLightPos = 0;
+	GLint uAmbientContribution = 0;
+	GLint uSpecularContribution = 0;
+	GLint uDirection = 0;
+	GLint uCutoff = 0;
+	GLint uOuterCutoff = 0;
+	GLint uConstant = 0;
+	GLint uLinear = 0;
+	GLint uQuadratic = 0;
+
+	void AssignUnifromLocation();
 
 private:
 
@@ -54,6 +73,10 @@ private:
 	float m_cutoffAngle = 10;
 	float m_outerCutoffAngle = 45;
 	glm::vec3 m_attenuationConstants = glm::vec3(1,1,0);
+
+
+	//use this for buffering light data in open gl as a uniform string!
+	std::string m_materialIndexString;
 
 };
 

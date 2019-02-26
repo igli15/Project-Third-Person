@@ -27,9 +27,11 @@ class TextureMaterial : public AbstractMaterial
 		void SetShininess(float shininess);
 		void SetEmissionScale(float emissionScale);
 
+		static ShaderProgram* m_shaderProgram;
+
     protected:
     private:
-        static ShaderProgram* m_shaderProgram;
+       
         static void _lazyInitializeShader();
 
         //in this example we cache all identifiers for uniforms & attributes
@@ -79,6 +81,7 @@ class TextureMaterial : public AbstractMaterial
 		std::string pointLightstring;
 		std::string dirLightstring;
 		std::string spotLightstring;
+		std::string lightString;
 
 };
 

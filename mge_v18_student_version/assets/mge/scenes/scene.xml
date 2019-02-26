@@ -1,7 +1,7 @@
 <root>
   <GameObject name="Directional Light" position="(-1.9, 3.9, 0.0)" rotation="(0.3, 0.7, -0.3, 0.7)" scale="(1.0, 1.0, 1.0)">
     <Components>
-      <LightComponent type="DIRECTIONAL" color="(1.0, 1.0, 0.8)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.34" ambientContribution="0.4" specularContribution="0.8" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
+      <LightComponent type="DIRECTIONAL" color="(0.9, 0.0, 0.8)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.34" ambientContribution="0.4" specularContribution="0.8" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
     </Components>
   </GameObject>
   <GameObject name="Grid" position="(0.0, 0.0, 0.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
