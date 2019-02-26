@@ -21,6 +21,7 @@
 #include "mge/components/RectangleCollider.h"
 #include "mge/components//RigidBody.h"
 #include "PhysicsTestObject.h"
+#include "Player.h"
 
 IlyasWorld::IlyasWorld()
 {
@@ -63,24 +64,17 @@ void IlyasWorld::Initialize()
 	plane->setMaterial(planeMat);
 	plane->transform->Scale(glm::vec3(50, 50, 50));
 
-	//TEST object1 
-	PhysicsTestObject* pto1 = _world->Instantiate<PhysicsTestObject>();
-	pto1->transform->Translate(glm::vec3(0.001f, 0, 6));
-	pto1->GetMeshRenderer()->SetMesh(cylinderMesh);
-	pto1->setMaterial(brickMat);
+	Player* player1 = _world->Instantiate<Player>();
+	player1->transform->Translate(glm::vec3(1, 0, 4));
+	player1->GetMeshRenderer()->SetMesh(cylinderMesh);
+	player1->setMaterial(carMat);
+	player1->SetPlayerNumber(1);
 
-	//pto1->GetComponent<RigidBody>()->velocity=glm::vec2(0.1f,0);
-	pto1->GetComponent<CircleCollider>()->AddCollisionFilterTag("DIF");
-	pto1->SetPlayer(1);
-
-	PhysicsTestObject* pto2 = _world->Instantiate<PhysicsTestObject>();
-	pto2->transform->Translate(glm::vec3(0.001f, 0,0));
-	pto2->GetMeshRenderer()->SetMesh(cylinderMesh);
-	pto2->setMaterial(brickMat);
-
-	pto2->GetComponent<RigidBody>()->velocity = glm::vec2(0.1f, 0);
-	pto2->GetComponent<CircleCollider>()->AddCollisionFilterTag("DIF");
-	pto2->SetPlayer(2);
+	Player* player2 = _world->Instantiate<Player>();
+	player2->transform->Translate(glm::vec3(1, 0, 0));
+	player2->GetMeshRenderer()->SetMesh(cylinderMesh);
+	player2->setMaterial(carMat);
+	player1->SetPlayerNumber(2);
 	/*
 	//Test object 2
 	GameObject* cylinder2 = _world->Instantiate<GameObject>();
@@ -129,7 +123,7 @@ void IlyasWorld::Initialize()
 			cube2->AddComponent<RectangleCollider>();
 			cube2->Awake();
 
-			cube2->GetComponent<RectangleCollider>()->SetCollisionLayerTag("DIF");
+			cube2->GetComponent<RectangleCollider>()->SetCollisionLayerTag("walls");
 		}
 	}
 
