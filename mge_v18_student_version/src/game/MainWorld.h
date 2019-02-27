@@ -19,6 +19,7 @@ public:
 	virtual void Initialize() override;
 	virtual ~MainWorld();
 
+	GridComponent* GetGrid() const;
 private:
 	GridComponent* levelGrid = nullptr;
 };

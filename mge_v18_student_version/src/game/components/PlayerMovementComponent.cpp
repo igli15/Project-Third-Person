@@ -15,7 +15,7 @@ void PlayerMovementComponent::Update(float timeStep)
 {
 
 	float speed = 0.1f;
-	if (IsOutOfBorder())
+	if (!IsOutOfBorder())
 	{
 		
 		m_rigidbody->SetAcceleration(glm::vec2(0, 0));
