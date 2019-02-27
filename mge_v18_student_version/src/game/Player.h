@@ -4,6 +4,7 @@
 #include "components/PlayerMovementComponent.h"
 #include "../mge/components/RigidBody.h"
 #include "../mge/components/CircleCollider.h"
+#include "components/PlayerDataComponent.h"
 
 class Player :public GameObject
 {

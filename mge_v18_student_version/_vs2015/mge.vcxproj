@@ -168,6 +168,7 @@
   <ItemGroup>
     <ClInclude Include="..\src\game\components\GridComponent.h" />
     <ClInclude Include="..\src\game\components\KeyMoveComponent.h" />
+    <ClInclude Include="..\src\game\components\PlayerDataComponent.h" />
     <ClInclude Include="..\src\game\components\PlayerMovementComponent.h" />
     <ClInclude Include="..\src\game\components\RotatingComponent.h" />
     <ClInclude Include="..\src\game\components\ShootingComponent.h" />
@@ -219,6 +220,7 @@
   <ItemGroup>
     <ClCompile Include="..\src\game\components\GridComponent.cpp" />
     <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp" />
+    <ClCompile Include="..\src\game\components\PlayerDataComponent.cpp" />
     <ClCompile Include="..\src\game\components\PlayerMovementComponent.cpp" />
     <ClCompile Include="..\src\game\components\RotatingComponent.cpp" />
     <ClCompile Include="..\src\game\components\ShootingComponent.cpp" />
