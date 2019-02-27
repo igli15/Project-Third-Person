@@ -1,6 +1,5 @@
 #include "PlayerMovementComponent.h"
-
-
+#include "mge/core/GameObject.hpp"
 
 void PlayerMovementComponent::Awake()
 {
@@ -13,11 +12,13 @@ void PlayerMovementComponent::Start()
 
 void PlayerMovementComponent::Update(float timeStep)
 {
-
 	float speed = 0.1f;
+
+	//std::cout << "DIRECTION: " << currentDirection << std::endl;
+
+	//Prevent player moving out of arena boundaries
 	if (IsOutOfBorder())
 	{
-		
 		m_rigidbody->SetAcceleration(glm::vec2(0, 0));
 		m_gameObject->transform->Translate(-glm::vec3(m_rigidbody->velocity.x, 0, m_rigidbody->velocity.y));
 		m_rigidbody->velocity = glm::vec2(0, 0);
@@ -25,29 +26,39 @@ void PlayerMovementComponent::Update(float timeStep)
 	}
 	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::D : sf::Keyboard::Right))
 	{
-		//rigidbody->velocity.x = speed;
+		m_currentDirection = RIGHT;
 		m_rigidbody->SetAcceleration(glm::vec2(speed, 0));
+		SetRotation(glm::vec3(1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::A : sf::Keyboard::Left))
 	{
-		//rigidbody->velocity.x = -speed;
+		m_currentDirection = LEFT;
 		m_rigidbody->SetAcceleration(glm::vec2(-speed, 0));
+		SetRotation(glm::vec3(-1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
 	{
-		//rigidbody->velocity.y = speed;
+		m_currentDirection = BACKWARD;
 		m_rigidbody->SetAcceleration(glm::vec2(0, speed));
+		SetRotation(glm::vec3(0, 0, 1), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::W : sf::Keyboard::Up))
 	{
-		//rigidbody->velocity.y = -speed;
+		m_currentDirection = FORWARD;
 		m_rigidbody->SetAcceleration(glm::vec2(0, -speed));
+
+		SetRotation(glm::vec3(0,0,-1),m_gameObject->transform->LocalTransform()[2]);
 	}
 	else
 	{
 		m_rigidbody->SetAcceleration(glm::vec2(0, 0));
 		m_rigidbody->velocity = glm::vec2(0, 0);
 	}
+}
+
+void PlayerMovementComponent::OnCollision(CollisionInfo * collisionInfo)
+{
+	//std::cout << "COLLISION IS CALLED IN COMPONENT" << std::endl;
 }
 
 void PlayerMovementComponent::SetPlayerNumber(int playerNumber)
@@ -59,6 +70,11 @@ void PlayerMovementComponent::SetArenaData(glm::vec2 pos, glm::vec2 size)
 {
 	m_arenaPosition = pos;
 	m_arenaSize = size;
+}
+
+PlayerMovementComponent::Direction PlayerMovementComponent::GetCurrentDirection()
+{
+	return m_currentDirection;
 }
 
 PlayerMovementComponent::PlayerMovementComponent()
@@ -86,4 +102,16 @@ bool PlayerMovementComponent::IsOutOfBorder()
 	if (newPos.y<m_arenaPosition.y|| newPos.y > m_arenaPosition.y+m_arenaSize.y) return true;
 
 	return false;
+}
+
+void PlayerMovementComponent::SetRotation(glm::vec3 worldDirection, glm::vec3 localDirection)
+{
+	//COMPARE LEFT TO LEFT
+	//RIGHT TO RIGHT
+	//UP TO UP
+
+	float currentAngle = glm::degrees( glm::acos(glm::dot(worldDirection, localDirection)) );
+
+	m_gameObject->transform->Rotate(glm::radians(-currentAngle), glm::vec3(0, 1, 0));
+
 }

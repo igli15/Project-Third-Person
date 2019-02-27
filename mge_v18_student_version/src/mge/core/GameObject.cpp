@@ -2,7 +2,7 @@
 #include "GameObject.hpp"
 #include "mge/materials/AbstractMaterial.hpp"
 #include "../components/RigidBody.h"
-
+#include "CollisionInfo.h"
 
 unsigned GameObject::m_idCounter = 0;
 
@@ -199,6 +199,18 @@ void GameObject::Update(float pStep)
 
 	for (int i = _children.size() - 1; i >= 0; --i) {
 		_children[i]->Update(pStep);
+	}
+}
+
+void GameObject::OnCollision(CollisionInfo * collisionInfo)
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->OnCollision(collisionInfo);
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->OnCollision(collisionInfo);
 	}
 }
 

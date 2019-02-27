@@ -1,5 +1,6 @@
 #include "Component.h"
 #include "GameObject.hpp"
+#include "CollisionInfo.h"
 
 Component::Component()
 {
@@ -25,6 +26,10 @@ void Component::Start()
 void Component::Update(float timeStep)
 {
 
+}
+
+void Component::OnCollision(CollisionInfo * collisionInfo)
+{
 }
 
 void Component::OnDestroy()
