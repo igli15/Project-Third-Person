@@ -34,6 +34,7 @@ void RigidBody::Update(float timeStep)
 	}
 
 	glm::vec3 velocity3d = glm::vec3(velocity.x, 0, velocity.y);
+	//std::cout << "pos: " << m_gameObject->transform->LocalPosition() << m_gameObject->ID()<< std::endl;
 
 	m_gameObject->transform->SetLocalPosition(m_gameObject->transform->LocalPosition() + velocity3d);
 	if(m_collider!= nullptr)m_collider->DetectCollision();
@@ -113,6 +114,10 @@ void RigidBody::Parse(rapidxml::xml_node<>* compNode)
 		else if (attributeName == "maxSpeed")
 		{
 			m_maxSpeed = strtof(a->value(), 0);
+		}
+		else if (attributeName == "bounciness")
+		{
+			bounciness = strtof(a->value(), 0);
 		}
 		
 	}

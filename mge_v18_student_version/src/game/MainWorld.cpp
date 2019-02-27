@@ -51,6 +51,20 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 		levelGrid->AddTile(newNode->GetComponent<TileComponent>());
 		//std::cout << "Added Tile At Pos: " << newNode->transform->WorldPosition()<< std::endl;
 	}
+	else if (strcmp(componentNode->name(), "PlayerMovement") == 0)
+	{
+		newNode->AddComponent<PlayerMovementComponent>()->Parse(componentNode);
+	}
+	else if (strcmp(componentNode->name(), "PlayerData") == 0)
+	{
+		newNode->AddComponent<PlayerDataComponent>()->Parse(componentNode);
+	}
+	else if (strcmp(componentNode->name(), "ShootingComponent") == 0)
+	{
+		newNode->AddComponent<ShootingComponent>()->Parse(componentNode);
+		newNode->GetComponent<ShootingComponent>()->SetGrid(levelGrid);
+	}
+	
 }
 
 void MainWorld::Initialize()
@@ -75,13 +89,7 @@ void MainWorld::Initialize()
 	}
 	*/
 
-	Player* player1 = Instantiate<Player>();
-	player1->transform->Translate(glm::vec3(10, 6, 10));
-	player1->transform->Scale(glm::vec3(5, 5, 5));
-	player1->GetMeshRenderer()->SetMesh(AbstractGame::Instance()->GetResourceManager()->GetMesh("cylinderMesh"));
-	player1->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("carMat"));
-	player1->SetPlayerNumber(1);
-	player1->GetComponent<ShootingComponent>()->SetGrid(levelGrid);
+
 	//player1->GetComponent<PlayerMovementComponent>()->SetArenaData(glm::vec2(300, -200), glm::vec2(300, 200));
 }
 

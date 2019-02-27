@@ -1,8 +1,8 @@
 #pragma once
-#include "mge/core/Component.h"
+#include "mge/core/XMLComponent.h"
 #include "mge/core/CollisionInfo.h"
 
-class PlayerDataComponent : public Component
+class PlayerDataComponent : public XMLComponent
 {
 public:
 	PlayerDataComponent();
@@ -18,10 +18,12 @@ public:
 	void RespawnPlayer();
 	void SetSpawnPosition(glm::vec3 newSpawnPosition);
 	void SetCurrentPositionAsSpawnPosisition();
+	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 private:
 	//PLayer id 1 or 2
 	int m_playerNumber;
 	//spawn position will be taken as position when Start() was called
 	glm::vec3 m_spawnPosition;
+
 };
 

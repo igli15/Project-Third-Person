@@ -55,3 +55,19 @@ void PlayerDataComponent::SetCurrentPositionAsSpawnPosisition()
 {
 	SetSpawnPosition(m_gameObject->transform->LocalPosition());
 }
+
+void PlayerDataComponent::Parse(rapidxml::xml_node<>* compNode)
+{
+	for (rapidxml::xml_attribute<>* a = compNode->first_attribute();
+		a != nullptr;
+		a = a->next_attribute())
+	{
+		std::string attributeName = a->name();
+
+		if (attributeName == "playerNumber")
+		{
+			m_playerNumber = (int)strtof(a->value(), 0);
+		}
+
+	}
+}

@@ -33,10 +33,9 @@ private:
 	ColliderComponent* m_collider;
 	Transform* m_transform;
 
-
 	glm::vec3 m_oldPos;
 	glm::vec2 m_acceleration;
-	float m_maxSpeed = 3;
+	float m_maxSpeed = 0.1f;
 	float m_friction = 0;
 	float bounciness = 0.1f;
 };

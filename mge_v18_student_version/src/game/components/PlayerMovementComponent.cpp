@@ -12,8 +12,6 @@ void PlayerMovementComponent::Start()
 
 void PlayerMovementComponent::Update(float timeStep)
 {
-	float speed = 0.1f;
-
 	//std::cout << "DIRECTION: " << currentDirection << std::endl;
 
 	//Prevent player moving out of arena boundaries
@@ -27,25 +25,25 @@ void PlayerMovementComponent::Update(float timeStep)
 	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::D : sf::Keyboard::Right))
 	{
 		m_currentDirection = RIGHT;
-		m_rigidbody->SetAcceleration(glm::vec2(speed, 0));
+		m_rigidbody->SetAcceleration(glm::vec2(-m_speed, 0));
 		SetRotation(glm::vec3(1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::A : sf::Keyboard::Left))
 	{
 		m_currentDirection = LEFT;
-		m_rigidbody->SetAcceleration(glm::vec2(-speed, 0));
+		m_rigidbody->SetAcceleration(glm::vec2(m_speed, 0));
 		SetRotation(glm::vec3(-1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
 	{
 		m_currentDirection = BACKWARD;
-		m_rigidbody->SetAcceleration(glm::vec2(0, speed));
+		m_rigidbody->SetAcceleration(glm::vec2(0, -m_speed));
 		SetRotation(glm::vec3(0, 0, 1), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::W : sf::Keyboard::Up))
 	{
 		m_currentDirection = FORWARD;
-		m_rigidbody->SetAcceleration(glm::vec2(0, -speed));
+		m_rigidbody->SetAcceleration(glm::vec2(0, m_speed));
 
 		SetRotation(glm::vec3(0,0,-1),m_gameObject->transform->LocalTransform()[2]);
 	}
@@ -72,6 +70,11 @@ void PlayerMovementComponent::SetArenaData(glm::vec2 pos, glm::vec2 size)
 	m_arenaSize = size;
 }
 
+void PlayerMovementComponent::SetSpeed(float speed)
+{
+	m_speed = speed;
+}
+
 PlayerMovementComponent::Direction PlayerMovementComponent::GetCurrentDirection()
 {
 	return m_currentDirection;
@@ -88,6 +91,8 @@ PlayerMovementComponent::~PlayerMovementComponent()
 
 bool PlayerMovementComponent::IsOutOfBorder()
 {
+	return false;
+
 	glm::vec2 newPos = glm::vec2(m_gameObject->transform->LocalPosition().x, m_gameObject->transform->LocalPosition().z) + m_rigidbody->velocity;
 
 	/*
@@ -110,8 +115,24 @@ void PlayerMovementComponent::SetRotation(glm::vec3 worldDirection, glm::vec3 lo
 	//RIGHT TO RIGHT
 	//UP TO UP
 
-	float currentAngle = glm::degrees( glm::acos(glm::dot(worldDirection, localDirection)) );
-
+	float currentAngle = glm::degrees( glm::acos(glm::dot(worldDirection, glm::normalize(localDirection))) );
+	//std::cout << "ANGLE: " << currentAngle << std::endl;
 	m_gameObject->transform->Rotate(glm::radians(-currentAngle), glm::vec3(0, 1, 0));
 
+}
+
+void PlayerMovementComponent::Parse(rapidxml::xml_node<>* compNode)
+{
+	for (rapidxml::xml_attribute<>* a = compNode->first_attribute();
+		a != nullptr;
+		a = a->next_attribute())
+	{
+		std::string attributeName = a->name();
+
+		if (attributeName == "speed")
+		{
+			m_speed = strtof(a->value(), 0);
+		}
+
+	}
 }

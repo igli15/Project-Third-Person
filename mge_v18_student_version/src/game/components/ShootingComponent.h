@@ -23,5 +23,7 @@ public:
 private:
 	PlayerMovementComponent* m_playerMovementComponent;
 	GridComponent* m_gridComponent;
+
+	float m_shootingRange = 2;
 };
 
