@@ -94,13 +94,14 @@ class GameObject
 		{
 			for (int i = 0; i < m_attachedComponents.size(); ++i)
 			{
-				if (typeid(T) == typeid(*m_attachedComponents[i]))
+				//if (typeid(T) == typeid(*m_attachedComponents[i]))
+				if(dynamic_cast<T*>(m_attachedComponents[i]) != NULL)
 				{
 					return (T*)m_attachedComponents[i];
 				}
 			}
 
-			std::cout << "could not find an component of that type" << std::endl;
+			std::cout << "could not find an component of that type: "<<typeid(T).name()  << std::endl;
 			return nullptr;
 		}
 
