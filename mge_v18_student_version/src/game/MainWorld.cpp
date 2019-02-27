@@ -22,6 +22,7 @@
 #include "mge\components\UISpriteRenderer.h"
 #include "game/components/GridComponent.h"
 #include"game/components/TileComponent.h"
+#include "game\HUD.h"
 
 MainWorld::MainWorld()
 {
@@ -70,6 +71,14 @@ void MainWorld::Initialize()
 	{
 		tiles[i]->GetGameObject()->Destroy();
 	}
+	
+	GameObject* canvas = Instantiate<GameObject>();
+	canvas->AddComponent<CanvasComponent>();
+	canvas->Load();
+	canvas->Awake();
+	canvas->Start();
+
+	HUD* hud = Instantiate<HUD>();
 }
 
 MainWorld::~MainWorld()

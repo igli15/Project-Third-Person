@@ -9,9 +9,15 @@ class HUDComponent : public Component
 public:
 	HUDComponent();
 	virtual ~HUDComponent();
-	void UpdateInkStatus(float currentInk, float maxInk);
+	void Start()override;
+	void UpdateInkStatus(float pCurrentInk, int pPlayer);
 	void UpdateTilesCovered(float percentageOfTilesCovered);
+	void SetMaxInk(float pMaxInk);
+
 private:
-	sf::Texture m_playerInk;
+	float m_currentInkPOne;
+	float m_currentInkPTwo;
+	float m_maxInk;
+	float m_tileCoverPercentage;
 };
 
