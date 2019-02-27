@@ -7,7 +7,6 @@ class PlayerMovementComponent :public Component
 {
 public:
 	enum Direction {LEFT,RIGHT,FORWARD,BACKWARD};
-	Direction currentDirection;
 
 	void Awake();
 	void Start();
@@ -16,16 +15,20 @@ public:
 
 	void SetPlayerNumber(int playerNumber);
 	void SetArenaData(glm::vec2 pos, glm::vec2 size);
+
+	Direction GetCurrentDirection();
+
 	PlayerMovementComponent();
 	virtual ~PlayerMovementComponent();
 private:
+	Direction m_currentDirection;
 	RigidBody* m_rigidbody;
 	int m_playerNumber;
 	glm::vec2 m_arenaPosition;
 	glm::vec2 m_arenaSize;
 
 	bool IsOutOfBorder();
-	void SetRotation(float angle);
+	void SetRotation(glm::vec3 worldDirection, glm::vec3 localDirection);
 
 };
 

@@ -26,27 +26,28 @@ void PlayerMovementComponent::Update(float timeStep)
 	}
 	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::D : sf::Keyboard::Right))
 	{
-		currentDirection = RIGHT;
+		m_currentDirection = RIGHT;
 		m_rigidbody->SetAcceleration(glm::vec2(speed, 0));
-		SetRotation(270);
+		SetRotation(glm::vec3(1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::A : sf::Keyboard::Left))
 	{
-		currentDirection = LEFT;
+		m_currentDirection = LEFT;
 		m_rigidbody->SetAcceleration(glm::vec2(-speed, 0));
-		SetRotation(90);
+		SetRotation(glm::vec3(-1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
 	{
-		currentDirection = BACKWARD;
+		m_currentDirection = BACKWARD;
 		m_rigidbody->SetAcceleration(glm::vec2(0, speed));
-		SetRotation(180);
+		SetRotation(glm::vec3(0, 0, 1), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::W : sf::Keyboard::Up))
 	{
-		currentDirection = FORWARD;
+		m_currentDirection = FORWARD;
 		m_rigidbody->SetAcceleration(glm::vec2(0, -speed));
-		SetRotation(0);
+
+		SetRotation(glm::vec3(0,0,-1),m_gameObject->transform->LocalTransform()[2]);
 	}
 	else
 	{
@@ -69,6 +70,11 @@ void PlayerMovementComponent::SetArenaData(glm::vec2 pos, glm::vec2 size)
 {
 	m_arenaPosition = pos;
 	m_arenaSize = size;
+}
+
+PlayerMovementComponent::Direction PlayerMovementComponent::GetCurrentDirection()
+{
+	return m_currentDirection;
 }
 
 PlayerMovementComponent::PlayerMovementComponent()
@@ -98,20 +104,14 @@ bool PlayerMovementComponent::IsOutOfBorder()
 	return false;
 }
 
-void PlayerMovementComponent::SetRotation(float angle)
+void PlayerMovementComponent::SetRotation(glm::vec3 worldDirection, glm::vec3 localDirection)
 {
 	//COMPARE LEFT TO LEFT
 	//RIGHT TO RIGHT
 	//UP TO UP
-	
-	glm::vec3 worldForward = glm::vec3(0,0, -1);
-	glm::vec3 localForward =  m_gameObject->transform->LocalTransform()[2];
 
-	float currentAngle = glm::degrees( glm::acos(glm::dot(worldForward, localForward)) );
-	if (angle == currentAngle) return;
-	m_gameObject->transform->Rotate(glm::radians(angle - currentAngle), glm::vec3(0, 1, 0));
+	float currentAngle = glm::degrees( glm::acos(glm::dot(worldDirection, localDirection)) );
 
-	std::cout <<std::endl<< "CurrentAngle: " << currentAngle << std::endl;
-	std::cout << "TargetAngle : " << angle << std::endl;
-	std::cout << "ROTATION : " << angle - currentAngle << std::endl;
+	m_gameObject->transform->Rotate(glm::radians(-currentAngle), glm::vec3(0, 1, 0));
+
 }
