@@ -15,7 +15,8 @@ meshes =
 	["cylinderMesh"] = meshesLoadPath.."cylinder_smooth.obj",
 	--["goodBoyMesh"] = meshesLoadPath.."goodBoy.obj",
 	["model"] = meshesLoadPath.."modelMesh.obj",
-	["Cube"] = meshesLoadPath.."tile_test.obj",
+	["Cube"] = meshesLoadPath.."tile.obj",
+	
 	["Sphere"] = meshesLoadPath.."sphere_smooth.obj",
 }
 
@@ -29,7 +30,8 @@ diffuseTextures =
 	["brickWall"] = texturesLoadPath.."wall.png",
 	["goodBoyDiffuse"] = texturesLoadPath.."goodBoyDiffuse.png",
 	["lavaDiffuse"] = texturesLoadPath.."lavaDiffuse.jpg",
-	["iceDiffuse"] = texturesLoadPath.."iceDiffuse.jpg"
+	["iceDiffuse"] = texturesLoadPath.."iceDiffuse.jpg",
+	["neutralDiffuse"] = texturesLoadPath.."neutralDiffuse.jpg",
 	
 }
 
@@ -38,7 +40,7 @@ specularTextures =
 	["containerSpecular"] = texturesLoadPath.."container2_specular.png",
 	["buildingSpec"] = texturesLoadPath.."stuffSpec.png",
 	["lavaSpecular"] = texturesLoadPath.."lavaSpecular.jpg",
-	["iceSpecular"] = texturesLoadPath.."iceSpecular.jpg"
+	["iceSpecular"] = texturesLoadPath.."iceSpecular.jpg",
 }
 
 emissionTextures = 
@@ -60,7 +62,11 @@ normalMapTextures =
 sfmlTextures = 
 {
 	["brickTex"] = texturesLoadPath.."bricks.jpg",
-	["playerInk"] = texturesLoadPath.."playerInk.png",
+	["playerOneInkText"] = texturesLoadPath.."playerInkText.png",
+	["playerTwoInkText"] = texturesLoadPath.."playerInkText.png",
+	["inkPlayerOne"] = texturesLoadPath.."inkBarOne.png",
+	["inkPlayerTwo"] = texturesLoadPath.."inkBarTwo.png",
+	["inkBarOutlines"] = texturesLoadPath.."inkBarOutlines.png",
 }
 
 --Yes sound and music are 2 diffrent things...
@@ -69,6 +75,10 @@ sfmlTextures =
 sounds = 
 {
 	["cannonShot"] = musicLoadPath.."cannonShot.wav",
+	["iceAttack"] = musicLoadPath.."IceAttack.wav",
+	["iceDeath"] = musicLoadPath.."IceDeath.wav",
+	["lavaAttack"] = musicLoadPath.."LavaAttack.wav",
+	["lavaDeath"] = musicLoadPath.."LavaDeath.wav",
 }
 
 musics =

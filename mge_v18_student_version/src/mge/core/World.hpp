@@ -29,11 +29,12 @@ class World : public GameObject
 		T* Instantiate()
 		{
 			T* gameObject = new T;
-		
+			add(gameObject);
+
 			gameObject->Load();
 			gameObject->Awake();
 			gameObject->Start();
-			add(gameObject);
+			
 			return gameObject;
 		}
 

@@ -181,10 +181,10 @@
     <ClInclude Include="..\src\game\components\PlayerMovementComponent.h">
       <Filter>game\components</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\game\components\ShootingComponent.h">
-      <Filter>game\components</Filter>
+    <ClInclude Include="..\src\game\HUD.h">
+      <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\game\components\PlayerDataComponent.h">
+    <ClInclude Include="..\src\game\components\HUDComponent.h">
       <Filter>game\components</Filter>
     </ClInclude>
   </ItemGroup>
@@ -330,10 +330,10 @@
     <ClCompile Include="..\src\game\components\PlayerMovementComponent.cpp">
       <Filter>game\components</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\game\components\ShootingComponent.cpp">
-      <Filter>game\components</Filter>
+    <ClCompile Include="..\src\game\HUD.cpp">
+      <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\game\components\PlayerDataComponent.cpp">
+    <ClCompile Include="..\src\game\components\HUDComponent.cpp">
       <Filter>game\components</Filter>
     </ClCompile>
   </ItemGroup>

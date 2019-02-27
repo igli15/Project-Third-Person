@@ -12,16 +12,25 @@ class HUD : public GameObject
 public:
 	HUD();
 	virtual ~HUD();
-	virtual void Load() override;
-	virtual void Awake() override;
-	virtual void Start() override;
-	virtual void Update(float pStep) override;
+	 void Load() override;
+	 void Awake() override;
+	 void Start() override;
+	 void Update(float pStep) override;
 	virtual void OnDestroy() override;
-	UISpriteRenderer* playerInkSprite;
+	float GetMirroredPostionX(float xPosition, UISpriteRenderer* sprite);
+	//Sprites
+	UISpriteRenderer* playerOneInkSpriteText;
+	UISpriteRenderer*playerTwoInkSpriteText;
+	UISpriteRenderer*playerOneInkSpriteBar;
+	UISpriteRenderer*playerTwoInkSpriteBar;
+	UISpriteRenderer* inkBarOutlinesPlayerOne;
+	UISpriteRenderer* inkBarOutlinesPlayerTwo;
 
 private:
-	sf::Texture * m_playerInk;
-	sf::Text * m_playerOneInk;
-	sf::Text * m_playerTwoInk;
+	sf::Texture * m_playerOneInkText;
+	sf::Texture * m_playerTwoInkText;
+	sf::Texture * m_inkBarPlayerOne;
+	sf::Texture * m_inkBarPlayerTwo;
+	sf::Texture * m_inkBarOutlines;
 };
 
