@@ -41,7 +41,8 @@ void CircleCollider::Parse(rapidxml::xml_node<>* compNode)
 		}
 		else if (attributeName == "collisionLayer")
 		{
-			m_collisionLayerTag = a->value();
+			std::string value = a->value();
+			m_collisionLayerTag = value;
 		}
 	}
 }

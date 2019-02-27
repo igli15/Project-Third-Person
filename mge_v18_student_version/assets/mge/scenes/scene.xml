@@ -7,15 +7,6 @@
   <GameObject name="Grid" position="(0.0, 0.0, 0.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
     <Components>
       <GridComponent gridSizeX="30" gridSizeY="20" tileRadius="5" />
-      <RigidBodyComponent friction="0" maxSpeed="0.5" bounciness="0.1" />
-      <CircleCollider radius="1" collisionLayer="a">
-        <CollisionFilters>
-          <a />
-          <b />
-          <c />
-          <d />
-        </CollisionFilters>
-      </CircleCollider>
     </Components>
     <GameObject name="Cube" position="(0.0, 0.0, 0.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
       <Components>
@@ -3638,19 +3629,243 @@
   <GameObject name="EventSystem" position="(0.0, 0.0, 0.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
     <Components />
   </GameObject>
-  <GameObject name="Player" position="(140.0, 16.0, 110.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+  <GameObject name="Player" position="(140.0, 16.0, 110.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 20.0, 10.0)" mesh="Cube">
     <Components>
       <RigidBodyComponent friction="0" maxSpeed="0.5" bounciness="0.1" />
       <PlayerData playerNumber="2" />
       <PlayerMovement speed="0.1" />
-      <CircleCollider radius="1" collisionLayer="player">
+      <CircleCollider radius="10" collisionLayer="player">
         <CollisionFilters>
           <player />
           <wall />
         </CollisionFilters>
       </CircleCollider>
-      <ShootingComponent shootingRange="3" />
       <TextureMaterial materialName="carTex" shininess="2" emissionScale="0" diffuseTexture="carTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <ShootingComponent shootingRange="3" />
+    </Components>
+  </GameObject>
+  <GameObject name="Cube" position="(196.0, 28.0, 120.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (1)" position="(206.0, 28.0, 120.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (2)" position="(216.0, 28.0, 120.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (3)" position="(226.0, 28.0, 120.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (4)" position="(236.0, 28.0, 120.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (5)" position="(246.0, 28.0, 120.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (6)" position="(256.0, 28.0, 120.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (7)" position="(196.0, 28.0, 39.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (8)" position="(206.0, 28.0, 39.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (9)" position="(216.0, 28.0, 39.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (10)" position="(226.0, 28.0, 39.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (11)" position="(236.0, 28.0, 39.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (12)" position="(246.0, 28.0, 39.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (13)" position="(256.0, 28.0, 39.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (14)" position="(32.0, 28.0, 119.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (15)" position="(42.0, 28.0, 119.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (16)" position="(52.0, 28.0, 119.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (17)" position="(62.0, 28.0, 119.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (18)" position="(72.0, 28.0, 119.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (19)" position="(82.0, 28.0, 119.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (20)" position="(92.0, 28.0, 119.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (21)" position="(32.0, 28.0, 37.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (22)" position="(42.0, 28.0, 37.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (23)" position="(52.0, 28.0, 37.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (24)" position="(62.0, 28.0, 37.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (25)" position="(72.0, 28.0, 37.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (26)" position="(82.0, 28.0, 37.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
+    </Components>
+  </GameObject>
+  <GameObject name="Cube (27)" position="(92.0, 28.0, 37.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 10.0, 10.0)" mesh="Cube">
+    <Components>
+      <TextureMaterial materialName="brickMat" shininess="2" emissionScale="0.43" diffuseTexture="brickTex" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      <RectangleCollider width="10" height="10" collisionLayer="wall">
+        <CollisionFilters />
+      </RectangleCollider>
     </Components>
   </GameObject>
 </root>

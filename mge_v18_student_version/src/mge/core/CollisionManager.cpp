@@ -16,8 +16,10 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 	bool output = false;
 	for (int colliderIndex = m_colliders.size() - 1; colliderIndex >= 0; --colliderIndex)
 	{
+		//std::cout << std::endl;
 		for (int i = 0; i < filters.size(); i++)
 		{
+			//std::cout << "filter: " << filters[i] << ":"<< m_colliders[colliderIndex]->GetCollisionLayerTag() <<std::endl;
 			if (//Comparing curretn filter with layer of object	
 				m_colliders[colliderIndex]->GetCollisionLayerTag() == filters[i]  && 
 				//Check if object isnt checking itself
@@ -30,7 +32,7 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 					//Calling RigidBody to resolve collision
 					collisionInfo->collider = m_colliders[colliderIndex]->GetGameObject();
 					targetCollider->GetGameObject()->GetRigidBody()->OnCollisionStay(collisionInfo);
-					output= true;
+					return true;
 				}
 				
 			}

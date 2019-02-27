@@ -80,15 +80,13 @@ void MainWorld::Initialize()
 	//levelGrid->GetTilePlayerIsOn(glm::vec3(15, 0, 15))->GetGameObject()->Destroy();
 
 	//to test if neighbour tile works..
-	/*
-	auto tiles = levelGrid->GetNeighbourTiles(glm::vec3(15, 0, 15),4,true,false);
+	
+	auto tiles = levelGrid->GetNeighbourTiles(glm::vec3(15, 0, 15),4,true,true);
 
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
 		tiles[i]->GetGameObject()->Destroy();
 	}
-	*/
-
 
 	//player1->GetComponent<PlayerMovementComponent>()->SetArenaData(glm::vec2(300, -200), glm::vec2(300, 200));
 }

@@ -5,7 +5,7 @@
 void ColliderComponent::Awake()
 {
 	AbstractGame::Instance()->GetCollisionManager()->AddCollider(this);
-	SetCollisionLayerTag("default");
+	
 
 	//AddCollisionFilterTag("default");
 

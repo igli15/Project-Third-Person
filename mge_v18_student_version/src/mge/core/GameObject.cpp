@@ -85,6 +85,7 @@ AbstractMaterial * GameObject::getMaterial() const
 
 void GameObject::Destroy()
 {
+	std::cout << "SADSASDAASDASDADSADDA" << std::endl;
 	m_markedForDestruction = true;
 	OnDestroy();
 }

@@ -32,7 +32,7 @@ public:
 protected:
 	//In which layer is collider ex( Wall in layer Obstacle )
 	//Only one layer per collider
-	std::string m_collisionLayerTag; 
+	std::string m_collisionLayerTag = "default"; 
 	//With what collider collides ex(Player has filter Bullets, so player will detect all collisions with Bullets)
 	//You can add multiple collision filters to collider
 	std::vector<std::string> m_collisionFilterTags;
