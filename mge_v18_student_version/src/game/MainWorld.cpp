@@ -49,7 +49,7 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 	{
 		newNode->AddComponent<TileComponent>()->Parse(componentNode);
 		levelGrid->AddTile(newNode->GetComponent<TileComponent>());
-		std::cout << "Added Tile At Pos: " << newNode->transform->WorldPosition()<< std::endl;
+		//std::cout << "Added Tile At Pos: " << newNode->transform->WorldPosition()<< std::endl;
 	}
 }
 

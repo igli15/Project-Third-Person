@@ -15,7 +15,7 @@ meshes =
 	["cylinderMesh"] = meshesLoadPath.."cylinder_smooth.obj",
 	--["goodBoyMesh"] = meshesLoadPath.."goodBoy.obj",
 	["model"] = meshesLoadPath.."modelMesh.obj",
-	["Cube"] = meshesLoadPath.."cube_smooth.obj",
+	["Cube"] = meshesLoadPath.."tile_test.obj",
 	["Sphere"] = meshesLoadPath.."sphere_smooth.obj",
 }
 

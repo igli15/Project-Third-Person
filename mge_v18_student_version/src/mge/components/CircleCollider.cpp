@@ -17,6 +17,17 @@ void CircleCollider::DetectCollision()
 
 void CircleCollider::Parse(rapidxml::xml_node<>* compNode)
 {
+	if (strcmp(compNode->first_node()->name(), "CollisionFilters") == 0)
+	{
+		rapidxml::xml_node<>* filterNode = compNode->first_node();
+		for (rapidxml::xml_node<>* filter = filterNode->first_node(); filter != nullptr; filter = filter->next_sibling())
+		{
+			//std::cout << filter->name() << std::endl;
+			AddCollisionFilterTag(filter->name());
+			std::cout << m_collisionFilterTags[m_collisionFilterTags.size() - 1] << std::endl;
+		}
+	}
+
 	for (rapidxml::xml_attribute<>* a = compNode->first_attribute();
 		a != nullptr;
 		a = a->next_attribute())
@@ -27,6 +38,10 @@ void CircleCollider::Parse(rapidxml::xml_node<>* compNode)
 		if (attributeName == "radius")
 		{
 			radius = strtof(a->value(), 0);
+		}
+		else if (attributeName == "collisionLayer")
+		{
+			m_collisionLayerTag = a->value();
 		}
 	}
 }

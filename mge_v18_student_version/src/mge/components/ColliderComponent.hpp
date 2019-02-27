@@ -29,7 +29,7 @@ public:
 	virtual CollisionInfo* IsColliding(CircleCollider* circleCollider) = 0; // Circlee
 	virtual CollisionInfo* IsColliding(RectangleCollider* rectangleCollider) = 0; // Rectangle
 	int id = 0;
-private:
+protected:
 	//In which layer is collider ex( Wall in layer Obstacle )
 	//Only one layer per collider
 	std::string m_collisionLayerTag; 

@@ -15,8 +15,9 @@ RigidBody::~RigidBody()
 
 void RigidBody::Start()
 {
+	Component::Start();
 	RigidBody* rb= m_gameObject->GetRigidBody();
-	m_collider = m_gameObject->GetComponent<CircleCollider>();
+	m_collider = m_gameObject->GetComponent<ColliderComponent>();
 }
 
 void RigidBody::Update(float timeStep)
@@ -35,7 +36,7 @@ void RigidBody::Update(float timeStep)
 	glm::vec3 velocity3d = glm::vec3(velocity.x, 0, velocity.y);
 
 	m_gameObject->transform->SetLocalPosition(m_gameObject->transform->LocalPosition() + velocity3d);
-	m_collider->DetectCollision();
+	if(m_collider!= nullptr)m_collider->DetectCollision();
 
 }
 
