@@ -1,5 +1,5 @@
 #include "Player.h"
-
+#include "game/components/ShootingComponent.h"
 
 
 Player::Player()
@@ -13,17 +13,19 @@ Player::~Player()
 
 void Player::Load()
 {
+	GameObject::Load();
 	m_circleCollider = AddComponent<CircleCollider>();
 	m_rigidBody= AddComponent<RigidBody>();
 	SetRigidBody(m_rigidBody);
 	m_movementComponent = AddComponent<PlayerMovementComponent>();
 	m_meshRenderer = AddComponent<MeshRenderer>();
-
+	AddComponent<ShootingComponent>();
 	
 }
 
 void Player::Start()
 {
+	GameObject::Start();
 	SetMeshRenderer(m_meshRenderer);
 
 	m_movementComponent->SetPlayerNumber(1);

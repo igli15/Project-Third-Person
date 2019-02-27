@@ -22,6 +22,8 @@
 #include "mge\components\UISpriteRenderer.h"
 #include "game/components/GridComponent.h"
 #include"game/components/TileComponent.h"
+#include "game/Player.h"
+#include "game/components/ShootingComponent.h"
 
 MainWorld::MainWorld()
 {
@@ -64,15 +66,31 @@ void MainWorld::Initialize()
 	//levelGrid->GetTilePlayerIsOn(glm::vec3(15, 0, 15))->GetGameObject()->Destroy();
 
 	//to test if neighbour tile works..
+	/*
 	auto tiles = levelGrid->GetNeighbourTiles(glm::vec3(15, 0, 15),4,true,false);
 
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
 		tiles[i]->GetGameObject()->Destroy();
 	}
+	*/
+
+	Player* player1 = Instantiate<Player>();
+	player1->transform->Translate(glm::vec3(10, 6, 10));
+	player1->transform->Scale(glm::vec3(5, 5, 5));
+	player1->GetMeshRenderer()->SetMesh(AbstractGame::Instance()->GetResourceManager()->GetMesh("cylinderMesh"));
+	player1->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("carMat"));
+	player1->SetPlayerNumber(1);
+	player1->GetComponent<ShootingComponent>()->SetGrid(levelGrid);
+	//player1->GetComponent<PlayerMovementComponent>()->SetArenaData(glm::vec2(300, -200), glm::vec2(300, 200));
 }
 
 MainWorld::~MainWorld()
 {
 
+}
+
+GridComponent * MainWorld::GetGrid() const
+{
+	return levelGrid;
 }
