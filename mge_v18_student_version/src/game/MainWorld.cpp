@@ -24,6 +24,7 @@
 #include"game/components/TileComponent.h"
 #include "game/Player.h"
 #include "game/components/ShootingComponent.h"
+#include "HUD.h"
 
 MainWorld::MainWorld()
 {
@@ -88,6 +89,10 @@ void MainWorld::Initialize()
 		tiles[i]->GetGameObject()->Destroy();
 	}
 
+	GameObject* canvas = Instantiate<GameObject>();
+	SetCanvas(canvas->AddComponent<CanvasComponent>());
+
+	HUD* hud = Instantiate<HUD>();
 	//player1->GetComponent<PlayerMovementComponent>()->SetArenaData(glm::vec2(300, -200), glm::vec2(300, 200));
 }
 

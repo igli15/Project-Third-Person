@@ -33,9 +33,7 @@ void UISpriteRenderer::DrawSprite(sf::RenderWindow* window)
 	glActiveTexture(GL_TEXTURE0);
 
 	if (m_sprite != nullptr)
-	{
-		std::cout << "drawing" << std::endl;
-		
+	{	
 		window->pushGLStates();
 		window->draw(*m_sprite);
 		window->popGLStates();
@@ -109,7 +107,6 @@ void UISpriteRenderer::InitRenderingQuad()
 
 void UISpriteRenderer::Awake()
 {
-	std::cout << "Awake" << std::endl;
 	m_gameObject->GetWorld()->GetCanvasComponent()->AddSpriteRenderer(this);
 }
 
@@ -130,7 +127,6 @@ sf::Sprite* UISpriteRenderer::ApplyTexture(sf::Texture * texture)
 			m_texture = texture;
 			m_sprite = new sf::Sprite();
 			m_sprite->setTexture(*m_texture);
-			std::cout << "adasdwejfoiref" << std::endl;
 			//we might wanna check /apply here for parent position
 			return m_sprite;
 		}
