@@ -33,7 +33,15 @@ void ShootingComponent::Update(float timeStep)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
 	{
 		ShootInk(m_shootingRange);
+
+		std::cout << "PlayerPos: " << GetGameObject()->transform->LocalPosition() << std::endl;
+
+		std::cout << "TileIndex: " << m_gridComponent->GetTilePlayerIsOn(GetGameObject()->transform->LocalPosition())->GridPos();
+
+		std::cout << "TilePosition: " << m_gridComponent->GetTilePlayerIsOn(GetGameObject()->transform->LocalPosition())->GetGameObject()->transform->WorldPosition();
 	}
+
+	
 }
 
 void ShootingComponent::Parse(rapidxml::xml_node<>* compNode)

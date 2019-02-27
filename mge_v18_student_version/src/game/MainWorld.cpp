@@ -58,6 +58,7 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 	}
 	else if (strcmp(componentNode->name(), "PlayerData") == 0)
 	{
+		std::cout << "Player Pos is:  " << newNode->transform->LocalPosition() << std::endl;
 		newNode->AddComponent<PlayerDataComponent>()->Parse(componentNode);
 	}
 	else if (strcmp(componentNode->name(), "ShootingComponent") == 0)

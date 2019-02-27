@@ -3609,13 +3609,13 @@
       </Components>
     </GameObject>
   </GameObject>
+  <GameObject name="MGECAM" position="(126.0, 228.0, 94.0)" rotation="(0.0, 0.7, 0.7, 0.0)" scale="(1.0, 1.0, 1.0)">
+    <Components>
+      <CameraComponent FOV="60" aspectRatio="1.777778" nearClipPlane="0.1" farClipPlane="1000" />
+    </Components>
+  </GameObject>
   <GameObject name="Main Camera" position="(126.0, 228.0, 94.0)" rotation="(0.7, 0.0, 0.0, 0.7)" scale="(1.0, 1.0, 1.0)">
     <Components />
-    <GameObject name="MGECAM" position="(0.0, 0.0, 0.0)" rotation="(0.0, 1.0, 0.0, 0.0)" scale="(1.0, 1.0, 1.0)">
-      <Components>
-        <CameraComponent FOV="60" aspectRatio="1.777778" nearClipPlane="0.1" farClipPlane="1000" />
-      </Components>
-    </GameObject>
   </GameObject>
   <GameObject name="Canvas" position="(-960.0, 540.0, 0.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
     <Components />
@@ -3629,7 +3629,7 @@
   <GameObject name="EventSystem" position="(0.0, 0.0, 0.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)">
     <Components />
   </GameObject>
-  <GameObject name="Player" position="(140.0, 16.0, 110.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(10.0, 20.0, 10.0)" mesh="Cube">
+  <GameObject name="Player" position="(140.0, 20.0, 110.0)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(5.0, 10.0, 5.0)" mesh="cylinderMesh">
     <Components>
       <RigidBodyComponent friction="0" maxSpeed="0.5" bounciness="0.1" />
       <PlayerData playerNumber="2" />

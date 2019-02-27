@@ -92,8 +92,8 @@ TileComponent * GridComponent::GetTileAt(int x, int y)
 
 TileComponent * GridComponent::GetTilePlayerIsOn(glm::vec3 playerPos)
 {
-	int x = playerPos.x / (m_tileRadius * 2);
-	int y = playerPos.z / (m_tileRadius * 2);
+	int x = (playerPos.x + m_tileRadius) / (m_tileRadius * 2.0f);
+	int y = (playerPos.z+ m_tileRadius) / (m_tileRadius * 2.0f);
 
 	return GetTileAt(x,y);
 }
