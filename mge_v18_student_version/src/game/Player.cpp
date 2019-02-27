@@ -20,12 +20,15 @@ void Player::Load()
 	m_movementComponent = AddComponent<PlayerMovementComponent>();
 	m_meshRenderer = AddComponent<MeshRenderer>();
 	AddComponent<ShootingComponent>();
+	AddComponent<PlayerDataComponent>();
 	
 }
 
 void Player::Start()
 {
 	GameObject::Start();
+	setName("player");
+
 	SetMeshRenderer(m_meshRenderer);
 
 	m_movementComponent->SetPlayerNumber(1);
