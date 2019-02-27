@@ -42,7 +42,28 @@ void ShootingComponent::Parse(rapidxml::xml_node<>* compNode)
 
 void ShootingComponent::ShootInk(float tileAmount)
 {
-	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), tileAmount, false, true);
+	bool horizontalShooting = false;
+	bool verticallShooting = false;
+	switch (m_playerMovementComponent->GetCurrentDirection())
+	{
+	case PlayerMovementComponent::FORWARD:
+		verticallShooting = true;
+		break;
+	case PlayerMovementComponent::BACKWARD:
+		verticallShooting = true;
+		tileAmount *= -1;
+		break;
+	case PlayerMovementComponent::LEFT:
+		horizontalShooting = true;
+		tileAmount *= -1;
+		break;
+	case PlayerMovementComponent::RIGHT:
+		horizontalShooting = true;
+		break;
+	default:
+		break;
+	}
+	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), tileAmount, horizontalShooting, verticallShooting);
 	
 	for (size_t i = 0; i < tiles.size(); i++)
 	{

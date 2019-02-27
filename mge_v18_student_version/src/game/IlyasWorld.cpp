@@ -77,6 +77,7 @@ void IlyasWorld::Initialize()
 	player1->setMaterial(carMat);
 	player1->SetPlayerNumber(1);
 	player1->GetComponent<PlayerMovementComponent>()->SetArenaData(glm::vec2(30, -20), glm::vec2(60, 40));
+	player1->GetComponent<PlayerDataComponent>()->SetCurrentPositionAsSpawnPosisition();
 	player1->add(playerDirection);
 
 
@@ -86,6 +87,7 @@ void IlyasWorld::Initialize()
 	player2->setMaterial(carMat);
 	player2->SetPlayerNumber(2);
 	player2->GetComponent<PlayerMovementComponent>()->SetArenaData(glm::vec2(30, -20), glm::vec2(60, 40));
+	player2->GetComponent<PlayerDataComponent>()->SetCurrentPositionAsSpawnPosisition();
 	/*
 	//Test object 2
 	GameObject* cylinder2 = _world->Instantiate<GameObject>();
