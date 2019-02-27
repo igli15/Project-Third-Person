@@ -57,6 +57,14 @@ void World::ClearMarkedGameObject()
 		{
 			InnerDestroy(_children[i]);
 		}
+		
+		for (int j = _children[i]->getChildCount() - 1; j >= 0; --j)
+		{
+			if (_children[i]->getChildAt(j)->IsMarkedForDestruction())
+			{
+				InnerDestroy(_children[i]->getChildAt(j));
+			}
+		}
 	}
 }
 

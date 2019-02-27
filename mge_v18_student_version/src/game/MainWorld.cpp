@@ -81,13 +81,14 @@ void MainWorld::Initialize()
 	//levelGrid->GetTilePlayerIsOn(glm::vec3(15, 0, 15))->GetGameObject()->Destroy();
 
 	//to test if neighbour tile works..
-	
-	auto tiles = levelGrid->GetNeighbourTiles(glm::vec3(15, 0, 15),4,true,true);
+	/*
+	auto tiles = levelGrid->GetNeighbourTiles(glm::vec3(100, 0, 100),4,false,false);
 
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
 		tiles[i]->GetGameObject()->Destroy();
 	}
+	*/
 
 	GameObject* canvas = Instantiate<GameObject>();
 	SetCanvas(canvas->AddComponent<CanvasComponent>());

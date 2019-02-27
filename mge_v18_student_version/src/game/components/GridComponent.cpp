@@ -124,7 +124,7 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 			}
 			else if (!positiveDir && currentTile->GridPos().y - i >= 0)
 			{
-				tiles.push_back(GetTileAt(currentTile->GridPos().x , currentTile->GridPos().y - 1));
+				tiles.push_back(GetTileAt(currentTile->GridPos().x , currentTile->GridPos().y - i));
 			}
 		}
 	}
