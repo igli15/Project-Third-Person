@@ -2,6 +2,9 @@
 #include "mge/core/XMLComponent.h"
 #include "mge/core/CollisionInfo.h"
 
+class PlayerMovementComponent;
+class ShootingComponent;
+
 class PlayerDataComponent : public XMLComponent
 {
 public:
@@ -24,6 +27,7 @@ private:
 	int m_playerNumber;
 	//spawn position will be taken as position when Start() was called
 	glm::vec3 m_spawnPosition;
-
+	PlayerMovementComponent* m_playerMovement;
+	ShootingComponent* m_shootingComponent;
 };
 

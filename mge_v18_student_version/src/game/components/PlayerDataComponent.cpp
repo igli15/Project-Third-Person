@@ -17,8 +17,12 @@ PlayerDataComponent::~PlayerDataComponent()
 void PlayerDataComponent::Start()
 {
 	m_spawnPosition = m_gameObject->transform->LocalPosition();
-	m_gameObject->GetComponent<PlayerMovementComponent>()->SetPlayerNumber(m_playerNumber);
-	m_gameObject->GetComponent<ShootingComponent>()->SetPlayerNumber(m_playerNumber);
+	m_playerMovement = m_gameObject->GetComponent<PlayerMovementComponent>();
+	m_playerMovement->SetPlayerNumber(m_playerNumber);
+
+	m_shootingComponent = m_gameObject->GetComponent<ShootingComponent>();
+	m_shootingComponent->SetPlayerNumber(m_playerNumber);
+
 	HUD::GetHudComponent()->SetMaxInk(100);
 }
 
@@ -49,6 +53,8 @@ int PlayerDataComponent::GetPlayerNumber()
 void PlayerDataComponent::RespawnPlayer()
 {
 	std::cout << "Respawning player to " << m_spawnPosition << std::endl;
+	m_shootingComponent->ResetInkLevel();
+	
 	m_gameObject->transform->SetLocalPosition(m_spawnPosition);
 }
 
