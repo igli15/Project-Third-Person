@@ -39,6 +39,8 @@ private:
 	float m_minRange = 2;
 	float m_maxRange = 6;
 
+	float m_rateOfGainInk = 0.1f;
+
 	int m_playerNumber = 1;
 	float m_shootingRange = 2;
 

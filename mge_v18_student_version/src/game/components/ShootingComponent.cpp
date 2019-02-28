@@ -35,10 +35,13 @@ void ShootingComponent::Update(float timeStep)
 	OnKeyPressed(sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace)));
 	if (m_isChraging)
 	{
+		//Update HUD info
 		HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
+
+		//increase ammo untill it riches maxRange
 		if (m_currentAmmo >= m_maxRange) return;
-		m_currentAmmo+=0.1f;
-		m_inkLevel-=0.1f;
+		m_currentAmmo+= m_rateOfGainInk;
+		m_inkLevel-= m_rateOfGainInk;
 	}
 }
 
@@ -80,13 +83,32 @@ void ShootingComponent::ShootInk(float tileAmount)
 	default:
 		break;
 	}
-	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), tileAmount, horizontalShooting, negtiveDirection);
+	/*
+	glm::vec3 otherPlayerPos;
+	GameObject* enemy;
+	if (m_playerNumber == 1)
+	{
+		enemy = dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetPlayer(1);
+		otherPlayerPos = enemy->transform->WorldPosition();
+	}
+	else
+	{
+		enemy = dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetPlayer(0);
+		otherPlayerPos = enemy->transform->WorldPosition();
+	}
+
+
+	//std::cout << m_gameObject->transform->WorldPosition() << " ==== " << otherPlayerPos << std::endl;
+
+	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->RespawnPlayer(); });
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
 		tiles[i]->GetGameObject()->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
 	}
 
 	tiles.clear();
+
+	*/
 
 }
 
@@ -130,8 +152,8 @@ void ShootingComponent::OnKeyEnter()
 		//Dont charge if player doesnt have enough ink
 		if (m_inkLevel - m_minRange < 0) return;
 		std::cout << "	Start Charging" << std::endl;
-		m_currentAmmo = m_minRange-0.1f;
-		m_inkLevel -= m_minRange-0.1f;
+		m_currentAmmo = m_minRange- m_rateOfGainInk;
+		m_inkLevel -= m_minRange- m_rateOfGainInk;
 
 		m_isChraging = true;
 	}
