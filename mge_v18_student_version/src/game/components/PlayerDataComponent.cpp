@@ -1,5 +1,8 @@
 #include "PlayerDataComponent.h"
-
+#include "HUDComponent.h"
+#include "PlayerMovementComponent.h"
+#include "ShootingComponent.h"
+#include "../HUD.h"
 
 
 PlayerDataComponent::PlayerDataComponent()
@@ -14,6 +17,9 @@ PlayerDataComponent::~PlayerDataComponent()
 void PlayerDataComponent::Start()
 {
 	m_spawnPosition = m_gameObject->transform->LocalPosition();
+	m_gameObject->GetComponent<PlayerMovementComponent>()->SetPlayerNumber(m_playerNumber);
+	m_gameObject->GetComponent<ShootingComponent>()->SetPlayerNumber(m_playerNumber);
+	HUD::GetHudComponent()->SetMaxInk(100);
 }
 
 void PlayerDataComponent::Update(float timeStep)
@@ -23,7 +29,7 @@ void PlayerDataComponent::Update(float timeStep)
 void PlayerDataComponent::OnCollision(CollisionInfo * collisionInfo)
 {
 	//Only objects with rigidBody are players
-	if (collisionInfo->collider->getName()=="player")
+	if (collisionInfo->collider->getName() == "player")
 	{
 		collisionInfo->collider->GetComponent<PlayerDataComponent>()->RespawnPlayer();
 		RespawnPlayer();
@@ -67,6 +73,7 @@ void PlayerDataComponent::Parse(rapidxml::xml_node<>* compNode)
 		if (attributeName == "playerNumber")
 		{
 			m_playerNumber = (int)strtof(a->value(), 0);
+
 		}
 
 	}

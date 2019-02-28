@@ -45,7 +45,7 @@ void PlayerMovementComponent::Update(float timeStep)
 		m_currentDirection = FORWARD;
 		m_rigidbody->SetAcceleration(glm::vec2(0, m_speed));
 
-		SetRotation(glm::vec3(0,0,-1),m_gameObject->transform->LocalTransform()[2]);
+		SetRotation(glm::vec3(0, 0, -1), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else
 	{
@@ -103,8 +103,8 @@ bool PlayerMovementComponent::IsOutOfBorder()
 	std::cout << "Arena Up: " << m_arenaPosition.y + m_arenaSize.y << std::endl;
 	std::cout << "Arena Down: " << m_arenaPosition.y << std::endl;
 	*/
-	if (newPos.x<m_arenaPosition.x-m_arenaSize.x || newPos.x>m_arenaPosition.x) return true;
-	if (newPos.y<m_arenaPosition.y|| newPos.y > m_arenaPosition.y+m_arenaSize.y) return true;
+	if (newPos.x<m_arenaPosition.x - m_arenaSize.x || newPos.x>m_arenaPosition.x) return true;
+	if (newPos.y<m_arenaPosition.y || newPos.y > m_arenaPosition.y + m_arenaSize.y) return true;
 
 	return false;
 }
@@ -115,7 +115,7 @@ void PlayerMovementComponent::SetRotation(glm::vec3 worldDirection, glm::vec3 lo
 	//RIGHT TO RIGHT
 	//UP TO UP
 
-	float currentAngle = glm::degrees( glm::acos(glm::dot(worldDirection, glm::normalize(localDirection))) );
+	float currentAngle = glm::degrees(glm::acos(glm::dot(worldDirection, glm::normalize(localDirection))));
 	//std::cout << "ANGLE: " << currentAngle << std::endl;
 	m_gameObject->transform->Rotate(glm::radians(-currentAngle), glm::vec3(0, 1, 0));
 

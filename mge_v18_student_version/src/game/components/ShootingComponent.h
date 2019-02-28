@@ -17,13 +17,17 @@ public:
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 
 	void ShootInk(float tileAmount);
-
+	void SetPlayerNumber(int playerNumber);
 	void SetGrid(GridComponent* grid);
 
 private:
 	PlayerMovementComponent* m_playerMovementComponent;
 	GridComponent* m_gridComponent;
 
+	float m_inkMaxLevel = 100;
+	float m_inkLevel = 100;
+
+	int m_playerNumber = 1;
 	float m_shootingRange = 2;
 };
 
