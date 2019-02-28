@@ -5,6 +5,8 @@
 #include "mge\components\UISpriteRenderer.h"
 #include "mge\core\ResourceManager.h"
 
+HUDComponent* HUD::m_hudComponent;
+
 HUD::HUD()
 {
 
@@ -13,13 +15,13 @@ HUD::HUD()
 
 HUD::~HUD()
 {
-	
+
 }
 
 void HUD::Load()
 {
 	GameObject::Load();
-	this->AddComponent<HUDComponent>();
+	m_hudComponent = this->AddComponent<HUDComponent>();
 
 	//Get SFML Textures
 	m_playerOneInkText = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("playerOneInkText");
@@ -27,7 +29,7 @@ void HUD::Load()
 	m_inkBarPlayerOne = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkPlayerOne");
 	m_inkBarPlayerTwo = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkPlayerTwo");
 	m_inkBarOutlines = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkBarOutlines");
-	
+
 	//Create Sprite and assign Texture to Sprite
 	playerOneInkSpriteText = AddComponent<UISpriteRenderer>();
 	playerOneInkSpriteText->ApplyTexture(m_playerOneInkText);
@@ -51,11 +53,11 @@ void HUD::Load()
 
 	inkBarOutlinesPlayerOne = AddComponent<UISpriteRenderer>();
 	inkBarOutlinesPlayerOne->ApplyTexture(m_inkBarOutlines);
-	inkBarOutlinesPlayerOne->GetSprite()->setPosition(playerBarPosition.x - 0.9f, playerBarPosition.y-1.1f);
+	inkBarOutlinesPlayerOne->GetSprite()->setPosition(playerBarPosition.x - 0.9f, playerBarPosition.y - 1.1f);
 
 	inkBarOutlinesPlayerTwo = AddComponent<UISpriteRenderer>();
 	inkBarOutlinesPlayerTwo->ApplyTexture(m_inkBarOutlines);
-	inkBarOutlinesPlayerTwo->GetSprite()->setPosition(GetMirroredPostionX(playerBarPosition.x+0.9f, playerTwoInkSpriteBar), playerBarPosition.y- 1.1f);
+	inkBarOutlinesPlayerTwo->GetSprite()->setPosition(GetMirroredPostionX(playerBarPosition.x + 0.9f, playerTwoInkSpriteBar), playerBarPosition.y - 1.1f);
 }
 
 void HUD::Awake()
@@ -67,7 +69,7 @@ void HUD::Start()
 {
 	GameObject::Start();
 
-	
+
 }
 
 void HUD::Update(float pStep)
@@ -84,4 +86,9 @@ float HUD::GetMirroredPostionX(float xPosition, UISpriteRenderer* sprite)
 	float spriteWidth = sprite->GetSprite()->getGlobalBounds().width;
 	float desiredSpritePositionX = (1920.0f - xPosition - spriteWidth);
 	return desiredSpritePositionX;
+}
+
+HUDComponent * HUD::GetHudComponent()
+{
+	return m_hudComponent;
 }

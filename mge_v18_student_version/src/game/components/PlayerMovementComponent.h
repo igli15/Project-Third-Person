@@ -6,7 +6,7 @@
 class PlayerMovementComponent :public XMLComponent
 {
 public:
-	enum Direction {LEFT,RIGHT,FORWARD,BACKWARD};
+	enum Direction { LEFT, RIGHT, FORWARD, BACKWARD };
 
 	void Awake();
 	void Start();

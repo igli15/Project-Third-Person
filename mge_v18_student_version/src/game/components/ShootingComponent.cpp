@@ -4,9 +4,10 @@
 #include "game/components/GridComponent.h"
 #include "mge/core/GameObject.hpp"
 #include "game/components/TileComponent.h"
-
+#include "game/components/ShootingComponent.h"
+#include "game/HUD.h"
 #include "game/MainWorld.h"
-
+#include "game/components/HUDComponent.h"
 #include "SFML/Window.hpp"
 #include "mge/core/ResourceManager.h"
 
@@ -24,16 +25,22 @@ void ShootingComponent::Start()
 {
 	XMLComponent::Start();
 	m_playerMovementComponent = m_gameObject->GetComponent<PlayerMovementComponent>();
-	
+	//asdasd
 }
 
 void ShootingComponent::Update(float timeStep)
 {
 	XMLComponent::Update(timeStep);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace)))
 	{
+		if (m_inkLevel <= 0)
+		{
+			m_inkLevel = 0;
+			return;
+		}
 		ShootInk(m_shootingRange);
-
+		m_inkLevel -= m_shootingRange;
+		HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
 		/*
 		std::cout << "PlayerPos: " << GetGameObject()->transform->LocalPosition() << std::endl;
 
@@ -43,7 +50,7 @@ void ShootingComponent::Update(float timeStep)
 		*/
 	}
 
-	
+
 }
 
 void ShootingComponent::Parse(rapidxml::xml_node<>* compNode)
@@ -92,6 +99,11 @@ void ShootingComponent::ShootInk(float tileAmount)
 
 	tiles.clear();
 
+}
+
+void ShootingComponent::SetPlayerNumber(int playerNumber)
+{
+	m_playerNumber = playerNumber;
 }
 
 void ShootingComponent::SetGrid(GridComponent * grid)
