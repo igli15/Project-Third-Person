@@ -87,7 +87,7 @@ void ShootingComponent::ShootInk(float tileAmount)
 	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), tileAmount, horizontalShooting, negtiveDirection);
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
-		tiles[i]->GetGameObject()->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("brickMat"));
+		tiles[i]->GetGameObject()->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
 	}
 
 	tiles.clear();

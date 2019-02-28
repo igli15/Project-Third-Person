@@ -1,5 +1,5 @@
 #include "PlayerDataComponent.h"
-
+#include "PlayerMovementComponent.h"
 
 
 PlayerDataComponent::PlayerDataComponent()
@@ -33,6 +33,7 @@ void PlayerDataComponent::OnCollision(CollisionInfo * collisionInfo)
 void PlayerDataComponent::SetPlayerNumber(int playerNumber)
 {
 	m_playerNumber = playerNumber;
+
 }
 
 int PlayerDataComponent::GetPlayerNumber()
@@ -67,6 +68,7 @@ void PlayerDataComponent::Parse(rapidxml::xml_node<>* compNode)
 		if (attributeName == "playerNumber")
 		{
 			m_playerNumber = (int)strtof(a->value(), 0);
+			m_gameObject->GetComponent<PlayerMovementComponent>()->SetPlayerNumber(m_playerNumber);
 		}
 
 	}

@@ -26,26 +26,26 @@ void PlayerMovementComponent::Update(float timeStep)
 	{
 		m_currentDirection = RIGHT;
 		m_rigidbody->SetAcceleration(glm::vec2(-m_speed, 0));
-		SetRotation(glm::vec3(1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
+		SetRotation(glm::vec3(-1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::A : sf::Keyboard::Left))
 	{
 		m_currentDirection = LEFT;
 		m_rigidbody->SetAcceleration(glm::vec2(m_speed, 0));
-		SetRotation(glm::vec3(-1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
+		SetRotation(glm::vec3(1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
 	{
 		m_currentDirection = BACKWARD;
 		m_rigidbody->SetAcceleration(glm::vec2(0, -m_speed));
-		SetRotation(glm::vec3(0, 0, 1), m_gameObject->transform->LocalTransform()[2]);
+		SetRotation(glm::vec3(0, 0, -1), m_gameObject->transform->LocalTransform()[2]);
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::W : sf::Keyboard::Up))
 	{
 		m_currentDirection = FORWARD;
 		m_rigidbody->SetAcceleration(glm::vec2(0, m_speed));
 
-		SetRotation(glm::vec3(0,0,-1),m_gameObject->transform->LocalTransform()[2]);
+		SetRotation(glm::vec3(0,0,1),m_gameObject->transform->LocalTransform()[2]);
 	}
 	else
 	{
@@ -61,6 +61,7 @@ void PlayerMovementComponent::OnCollision(CollisionInfo * collisionInfo)
 
 void PlayerMovementComponent::SetPlayerNumber(int playerNumber)
 {
+	
 	m_playerNumber = playerNumber;
 }
 
