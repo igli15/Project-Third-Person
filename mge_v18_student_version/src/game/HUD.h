@@ -23,8 +23,8 @@ public:
 	UISpriteRenderer*playerTwoInkSpriteText;
 	UISpriteRenderer*playerOneInkSpriteBar;
 	UISpriteRenderer*playerTwoInkSpriteBar;
-	UISpriteRenderer* inkBarOutlinesPlayerOne;
-	UISpriteRenderer* inkBarOutlinesPlayerTwo;
+	UISpriteRenderer* inkUIOverlay;
+	UISpriteRenderer* inkUIBackground;
 
 	static HUDComponent* GetHudComponent();
 private:
@@ -32,7 +32,8 @@ private:
 	sf::Texture * m_playerTwoInkText;
 	sf::Texture * m_inkBarPlayerOne;
 	sf::Texture * m_inkBarPlayerTwo;
-	sf::Texture * m_inkBarOutlines;
+	sf::Texture * m_inkUIOverlay;
+	sf::Texture * m_inkUIBackground;
 
 	static HUDComponent* m_hudComponent;
 };

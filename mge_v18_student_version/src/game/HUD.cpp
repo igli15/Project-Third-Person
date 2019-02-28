@@ -24,40 +24,42 @@ void HUD::Load()
 	m_hudComponent = this->AddComponent<HUDComponent>();
 
 	//Get SFML Textures
-	m_playerOneInkText = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("playerOneInkText");
-	m_playerTwoInkText = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("playerTwoInkText");
+	//m_playerOneInkText = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("playerOneInkText");
+	//m_playerTwoInkText = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("playerTwoInkText");
 	m_inkBarPlayerOne = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkPlayerOne");
 	m_inkBarPlayerTwo = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkPlayerTwo");
-	m_inkBarOutlines = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkBarOutlines");
+	m_inkUIOverlay = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkUIOverlay");
+	m_inkUIBackground = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkUIBackground");
 
-	//Create Sprite and assign Texture to Sprite
-	playerOneInkSpriteText = AddComponent<UISpriteRenderer>();
-	playerOneInkSpriteText->ApplyTexture(m_playerOneInkText);
-	playerOneInkSpriteText->GetSprite()->setPosition(10, 10);
+	////Create Sprite and assign Texture to Sprite
+	//playerOneInkSpriteText = AddComponent<UISpriteRenderer>();
+	//playerOneInkSpriteText->ApplyTexture(m_playerOneInkText);
+	//playerOneInkSpriteText->GetSprite()->setPosition(10, 10);
 
-	playerTwoInkSpriteText = AddComponent<UISpriteRenderer>();
-	playerTwoInkSpriteText->ApplyTexture(m_playerTwoInkText);
-	playerTwoInkSpriteText->GetSprite()->setPosition(GetMirroredPostionX(10.0f, playerTwoInkSpriteText), 10);
+	//playerTwoInkSpriteText = AddComponent<UISpriteRenderer>();
+	//playerTwoInkSpriteText->ApplyTexture(m_playerTwoInkText);
+	//playerTwoInkSpriteText->GetSprite()->setPosition(GetMirroredPostionX(10.0f, playerTwoInkSpriteText), 10);
 
 
-	glm::vec2 playerBarPosition = glm::vec2(playerOneInkSpriteText->GetSprite()->getGlobalBounds().width + 20, 10);
+	inkUIOverlay = AddComponent<UISpriteRenderer>();
+	inkUIOverlay->ApplyTexture(m_inkUIOverlay);
+	inkUIOverlay->GetSprite()->setPosition(0,0);
+	glm::vec2 playerBarPosition = glm::vec2(30, 425);
 
 	playerOneInkSpriteBar = AddComponent<UISpriteRenderer>();
 	playerOneInkSpriteBar->ApplyTexture(m_inkBarPlayerOne);
 	playerOneInkSpriteBar->GetSprite()->setPosition(playerBarPosition.x, playerBarPosition.y);
+	playerOneInkSpriteBar->GetSprite()->setOrigin(0, playerOneInkSpriteBar->GetSprite()->getGlobalBounds().height);
 
 	playerTwoInkSpriteBar = AddComponent<UISpriteRenderer>();
 	playerTwoInkSpriteBar->ApplyTexture(m_inkBarPlayerTwo);
-	playerTwoInkSpriteBar->GetSprite()->setPosition(GetMirroredPostionX(playerBarPosition.x, playerTwoInkSpriteBar) + playerTwoInkSpriteBar->GetSprite()->getGlobalBounds().width, playerBarPosition.y);
-	playerTwoInkSpriteBar->GetSprite()->setOrigin(playerTwoInkSpriteBar->GetSprite()->getGlobalBounds().width, 0);
+	playerTwoInkSpriteBar->GetSprite()->setPosition(GetMirroredPostionX(playerBarPosition.x, playerTwoInkSpriteBar), playerBarPosition.y);
+	playerTwoInkSpriteBar->GetSprite()->setOrigin(0, playerTwoInkSpriteBar->GetSprite()->getGlobalBounds().height);
 
-	inkBarOutlinesPlayerOne = AddComponent<UISpriteRenderer>();
-	inkBarOutlinesPlayerOne->ApplyTexture(m_inkBarOutlines);
-	inkBarOutlinesPlayerOne->GetSprite()->setPosition(playerBarPosition.x - 0.9f, playerBarPosition.y - 1.1f);
+	inkUIBackground = AddComponent<UISpriteRenderer>();
+	inkUIBackground->ApplyTexture(m_inkUIBackground);
+	inkUIBackground->GetSprite()->setPosition(0, 0);
 
-	inkBarOutlinesPlayerTwo = AddComponent<UISpriteRenderer>();
-	inkBarOutlinesPlayerTwo->ApplyTexture(m_inkBarOutlines);
-	inkBarOutlinesPlayerTwo->GetSprite()->setPosition(GetMirroredPostionX(playerBarPosition.x + 0.9f, playerTwoInkSpriteBar), playerBarPosition.y - 1.1f);
 }
 
 void HUD::Awake()

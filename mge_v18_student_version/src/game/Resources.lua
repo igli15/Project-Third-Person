@@ -14,10 +14,10 @@ meshes =
 	--["testMesh"] = meshesLoadPath.."arena.obj",
 	["cylinderMesh"] = meshesLoadPath.."cylinder_smooth.obj",
 	--["goodBoyMesh"] = meshesLoadPath.."goodBoy.obj",
-	["model"] = meshesLoadPath.."modelMesh.obj",
+	["model"] = meshesLoadPath.."orb.obj",
 	["Cube"] = meshesLoadPath.."tile_test.obj",
 	["Sphere"] = meshesLoadPath.."sphere_smooth.obj",
-	["playerOneModel"] = meshesLoadPath.."playerOnePrototypeModel.obj",
+	["playerOneModel"] = meshesLoadPath.."catHead.obj",
 	["playerTwoModel"] = meshesLoadPath.."playerTwoPrototypeModel.obj",
 }
 
@@ -35,6 +35,8 @@ diffuseTextures =
 	["NeutralMat"] = texturesLoadPath.."neutralDiffuse.jpg",
 	["player1ShadowDiffuse"] = texturesLoadPath.."player1ShadowDiffuse.png",
 	["player2NeckDiffuse"] = texturesLoadPath.."player2NeckDiffuse.png",
+	["catHeadDiffuse"] = texturesLoadPath.."catHeadTexture.png",
+	["orbDiffuse"] = texturesLoadPath.."orbDiffuse.png",
 }
 
 specularTextures = 
@@ -52,6 +54,7 @@ emissionTextures =
 	["iceEmission"] = texturesLoadPath.."iceEmission.jpg",
 	["player1ShadowEmissive"] = texturesLoadPath.."player1ShadowEmissive.png",
 	["player2NeckEmissive"] = texturesLoadPath.."player2NeckEmissive.png",
+	["orbEmissive"] = texturesLoadPath.."orbEmissive.png",
 }
 
 --normal maps here
@@ -69,9 +72,11 @@ sfmlTextures =
 	["brickTex"] = texturesLoadPath.."bricks.jpg",
 	["playerOneInkText"] = texturesLoadPath.."playerInkText.png",
 	["playerTwoInkText"] = texturesLoadPath.."playerInkText.png",
-	["inkPlayerOne"] = texturesLoadPath.."inkBarOne.png",
-	["inkPlayerTwo"] = texturesLoadPath.."inkBarTwo.png",
-	["inkBarOutlines"] = texturesLoadPath.."inkBarOutlines.png",
+	["inkPlayerOne"] = texturesLoadPath.."iceFillBar.png",
+	["inkPlayerTwo"] = texturesLoadPath.."lavaFillBar.png",
+	["inkUIOverlay"] = texturesLoadPath.."inkUIOverlay.png",
+	["inkUIBackground"] = texturesLoadPath.."inkUIBackground.png",
+
 }
 
 --Yes sound and music are 2 diffrent things...
