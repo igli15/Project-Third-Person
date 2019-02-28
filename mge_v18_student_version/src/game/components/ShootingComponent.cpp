@@ -11,6 +11,7 @@
 #include "SFML/Window.hpp"
 #include "mge/core/ResourceManager.h"
 
+
 ShootingComponent::ShootingComponent()
 {
 }
@@ -31,26 +32,17 @@ void ShootingComponent::Start()
 void ShootingComponent::Update(float timeStep)
 {
 	XMLComponent::Update(timeStep);
-	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace)))
+	OnKeyPressed(sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace)));
+	if (m_isChraging)
 	{
-		if (m_inkLevel <= 0)
-		{
-			m_inkLevel = 0;
-			return;
-		}
-		ShootInk(m_shootingRange);
-		m_inkLevel -= m_shootingRange;
+		//Update HUD info
 		HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
-		/*
-		std::cout << "PlayerPos: " << GetGameObject()->transform->LocalPosition() << std::endl;
 
-		std::cout << "TileIndex: " << m_gridComponent->GetTilePlayerIsOn(GetGameObject()->transform->LocalPosition())->GridPos() << std::endl;
-
-		std::cout << "TilePosition: " << m_gridComponent->GetTilePlayerIsOn(GetGameObject()->transform->LocalPosition())->GetGameObject()->transform->WorldPosition()<<std::endl;
-		*/
+		//increase ammo untill it riches maxRange
+		if (m_currentAmmo >= m_maxRange) return;
+		m_currentAmmo+= m_rateOfGainInk;
+		m_inkLevel-= m_rateOfGainInk;
 	}
-
-
 }
 
 void ShootingComponent::Parse(rapidxml::xml_node<>* compNode)
@@ -91,13 +83,32 @@ void ShootingComponent::ShootInk(float tileAmount)
 	default:
 		break;
 	}
-	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), tileAmount, horizontalShooting, negtiveDirection);
+	/*
+	glm::vec3 otherPlayerPos;
+	GameObject* enemy;
+	if (m_playerNumber == 1)
+	{
+		enemy = dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetPlayer(1);
+		otherPlayerPos = enemy->transform->WorldPosition();
+	}
+	else
+	{
+		enemy = dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetPlayer(0);
+		otherPlayerPos = enemy->transform->WorldPosition();
+	}
+
+
+	//std::cout << m_gameObject->transform->WorldPosition() << " ==== " << otherPlayerPos << std::endl;
+
+	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->RespawnPlayer(); });
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
 		tiles[i]->GetGameObject()->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
 	}
 
 	tiles.clear();
+
+	*/
 
 }
 
@@ -109,4 +120,64 @@ void ShootingComponent::SetPlayerNumber(int playerNumber)
 void ShootingComponent::SetGrid(GridComponent * grid)
 {
 	m_gridComponent = grid;
+}
+
+void ShootingComponent::OnKeyPressed(bool isKeyPressedThisFrame)
+{
+	if (!m_isKeyPresedLastFrame&&isKeyPressedThisFrame)
+	{
+		//OnKeyEnter
+		OnKeyEnter();
+	}
+	if(m_isKeyPresedLastFrame&&isKeyPressedThisFrame)
+	{
+		//OnKeyStay
+		OnKeyStay();
+	}
+	if (m_isKeyPresedLastFrame && !isKeyPressedThisFrame)
+	{
+		//OnKeyExit
+		OnKeyExit();
+	}
+	m_isKeyPresedLastFrame = isKeyPressedThisFrame;
+}
+
+void ShootingComponent::OnKeyEnter()
+{
+	std::cout << "OnKeyEnter" << std::endl;
+
+	//Start charging
+	if (!m_isChraging)
+	{
+		//Dont charge if player doesnt have enough ink
+		if (m_inkLevel - m_minRange < 0) return;
+		std::cout << "	Start Charging" << std::endl;
+		m_currentAmmo = m_minRange- m_rateOfGainInk;
+		m_inkLevel -= m_minRange- m_rateOfGainInk;
+
+		m_isChraging = true;
+	}
+	if (m_isChraging && m_currentAmmo >= m_minRange)
+	{
+		//Shoot ink on range of m_currentAmmo
+		//stop charging
+		std::cout << "	Shoot" << std::endl;
+		std::cout << "	Stop Charging" << std::endl;
+		ShootInk((int)m_currentAmmo);
+		m_currentAmmo = 0;
+		m_isChraging = false;
+	}
+	
+
+
+}
+
+void ShootingComponent::OnKeyStay()
+{
+	std::cout << "OnKeyStay" << std::endl;
+}
+
+void ShootingComponent::OnKeyExit()
+{
+	std::cout << "OnKeyExit" << std::endl;
 }
