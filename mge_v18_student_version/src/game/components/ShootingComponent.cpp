@@ -10,6 +10,7 @@
 #include "game/components/HUDComponent.h"
 #include "SFML/Window.hpp"
 #include "mge/core/ResourceManager.h"
+#include "game/components/PlayerDataComponent.h"
 
 
 ShootingComponent::ShootingComponent()
@@ -83,7 +84,7 @@ void ShootingComponent::ShootInk(float tileAmount)
 	default:
 		break;
 	}
-	/*
+	
 	glm::vec3 otherPlayerPos;
 	GameObject* enemy;
 	if (m_playerNumber == 1)
@@ -108,7 +109,7 @@ void ShootingComponent::ShootInk(float tileAmount)
 
 	tiles.clear();
 
-	*/
+	
 
 }
 
@@ -144,14 +145,14 @@ void ShootingComponent::OnKeyPressed(bool isKeyPressedThisFrame)
 
 void ShootingComponent::OnKeyEnter()
 {
-	std::cout << "OnKeyEnter" << std::endl;
+	//std::cout << "OnKeyEnter" << std::endl;
 
 	//Start charging
 	if (!m_isChraging)
 	{
 		//Dont charge if player doesnt have enough ink
 		if (m_inkLevel - m_minRange < 0) return;
-		std::cout << "	Start Charging" << std::endl;
+		//std::cout << "	Start Charging" << std::endl;
 		m_currentAmmo = m_minRange- m_rateOfGainInk;
 		m_inkLevel -= m_minRange- m_rateOfGainInk;
 
@@ -161,8 +162,8 @@ void ShootingComponent::OnKeyEnter()
 	{
 		//Shoot ink on range of m_currentAmmo
 		//stop charging
-		std::cout << "	Shoot" << std::endl;
-		std::cout << "	Stop Charging" << std::endl;
+		//std::cout << "	Shoot" << std::endl;
+		//std::cout << "	Stop Charging" << std::endl;
 		ShootInk((int)m_currentAmmo);
 		m_currentAmmo = 0;
 		m_isChraging = false;
@@ -174,10 +175,10 @@ void ShootingComponent::OnKeyEnter()
 
 void ShootingComponent::OnKeyStay()
 {
-	std::cout << "OnKeyStay" << std::endl;
+	//std::cout << "OnKeyStay" << std::endl;
 }
 
 void ShootingComponent::OnKeyExit()
 {
-	std::cout << "OnKeyExit" << std::endl;
+	//std::cout << "OnKeyExit" << std::endl;
 }

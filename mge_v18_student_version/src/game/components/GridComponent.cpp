@@ -122,8 +122,8 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos());
 				if (condition.x && condition.y)
 				{
-					//std::cout << "ENeMYINDEX: " << GetTileOnPos(enemyPos)->GridPos() << std::endl;
-				    //std::cout << "MYINDEX: " << GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos() << std::endl;
+					std::cout << "ENeMYINDEX: " << GetTileOnPos(enemyPos)->GridPos() << std::endl;
+				    std::cout << "MYINDEX: " << GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos() << std::endl;
 					onEnemyFoundCallback();
 				}
 				tiles.push_back(GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y));
