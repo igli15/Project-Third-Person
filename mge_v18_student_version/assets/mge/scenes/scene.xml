@@ -3619,8 +3619,8 @@
   </GameObject>
   <GameObject name="Player1" position="(246.1, 10.0, 57.8)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(0.1, 0.1, 0.1)" mesh="playerOneModel">
     <Components>
-      <RigidBodyComponent friction="0" maxSpeed="0.5" bounciness="0.1" />
-      <PlayerMovement speed="0.1" />
+      <RigidBodyComponent friction="0" maxSpeed="1" bounciness="0.1" />
+      <PlayerMovement speed="0.465" />
       <PlayerData playerNumber="1" />
       <CircleCollider radius="10" collisionLayer="player">
         <CollisionFilters>
@@ -3634,7 +3634,7 @@
   </GameObject>
   <GameObject name="Player2" position="(50.5, 10.0, 57.8)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(0.1, 0.1, 0.1)" mesh="playerTwoModel">
     <Components>
-      <RigidBodyComponent friction="0" maxSpeed="0.5" bounciness="0.1" />
+      <RigidBodyComponent friction="0" maxSpeed="1" bounciness="0.1" />
       <PlayerMovement speed="0.1" />
       <PlayerData playerNumber="2" />
       <CircleCollider radius="10" collisionLayer="player">
