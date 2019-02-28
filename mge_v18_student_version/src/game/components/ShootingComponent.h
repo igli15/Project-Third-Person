@@ -20,8 +20,10 @@ public:
 	void ShootInk(float tileAmount);
 	void SetPlayerNumber(int playerNumber);
 	void SetGrid(GridComponent* grid);
-	void OnKeyPressed(bool isKeyPressedThisFrame);
+	void SetInkLevel(float newInkLevel);
+	void ResetInkLevel();
 
+	void OnKeyPressed(bool isKeyPressedThisFrame);
 	void OnKeyEnter();
 	void OnKeyStay();
 	void OnKeyExit();

@@ -123,6 +123,17 @@ void ShootingComponent::SetGrid(GridComponent * grid)
 	m_gridComponent = grid;
 }
 
+void ShootingComponent::SetInkLevel(float newInkLevel)
+{
+	m_inkLevel = newInkLevel;
+	HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
+}
+
+void ShootingComponent::ResetInkLevel()
+{
+	SetInkLevel(m_inkMaxLevel);
+}
+
 void ShootingComponent::OnKeyPressed(bool isKeyPressedThisFrame)
 {
 	if (!m_isKeyPresedLastFrame&&isKeyPressedThisFrame)
