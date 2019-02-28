@@ -6,7 +6,7 @@
   </GameObject>
   <GameObject name="lavaCube" position="(-443.9, 321.0, 212.6)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Cube">
     <Components>
-      <TextureMaterial materialName="lavaMat" shininess="2" emissionScale="0.2" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      <TextureMaterial materialName="lavaMat" shininess="2" emissionScale="0.47" diffuseTexture="lavaDiffuse" specularTexture="lavaSpecular" emissionTexture="lavaEmission" normalTexture="lavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
     </Components>
   </GameObject>
   <GameObject name="IceCube" position="(-356.7, 272.0, 187.4)" rotation="(0.0, 0.0, 0.0, 1.0)" scale="(1.0, 1.0, 1.0)" mesh="Cube">

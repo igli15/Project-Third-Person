@@ -107,10 +107,12 @@ void ShootingComponent::ShootInk(float tileAmount)
 		if (GetGameObject()->GetComponent<PlayerDataComponent>()->MatType() == TileType::LAVA)
 		{
 			tiles[i]->GetGameObject()->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
+			tiles[i]->SetTileType(TileType::LAVA);
 		}
 		else
 		{
 			tiles[i]->GetGameObject()->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceMat"));
+			tiles[i]->SetTileType(TileType::ICE);
 		}
 	}
 

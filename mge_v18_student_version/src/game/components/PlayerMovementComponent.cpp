@@ -1,18 +1,43 @@
 #include "PlayerMovementComponent.h"
 #include "mge/core/GameObject.hpp"
+#include "game/components/PlayerDataComponent.h"
+#include "game/MainWorld.h"
+#include "game/components/GridComponent.h"
 
 void PlayerMovementComponent::Awake()
 {
 	m_rigidbody = m_gameObject->GetComponent<RigidBody>();
+	m_playerData = m_gameObject->GetComponent<PlayerDataComponent>();
+	m_grid = dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetGrid();
 }
 
 void PlayerMovementComponent::Start()
 {
+	m_initSpeed = m_rigidbody->GetMaxSpeed();
 }
 
 void PlayerMovementComponent::Update(float timeStep)
 {
 	//std::cout << "DIRECTION: " << currentDirection << std::endl;
+
+	if (glm::length(m_rigidbody->velocity) > 0)
+	{
+		TileComponent* tile = m_grid->GetTileOnPos(m_gameObject->transform->LocalPosition());
+
+		if (tile->GetTileType() == TileType::DEFAULT)
+		{
+			m_rigidbody->SetMaxSpeed(m_initSpeed);
+				
+		}
+		else if (tile->GetTileType() == m_playerData->MatType())
+		{
+			m_rigidbody->SetMaxSpeed(m_initSpeed + m_speedUpAmount);
+		}
+		else
+		{
+			m_rigidbody->SetMaxSpeed(m_initSpeed - m_slowDownAmount);
+		}
+	}
 
 	//Prevent player moving out of arena boundaries
 	if (IsOutOfBorder())
