@@ -36,9 +36,9 @@ void ShootingComponent::Update(float timeStep)
 
 		std::cout << "PlayerPos: " << GetGameObject()->transform->LocalPosition() << std::endl;
 
-		std::cout << "TileIndex: " << m_gridComponent->GetTilePlayerIsOn(GetGameObject()->transform->LocalPosition())->GridPos();
+		std::cout << "TileIndex: " << m_gridComponent->GetTilePlayerIsOn(GetGameObject()->transform->LocalPosition())->GridPos() << std::endl;
 
-		std::cout << "TilePosition: " << m_gridComponent->GetTilePlayerIsOn(GetGameObject()->transform->LocalPosition())->GetGameObject()->transform->WorldPosition();
+		std::cout << "TilePosition: " << m_gridComponent->GetTilePlayerIsOn(GetGameObject()->transform->LocalPosition())->GetGameObject()->transform->WorldPosition()<<std::endl;
 	}
 
 	
