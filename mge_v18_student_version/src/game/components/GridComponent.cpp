@@ -91,7 +91,7 @@ TileComponent * GridComponent::GetTileAt(int x, int y)
 	return m_tileGrid[y][x];
 }
 
-TileComponent * GridComponent::GetTilePlayerIsOn(glm::vec3 playerPos)
+TileComponent * GridComponent::GetTileOnPos(glm::vec3 playerPos)
 {
 
 	int x = glm::floor((playerPos.x +4)  / (m_tileRadius * 2.0f));
@@ -105,21 +105,38 @@ TileComponent * GridComponent::GetTilePlayerIsOn(glm::vec3 playerPos)
 	return GetTileAt(x,y);
 }
 
-std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos,int amount, bool horizontal, bool positiveDir)
+std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos, glm::vec3 enemyPos, int amount, bool horizontal, bool positiveDir, const std::function<void()>& onEnemyFoundCallback)
 {
 	std::vector<TileComponent*> tiles;
-	TileComponent* currentTile = GetTilePlayerIsOn(playerPos);
+	TileComponent* currentTile = GetTileOnPos(playerPos);
 
-	for (size_t i = 1; i <= amount; i++)
+	//std::cout <<"MYPOS: "<< playerPos << std::endl;
+	//std::cout << "ENEMYPOS: " << enemyPos << std::endl;
+
+	for (int i = 1; i <= amount; i++)
 	{
 		if (horizontal)
 		{
 			if (positiveDir && currentTile->GridPos().x + i < m_width)
 			{
+				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos());
+				if (condition.x && condition.y)
+				{
+					//std::cout << "ENeMYINDEX: " << GetTileOnPos(enemyPos)->GridPos() << std::endl;
+				    //std::cout << "MYINDEX: " << GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos() << std::endl;
+					onEnemyFoundCallback();
+				}
 				tiles.push_back(GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y));
 			}
-			else if (!positiveDir && currentTile->GridPos().x - i >= 0)
+			else if (!positiveDir && ((currentTile->GridPos().x - i) >= 0))
 			{
+				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x - i, currentTile->GridPos().y)->GridPos());
+				
+				if (condition.x && condition.y)
+				{
+					onEnemyFoundCallback();
+				}
+
 				tiles.push_back(GetTileAt(currentTile->GridPos().x - i, currentTile->GridPos().y));
 			}
 		}
@@ -127,10 +144,20 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 		{
 			if (positiveDir && currentTile->GridPos().y + i < m_height)
 			{
+				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y + i)->GridPos());
+				if (condition.x && condition.y)
+				{
+					onEnemyFoundCallback();
+				}
 				tiles.push_back(GetTileAt(currentTile->GridPos().x , currentTile->GridPos().y + i));
 			}
 			else if (!positiveDir && currentTile->GridPos().y - i >= 0)
 			{
+				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y - i)->GridPos());
+				if (condition.x && condition.y)
+				{
+					onEnemyFoundCallback();
+				}
 				tiles.push_back(GetTileAt(currentTile->GridPos().x , currentTile->GridPos().y - i));
 			}
 		}

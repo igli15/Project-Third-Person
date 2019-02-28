@@ -28,7 +28,10 @@
 
 MainWorld::MainWorld()
 {
-
+	for (size_t i = 0; i < playerNumber; i++)
+	{
+		m_players.push_back(nullptr);
+	}
 }
 
 
@@ -60,6 +63,8 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 	{
 		std::cout << "Player Pos is:  " << newNode->transform->LocalPosition() << std::endl;
 		newNode->AddComponent<PlayerDataComponent>()->Parse(componentNode);
+		m_players[newNode->GetComponent<PlayerDataComponent>()->GetPlayerNumber() - 1] = newNode;
+		
 	}
 	else if (strcmp(componentNode->name(), "ShootingComponent") == 0)
 	{
@@ -81,8 +86,8 @@ void MainWorld::Initialize()
 
 	//std::cout << "tile Pos is: " << levelGrid->GetTileAt(0, 7)->GetGameObject()->transform->WorldPosition()<<std::endl;
 	//Get tile pos and destroy it based on a "test position"
-	std::cout << "tile Pos is: " << levelGrid->GetTilePlayerIsOn(glm::vec3(15,0,15))->GetGameObject()->transform->WorldPosition() << std::endl;
-	std::cout << "tile Index is: " << levelGrid->GetTilePlayerIsOn(glm::vec3(15, 0, 15))->GridPos() << std::endl;
+	std::cout << "tile Pos is: " << levelGrid->GetTileOnPos(glm::vec3(15,0,15))->GetGameObject()->transform->WorldPosition() << std::endl;
+	std::cout << "tile Index is: " << levelGrid->GetTileOnPos(glm::vec3(15, 0, 15))->GridPos() << std::endl;
 	//levelGrid->GetTilePlayerIsOn(glm::vec3(15, 0, 15))->GetGameObject()->Destroy();
 
 	//to test if neighbour tile works..
@@ -106,4 +111,14 @@ MainWorld::~MainWorld()
 GridComponent * MainWorld::GetGrid() const
 {
 	return levelGrid;
+}
+
+void MainWorld::AddPlayer(GameObject * player)
+{
+	m_players.push_back(player);
+}
+
+GameObject * MainWorld::GetPlayer(int playerNumber)
+{
+	return m_players.at(playerNumber);
 }

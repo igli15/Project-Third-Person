@@ -2,6 +2,7 @@
 #include "mge/core/XMLComponent.h"
 #include <vector>
 #include "glm.hpp"
+#include <functional>
 
 class TileComponent;
 
@@ -28,7 +29,7 @@ public:
 	TileComponent* GetTileAt(int x, int y);
 
 	//Returns the tile based on the provided world position!
-	TileComponent* GetTilePlayerIsOn(glm::vec3 playerPos);
+	TileComponent* GetTileOnPos(glm::vec3 playerPos);
 
 	/*
 		Gets the neighbour tiles from the tile the player is currently on.
@@ -40,7 +41,7 @@ public:
 
 		It returns a vector of all the tiles found.
 	*/
-	std::vector<TileComponent*> GetNeighbourTiles(glm::vec3 playerPos,int amount, bool horizontal, bool positiveDir);
+	std::vector<TileComponent*> GetNeighbourTiles(glm::vec3 playerPos,glm::vec3 enemyPos,int amount, bool horizontal, bool positiveDir,const std::function<void()>& onEnemyFoundCallback);
 
 private:
 

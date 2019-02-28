@@ -15,12 +15,12 @@ void TileComponent::Parse(rapidxml::xml_node<>* compNode)
 {
 }
 
-void TileComponent::SetGridPos(glm::vec2 gridPos)
+void TileComponent::SetGridPos(glm::ivec2 gridPos)
 {
 	m_gridPos = gridPos;
 }
 
-glm::vec2 TileComponent::GridPos()
+glm::ivec2 TileComponent::GridPos()
 {
 	return m_gridPos;
 }

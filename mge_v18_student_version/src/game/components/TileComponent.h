@@ -10,10 +10,10 @@ public:
 
 	void Parse(rapidxml::xml_node<>* compNode) override;
 
-	void SetGridPos(glm::vec2 gridPos);
-	glm::vec2 GridPos();
+	void SetGridPos(glm::ivec2 gridPos);
+	glm::ivec2 GridPos();
 
 private:
-	glm::vec2 m_gridPos;
+	glm::ivec2 m_gridPos;
 };
 

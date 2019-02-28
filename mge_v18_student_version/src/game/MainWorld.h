@@ -20,7 +20,15 @@ public:
 	virtual ~MainWorld();
 
 	GridComponent* GetGrid() const;
+
+	void AddPlayer(GameObject* player);
+	GameObject* GetPlayer(int playerNumber);
+
 private:
 	GridComponent* levelGrid = nullptr;
+
+	int playerNumber = 2;
+
+	std::vector<GameObject*> m_players;
 };
 
