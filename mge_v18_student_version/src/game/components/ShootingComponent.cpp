@@ -27,6 +27,8 @@ void ShootingComponent::Start()
 {
 	XMLComponent::Start();
 	m_playerMovementComponent = m_gameObject->GetComponent<PlayerMovementComponent>();
+
+	HUD::GetHudComponent()->SetMaxInk(m_inkMaxLevel);
 	//asdasd
 }
 

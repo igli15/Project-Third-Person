@@ -23,7 +23,6 @@ void PlayerDataComponent::Start()
 	m_shootingComponent = m_gameObject->GetComponent<ShootingComponent>();
 	m_shootingComponent->SetPlayerNumber(m_playerNumber);
 
-	HUD::GetHudComponent()->SetMaxInk(100);
 }
 
 void PlayerDataComponent::Update(float timeStep)
