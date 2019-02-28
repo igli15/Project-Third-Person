@@ -25,3 +25,18 @@ glm::ivec2 TileComponent::GridPos()
 	return m_gridPos;
 }
 
+bool TileComponent::IsPainted()
+{
+	return m_isPainted;
+}
+
+void TileComponent::SetTileType(TileType newType)
+{
+	m_tileType = newType;
+}
+
+TileType TileComponent::GetTileType()
+{
+	return m_tileType;
+}
+

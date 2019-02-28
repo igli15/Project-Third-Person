@@ -17,7 +17,7 @@ meshes =
 	["model"] = meshesLoadPath.."orb.obj",
 	["Cube"] = meshesLoadPath.."tile_test.obj",
 	["Sphere"] = meshesLoadPath.."sphere_smooth.obj",
-	["playerOneModel"] = meshesLoadPath.."catHead.obj",
+	["playerOneModel"] = meshesLoadPath.."playerOnePrototypeModel.obj",
 	["playerTwoModel"] = meshesLoadPath.."playerTwoPrototypeModel.obj",
 }
 

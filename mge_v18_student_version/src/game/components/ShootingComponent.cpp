@@ -104,7 +104,14 @@ void ShootingComponent::ShootInk(float tileAmount)
 	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->RespawnPlayer(); });
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
-		tiles[i]->GetGameObject()->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
+		if (GetGameObject()->GetComponent<PlayerDataComponent>()->MatType() == TileType::LAVA)
+		{
+			tiles[i]->GetGameObject()->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
+		}
+		else
+		{
+			tiles[i]->GetGameObject()->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceMat"));
+		}
 	}
 
 	tiles.clear();

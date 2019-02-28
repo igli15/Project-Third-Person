@@ -3,7 +3,8 @@
 #include "PlayerMovementComponent.h"
 #include "ShootingComponent.h"
 #include "../HUD.h"
-
+#include "mge/core/AbstractGame.hpp"
+#include "mge/core/ResourceManager.h"
 
 PlayerDataComponent::PlayerDataComponent()
 {
@@ -39,6 +40,17 @@ void PlayerDataComponent::OnCollision(CollisionInfo * collisionInfo)
 void PlayerDataComponent::SetPlayerNumber(int playerNumber)
 {
 	m_playerNumber = playerNumber;
+
+	if (playerNumber == 1)
+	{
+		m_material = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
+		m_tileMaterial = TileType::LAVA;
+	}
+	else if (playerNumber == 2)
+	{
+		m_material = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceMat"));
+		m_tileMaterial = TileType::ICE;
+	}
 }
 
 int PlayerDataComponent::GetPlayerNumber()
@@ -72,9 +84,14 @@ void PlayerDataComponent::Parse(rapidxml::xml_node<>* compNode)
 
 		if (attributeName == "playerNumber")
 		{
-			m_playerNumber = (int)strtof(a->value(), 0);
+			SetPlayerNumber((int)strtof(a->value(), 0));
 
 		}
 
 	}
+}
+
+TileType PlayerDataComponent::MatType()
+{
+	return m_tileMaterial;
 }
