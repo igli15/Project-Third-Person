@@ -27,6 +27,8 @@ private:
 	float m_inkMaxLevel = 100;
 	float m_inkLevel = 100;
 
+	float m_reloadTime = 2;
+	float m_lastShotTime = 0;
 	int m_playerNumber = 1;
 	float m_shootingRange = 2;
 };

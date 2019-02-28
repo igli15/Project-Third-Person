@@ -38,6 +38,7 @@ void ShootingComponent::Update(float timeStep)
 			m_inkLevel = 0;
 			return;
 		}
+		
 		ShootInk(m_shootingRange);
 		m_inkLevel -= m_shootingRange;
 		HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
