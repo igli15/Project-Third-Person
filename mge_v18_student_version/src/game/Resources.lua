@@ -16,8 +16,8 @@ meshes =
 	--["goodBoyMesh"] = meshesLoadPath.."goodBoy.obj",
 	["model"] = meshesLoadPath.."modelMesh.obj",
 	["Cube"] = meshesLoadPath.."tile_test.obj",
-	
 	["Sphere"] = meshesLoadPath.."sphere_smooth.obj",
+	["playerOneModel"] = meshesLoadPath.."playerOnePrototypeModel.obj",
 }
 
 
@@ -31,7 +31,8 @@ diffuseTextures =
 	["goodBoyDiffuse"] = texturesLoadPath.."goodBoyDiffuse.png",
 	["lavaDiffuse"] = texturesLoadPath.."lavaDiffuse.jpg",
 	["iceDiffuse"] = texturesLoadPath.."iceDiffuse.jpg",
-	["neutralDiffuse"] = texturesLoadPath.."neutralDiffuse.jpg",
+	["NeutralMat"] = texturesLoadPath.."neutralDiffuse.jpg",
+	["player1ShadowDiffuse"] = texturesLoadPath.."player1ShadowDiffuse.png",
 	
 }
 
@@ -48,6 +49,7 @@ emissionTextures =
 	["lavaEmission"] = texturesLoadPath.."lavaEmission.jpg",
 	["goodBoyEmission"] = texturesLoadPath.."goodBoyEmission.png",
 	["iceEmission"] = texturesLoadPath.."iceEmission.jpg",
+	["player1ShadowEmissive"] = texturesLoadPath.."player1ShadowEmissive.png",
 }
 
 --normal maps here
