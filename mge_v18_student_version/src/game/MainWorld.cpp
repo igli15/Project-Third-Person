@@ -71,7 +71,11 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 
 void MainWorld::Initialize()
 {
-	
+
+	GameObject* canvas = Instantiate<GameObject>();
+	SetCanvas(canvas->AddComponent<CanvasComponent>());
+
+	HUD* hud = Instantiate<HUD>();
 	//Load the xml world.
 	LoadXmlWorld("scene.xml");
 
@@ -91,10 +95,6 @@ void MainWorld::Initialize()
 	}
 	*/
 
-	GameObject* canvas = Instantiate<GameObject>();
-	SetCanvas(canvas->AddComponent<CanvasComponent>());
-
-	HUD* hud = Instantiate<HUD>();
 	//player1->GetComponent<PlayerMovementComponent>()->SetArenaData(glm::vec2(300, -200), glm::vec2(300, 200));
 }
 
