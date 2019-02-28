@@ -18,6 +18,7 @@ meshes =
 	["Cube"] = meshesLoadPath.."tile_test.obj",
 	["Sphere"] = meshesLoadPath.."sphere_smooth.obj",
 	["playerOneModel"] = meshesLoadPath.."playerOnePrototypeModel.obj",
+	["playerTwoModel"] = meshesLoadPath.."playerTwoPrototypeModel.obj",
 }
 
 
@@ -33,7 +34,7 @@ diffuseTextures =
 	["iceDiffuse"] = texturesLoadPath.."iceDiffuse.jpg",
 	["NeutralMat"] = texturesLoadPath.."neutralDiffuse.jpg",
 	["player1ShadowDiffuse"] = texturesLoadPath.."player1ShadowDiffuse.png",
-	
+	["player2NeckDiffuse"] = texturesLoadPath.."player2NeckDiffuse.png",
 }
 
 specularTextures = 
@@ -50,6 +51,7 @@ emissionTextures =
 	["goodBoyEmission"] = texturesLoadPath.."goodBoyEmission.png",
 	["iceEmission"] = texturesLoadPath.."iceEmission.jpg",
 	["player1ShadowEmissive"] = texturesLoadPath.."player1ShadowEmissive.png",
+	["player2NeckEmissive"] = texturesLoadPath.."player2NeckEmissive.png",
 }
 
 --normal maps here
@@ -58,6 +60,7 @@ normalMapTextures =
 	["brickWallNormal"] = texturesLoadPath.."wallNormal.png",
 	["lavaNormal"] = texturesLoadPath.."lavaNormal.jpg",
 	["iceNormal"] = texturesLoadPath.."iceNormal.jpg",
+	["wallNormal"] = texturesLoadPath.."wallNormal.png",
 }
 
 --Since we are using SFML for ui textures we need to load the sepperatly here!
