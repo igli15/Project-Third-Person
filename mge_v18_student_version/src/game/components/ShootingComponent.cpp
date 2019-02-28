@@ -34,11 +34,13 @@ void ShootingComponent::Update(float timeStep)
 	{
 		ShootInk(m_shootingRange);
 
+		/*
 		std::cout << "PlayerPos: " << GetGameObject()->transform->LocalPosition() << std::endl;
 
 		std::cout << "TileIndex: " << m_gridComponent->GetTilePlayerIsOn(GetGameObject()->transform->LocalPosition())->GridPos() << std::endl;
 
 		std::cout << "TilePosition: " << m_gridComponent->GetTilePlayerIsOn(GetGameObject()->transform->LocalPosition())->GetGameObject()->transform->WorldPosition()<<std::endl;
+		*/
 	}
 
 	

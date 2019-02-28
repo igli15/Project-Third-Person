@@ -97,8 +97,8 @@ TileComponent * GridComponent::GetTilePlayerIsOn(glm::vec3 playerPos)
 	int x = glm::floor((playerPos.x +4)  / (m_tileRadius * 2.0f));
 	int y = glm::floor((playerPos.z +4) / (m_tileRadius * 2.0f));
 
-	std::cout << "X: " << x << std::endl;
-	std::cout << "Y: " << y << std::endl;
+	//std::cout << "X: " << x << std::endl;
+	//std::cout << "Y: " << y << std::endl;
 
 
 	
