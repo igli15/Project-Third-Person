@@ -1,5 +1,6 @@
 #pragma once
 #include "mge/core/XMLComponent.h"
+#include "SFML/System.hpp"
 
 class PlayerMovementComponent;
 class GridComponent;
@@ -19,17 +20,28 @@ public:
 	void ShootInk(float tileAmount);
 	void SetPlayerNumber(int playerNumber);
 	void SetGrid(GridComponent* grid);
+	void OnKeyPressed(bool isKeyPressedThisFrame);
 
+	void OnKeyEnter();
+	void OnKeyStay();
+	void OnKeyExit();
 private:
 	PlayerMovementComponent* m_playerMovementComponent;
 	GridComponent* m_gridComponent;
+	sf::Clock m_clock;
 
 	float m_inkMaxLevel = 100;
 	float m_inkLevel = 100;
 
-	float m_reloadTime = 2;
-	float m_lastShotTime = 0;
+	bool m_isChraging = false;
+
+	float m_currentAmmo=0;
+	float m_minRange = 2;
+	float m_maxRange = 6;
+
 	int m_playerNumber = 1;
 	float m_shootingRange = 2;
+
+	bool m_isKeyPresedLastFrame=false;
 };
 
