@@ -10,6 +10,8 @@
 #include "game/components/HUDComponent.h"
 #include "SFML/Window.hpp"
 #include "mge/core/ResourceManager.h"
+#include "game/MainWorld.h"
+#include "game/components/PlayerDataComponent.h"
 
 ShootingComponent::ShootingComponent()
 {
@@ -36,7 +38,7 @@ void ShootingComponent::Update(float timeStep)
 		if (m_inkLevel <= 0)
 		{
 			m_inkLevel = 0;
-			return;
+			//return;
 		}
 		ShootInk(m_shootingRange);
 		m_inkLevel -= m_shootingRange;
@@ -91,7 +93,25 @@ void ShootingComponent::ShootInk(float tileAmount)
 	default:
 		break;
 	}
-	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), tileAmount, horizontalShooting, negtiveDirection);
+
+	glm::vec3 otherPlayerPos;
+	GameObject* enemy;
+
+	if (m_playerNumber == 1)
+	{
+		enemy = dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetPlayer(1);
+		otherPlayerPos = enemy->transform->WorldPosition();
+	}
+	else
+	{
+		enemy = dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetPlayer(0);
+		otherPlayerPos = enemy->transform->WorldPosition();
+	}
+
+	
+	//std::cout << m_gameObject->transform->WorldPosition() << " ==== " << otherPlayerPos << std::endl;
+
+	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->RespawnPlayer(); });
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
 		tiles[i]->GetGameObject()->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
