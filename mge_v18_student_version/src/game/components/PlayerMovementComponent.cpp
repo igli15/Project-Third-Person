@@ -23,19 +23,21 @@ void PlayerMovementComponent::Update(float timeStep)
 	if (glm::length(m_rigidbody->velocity) > 0)
 	{
 		TileComponent* tile = m_grid->GetTileOnPos(m_gameObject->transform->LocalPosition());
+		if (tile != nullptr)
+		{
+			if (tile->GetTileType() == TileType::DEFAULT)
+			{
+				m_rigidbody->SetMaxSpeed(m_initSpeed);
 
-		if (tile->GetTileType() == TileType::DEFAULT)
-		{
-			m_rigidbody->SetMaxSpeed(m_initSpeed);
-				
-		}
-		else if (tile->GetTileType() == m_playerData->MatType())
-		{
-			m_rigidbody->SetMaxSpeed(m_initSpeed + m_speedUpAmount);
-		}
-		else
-		{
-			m_rigidbody->SetMaxSpeed(m_initSpeed - m_slowDownAmount);
+			}
+			else if (tile->GetTileType() == m_playerData->MatType())
+			{
+				m_rigidbody->SetMaxSpeed(m_initSpeed + m_speedUpAmount);
+			}
+			else
+			{
+				m_rigidbody->SetMaxSpeed(m_initSpeed - m_slowDownAmount);
+			}
 		}
 	}
 
