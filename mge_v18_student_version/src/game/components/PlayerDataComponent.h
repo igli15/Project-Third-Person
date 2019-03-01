@@ -1,9 +1,8 @@
 #pragma once
 #include "mge/core/XMLComponent.h"
 #include "mge/core/CollisionInfo.h"
-
-class PlayerMovementComponent;
-class ShootingComponent;
+#include "mge/materials/TextureMaterial.hpp"
+#include "game/components/TileComponent.h"
 
 class PlayerDataComponent : public XMLComponent
 {
@@ -22,12 +21,16 @@ public:
 	void SetSpawnPosition(glm::vec3 newSpawnPosition);
 	void SetCurrentPositionAsSpawnPosisition();
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
+
+	TileType MatType();
+
 private:
 	//PLayer id 1 or 2
 	int m_playerNumber;
 	//spawn position will be taken as position when Start() was called
 	glm::vec3 m_spawnPosition;
-	PlayerMovementComponent* m_playerMovement;
-	ShootingComponent* m_shootingComponent;
+
+	TileType m_tileMaterial;
+	TextureMaterial* m_material;
 };
 

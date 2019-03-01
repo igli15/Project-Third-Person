@@ -101,7 +101,9 @@ TileComponent * GridComponent::GetTileOnPos(glm::vec3 playerPos)
 	//std::cout << "Y: " << y << std::endl;
 
 
-	
+	if (x < 0 || x >= m_width) return nullptr;
+	if (y < 0 || y >= m_height) return nullptr;
+
 	return GetTileAt(x,y);
 }
 

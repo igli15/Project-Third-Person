@@ -1,3 +1,5 @@
+#pragma once
+
 namespace config {
     #include <string>
 

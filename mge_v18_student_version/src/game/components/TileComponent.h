@@ -2,6 +2,13 @@
 #include "mge/core/XMLComponent.h"
 #include "glm.hpp"
 
+enum TileType
+{
+	LAVA,
+	ICE,
+	DEFAULT
+};
+
 class TileComponent : public XMLComponent
 {
 public:
@@ -13,7 +20,14 @@ public:
 	void SetGridPos(glm::ivec2 gridPos);
 	glm::ivec2 GridPos();
 
+	bool IsPainted();
+
+	void SetTileType(TileType newType);
+	TileType GetTileType();
+
 private:
 	glm::ivec2 m_gridPos;
+	TileType m_tileType = TileType::DEFAULT;
+	bool m_isPainted = false;
 };
 
