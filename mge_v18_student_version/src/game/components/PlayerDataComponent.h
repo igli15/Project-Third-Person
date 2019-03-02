@@ -4,6 +4,10 @@
 #include "mge/materials/TextureMaterial.hpp"
 #include "game/components/TileComponent.h"
 
+class PlayerMovementComponent;
+class ShootingComponent;
+class GridComponent;
+
 class PlayerDataComponent : public XMLComponent
 {
 public:
@@ -30,7 +34,10 @@ private:
 	//spawn position will be taken as position when Start() was called
 	glm::vec3 m_spawnPosition;
 
+	PlayerMovementComponent* m_playerMovement;
+	ShootingComponent* m_shootingComponent;
 	TileType m_tileMaterial;
 	TextureMaterial* m_material;
+	GridComponent* m_levelGrid;
 };
 

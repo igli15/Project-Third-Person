@@ -88,12 +88,13 @@ void GridComponent::Parse(rapidxml::xml_node<>* compNode)
 
 TileComponent * GridComponent::GetTileAt(int x, int y)
 {
+	if (x >= m_width || y >= m_height || x < 0 || y < 0) return nullptr;
+
 	return m_tileGrid[y][x];
 }
 
 TileComponent * GridComponent::GetTileOnPos(glm::vec3 playerPos)
 {
-
 	int x = glm::floor((playerPos.x +4)  / (m_tileRadius * 2.0f));
 	int y = glm::floor((playerPos.z +4) / (m_tileRadius * 2.0f));
 
@@ -164,6 +165,48 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 			}
 		}
 	}
+
+	return tiles;
+}
+
+std::vector<TileComponent*> GridComponent::GetTilesInARange(glm::vec3 playerPos, glm::vec3 enemyPos, int width, int height, const std::function<void()>& onEnemyFoundCallback)
+{
+	std::vector<TileComponent*> tiles;
+	TileComponent* currentTile = GetTileOnPos(playerPos);
+
+	TileComponent* startingTile;
+	
+	int gridX = 0;
+	int gridY = 0;
+
+	gridX = currentTile->GridPos().x + width/2;
+	gridY = currentTile->GridPos().y + height / 2;
+
+
+	if ((currentTile->GridPos().y + height / 2) >= m_height)
+	{
+		gridY = m_height - 1;
+	}
+
+	if ((currentTile->GridPos().x + width / 2) >= m_width)
+	{
+		gridX = m_width - 1;
+	}
+
+	startingTile = GetTileAt(gridX, gridY);
+
+
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			TileComponent* tile = GetTileAt(startingTile->GridPos().x - j, startingTile->GridPos().y - i);
+
+			if(tile != nullptr)
+			tiles.push_back(tile);
+		}
+	}
+
 
 	return tiles;
 }
