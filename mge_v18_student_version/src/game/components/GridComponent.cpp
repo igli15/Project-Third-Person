@@ -169,7 +169,7 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 	return tiles;
 }
 
-std::vector<TileComponent*> GridComponent::GetTilesInARange(glm::vec3 playerPos, glm::vec3 enemyPos, int width, int height, const std::function<void()>& onEnemyFoundCallback)
+std::vector<TileComponent*> GridComponent::GetTilesInARange(glm::vec3 playerPos, int width, int height)
 {
 	std::vector<TileComponent*> tiles;
 	TileComponent* currentTile = GetTileOnPos(playerPos);

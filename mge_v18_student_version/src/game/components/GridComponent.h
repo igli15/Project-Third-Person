@@ -44,7 +44,7 @@ public:
 	std::vector<TileComponent*> GetNeighbourTiles(glm::vec3 playerPos,glm::vec3 enemyPos,int amount, bool horizontal, bool positiveDir,const std::function<void()>& onEnemyFoundCallback);
 
 
-	std::vector<TileComponent*> GetTilesInARange(glm::vec3 playerPos, glm::vec3 enemyPos, int width, int height,const std::function<void()>& onEnemyFoundCallback);
+	std::vector<TileComponent*> GetTilesInARange(glm::vec3 playerPos, int width, int height);
 private:
 
 	int m_width = 0;

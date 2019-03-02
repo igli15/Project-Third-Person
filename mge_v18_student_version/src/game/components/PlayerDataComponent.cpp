@@ -66,7 +66,7 @@ int PlayerDataComponent::GetPlayerNumber()
 
 void PlayerDataComponent::RespawnPlayer()
 {
-	auto tiles = m_levelGrid->GetTilesInARange(GetGameObject()->transform->WorldPosition(), glm::vec3(0, 0, 0), 5, 5, []() {});
+	auto tiles = m_levelGrid->GetTilesInARange(GetGameObject()->transform->WorldPosition(),5,5);
 
 	TextureMaterial* enemyMat;
 	TileType enemyTileType;
