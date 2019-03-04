@@ -19,7 +19,6 @@ PlayerDataComponent::~PlayerDataComponent()
 
 void PlayerDataComponent::Start()
 {
-	m_spawnPosition = m_gameObject->transform->LocalPosition();
 	m_playerMovement = m_gameObject->GetComponent<PlayerMovementComponent>();
 	m_playerMovement->SetPlayerNumber(m_playerNumber);
 
@@ -89,6 +88,7 @@ void PlayerDataComponent::RespawnPlayer()
 
 	m_shootingComponent->ResetInkLevel();
 	
+	std::cout << m_spawnPosition << std::endl;
 	m_gameObject->transform->SetLocalPosition(m_spawnPosition);
 }
 
@@ -114,6 +114,12 @@ void PlayerDataComponent::Parse(rapidxml::xml_node<>* compNode)
 		{
 			SetPlayerNumber((int)strtof(a->value(), 0));
 
+		}
+		else if (attributeName == "respawnPosition")
+		{
+			glm::vec3 pos;
+			sscanf(a->value(), "(%f,%f,%f)", &pos.x, &pos.y, &pos.z);
+			m_spawnPosition = pos;
 		}
 
 	}

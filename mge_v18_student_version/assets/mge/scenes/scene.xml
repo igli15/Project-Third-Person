@@ -3631,7 +3631,7 @@
     <Components>
       <RigidBodyComponent friction="0" maxSpeed="1" bounciness="0.1" />
       <PlayerMovement speed="0.1" slowDownAmount="0.5" speedUpAmount="1" />
-      <PlayerData playerNumber="2" />
+      <PlayerData playerNumber="2" respawnPosition="(50.5, 10.0, 57.8)" />
       <CircleCollider radius="10" collisionLayer="player">
         <CollisionFilters>
           <player />
@@ -3646,7 +3646,7 @@
     <Components>
       <RigidBodyComponent friction="0" maxSpeed="1" bounciness="0.1" />
       <PlayerMovement speed="0.1" slowDownAmount="0.5" speedUpAmount="1" />
-      <PlayerData playerNumber="1" />
+      <PlayerData playerNumber="1" respawnPosition="(246.1, 10.0, 57.8)" />
       <CircleCollider radius="10" collisionLayer="player">
         <CollisionFilters>
           <player />
