@@ -160,6 +160,14 @@ void PlayerMovementComponent::Parse(rapidxml::xml_node<>* compNode)
 		{
 			m_speed = strtof(a->value(), 0);
 		}
+		else if(attributeName == "slowDownAmount")
+		{
+			m_slowDownAmount = strtof(a->value(), 0);
+		}
+		else if (attributeName == "speedUpAmount")
+		{
+			m_speedUpAmount = strtof(a->value(), 0);
+		}
 
 	}
 }
