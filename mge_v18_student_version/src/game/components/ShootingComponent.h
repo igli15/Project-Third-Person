@@ -32,19 +32,18 @@ private:
 	GridComponent* m_gridComponent;
 	sf::Clock m_clock;
 
-	float m_inkMaxLevel = 100;
+	int m_inkMaxLevel = 100;
 	float m_inkLevel = 100;
 
 	bool m_isChraging = false;
 
 	float m_currentAmmo=0;
-	float m_minRange = 2;
-	float m_maxRange = 6;
+	int m_minRange = 2;
+	int m_maxRange = 6;
 
 	float m_rateOfGainInk = 0.1f;
 
 	int m_playerNumber = 1;
-	float m_shootingRange = 2;
 
 	bool m_isKeyPresedLastFrame=false;
 };

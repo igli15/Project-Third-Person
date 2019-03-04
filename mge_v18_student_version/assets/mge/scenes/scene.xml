@@ -3639,7 +3639,7 @@
         </CollisionFilters>
       </CircleCollider>
       <TextureMaterial materialName="playerOneModel" shininess="2" emissionScale="1" diffuseTexture="player1ShadowDiffuse" specularTexture="NONE" emissionTexture="player1ShadowEmissive" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-      <ShootingComponent shootingRange="3" />
+      <ShootingComponent minRange="2" maxRange="6" inkMaxLevel="100" rateOfInkGain="0.1" />
     </Components>
   </GameObject>
   <GameObject name="Player1" position="(50.5, 10, 57.7999992)" rotation="(0, 0, 0, 1)" scale="(0.1, 0.1, 0.1)" mesh="playerTwoModel">
@@ -3654,7 +3654,7 @@
         </CollisionFilters>
       </CircleCollider>
       <TextureMaterial materialName="playerTwoModel" shininess="2" emissionScale="1" diffuseTexture="player2NeckDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-      <ShootingComponent shootingRange="3" />
+      <ShootingComponent minRange="2" maxRange="6" inkMaxLevel="100" rateOfInkGain="0.1" />
     </Components>
   </GameObject>
   <GameObject name="Canvas" position="(-960, 540, 0)" rotation="(0, 0, 0, 1)" scale="(1.0, 1.0, 1.0)">

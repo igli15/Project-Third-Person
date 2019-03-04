@@ -56,9 +56,21 @@ void ShootingComponent::Parse(rapidxml::xml_node<>* compNode)
 	{
 		std::string attributeName = a->name();
 
-		if (attributeName == "shootingRange")
+		if (attributeName == "minRange")
 		{
-			m_shootingRange = (int)strtof(a->value(), 0);
+			m_minRange = (int)strtof(a->value(), 0);
+		}
+		else if (attributeName == "maxRange")
+		{
+			m_maxRange = (int)strtof(a->value(), 0);
+		}
+		else if (attributeName == "inkMaxLevel")
+		{
+			m_inkMaxLevel = (int)strtof(a->value(), 0);
+		}
+		else if (attributeName == "rateOfInkGain")
+		{
+			m_rateOfGainInk = strtof(a->value(), 0);
 		}
 
 	}
