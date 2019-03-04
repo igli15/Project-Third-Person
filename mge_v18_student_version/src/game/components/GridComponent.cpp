@@ -210,3 +210,27 @@ std::vector<TileComponent*> GridComponent::GetTilesInARange(glm::vec3 playerPos,
 
 	return tiles;
 }
+
+void GridComponent::IncreaseTileCount(TileType type)
+{
+	if (type == TileType::ICE)
+	{
+		m_iceTileCount += 1;
+	}
+	else if (type == TileType::LAVA)
+	{
+		m_lavaTileCount += 1;
+	}
+}
+
+void GridComponent::DecreaseTileCount(TileType type)
+{
+	if (type == TileType::ICE)
+	{
+		m_iceTileCount -= 1;
+	}
+	else if (type == TileType::LAVA)
+	{
+		m_lavaTileCount -= 1;
+	}
+}

@@ -4,6 +4,7 @@
 #include "mge/materials/TextureMaterial.hpp"
 #include "mge/core/ResourceManager.h"
 #include "mge/core/AbstractGame.hpp"
+#include "game/components/GridComponent.h"
 
 TileComponent::TileComponent()
 {
@@ -49,13 +50,37 @@ void TileComponent::PaintTile(TileType type)
 
 	if (type == TileType::ICE)
 	{
+		if (m_tileType == ICE) return;
+
+		if (m_tileType == TileType::LAVA)
+		{
+			m_grid->DecreaseTileCount(TileType::LAVA);
+		}
+
+		m_grid->IncreaseTileCount(TileType::ICE);
+
 		m_gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceMat"));
 		m_tileType = TileType::ICE;
+		
 	}
 	else if (type == TileType::LAVA)
 	{
+		if (m_tileType == LAVA) return;
+
+		if (m_tileType == TileType::ICE)
+		{
+			m_grid->DecreaseTileCount(TileType::ICE);
+		}
+
+		m_grid->IncreaseTileCount(TileType::LAVA);
+
 		m_gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
 		m_tileType = TileType::LAVA;
 	}
+}
+
+void TileComponent::SetGrid(GridComponent * grid)
+{
+	m_grid = grid;
 }
 

@@ -2,6 +2,8 @@
 #include "mge/core/XMLComponent.h"
 #include "glm.hpp"
 
+class GridComponent;
+
 enum TileType
 {
 	LAVA,
@@ -26,8 +28,10 @@ public:
 	TileType GetTileType();
 
 	void PaintTile(TileType type);
+	void SetGrid(GridComponent* grid);
 
 private:
+	GridComponent* m_grid;
 	glm::ivec2 m_gridPos;
 	TileType m_tileType = TileType::DEFAULT;
 	bool m_isPainted = false;
