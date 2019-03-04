@@ -1,5 +1,4 @@
 #include "GridComponent.h"
-#include "game/components/TileComponent.h"
 #include <iostream>
 #include "mge/core/GameObject.hpp"
 

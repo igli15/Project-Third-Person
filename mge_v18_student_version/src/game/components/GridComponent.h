@@ -4,7 +4,7 @@
 #include "glm.hpp"
 #include <functional>
 
-class TileComponent;
+#include "game/components/TileComponent.h"
 
 class GridComponent : public XMLComponent
 {
