@@ -25,9 +25,12 @@ public:
 	void SetTileType(TileType newType);
 	TileType GetTileType();
 
+	void PaintTile(TileType type);
+
 private:
 	glm::ivec2 m_gridPos;
 	TileType m_tileType = TileType::DEFAULT;
 	bool m_isPainted = false;
+	bool m_isPaintable = true;
 };
 
