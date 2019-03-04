@@ -68,25 +68,21 @@ void PlayerDataComponent::RespawnPlayer()
 {
 	auto tiles = m_levelGrid->GetTilesInARange(GetGameObject()->transform->WorldPosition(),5,5);
 
-	TextureMaterial* enemyMat;
 	TileType enemyTileType;
 
 	if (m_tileMaterial == TileType::ICE)
 	{
-		enemyMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
 		enemyTileType = TileType::LAVA;
 	}
 	else
 	{
-		enemyMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceMat"));
 		enemyTileType = TileType::ICE;
 	}
 
 	for (int i = 0; i < tiles.size(); i++)
 	{
 
-		tiles[i]->GetGameObject()->setMaterial(enemyMat);
-		tiles[i]->SetTileType(enemyTileType);
+		tiles[i]->PaintTile(enemyTileType);
 	}
 
 	std::cout << "Respawning player to " << m_spawnPosition << std::endl;
