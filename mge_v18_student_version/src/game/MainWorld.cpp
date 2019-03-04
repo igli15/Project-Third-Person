@@ -51,9 +51,10 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 	}
 	else if (strcmp(componentNode->name(), "TileComponent") == 0)
 	{
-		newNode->AddComponent<TileComponent>()->Parse(componentNode);
+		newNode->AddComponent<TileComponent>()->SetGrid(levelGrid);
+		newNode->GetComponent<TileComponent>()->Parse(componentNode);
 		levelGrid->AddTile(newNode->GetComponent<TileComponent>());
-		newNode->GetComponent<TileComponent>()->SetGrid(levelGrid);
+		
 		//std::cout << "Added Tile At Pos: " << newNode->transform->WorldPosition()<< std::endl;
 	}
 	else if (strcmp(componentNode->name(), "PlayerMovement") == 0)
