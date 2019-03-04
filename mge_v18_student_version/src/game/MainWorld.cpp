@@ -53,6 +53,7 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 	{
 		newNode->AddComponent<TileComponent>()->Parse(componentNode);
 		levelGrid->AddTile(newNode->GetComponent<TileComponent>());
+		newNode->GetComponent<TileComponent>()->SetGrid(levelGrid);
 		//std::cout << "Added Tile At Pos: " << newNode->transform->WorldPosition()<< std::endl;
 	}
 	else if (strcmp(componentNode->name(), "PlayerMovement") == 0)
@@ -99,7 +100,14 @@ void MainWorld::Initialize()
 		tiles[i]->GetGameObject()->Destroy();
 	}
 	*/
+	/*
+	auto tiles = levelGrid->GetTilesInARange(glm::vec3(20, 0, 20), glm::vec3(0, 0, 0), 4, 4, []() {});
 
+	for (size_t i = 0; i < tiles.size(); i++)
+	{
+		tiles[i]->GetGameObject()->Destroy();
+	}
+	*/
 	//player1->GetComponent<PlayerMovementComponent>()->SetArenaData(glm::vec2(300, -200), glm::vec2(300, 200));
 }
 

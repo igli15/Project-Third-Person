@@ -43,11 +43,20 @@ public:
 	*/
 	std::vector<TileComponent*> GetNeighbourTiles(glm::vec3 playerPos,glm::vec3 enemyPos,int amount, bool horizontal, bool positiveDir,const std::function<void()>& onEnemyFoundCallback);
 
+
+	std::vector<TileComponent*> GetTilesInARange(glm::vec3 playerPos, int width, int height);
+
+	void IncreaseTileCount(TileType type);
+	void DecreaseTileCount(TileType type);
+
 private:
 
 	int m_width = 0;
 	int m_height = 0;
 	int m_tileRadius = 0;
+
+	int m_iceTileCount = 0;
+	int m_lavaTileCount = 0;
 
 	std::vector< std::vector<TileComponent*> > m_tileGrid;
 

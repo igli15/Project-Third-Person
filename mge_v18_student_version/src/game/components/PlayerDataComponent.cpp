@@ -5,6 +5,8 @@
 #include "../HUD.h"
 #include "mge/core/AbstractGame.hpp"
 #include "mge/core/ResourceManager.h"
+#include "game/components/GridComponent.h"
+#include "game/MainWorld.h"
 
 PlayerDataComponent::PlayerDataComponent()
 {
@@ -24,6 +26,7 @@ void PlayerDataComponent::Start()
 	m_shootingComponent = m_gameObject->GetComponent<ShootingComponent>();
 	m_shootingComponent->SetPlayerNumber(m_playerNumber);
 
+	m_levelGrid = dynamic_cast<MainWorld*>(GetGameObject()->GetWorld())->GetGrid();
 }
 
 void PlayerDataComponent::Update(float timeStep)
@@ -63,7 +66,31 @@ int PlayerDataComponent::GetPlayerNumber()
 
 void PlayerDataComponent::RespawnPlayer()
 {
+	auto tiles = m_levelGrid->GetTilesInARange(GetGameObject()->transform->WorldPosition(),5,5);
+
+	TextureMaterial* enemyMat;
+	TileType enemyTileType;
+
+	if (m_tileMaterial == TileType::ICE)
+	{
+		enemyMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
+		enemyTileType = TileType::LAVA;
+	}
+	else
+	{
+		enemyMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceMat"));
+		enemyTileType = TileType::ICE;
+	}
+
+	for (int i = 0; i < tiles.size(); i++)
+	{
+
+		tiles[i]->GetGameObject()->setMaterial(enemyMat);
+		tiles[i]->SetTileType(enemyTileType);
+	}
+
 	std::cout << "Respawning player to " << m_spawnPosition << std::endl;
+
 	m_shootingComponent->ResetInkLevel();
 	
 	m_gameObject->transform->SetLocalPosition(m_spawnPosition);
