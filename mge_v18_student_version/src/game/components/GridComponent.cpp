@@ -220,6 +220,10 @@ void GridComponent::IncreaseTileCount(TileType type)
 	{
 		m_lavaTileCount += 1;
 	}
+	std::cout << std::endl << "STATS: " << std::endl;
+	std::cout << "ICE    : " << m_iceTileCount<< std::endl;
+	std::cout << "LAVA   : " <<m_lavaTileCount << std::endl;
+	std::cout << "NEUTRAL: " <<(m_width*m_height)-m_iceTileCount-m_lavaTileCount<< std::endl;
 }
 
 void GridComponent::DecreaseTileCount(TileType type)
