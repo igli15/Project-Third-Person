@@ -121,6 +121,8 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 		{
 			if (positiveDir && currentTile->GridPos().x + i < m_width)
 			{
+				if (!GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->IsPaintable()) return tiles;
+
 				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos());
 				if (condition.x && condition.y)
 				{
@@ -128,10 +130,13 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 				    std::cout << "MYINDEX: " << GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos() << std::endl;
 					onEnemyFoundCallback();
 				}
+
 				tiles.push_back(GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y));
 			}
 			else if (!positiveDir && ((currentTile->GridPos().x - i) >= 0))
 			{
+				if (!GetTileAt(currentTile->GridPos().x - i, currentTile->GridPos().y)->IsPaintable()) return tiles;
+
 				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x - i, currentTile->GridPos().y)->GridPos());
 				
 				if (condition.x && condition.y)
@@ -146,6 +151,8 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 		{
 			if (positiveDir && currentTile->GridPos().y + i < m_height)
 			{
+				if (!GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y + i)->IsPaintable()) return tiles;
+
 				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y + i)->GridPos());
 				if (condition.x && condition.y)
 				{
@@ -155,6 +162,8 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 			}
 			else if (!positiveDir && currentTile->GridPos().y - i >= 0)
 			{
+				if (!GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y - i)->IsPaintable()) return tiles;
+
 				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y - i)->GridPos());
 				if (condition.x && condition.y)
 				{
