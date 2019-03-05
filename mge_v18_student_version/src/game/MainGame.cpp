@@ -21,6 +21,7 @@
 #include "mge/core/EventQueue.h"
 #include <iostream>
 #include "mge/core/XMLWorld.h"
+#include "mge/core/PlayerPrefs.h"
 
 MainGame::MainGame()
 {
@@ -53,11 +54,14 @@ void MainGame::CreateWorld()
 	//Loading an XML parsed world
 	//Don't forget to call The "LoadXMLWorld" function.
 
+
 	//XMLWorld* world = m_worldManager->CreateWorld<XMLWorld>("UNITYWORLD");
 	//world->LoadXmlWorld("scene.xml");
 
 	//Main World is now an XMLWorld...
-	//m_worldManager->CreateWorld<MainWorld>("MainWorld");
+	PlayerPrefs::SetInt("test", 10);
+	m_worldManager->CreateWorld<MainWorld>("MainWorld");
+	std::cout << "Testing PlayerPrefs: " << PlayerPrefs::GetInt("test") << std::endl;
 
 	//m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
 
