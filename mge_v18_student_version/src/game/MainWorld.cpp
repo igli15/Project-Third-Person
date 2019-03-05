@@ -88,8 +88,8 @@ void MainWorld::Initialize()
 
 	//std::cout << "tile Pos is: " << levelGrid->GetTileAt(0, 7)->GetGameObject()->transform->WorldPosition()<<std::endl;
 	//Get tile pos and destroy it based on a "test position"
-	std::cout << "tile Pos is: " << levelGrid->GetTileOnPos(glm::vec3(15,0,15))->GetGameObject()->transform->WorldPosition() << std::endl;
-	std::cout << "tile Index is: " << levelGrid->GetTileOnPos(glm::vec3(15, 0, 15))->GridPos() << std::endl;
+//	std::cout << "tile Pos is: " << levelGrid->GetTileOnPos(glm::vec3(15,0,15))->GetGameObject()->transform->WorldPosition() << std::endl;
+	//std::cout << "tile Index is: " << levelGrid->GetTileOnPos(glm::vec3(15, 0, 15))->GridPos() << std::endl;
 	//levelGrid->GetTilePlayerIsOn(glm::vec3(15, 0, 15))->GetGameObject()->Destroy();
 
 	//to test if neighbour tile works..
