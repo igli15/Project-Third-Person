@@ -63,6 +63,11 @@ bool TileComponent::IsPainted()
 	return m_isPainted;
 }
 
+bool TileComponent::IsPaintable()
+{
+	return m_isPaintable;
+}
+
 void TileComponent::SetTileType(TileType newType)
 {
 	m_tileType = newType;

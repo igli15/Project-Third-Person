@@ -23,6 +23,7 @@ public:
 	glm::ivec2 GridPos();
 
 	bool IsPainted();
+	bool IsPaintable();
 
 	void SetTileType(TileType newType);
 	TileType GetTileType();
