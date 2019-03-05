@@ -79,3 +79,56 @@ bool PlayerPrefs::GetBool(const std::string & tag)
 
 	return m_boolMap[tag];
 }
+
+void PlayerPrefs::ClearAll()
+{
+	PlayerPrefs::ClearAllStrings();
+	PlayerPrefs::ClearAllInts();
+	PlayerPrefs::ClearAllFloats();
+	PlayerPrefs::ClearAllBooleans();
+}
+
+void PlayerPrefs::Clear(const std::string & tag)
+{
+	if (m_stringMap.find(tag) != m_stringMap.end())
+	{
+		m_stringMap.erase(m_stringMap.find(tag));
+	}
+	else if(m_intMap.find(tag) != m_intMap.end())
+	{
+		m_intMap.erase(m_intMap.find(tag));
+	}
+	else if (m_floatMap.find(tag) != m_floatMap.end())
+	{
+		m_floatMap.erase(m_floatMap.find(tag));
+	}
+	else if (m_boolMap.find(tag) != m_boolMap.end())
+	{
+		m_boolMap.erase(m_boolMap.find(tag));
+	}
+	else
+	{
+		std::cout << "there is nothing to clear with that tag" << std::endl;
+		throw;
+	}
+}
+
+void PlayerPrefs::ClearAllStrings()
+{
+	m_stringMap.clear();
+}
+
+void PlayerPrefs::ClearAllInts()
+{
+	m_intMap.clear();
+}
+
+void PlayerPrefs::ClearAllBooleans()
+{
+	m_boolMap.clear();
+}
+
+void PlayerPrefs::ClearAllFloats()
+{
+	m_floatMap.clear();
+}

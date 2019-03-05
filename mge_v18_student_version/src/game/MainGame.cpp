@@ -60,6 +60,7 @@ void MainGame::CreateWorld()
 
 	//Main World is now an XMLWorld...
 	PlayerPrefs::SetInt("test", 10);
+	PlayerPrefs::Clear("test");
 	m_worldManager->CreateWorld<MainWorld>("MainWorld");
 	std::cout << "Testing PlayerPrefs: " << PlayerPrefs::GetInt("test") << std::endl;
 

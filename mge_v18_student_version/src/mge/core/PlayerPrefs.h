@@ -18,11 +18,23 @@ public:
 	static float GetFloat(const std::string& tag);
 	static bool GetBool(const std::string& tag);
 
+	//Use with caution... cleares everything
+	static void ClearAll();
+
+	//Clears any saved type with the specified tag
+	static void Clear(const std::string& tag);
+
 private:
 	static std::map<std::string, std::string> m_stringMap;
 	static std::map<std::string, int> m_intMap;
 	static std::map<std::string, float> m_floatMap;
 	static std::map<std::string, bool> m_boolMap;
 
+	//internal cleanups
+
+	static void ClearAllStrings();
+	static void ClearAllInts();
+	static void ClearAllBooleans();
+	static void ClearAllFloats();
 };
 
