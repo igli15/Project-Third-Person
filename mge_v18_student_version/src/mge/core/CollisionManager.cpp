@@ -26,6 +26,7 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 				targetCollider->GetGameObject()->ID() != m_colliders[colliderIndex]->GetGameObject()->ID()
 				)
 			{
+				//std::cout << "COLLIDER" << m_colliders[colliderIndex]->GetGameObject()->transform->LocalPosition() << std::endl;
 				CollisionInfo* collisionInfo = targetCollider->IsColliding(m_colliders[colliderIndex]);
 				if (collisionInfo!=nullptr)
 				{
