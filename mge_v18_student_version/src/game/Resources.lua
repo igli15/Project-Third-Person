@@ -4,6 +4,7 @@ print("Hello LUA");
 
 meshesLoadPath = "../assets/mge/models/"
 texturesLoadPath = "../assets/mge/textures/"
+fontsLoadPath = "../assets/mge/fonts/"
 musicLoadPath = "../assets/mge/music/"
 
 meshes = 
@@ -77,6 +78,11 @@ sfmlTextures =
 	["inkUIOverlay"] = texturesLoadPath.."inkUIOverlay.png",
 	["inkUIBackground"] = texturesLoadPath.."inkUIBackground.png",
 
+}
+
+sfmlFonts =
+{
+	["theBoldFont"] = fontsLoadPath.."theboldfont.ttf",
 }
 
 --Yes sound and music are 2 diffrent things...

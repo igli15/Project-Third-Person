@@ -2,6 +2,7 @@
 #include "mge\core\GameObject.hpp"
 #include "mge\core\World.hpp"
 #include "mge\components\UISpriteRenderer.h"
+#include "mge\components\TextComponent.h"
 #include "CanvasComponent.h"
 #include <vector>
 #include <algorithm>
@@ -35,6 +36,11 @@ void CanvasComponent::AddSpriteRenderer(UISpriteRenderer * pUISpriteRenderer)
 	m_uISpriteRenderers.push_back(pUISpriteRenderer);
 }
 
+void CanvasComponent::AddTextComponent(TextComponent * textComponent)
+{
+	m_textComponents.push_back(textComponent);
+}
+
 void CanvasComponent::RemoveSpriteRenderer(UISpriteRenderer * pUISpriteRenderer)
 {
 	auto it = std::find(m_uISpriteRenderers.begin(), m_uISpriteRenderers.end(), pUISpriteRenderer);
@@ -44,11 +50,28 @@ void CanvasComponent::RemoveSpriteRenderer(UISpriteRenderer * pUISpriteRenderer)
 	}
 }
 
+void CanvasComponent::RemoveTextComponent(TextComponent * textComponent)
+{
+	auto it = std::find(m_textComponents.begin(), m_textComponents.end(), textComponent);
+	if (it != m_textComponents.end())
+	{
+		m_textComponents.erase(it);
+	}
+}
+
 void CanvasComponent::DrawAllUISprites(sf::RenderWindow* window)
 {
 	for (int i = m_uISpriteRenderers.size()-1; i >=0; i--)
 	{
 		m_uISpriteRenderers[i]->DrawSprite(window);
+	}
+}
+
+void CanvasComponent::DrawAllTexts(sf::RenderWindow * window)
+{
+	for (int i = m_textComponents.size() - 1; i >= 0; i--)
+	{
+		m_textComponents[i]->DrawText(window);
 	}
 }
 

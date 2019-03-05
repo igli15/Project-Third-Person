@@ -384,6 +384,42 @@ sf::Texture * ResourceManager::GetSFMLTexture(const std::string & tag)
 	}
 }
 
+sf::Font * ResourceManager::LoadSFMLFont(const std::string & path, const std::string & tag)
+{
+	if (m_sfmlFonts.find(tag) != m_sfmlFonts.end())
+	{
+		std::cout << "A SFML Font Resource with that tag is already created" << std::endl;
+		throw;
+	}
+
+	sf::Font* font = new sf::Font();
+	if (font->loadFromFile(path))
+	{
+		m_sfmlFonts[tag] = font;
+		return font;
+	}
+	else
+	{
+		std::cout << "could not load the sfml font" << std::endl;
+		throw;
+	}
+}
+
+sf::Font * ResourceManager::GetSFMLFont(const std::string & tag)
+{
+	if (m_sfmlFonts.find(tag) == m_sfmlFonts.end())
+	{
+		std::cout << "There is no SFML Font resource with: " << tag << " as a name" << std::endl;
+
+		return nullptr;
+	}
+	else
+	{
+		return m_sfmlFonts[tag];
+	}
+}
+
+
 AbstractMaterial * ResourceManager::RegisterMaterial(AbstractMaterial * mat, const std::string & tag)
 {
 	if (mat->IsRegistered() || m_materialMap.find(tag) != m_materialMap.end())
@@ -480,6 +516,7 @@ void ResourceManager::LoadResourcesFromLua()
 	LuaLoadMusics();
 
 	LuaLoadSFMLTextures();
+	LuaLoadSFMLFonts();
 }
 
 void ResourceManager::LuaLoadMeshes()
@@ -596,6 +633,26 @@ void ResourceManager::LuaLoadSFMLTextures()
 		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
 		//std::cout << name <<" "<< path<<  std::endl;
 		LoadSFMLTexture(path, name);
+		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
+	}
+
+	m_luaProgram->PopCurrentTable();
+}
+
+void ResourceManager::LuaLoadSFMLFonts()
+{
+	m_luaProgram->GetGlobalTable("sfmlFonts");
+
+	lua_pushnil(m_luaProgram->GetCurrentLuaState());
+	lua_gettable(m_luaProgram->GetCurrentLuaState(), -2);
+
+	while (lua_next(m_luaProgram->GetCurrentLuaState(), -2) != 0)
+	{
+
+		std::string name = lua_tostring(m_luaProgram->GetCurrentLuaState(), -2);
+		std::string path = lua_tostring(m_luaProgram->GetCurrentLuaState(), -1);
+		//std::cout << name <<" "<< path<<  std::endl;
+		LoadSFMLFont(path, name);
 		lua_pop(m_luaProgram->GetCurrentLuaState(), 1);
 	}
 

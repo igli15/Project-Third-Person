@@ -190,6 +190,7 @@
     <ClInclude Include="..\src\mge\components\CircleCollider.h" />
     <ClInclude Include="..\src\mge\components\RectangleCollider.h" />
     <ClInclude Include="..\src\mge\components\RigidBody.h" />
+    <ClInclude Include="..\src\mge\components\TextComponent.h" />
     <ClInclude Include="..\src\mge\components\Transform.h" />
     <ClInclude Include="..\src\mge\components\UISpriteRenderer.h" />
     <ClInclude Include="..\src\mge\config.hpp" />
@@ -244,6 +245,7 @@
     <ClCompile Include="..\src\mge\components\CircleCollider.cpp" />
     <ClCompile Include="..\src\mge\components\RectangleCollider.cpp" />
     <ClCompile Include="..\src\mge\components\RigidBody.cpp" />
+    <ClCompile Include="..\src\mge\components\TextComponent.cpp" />
     <ClCompile Include="..\src\mge\components\Transform.cpp" />
     <ClCompile Include="..\src\mge\components\UISpriteRenderer.cpp" />
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp" />

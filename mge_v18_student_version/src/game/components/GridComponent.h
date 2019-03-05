@@ -48,7 +48,7 @@ public:
 
 	void IncreaseTileCount(TileType type);
 	void DecreaseTileCount(TileType type);
-
+	float GetTileCount(TileType type);
 private:
 
 	int m_width = 0;

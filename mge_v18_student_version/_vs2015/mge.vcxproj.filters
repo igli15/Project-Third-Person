@@ -193,6 +193,9 @@
     <ClInclude Include="..\src\game\components\PlayerDataComponent.h">
       <Filter>game\components</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\mge\components\TextComponent.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -347,6 +350,9 @@
     </ClCompile>
     <ClCompile Include="..\src\game\components\PlayerDataComponent.cpp">
       <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\TextComponent.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
