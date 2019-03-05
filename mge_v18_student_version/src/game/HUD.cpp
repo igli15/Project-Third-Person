@@ -4,7 +4,10 @@
 #include "game\components\HUDComponent.h"
 #include "mge\components\UISpriteRenderer.h"
 #include "mge\core\ResourceManager.h"
-
+#include "mge\components\TextComponent.h"
+#include <SFML\System.hpp>
+#include "MainWorld.h"
+#include"components\GridComponent.h"
 HUDComponent* HUD::m_hudComponent;
 
 HUD::HUD()
@@ -30,6 +33,7 @@ void HUD::Load()
 	m_inkBarPlayerTwo = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkPlayerTwo");
 	m_inkUIOverlay = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkUIOverlay");
 	m_inkUIBackground = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkUIBackground");
+	m_timerFont = AbstractGame::Instance()->GetResourceManager()->GetSFMLFont("theBoldFont");
 
 	////Create Sprite and assign Texture to Sprite
 	//playerOneInkSpriteText = AddComponent<UISpriteRenderer>();
@@ -40,6 +44,14 @@ void HUD::Load()
 	//playerTwoInkSpriteText->ApplyTexture(m_playerTwoInkText);
 	//playerTwoInkSpriteText->GetSprite()->setPosition(GetMirroredPostionX(10.0f, playerTwoInkSpriteText), 10);
 
+	leftNumbers = AddComponent<TextComponent>();
+	leftNumberText = leftNumbers->CreateText(m_timerFont);
+	leftNumberText->setFont(*m_timerFont);
+	leftNumberText->setCharacterSize(62);
+	leftNumberText->setString("");
+	leftNumberText->setOrigin(leftNumberText->getGlobalBounds().width / 2, 0);
+	leftNumberText->setPosition(930, 500);
+	
 
 	inkUIOverlay = AddComponent<UISpriteRenderer>();
 	inkUIOverlay->ApplyTexture(m_inkUIOverlay);
@@ -70,13 +82,27 @@ void HUD::Awake()
 void HUD::Start()
 {
 	GameObject::Start();
-
+	m_gameLength = 60;
+	m_gameClock.restart();
 
 }
 
 void HUD::Update(float pStep)
 {
 	GameObject::Update(pStep);
+	m_time = std::to_string( (int)(m_gameLength- m_gameClock.getElapsedTime().asSeconds()));
+	leftNumberText->setString("" + m_time);
+
+	if (m_gameLength - m_gameClock.getElapsedTime().asSeconds()<=0)
+	{
+		//covered tile function
+		std::cout << "ICE: " << dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::ICE) << std::endl;
+		std::cout << "Lava: " << dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::LAVA) << std::endl;
+
+		//end game (call reso Screen)
+		
+	}
+
 }
 
 void HUD::OnDestroy()

@@ -237,3 +237,15 @@ void GridComponent::DecreaseTileCount(TileType type)
 		m_lavaTileCount -= 1;
 	}
 }
+
+float GridComponent::GetTileCount(TileType type)
+{
+	if (type == TileType::ICE)
+	{
+		return (float)m_iceTileCount/(m_width*m_height) *100.0f;
+	}
+	else if (type == TileType::LAVA)
+	{
+		return(float)m_lavaTileCount / (m_width*m_height) *100.0f;
+	}
+}
