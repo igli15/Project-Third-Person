@@ -12,6 +12,14 @@ meshes =
 	["cubeMesh"] = meshesLoadPath.."cube_smooth.obj",
 	["cylinderMesh"] = meshesLoadPath.."cylinder_smooth.obj",
 	["Sphere"] = meshesLoadPath.."sphere_smooth.obj",
+	["GroundTile"] = meshesLoadPath.."GroundTile.obj",
+	["players"] = meshesLoadPath.."players.obj",
+	["orb"] = meshesLoadPath.."orb.obj",
+	["Wall"] = meshesLoadPath.."WallBlock1x1.obj",
+
+
+
+
 
 
 }
@@ -21,19 +29,34 @@ diffuseTextures =
 {
 	["lavaDiffuse"] = texturesLoadPath.."lavaDiffuse.jpg",
 	["iceDiffuse"] = texturesLoadPath.."iceDiffuse.jpg",
-	["NeutralMat"] = texturesLoadPath.."neutralDiffuse.jpg",
+	["neutralDiffuse"] = texturesLoadPath.."neutralDiffuse.jpg",
+	["playerIceDiffuse"] = texturesLoadPath.."playerIceDiffuse.jpg",
+	["orbIceDiffuse"] = texturesLoadPath.."orbIceDiffuse.jpg",
+	["iceDiffuse"] = texturesLoadPath.."iceDiffuse.jpg",
+	["lavaDiffuse"] = texturesLoadPath.."lavaDiffuse.jpg",
+	["wallDiffuse"] = texturesLoadPath.."wall.png",
+	["playerLavaDiffuse"] = texturesLoadPath.."player2Diffuse.jpg",
+	["orbLavaDiffuse"] = texturesLoadPath.."orbLavaDiffuse.jpg",
+
 }
 
 specularTextures = 
 {
 	["lavaSpecular"] = texturesLoadPath.."lavaSpecular.jpg",
 	["iceSpecular"] = texturesLoadPath.."iceSpecular.jpg",
+	["neutralSpecular"] = texturesLoadPath.."neutralSpecular.png",
 }
 
 emissionTextures = 
 {
 	["lavaEmission"] = texturesLoadPath.."lavaEmission.jpg",
 	["iceEmission"] = texturesLoadPath.."iceEmission.jpg",
+	["playerIceEmissive"] = texturesLoadPath.."playerIceEmissive.jpg",
+	["orbIceEmissive"] = texturesLoadPath.."orbIceEmissive.jpg",
+	["lavaEmission"] = texturesLoadPath.."lavaEmission.jpg",
+	["iceEmission"] = texturesLoadPath.."iceEmission.jpg",
+	["playerLavaEmissive"] = texturesLoadPath.."player2Emissive.jpg",
+	["orbLavaEmissive"] = texturesLoadPath.."orbLavaEmissive.jpg",
 }
 
 --normal maps here
@@ -41,6 +64,7 @@ normalMapTextures =
 {
 	["lavaNormal"] = texturesLoadPath.."lavaNormal.jpg",
 	["iceNormal"] = texturesLoadPath.."iceNormal.jpg",
+	["wallNormal"] = texturesLoadPath.."wallNormal.png",
 }
 
 --Since we are using SFML for ui textures we need to load the sepperatly here!

@@ -37,6 +37,8 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 
 	resourceManager->LoadResourcesFromLua();
 
+	TextureMaterial* initMat = new TextureMaterial(resourceManager->GetTexture("iceDiffuse"), resourceManager->GetTexture("iceDiffuse"),nullptr,nullptr);
+
 	ColorMaterial* whiteColor = new ColorMaterial();
 	whiteColor->SetDiffuseColor(glm::vec3(1, 1, 1));
 

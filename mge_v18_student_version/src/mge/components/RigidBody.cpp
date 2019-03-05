@@ -28,6 +28,13 @@ void RigidBody::Update(float timeStep)
 	velocity += m_acceleration - m_friction * velocity;
 	
 	//set max length of velocity
+	if(glm::length(velocity)>0)
+	{
+		std::cout << std::endl << "Velocity: " << velocity << std::endl;
+		std::cout << "MaxSpeed: " << m_maxSpeed << std::endl;
+	}
+
+
 	if (glm::length(velocity) >= m_maxSpeed)
 	{
 		velocity = glm::normalize(velocity) * m_maxSpeed;

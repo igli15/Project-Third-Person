@@ -15,7 +15,7 @@ public:
 	void Awake();
 	void SetWidth(int width);
 	void SetHeight(int height);
-	void SetTileRadius(int r);
+	void SetTileRadius(float r);
 
 
 	int Width() const;
@@ -53,7 +53,7 @@ private:
 
 	int m_width = 0;
 	int m_height = 0;
-	int m_tileRadius = 0;
+	float m_tileRadius = 0;
 
 	int m_iceTileCount = 0;
 	int m_lavaTileCount = 0;

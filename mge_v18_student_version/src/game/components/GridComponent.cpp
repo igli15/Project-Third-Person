@@ -26,7 +26,7 @@ void GridComponent::SetHeight(int height)
 	m_height = height;
 }
 
-void GridComponent::SetTileRadius(int r)
+void GridComponent::SetTileRadius(float r)
 {
 	m_tileRadius = r;
 }
@@ -78,7 +78,7 @@ void GridComponent::Parse(rapidxml::xml_node<>* compNode)
 		}
 		else if (attributeName == "tileRadius")
 		{
-			SetTileRadius(atoi(a->value()));
+			SetTileRadius(strtof(a->value(), 0));
 		}
 	}
 
@@ -94,8 +94,8 @@ TileComponent * GridComponent::GetTileAt(int x, int y)
 
 TileComponent * GridComponent::GetTileOnPos(glm::vec3 playerPos)
 {
-	int x = glm::floor((playerPos.x +4)  / (m_tileRadius * 2.0f));
-	int y = glm::floor((playerPos.z +4) / (m_tileRadius * 2.0f));
+	int x = glm::floor((playerPos.x + 0.2f)  / (m_tileRadius * 2.0f));
+	int y = glm::floor((playerPos.z + 0.3f) / (m_tileRadius * 2.0f));
 
 	//std::cout << "X: " << x << std::endl;
 	//std::cout << "Y: " << y << std::endl;
