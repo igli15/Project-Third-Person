@@ -22,6 +22,7 @@
 #include <iostream>
 #include "mge/core/XMLWorld.h"
 #include "mge/core/PlayerPrefs.h"
+#include "tweeny/tweeny.h"
 
 MainGame::MainGame()
 {
@@ -59,10 +60,10 @@ void MainGame::CreateWorld()
 	//world->LoadXmlWorld("scene.xml");
 
 	//Main World is now an XMLWorld...
-	PlayerPrefs::SetInt("test", 10);
-	PlayerPrefs::Clear("test");
+	//PlayerPrefs::SetInt("test", 10);
+	//PlayerPrefs::Clear("test");
 	m_worldManager->CreateWorld<MainWorld>("MainWorld");
-	std::cout << "Testing PlayerPrefs: " << PlayerPrefs::GetInt("test") << std::endl;
+	//std::cout << "Testing PlayerPrefs: " << PlayerPrefs::GetInt("test") << std::endl;
 
 	//m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
 

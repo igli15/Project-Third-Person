@@ -2,6 +2,11 @@
 #include "CircleCollider.h"
 #include "RectangleCollider.h"
 
+ColliderComponent::~ColliderComponent()
+{
+	AbstractGame::Instance()->GetCollisionManager()->RemoveCollider(this);
+}
+
 void ColliderComponent::Awake()
 {
 	AbstractGame::Instance()->GetCollisionManager()->AddCollider(this);

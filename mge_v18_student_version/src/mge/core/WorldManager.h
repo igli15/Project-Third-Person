@@ -21,7 +21,8 @@ public:
 		}
 		else
 		{
-			m_currentWorld->Destroy();
+			m_oldWorld = m_currentWorld;
+
 			T* world = new T();
 			m_currentWorld = world;
 			world->Initialize();
@@ -31,9 +32,12 @@ public:
 
 	World* GetCurrentWorld();
 
+	void ClearOldWorld();
+
 private:
 	
 	World* m_currentWorld = nullptr;
+	World* m_oldWorld = nullptr;
 
 };
 

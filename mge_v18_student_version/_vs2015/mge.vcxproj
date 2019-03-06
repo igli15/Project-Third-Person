@@ -220,6 +220,14 @@
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\test\TestComponent.h" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
+    <ClInclude Include="..\src\tweeny\dispatcher.h" />
+    <ClInclude Include="..\src\tweeny\easing.h" />
+    <ClInclude Include="..\src\tweeny\easingresolve.h" />
+    <ClInclude Include="..\src\tweeny\int2type.h" />
+    <ClInclude Include="..\src\tweeny\tween.h" />
+    <ClInclude Include="..\src\tweeny\tweenpoint.h" />
+    <ClInclude Include="..\src\tweeny\tweentraits.h" />
+    <ClInclude Include="..\src\tweeny\tweeny.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\game\components\GridComponent.cpp" />
@@ -278,6 +286,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\game\Resources.lua" />
+    <None Include="..\src\tweeny\tween.tcc" />
+    <None Include="..\src\tweeny\tweenone.tcc" />
+    <None Include="..\src\tweeny\tweenpoint.tcc" />
+    <None Include="..\src\tweeny\tweeny.tcc" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

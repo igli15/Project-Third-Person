@@ -35,6 +35,9 @@
     <Filter Include="MGE Source files\mge\eventTypes">
       <UniqueIdentifier>{70ddbfaf-777b-400b-b24c-6e7b06b744ce}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tweeny">
+      <UniqueIdentifier>{a2848f22-3931-4505-ba55-370d8fce2d80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp">
@@ -198,6 +201,30 @@
     </ClInclude>
     <ClInclude Include="..\src\mge\core\PlayerPrefs.h">
       <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\dispatcher.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\easing.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\easingresolve.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\int2type.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\tween.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\tweenpoint.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\tweentraits.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\tweeny.h">
+      <Filter>tweeny</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +392,18 @@
     <None Include="packages.config" />
     <None Include="..\src\game\Resources.lua">
       <Filter>game</Filter>
+    </None>
+    <None Include="..\src\tweeny\tween.tcc">
+      <Filter>tweeny</Filter>
+    </None>
+    <None Include="..\src\tweeny\tweenone.tcc">
+      <Filter>tweeny</Filter>
+    </None>
+    <None Include="..\src\tweeny\tweenpoint.tcc">
+      <Filter>tweeny</Filter>
+    </None>
+    <None Include="..\src\tweeny\tweeny.tcc">
+      <Filter>tweeny</Filter>
     </None>
   </ItemGroup>
 </Project>

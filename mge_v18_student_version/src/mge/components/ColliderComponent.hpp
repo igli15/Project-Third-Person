@@ -12,6 +12,8 @@ class RectangleCollider;
 class ColliderComponent : public XMLComponent
 {
 public:
+	 ~ColliderComponent();
+
 	void Awake() override;
 	void Update(float timeSteps) override;
 
