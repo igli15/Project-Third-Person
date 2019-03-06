@@ -40,12 +40,17 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 				targetCollider->GetGameObject()->ID() != m_colliders[colliderIndex]->GetGameObject()->ID()
 				)
 			{
+				//std::cout << "COLLIDER" << m_colliders[colliderIndex]->GetGameObject()->transform->LocalPosition() << std::endl;
 				CollisionInfo* collisionInfo = targetCollider->IsColliding(m_colliders[colliderIndex]);
 				if (collisionInfo!=nullptr)
 				{
 					//Calling RigidBody to resolve collision
 					collisionInfo->collider = m_colliders[colliderIndex]->GetGameObject();
-					targetCollider->GetGameObject()->GetRigidBody()->OnCollisionStay(collisionInfo);
+
+					//If collider is trigger, call onTrigger
+					if (m_colliders[colliderIndex]->IsTrigger()) targetCollider->GetGameObject()->OnTrigger(collisionInfo);
+					else targetCollider->GetGameObject()->GetRigidBody()->OnCollisionStay(collisionInfo);
+
 					return true;
 				}
 				

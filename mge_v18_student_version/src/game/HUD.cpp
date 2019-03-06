@@ -96,8 +96,8 @@ void HUD::Update(float pStep)
 	if (m_gameLength - m_gameClock.getElapsedTime().asSeconds()<=0)
 	{
 		//covered tile function
-		std::cout << "ICE: " << dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::ICE) << std::endl;
-		std::cout << "Lava: " << dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::LAVA) << std::endl;
+		//std::cout << "ICE: " << dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::ICE) << std::endl;
+		//std::cout << "Lava: " << dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::LAVA) << std::endl;
 
 		//end game (call reso Screen)
 		

@@ -28,11 +28,7 @@ void RigidBody::Update(float timeStep)
 	velocity += m_acceleration - m_friction * velocity;
 	
 	//set max length of velocity
-	if(glm::length(velocity)>0)
-	{
-		std::cout << std::endl << "Velocity: " << velocity << std::endl;
-		std::cout << "MaxSpeed: " << m_maxSpeed << std::endl;
-	}
+	
 
 
 	if (glm::length(velocity) >= m_maxSpeed)
@@ -60,6 +56,7 @@ ColliderComponent * RigidBody::GetCollider()
 
 void RigidBody::OnCollisionStay(CollisionInfo * collisionInfo)
 {
+	std::cout << "COLLISION" << std::endl;
 	float vx = (velocity.x == 0)? 0.1f :velocity.x;
 	float vy = (velocity.y == 0) ? 0.1f : velocity.y;
 

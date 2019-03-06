@@ -32,6 +32,10 @@ void Component::OnCollision(CollisionInfo * collisionInfo)
 {
 }
 
+void Component::OnTrigger(CollisionInfo * collisionInfo)
+{
+}
+
 void Component::OnDestroy()
 {
 
