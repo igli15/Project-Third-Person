@@ -27,8 +27,6 @@ void HUD::Load()
 	m_hudComponent = this->AddComponent<HUDComponent>();
 
 	//Get SFML Textures
-	//m_playerOneInkText = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("playerOneInkText");
-	//m_playerTwoInkText = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("playerTwoInkText");
 	m_inkBarPlayerOne = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkPlayerOne");
 	m_inkBarPlayerTwo = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkPlayerTwo");
 	m_inkUIOverlay = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkUIOverlay");
@@ -36,13 +34,6 @@ void HUD::Load()
 	m_timerFont = AbstractGame::Instance()->GetResourceManager()->GetSFMLFont("theBoldFont");
 
 	////Create Sprite and assign Texture to Sprite
-	//playerOneInkSpriteText = AddComponent<UISpriteRenderer>();
-	//playerOneInkSpriteText->ApplyTexture(m_playerOneInkText);
-	//playerOneInkSpriteText->GetSprite()->setPosition(10, 10);
-
-	//playerTwoInkSpriteText = AddComponent<UISpriteRenderer>();
-	//playerTwoInkSpriteText->ApplyTexture(m_playerTwoInkText);
-	//playerTwoInkSpriteText->GetSprite()->setPosition(GetMirroredPostionX(10.0f, playerTwoInkSpriteText), 10);
 
 	leftNumbers = AddComponent<TextComponent>();
 	leftNumberText = leftNumbers->CreateText(m_timerFont);

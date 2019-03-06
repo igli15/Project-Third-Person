@@ -71,6 +71,7 @@ normalMapTextures =
 --Since we are using SFML for ui textures we need to load the sepperatly here!
 sfmlTextures = 
 {
+	--HUD
 	["brickTex"] = texturesLoadPath.."bricks.jpg",
 	["playerOneInkText"] = texturesLoadPath.."playerInkText.png",
 	["playerTwoInkText"] = texturesLoadPath.."playerInkText.png",
@@ -79,6 +80,13 @@ sfmlTextures =
 	["inkUIOverlay"] = texturesLoadPath.."inkUIOverlay.png",
 	["inkUIBackground"] = texturesLoadPath.."inkUIBackground.png",
 
+	--MENU
+	["menuBG"] = texturesLoadPath.."background.png",
+	["playSelected"] = texturesLoadPath.."playSelected.png",
+	["controlsSelected"] = texturesLoadPath.."controlsSelected.png",
+	["exitSelected"] = texturesLoadPath.."exitSelected.png",
+	["controlsScreen"] = texturesLoadPath.."controlsScreen.png",
+	["controlsScreenPressed"] = texturesLoadPath.."controlsScreenPressed.png",
 }
 
 sfmlFonts =
