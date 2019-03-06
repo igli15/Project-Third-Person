@@ -226,6 +226,9 @@
     <ClInclude Include="..\src\tweeny\tweeny.h">
       <Filter>tweeny</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game\components\RefillStationComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -386,6 +389,9 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\core\PlayerPrefs.cpp">
       <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\RefillStationComponent.cpp">
+      <Filter>game\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

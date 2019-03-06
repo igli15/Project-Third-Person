@@ -2402,7 +2402,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="False" />
+          <TileComponent TileType="DEFAULT" isPaintable="True" />
         </Components>
       </GameObject>
     </GameObject>
@@ -2411,7 +2411,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="False" />
+          <TileComponent TileType="DEFAULT" isPaintable="True" />
         </Components>
       </GameObject>
     </GameObject>
@@ -2420,7 +2420,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="False" />
+          <TileComponent TileType="DEFAULT" isPaintable="True" />
         </Components>
       </GameObject>
     </GameObject>
@@ -2636,7 +2636,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="False" />
+          <TileComponent TileType="DEFAULT" isPaintable="True" />
         </Components>
       </GameObject>
     </GameObject>
@@ -3524,7 +3524,7 @@
         </CollisionFilters>
       </CircleCollider>
       <PlayerData playerNumber="1" respawnPosition="(5.6, 0.5, 9.1)" />
-      <PlayerMovement speed="0.1" slowDownAmount="0.5" speedUpAmount="1" />
+      <PlayerMovement speed="0.1" slowDownAmount="0" speedUpAmount="1" />
       <RigidBodyComponent friction="0" maxSpeed="0.1" bounciness="0.1" />
     </Components>
     <GameObject name="polySurface14_Bird_beek_final_with_ribs_triangulated1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="orb">
@@ -3544,7 +3544,7 @@
   <GameObject name="orb2" position="(3.5900, 0.5000, 9.0700)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
     <Components>
       <RigidBodyComponent friction="0" maxSpeed="0.1" bounciness="0.1" />
-      <PlayerMovement speed="0.1" slowDownAmount="0.5" speedUpAmount="1" />
+      <PlayerMovement speed="0.1" slowDownAmount="0" speedUpAmount="1" />
       <PlayerData playerNumber="2" respawnPosition="(3.6, 0.5, 9.1)" />
       <CircleCollider radius="0.3" collisionLayer="player">
         <CollisionFilters>
@@ -3635,10 +3635,14 @@
       <Components />
       <GameObject name="polySurface738_arena" position="(0.2100, 0.0000, -1.1300)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.5300, 1.0000)" mesh="Wall">
         <Components>
-          <RectangleCollider width="1" height="1" collisionLayer="wall">
-            <CollisionFilters />
+          <RectangleCollider width="3" height="3" collisionLayer="fillerStation">
+            <CollisionFilters>
+              <player />
+            </CollisionFilters>
           </RectangleCollider>
+          <RefillStationComponent inkGainRate="0.5" />
           <TextureMaterial materialName="wallMat" shininess="16" emissionScale="0.8" diffuseTexture="wallDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="wallNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+          <RigidBodyComponent friction="0" maxSpeed="0.1" bounciness="0" />
         </Components>
       </GameObject>
     </GameObject>

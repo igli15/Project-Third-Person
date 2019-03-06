@@ -15,7 +15,7 @@ void RectangleCollider::DetectCollision()
 	bool isColliding = AbstractGame::Instance()->GetCollisionManager()->CheckCollisionInWorld(this);
 	if (isColliding)
 	{
-		std::cout << "COLLISION _ RECT "<< m_gameObject->ID() << std::endl;
+		//std::cout << "COLLISION _ RECT "<< m_gameObject->ID() << std::endl;
 	}
 }
 

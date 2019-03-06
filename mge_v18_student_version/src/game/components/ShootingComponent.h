@@ -22,6 +22,7 @@ public:
 	void SetGrid(GridComponent* grid);
 	void SetInkLevel(float newInkLevel);
 	void ResetInkLevel();
+	void AddInk(float inkLevel);
 
 	void OnKeyPressed(bool isKeyPressedThisFrame);
 	void OnKeyEnter();
@@ -33,7 +34,7 @@ private:
 	sf::Clock m_clock;
 
 	int m_inkMaxLevel = 100;
-	float m_inkLevel = 100;
+	float m_inkLevel = 0;
 
 	bool m_isChraging = false;
 

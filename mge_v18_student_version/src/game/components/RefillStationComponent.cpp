@@ -5,6 +5,7 @@
 
 void RefillStationComponent::Start()
 {
+	std::cout << "			REFILL STATION" << std::endl;
 	m_gameObject->GetComponent<ColliderComponent>()->SetTrigger(true);
 }
 
@@ -15,7 +16,7 @@ void RefillStationComponent::Update()
 void RefillStationComponent::OnTrigger(CollisionInfo * collisionInfo)
 {
 	std::cout << "Refilling" << std::endl;
-	collisionInfo->collider->GetComponent<ShootingComponent>()->ResetInkLevel();
+	collisionInfo->collider->GetComponent<ShootingComponent>()->AddInk(m_inkGainRate);
 }
 
 RefillStationComponent::RefillStationComponent()

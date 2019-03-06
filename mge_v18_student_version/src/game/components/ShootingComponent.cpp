@@ -67,6 +67,7 @@ void ShootingComponent::Parse(rapidxml::xml_node<>* compNode)
 		else if (attributeName == "inkMaxLevel")
 		{
 			m_inkMaxLevel = (int)strtof(a->value(), 0);
+			m_inkLevel = m_inkMaxLevel;
 		}
 		else if (attributeName == "rateOfInkGain")
 		{
@@ -150,6 +151,16 @@ void ShootingComponent::SetInkLevel(float newInkLevel)
 void ShootingComponent::ResetInkLevel()
 {
 	SetInkLevel(m_inkMaxLevel);
+}
+
+void ShootingComponent::AddInk(float inkLevel)
+{
+	m_inkLevel += inkLevel;
+	std::cout << "INK LVL: " << m_inkLevel << std::endl;
+	std::cout << "MAX: " << m_inkMaxLevel << std::endl;
+	if (m_inkLevel >= m_inkMaxLevel) m_inkLevel = m_inkMaxLevel;
+	
+	HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
 }
 
 void ShootingComponent::OnKeyPressed(bool isKeyPressedThisFrame)

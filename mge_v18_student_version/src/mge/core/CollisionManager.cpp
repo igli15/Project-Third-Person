@@ -48,7 +48,7 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 					collisionInfo->collider = m_colliders[colliderIndex]->GetGameObject();
 
 					//If collider is trigger, call onTrigger
-					if (m_colliders[colliderIndex]->IsTrigger()) targetCollider->GetGameObject()->OnTrigger(collisionInfo);
+					if (targetCollider->IsTrigger()) targetCollider->GetGameObject()->OnTrigger(collisionInfo);
 					else targetCollider->GetGameObject()->GetRigidBody()->OnCollisionStay(collisionInfo);
 
 					return true;

@@ -160,6 +160,7 @@ void XMLWorld::ParseComponents(rapidxml::xml_node<>* com,GameObject* newNode)
 		else if (strcmp(com->name(), "RefillStationComponent") == 0)
 		{
 			(newNode)->AddComponent<RefillStationComponent>()->Parse(com);
+			std::cout << "READ RefillStation " << std::endl;
 		}
 		else if (strcmp(com->name(), "CircleCollider") == 0)
 		{
