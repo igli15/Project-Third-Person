@@ -3,7 +3,7 @@
 #include "game/components/PlayerDataComponent.h"
 #include "game/MainWorld.h"
 #include "game/components/GridComponent.h"
-
+#include "mge/components/CircleCollider.h"
 void PlayerMovementComponent::Awake()
 {
 	m_rigidbody = m_gameObject->GetComponent<RigidBody>();
@@ -14,6 +14,7 @@ void PlayerMovementComponent::Awake()
 void PlayerMovementComponent::Start()
 {
 	m_initSpeed = m_rigidbody->GetMaxSpeed();
+	//m_gameObject->GetComponent<CircleCollider>()->SetTrigger(true);
 }
 
 void PlayerMovementComponent::Update(float timeStep)
@@ -84,6 +85,11 @@ void PlayerMovementComponent::Update(float timeStep)
 void PlayerMovementComponent::OnCollision(CollisionInfo * collisionInfo)
 {
 	//std::cout << "COLLISION IS CALLED IN COMPONENT" << std::endl;
+}
+
+void PlayerMovementComponent::OnTrigger(CollisionInfo * collisionInfo)
+{
+	std::cout << "		TRIGGER" << std::endl;
 }
 
 void PlayerMovementComponent::SetPlayerNumber(int playerNumber)

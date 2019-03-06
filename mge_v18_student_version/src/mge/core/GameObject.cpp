@@ -215,6 +215,18 @@ void GameObject::OnCollision(CollisionInfo * collisionInfo)
 	}
 }
 
+void GameObject::OnTrigger(CollisionInfo * collisionInfo)
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->OnTrigger(collisionInfo);
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->OnTrigger(collisionInfo);
+	}
+}
+
 void GameObject::OnDestroy()
 {
 	for (int i = 0; i < m_attachedComponents.size(); ++i) {

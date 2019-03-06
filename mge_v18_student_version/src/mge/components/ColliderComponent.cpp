@@ -44,6 +44,16 @@ glm::vec2 ColliderComponent::GetWorld2Dposition()
 	return glm::vec2(pos3d.x, pos3d.z);
 }
 
+void ColliderComponent::SetTrigger(bool trigger)
+{
+	m_trigger = trigger;
+}
+
+bool ColliderComponent::IsTrigger()
+{
+	return m_trigger;
+}
+
 void ColliderComponent::Parse(rapidxml::xml_node<>* compNode)
 {
 }

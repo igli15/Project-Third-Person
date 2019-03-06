@@ -21,6 +21,8 @@ public:
 
 	//OnCollision is called each frame when gameObject is colliding
 	virtual void OnCollision(CollisionInfo* collisionInfo);
+	virtual void OnTrigger(CollisionInfo* collisionInfo);
+
 
 	virtual void OnDestroy();
 

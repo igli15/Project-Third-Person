@@ -196,7 +196,9 @@
     <ClInclude Include="..\src\mge\components\TextComponent.h">
       <Filter>MGE Source files\mge\components</Filter>
     </ClInclude>
-    <ClInclude Include="RefillStationComponent.h" />
+    <ClInclude Include="..\src\game\components\RefillStationComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -355,8 +357,8 @@
     <ClCompile Include="..\src\mge\components\TextComponent.cpp">
       <Filter>MGE Source files\mge\components</Filter>
     </ClCompile>
-    <ClCompile Include="RefillStationComponent.cpp">
-      <Filter>MGE Source files</Filter>
+    <ClCompile Include="..\src\game\components\RefillStationComponent.cpp">
+      <Filter>game\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

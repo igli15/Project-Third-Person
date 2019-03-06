@@ -22,6 +22,8 @@ public:
 	std::vector<std::string> GetCollisionFilterTags();
 	
 	glm::vec2 GetWorld2Dposition();
+	void SetTrigger(bool trigger);
+	bool IsTrigger();
 
 	virtual void DetectCollision() = 0;
 	virtual CollisionInfo* IsColliding(ColliderComponent* collider) = 0; //Redispatching...
@@ -37,7 +39,7 @@ protected:
 	//You can add multiple collision filters to collider
 	std::vector<std::string> m_collisionFilterTags;
 
-	// trigger = false;
+	bool m_trigger = false;
 
 	// Inherited via XMLComponent
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;

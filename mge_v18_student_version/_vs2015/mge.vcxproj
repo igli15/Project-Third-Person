@@ -171,6 +171,7 @@
     <ClInclude Include="..\src\game\components\KeyMoveComponent.h" />
     <ClInclude Include="..\src\game\components\PlayerDataComponent.h" />
     <ClInclude Include="..\src\game\components\PlayerMovementComponent.h" />
+    <ClInclude Include="..\src\game\components\RefillStationComponent.h" />
     <ClInclude Include="..\src\game\components\RotatingComponent.h" />
     <ClInclude Include="..\src\game\components\ShootingComponent.h" />
     <ClInclude Include="..\src\game\components\TileComponent.h" />
@@ -219,7 +220,6 @@
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\test\TestComponent.h" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
-    <ClInclude Include="RefillStationComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\game\components\GridComponent.cpp" />
@@ -227,6 +227,7 @@
     <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp" />
     <ClCompile Include="..\src\game\components\PlayerDataComponent.cpp" />
     <ClCompile Include="..\src\game\components\PlayerMovementComponent.cpp" />
+    <ClCompile Include="..\src\game\components\RefillStationComponent.cpp" />
     <ClCompile Include="..\src\game\components\RotatingComponent.cpp" />
     <ClCompile Include="..\src\game\components\ShootingComponent.cpp" />
     <ClCompile Include="..\src\game\components\TileComponent.cpp" />
@@ -274,7 +275,6 @@
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\test\TestComponent.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
-    <ClCompile Include="RefillStationComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\game\Resources.lua" />

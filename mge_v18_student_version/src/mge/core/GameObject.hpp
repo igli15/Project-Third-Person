@@ -49,6 +49,7 @@ class GameObject
 		virtual void Start();
 		virtual void Update(float pStep);
 		virtual void OnCollision(CollisionInfo* collisionInfo);
+		virtual void OnTrigger(CollisionInfo* collisionInfo);
 		virtual void OnDestroy();
 
         //child management, note that add/remove and setParent are closely coupled.

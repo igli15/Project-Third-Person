@@ -15,7 +15,7 @@ public:
 	void Start();
 	void Update(float timeStep);
 	void OnCollision(CollisionInfo* collisionInfo);
-
+	void OnTrigger(CollisionInfo* collisionInfo);
 	void SetPlayerNumber(int playerNumber);
 	void SetArenaData(glm::vec2 pos, glm::vec2 size);
 	void SetSpeed(float speed);
@@ -24,6 +24,7 @@ public:
 
 	PlayerMovementComponent();
 	virtual ~PlayerMovementComponent();
+
 
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 private:
