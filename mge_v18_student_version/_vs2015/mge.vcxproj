@@ -178,6 +178,8 @@
     <ClInclude Include="..\src\game\IlyasWorld.h" />
     <ClInclude Include="..\src\game\MainGame.h" />
     <ClInclude Include="..\src\game\MainWorld.h" />
+    <ClInclude Include="..\src\game\MenuScene.h" />
+    <ClInclude Include="..\src\game\MenuUI.h" />
     <ClInclude Include="..\src\game\PhysicsTestObject.h" />
     <ClInclude Include="..\src\game\Player.h" />
     <ClInclude Include="..\src\glm.hpp" />
@@ -233,6 +235,8 @@
     <ClCompile Include="..\src\game\IlyasWorld.cpp" />
     <ClCompile Include="..\src\game\MainGame.cpp" />
     <ClCompile Include="..\src\game\MainWorld.cpp" />
+    <ClCompile Include="..\src\game\MenuScene.cpp" />
+    <ClCompile Include="..\src\game\MenuUI.cpp" />
     <ClCompile Include="..\src\game\PhysicsTestObject.cpp" />
     <ClCompile Include="..\src\game\Player.cpp" />
     <ClCompile Include="..\src\main.cpp" />

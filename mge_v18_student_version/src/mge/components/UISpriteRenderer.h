@@ -16,6 +16,7 @@ public:
 	virtual ~UISpriteRenderer();
 	void DrawSprite(sf::RenderWindow* window);
 	void InitRenderingQuad();
+
 	void Awake() override;
 	void SetTintColor(glm::vec3 tint);
 

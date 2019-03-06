@@ -196,6 +196,12 @@
     <ClInclude Include="..\src\mge\components\TextComponent.h">
       <Filter>MGE Source files\mge\components</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game\MenuScene.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\MenuUI.h">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -353,6 +359,12 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\components\TextComponent.cpp">
       <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\MenuScene.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\MenuUI.cpp">
+      <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
