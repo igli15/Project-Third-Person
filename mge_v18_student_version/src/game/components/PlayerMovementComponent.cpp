@@ -42,14 +42,17 @@ void PlayerMovementComponent::Update(float timeStep)
 		}
 	}
 	ApplyDirection();
-	ApplyMovement();
+
 }
 
 void PlayerMovementComponent::ApplyDirection()
 {
 	bool keyPressed = false;
 	Direction priorityDirection=NONE;
-	//Direction newDirection=NONE;
+
+	int m_horizontalInput = 0;
+	int m_verticalInput = 0;
+
 	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::D : sf::Keyboard::Right))
 	{
 		if (m_oldFirection == LEFT || m_oldFirection == RIGHT)
@@ -93,14 +96,13 @@ void PlayerMovementComponent::ApplyDirection()
 		m_currentDirection = priorityDirection;
 	}
 
-	if(!keyPressed)
-	{
-		m_currentDirection = NONE;
-	}
 	m_oldFirection = m_currentDirection;
+	ApplyMovement(keyPressed);
 }
 
-void PlayerMovementComponent::ApplyMovement()
+
+
+void PlayerMovementComponent::ApplyMovement(bool isMoved)
 {
 	if (m_playerData->IsDead()) return;
 
@@ -125,7 +127,7 @@ void PlayerMovementComponent::ApplyMovement()
 
 		SetRotation(glm::vec3(0, 0, -1), m_gameObject->transform->LocalTransform()[2]);
 	}
-	else if (m_currentDirection == NONE)
+	if (!isMoved)
 	{
 		m_rigidbody->SetAcceleration(glm::vec2(0, 0));
 		m_rigidbody->velocity = glm::vec2(0, 0);
