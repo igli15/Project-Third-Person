@@ -41,55 +41,95 @@ void PlayerMovementComponent::Update(float timeStep)
 			}
 		}
 	}
+	ApplyDirection();
+	ApplyMovement();
+}
 
-	//Prevent player moving out of arena boundaries
-	if (IsOutOfBorder())
-	{
-		m_rigidbody->SetAcceleration(glm::vec2(0, 0));
-		m_gameObject->transform->Translate(-glm::vec3(m_rigidbody->velocity.x, 0, m_rigidbody->velocity.y));
-		m_rigidbody->velocity = glm::vec2(0, 0);
-		return;
-	}
+void PlayerMovementComponent::ApplyDirection()
+{
+	bool keyPressed = false;
+	Direction priorityDirection=NONE;
+	//Direction newDirection=NONE;
 	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::D : sf::Keyboard::Right))
 	{
+		if (m_oldFirection == LEFT || m_oldFirection == RIGHT)
+		{
+			priorityDirection = RIGHT;
+		}
 		m_currentDirection = RIGHT;
-		m_rigidbody->SetAcceleration(glm::vec2(-m_speed, 0));
-		SetRotation(glm::vec3(1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
+		keyPressed = true;
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::A : sf::Keyboard::Left))
 	{
+		if (m_oldFirection == LEFT || m_oldFirection == RIGHT)
+		{
+			priorityDirection = LEFT;
+		}
 		m_currentDirection = LEFT;
-		m_rigidbody->SetAcceleration(glm::vec2(m_speed, 0));
-		SetRotation(glm::vec3(-1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
+		keyPressed = true;
 	}
-	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
+
+	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
 	{
+		if (m_oldFirection == FORWARD || m_oldFirection == BACKWARD)
+		{
+			priorityDirection = BACKWARD;
+		}
 		m_currentDirection = BACKWARD;
-		m_rigidbody->SetAcceleration(glm::vec2(0, -m_speed));
-		SetRotation(glm::vec3(0, 0, 1), m_gameObject->transform->LocalTransform()[2]);
+		keyPressed = true;
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::W : sf::Keyboard::Up))
 	{
+		if (m_oldFirection == FORWARD || m_oldFirection == BACKWARD)
+		{
+			priorityDirection = FORWARD;
+		}
 		m_currentDirection = FORWARD;
+		keyPressed = true;
+	}
+
+	if (priorityDirection != NONE)
+	{
+		m_currentDirection = priorityDirection;
+	}
+
+	if(!keyPressed)
+	{
+		m_currentDirection = NONE;
+	}
+	m_oldFirection = m_currentDirection;
+}
+
+void PlayerMovementComponent::ApplyMovement()
+{
+
+	if (m_currentDirection == RIGHT)
+	{
+		m_rigidbody->SetAcceleration(glm::vec2(-m_speed, 0));
+		SetRotation(glm::vec3(1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
+	}
+	else if (m_currentDirection == LEFT)
+	{
+		m_rigidbody->SetAcceleration(glm::vec2(m_speed, 0));
+		SetRotation(glm::vec3(-1, 0, 0), m_gameObject->transform->LocalTransform()[2]);
+	}
+	else if (m_currentDirection == BACKWARD)
+	{
+		m_rigidbody->SetAcceleration(glm::vec2(0, -m_speed));
+		SetRotation(glm::vec3(0, 0, 1), m_gameObject->transform->LocalTransform()[2]);
+	}
+	else if (m_currentDirection == FORWARD)
+	{
 		m_rigidbody->SetAcceleration(glm::vec2(0, m_speed));
 
 		SetRotation(glm::vec3(0, 0, -1), m_gameObject->transform->LocalTransform()[2]);
 	}
-	else
+	else if (m_currentDirection == NONE)
 	{
 		m_rigidbody->SetAcceleration(glm::vec2(0, 0));
 		m_rigidbody->velocity = glm::vec2(0, 0);
 	}
-}
 
-void PlayerMovementComponent::OnCollision(CollisionInfo * collisionInfo)
-{
-	//std::cout << "COLLISION IS CALLED IN COMPONENT" << std::endl;
-}
-
-void PlayerMovementComponent::OnTrigger(CollisionInfo * collisionInfo)
-{
-	std::cout << "		TRIGGER" << std::endl;
 }
 
 void PlayerMovementComponent::SetPlayerNumber(int playerNumber)
@@ -122,25 +162,6 @@ PlayerMovementComponent::~PlayerMovementComponent()
 {
 }
 
-bool PlayerMovementComponent::IsOutOfBorder()
-{
-	return false;
-
-	glm::vec2 newPos = glm::vec2(m_gameObject->transform->LocalPosition().x, m_gameObject->transform->LocalPosition().z) + m_rigidbody->velocity;
-
-	/*
-	std::cout << std::endl<< "NewPosition" << newPos << std::endl;
-	std::cout << "Arena Left: " << m_arenaPosition.x - m_arenaSize.x << std::endl;
-	std::cout << "Arena Right: " << m_arenaPosition.x << std::endl;
-
-	std::cout << "Arena Up: " << m_arenaPosition.y + m_arenaSize.y << std::endl;
-	std::cout << "Arena Down: " << m_arenaPosition.y << std::endl;
-	*/
-	if (newPos.x<m_arenaPosition.x - m_arenaSize.x || newPos.x>m_arenaPosition.x) return true;
-	if (newPos.y<m_arenaPosition.y || newPos.y > m_arenaPosition.y + m_arenaSize.y) return true;
-
-	return false;
-}
 
 void PlayerMovementComponent::SetRotation(glm::vec3 worldDirection, glm::vec3 localDirection)
 {
