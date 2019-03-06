@@ -93,6 +93,8 @@ void HUD::Update(float pStep)
 		PlayerPrefs::SetFloat("IcePercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::ICE));
 		PlayerPrefs::SetFloat("LavaPercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::LAVA));
 
+
+
 		AbstractGame::Instance()->GetWorldManager()->CreateWorld<ResolutionScreen>("ResolutionScreen");
 		//covered tile function
 		//std::cout << "ICE: " << dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::ICE) << std::endl;

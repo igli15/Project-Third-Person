@@ -68,7 +68,7 @@ void MainGame::CreateWorld()
 	//std::cout << "Testing PlayerPrefs: " << PlayerPrefs::GetInt("test") << std::endl;
 
 	//m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
-	m_worldManager->CreateWorld<ResolutionScreen>("ResolutionScreen");
+	m_worldManager->CreateWorld<MenuScene>("MenuScene");
 
 	//m_eventQueue->RegisterEvent<TestEvent>([](EventType* t) {std::cout << dynamic_cast<TestEvent*>(t)->test << std::endl; });
 	//TestEvent* t = new TestEvent();
