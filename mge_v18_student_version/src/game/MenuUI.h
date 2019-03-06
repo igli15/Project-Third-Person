@@ -28,16 +28,13 @@ private:
 	Selected m_Selected = NONE;
 	bool m_controlsLocked = false;
 	UISpriteRenderer* m_menuBGSprite;
-	UISpriteRenderer* m_playSelectedSprite;
-	UISpriteRenderer* m_controlsSelectedSprite;
-	UISpriteRenderer* m_exitGameSelectedSprite;
-	UISpriteRenderer* m_controlsBackSprite;
-	
+	float m_pressCD = 0.0f;
 	sf::Texture * m_menuBGTexture;
 	sf::Texture * m_playSelectedTexture;
 	sf::Texture * m_controlsSelectedTexture;
 	sf::Texture * m_exitGameSelectedTexture;
-	sf::Texture * m_controlsBackTexture;
+	sf::Texture * m_ControlScreen;
+	sf::Texture * m_ControlScreenPressed;
 
 };
 

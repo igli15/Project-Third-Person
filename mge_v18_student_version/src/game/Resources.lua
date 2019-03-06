@@ -85,7 +85,8 @@ sfmlTextures =
 	["playSelected"] = texturesLoadPath.."playSelected.png",
 	["controlsSelected"] = texturesLoadPath.."controlsSelected.png",
 	["exitSelected"] = texturesLoadPath.."exitSelected.png",
-
+	["controlsScreen"] = texturesLoadPath.."controlsScreen.png",
+	["controlsScreenPressed"] = texturesLoadPath.."controlsScreenPressed.png",
 }
 
 sfmlFonts =

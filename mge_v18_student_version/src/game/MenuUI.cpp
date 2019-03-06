@@ -6,6 +6,7 @@
 #include "mge\core\ResourceManager.h"
 #include <SFML\System.hpp>
 #include "MainWorld.h"
+#include "mge/core/WorldManager.h"
 
 MenuUI::MenuUI()
 {
@@ -24,10 +25,8 @@ void MenuUI::Load()
 	m_playSelectedTexture = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("playSelected");
 	m_controlsSelectedTexture = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("controlsSelected");
 	m_exitGameSelectedTexture = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("exitSelected");
-	//m_controlsBackTexture = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("menuBG");
-	m_playSelectedSprite = AddComponent<UISpriteRenderer>();
-	m_controlsSelectedSprite = AddComponent<UISpriteRenderer>();
-	m_exitGameSelectedSprite = AddComponent<UISpriteRenderer>();
+	m_ControlScreenPressed = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("controlsScreenPressed");
+	m_ControlScreen = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("controlsScreen");
 
 	m_menuBGSprite = AddComponent<UISpriteRenderer>();
 	m_menuBGSprite->ApplyTexture(m_menuBGTexture);
@@ -50,40 +49,54 @@ void MenuUI::Start()
 void MenuUI::Update(float pStep)
 {
 	GameObject::Update(pStep);
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) | sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	m_pressCD -= 0.055f;
+	if (!m_controlsLocked)
 	{
-		m_Selected = PlayGame;
-		std::cout << "show playGame Selected Sprite" << std::endl;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) | sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		{
+			m_Selected = PlayGame;
+			std::cout << "show playGame Selected Sprite" << std::endl;
 
-		m_menuBGSprite->ApplyTexture(m_playSelectedTexture);
+			m_menuBGSprite->ApplyTexture(m_playSelectedTexture);
 
+		}
+
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		{
+			m_Selected = Controls;
+			//show Controls Selected Sprite
+			std::cout << "show Controls Selected Sprite" << std::endl;
+			m_menuBGSprite->ApplyTexture(m_controlsSelectedTexture);
+		}
+
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			m_Selected = ExitGame;
+			//show Exit selected sprite
+			std::cout << "show Exit selected sprite" << std::endl;
+			m_menuBGSprite->ApplyTexture(m_exitGameSelectedTexture);
+
+		}
+
+		OnHoldControls();
 	}
-
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	{
-		m_Selected = Controls;
-		//show Controls Selected Sprite
-		std::cout << "show Controls Selected Sprite" << std::endl;
-		m_menuBGSprite->ApplyTexture(m_controlsSelectedTexture);
+	else {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) | sf::Keyboard::isKeyPressed(sf::Keyboard::W) | sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A) | sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		{
+			m_menuBGSprite->ApplyTexture(m_ControlScreenPressed);
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F) | sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) | sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+		{
+			if (m_pressCD <= 0)
+			{
+				m_menuBGSprite->ApplyTexture(m_controlsSelectedTexture);
+				m_Selected = Controls;
+				m_controlsLocked = false;
+				m_pressCD = 1.5f;
+			}
+		}
 	}
-
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	{
-		m_Selected = ExitGame;
-		//show Exit selected sprite
-		std::cout << "show Exit selected sprite" << std::endl;
-		m_menuBGSprite->ApplyTexture(m_exitGameSelectedTexture);
-
-	}
-	else
-	{
-	//	m_Selected = NONE;
-	//	m_menuBGSprite->ApplyTexture(m_menuBGTexture);
-		//show none selected sprite
-
-	}
-
-	OnHoldControls();
+	
 }
 
 void MenuUI::OnDestroy()
@@ -92,23 +105,32 @@ void MenuUI::OnDestroy()
 
 void MenuUI::OnHoldControls()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)| sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
+	if (m_pressCD <= 0)
 	{
-		switch (m_Selected)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F) | sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
 		{
-		case PlayGame:
-			//Start Level 1
-			break;
-		case Controls:
-			//show controls screen
-			break;
-		case ExitGame:
-			std::exit(0);
-			break;
-		default:
-			std::cout << m_Selected << std::endl;
+			switch (m_Selected)
+			{
+			case PlayGame:
+				//Start Level 1
+				m_pressCD = 1.5f;
+				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
+				break;
+			case Controls:
+				m_controlsLocked = true;
+				m_pressCD = 1.5f;
+				m_menuBGSprite->ApplyTexture(m_ControlScreenPressed);
+				break;
+			case ExitGame:
+				std::exit(0);
+				m_pressCD = 1.5f;
+				break;
+			default:
+				std::cout << m_Selected << std::endl;
+				m_pressCD = 1.5f;
 
-			break;
+				break;
+			}
 		}
 	}
 }
