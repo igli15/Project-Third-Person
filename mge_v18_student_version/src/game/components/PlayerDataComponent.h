@@ -3,6 +3,7 @@
 #include "mge/core/CollisionInfo.h"
 #include "mge/materials/TextureMaterial.hpp"
 #include "game/components/TileComponent.h"
+#include "SFML/System.hpp"
 
 class PlayerMovementComponent;
 class ShootingComponent;
@@ -21,18 +22,24 @@ public:
 	void SetPlayerNumber(int playerNumber);
 	int  GetPlayerNumber();
 
-	void RespawnPlayer();
+	void OnDeath();
+	void Respawn();
+
 	void SetSpawnPosition(glm::vec3 newSpawnPosition);
 	void SetCurrentPositionAsSpawnPosisition();
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 
 	TileType MatType();
-
+	bool IsDead();
 private:
 	//PLayer id 1 or 2
 	int m_playerNumber;
 	//spawn position will be taken as position when Start() was called
 	glm::vec3 m_spawnPosition;
+
+	sf::Clock m_respawnClock;
+	bool m_isDead = false;
+	float m_respawnTime = 5;
 
 	PlayerMovementComponent* m_playerMovement;
 	ShootingComponent* m_shootingComponent;

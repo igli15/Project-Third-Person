@@ -2,6 +2,7 @@
 #include "mge/core/XMLComponent.h"
 #include "SFML/System.hpp"
 
+class PlayerDataComponent;
 class PlayerMovementComponent;
 class GridComponent;
 
@@ -32,6 +33,8 @@ private:
 	PlayerMovementComponent* m_playerMovementComponent;
 	GridComponent* m_gridComponent;
 	sf::Clock m_clock;
+
+	PlayerDataComponent* m_playerDataCompoent;
 
 	int m_inkMaxLevel = 100;
 	float m_inkLevel = 0;

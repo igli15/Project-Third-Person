@@ -30,6 +30,10 @@ void PlayerDataComponent::Start()
 
 void PlayerDataComponent::Update(float timeStep)
 {
+	if (m_isDead && m_respawnClock.getElapsedTime().asSeconds()>=m_respawnTime)
+	{
+		Respawn();
+	}
 }
 
 void PlayerDataComponent::OnCollision(CollisionInfo * collisionInfo)
@@ -37,8 +41,8 @@ void PlayerDataComponent::OnCollision(CollisionInfo * collisionInfo)
 	//Only objects with rigidBody are players
 	if (collisionInfo->collider->getName() == "player")
 	{
-		collisionInfo->collider->GetComponent<PlayerDataComponent>()->RespawnPlayer();
-		RespawnPlayer();
+		collisionInfo->collider->GetComponent<PlayerDataComponent>()->OnDeath();
+		OnDeath();
 	}
 }
 
@@ -63,10 +67,10 @@ int PlayerDataComponent::GetPlayerNumber()
 	return m_playerNumber;
 }
 
-void PlayerDataComponent::RespawnPlayer()
+void PlayerDataComponent::OnDeath()
 {
+	//EXPLODE PLAYER in enemy color
 	auto tiles = m_levelGrid->GetTilesInARange(GetGameObject()->transform->WorldPosition(),5,5);
-
 	TileType enemyTileType;
 
 	if (m_tileMaterial == TileType::ICE)
@@ -84,12 +88,19 @@ void PlayerDataComponent::RespawnPlayer()
 		tiles[i]->PaintTile(enemyTileType);
 	}
 
-	std::cout << "Respawning player to " << m_spawnPosition << std::endl;
+	m_gameObject->transform->SetLocalPosition(glm::vec3(999,0,999));
+	m_respawnClock.restart();
+	m_isDead = true;
 
+}
+
+void PlayerDataComponent::Respawn()
+{
+	//Teleporting player back to spawn position
+	std::cout << "Respawning player to " << m_spawnPosition << std::endl;
 	m_shootingComponent->ResetInkLevel();
-	
-	std::cout << m_spawnPosition << std::endl;
 	m_gameObject->transform->SetLocalPosition(m_spawnPosition);
+	m_isDead = false;
 }
 
 void PlayerDataComponent::SetSpawnPosition(glm::vec3 newSpawnPosition)
@@ -128,4 +139,9 @@ void PlayerDataComponent::Parse(rapidxml::xml_node<>* compNode)
 TileType PlayerDataComponent::MatType()
 {
 	return m_tileMaterial;
+}
+
+bool PlayerDataComponent::IsDead()
+{
+	return m_isDead;
 }

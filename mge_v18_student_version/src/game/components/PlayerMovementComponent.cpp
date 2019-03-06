@@ -102,6 +102,7 @@ void PlayerMovementComponent::ApplyDirection()
 
 void PlayerMovementComponent::ApplyMovement()
 {
+	if (m_playerData->IsDead()) return;
 
 	if (m_currentDirection == RIGHT)
 	{

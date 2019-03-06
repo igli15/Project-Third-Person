@@ -12,7 +12,6 @@
 #include "mge/core/ResourceManager.h"
 #include "game/components/PlayerDataComponent.h"
 
-
 ShootingComponent::ShootingComponent()
 {
 }
@@ -27,6 +26,7 @@ void ShootingComponent::Start()
 {
 	XMLComponent::Start();
 	m_playerMovementComponent = m_gameObject->GetComponent<PlayerMovementComponent>();
+	m_playerDataCompoent = m_gameObject->GetComponent<PlayerDataComponent>();
 
 	HUD::GetHudComponent()->SetMaxInk(m_inkMaxLevel);
 	//asdasd
@@ -116,10 +116,10 @@ void ShootingComponent::ShootInk(float tileAmount)
 
 	//std::cout << m_gameObject->transform->WorldPosition() << " ==== " << otherPlayerPos << std::endl;
 
-	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->RespawnPlayer(); });
+	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
-		if (GetGameObject()->GetComponent<PlayerDataComponent>()->MatType() == TileType::LAVA)
+		if (m_playerDataCompoent-> MatType() == TileType::LAVA)
 		{
 			tiles[i]->PaintTile(TileType::LAVA);
 		}
@@ -185,6 +185,7 @@ void ShootingComponent::OnKeyPressed(bool isKeyPressedThisFrame)
 
 void ShootingComponent::OnKeyEnter()
 {
+	if (m_playerDataCompoent->IsDead()) return;
 	//std::cout << "OnKeyEnter" << std::endl;
 
 	//Start charging
