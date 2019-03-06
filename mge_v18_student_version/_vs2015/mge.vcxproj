@@ -219,6 +219,7 @@
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\test\TestComponent.h" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
+    <ClInclude Include="RefillStationComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\game\components\GridComponent.cpp" />
@@ -273,6 +274,7 @@
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\test\TestComponent.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
+    <ClCompile Include="RefillStationComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\game\Resources.lua" />

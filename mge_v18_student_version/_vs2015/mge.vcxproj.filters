@@ -196,6 +196,7 @@
     <ClInclude Include="..\src\mge\components\TextComponent.h">
       <Filter>MGE Source files\mge\components</Filter>
     </ClInclude>
+    <ClInclude Include="RefillStationComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -353,6 +354,9 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\components\TextComponent.cpp">
       <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="RefillStationComponent.cpp">
+      <Filter>MGE Source files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

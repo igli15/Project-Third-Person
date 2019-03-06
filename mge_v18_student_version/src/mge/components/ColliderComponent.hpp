@@ -37,6 +37,8 @@ protected:
 	//You can add multiple collision filters to collider
 	std::vector<std::string> m_collisionFilterTags;
 
+	// trigger = false;
+
 	// Inherited via XMLComponent
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 };
