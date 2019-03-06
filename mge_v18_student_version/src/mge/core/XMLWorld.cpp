@@ -17,7 +17,7 @@
 #include "mge/components/RigidBody.h"
 #include "mge/components/CircleCollider.h"
 #include "mge/components/RectangleCollider.h"
-
+#include "game/components/RefillStationComponent.h"
 XMLWorld::XMLWorld()
 {
 }
@@ -156,6 +156,10 @@ void XMLWorld::ParseComponents(rapidxml::xml_node<>* com,GameObject* newNode)
 		{
 			(newNode)->AddComponent<RigidBody>()->Parse(com);
 			newNode->SetRigidBody(newNode->GetComponent<RigidBody>());
+		}
+		else if (strcmp(com->name(), "RefillStationComponent") == 0)
+		{
+			(newNode)->AddComponent<RefillStationComponent>()->Parse(com);
 		}
 		else if (strcmp(com->name(), "CircleCollider") == 0)
 		{
