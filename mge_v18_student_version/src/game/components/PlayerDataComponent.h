@@ -39,7 +39,9 @@ private:
 
 	sf::Clock m_respawnClock;
 	bool m_isDead = false;
-	float m_respawnTime = 5;
+	float m_respawnTime = 2;
+	float m_penaltyTime = 0;
+	float m_maxPenaltyTime = 20;
 
 	PlayerMovementComponent* m_playerMovement;
 	ShootingComponent* m_shootingComponent;

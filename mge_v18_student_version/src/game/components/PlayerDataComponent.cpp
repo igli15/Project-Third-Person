@@ -30,7 +30,8 @@ void PlayerDataComponent::Start()
 
 void PlayerDataComponent::Update(float timeStep)
 {
-	if (m_isDead && m_respawnClock.getElapsedTime().asSeconds()>=m_respawnTime)
+	if(m_isDead) std::cout << "time left: " << (m_respawnTime + m_penaltyTime) - m_respawnClock.getElapsedTime().asSeconds() << std::endl;
+	if (m_isDead && m_respawnClock.getElapsedTime().asSeconds()>=(m_respawnTime +m_penaltyTime ))
 	{
 		Respawn();
 	}
@@ -91,7 +92,7 @@ void PlayerDataComponent::OnDeath()
 	m_gameObject->transform->SetLocalPosition(glm::vec3(999,0,999));
 	m_respawnClock.restart();
 	m_isDead = true;
-
+	m_penaltyTime = m_levelGrid->GetTileCount(m_playerNumber == 1 ? TileType::LAVA : TileType::ICE)*m_maxPenaltyTime/100.0f;
 }
 
 void PlayerDataComponent::Respawn()
