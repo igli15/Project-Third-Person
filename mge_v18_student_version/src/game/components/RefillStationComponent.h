@@ -1,7 +1,7 @@
 #pragma once
-#include "mge/core/Component.h"
+#include "mge/core/XMLComponent.h"
 
-class RefillStationComponent :public Component
+class RefillStationComponent :public XMLComponent
 {
 public:
 	void Start();
@@ -10,5 +10,10 @@ public:
 
 	RefillStationComponent();
 	virtual ~RefillStationComponent();
+
+	// Inherited via XMLComponent
+	virtual void Parse(rapidxml::xml_node<>* compNode) override;
+private:
+	float m_inkGainRate = 0;
 };
 
