@@ -23,6 +23,8 @@
 #include "mge/core/XMLWorld.h"
 #include "mge/core/PlayerPrefs.h"
 #include "tweeny/tweeny.h"
+#include "game\MenuScene.h"
+#include "game/ResolutionScreen.h"
 
 MainGame::MainGame()
 {
@@ -66,7 +68,7 @@ void MainGame::CreateWorld()
 	//std::cout << "Testing PlayerPrefs: " << PlayerPrefs::GetInt("test") << std::endl;
 
 	//m_worldManager->CreateWorld<IlyasWorld>("IlyasWorld");
-
+	m_worldManager->CreateWorld<MenuScene>("MenuScene");
 
 	//m_eventQueue->RegisterEvent<TestEvent>([](EventType* t) {std::cout << dynamic_cast<TestEvent*>(t)->test << std::endl; });
 	//TestEvent* t = new TestEvent();

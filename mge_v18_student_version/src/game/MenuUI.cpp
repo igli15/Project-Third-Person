@@ -123,7 +123,6 @@ void MenuUI::OnHoldControls()
 				break;
 			case ExitGame:
 				std::exit(0);
-				m_pressCD = 1.5f;
 				break;
 			default:
 				std::cout << m_Selected << std::endl;

@@ -183,6 +183,8 @@
     <ClInclude Include="..\src\game\MenuUI.h" />
     <ClInclude Include="..\src\game\PhysicsTestObject.h" />
     <ClInclude Include="..\src\game\Player.h" />
+    <ClInclude Include="..\src\game\ResolutionScreen.h" />
+    <ClInclude Include="..\src\game\ResolutionUI.h" />
     <ClInclude Include="..\src\glm.hpp" />
     <ClInclude Include="..\src\mge\components\AudioSource.h" />
     <ClInclude Include="..\src\mge\components\CameraComponent.h" />
@@ -250,6 +252,8 @@
     <ClCompile Include="..\src\game\MenuUI.cpp" />
     <ClCompile Include="..\src\game\PhysicsTestObject.cpp" />
     <ClCompile Include="..\src\game\Player.cpp" />
+    <ClCompile Include="..\src\game\ResolutionScreen.cpp" />
+    <ClCompile Include="..\src\game\ResolutionUI.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\mge\components\AudioSource.cpp" />
     <ClCompile Include="..\src\mge\components\CameraComponent.cpp" />

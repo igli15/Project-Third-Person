@@ -138,6 +138,20 @@ sfmlTextures =
 	["exitSelected"] = texturesLoadPath.."exitSelected.png",
 	["controlsScreen"] = texturesLoadPath.."controlsScreen.png",
 	["controlsScreenPressed"] = texturesLoadPath.."controlsScreenPressed.png",
+
+	--RESO
+	["blazePrevails"] = texturesLoadPath.."blazePrevails.png",
+	["briskPrevails"] = texturesLoadPath.."briskPrevails.png",
+	["draw"] = texturesLoadPath.."draw.png",
+
+	["resoLavaBar"] = texturesLoadPath.."resoLavaBar.png",
+	["resoIceBar"] = texturesLoadPath.."resoIceBar.png",
+	["scoreBarBG"] = texturesLoadPath.."scoreBarBG.png";
+	["scoreBarOverlay"] = texturesLoadPath.."scoreBarOverlay.png",
+
+	["resoNone"] = texturesLoadPath.."resoNone.png",
+	["resoReplay"] = texturesLoadPath.."resoReplay.png",
+	["resoMenu"] = texturesLoadPath.."resoMenu.png",
 }
 
 sfmlFonts =
