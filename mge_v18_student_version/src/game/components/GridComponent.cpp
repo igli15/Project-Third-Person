@@ -1,6 +1,9 @@
 #include "GridComponent.h"
 #include <iostream>
 #include "mge/core/GameObject.hpp"
+#include "mge/core/World.hpp"
+#include "game/Balloon.h"
+#include "mge/util/Utils.h"
 
 GridComponent::GridComponent()
 {
@@ -11,9 +14,19 @@ GridComponent::~GridComponent()
 {
 }
 
+void GridComponent::InitGrid()
+{
+	for (int i = 0; i < m_ballonTilePositions.size(); i++)
+	{
+		m_ballonTiles.push_back(GetTileOnPos(m_ballonTilePositions[i]));
+	}
+
+	SpawnBalloon();
+}
+
 void GridComponent::Awake()
 {
-	
+
 }
 
 void GridComponent::SetWidth(int width)
@@ -62,6 +75,7 @@ void GridComponent::AddTile(TileComponent * tile)
 void GridComponent::Parse(rapidxml::xml_node<>* compNode)
 {
 	std::cout << "Parsing Grid Component...." << std::endl;
+
 	for (rapidxml::xml_attribute<>* a = compNode->first_attribute();
 		a != nullptr;
 		a = a->next_attribute())
@@ -79,6 +93,19 @@ void GridComponent::Parse(rapidxml::xml_node<>* compNode)
 		else if (attributeName == "tileRadius")
 		{
 			SetTileRadius(strtof(a->value(), 0));
+		}
+	}
+
+	if (strcmp(compNode->first_node()->name(), "BallonTilePositions") == 0)
+	{
+		rapidxml::xml_node<>* posNode = compNode->first_node();
+		for (rapidxml::xml_node<>* pos = posNode->first_node(); pos != nullptr; pos = pos->next_sibling())
+		{
+			glm::vec3 tilePos;
+
+			sscanf(pos->first_attribute()->value(), "(%f,%f,%f)", &tilePos.x, &tilePos.y, &tilePos.z);
+
+			m_ballonTilePositions.push_back(tilePos);
 		}
 	}
 
@@ -274,4 +301,18 @@ float GridComponent::GetTileCount(TileType type)
 	{
 		return(float)m_lavaTileCount / (m_width*m_height) *100.0f;
 	}
+}
+
+void GridComponent::SpawnBalloon()
+{
+
+	int randomIndex = Utils::RandomRange(0, m_ballonTiles.size() - 1);
+
+	TileComponent* randomTile = m_ballonTiles[randomIndex];
+
+	Balloon* balloon = m_gameObject->GetWorld()->Instantiate<Balloon>();
+
+	balloon->transform->SetLocalPosition(randomTile->GetGameObject()->transform->WorldPosition());
+
+
 }

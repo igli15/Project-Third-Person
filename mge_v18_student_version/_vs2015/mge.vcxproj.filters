@@ -241,6 +241,18 @@
     <ClInclude Include="..\src\game\MenuScene.h">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game\components\BalloonComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\GridElement.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\util\Utils.h">
+      <Filter>MGE Source files\mge\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\Balloon.h">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -415,6 +427,18 @@
       <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="..\src\game\MenuScene.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\BalloonComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\GridElement.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\util\Utils.cpp">
+      <Filter>MGE Source files\mge\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\Balloon.cpp">
       <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>

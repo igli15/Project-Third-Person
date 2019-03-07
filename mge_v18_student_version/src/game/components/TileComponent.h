@@ -3,6 +3,8 @@
 #include "glm.hpp"
 
 class GridComponent;
+class BalloonComponent;
+class GridElement;
 
 enum TileType
 {
@@ -31,11 +33,17 @@ public:
 	void PaintTile(TileType type);
 	void SetGrid(GridComponent* grid);
 
+	void SetGridElement(GridElement* gridElement);
+	void RemoveGridElement(GridElement* gridElement);
+
 private:
+
 	GridComponent* m_grid;
 	glm::ivec2 m_gridPos;
 	TileType m_tileType = TileType::DEFAULT;
 	bool m_isPainted = false;
 	bool m_isPaintable = true;
+
+	GridElement* m_gridElement;
 };
 

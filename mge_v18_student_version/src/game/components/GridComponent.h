@@ -12,6 +12,7 @@ public:
 	GridComponent();
 	virtual ~GridComponent();
 
+	void InitGrid();
 	void Awake();
 	void SetWidth(int width);
 	void SetHeight(int height);
@@ -49,6 +50,9 @@ public:
 	void IncreaseTileCount(TileType type);
 	void DecreaseTileCount(TileType type);
 	float GetTileCount(TileType type);
+	
+	void SpawnBalloon();
+
 private:
 
 	int m_width = 0;
@@ -60,5 +64,7 @@ private:
 
 	std::vector< std::vector<TileComponent*> > m_tileGrid;
 
+	std::vector<glm::vec3> m_ballonTilePositions;
+	std::vector<TileComponent*> m_ballonTiles;
 
 };

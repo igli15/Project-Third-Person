@@ -5,6 +5,7 @@
 #include "mge/core/ResourceManager.h"
 #include "mge/core/AbstractGame.hpp"
 #include "game/components/GridComponent.h"
+#include "game/components/GridElement.h"
 
 TileComponent::TileComponent()
 {
@@ -118,5 +119,22 @@ void TileComponent::PaintTile(TileType type)
 void TileComponent::SetGrid(GridComponent * grid)
 {
 	m_grid = grid;
+}
+
+void TileComponent::SetGridElement(GridElement * gridElement)
+{
+	if (gridElement != nullptr)
+	{
+		RemoveGridElement(gridElement);
+	}
+
+	m_gridElement = gridElement;
+	gridElement->SetTile(this);
+}
+
+void TileComponent::RemoveGridElement(GridElement * gridElement)
+{
+	m_gridElement = nullptr;
+	gridElement->SetTile(nullptr);
 }
 

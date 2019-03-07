@@ -1,7 +1,15 @@
 <root>
   <GameObject name="Grid" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
     <Components>
-      <GridComponent gridSizeX="26" gridSizeY="15" tileRadius="0.5" />
+      <GridComponent gridSizeX="26" gridSizeY="15" tileRadius="0.5">
+        <BallonTilePositions>
+          <ballonTile pos="(14.0000, 0.0000, 7.0000)" />
+          <ballonTile pos="(4.0000, 0.0000, 8.0000)" />
+          <ballonTile pos="(11.0000, 0.0000, 10.0000)" />
+          <ballonTile pos="(6.0000, 0.0000, 11.0000)" />
+          <ballonTile pos="(16.0000, 0.0000, 11.0000)" />
+        </BallonTilePositions>
+      </GridComponent>
     </Components>
     <GameObject name="GroundTile" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
       <Components />
@@ -278,7 +286,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="True" />
+          <TileComponent TileType="DEFAULT" isPaintable="False" />
         </Components>
       </GameObject>
     </GameObject>
@@ -503,7 +511,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="True" />
+          <TileComponent TileType="DEFAULT" isPaintable="False" />
         </Components>
       </GameObject>
     </GameObject>
@@ -512,7 +520,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="True" />
+          <TileComponent TileType="DEFAULT" isPaintable="False" />
         </Components>
       </GameObject>
     </GameObject>
@@ -521,7 +529,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="True" />
+          <TileComponent TileType="DEFAULT" isPaintable="False" />
         </Components>
       </GameObject>
     </GameObject>
@@ -746,7 +754,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="True" />
+          <TileComponent TileType="DEFAULT" isPaintable="False" />
         </Components>
       </GameObject>
     </GameObject>
@@ -1520,7 +1528,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="False" />
+          <TileComponent TileType="DEFAULT" isPaintable="True" />
         </Components>
       </GameObject>
     </GameObject>
@@ -1529,7 +1537,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="False" />
+          <TileComponent TileType="DEFAULT" isPaintable="True" />
         </Components>
       </GameObject>
     </GameObject>
@@ -1754,7 +1762,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="False" />
+          <TileComponent TileType="DEFAULT" isPaintable="True" />
         </Components>
       </GameObject>
     </GameObject>
@@ -1763,7 +1771,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="False" />
+          <TileComponent TileType="DEFAULT" isPaintable="True" />
         </Components>
       </GameObject>
     </GameObject>
@@ -1988,7 +1996,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="False" />
+          <TileComponent TileType="DEFAULT" isPaintable="True" />
         </Components>
       </GameObject>
     </GameObject>
@@ -1997,7 +2005,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="False" />
+          <TileComponent TileType="DEFAULT" isPaintable="True" />
         </Components>
       </GameObject>
     </GameObject>
@@ -2771,7 +2779,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="True" />
+          <TileComponent TileType="DEFAULT" isPaintable="False" />
         </Components>
       </GameObject>
     </GameObject>
@@ -2996,7 +3004,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="True" />
+          <TileComponent TileType="DEFAULT" isPaintable="False" />
         </Components>
       </GameObject>
     </GameObject>
@@ -3005,7 +3013,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="True" />
+          <TileComponent TileType="DEFAULT" isPaintable="False" />
         </Components>
       </GameObject>
     </GameObject>
@@ -3014,7 +3022,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="True" />
+          <TileComponent TileType="DEFAULT" isPaintable="False" />
         </Components>
       </GameObject>
     </GameObject>
@@ -3239,7 +3247,7 @@
       <GameObject name="pCube1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="neutralNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-          <TileComponent TileType="DEFAULT" isPaintable="True" />
+          <TileComponent TileType="DEFAULT" isPaintable="False" />
         </Components>
       </GameObject>
     </GameObject>
@@ -3519,31 +3527,39 @@
     <GameObject name="refill2" position="(-5.5000, -0.5000, -5.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="refillStation">
       <Components>
         <TextureMaterial materialName="refillMat" shininess="16" emissionScale="0.8" diffuseTexture="refillStationDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        <CircleCollider radius="1" collisionLayer="refillStation">
-          <CollisionFilters />
+        <CircleCollider radius="3.03" collisionLayer="refillStation">
+          <CollisionFilters>
+            <player />
+          </CollisionFilters>
         </CircleCollider>
+        <RigidBodyComponent friction="0" maxSpeed="0.5" bounciness="0.1" />
+        <RefillStationComponent inkGainRate="0.2" />
       </Components>
     </GameObject>
     <GameObject name="refill2 (1)" position="(5.5000, -0.5000, 8.8800)" rotation="(0.0000, 1.0000, 0.0000, 0.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="refillStation">
       <Components>
         <TextureMaterial materialName="refillMat" shininess="16" emissionScale="0.8" diffuseTexture="refillStationDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        <CircleCollider radius="1" collisionLayer="refillStation">
-          <CollisionFilters />
+        <CircleCollider radius="3.03" collisionLayer="refillStation">
+          <CollisionFilters>
+            <player />
+          </CollisionFilters>
         </CircleCollider>
+        <RigidBodyComponent friction="0" maxSpeed="0.5" bounciness="0.1" />
+        <RefillStationComponent inkGainRate="0.2" />
       </Components>
     </GameObject>
   </GameObject>
-  <GameObject name="orb" position="(24.5000, 0.5000, 0.5000)" rotation="(0.0000, 1.0000, 0.0000, 0.0000)" scale="(1.0000, 1.0000, 1.0000)">
+  <GameObject name="orb" position="(24.5000, 0.5000, 0.5000)" rotation="(0.0000, 1.0000, 0.0000, 0.0000)" scale="(2.0000, 2.0000, 2.0000)">
     <Components>
-      <ShootingComponent minRange="2" maxRange="6" inkMaxLevel="100" rateOfInkGain="0.1" />
+      <ShootingComponent minRange="1" maxRange="6" inkMaxLevel="100" rateOfInkGain="0.1" />
       <CircleCollider radius="0.3" collisionLayer="player">
         <CollisionFilters>
           <player />
           <wall />
         </CollisionFilters>
       </CircleCollider>
-      <PlayerData playerNumber="1" respawnPosition="(24.5, 0.5, 0.5)" />
-      <PlayerMovement speed="0.1" slowDownAmount="0.05" speedUpAmount="0.12" />
+      <PlayerData playerNumber="1" respawnPosition="(21.0, 0.0, 12.0)" />
+      <PlayerMovement speed="0.1" slowDownAmount="0.03" speedUpAmount="0" />
       <RigidBodyComponent friction="0" maxSpeed="0.1" bounciness="0.1" />
     </Components>
     <GameObject name="polySurface14_Bird_beek_final_with_ribs_triangulated1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="orb">
@@ -3565,18 +3581,18 @@
       </GameObject>
     </GameObject>
   </GameObject>
-  <GameObject name="orb2" position="(0.5000, 0.5000, 13.5000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+  <GameObject name="orb2" position="(0.5000, 0.5000, 13.5000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.0000, 2.0000, 2.0000)">
     <Components>
       <RigidBodyComponent friction="0" maxSpeed="0.1" bounciness="0.1" />
-      <PlayerMovement speed="0.1" slowDownAmount="0.05" speedUpAmount="0.12" />
-      <PlayerData playerNumber="2" respawnPosition="(0.5, 0.5, 13.5)" />
+      <PlayerMovement speed="0.1" slowDownAmount="0.03" speedUpAmount="0" />
+      <PlayerData playerNumber="2" respawnPosition="(4.0, 0.0, 1.0)" />
       <CircleCollider radius="0.3" collisionLayer="player">
         <CollisionFilters>
           <player />
           <wall />
         </CollisionFilters>
       </CircleCollider>
-      <ShootingComponent minRange="2" maxRange="6" inkMaxLevel="100" rateOfInkGain="0.1" />
+      <ShootingComponent minRange="1" maxRange="6" inkMaxLevel="100" rateOfInkGain="0.1" />
     </Components>
     <GameObject name="polySurface14_Bird_beek_final_with_ribs_triangulated1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="orb">
       <Components>
@@ -3592,9 +3608,9 @@
       </GameObject>
     </GameObject>
   </GameObject>
-  <GameObject name="Directional Light" position="(-1.8500, 3.8500, 0.0000)" rotation="(-0.3468, -0.1617, 0.3904, 0.8373)" scale="(1.0000, 1.0000, 1.0000)">
+  <GameObject name="Directional Light" position="(-1.8500, 3.8500, 0.0000)" rotation="(0.0404, -0.7151, 0.5207, 0.4646)" scale="(1.0000, 1.0000, 1.0000)">
     <Components>
-      <LightComponent type="DIRECTIONAL" color="(1.0, 1.0, 1.0)" ambientColor="(1.0, 1.0, 1.0)" intensity="1" ambientContribution="0.24" specularContribution="0.8" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
+      <LightComponent type="DIRECTIONAL" color="(1.0, 1.0, 1.0)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.8" ambientContribution="0.24" specularContribution="0.8" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
     </Components>
   </GameObject>
   <GameObject name="IceTile" position="(-3.4500, 3.6600, 15.8400)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
@@ -3792,54 +3808,6 @@
       </GameObject>
     </GameObject>
     <GameObject name="WallBlock1x1 (11)" position="(12.0000, 0.0000, 12.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="wallBlock1x1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="WallBlock1x1">
-        <Components>
-          <TextureMaterial materialName="" shininess="16" emissionScale="0.8" diffuseTexture="wallDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="WallBlock1x1 (12)" position="(13.0000, 0.0000, 8.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="wallBlock1x1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="WallBlock1x1">
-        <Components>
-          <TextureMaterial materialName="" shininess="16" emissionScale="0.8" diffuseTexture="wallDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="WallBlock1x1 (13)" position="(12.0000, 0.0000, 8.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="wallBlock1x1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="WallBlock1x1">
-        <Components>
-          <TextureMaterial materialName="" shininess="16" emissionScale="0.8" diffuseTexture="wallDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="WallBlock1x1 (14)" position="(13.0000, 0.0000, 7.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="wallBlock1x1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="WallBlock1x1">
-        <Components>
-          <TextureMaterial materialName="" shininess="16" emissionScale="0.8" diffuseTexture="wallDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="WallBlock1x1 (15)" position="(12.0000, 0.0000, 7.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="wallBlock1x1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="WallBlock1x1">
-        <Components>
-          <TextureMaterial materialName="" shininess="16" emissionScale="0.8" diffuseTexture="wallDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="WallBlock1x1 (16)" position="(13.0000, 0.0000, 6.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="wallBlock1x1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="WallBlock1x1">
-        <Components>
-          <TextureMaterial materialName="" shininess="16" emissionScale="0.8" diffuseTexture="wallDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="WallBlock1x1 (17)" position="(12.0000, 0.0000, 6.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
       <Components />
       <GameObject name="wallBlock1x1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="WallBlock1x1">
         <Components>
@@ -4279,7 +4247,7 @@
   </GameObject>
   <GameObject name="Colliders" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
     <Components />
-    <GameObject name="cube_flat" position="(12.4400, 1.2800, -1.1200)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(13.0000, 1.0000, 0.5000)">
+    <GameObject name="cube_flat" position="(12.4400, 1.2800, -1.1200)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(13.0000, 6.0000, 0.5000)">
       <Components>
         <RectangleCollider width="26" height="1" collisionLayer="wall">
           <CollisionFilters />
@@ -4289,7 +4257,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (1)" position="(12.4400, 1.2800, 14.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(13.0000, 1.0000, 0.5000)">
+    <GameObject name="cube_flat (1)" position="(12.4400, 1.2800, 14.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(13.0000, 6.0000, 0.5000)">
       <Components>
         <RectangleCollider width="26" height="1" collisionLayer="wall">
           <CollisionFilters />
@@ -4299,7 +4267,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (2)" position="(-1.0600, 1.2800, 6.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 1.0000, 7.5000)">
+    <GameObject name="cube_flat (2)" position="(-1.0600, 1.2800, 6.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 6.0000, 7.5000)">
       <Components>
         <RectangleCollider width="1" height="15" collisionLayer="wall">
           <CollisionFilters />
@@ -4309,7 +4277,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (3)" position="(25.9400, 1.2800, 6.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 1.0000, 7.5000)">
+    <GameObject name="cube_flat (3)" position="(25.9400, 1.2800, 6.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 6.0000, 7.5000)">
       <Components>
         <RectangleCollider width="1" height="15" collisionLayer="wall">
           <CollisionFilters />
@@ -4319,7 +4287,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (4)" position="(22.9400, 1.2800, 6.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 1.0000, 7.0000)">
+    <GameObject name="cube_flat (4)" position="(22.9400, 1.2800, 6.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 6.0000, 7.0000)">
       <Components>
         <RectangleCollider width="1" height="14" collisionLayer="wall">
           <CollisionFilters />
@@ -4329,7 +4297,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (5)" position="(1.9400, 1.2800, 7.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 1.0000, 7.0000)">
+    <GameObject name="cube_flat (5)" position="(1.9400, 1.2800, 7.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 6.0000, 7.0000)">
       <Components>
         <RectangleCollider width="1" height="14" collisionLayer="wall">
           <CollisionFilters />
@@ -4339,7 +4307,17 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (6)" position="(12.4400, 1.2800, 6.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.5000)">
+    <GameObject name="cube_flat (6)" position="(12.4400, 1.2800, 6.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 6.0000, 1.5000)">
+      <Components>
+        <RectangleCollider width="0" height="0" collisionLayer="wall">
+          <CollisionFilters />
+        </RectangleCollider>
+      </Components>
+      <GameObject name="default" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+        <Components />
+      </GameObject>
+    </GameObject>
+    <GameObject name="cube_flat (7)" position="(12.4400, 1.2800, 0.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 6.0000, 1.5000)">
       <Components>
         <RectangleCollider width="2" height="3" collisionLayer="wall">
           <CollisionFilters />
@@ -4349,7 +4327,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (7)" position="(12.4400, 1.2800, 0.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.5000)">
+    <GameObject name="cube_flat (8)" position="(12.4400, 1.2800, 12.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 6.0000, 1.5000)">
       <Components>
         <RectangleCollider width="2" height="3" collisionLayer="wall">
           <CollisionFilters />
@@ -4359,17 +4337,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (8)" position="(12.4400, 1.2800, 12.8800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.5000)">
-      <Components>
-        <RectangleCollider width="2" height="3" collisionLayer="wall">
-          <CollisionFilters />
-        </RectangleCollider>
-      </Components>
-      <GameObject name="default" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="cube_flat (9)" position="(15.9400, 1.2800, 0.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.5000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (9)" position="(15.9400, 1.2800, 0.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.5000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="5" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4379,7 +4347,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (10)" position="(8.9400, 1.2800, 13.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.5000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (10)" position="(8.9400, 1.2800, 13.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.5000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="5" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4389,7 +4357,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (11)" position="(22.4400, 1.2800, 9.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.0000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (11)" position="(22.4400, 1.2800, 9.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.0000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="4" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4399,7 +4367,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (12)" position="(21.4400, 1.2800, 3.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (12)" position="(21.4400, 1.2800, 3.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="2" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4409,7 +4377,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (13)" position="(24.9400, 1.2800, 3.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (13)" position="(24.9400, 1.2800, 3.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="1" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4419,7 +4387,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (14)" position="(-0.0600, 1.2800, 10.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (14)" position="(-0.0600, 1.2800, 10.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.5000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="1" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4429,7 +4397,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (15)" position="(2.4400, 1.2800, 4.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.0000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (15)" position="(2.4400, 1.2800, 4.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.0000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="4" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4439,7 +4407,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (16)" position="(3.4400, 1.2800, 10.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (16)" position="(3.4400, 1.2800, 10.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="2" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4449,7 +4417,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (17)" position="(7.4400, 1.2800, 7.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (17)" position="(7.4400, 1.2800, 7.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="2" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4459,7 +4427,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (18)" position="(7.4400, 1.2800, 3.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (18)" position="(7.4400, 1.2800, 3.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="2" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4469,7 +4437,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (19)" position="(17.4400, 1.2800, 10.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (19)" position="(17.4400, 1.2800, 10.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="2" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4479,7 +4447,7 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="cube_flat (20)" position="(17.4400, 1.2800, 6.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+    <GameObject name="cube_flat (20)" position="(17.4400, 1.2800, 6.3800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 6.0000, 1.0000)">
       <Components>
         <RectangleCollider width="2" height="2" collisionLayer="wall">
           <CollisionFilters />
@@ -4490,9 +4458,14 @@
       </GameObject>
     </GameObject>
   </GameObject>
-  <GameObject name="Directional Light (1)" position="(-1.8500, 3.8500, 0.0000)" rotation="(0.4532, -0.4082, 0.1094, 0.7849)" scale="(1.0000, 1.0000, 1.0000)">
+  <GameObject name="Balloon" position="(12.0000, 1.5000, 7.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cubeMesh">
     <Components>
-      <LightComponent type="DIRECTIONAL" color="(1.0, 1.0, 1.0)" ambientColor="(1.0, 1.0, 1.0)" intensity="1" ambientContribution="0.24" specularContribution="0.8" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
+      <TextureMaterial materialName="balloonMat" shininess="16" emissionScale="0.8" diffuseTexture="BalloonDiffuse" specularTexture="BalloonSpecular" emissionTexture="BalloonEmission" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
     </Components>
+    <GameObject name="ORB6" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cubeMesh">
+      <Components>
+        <TextureMaterial materialName="balloonMat" shininess="16" emissionScale="0.8" diffuseTexture="BalloonDiffuse" specularTexture="BalloonSpecular" emissionTexture="BalloonEmission" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+      </Components>
+    </GameObject>
   </GameObject>
 </root>

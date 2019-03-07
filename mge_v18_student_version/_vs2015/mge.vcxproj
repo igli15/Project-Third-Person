@@ -166,7 +166,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\game\Balloon.h" />
+    <ClInclude Include="..\src\game\components\BalloonComponent.h" />
     <ClInclude Include="..\src\game\components\GridComponent.h" />
+    <ClInclude Include="..\src\game\components\GridElement.h" />
     <ClInclude Include="..\src\game\components\HUDComponent.h" />
     <ClInclude Include="..\src\game\components\KeyMoveComponent.h" />
     <ClInclude Include="..\src\game\components\PlayerDataComponent.h" />
@@ -225,6 +228,7 @@
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\test\TestComponent.h" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
+    <ClInclude Include="..\src\mge\util\Utils.h" />
     <ClInclude Include="..\src\tweeny\dispatcher.h" />
     <ClInclude Include="..\src\tweeny\easing.h" />
     <ClInclude Include="..\src\tweeny\easingresolve.h" />
@@ -235,7 +239,10 @@
     <ClInclude Include="..\src\tweeny\tweeny.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\game\Balloon.cpp" />
+    <ClCompile Include="..\src\game\components\BalloonComponent.cpp" />
     <ClCompile Include="..\src\game\components\GridComponent.cpp" />
+    <ClCompile Include="..\src\game\components\GridElement.cpp" />
     <ClCompile Include="..\src\game\components\HUDComponent.cpp" />
     <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp" />
     <ClCompile Include="..\src\game\components\PlayerDataComponent.cpp" />
@@ -293,6 +300,7 @@
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
     <ClCompile Include="..\src\mge\test\TestComponent.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
+    <ClCompile Include="..\src\mge\util\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\game\Resources.lua" />
