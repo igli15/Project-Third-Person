@@ -56,25 +56,21 @@ ColliderComponent * RigidBody::GetCollider()
 
 void RigidBody::OnCollisionStay(CollisionInfo * collisionInfo)
 {
-	std::cout << "COLLISION" << std::endl;
-	float vx = (velocity.x == 0)? 0.1f :velocity.x;
-	float vy = (velocity.y == 0) ? 0.1f : velocity.y;
+	//std::cout << "COLLISION" << std::endl;
+	//float vx = (velocity.x == 0)? 0.1f :velocity.x;
+	//loat vy = (velocity.y == 0) ? 0.1f : velocity.y;
 
-	float ratio=glm::min(collisionInfo->distance.x, collisionInfo->distance.y);
+	//float ratio=glm::min(collisionInfo->distance.x, collisionInfo->distance.y);
+
 	//if (ratio > 1) ratio = 1;
+	//if (ratio < 0.01f) ratio = 0.01f;
+	//glm::vec3 displacement =   glm::vec3(collisionInfo->normal.x, 0, collisionInfo->normal.y) * ratio;
 
-	std::cout << std::endl;
+	//std::cout << std::endl;
 	//std::cout << "RATIO: " << ratio << std::endl;
-	if (ratio < 0.01f) ratio = 0.01f;
-	//std::cout << "RATIO AFTER: " << ratio << std::endl;
-	glm::vec3 displacement =   glm::vec3(collisionInfo->normal.x, 0, collisionInfo->normal.y) * ratio;
-
 	//std::cout << "Depth: " << collisionInfo->distance << std::endl;
-
-
 	//std::cout << "velocity: " << velocity << std::endl;
 	//std::cout << "Normal" << glm::vec3(collisionInfo->normal.x, 0, collisionInfo->normal.y) << std::endl;
-
 	//std::cout << "Displacement: " << displacement << std::endl;
 
 	//velocity = glm::vec2(0, 0);

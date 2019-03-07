@@ -3514,25 +3514,6 @@
       </GameObject>
     </GameObject>
   </GameObject>
-  <GameObject name="refillStation" position="(12.5000, 0.0000, 5.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-    <Components />
-    <GameObject name="refill2" position="(-5.5000, -0.5000, -5.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="refillStation">
-      <Components>
-        <TextureMaterial materialName="refillMat" shininess="16" emissionScale="0.8" diffuseTexture="refillStationDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        <CircleCollider radius="1" collisionLayer="refillStation">
-          <CollisionFilters />
-        </CircleCollider>
-      </Components>
-    </GameObject>
-    <GameObject name="refill2 (1)" position="(5.5000, -0.5000, 8.8800)" rotation="(0.0000, 1.0000, 0.0000, 0.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="refillStation">
-      <Components>
-        <TextureMaterial materialName="refillMat" shininess="16" emissionScale="0.8" diffuseTexture="refillStationDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        <CircleCollider radius="1" collisionLayer="refillStation">
-          <CollisionFilters />
-        </CircleCollider>
-      </Components>
-    </GameObject>
-  </GameObject>
   <GameObject name="orb" position="(24.5000, 0.5000, 0.5000)" rotation="(0.0000, 1.0000, 0.0000, 0.0000)" scale="(1.0000, 1.0000, 1.0000)">
     <Components>
       <ShootingComponent minRange="2" maxRange="6" inkMaxLevel="100" rateOfInkGain="0.1" />
