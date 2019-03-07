@@ -8,7 +8,7 @@
 #include "game/MainWorld.h"
 #include "ResourceManager.h"
 #include "mge/core/EventQueue.h"
-
+#include "game/MenuScene.h"
 AbstractGame* AbstractGame::m_instance = nullptr;
 
 AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_world(NULL), _fps(0)
@@ -108,7 +108,7 @@ void AbstractGame::_initializeWorld() {
     //setup the world
 	std::cout << "Initializing world..." << std::endl;
 	//_world = new World();
-	_world = m_worldManager->CreateWorld<MainWorld>("MainWorld");
+	_world = m_worldManager->CreateWorld<MenuScene>("MenuScene");
     std::cout << "World initialized." << std::endl << std::endl;
 }
 

@@ -25,6 +25,7 @@
 #include "game/Player.h"
 #include "game/components/ShootingComponent.h"
 #include "HUD.h"
+#include "mge/core/PlayerPrefs.h"
 
 MainWorld::MainWorld()
 {
@@ -84,7 +85,9 @@ void MainWorld::Initialize()
 
 	HUD* hud = Instantiate<HUD>();
 	//Load the xml world.
-	int currentLevelIndex = 2;
+	std::cout <<std::endl<< "				Geting LEVEL_INDEX" << std::endl;
+
+	int currentLevelIndex = PlayerPrefs::GetInt("LevelIndex");
 	switch (currentLevelIndex)
 	{
 	case 1:
@@ -98,6 +101,8 @@ void MainWorld::Initialize()
 		break;
 	default:
 		std::cout << "Cant find level with index: " + currentLevelIndex << std::endl;
+		std::cout << "Loading scene.xml"<< std::endl;
+		LoadXmlWorld("scene.xml");
 		break;
 	}
 
