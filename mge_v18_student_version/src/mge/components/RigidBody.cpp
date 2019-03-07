@@ -56,26 +56,28 @@ ColliderComponent * RigidBody::GetCollider()
 
 void RigidBody::OnCollisionStay(CollisionInfo * collisionInfo)
 {
-	std::cout << "COLLISION" << std::endl;
-	float vx = (velocity.x == 0)? 0.1f :velocity.x;
-	float vy = (velocity.y == 0) ? 0.1f : velocity.y;
+	//std::cout << "COLLISION" << std::endl;
+	//float vx = (velocity.x == 0)? 0.1f :velocity.x;
+	//loat vy = (velocity.y == 0) ? 0.1f : velocity.y;
 
-	float ratio=glm::min(collisionInfo->distance.x / glm::abs(vx), collisionInfo->distance.y / glm::abs(vy));
-	if (ratio > 1) ratio = 1;
-	if (ratio < 0.01f) ratio = -0.001f;
-	glm::vec3 displacement = -glm::vec3(velocity.x, 0, velocity.y) * ratio;
+	//float ratio=glm::min(collisionInfo->distance.x, collisionInfo->distance.y);
+
+	//if (ratio > 1) ratio = 1;
+	//if (ratio < 0.01f) ratio = 0.01f;
+	//glm::vec3 displacement =   glm::vec3(collisionInfo->normal.x, 0, collisionInfo->normal.y) * ratio;
 
 	//std::cout << std::endl;
-	//std::cout << "Ratio X: " << collisionInfo->distance.x / glm::abs(vx) << std::endl;
-	//std::cout << "Ratio Y: " << collisionInfo->distance.y / glm::abs(vy) << std::endl;
+	//std::cout << "RATIO: " << ratio << std::endl;
+	//std::cout << "Depth: " << collisionInfo->distance << std::endl;
 	//std::cout << "velocity: " << velocity << std::endl;
+	//std::cout << "Normal" << glm::vec3(collisionInfo->normal.x, 0, collisionInfo->normal.y) << std::endl;
 	//std::cout << "Displacement: " << displacement << std::endl;
-	//std::cout << "Normal" << collisionInfo->normal << std::endl;
-	
+
+	//velocity = glm::vec2(0, 0);
 	velocity = collisionInfo->normal*bounciness;
 	SetAcceleration(glm::vec2(0, 0));
 
-	m_gameObject->transform->Translate(displacement);
+	//m_gameObject->transform->Translate(displacement);
 
 	//Parsing collisionInfo to gameobject
 	m_gameObject->OnCollision(collisionInfo);
