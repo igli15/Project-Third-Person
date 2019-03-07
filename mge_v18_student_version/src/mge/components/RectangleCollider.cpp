@@ -43,15 +43,15 @@ CollisionInfo* RectangleCollider::IsColliding(CircleCollider * circle)
 		glm::vec2 collisionNormal;
 		if (glm::abs(deltaY) == glm::abs(deltaX))
 		{
-			collisionNormal.y = glm::sign(deltaY);
-			collisionNormal.x = glm::sign(deltaX);
+			//collisionNormal.y = glm::sign(deltaY);
+			//collisionNormal.x = glm::sign(deltaX);
 		}
-		else if (glm::abs(deltaY) > glm::abs(deltaX)) collisionNormal.y = glm::sign(deltaY);
+		if (glm::abs(deltaY) > glm::abs(deltaX)) collisionNormal.y = glm::sign(deltaY);
 		else				 collisionNormal.x = glm::sign(deltaX);
 
 		//Packing ColliaionInfo for RigidBody
 		CollisionInfo* collisionInfo = new CollisionInfo();
-		collisionInfo->distance = glm::vec2(width / 2 + circle->radius-glm::abs(distance.x), height / 2 + circle->radius- glm::abs(distance.y));
+		collisionInfo->distance = glm::vec2(width / 2+ circle->radius-glm::abs(distance.x), height / 2 + circle->radius- glm::abs(distance.y));
 		collisionInfo->normal = (collisionNormal);
 
 		return collisionInfo;
