@@ -6,8 +6,7 @@ meshesLoadPath = "../assets/mge/models/"
 texturesLoadPath = "../assets/mge/textures/"
 fontsLoadPath = "../assets/mge/fonts/"
 musicLoadPath = "../assets/mge/music/"
-
-meshes = 
+meshes =
 {
 	["planeMesh"] = meshesLoadPath.."plane.obj",
 	["cubeMesh"] = meshesLoadPath.."cube_smooth.obj",
@@ -17,6 +16,8 @@ meshes =
 	["players"] = meshesLoadPath.."players.obj",
 	["orb"] = meshesLoadPath.."orb.obj",
 	["refillStation"] = meshesLoadPath.."refillStation.obj",
+	["balloon"] = meshesLoadPath.."Balloon.obj",
+
 
 	--walls
 
@@ -51,6 +52,7 @@ diffuseTextures =
 	["playerLavaDiffuse"] = texturesLoadPath.."playerLavaDiffuse.jpg",
 	["orbLavaDiffuse"] = texturesLoadPath.."orbLavaDiffuse.jpg",
 	["refillStationDiffuse"] = texturesLoadPath.."refillStationDiffuse.jpg",
+	["BalloonDiffuse"] = texturesLoadPath.."BalloonDiffuse.png",
 
 	--walls
 
@@ -73,6 +75,7 @@ specularTextures =
 	["playerIceSpecular"] = texturesLoadPath.."playerIceSpecular.jpg",
 	["playerLavaSpecular"] = texturesLoadPath.."playerLavaSpecular.jpg",
 	["refillStationSpecular"] = meshesLoadPath.."refillStationSpecular.jpg",
+	["BalloonSpecular"] = texturesLoadPath.."BalloonSpecular.png",
 
 	--walls
 
@@ -97,6 +100,7 @@ emissionTextures =
 	["playerLavaEmissive"] = texturesLoadPath.."playerLavaEmissive.jpg",
 	["orbLavaEmissive"] = texturesLoadPath.."orbLavaEmissive.jpg",
 	["refillStationEmission"] = texturesLoadPath.."refillStationEmission.jpg",
+	["BalloonEmission"] = texturesLoadPath.."BalloonEmission.png",
 }
 
 --normal maps here

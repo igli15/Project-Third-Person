@@ -103,7 +103,7 @@ void LuaProgram::CallCurrentProgram()
         std::cout<<error<<std::endl;
         lua_pop(m_currentLuaState,1);
         throw error;
-    }
+	}
 }
 
 void LuaProgram::SetGlobalDouble(std::string varName,double d)
