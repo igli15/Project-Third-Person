@@ -84,7 +84,23 @@ void MainWorld::Initialize()
 
 	HUD* hud = Instantiate<HUD>();
 	//Load the xml world.
-	LoadXmlWorld("scene.xml");
+	int currentLevelIndex = 1;
+	switch (currentLevelIndex)
+	{
+	case 1:
+		LoadXmlWorld("scene.xml");
+		break;
+	case 2:
+		LoadXmlWorld("level2.xml");
+			break;
+	case 3:
+		LoadXmlWorld("level3.xml");
+		break;
+	default:
+		std::cout << "Cant find level with index: " + currentLevelIndex << std::endl;
+		break;
+	}
+
 
 
 	//std::cout << "tile Pos is: " << levelGrid->GetTileAt(0, 7)->GetGameObject()->transform->WorldPosition()<<std::endl;
