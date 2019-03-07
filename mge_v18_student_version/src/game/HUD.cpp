@@ -90,15 +90,12 @@ void HUD::Update(float pStep)
 
 	if (m_gameLength - m_gameClock.getElapsedTime().asSeconds()<=0)
 	{
-		PlayerPrefs::SetFloat("IcePercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::ICE));
-		PlayerPrefs::SetFloat("LavaPercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::LAVA));
-
+		PlayerPrefs::SetFloat("IcePercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::ICE)/100);
+		PlayerPrefs::SetFloat("LavaPercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::LAVA)/100);
 
 
 		AbstractGame::Instance()->GetWorldManager()->CreateWorld<ResolutionScreen>("ResolutionScreen");
 		//covered tile function
-		//std::cout << "ICE: " << dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::ICE) << std::endl;
-		//std::cout << "Lava: " << dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::LAVA) << std::endl;
 
 		//end game (call reso Screen)
 	}

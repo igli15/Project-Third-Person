@@ -22,8 +22,6 @@ ResolutionUI::~ResolutionUI()
 
 void ResolutionUI::Load()
 {
-	PlayerPrefs::SetFloat("IcePercentage", 0.2f);
-	PlayerPrefs::SetFloat("LavaPercentage",0.6f);
 
 	m_blazePrevails = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("blazePrevails");
 	m_briskPrevails = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("briskPrevails");
@@ -68,14 +66,12 @@ void ResolutionUI::Load()
 	m_blazeScoreBarSprite->GetSprite()->setOrigin(0, m_blazeScoreBarSprite->GetSprite()->getGlobalBounds().height/2);
 	m_blazeScoreBarSprite->GetSprite()->setPosition(451, 660);
 	m_blazeScoreBarSprite->GetSprite()->setScale(PlayerPrefs::GetFloat("LavaPercentage"),1);
-	std::cout << PlayerPrefs::GetFloat("LavaPercentage") << std::endl;
 
 	m_briskScoreBarSprite = AddComponent<UISpriteRenderer>();
 	m_briskScoreBarSprite->ApplyTexture(m_resoIceBar);
 	m_briskScoreBarSprite->GetSprite()->setOrigin(m_briskScoreBarSprite->GetSprite()->getGlobalBounds().width, m_briskScoreBarSprite->GetSprite()->getGlobalBounds().height / 2);
 	m_briskScoreBarSprite->GetSprite()->setPosition(451 + m_briskScoreBarSprite->GetSprite()->getGlobalBounds().width, 660);
 	m_briskScoreBarSprite->GetSprite()->setScale(PlayerPrefs::GetFloat("IcePercentage"), 1);
-	std::cout << PlayerPrefs::GetFloat("IcePercentage") << std::endl;
 
 
 	//add Background of scores
