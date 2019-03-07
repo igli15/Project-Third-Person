@@ -1,6 +1,7 @@
 #pragma once
 #include "mge/core/XMLComponent.h"
 #include "SFML/System.hpp"
+#include "tweeny/tweeny.h"
 
 class PlayerMovementComponent;
 class GridComponent;
@@ -46,5 +47,7 @@ private:
 	int m_playerNumber = 1;
 
 	bool m_isKeyPresedLastFrame=false;
+
+	tweeny::tween<float> testTween;
 };
 

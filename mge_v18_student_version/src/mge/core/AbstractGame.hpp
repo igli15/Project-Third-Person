@@ -44,6 +44,8 @@ class AbstractGame
 		unsigned WindowWidth() const;
 		unsigned WindowHeight() const;
 
+		float deltaTime = 0;
+
     protected:
 
         //methods above delegate behaviour to the methods below so that you can override it in a subclass
@@ -82,6 +84,7 @@ class AbstractGame
 		
 		unsigned m_windowWidth = 800;
 		unsigned m_windowHeight = 600;
+	
 
     private:
         AbstractGame(const AbstractGame&);

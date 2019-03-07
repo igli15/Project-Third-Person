@@ -11,7 +11,7 @@
 #include "SFML/Window.hpp"
 #include "mge/core/ResourceManager.h"
 #include "game/components/PlayerDataComponent.h"
-
+#include <iostream>
 
 ShootingComponent::ShootingComponent()
 {
@@ -29,12 +29,20 @@ void ShootingComponent::Start()
 	m_playerMovementComponent = m_gameObject->GetComponent<PlayerMovementComponent>();
 
 	HUD::GetHudComponent()->SetMaxInk(m_inkMaxLevel);
-	//asdasd
+	
+	testTween = tweeny::from((float)m_inkMaxLevel).to(0.0f).during(2000).via(tweeny::easing::bounceOut);
 }
 
 void ShootingComponent::Update(float timeStep)
 {
 	XMLComponent::Update(timeStep);
+
+	float dt = AbstractGame::Instance()->deltaTime;
+
+	m_inkLevel = testTween.step((int)dt);
+
+	HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
+
 	OnKeyPressed(sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace)));
 	if (m_isChraging)
 	{

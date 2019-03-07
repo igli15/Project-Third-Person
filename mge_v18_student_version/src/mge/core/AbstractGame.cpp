@@ -139,10 +139,11 @@ void AbstractGame::run()
 	sf::Clock updateClock;
 	sf::Time timeSinceLastUpdate = sf::Time::Zero;
 
+	sf::Clock deltaTimeclock;
 	while (_window->isOpen()) {
 		//std::cout << "FPS: " << _fps << std::endl;
 		timeSinceLastUpdate += updateClock.restart();
-
+		
 		if (timeSinceLastUpdate > timePerFrame)
 		{
 
@@ -168,8 +169,6 @@ void AbstractGame::run()
 				m_worldManager->GetCurrentWorld()->GetCanvasComponent()->DrawAllTexts(_window);
 			}
 			
-
-
 			_window->display();
 
             //fps count is updated once every 1 second
@@ -183,7 +182,7 @@ void AbstractGame::run()
             }
 
 		}
-
+		deltaTime = timeSinceLastUpdate.asMilliseconds();
 		//empty the event queue
 		_processEvents();
     }
