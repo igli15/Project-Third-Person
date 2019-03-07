@@ -15,7 +15,19 @@ meshes =
 	["GroundTile"] = meshesLoadPath.."GroundTile.obj",
 	["players"] = meshesLoadPath.."players.obj",
 	["orb"] = meshesLoadPath.."orb.obj",
-	["Wall"] = meshesLoadPath.."WallBlock1x1.obj",
+	["refillStation"] = meshesLoadPath.."refillStation.obj",
+
+	--walls
+
+	["WallBlock1x1"] = meshesLoadPath.."WallBlock1x1.obj",
+	["WallBlock2x2"] = meshesLoadPath.."WallBlock2x2.obj",
+	["wall_msingle"] = meshesLoadPath.."wall_msingle.obj",
+	["wall_ocorner"] = meshesLoadPath.."wall_ocorner.obj",
+	["wall_icorner"] = meshesLoadPath.."wall_icorner.obj",
+	["wall_flat"] = meshesLoadPath.."wall_flat.obj",
+	["wall_single"] = meshesLoadPath.."wall_single.obj",
+
+
 
 
 
@@ -35,8 +47,19 @@ diffuseTextures =
 	["iceDiffuse"] = texturesLoadPath.."iceDiffuse.jpg",
 	["lavaDiffuse"] = texturesLoadPath.."lavaDiffuse.jpg",
 	["wallDiffuse"] = texturesLoadPath.."wall.png",
-	["playerLavaDiffuse"] = texturesLoadPath.."player2Diffuse.jpg",
+	["playerLavaDiffuse"] = texturesLoadPath.."playerLavaDiffuse.jpg",
 	["orbLavaDiffuse"] = texturesLoadPath.."orbLavaDiffuse.jpg",
+	["refillStationDiffuse"] = texturesLoadPath.."refillStationDiffuse.jpg",
+
+	--walls
+
+	["WallBlock1x1Diffuse"] = texturesLoadPath.."WallBlock1x1Diffuse.jpg",
+	["WallBlock2x2Diffuse"] = texturesLoadPath.."WallBlock2x2Diffuse.jpg",
+	["wall_msingleDiffuse"] = texturesLoadPath.."wall_msingleDiffuse.jpg",
+	["wall_ocornerDiffuse"] = texturesLoadPath.."wall_ocornerDiffuse.jpg",
+	["wall_icornerDiffuse"] = texturesLoadPath.."wall_icornerDiffuse.jpg",
+	["wall_flatDiffuse"] = texturesLoadPath.."wall_flatDiffuse.jpg",
+	["wall_singleDiffuse"] = texturesLoadPath.."wall_singleDiffuse.jpg",
 
 }
 
@@ -44,7 +67,22 @@ specularTextures =
 {
 	["lavaSpecular"] = texturesLoadPath.."lavaSpecular.jpg",
 	["iceSpecular"] = texturesLoadPath.."iceSpecular.jpg",
-	["neutralSpecular"] = texturesLoadPath.."neutralSpecular.png",
+	["neutralSpecular"] = texturesLoadPath.."neutralSpecular.jpg",
+	["playerLavaSpecular"] = texturesLoadPath.."playerLavaSpecular.jpg",
+	["playerIceSpecular"] = texturesLoadPath.."playerIceSpecular.jpg",
+	["playerLavaSpecular"] = texturesLoadPath.."playerLavaSpecular.jpg",
+	["refillStationSpecular"] = meshesLoadPath.."refillStationSpecular.jpg",
+
+	--walls
+
+	["WallBlock1x1Specular"] = meshesLoadPath.."WallBlock1x1Specular.jpg",
+	["WallBlock2x2Specular"] = meshesLoadPath.."WallBlock2x2Specular.jpg",
+	["wall_msingleSpecular"] = meshesLoadPath.."wall_msingleSpecular.jpg",
+	["wall_ocornerSpecular"] = meshesLoadPath.."wall_ocornerSpecular.jpg",
+	["wall_icornerSpecular"] = meshesLoadPath.."wall_icornerSpecular.jpg",
+	["wall_flatSpecular"] = meshesLoadPath.."wall_flatSpecular.jpg",
+	["wall_singleSpecular"] = meshesLoadPath.."wall_singleSpecular.jpg",
+
 }
 
 emissionTextures = 
@@ -55,8 +93,9 @@ emissionTextures =
 	["orbIceEmissive"] = texturesLoadPath.."orbIceEmissive.jpg",
 	["lavaEmission"] = texturesLoadPath.."lavaEmission.jpg",
 	["iceEmission"] = texturesLoadPath.."iceEmission.jpg",
-	["playerLavaEmissive"] = texturesLoadPath.."player2Emissive.jpg",
+	["playerLavaEmissive"] = texturesLoadPath.."playerLavaEmissive.jpg",
 	["orbLavaEmissive"] = texturesLoadPath.."orbLavaEmissive.jpg",
+	["refillStationEmission"] = texturesLoadPath.."refillStationEmission.jpg",
 }
 
 --normal maps here
@@ -65,6 +104,18 @@ normalMapTextures =
 	["lavaNormal"] = texturesLoadPath.."lavaNormal.jpg",
 	["iceNormal"] = texturesLoadPath.."iceNormal.jpg",
 	["wallNormal"] = texturesLoadPath.."wallNormal.png",
+	["neutralNormal"] = texturesLoadPath.."neutralNormal.jpg",
+	["refillStation"] = texturesLoadPath.."refillStationNormal.jpg",
+
+	--walls
+
+	["WallBlock1x1Normal"] = meshesLoadPath.."WallBlock1x1Normal.jpg",
+	["WallBlock2x2Normal"] = meshesLoadPath.."WallBlock2x2Normal.jpg",
+	["wall_msingleNormal"] = meshesLoadPath.."wall_msingleNormal.jpg",
+	["wall_ocornerNormal"] = meshesLoadPath.."wall_ocornerNormal.jpg",
+	["wall_icornerNormal"] = meshesLoadPath.."wall_icornerNormal.jpg",
+	["wall_flatNormal"] = meshesLoadPath.."wall_flatNormal.jpg",
+	["wall_singleNormal"] = meshesLoadPath.."wall_singleNormal.jpg",
 }
 
 --Since we are using SFML for ui textures we need to load the sepperatly here!
