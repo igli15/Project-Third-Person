@@ -7,6 +7,7 @@
 #include <SFML\System.hpp>
 #include "MainWorld.h"
 #include "mge/core/WorldManager.h"
+#include "mge/core/PlayerPrefs.h"
 
 MenuUI::MenuUI()
 {
@@ -15,6 +16,7 @@ MenuUI::MenuUI()
 
 MenuUI::~MenuUI()
 {
+
 }
 
 void MenuUI::Load()
@@ -27,6 +29,11 @@ void MenuUI::Load()
 	m_exitGameSelectedTexture = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("exitSelected");
 	m_ControlScreenPressed = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("controlsScreenPressed");
 	m_ControlScreen = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("controlsScreen");
+
+	m_levelSelectedNone = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("levelSelectedNone");
+	m_levelSelected1 = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("levelSelected1");
+	m_levelSelected2 = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("levelSelected2");
+	m_levelSelectedBack = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("levelSelectedBack");
 
 	m_menuBGSprite = AddComponent<UISpriteRenderer>();
 	m_menuBGSprite->ApplyTexture(m_menuBGTexture);
@@ -44,57 +51,68 @@ void MenuUI::Awake()
 void MenuUI::Start()
 {
 	GameObject::Start();
+	bool m_controlsLocked = false;
+	bool m_levelSelect = false;
+	float m_pressCD = 1.5f;
 }
 
 void MenuUI::Update(float pStep)
 {
 	GameObject::Update(pStep);
 	m_pressCD -= 0.055f;
-	if (!m_controlsLocked)
+
+	if (!m_levelSelect)
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) | sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		if (!m_controlsLocked)
 		{
-			m_Selected = PlayGame;
-			std::cout << "show playGame Selected Sprite" << std::endl;
-
-			m_menuBGSprite->ApplyTexture(m_playSelectedTexture);
-
-		}
-
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		{
-			m_Selected = Controls;
-			//show Controls Selected Sprite
-			std::cout << "show Controls Selected Sprite" << std::endl;
-			m_menuBGSprite->ApplyTexture(m_controlsSelectedTexture);
-		}
-
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		{
-			m_Selected = ExitGame;
-			//show Exit selected sprite
-			std::cout << "show Exit selected sprite" << std::endl;
-			m_menuBGSprite->ApplyTexture(m_exitGameSelectedTexture);
-
-		}
-
-		OnHoldControls();
-	}
-	else {
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) | sf::Keyboard::isKeyPressed(sf::Keyboard::W) | sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A) | sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		{
-			m_menuBGSprite->ApplyTexture(m_ControlScreenPressed);
-		}
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F) | sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) | sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-		{
-			if (m_pressCD <= 0)
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) | sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 			{
-				m_menuBGSprite->ApplyTexture(m_controlsSelectedTexture);
+				m_Selected = PlayGame;
+				std::cout << "show playGame Selected Sprite" << std::endl;
+
+				m_menuBGSprite->ApplyTexture(m_playSelectedTexture);
+
+			}
+
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+			{
 				m_Selected = Controls;
-				m_controlsLocked = false;
-				m_pressCD = 1.5f;
+				//show Controls Selected Sprite
+				std::cout << "show Controls Selected Sprite" << std::endl;
+				m_menuBGSprite->ApplyTexture(m_controlsSelectedTexture);
+			}
+
+			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+			{
+				m_Selected = ExitGame;
+				//show Exit selected sprite
+				std::cout << "show Exit selected sprite" << std::endl;
+				m_menuBGSprite->ApplyTexture(m_exitGameSelectedTexture);
+
+			}
+
+			OnHoldControls();
+		}
+		else {
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) | sf::Keyboard::isKeyPressed(sf::Keyboard::W) | sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A) | sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+			{
+				m_menuBGSprite->ApplyTexture(m_ControlScreenPressed);
+			}
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::F) | sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace) | sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
+			{
+				if (m_pressCD <= 0)
+				{
+					m_menuBGSprite->ApplyTexture(m_controlsSelectedTexture);
+					m_Selected = Controls;
+					m_controlsLocked = false;
+					m_pressCD = 1.5f;
+				}
 			}
 		}
+	}
+	else { 
+		OnLevelSelect();
+		OnHoldControls();
 	}
 	
 }
@@ -114,7 +132,9 @@ void MenuUI::OnHoldControls()
 			case PlayGame:
 				//Start Level 1
 				m_pressCD = 1.5f;
-				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
+				m_levelSelect = true;
+				m_menuBGSprite->ApplyTexture(m_levelSelectedNone);
+				//AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
 				break;
 			case Controls:
 				m_controlsLocked = true;
@@ -122,7 +142,24 @@ void MenuUI::OnHoldControls()
 				m_menuBGSprite->ApplyTexture(m_ControlScreenPressed);
 				break;
 			case ExitGame:
+				m_pressCD = 1.5f;
 				std::exit(0);
+				break;
+			case Level1:
+				PlayerPrefs::SetInt("LevelIndex", 1);
+				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
+				m_pressCD = 1.5f;
+				break;
+			case Level2:
+				PlayerPrefs::SetInt("LevelIndex", 2);
+				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
+				m_pressCD = 1.5f;
+				break;
+			case LevelBackButton:
+				m_menuBGSprite->ApplyTexture(m_playSelectedTexture);
+				m_pressCD = 1.5f;
+				m_Selected = PlayGame;
+				m_levelSelect = false;
 				break;
 			default:
 				std::cout << m_Selected << std::endl;
@@ -131,5 +168,24 @@ void MenuUI::OnHoldControls()
 				break;
 			}
 		}
+	}
+}
+
+void MenuUI::OnLevelSelect()
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	{
+		m_Selected = Level1;
+		m_menuBGSprite->ApplyTexture(m_levelSelected1);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	{
+		m_Selected = Level2;
+		m_menuBGSprite->ApplyTexture(m_levelSelected2);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) | sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	{
+		m_Selected = LevelBackButton;
+		m_menuBGSprite->ApplyTexture(m_levelSelectedBack);
 	}
 }
