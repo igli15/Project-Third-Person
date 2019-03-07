@@ -13,7 +13,7 @@ LightComponent::LightComponent()
 
 LightComponent::~LightComponent()
 {
-	m_gameObject->GetWorld()->unregisterLight(this);
+	//m_gameObject->GetWorld()->unregisterLight(this);
 }
 
 void LightComponent::Awake()

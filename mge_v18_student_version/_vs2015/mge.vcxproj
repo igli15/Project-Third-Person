@@ -171,6 +171,7 @@
     <ClInclude Include="..\src\game\components\KeyMoveComponent.h" />
     <ClInclude Include="..\src\game\components\PlayerDataComponent.h" />
     <ClInclude Include="..\src\game\components\PlayerMovementComponent.h" />
+    <ClInclude Include="..\src\game\components\RefillStationComponent.h" />
     <ClInclude Include="..\src\game\components\RotatingComponent.h" />
     <ClInclude Include="..\src\game\components\ShootingComponent.h" />
     <ClInclude Include="..\src\game\components\TileComponent.h" />
@@ -178,6 +179,8 @@
     <ClInclude Include="..\src\game\IlyasWorld.h" />
     <ClInclude Include="..\src\game\MainGame.h" />
     <ClInclude Include="..\src\game\MainWorld.h" />
+    <ClInclude Include="..\src\game\MenuScene.h" />
+    <ClInclude Include="..\src\game\MenuUI.h" />
     <ClInclude Include="..\src\game\PhysicsTestObject.h" />
     <ClInclude Include="..\src\game\Player.h" />
     <ClInclude Include="..\src\glm.hpp" />
@@ -190,6 +193,7 @@
     <ClInclude Include="..\src\mge\components\CircleCollider.h" />
     <ClInclude Include="..\src\mge\components\RectangleCollider.h" />
     <ClInclude Include="..\src\mge\components\RigidBody.h" />
+    <ClInclude Include="..\src\mge\components\TextComponent.h" />
     <ClInclude Include="..\src\mge\components\Transform.h" />
     <ClInclude Include="..\src\mge\components\UISpriteRenderer.h" />
     <ClInclude Include="..\src\mge\config.hpp" />
@@ -203,6 +207,7 @@
     <ClInclude Include="..\src\mge\core\GameObject.hpp" />
     <ClInclude Include="..\src\mge\core\Light.hpp" />
     <ClInclude Include="..\src\mge\core\Mesh.hpp" />
+    <ClInclude Include="..\src\mge\core\PlayerPrefs.h" />
     <ClInclude Include="..\src\mge\core\Renderer.hpp" />
     <ClInclude Include="..\src\mge\core\ResourceManager.h" />
     <ClInclude Include="..\src\mge\core\ShaderProgram.hpp" />
@@ -218,6 +223,14 @@
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
     <ClInclude Include="..\src\mge\test\TestComponent.h" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
+    <ClInclude Include="..\src\tweeny\dispatcher.h" />
+    <ClInclude Include="..\src\tweeny\easing.h" />
+    <ClInclude Include="..\src\tweeny\easingresolve.h" />
+    <ClInclude Include="..\src\tweeny\int2type.h" />
+    <ClInclude Include="..\src\tweeny\tween.h" />
+    <ClInclude Include="..\src\tweeny\tweenpoint.h" />
+    <ClInclude Include="..\src\tweeny\tweentraits.h" />
+    <ClInclude Include="..\src\tweeny\tweeny.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\game\components\GridComponent.cpp" />
@@ -225,6 +238,7 @@
     <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp" />
     <ClCompile Include="..\src\game\components\PlayerDataComponent.cpp" />
     <ClCompile Include="..\src\game\components\PlayerMovementComponent.cpp" />
+    <ClCompile Include="..\src\game\components\RefillStationComponent.cpp" />
     <ClCompile Include="..\src\game\components\RotatingComponent.cpp" />
     <ClCompile Include="..\src\game\components\ShootingComponent.cpp" />
     <ClCompile Include="..\src\game\components\TileComponent.cpp" />
@@ -232,6 +246,8 @@
     <ClCompile Include="..\src\game\IlyasWorld.cpp" />
     <ClCompile Include="..\src\game\MainGame.cpp" />
     <ClCompile Include="..\src\game\MainWorld.cpp" />
+    <ClCompile Include="..\src\game\MenuScene.cpp" />
+    <ClCompile Include="..\src\game\MenuUI.cpp" />
     <ClCompile Include="..\src\game\PhysicsTestObject.cpp" />
     <ClCompile Include="..\src\game\Player.cpp" />
     <ClCompile Include="..\src\main.cpp" />
@@ -244,6 +260,7 @@
     <ClCompile Include="..\src\mge\components\CircleCollider.cpp" />
     <ClCompile Include="..\src\mge\components\RectangleCollider.cpp" />
     <ClCompile Include="..\src\mge\components\RigidBody.cpp" />
+    <ClCompile Include="..\src\mge\components\TextComponent.cpp" />
     <ClCompile Include="..\src\mge\components\Transform.cpp" />
     <ClCompile Include="..\src\mge\components\UISpriteRenderer.cpp" />
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp" />
@@ -256,6 +273,7 @@
     <ClCompile Include="..\src\mge\core\GameObject.cpp" />
     <ClCompile Include="..\src\mge\core\Light.cpp" />
     <ClCompile Include="..\src\mge\core\Mesh.cpp" />
+    <ClCompile Include="..\src\mge\core\PlayerPrefs.cpp" />
     <ClCompile Include="..\src\mge\core\Renderer.cpp" />
     <ClCompile Include="..\src\mge\core\ResourceManager.cpp" />
     <ClCompile Include="..\src\mge\core\ShaderProgram.cpp" />
@@ -274,6 +292,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\src\game\Resources.lua" />
+    <None Include="..\src\tweeny\tween.tcc" />
+    <None Include="..\src\tweeny\tweenone.tcc" />
+    <None Include="..\src\tweeny\tweenpoint.tcc" />
+    <None Include="..\src\tweeny\tweeny.tcc" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

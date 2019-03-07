@@ -12,11 +12,9 @@
 #include "mge/core/ResourceManager.h"
 #include "game/components/PlayerDataComponent.h"
 
-
 ShootingComponent::ShootingComponent()
 {
 }
-
 
 ShootingComponent::~ShootingComponent()
 {
@@ -27,6 +25,7 @@ void ShootingComponent::Start()
 {
 	XMLComponent::Start();
 	m_playerMovementComponent = m_gameObject->GetComponent<PlayerMovementComponent>();
+	m_playerDataCompoent = m_gameObject->GetComponent<PlayerDataComponent>();
 
 	HUD::GetHudComponent()->SetMaxInk(m_inkMaxLevel);
 	//asdasd
@@ -36,16 +35,6 @@ void ShootingComponent::Update(float timeStep)
 {
 	XMLComponent::Update(timeStep);
 	OnKeyPressed(sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace)));
-	if (m_isChraging)
-	{
-		//Update HUD info
-		HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
-
-		//increase ammo untill it riches maxRange
-		if (m_currentAmmo >= m_maxRange) return;
-		m_currentAmmo+= m_rateOfGainInk;
-		m_inkLevel-= m_rateOfGainInk;
-	}
 }
 
 void ShootingComponent::Parse(rapidxml::xml_node<>* compNode)
@@ -67,6 +56,7 @@ void ShootingComponent::Parse(rapidxml::xml_node<>* compNode)
 		else if (attributeName == "inkMaxLevel")
 		{
 			m_inkMaxLevel = (int)strtof(a->value(), 0);
+			m_inkLevel = m_inkMaxLevel;
 		}
 		else if (attributeName == "rateOfInkGain")
 		{
@@ -115,10 +105,10 @@ void ShootingComponent::ShootInk(float tileAmount)
 
 	//std::cout << m_gameObject->transform->WorldPosition() << " ==== " << otherPlayerPos << std::endl;
 
-	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->RespawnPlayer(); });
+	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
 	for (size_t i = 0; i < tiles.size(); i++)
 	{
-		if (GetGameObject()->GetComponent<PlayerDataComponent>()->MatType() == TileType::LAVA)
+		if (m_playerDataCompoent-> MatType() == TileType::LAVA)
 		{
 			tiles[i]->PaintTile(TileType::LAVA);
 		}
@@ -152,6 +142,15 @@ void ShootingComponent::ResetInkLevel()
 	SetInkLevel(m_inkMaxLevel);
 }
 
+void ShootingComponent::AddInk(float inkLevel)
+{
+	//Incrasing Ink level
+	m_inkLevel += inkLevel;
+	if (m_inkLevel >= m_inkMaxLevel) m_inkLevel = m_inkMaxLevel;
+	//Update HUD after changing Ink level
+	HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
+}
+
 void ShootingComponent::OnKeyPressed(bool isKeyPressedThisFrame)
 {
 	if (!m_isKeyPresedLastFrame&&isKeyPressedThisFrame)
@@ -174,6 +173,7 @@ void ShootingComponent::OnKeyPressed(bool isKeyPressedThisFrame)
 
 void ShootingComponent::OnKeyEnter()
 {
+	if (m_playerDataCompoent->IsDead()) return;
 	//std::cout << "OnKeyEnter" << std::endl;
 
 	//Start charging
@@ -187,6 +187,26 @@ void ShootingComponent::OnKeyEnter()
 
 		m_isChraging = true;
 	}
+}
+
+void ShootingComponent::OnKeyStay()
+{
+	//std::cout << "OnKeyStay" << std::endl;
+	if (m_isChraging)
+	{
+		//Update HUD info
+		HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
+
+		//increase ammo untill it riches maxRange
+		if (m_currentAmmo >= m_maxRange) return;
+		m_currentAmmo += m_rateOfGainInk;
+		m_inkLevel -= m_rateOfGainInk;
+	}
+}
+
+void ShootingComponent::OnKeyExit()
+{
+	//std::cout << "OnKeyExit" << std::endl;
 	if (m_isChraging && m_currentAmmo >= m_minRange)
 	{
 		//Shoot ink on range of m_currentAmmo
@@ -197,17 +217,4 @@ void ShootingComponent::OnKeyEnter()
 		m_currentAmmo = 0;
 		m_isChraging = false;
 	}
-	
-
-
-}
-
-void ShootingComponent::OnKeyStay()
-{
-	//std::cout << "OnKeyStay" << std::endl;
-}
-
-void ShootingComponent::OnKeyExit()
-{
-	//std::cout << "OnKeyExit" << std::endl;
 }

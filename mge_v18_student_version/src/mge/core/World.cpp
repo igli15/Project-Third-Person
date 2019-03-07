@@ -41,6 +41,18 @@ void World::unregisterLight (LightComponent* pLight) {
 	InnerDeRegisterLightByType(pLight);
 }
 
+void World::MarkAllGameObjectForDeletion()
+{
+	for (int i = _children.size() - 1; i >= 0; --i)
+	{
+		_children[i]->Destroy();
+		for (int j = _children[i]->getChildCount() - 1; j >= 0; --j)
+		{
+			_children[i]->getChildAt(j)->Destroy();
+		}
+	}
+}
+
 LightComponent* World::getLightAt (int pIndex) {
     return _lights[pIndex];
 }
@@ -53,11 +65,7 @@ void World::ClearMarkedGameObject()
 {
 	for (int i = _children.size() - 1; i >= 0; --i)
 	{
-		if (_children[i]->IsMarkedForDestruction())
-		{
-			InnerDestroy(_children[i]);
-		}
-		
+
 		for (int j = _children[i]->getChildCount() - 1; j >= 0; --j)
 		{
 			if (_children[i]->getChildAt(j)->IsMarkedForDestruction())
@@ -65,7 +73,14 @@ void World::ClearMarkedGameObject()
 				InnerDestroy(_children[i]->getChildAt(j));
 			}
 		}
+
+		if (_children[i]->IsMarkedForDestruction())
+		{
+			InnerDestroy(_children[i]);
+		}
+		
 	}
+
 }
 
 void World::InnerDestroy(GameObject * object)

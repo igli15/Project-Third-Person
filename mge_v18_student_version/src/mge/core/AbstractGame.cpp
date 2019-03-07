@@ -149,10 +149,7 @@ void AbstractGame::run()
             glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 			_window->clear();
 
-			if (m_worldManager->GetCurrentWorld()->IsMarkedForDestruction())
-			{
-				m_worldManager->GetCurrentWorld()->InnerDestroy(m_worldManager->GetCurrentWorld());
-			}
+			m_worldManager->ClearOldWorld();
 
 			m_worldManager->GetCurrentWorld()->ClearMarkedGameObject();
 
@@ -168,8 +165,11 @@ void AbstractGame::run()
 			if(m_worldManager->GetCurrentWorld()->GetCanvasComponent() != nullptr)
 			{
 				m_worldManager->GetCurrentWorld()->GetCanvasComponent()->DrawAllUISprites(_window);
+				m_worldManager->GetCurrentWorld()->GetCanvasComponent()->DrawAllTexts(_window);
 			}
-	
+			
+
+
 			_window->display();
 
             //fps count is updated once every 1 second

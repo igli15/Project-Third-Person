@@ -22,6 +22,8 @@ class World : public GameObject
         void registerLight (LightComponent* pLight);
         void unregisterLight (LightComponent* pLight);
 
+		void MarkAllGameObjectForDeletion();
+
         LightComponent* getLightAt (int pIndex);
         int getLightCount();
 

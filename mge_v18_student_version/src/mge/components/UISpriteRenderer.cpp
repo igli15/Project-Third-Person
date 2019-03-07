@@ -105,6 +105,8 @@ void UISpriteRenderer::InitRenderingQuad()
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
+
+
 void UISpriteRenderer::Awake()
 {
 	m_gameObject->GetWorld()->GetCanvasComponent()->AddSpriteRenderer(this);
@@ -122,6 +124,9 @@ void UISpriteRenderer::OnDestroy()
 
 sf::Sprite* UISpriteRenderer::ApplyTexture(sf::Texture * texture)
 {
+
+		std::cout << "here" << std::endl;
+	
 		if (m_sprite == nullptr)
 		{
 			m_texture = texture;

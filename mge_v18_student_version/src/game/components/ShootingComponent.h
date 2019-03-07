@@ -2,6 +2,7 @@
 #include "mge/core/XMLComponent.h"
 #include "SFML/System.hpp"
 
+class PlayerDataComponent;
 class PlayerMovementComponent;
 class GridComponent;
 
@@ -22,6 +23,7 @@ public:
 	void SetGrid(GridComponent* grid);
 	void SetInkLevel(float newInkLevel);
 	void ResetInkLevel();
+	void AddInk(float inkLevel);
 
 	void OnKeyPressed(bool isKeyPressedThisFrame);
 	void OnKeyEnter();
@@ -32,8 +34,10 @@ private:
 	GridComponent* m_gridComponent;
 	sf::Clock m_clock;
 
+	PlayerDataComponent* m_playerDataCompoent;
+
 	int m_inkMaxLevel = 100;
-	float m_inkLevel = 100;
+	float m_inkLevel = 0;
 
 	bool m_isChraging = false;
 

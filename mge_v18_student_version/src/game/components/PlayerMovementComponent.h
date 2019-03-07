@@ -9,13 +9,13 @@ class PlayerDataComponent;
 class PlayerMovementComponent :public XMLComponent
 {
 public:
-	enum Direction { LEFT, RIGHT, FORWARD, BACKWARD };
+	enum Direction { LEFT, RIGHT, FORWARD, BACKWARD,NONE };
 
 	void Awake();
 	void Start();
 	void Update(float timeStep);
-	void OnCollision(CollisionInfo* collisionInfo);
-
+	//void OnCollision(CollisionInfo* collisionInfo);
+	//void OnTrigger(CollisionInfo* collisionInfo);
 	void SetPlayerNumber(int playerNumber);
 	void SetArenaData(glm::vec2 pos, glm::vec2 size);
 	void SetSpeed(float speed);
@@ -25,9 +25,12 @@ public:
 	PlayerMovementComponent();
 	virtual ~PlayerMovementComponent();
 
+
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 private:
 	Direction m_currentDirection;
+	Direction m_oldFirection;
+
 	RigidBody* m_rigidbody;
 	int m_playerNumber;
 	glm::vec2 m_arenaPosition;
@@ -40,7 +43,9 @@ private:
 	float m_initSpeed;
 	float m_speedUpAmount = 1.0f;
 	float m_slowDownAmount = 0.5f;
-	bool IsOutOfBorder();
+
+	void ApplyMovement(bool isMoved);
+	void ApplyDirection();
 	void SetRotation(glm::vec3 worldDirection, glm::vec3 localDirection);
 
 };

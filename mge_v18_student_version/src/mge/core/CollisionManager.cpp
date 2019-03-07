@@ -8,6 +8,20 @@ int CollisionManager::AddCollider(ColliderComponent * newCollider)
 	return m_colliders.size();
 }
 
+void CollisionManager::RemoveCollider(ColliderComponent * colliderToRemove)
+{
+	bool destroyed = false;
+	for (int i = m_colliders.size()-1; i >=0; i--)
+	{
+		if (colliderToRemove->GetGameObject()->ID() == m_colliders[i]->GetGameObject()->ID())
+		{
+			m_colliders.erase(std::find(m_colliders.begin(), m_colliders.end(), m_colliders[i]));
+			destroyed = true;
+		}
+	}
+	std::cout << "			collider is destroyed: " << destroyed << std::endl;
+}
+
 bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 {
 	std::vector<std::string> filters = targetCollider->GetCollisionFilterTags();
@@ -26,12 +40,17 @@ bool CollisionManager::CheckCollisionInWorld(ColliderComponent * targetCollider)
 				targetCollider->GetGameObject()->ID() != m_colliders[colliderIndex]->GetGameObject()->ID()
 				)
 			{
+				//std::cout << "COLLIDER" << m_colliders[colliderIndex]->GetGameObject()->transform->LocalPosition() << std::endl;
 				CollisionInfo* collisionInfo = targetCollider->IsColliding(m_colliders[colliderIndex]);
 				if (collisionInfo!=nullptr)
 				{
 					//Calling RigidBody to resolve collision
 					collisionInfo->collider = m_colliders[colliderIndex]->GetGameObject();
-					targetCollider->GetGameObject()->GetRigidBody()->OnCollisionStay(collisionInfo);
+
+					//If collider is trigger, call onTrigger
+					if (targetCollider->IsTrigger()) targetCollider->GetGameObject()->OnTrigger(collisionInfo);
+					else targetCollider->GetGameObject()->GetRigidBody()->OnCollisionStay(collisionInfo);
+
 					return true;
 				}
 				
