@@ -44,7 +44,7 @@ private:
 	float m_speedUpAmount = 1.0f;
 	float m_slowDownAmount = 0.5f;
 
-	void ApplyMovement();
+	void ApplyMovement(bool isMoved);
 	void ApplyDirection();
 	void SetRotation(glm::vec3 worldDirection, glm::vec3 localDirection);
 

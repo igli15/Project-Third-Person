@@ -16,7 +16,6 @@ ShootingComponent::ShootingComponent()
 {
 }
 
-
 ShootingComponent::~ShootingComponent()
 {
 
@@ -36,16 +35,6 @@ void ShootingComponent::Update(float timeStep)
 {
 	XMLComponent::Update(timeStep);
 	OnKeyPressed(sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace)));
-	if (m_isChraging)
-	{
-		//Update HUD info
-		HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
-
-		//increase ammo untill it riches maxRange
-		if (m_currentAmmo >= m_maxRange) return;
-		m_currentAmmo+= m_rateOfGainInk;
-		m_inkLevel-= m_rateOfGainInk;
-	}
 }
 
 void ShootingComponent::Parse(rapidxml::xml_node<>* compNode)
@@ -155,11 +144,10 @@ void ShootingComponent::ResetInkLevel()
 
 void ShootingComponent::AddInk(float inkLevel)
 {
+	//Incrasing Ink level
 	m_inkLevel += inkLevel;
-	std::cout << "INK LVL: " << m_inkLevel << std::endl;
-	std::cout << "MAX: " << m_inkMaxLevel << std::endl;
 	if (m_inkLevel >= m_inkMaxLevel) m_inkLevel = m_inkMaxLevel;
-	
+	//Update HUD after changing Ink level
 	HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
 }
 
@@ -199,6 +187,26 @@ void ShootingComponent::OnKeyEnter()
 
 		m_isChraging = true;
 	}
+}
+
+void ShootingComponent::OnKeyStay()
+{
+	//std::cout << "OnKeyStay" << std::endl;
+	if (m_isChraging)
+	{
+		//Update HUD info
+		HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
+
+		//increase ammo untill it riches maxRange
+		if (m_currentAmmo >= m_maxRange) return;
+		m_currentAmmo += m_rateOfGainInk;
+		m_inkLevel -= m_rateOfGainInk;
+	}
+}
+
+void ShootingComponent::OnKeyExit()
+{
+	//std::cout << "OnKeyExit" << std::endl;
 	if (m_isChraging && m_currentAmmo >= m_minRange)
 	{
 		//Shoot ink on range of m_currentAmmo
@@ -209,17 +217,4 @@ void ShootingComponent::OnKeyEnter()
 		m_currentAmmo = 0;
 		m_isChraging = false;
 	}
-	
-
-
-}
-
-void ShootingComponent::OnKeyStay()
-{
-	//std::cout << "OnKeyStay" << std::endl;
-}
-
-void ShootingComponent::OnKeyExit()
-{
-	//std::cout << "OnKeyExit" << std::endl;
 }
