@@ -84,17 +84,17 @@ void MainWorld::Initialize()
 
 	HUD* hud = Instantiate<HUD>();
 	//Load the xml world.
-	int currentLevelIndex = 1;
+	int currentLevelIndex = 2;
 	switch (currentLevelIndex)
 	{
 	case 1:
 		LoadXmlWorld("scene.xml");
 		break;
 	case 2:
-		LoadXmlWorld("level2.xml");
+		LoadXmlWorld("scene2.xml");
 			break;
 	case 3:
-		LoadXmlWorld("level3.xml");
+		LoadXmlWorld("scene2.xml");
 		break;
 	default:
 		std::cout << "Cant find level with index: " + currentLevelIndex << std::endl;
