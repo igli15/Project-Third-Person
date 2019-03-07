@@ -112,6 +112,9 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 	std::vector<TileComponent*> tiles;
 	TileComponent* currentTile = GetTileOnPos(playerPos);
 
+
+	if (currentTile == nullptr) return tiles;
+
 	//std::cout <<"MYPOS: "<< playerPos << std::endl;
 	//std::cout << "ENEMYPOS: " << enemyPos << std::endl;
 
@@ -122,26 +125,32 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 			if (positiveDir && currentTile->GridPos().x + i < m_width)
 			{
 				if (!GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->IsPaintable()) return tiles;
-
-				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos());
-				if (condition.x && condition.y)
+				
+				TileComponent* enemyTile = GetTileOnPos(enemyPos);
+				if (enemyTile != nullptr)
 				{
-					std::cout << "ENeMYINDEX: " << GetTileOnPos(enemyPos)->GridPos() << std::endl;
-				    std::cout << "MYINDEX: " << GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos() << std::endl;
-					onEnemyFoundCallback();
+					auto condition = glm::equal(enemyTile->GridPos(), GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos());
+					if (condition.x && condition.y)
+					{
+						std::cout << "ENeMYINDEX: " << GetTileOnPos(enemyPos)->GridPos() << std::endl;
+						std::cout << "MYINDEX: " << GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos() << std::endl;
+						onEnemyFoundCallback();
+					}
 				}
-
 				tiles.push_back(GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y));
 			}
 			else if (!positiveDir && ((currentTile->GridPos().x - i) >= 0))
 			{
 				if (!GetTileAt(currentTile->GridPos().x - i, currentTile->GridPos().y)->IsPaintable()) return tiles;
-
-				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x - i, currentTile->GridPos().y)->GridPos());
-				
-				if (condition.x && condition.y)
+				TileComponent* enemyTile = GetTileOnPos(enemyPos);
+				if (enemyTile != nullptr)
 				{
-					onEnemyFoundCallback();
+					auto condition = glm::equal(enemyTile->GridPos(), GetTileAt(currentTile->GridPos().x - i, currentTile->GridPos().y)->GridPos());
+
+					if (condition.x && condition.y)
+					{
+						onEnemyFoundCallback();
+					}
 				}
 
 				tiles.push_back(GetTileAt(currentTile->GridPos().x - i, currentTile->GridPos().y));
@@ -153,10 +162,14 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 			{
 				if (!GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y + i)->IsPaintable()) return tiles;
 
-				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y + i)->GridPos());
-				if (condition.x && condition.y)
+				TileComponent* enemyTile = GetTileOnPos(enemyPos);
+				if (enemyTile != nullptr)
 				{
-					onEnemyFoundCallback();
+					auto condition = glm::equal(enemyTile->GridPos(), GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y + i)->GridPos());
+					if (condition.x && condition.y)
+					{
+						onEnemyFoundCallback();
+					}
 				}
 				tiles.push_back(GetTileAt(currentTile->GridPos().x , currentTile->GridPos().y + i));
 			}
@@ -164,10 +177,14 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 			{
 				if (!GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y - i)->IsPaintable()) return tiles;
 
-				auto condition = glm::equal(GetTileOnPos(enemyPos)->GridPos(), GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y - i)->GridPos());
-				if (condition.x && condition.y)
+				TileComponent* enemyTile = GetTileOnPos(enemyPos);
+				if (enemyTile != nullptr)
 				{
-					onEnemyFoundCallback();
+					auto condition = glm::equal(enemyTile->GridPos(), GetTileAt(currentTile->GridPos().x, currentTile->GridPos().y - i)->GridPos());
+					if (condition.x && condition.y)
+					{
+						onEnemyFoundCallback();
+					}
 				}
 				tiles.push_back(GetTileAt(currentTile->GridPos().x , currentTile->GridPos().y - i));
 			}
