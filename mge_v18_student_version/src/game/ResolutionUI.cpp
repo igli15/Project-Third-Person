@@ -129,7 +129,9 @@ void ResolutionUI::OnSelected()
 		{
 		case PlayAgain:
 			//change later on to playerprefs of selected level (1|2)
-			AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
+			
+				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
+			
 			break;
 		case MainMenu:
 			AbstractGame::Instance()->GetWorldManager()->CreateWorld<MenuScene>("MenuScene");

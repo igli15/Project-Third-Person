@@ -143,6 +143,11 @@ sfmlTextures =
 	["controlsScreen"] = texturesLoadPath.."controlsScreen.png",
 	["controlsScreenPressed"] = texturesLoadPath.."controlsScreenPressed.png",
 
+	["levelSelectedNone"] = texturesLoadPath.."levelSelectedNone.png",
+	["levelSelected1"] = texturesLoadPath.."levelSelected1.png",
+	["levelSelected2"] = texturesLoadPath.."levelSelected2.png",
+	["levelSelectedBack"] = texturesLoadPath.."levelSelectedBack.png",
+
 	--RESO
 	["blazePrevails"] = texturesLoadPath.."blazePrevails.png",
 	["briskPrevails"] = texturesLoadPath.."briskPrevails.png",

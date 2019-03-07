@@ -17,17 +17,22 @@ public:
 	void Update(float pStep) override;
 	virtual void OnDestroy() override;
 	void OnHoldControls();
+	void OnLevelSelect();
 private:
 	enum Selected
 	{
 		PlayGame,
 		Controls,
 		ExitGame,
-		NONE
+		NONE,
+		Level1,
+		Level2,
+		LevelBackButton
 	};
 	Selected m_Selected = NONE;
-	bool m_controlsLocked = false;
 	UISpriteRenderer* m_menuBGSprite;
+	bool m_controlsLocked = false;
+	bool m_levelSelect = false;
 	float m_pressCD = 0.0f;
 	sf::Texture * m_menuBGTexture;
 	sf::Texture * m_playSelectedTexture;
@@ -35,6 +40,11 @@ private:
 	sf::Texture * m_exitGameSelectedTexture;
 	sf::Texture * m_ControlScreen;
 	sf::Texture * m_ControlScreenPressed;
+
+	sf::Texture* m_levelSelectedNone;
+	sf::Texture* m_levelSelected1;
+	sf::Texture* m_levelSelected2;
+	sf::Texture* m_levelSelectedBack;
 
 };
 
