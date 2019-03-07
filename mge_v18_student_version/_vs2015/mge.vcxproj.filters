@@ -229,6 +229,18 @@
     <ClInclude Include="..\src\game\components\RefillStationComponent.h">
       <Filter>game\components</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game\ResolutionUI.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\ResolutionScreen.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\MenuUI.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\MenuScene.h">
+      <Filter>game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -392,6 +404,18 @@
     </ClCompile>
     <ClCompile Include="..\src\game\components\RefillStationComponent.cpp">
       <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\ResolutionUI.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\ResolutionScreen.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\MenuUI.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\MenuScene.cpp">
+      <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
