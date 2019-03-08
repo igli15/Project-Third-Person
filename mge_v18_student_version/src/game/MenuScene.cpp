@@ -7,6 +7,7 @@
 
 MenuScene::MenuScene()
 {
+
 }
 
 
@@ -17,8 +18,8 @@ MenuScene::~MenuScene()
 
 void MenuScene::Initialize()
 {
-	std::cout << std::endl << "				SETING LEVEL_INDEX" << std::endl;
-	PlayerPrefs::SetInt("LevelIndex", 1);
+	//std::cout << std::endl << "				SETING LEVEL_INDEX" << std::endl;
+	//PlayerPrefs::SetInt("LevelIndex", 1);
 
 	GameObject* canvas = Instantiate<GameObject>();
 	SetCanvas(canvas->AddComponent<CanvasComponent>());

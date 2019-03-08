@@ -117,7 +117,7 @@ void GridComponent::Parse(rapidxml::xml_node<>* compNode)
 		}
 	}
 
-	if (strcmp(compNode->first_node()->name(), "BallonTilePositions") == 0)
+	/*if (strcmp(compNode->first_node()->name(), "BallonTilePositions") == 0)
 	{
 		rapidxml::xml_node<>* posNode = compNode->first_node();
 		for (rapidxml::xml_node<>* pos = posNode->first_node(); pos != nullptr; pos = pos->next_sibling())
@@ -128,7 +128,7 @@ void GridComponent::Parse(rapidxml::xml_node<>* compNode)
 
 			m_ballonTilePositions.push_back(tilePos);
 		}
-	}
+	}*/
 
 	m_tileGrid.resize(m_height, std::vector<TileComponent*>());
 }
@@ -189,6 +189,7 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 			{
 				if (!GetTileAt(currentTile->GridPos().x - i, currentTile->GridPos().y)->IsPaintable()) return tiles;
 				TileComponent* enemyTile = GetTileOnPos(enemyPos);
+
 				if (enemyTile != nullptr)
 				{
 					auto condition = glm::equal(enemyTile->GridPos(), GetTileAt(currentTile->GridPos().x - i, currentTile->GridPos().y)->GridPos());
@@ -240,6 +241,55 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 	return tiles;
 }
 
+
+std::vector<TileComponent*> GridComponent::GetTilesInTriangleRange(glm::vec3 playerPos, glm::vec3 enemyPos, int rows, bool horizontal,
+	bool positiveDir, const std::function<void()>& onEnemyFoundCallback)
+{
+	std::vector<TileComponent*> tiles;
+	TileComponent* currentTile = GetTileOnPos(playerPos);
+	TileComponent* enemyTile = GetTileOnPos(enemyPos);
+
+	if (currentTile == nullptr) return tiles;
+
+	//Getting direction of triangle shooting
+	int xDelta =  horizontal ? 1 : 0;
+	int yDelta = !horizontal ? 1 : 0;
+
+	if (!positiveDir)
+	{
+		xDelta *= -1;
+		yDelta *= -1;
+	}
+
+	for (int rowIndex = 1; rowIndex < rows; rowIndex++)
+	{
+		//Geting originTile for each row
+		TileComponent* gateTile = GetTileAt(currentTile->GridPos().x + rowIndex*xDelta, currentTile->GridPos().y+rowIndex*yDelta);
+
+		//If gateTile is out of grid then stop shooting
+		if (gateTile == nullptr) return tiles;
+
+		//Getting row use rectangle painting
+		std::vector<TileComponent*> newTiles = GetTilesInARange(gateTile, !horizontal?(rowIndex * 2 - 1):1, horizontal ? (rowIndex * 2 - 1) : 1);
+
+		//Adding new painted tiles to final list
+		tiles.insert(tiles.end(), newTiles.begin(), newTiles.end());
+	}
+
+	for (int i = 0; i < tiles.size(); i++)
+	{
+		//Checling if enemy stayed on one of the painted tiles
+		auto condition = glm::equal(enemyTile->GridPos(),tiles[i]->GridPos());
+		if (condition.x && condition.y)
+		{
+			onEnemyFoundCallback();
+		}
+	}
+
+
+	return tiles;
+}
+
 std::vector<TileComponent*> GridComponent::GetTilesInARange(glm::vec3 pos, int width, int height)
 {
 	std::vector<TileComponent*> tiles;
@@ -256,11 +306,56 @@ std::vector<TileComponent*> GridComponent::GetTilesInARange(glm::vec3 pos, int w
 
 	if ((currentTile->GridPos().y + height / 2) >= m_height)
 	{
+		height -= (currentTile->GridPos().y + height / 2) - m_height;
 		gridY = m_height - 1;
 	}
 
 	if ((currentTile->GridPos().x + width / 2) >= m_width)
 	{
+		width -= (currentTile->GridPos().x + width / 2) - m_width;
+		gridX = m_width - 1;
+	}
+	startingTile = GetTileAt(gridX, gridY);
+
+
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			TileComponent* tile = GetTileAt(startingTile->GridPos().x - j, startingTile->GridPos().y - i);
+
+			if(tile != nullptr)
+			tiles.push_back(tile);
+		}
+	}
+
+
+	return tiles;
+}
+
+std::vector<TileComponent*> GridComponent::GetTilesInARange(TileComponent* tile, int width, int height)
+{
+	std::vector<TileComponent*> tiles;
+	TileComponent* currentTile = tile;
+
+	TileComponent* startingTile;
+
+	int gridX = 0;
+	int gridY = 0;
+
+	gridX = currentTile->GridPos().x + width / 2;
+	gridY = currentTile->GridPos().y + height / 2;
+
+
+	if ((currentTile->GridPos().y + height / 2) >= m_height)
+	{
+		height -= (currentTile->GridPos().y + height / 2) - m_height;
+		gridY = m_height - 1;
+	}
+
+	if ((currentTile->GridPos().x + width / 2) >= m_width)
+	{
+		width -= (currentTile->GridPos().x + width / 2) - m_width;
 		gridX = m_width - 1;
 	}
 
@@ -273,8 +368,8 @@ std::vector<TileComponent*> GridComponent::GetTilesInARange(glm::vec3 pos, int w
 		{
 			TileComponent* tile = GetTileAt(startingTile->GridPos().x - j, startingTile->GridPos().y - i);
 
-			if(tile != nullptr)
-			tiles.push_back(tile);
+			if (tile != nullptr)
+				tiles.push_back(tile);
 		}
 	}
 
