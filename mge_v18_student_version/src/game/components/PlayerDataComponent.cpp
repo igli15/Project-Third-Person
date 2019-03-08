@@ -71,8 +71,10 @@ int PlayerDataComponent::GetPlayerNumber()
 void PlayerDataComponent::OnDeath()
 {
 	//EXPLODE PLAYER in enemy color
-	auto tiles = m_levelGrid->GetTilesInARange(GetGameObject()->transform->WorldPosition(),5,5);
+	auto tiles = m_levelGrid->GetTilesInARange(GetGameObject()->transform->WorldPosition(),m_explosionWidth,m_explosionHeight);
 	TileType enemyTileType;
+
+	m_gameObject->transform->SetLocalPosition(glm::vec3(999, 0, 999));
 
 	if (m_tileMaterial == TileType::ICE)
 	{
@@ -85,11 +87,10 @@ void PlayerDataComponent::OnDeath()
 
 	for (int i = 0; i < tiles.size(); i++)
 	{
-
+		tiles[i]->ActivateGridElement(enemyTileType);
 		tiles[i]->PaintTile(enemyTileType);
 	}
 
-	m_gameObject->transform->SetLocalPosition(glm::vec3(999,0,999));
 	m_respawnClock.restart();
 	m_isDead = true;
 	m_penaltyTime = m_levelGrid->GetTileCount(m_playerNumber == 1 ? TileType::LAVA : TileType::ICE)*m_maxPenaltyTime/100.0f;
@@ -132,6 +133,14 @@ void PlayerDataComponent::Parse(rapidxml::xml_node<>* compNode)
 			glm::vec3 pos;
 			sscanf(a->value(), "(%f,%f,%f)", &pos.x, &pos.y, &pos.z);
 			m_spawnPosition = pos;
+		}
+		else if (attributeName == "explosionWidth")
+		{
+			m_explosionWidth = (int)(strtof(a->value(), 0));
+		}
+		else if (attributeName == "explosionHeight")
+		{
+			m_explosionHeight = (int)(strtof(a->value(), 0));
 		}
 
 	}

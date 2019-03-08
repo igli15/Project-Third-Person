@@ -27,6 +27,7 @@ public:
 
 
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
+
 private:
 	Direction m_currentDirection;
 	Direction m_oldFirection;

@@ -5,6 +5,7 @@
 #include "mge/core/ResourceManager.h"
 #include "mge/core/AbstractGame.hpp"
 #include "game/components/GridComponent.h"
+#include "game/components/GridElement.h"
 
 TileComponent::TileComponent()
 {
@@ -43,7 +44,6 @@ void TileComponent::Parse(rapidxml::xml_node<>* compNode)
 		{
 			std::string value(a->value());
 			m_isPaintable = (value == "True");
-			std::cout << "DASDASDAS" << m_isPaintable << std::endl;
 		}
 	}
 }
@@ -82,6 +82,7 @@ void TileComponent::PaintTile(TileType type)
 {
 	if (!m_isPaintable) return;
 
+
 	m_isPainted = true;
 
 	if (type == TileType::ICE)
@@ -118,5 +119,35 @@ void TileComponent::PaintTile(TileType type)
 void TileComponent::SetGrid(GridComponent * grid)
 {
 	m_grid = grid;
+}
+
+void TileComponent::SetGridElement(GridElement * gridElement)
+{
+	if (gridElement != nullptr)
+	{
+		RemoveGridElement(gridElement);
+	}
+
+	m_gridElement = gridElement;
+	gridElement->SetTile(this);
+}
+
+void TileComponent::RemoveGridElement(GridElement * gridElement)
+{
+	if(m_gridElement != nullptr) m_gridElement = nullptr;
+	gridElement->SetTile(nullptr);
+}
+
+void TileComponent::ActivateGridElement(TileType type)
+{
+	if (m_gridElement != nullptr)
+	{
+		m_gridElement->OnPainted(type);
+	}
+}
+
+bool TileComponent::IsFree()
+{
+	return (m_gridElement == nullptr);
 }
 

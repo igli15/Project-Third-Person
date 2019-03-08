@@ -23,6 +23,8 @@ int main()
 {
     std::cout << "Starting Game" << std::endl;
 
+	std::srand(time(NULL));
+
     AbstractGame* game = new MainGame();
     game->Initialize();
 	game->LoadResources(AbstractGame::Instance()->GetResourceManager());

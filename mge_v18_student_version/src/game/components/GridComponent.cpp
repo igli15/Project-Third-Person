@@ -1,6 +1,11 @@
 #include "GridComponent.h"
 #include <iostream>
 #include "mge/core/GameObject.hpp"
+#include "mge/core/World.hpp"
+#include "game/Balloon.h"
+#include "game/components/BalloonComponent.h"
+#include "game/components/GridElement.h"
+#include "mge/util/Utils.h"
 
 GridComponent::GridComponent()
 {
@@ -11,9 +16,26 @@ GridComponent::~GridComponent()
 {
 }
 
+void GridComponent::InitGrid()
+{
+	for (int i = 0; i < m_ballonTilePositions.size(); i++)
+	{
+		m_ballonTiles.push_back(GetTileOnPos(m_ballonTilePositions[i]));
+	}
+}
+
 void GridComponent::Awake()
 {
-	
+
+}
+
+void GridComponent::Update(float timeStep)
+{
+	if (m_balloonClock.getElapsedTime().asSeconds() >= m_balloonSpawntime)
+	{
+		SpawnBalloon();
+		m_balloonClock.restart();
+	}
 }
 
 void GridComponent::SetWidth(int width)
@@ -62,6 +84,7 @@ void GridComponent::AddTile(TileComponent * tile)
 void GridComponent::Parse(rapidxml::xml_node<>* compNode)
 {
 	std::cout << "Parsing Grid Component...." << std::endl;
+
 	for (rapidxml::xml_attribute<>* a = compNode->first_attribute();
 		a != nullptr;
 		a = a->next_attribute())
@@ -80,6 +103,31 @@ void GridComponent::Parse(rapidxml::xml_node<>* compNode)
 		{
 			SetTileRadius(strtof(a->value(), 0));
 		}
+		else if (attributeName == "playerPosOffsetX")
+		{
+			m_tilePosOffsetX = strtof(a->value(), 0);
+		}
+		else if (attributeName == "playerPosOffsetY")
+		{
+			m_tilePosOffsetY = strtof(a->value(), 0);
+		}
+		else if (attributeName == "balloonSpawnTime")
+		{
+			m_balloonSpawntime = strtof(a->value(), 0);
+		}
+	}
+
+	if (strcmp(compNode->first_node()->name(), "BallonTilePositions") == 0)
+	{
+		rapidxml::xml_node<>* posNode = compNode->first_node();
+		for (rapidxml::xml_node<>* pos = posNode->first_node(); pos != nullptr; pos = pos->next_sibling())
+		{
+			glm::vec3 tilePos;
+
+			sscanf(pos->first_attribute()->value(), "(%f,%f,%f)", &tilePos.x, &tilePos.y, &tilePos.z);
+
+			m_ballonTilePositions.push_back(tilePos);
+		}
 	}
 
 	m_tileGrid.resize(m_height, std::vector<TileComponent*>());
@@ -94,8 +142,8 @@ TileComponent * GridComponent::GetTileAt(int x, int y)
 
 TileComponent * GridComponent::GetTileOnPos(glm::vec3 playerPos)
 {
-	int x = glm::floor((playerPos.x + 0.2f)  / (m_tileRadius * 2.0f));
-	int y = glm::floor((playerPos.z + 0.3f) / (m_tileRadius * 2.0f));
+	int x = glm::floor((playerPos.x + m_tilePosOffsetX)  / (m_tileRadius * 2.0f));
+	int y = glm::floor((playerPos.z + m_tilePosOffsetY) / (m_tileRadius * 2.0f));
 
 	//std::cout << "X: " << x << std::endl;
 	//std::cout << "Y: " << y << std::endl;
@@ -132,8 +180,6 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 					auto condition = glm::equal(enemyTile->GridPos(), GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos());
 					if (condition.x && condition.y)
 					{
-						std::cout << "ENeMYINDEX: " << GetTileOnPos(enemyPos)->GridPos() << std::endl;
-						std::cout << "MYINDEX: " << GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos() << std::endl;
 						onEnemyFoundCallback();
 					}
 				}
@@ -194,10 +240,10 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 	return tiles;
 }
 
-std::vector<TileComponent*> GridComponent::GetTilesInARange(glm::vec3 playerPos, int width, int height)
+std::vector<TileComponent*> GridComponent::GetTilesInARange(glm::vec3 pos, int width, int height)
 {
 	std::vector<TileComponent*> tiles;
-	TileComponent* currentTile = GetTileOnPos(playerPos);
+	TileComponent* currentTile = GetTileOnPos(pos);
 
 	TileComponent* startingTile;
 	
@@ -274,4 +320,32 @@ float GridComponent::GetTileCount(TileType type)
 	{
 		return(float)m_lavaTileCount / (m_width*m_height) *100.0f;
 	}
+}
+
+void GridComponent::SpawnBalloon()
+{
+	int occupiedCount = 0;
+
+	for (int i = 0; i < m_ballonTiles.size(); i++)
+	{
+		if (!m_ballonTiles[i]->IsFree()) occupiedCount += 1;
+	}
+
+	if (occupiedCount >= m_ballonTiles.size()) return;
+
+	int randomIndex = Utils::RandomRange(0, m_ballonTiles.size() - 1);
+
+	TileComponent* randomTile = m_ballonTiles[randomIndex];
+
+	while (!randomTile->IsFree())
+	{
+		randomIndex = Utils::RandomRange(0, m_ballonTiles.size() - 1);
+		randomTile = m_ballonTiles[randomIndex];
+	}
+
+	Balloon* balloon = m_gameObject->GetWorld()->Instantiate<Balloon>();
+
+	balloon->transform->SetLocalPosition(randomTile->GetGameObject()->transform->WorldPosition());
+
+	randomTile->SetGridElement(balloon->GetBalloonComponent());
 }
