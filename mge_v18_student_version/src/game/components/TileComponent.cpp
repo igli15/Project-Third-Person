@@ -83,6 +83,7 @@ void TileComponent::PaintTile(TileType type)
 {
 	if (!m_isPaintable) return;
 
+
 	m_isPainted = true;
 
 	if (type == TileType::ICE)
@@ -136,5 +137,13 @@ void TileComponent::RemoveGridElement(GridElement * gridElement)
 {
 	m_gridElement = nullptr;
 	gridElement->SetTile(nullptr);
+}
+
+void TileComponent::ActivateGridElement(TileType type)
+{
+	if (m_gridElement != nullptr)
+	{
+		m_gridElement->OnPainted(type);
+	}
 }
 

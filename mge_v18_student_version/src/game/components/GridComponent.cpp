@@ -3,6 +3,8 @@
 #include "mge/core/GameObject.hpp"
 #include "mge/core/World.hpp"
 #include "game/Balloon.h"
+#include "game/components/BalloonComponent.h"
+#include "game/components/GridElement.h"
 #include "mge/util/Utils.h"
 
 GridComponent::GridComponent()
@@ -159,8 +161,6 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 					auto condition = glm::equal(enemyTile->GridPos(), GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos());
 					if (condition.x && condition.y)
 					{
-						std::cout << "ENeMYINDEX: " << GetTileOnPos(enemyPos)->GridPos() << std::endl;
-						std::cout << "MYINDEX: " << GetTileAt(currentTile->GridPos().x + i, currentTile->GridPos().y)->GridPos() << std::endl;
 						onEnemyFoundCallback();
 					}
 				}
@@ -221,10 +221,10 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 	return tiles;
 }
 
-std::vector<TileComponent*> GridComponent::GetTilesInARange(glm::vec3 playerPos, int width, int height)
+std::vector<TileComponent*> GridComponent::GetTilesInARange(glm::vec3 pos, int width, int height)
 {
 	std::vector<TileComponent*> tiles;
-	TileComponent* currentTile = GetTileOnPos(playerPos);
+	TileComponent* currentTile = GetTileOnPos(pos);
 
 	TileComponent* startingTile;
 	
@@ -314,5 +314,5 @@ void GridComponent::SpawnBalloon()
 
 	balloon->transform->SetLocalPosition(randomTile->GetGameObject()->transform->WorldPosition());
 
-
+	randomTile->SetGridElement(balloon->GetBalloonComponent());
 }

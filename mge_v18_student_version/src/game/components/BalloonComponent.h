@@ -5,6 +5,7 @@
 
 class BalloonComponent : public GridElement
 {
+
 public:
 	BalloonComponent();
 	virtual ~BalloonComponent();
@@ -13,7 +14,12 @@ public:
 
 	void Awake();
 	
+	void Explode(TileType type);
 
+	virtual void OnPainted(TileType type) override;
+
+private:
+	bool m_exploded = false;
 
 };
 

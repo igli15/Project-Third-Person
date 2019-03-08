@@ -110,10 +110,12 @@ void ShootingComponent::ShootInk(float tileAmount)
 	{
 		if (m_playerDataCompoent-> MatType() == TileType::LAVA)
 		{
+			tiles[i]->ActivateGridElement(TileType::LAVA);
 			tiles[i]->PaintTile(TileType::LAVA);
 		}
 		else
 		{
+			tiles[i]->ActivateGridElement(TileType::ICE);
 			tiles[i]->PaintTile(TileType::ICE);
 		}
 	}

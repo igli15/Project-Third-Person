@@ -36,6 +36,8 @@ public:
 	void SetGridElement(GridElement* gridElement);
 	void RemoveGridElement(GridElement* gridElement);
 
+	void ActivateGridElement(TileType type);
+
 private:
 
 	GridComponent* m_grid;
@@ -44,6 +46,6 @@ private:
 	bool m_isPainted = false;
 	bool m_isPaintable = true;
 
-	GridElement* m_gridElement;
+	GridElement* m_gridElement = nullptr;
 };
 
