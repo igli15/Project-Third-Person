@@ -1,7 +1,7 @@
 <root>
   <GameObject name="Grid" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
     <Components>
-      <GridComponent gridSizeX="26" gridSizeY="15" tileRadius="0.5">
+      <GridComponent gridSizeX="26" gridSizeY="15" tileRadius="0.5" playerPosOffsetX="0.2" playerPosOffsetY="0.3" balloonSpawnTime="10">
         <BallonTilePositions>
           <ballonTile pos="(14.0000, 0.0000, 7.0000)" />
           <ballonTile pos="(4.0000, 0.0000, 8.0000)" />

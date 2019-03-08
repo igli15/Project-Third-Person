@@ -105,6 +105,18 @@ void GridComponent::Parse(rapidxml::xml_node<>* compNode)
 		{
 			SetTileRadius(strtof(a->value(), 0));
 		}
+		else if (attributeName == "playerPosOffsetX")
+		{
+			m_tilePosOffsetX = strtof(a->value(), 0);
+		}
+		else if (attributeName == "playerPosOffsetY")
+		{
+			m_tilePosOffsetY = strtof(a->value(), 0);
+		}
+		else if (attributeName == "balloonSpawnTime")
+		{
+			m_balloonSpawntime = strtof(a->value(), 0);
+		}
 	}
 
 	if (strcmp(compNode->first_node()->name(), "BallonTilePositions") == 0)
