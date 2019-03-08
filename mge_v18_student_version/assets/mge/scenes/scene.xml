@@ -3558,7 +3558,7 @@
           <wall />
         </CollisionFilters>
       </CircleCollider>
-      <PlayerData playerNumber="1" respawnPosition="(21.0, 0.0, 12.0)" />
+      <PlayerData playerNumber="1" explosionWidth="6" explosionHeight="6" respawnPosition="(21.0, 0.0, 12.0)" />
       <PlayerMovement speed="0.1" slowDownAmount="0.03" speedUpAmount="0" />
       <RigidBodyComponent friction="0" maxSpeed="0.1" bounciness="0.1" />
     </Components>
@@ -3585,7 +3585,7 @@
     <Components>
       <RigidBodyComponent friction="0" maxSpeed="0.1" bounciness="0.1" />
       <PlayerMovement speed="0.1" slowDownAmount="0.03" speedUpAmount="0" />
-      <PlayerData playerNumber="2" respawnPosition="(4.0, 0.0, 1.0)" />
+      <PlayerData playerNumber="2" explosionWidth="6" explosionHeight="6" respawnPosition="(4.0, 0.0, 1.0)" />
       <CircleCollider radius="0.3" collisionLayer="player">
         <CollisionFilters>
           <player />

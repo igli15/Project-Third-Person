@@ -43,6 +43,9 @@ private:
 	float m_penaltyTime = 0;
 	float m_maxPenaltyTime = 20;
 
+	float m_explosionWidth = 6;
+	float m_explosionHeight = 6;
+
 	PlayerMovementComponent* m_playerMovement;
 	ShootingComponent* m_shootingComponent;
 	TileType m_tileMaterial;

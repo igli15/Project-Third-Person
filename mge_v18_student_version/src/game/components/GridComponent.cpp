@@ -22,8 +22,6 @@ void GridComponent::InitGrid()
 	{
 		m_ballonTiles.push_back(GetTileOnPos(m_ballonTilePositions[i]));
 	}
-
-	SpawnBalloon();
 }
 
 void GridComponent::Awake()
