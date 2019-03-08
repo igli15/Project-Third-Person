@@ -74,6 +74,8 @@ void PlayerDataComponent::OnDeath()
 	auto tiles = m_levelGrid->GetTilesInARange(GetGameObject()->transform->WorldPosition(),5,5);
 	TileType enemyTileType;
 
+	m_gameObject->transform->SetLocalPosition(glm::vec3(999, 0, 999));
+
 	if (m_tileMaterial == TileType::ICE)
 	{
 		enemyTileType = TileType::LAVA;
@@ -85,11 +87,10 @@ void PlayerDataComponent::OnDeath()
 
 	for (int i = 0; i < tiles.size(); i++)
 	{
-
+		tiles[i]->ActivateGridElement(enemyTileType);
 		tiles[i]->PaintTile(enemyTileType);
 	}
 
-	m_gameObject->transform->SetLocalPosition(glm::vec3(999,0,999));
 	m_respawnClock.restart();
 	m_isDead = true;
 	m_penaltyTime = m_levelGrid->GetTileCount(m_playerNumber == 1 ? TileType::LAVA : TileType::ICE)*m_maxPenaltyTime/100.0f;

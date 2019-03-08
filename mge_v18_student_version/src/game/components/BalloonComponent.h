@@ -16,10 +16,13 @@ public:
 	
 	void Explode(TileType type);
 
+	void OnDestroy() override;
+
 	virtual void OnPainted(TileType type) override;
 
 private:
 	bool m_exploded = false;
+
 
 };
 

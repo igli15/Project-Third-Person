@@ -44,7 +44,6 @@ void TileComponent::Parse(rapidxml::xml_node<>* compNode)
 		{
 			std::string value(a->value());
 			m_isPaintable = (value == "True");
-			std::cout << "DASDASDAS" << m_isPaintable << std::endl;
 		}
 	}
 }
