@@ -116,17 +116,19 @@ void GridComponent::Parse(rapidxml::xml_node<>* compNode)
 			m_balloonSpawntime = strtof(a->value(), 0);
 		}
 	}
-
-	if (strcmp(compNode->first_node()->name(), "BallonTilePositions") == 0)
+	if (compNode->first_node() != nullptr)
 	{
-		rapidxml::xml_node<>* posNode = compNode->first_node();
-		for (rapidxml::xml_node<>* pos = posNode->first_node(); pos != nullptr; pos = pos->next_sibling())
+		if (strcmp(compNode->first_node()->name(), "BallonTilePositions") == 0)
 		{
-			glm::vec3 tilePos;
+			rapidxml::xml_node<>* posNode = compNode->first_node();
+			for (rapidxml::xml_node<>* pos = posNode->first_node(); pos != nullptr; pos = pos->next_sibling())
+			{
+				glm::vec3 tilePos;
 
-			sscanf(pos->first_attribute()->value(), "(%f,%f,%f)", &tilePos.x, &tilePos.y, &tilePos.z);
+				sscanf(pos->first_attribute()->value(), "(%f,%f,%f)", &tilePos.x, &tilePos.y, &tilePos.z);
 
-			m_ballonTilePositions.push_back(tilePos);
+				m_ballonTilePositions.push_back(tilePos);
+			}
 		}
 	}
 
