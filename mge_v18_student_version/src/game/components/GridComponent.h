@@ -45,10 +45,12 @@ public:
 		It returns a vector of all the tiles found.
 	*/
 	std::vector<TileComponent*> GetNeighbourTiles(glm::vec3 playerPos,glm::vec3 enemyPos,int amount, bool horizontal, bool positiveDir,const std::function<void()>& onEnemyFoundCallback);
+	std::vector<TileComponent*> GetTilesInTriangleRange(glm::vec3 playerPos, glm::vec3 enemyPos, int rows, bool horizontal,
 
+		bool positiveDir, const std::function<void()>& onEnemyFoundCallback);
 
 	std::vector<TileComponent*> GetTilesInARange(glm::vec3 playerPos, int width, int height);
-
+	std::vector<TileComponent*> GetTilesInARange(TileComponent* tile, int width, int height);
 	void IncreaseTileCount(TileType type);
 	void DecreaseTileCount(TileType type);
 	float GetTileCount(TileType type);

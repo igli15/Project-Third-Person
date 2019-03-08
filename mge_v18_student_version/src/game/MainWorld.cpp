@@ -88,6 +88,7 @@ void MainWorld::Initialize()
 	std::cout <<std::endl<< "				Geting LEVEL_INDEX" << std::endl;
 
 	int currentLevelIndex = PlayerPrefs::GetInt("LevelIndex");
+	
 	switch (currentLevelIndex)
 	{
 	case 1:

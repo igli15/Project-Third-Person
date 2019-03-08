@@ -52,6 +52,9 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 
 void MainGame::CreateWorld()
 {
+	std::cout << "Creating WORLD" << std::endl;
+	std::cout << std::endl << "				SETING LEVEL_INDEX" << std::endl;
+	PlayerPrefs::SetInt("LevelIndex", 1);
 	AbstractGame::CreateWorld();
 
 	//Loading an XML parsed world
