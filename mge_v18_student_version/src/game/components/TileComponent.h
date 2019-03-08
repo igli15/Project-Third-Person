@@ -37,6 +37,9 @@ public:
 	void RemoveGridElement(GridElement* gridElement);
 
 	void ActivateGridElement(TileType type);
+	
+	//returns if it has a grid element on it or not
+	bool IsFree();
 
 private:
 

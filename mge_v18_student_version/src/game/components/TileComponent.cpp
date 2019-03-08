@@ -134,7 +134,7 @@ void TileComponent::SetGridElement(GridElement * gridElement)
 
 void TileComponent::RemoveGridElement(GridElement * gridElement)
 {
-	m_gridElement = nullptr;
+	if(m_gridElement != nullptr) m_gridElement = nullptr;
 	gridElement->SetTile(nullptr);
 }
 
@@ -144,5 +144,10 @@ void TileComponent::ActivateGridElement(TileType type)
 	{
 		m_gridElement->OnPainted(type);
 	}
+}
+
+bool TileComponent::IsFree()
+{
+	return (m_gridElement == nullptr);
 }
 

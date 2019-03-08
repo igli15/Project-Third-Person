@@ -51,13 +51,13 @@ void BalloonComponent::Explode(TileType type)
 			tiles[i]->PaintTile(type);
 		}
 		m_gameObject->Destroy();
+		if(m_tile != nullptr) m_tile->RemoveGridElement(this);
 		m_exploded = true;
 	}
 }
 
 void BalloonComponent::OnDestroy()
 {
-	m_tile->RemoveGridElement(this);
 }
 
 void BalloonComponent::OnPainted(TileType type)

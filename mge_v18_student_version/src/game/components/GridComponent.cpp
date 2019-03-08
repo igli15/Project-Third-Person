@@ -31,6 +31,15 @@ void GridComponent::Awake()
 
 }
 
+void GridComponent::Update(float timeStep)
+{
+	if (m_balloonClock.getElapsedTime().asSeconds() >= m_balloonSpawntime)
+	{
+		SpawnBalloon();
+		m_balloonClock.restart();
+	}
+}
+
 void GridComponent::SetWidth(int width)
 {
 	m_width = width;
@@ -123,8 +132,8 @@ TileComponent * GridComponent::GetTileAt(int x, int y)
 
 TileComponent * GridComponent::GetTileOnPos(glm::vec3 playerPos)
 {
-	int x = glm::floor((playerPos.x + 0.2f)  / (m_tileRadius * 2.0f));
-	int y = glm::floor((playerPos.z + 0.3f) / (m_tileRadius * 2.0f));
+	int x = glm::floor((playerPos.x + m_tilePosOffsetX)  / (m_tileRadius * 2.0f));
+	int y = glm::floor((playerPos.z + m_tilePosOffsetY) / (m_tileRadius * 2.0f));
 
 	//std::cout << "X: " << x << std::endl;
 	//std::cout << "Y: " << y << std::endl;
@@ -305,10 +314,24 @@ float GridComponent::GetTileCount(TileType type)
 
 void GridComponent::SpawnBalloon()
 {
+	int occupiedCount = 0;
+
+	for (int i = 0; i < m_ballonTiles.size(); i++)
+	{
+		if (!m_ballonTiles[i]->IsFree()) occupiedCount += 1;
+	}
+
+	if (occupiedCount >= m_ballonTiles.size()) return;
 
 	int randomIndex = Utils::RandomRange(0, m_ballonTiles.size() - 1);
 
 	TileComponent* randomTile = m_ballonTiles[randomIndex];
+
+	while (!randomTile->IsFree())
+	{
+		randomIndex = Utils::RandomRange(0, m_ballonTiles.size() - 1);
+		randomTile = m_ballonTiles[randomIndex];
+	}
 
 	Balloon* balloon = m_gameObject->GetWorld()->Instantiate<Balloon>();
 

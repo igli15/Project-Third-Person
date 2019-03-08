@@ -3,7 +3,8 @@
 #include <vector>
 #include "glm.hpp"
 #include <functional>
-
+#include "SFML/System.hpp"
+#include "SFML/Window.hpp"
 #include "game/components/TileComponent.h"
 
 class GridComponent : public XMLComponent
@@ -14,6 +15,7 @@ public:
 
 	void InitGrid();
 	void Awake();
+	void Update(float timeStep);
 	void SetWidth(int width);
 	void SetHeight(int height);
 	void SetTileRadius(float r);
@@ -62,9 +64,15 @@ private:
 	int m_iceTileCount = 0;
 	int m_lavaTileCount = 0;
 
+	float m_balloonSpawntime = 4;
+	float m_tilePosOffsetX = 0.2f;
+	float m_tilePosOffsetY = 0.3f;
+
 	std::vector< std::vector<TileComponent*> > m_tileGrid;
 
 	std::vector<glm::vec3> m_ballonTilePositions;
 	std::vector<TileComponent*> m_ballonTiles;
+
+	sf::Clock m_balloonClock;
 
 };
