@@ -3606,11 +3606,6 @@
       </GameObject>
     </GameObject>
   </GameObject>
-  <GameObject name="Directional Light" position="(-1.8500, 3.8500, 0.0000)" rotation="(0.0404, -0.7151, 0.5207, 0.4646)" scale="(1.0000, 1.0000, 1.0000)">
-    <Components>
-      <LightComponent type="DIRECTIONAL" color="(1.0, 1.0, 1.0)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.8" ambientContribution="0.24" specularContribution="0.8" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
-    </Components>
-  </GameObject>
   <GameObject name="IceTile" position="(-3.4500, 3.6600, 15.8400)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
     <Components />
     <GameObject name="iceTile" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="GroundTile">
@@ -4467,116 +4462,6 @@
       <Components>
         <TextureMaterial materialName="balloonMat" shininess="16" emissionScale="0.8" diffuseTexture="BalloonDiffuse" specularTexture="BalloonSpecular" emissionTexture="BalloonEmission" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
       </Components>
-    </GameObject>
-  </GameObject>
-  <GameObject name="Directional Light (1)" position="(-1.8500, 3.8500, 0.0000)" rotation="(0.7071, 0.0000, 0.0000, 0.7071)" scale="(1.0000, 1.0000, 1.0000)">
-    <Components>
-      <LightComponent type="DIRECTIONAL" color="(1.0, 1.0, 1.0)" ambientColor="(1.0, 1.0, 1.0)" intensity="0.8" ambientContribution="0.24" specularContribution="0.8" attenuationConstants="(1.0, 0.4, 1.1)" cutoffAngle="10" outercutoffAngle="45" />
-    </Components>
-  </GameObject>
-  <GameObject name="GameObject" position="(24.0000, 15.0000, 14.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-    <Components />
-    <GameObject name="wall1x2cm (1)" position="(-22.0000, 1.0440, -6.5000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 7.0000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (8)" position="(-23.0000, 1.0440, -9.5000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 0.5000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (9)" position="(-20.5000, 1.0440, -9.5000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (10)" position="(-16.5000, 1.0440, -10.5000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (11)" position="(-16.5000, 1.0440, -6.5000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (12)" position="(-15.0000, 1.0440, -0.5000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 2.5000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (14)" position="(-11.5000, 1.0440, -1.0000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(3.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (15)" position="(-24.0000, 1.0440, -3.5000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 0.5000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (16)" position="(-6.5134, 1.0440, -7.5085)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (17)" position="(-6.5000, 1.0440, -3.5000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (18)" position="(-8.0369, 1.0440, -13.4933)" rotation="(0.0000, 0.7071, 0.0000, -0.7071)" scale="(2.0000, 1.0000, 2.5000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (19)" position="(-11.5338, 1.0440, -12.9855)" rotation="(0.0000, 0.7071, 0.0000, -0.7071)" scale="(3.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (2)" position="(-1.0000, 1.0440, -7.5000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 7.0000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (20)" position="(-2.5000, 1.0440, -4.5000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (21)" position="(0.0000, 1.0440, -4.5000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 0.5000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (22)" position="(-2.5000, 1.0440, -10.5000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="wall1x2cm (23)" position="(1.0000, 1.0440, -10.5000)" rotation="(0.0000, 0.7071, 0.0000, 0.7071)" scale="(2.0000, 1.0000, 0.5000)">
-      <Components />
-      <GameObject name="polySurface738_arena" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="Cube">
-        <Components />
-      </GameObject>
     </GameObject>
   </GameObject>
   <GameObject name="Directional Light (2)" position="(-1.8500, 3.8500, 0.0000)" rotation="(0.7071, 0.0000, 0.0000, 0.7071)" scale="(1.0000, 1.0000, 1.0000)">

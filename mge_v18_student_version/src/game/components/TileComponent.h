@@ -5,6 +5,7 @@
 class GridComponent;
 class BalloonComponent;
 class GridElement;
+class PlayerDataComponent;
 
 enum TileType
 {
@@ -36,7 +37,7 @@ public:
 	void SetGridElement(GridElement* gridElement);
 	void RemoveGridElement(GridElement* gridElement);
 
-	void ActivateGridElement(TileType type);
+	void ActivateGridElement(PlayerDataComponent* playerData);
 	
 	//returns if it has a grid element on it or not
 	bool IsFree();

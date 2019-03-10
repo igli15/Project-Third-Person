@@ -87,7 +87,7 @@ void PlayerDataComponent::OnDeath()
 
 	for (int i = 0; i < tiles.size(); i++)
 	{
-		tiles[i]->ActivateGridElement(enemyTileType);
+		tiles[i]->ActivateGridElement(GetEnemy()->GetComponent<PlayerDataComponent>());
 		tiles[i]->PaintTile(enemyTileType);
 	}
 
@@ -154,4 +154,16 @@ TileType PlayerDataComponent::MatType()
 bool PlayerDataComponent::IsDead()
 {
 	return m_isDead;
+}
+
+GameObject * PlayerDataComponent::GetEnemy()
+{
+	if (m_playerNumber == 1)
+	{
+		return dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetPlayer(1);
+	}
+	else if (m_playerNumber == 2)
+	{
+		return dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetPlayer(0);
+	}
 }

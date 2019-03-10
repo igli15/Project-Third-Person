@@ -1,7 +1,7 @@
 #include "GridElement.h"
 #include "game/MainWorld.h"
 #include "game/components/GridComponent.h"
-
+#include "PlayerDataComponent.h"
 
 GridElement::GridElement()
 {
@@ -18,7 +18,7 @@ void GridElement::Awake()
 
 }
 
-void GridElement::OnPainted(TileType type)
+void GridElement::OnPainted(PlayerDataComponent* playerData)
 {
 	m_grid = dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetGrid();
 }
