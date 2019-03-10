@@ -15,8 +15,32 @@ CannonComponent::~CannonComponent()
 
 void CannonComponent::OnPainted(PlayerDataComponent* playerData)
 {
+	bool horizontal;
+	bool positive;
+
+	switch (m_facingDir)
+	{
+	case Direction::UP:
+		horizontal = false;
+		positive = true;
+		break;
+	case Direction::DOWN:
+		horizontal = false;
+		positive = false;
+		break;
+	case Direction::LEFT:
+		horizontal = true;
+		positive = true;
+		break;
+	case Direction::RIGHT:
+		horizontal = true;
+		positive = false;
+		break;
+	default:
+		break;
+	}
 	auto tiles = m_grid->GetNeighbourTiles(m_gameObject->transform->LocalPosition(), playerData->GetEnemy()->transform->LocalPosition(),
-											m_shootingRange,false,false, []() {});
+											m_shootingRange,horizontal,positive, []() {});
 
 	for (int i = 0; i < tiles.size(); i++)
 	{

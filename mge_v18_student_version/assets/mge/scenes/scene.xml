@@ -3520,9 +3520,9 @@
       </GameObject>
     </GameObject>
   </GameObject>
-  <GameObject name="suzanna_smooth" position="(12.1515, 1.8600, 7.4991)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+  <GameObject name="suzanna_smooth" position="(12.1515, 1.8600, 7.4991)" rotation="(0.0000, -0.7071, 0.0000, 0.7071)" scale="(1.0000, 1.0000, 1.0000)">
     <Components>
-      <CannonComponent shootingRange="4" FacingDir="UP" />
+      <CannonComponent shootingRange="4" FacingDir="RIGHT" />
     </Components>
     <GameObject name="default" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="suzanna">
       <Components />
