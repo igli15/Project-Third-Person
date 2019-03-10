@@ -2,6 +2,8 @@
 
 #include "GridElement.h"
 
+class PlayerDataComponent;
+
 class CannonComponnet : GridElement
 {
 public:
@@ -9,7 +11,7 @@ public:
 	virtual ~CannonComponnet();
 
 
-	virtual void OnPainted(TileType type);
+	virtual void OnPainted(PlayerDataComponent* playerData) override;
 
 	// Inherited via XMLComponent
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
