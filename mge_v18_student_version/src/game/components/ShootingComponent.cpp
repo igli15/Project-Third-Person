@@ -12,6 +12,7 @@
 #include "mge/core/ResourceManager.h"
 #include "game/components/PlayerDataComponent.h"
 #include <iostream>
+#include "mge/core/Tweener.h"
 
 ShootingComponent::ShootingComponent()
 {
@@ -20,7 +21,7 @@ ShootingComponent::ShootingComponent()
 
 ShootingComponent::~ShootingComponent()
 {
-
+	Tweener::DeleteTween<int>(testTween);
 }
 
 void ShootingComponent::Start()
@@ -30,7 +31,8 @@ void ShootingComponent::Start()
 
 	HUD::GetHudComponent()->SetMaxInk(m_inkMaxLevel);
 	
-	testTween = tweeny::from((float)m_inkMaxLevel).to(0.0f).during(2000).via(tweeny::easing::bounceOut);
+	testTween = Tweener::GenerateTween<int>(m_inkMaxLevel,0,2000); 
+	//*testTween = (*testTween).via(tweeny::easing::bounceOut);
 }
 
 void ShootingComponent::Update(float timeStep)
@@ -39,7 +41,7 @@ void ShootingComponent::Update(float timeStep)
 
 	float dt = AbstractGame::Instance()->deltaTime;
 
-	m_inkLevel = testTween.step((int)dt);
+	m_inkLevel = testTween->step((int)dt);
 
 	HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
 

@@ -48,6 +48,6 @@ private:
 
 	bool m_isKeyPresedLastFrame=false;
 
-	tweeny::tween<float> testTween;
+	tweeny::tween<int>* testTween;
 };
 
