@@ -21,7 +21,7 @@ public:
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 
 	void SetTile(TileComponent* tile);
-
+	void SetGrid(GridComponent* grid);
 
 
 protected:

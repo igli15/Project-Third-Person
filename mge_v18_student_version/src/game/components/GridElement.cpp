@@ -31,3 +31,8 @@ void GridElement::SetTile(TileComponent * tile)
 {
 	m_tile = tile;
 }
+
+void GridElement::SetGrid(GridComponent * grid)
+{
+	m_grid = grid;
+}
