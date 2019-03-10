@@ -21,7 +21,7 @@ ShootingComponent::ShootingComponent()
 
 ShootingComponent::~ShootingComponent()
 {
-	Tweener::DeleteTween<int>(testTween);
+	Tweener::DeleteTween<float>(testTween);
 }
 
 void ShootingComponent::Start()
@@ -31,7 +31,7 @@ void ShootingComponent::Start()
 
 	HUD::GetHudComponent()->SetMaxInk(m_inkMaxLevel);
 	
-	testTween = Tweener::GenerateTween<int>(m_inkMaxLevel,0,2000); 
+	testTween = Tweener::GenerateTween<float>(m_inkMaxLevel,0,10000); 
 	//*testTween = (*testTween).via(tweeny::easing::bounceOut);
 }
 
@@ -39,9 +39,7 @@ void ShootingComponent::Update(float timeStep)
 {
 	XMLComponent::Update(timeStep);
 
-	float dt = AbstractGame::Instance()->deltaTime;
-
-	m_inkLevel = testTween->step((int)dt);
+	testTween->onStep([this](float x) {m_inkLevel = x;  return false; });
 
 	HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
 

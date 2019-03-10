@@ -8,7 +8,7 @@
 #include "game/MainWorld.h"
 #include "ResourceManager.h"
 #include "mge/core/EventQueue.h"
-
+#include "mge/core/Tweener.h"
 AbstractGame* AbstractGame::m_instance = nullptr;
 
 AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_world(NULL), _fps(0)
@@ -159,6 +159,8 @@ void AbstractGame::run()
 		    while (timeSinceLastUpdate > timePerFrame) {
                 timeSinceLastUpdate -= timePerFrame;
                 _update(timePerFrame.asSeconds());
+
+				Tweener::UpdateAllTweens(deltaTime);
 		    }
 
 			_render();
