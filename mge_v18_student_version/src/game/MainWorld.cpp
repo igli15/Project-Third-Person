@@ -27,6 +27,7 @@
 #include "HUD.h"
 #include "mge/core/PlayerPrefs.h"
 #include "components/CannonComponent.h"
+#include "components/BallonSpawnerComponent.h"
 
 MainWorld::MainWorld()
 {
@@ -79,6 +80,10 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 	{
 		newNode->AddComponent<CannonComponent>()->Parse(componentNode);
 		newNode->GetComponent<CannonComponent>()->SetGrid(levelGrid);
+	}
+	else if (strcmp(componentNode->name(), "BalloonSpawner") == 0)
+	{
+		newNode->AddComponent<BallonSpawnerComponent>()->Parse(componentNode);
 	}
 	
 }

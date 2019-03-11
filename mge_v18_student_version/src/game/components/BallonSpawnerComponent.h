@@ -11,9 +11,10 @@ public:
 	BallonSpawnerComponent();
 	virtual ~BallonSpawnerComponent();
 
+	void Awake() override;
 	void Start() override;
 
-	void Update(float timeStep);
+	void Update(float timeStep) override;
 
 	void OnDestroy() override;
 

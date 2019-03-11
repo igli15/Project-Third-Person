@@ -14,7 +14,7 @@ public:
 
 	void Awake();
 	
-	void Explode(TileType type);
+	void Explode(PlayerDataComponent* playerData);
 
 	void OnDestroy() override;
 

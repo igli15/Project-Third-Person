@@ -168,6 +168,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\src\game\Balloon.h" />
+    <ClInclude Include="..\src\game\components\BallonSpawnerComponent.h" />
     <ClInclude Include="..\src\game\components\BalloonComponent.h" />
     <ClInclude Include="..\src\game\components\CannonComponent.h" />
     <ClInclude Include="..\src\game\components\GridComponent.h" />
@@ -244,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\game\Balloon.cpp" />
+    <ClCompile Include="..\src\game\components\BallonSpawnerComponent.cpp" />
     <ClCompile Include="..\src\game\components\BalloonComponent.cpp" />
     <ClCompile Include="..\src\game\components\CannonComponent.cpp" />
     <ClCompile Include="..\src\game\components\GridComponent.cpp" />

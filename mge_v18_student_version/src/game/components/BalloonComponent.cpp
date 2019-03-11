@@ -23,7 +23,7 @@ void BalloonComponent::Awake()
 	Component::Awake();
 }
 
-void BalloonComponent::Explode(TileType type)
+void BalloonComponent::Explode(PlayerDataComponent* playerData)
 {
 	if (!m_exploded)
 	{
@@ -36,23 +36,26 @@ void BalloonComponent::Explode(TileType type)
 		PlayerDataComponent* p1Data = player1->GetComponent<PlayerDataComponent>();
 		PlayerDataComponent* p2Data = player2->GetComponent<PlayerDataComponent>();
 
+		m_exploded = true;
+
 		auto tiles = m_grid->GetTilesInARange(m_gameObject->transform->LocalPosition(), 6, 6);
 		for (int i = 0; i < tiles.size(); i++)
 		{
-			if (p1Tile != nullptr && tiles[i]->GridPos() == p1Tile->GridPos() && p1Data->MatType() != type)
+			if (p1Tile != nullptr && tiles[i]->GridPos() == p1Tile->GridPos() && p1Data->MatType() != playerData->MatType())
 			{
 				p1Data->OnDeath();
 			}
-			else if (p2Tile != nullptr && tiles[i]->GridPos() == p2Tile->GridPos() && p2Data->MatType() != type)
+			else if (p2Tile != nullptr && tiles[i]->GridPos() == p2Tile->GridPos() && p2Data->MatType() != playerData->MatType())
 			{
 				p2Data->OnDeath();
 			}
 
-			tiles[i]->PaintTile(type);
+			if(tiles[i]->GridPos() != m_tile->GridPos()) tiles[i]->ActivateGridElement(playerData);
+
+			tiles[i]->PaintTile(playerData->MatType());
 		}
 		m_gameObject->Destroy();
 		if(m_tile != nullptr) m_tile->RemoveGridElement(this);
-		m_exploded = true;
 	}
 }
 
@@ -64,6 +67,6 @@ void BalloonComponent::OnPainted(PlayerDataComponent* playerData)
 {
 	GridElement::OnPainted(playerData);
 
-	Explode(playerData->MatType());
+	Explode(playerData);
 
 }
