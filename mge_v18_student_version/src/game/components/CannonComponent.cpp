@@ -15,37 +15,30 @@ CannonComponent::~CannonComponent()
 
 void CannonComponent::OnPainted(PlayerDataComponent* playerData)
 {
-	bool horizontal;
-	bool positive;
+	ShootInFacingDir(playerData);
+
+	m_gameObject->transform->Rotate(glm::radians(-90.0f), glm::vec3(0, 1, 0));
 
 	switch (m_facingDir)
 	{
 	case Direction::UP:
-		horizontal = false;
-		positive = true;
+		m_facingDir = Direction::RIGHT;
 		break;
 	case Direction::DOWN:
-		horizontal = false;
-		positive = false;
+		m_facingDir = Direction::LEFT;
 		break;
 	case Direction::LEFT:
-		horizontal = true;
-		positive = true;
+		m_facingDir = Direction::UP;
 		break;
 	case Direction::RIGHT:
-		horizontal = true;
-		positive = false;
+		m_facingDir = Direction::DOWN;
 		break;
 	default:
 		break;
 	}
-	auto tiles = m_grid->GetNeighbourTiles(m_gameObject->transform->LocalPosition(), playerData->GetEnemy()->transform->LocalPosition(),
-											m_shootingRange,horizontal,positive, []() {});
 
-	for (int i = 0; i < tiles.size(); i++)
-	{
-		tiles[i]->PaintTile(playerData->MatType());
-	}
+	ShootInFacingDir(playerData);
+
 }
 
 void CannonComponent::Parse(rapidxml::xml_node<>* compNode)
@@ -85,4 +78,39 @@ void CannonComponent::Parse(rapidxml::xml_node<>* compNode)
 void CannonComponent::Start()
 {
 	m_grid->GetTileOnPos(m_gameObject->transform->WorldPosition())->SetGridElement(this);
+}
+
+void CannonComponent::ShootInFacingDir(PlayerDataComponent* playerData)
+{
+	bool horizontal;
+	bool positive;
+
+	switch (m_facingDir)
+	{
+	case Direction::UP:
+		horizontal = false;
+		positive = true;
+		break;
+	case Direction::DOWN:
+		horizontal = false;
+		positive = false;
+		break;
+	case Direction::LEFT:
+		horizontal = true;
+		positive = true;
+		break;
+	case Direction::RIGHT:
+		horizontal = true;
+		positive = false;
+		break;
+	default:
+		break;
+	}
+	auto tiles = m_grid->GetNeighbourTiles(m_gameObject->transform->LocalPosition(), playerData->GetEnemy()->transform->LocalPosition(),
+		m_shootingRange, horizontal, positive, [playerData]() { playerData->GetEnemy()->GetComponent<PlayerDataComponent>()->OnDeath(); });
+
+	for (int i = 0; i < tiles.size(); i++)
+	{
+		tiles[i]->PaintTile(playerData->MatType());
+	}
 }

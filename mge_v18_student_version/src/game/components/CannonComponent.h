@@ -7,10 +7,11 @@ class PlayerDataComponent;
 enum Direction
 {
 	UP,
+	RIGHT,
 	DOWN,
-	LEFT,
-	RIGHT
+	LEFT
 };
+
 
 class CannonComponent : public GridElement
 {
@@ -26,11 +27,13 @@ public:
 
 	void Start() override;
 
+
 private:
 	int m_shootingRange = 6;
 
 	Direction m_facingDir;
-
+	int m_dirInt;
 	
+	void ShootInFacingDir(PlayerDataComponent* playerData);
 };
 
