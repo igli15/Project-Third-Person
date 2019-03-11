@@ -34,6 +34,7 @@ private:
 	UISpriteRenderer* m_menuBGSprite;
 	bool m_controlsLocked = false;
 	bool m_levelSelect = false;
+	bool m_hasChanged = false;
 	float m_pressCD = 0.0f;
 	sf::Texture * m_menuBGTexture;
 	sf::Texture * m_playSelectedTexture;
@@ -46,8 +47,14 @@ private:
 	sf::Texture* m_levelSelected1;
 	sf::Texture* m_levelSelected2;
 	sf::Texture* m_levelSelectedBack;
-	sf::Music* pressButton;
 
-	AudioSource* buttonSFX;
+	sf::Music* m_menuMusicSF;
+	AudioSource* m_menuMusic;
+
+	AudioSource* m_selectingButton;
+
+	AudioSource* m_pressingButton;
+
+
 };
 

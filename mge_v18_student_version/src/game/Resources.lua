@@ -176,14 +176,26 @@ sfmlFonts =
 --Music are big chunks of memory that play music. This is used for music that loops or that is large
 sounds = 
 {
-	["cannonShot"] = musicLoadPath.."cannonShot.wav",
-	["iceAttack"] = musicLoadPath.."IceAttack.wav",
-	["iceDeath"] = musicLoadPath.."IceDeath.wav",
-	["lavaAttack"] = musicLoadPath.."LavaAttack.wav",
-	["lavaDeath"] = musicLoadPath.."LavaDeath.wav",
+	--["balloonExplode"] = musicLoadPath.."BalloonExplode.wav",
+	--["cannonShot"] = musicLoadPath.."CanonShot.wav",
+	--["iceAttack"] = musicLoadPath.."IceAttack.wav",
+	--["iceCharge"] = musicLoadPath.."iceCharge.wav",
+	--["iceDeath"] = musicLoadPath.."IceDeath.wav",
+	--["lavaAttack"] = musicLoadPath.."LavaAttack.wav",
+	--["lavaCharge"] = musicLoadPath.."LavaCharge.wav",
+	--["lavaDeath"] = musicLoadPath.."LavaDeath.wav",
+	--["noAmmo"] = musicLoadPath.."Outofammo.wav",
+	--["refillSound"] = musicLoadPath.."Refill.wav",
+	--["playerRespawnSound"] = musicLoadPath.."Respawn.wav",
+
+	["pressingButton"] = musicLoadPath.."PressingButton.wav",
+	["selectingButton"] = musicLoadPath.."SelectingButtons.wav",
+
 }
 
 musics =
 {
-	["expmusic"] = musicLoadPath.."expmusic.wav",
+	--["expmusic"] = musicLoadPath.."expmusic.wav",
+	["menuMusic"] = musicLoadPath.."MenuMusic.wav",
+	--["levelMusic"] = musicLoadPath.."Music2Minutes.wav",
 }
