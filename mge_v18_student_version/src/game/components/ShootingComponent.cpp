@@ -31,7 +31,7 @@ void ShootingComponent::Start()
 
 	HUD::GetHudComponent()->SetMaxInk(m_inkMaxLevel);
 	
-	testTween = Tweener::GenerateTween<float>(m_inkMaxLevel,0,10000); 
+	//testTween = Tweener::GenerateTween<float>(m_inkMaxLevel,0,10000); 
 	//*testTween = (*testTween).via(tweeny::easing::bounceOut);
 }
 
@@ -39,7 +39,7 @@ void ShootingComponent::Update(float timeStep)
 {
 	XMLComponent::Update(timeStep);
 
-	testTween->onStep([this](float x) {m_inkLevel = x;  return false; });
+	//testTween->onStep([this](float x) {m_inkLevel = x;  return false; });
 
 	HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
 
