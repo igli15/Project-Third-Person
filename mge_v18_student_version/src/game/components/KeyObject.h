@@ -13,7 +13,7 @@ public:
 	KeyObject(sf::Keyboard::Key key);
 	~KeyObject();
 
-	void KeyPressed();
+	bool KeyPressed();
 
 private:
 	sf::Keyboard::Key m_key;

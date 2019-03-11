@@ -11,7 +11,7 @@ KeyObject::~KeyObject()
 {
 }
 
-void KeyObject::KeyPressed()
+bool KeyObject::KeyPressed()
 {
 	bool isPressed = sf::Keyboard::isKeyPressed(m_key);
 
@@ -31,4 +31,5 @@ void KeyObject::KeyPressed()
 		if (onKeyExit != NULL) onKeyExit();
 	}
 	m_isKeyPressedLastFrame = isPressed;
+	return isPressed;
 }
