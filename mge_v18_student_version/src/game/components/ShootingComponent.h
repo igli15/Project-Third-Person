@@ -20,17 +20,20 @@ public:
 	// Inherited via XMLComponent
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 
-	void ShootInk(float tileAmount);
+	void ShootInk(float tileAmount, bool isPrimaryShooting);
 	void SetPlayerNumber(int playerNumber);
 	void SetGrid(GridComponent* grid);
 	void SetInkLevel(float newInkLevel);
 	void ResetInkLevel();
 	void AddInk(float inkLevel);
 
-	void OnKeyOnePressed(bool isKeyPressedThisFrame);
 	void OnKeyOneEnter();
 	void OnKeyOneStay();
 	void OnKeyOneExit();
+
+	void OnKeyTwoEnter();
+	void OnKeyTwoStay();
+	void OnKeyTwoExit();
 
 private:
 	KeyObject* keyOne;

@@ -28,18 +28,23 @@ void ShootingComponent::Start()
 	m_playerDataCompoent = m_gameObject->GetComponent<PlayerDataComponent>();
 
 	HUD::GetHudComponent()->SetMaxInk(m_inkMaxLevel);
-	
-	keyOne = new KeyObject(sf::Keyboard::F);
+
+	//Registering input function to Key F
+	//Primary shooting
+	keyOne = new KeyObject((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace));
 	keyOne->onKeyEnter = ([this]() {OnKeyOneEnter(); });
 	keyOne->onKeyStay = ([this]() {OnKeyOneStay(); });
-	keyOne->onKeyExit= ([this]() {OnKeyOneExit(); });
+	keyOne->onKeyExit = ([this]() {OnKeyOneExit(); });
+
+	keyTwo = new KeyObject((m_playerNumber == 1) ? (sf::Keyboard::C) : (sf::Keyboard::Equal));
+	keyTwo->onKeyEnter = ([this]() {OnKeyTwoEnter(); });
 }
 
 void ShootingComponent::Update(float timeStep)
 {
 	XMLComponent::Update(timeStep);
 	keyOne->KeyPressed();
-
+	keyTwo->KeyPressed();
 	//OnKeyOnePressed(sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace)));
 }
 
@@ -72,7 +77,7 @@ void ShootingComponent::Parse(rapidxml::xml_node<>* compNode)
 	}
 }
 
-void ShootingComponent::ShootInk(float tileAmount)
+void ShootingComponent::ShootInk(float tileAmount, bool isPrimaryShooting)
 {
 	bool horizontalShooting = false;
 	bool negtiveDirection = false;
@@ -94,7 +99,7 @@ void ShootingComponent::ShootInk(float tileAmount)
 	default:
 		break;
 	}
-	
+
 	glm::vec3 otherPlayerPos;
 	GameObject* enemy;
 	if (m_playerNumber == 1)
@@ -111,11 +116,20 @@ void ShootingComponent::ShootInk(float tileAmount)
 
 	//std::cout << m_gameObject->transform->WorldPosition() << " ==== " << otherPlayerPos << std::endl;
 
-	auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
-	//auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
+	std::vector<TileComponent*> tiles;
+
+	if (isPrimaryShooting)
+	{
+
+		tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
+	}
+	else 
+	{
+		tiles = m_gridComponent->GetTilesInTriangleRange(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
+	}
 	for (int i = 0; i < tiles.size(); i++)
 	{
-		if (m_playerDataCompoent-> MatType() == TileType::LAVA)
+		if (m_playerDataCompoent->MatType() == TileType::LAVA)
 		{
 			tiles[i]->ActivateGridElement(m_playerDataCompoent);
 			tiles[i]->PaintTile(TileType::LAVA);
@@ -160,25 +174,6 @@ void ShootingComponent::AddInk(float inkLevel)
 	HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
 }
 
-void ShootingComponent::OnKeyOnePressed(bool isKeyPressedThisFrame)
-{
-	if (!m_isKeyPresedLastFrame&&isKeyPressedThisFrame)
-	{
-		//OnKeyEnter
-		OnKeyOneEnter();
-	}
-	if(m_isKeyPresedLastFrame&&isKeyPressedThisFrame)
-	{
-		//OnKeyStay
-		OnKeyOneStay();
-	}
-	if (m_isKeyPresedLastFrame && !isKeyPressedThisFrame)
-	{
-		//OnKeyExit
-		OnKeyOneExit();
-	}
-	m_isKeyPresedLastFrame = isKeyPressedThisFrame;
-}
 void ShootingComponent::OnKeyOneEnter()
 {
 	if (m_playerDataCompoent->IsDead()) return;
@@ -192,12 +187,13 @@ void ShootingComponent::OnKeyOneEnter()
 		//Dont charge if player doesnt have enough ink
 		if (m_inkLevel - m_minRange < 0) return;
 		//std::cout << "	Start Charging" << std::endl;
-		m_currentAmmo = m_minRange- m_rateOfGainInk;
-		m_inkLevel -= m_minRange- m_rateOfGainInk;
+		m_currentAmmo = m_minRange - m_rateOfGainInk;
+		m_inkLevel -= m_minRange - m_rateOfGainInk;
 
 		m_isChraging = true;
 	}
 }
+
 void ShootingComponent::OnKeyOneStay()
 {
 	//std::cout << "OnKeyStay" << std::endl;
@@ -221,11 +217,25 @@ void ShootingComponent::OnKeyOneExit()
 		//stop charging
 		//std::cout << "	Shoot" << std::endl;
 		//std::cout << "	Stop Charging" << std::endl;
-		ShootInk((int)m_currentAmmo);
+		ShootInk((int)m_currentAmmo, true);
 		m_currentAmmo = 0;
 		m_isChraging = false;
 		m_clock.restart();
 	}
+}
+
+void ShootingComponent::OnKeyTwoEnter()
+{
+	std::cout << "AAAAAAAAAA" << std::endl;
+	ShootInk((int)3, false);
+}
+
+void ShootingComponent::OnKeyTwoStay()
+{
+}
+
+void ShootingComponent::OnKeyTwoExit()
+{
 }
 
 
