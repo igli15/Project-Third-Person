@@ -29,6 +29,8 @@
         void StopMusic();
 
 		void SetMusic(sf::Music* music);
+
+		void SetMusicPitch(sf::Music* music, float pPitch);
     };
 
 
