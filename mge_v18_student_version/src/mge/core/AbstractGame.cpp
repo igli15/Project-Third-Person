@@ -9,6 +9,8 @@
 #include "ResourceManager.h"
 #include "mge/core/EventQueue.h"
 #include "game/MenuScene.h"
+#include "mge/core/Tweener.h"
+
 AbstractGame* AbstractGame::m_instance = nullptr;
 
 AbstractGame::AbstractGame():_window(NULL),_renderer(NULL),_world(NULL), _fps(0)
@@ -158,6 +160,8 @@ void AbstractGame::run()
 		    while (timeSinceLastUpdate > timePerFrame) {
                 timeSinceLastUpdate -= timePerFrame;
                 _update(timePerFrame.asSeconds());
+
+				Tweener::UpdateAllTweens((int)m_tweenDeltaTime);
 		    }
 
 			_render();
@@ -182,8 +186,10 @@ void AbstractGame::run()
                 frameCount = 0;
             }
 
+
 		}
 
+		m_tweenDeltaTime = timeSinceLastUpdate.asMilliseconds();
 		//empty the event queue
 		_processEvents();
     }

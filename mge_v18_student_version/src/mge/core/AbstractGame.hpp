@@ -86,6 +86,8 @@ class AbstractGame
 		unsigned m_windowHeight = 600;
 	
 
+		float m_tweenDeltaTime;
+
     private:
         AbstractGame(const AbstractGame&);
         AbstractGame& operator=(const AbstractGame&);
