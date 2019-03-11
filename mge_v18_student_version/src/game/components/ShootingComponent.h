@@ -26,16 +26,18 @@ public:
 	void ResetInkLevel();
 	void AddInk(float inkLevel);
 
-	void OnKeyPressed(bool isKeyPressedThisFrame);
-	void OnKeyEnter();
-	void OnKeyStay();
-	void OnKeyExit();
+	void OnKeyOnePressed(bool isKeyPressedThisFrame);
+	void OnKeyOneEnter();
+	void OnKeyOneStay();
+	void OnKeyOneExit();
+
 private:
 	PlayerMovementComponent* m_playerMovementComponent;
 	GridComponent* m_gridComponent;
 	sf::Clock m_clock;
 
 	PlayerDataComponent* m_playerDataCompoent;
+	float m_reloadTime = 0.5f;
 
 	int m_inkMaxLevel = 100;
 	float m_inkLevel = 0;
