@@ -390,17 +390,14 @@ void GridComponent::IncreaseTileCount(TileType type)
 	if (type == TileType::ICE)
 	{
 		m_iceTileCount += 1;
-		hud->SetPlayerTilePercentage(2, GetTileCount(ICE));
+		hud->SetPlayerTilePercentage(2, GetTilePercantage(ICE));
 	}
 	else if (type == TileType::LAVA)
 	{
 		m_lavaTileCount += 1;
-		hud->SetPlayerTilePercentage(1, GetTileCount(LAVA));
+		hud->SetPlayerTilePercentage(1, GetTilePercantage(LAVA));
 	}
-	std::cout << std::endl << "STATS: " << std::endl;
-	std::cout << "ICE    : " << m_iceTileCount << std::endl;
-	std::cout << "LAVA   : " << m_lavaTileCount << std::endl;
-	std::cout << "NEUTRAL: " << (m_width*m_height)-m_iceTileCount - m_lavaTileCount << std::endl;
+
 
 }
 
@@ -410,16 +407,17 @@ void GridComponent::DecreaseTileCount(TileType type)
 	if (type == TileType::ICE)
 	{
 		m_iceTileCount -= 1;
-		hud->SetPlayerTilePercentage(2, GetTileCount(ICE));
+		hud->SetPlayerTilePercentage(2, GetTilePercantage(ICE));
 	}
 	else if (type == TileType::LAVA)
 	{
 		m_lavaTileCount -= 1;
-		hud->SetPlayerTilePercentage(1, GetTileCount(LAVA));
+		hud->SetPlayerTilePercentage(1, GetTilePercantage(LAVA));
 	}
 }
 
-float GridComponent::GetTileCount(TileType type)
+//Returning percantage
+float GridComponent::GetTilePercantage(TileType type)
 {
 	float combinedCount = m_iceTileCount + m_lavaTileCount;
 	if (type == TileType::ICE)
@@ -432,17 +430,18 @@ float GridComponent::GetTileCount(TileType type)
 	}
 
 }
-//float GridComponent::GetTileCount(TileType type)
-//{
-//	if (type == TileType::ICE)
-//	{
-//		return (float)m_iceTileCount/(m_width*m_height) *100.0f;
-//	}
-//	else if (type == TileType::LAVA)
-//	{
-//		return(float)m_lavaTileCount / (m_width*m_height) *100.0f;
-//	}
-//}
+//Actual number of chosen tiles
+float GridComponent::GetTileCount(TileType type)
+{
+	if (type == TileType::ICE)
+	{
+		return (float)m_iceTileCount;
+	}
+	else if (type == TileType::LAVA)
+	{
+		return(float)m_lavaTileCount;
+	}
+}
 
 void GridComponent::SpawnBalloon()
 {

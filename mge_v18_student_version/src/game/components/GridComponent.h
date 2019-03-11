@@ -53,8 +53,9 @@ public:
 	std::vector<TileComponent*> GetTilesInARange(TileComponent* tile, int width, int height);
 	void IncreaseTileCount(TileType type);
 	void DecreaseTileCount(TileType type);
+	float GetTilePercantage(TileType type);
 	float GetTileCount(TileType type);
-	
+
 	void SpawnBalloon();
 
 private:

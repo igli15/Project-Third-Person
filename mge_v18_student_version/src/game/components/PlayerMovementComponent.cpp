@@ -4,6 +4,7 @@
 #include "game/MainWorld.h"
 #include "game/components/GridComponent.h"
 #include "mge/components/CircleCollider.h"
+
 void PlayerMovementComponent::Awake()
 {
 	m_rigidbody = m_gameObject->GetComponent<RigidBody>();
@@ -14,13 +15,32 @@ void PlayerMovementComponent::Awake()
 void PlayerMovementComponent::Start()
 {
 	m_initSpeed = m_rigidbody->GetMaxSpeed();
-	//m_gameObject->GetComponent<CircleCollider>()->SetTrigger(true);
+
+	//Registering KeyObjects
+	keyLeft = new KeyObject(sf::Keyboard::A);
+	keyLeft->onKeyEnter = [this] { OnEnterHorizontal(-1); };
+	keyLeft->onKeyStay = [this] { OnStayHorizontal(-1); };
+	keyLeft->onKeyExit = [this] { OnExitHorizontal(-1); };
+
+	keyRight = new KeyObject(sf::Keyboard::D);
+	keyRight->onKeyEnter = [this] { OnEnterHorizontal(1); };
+	keyRight->onKeyStay = [this] { OnStayHorizontal(1); };
+	keyRight->onKeyExit = [this] { OnExitHorizontal(1); };
+
+	keyForward = new KeyObject(sf::Keyboard::W);
+	keyForward->onKeyEnter = [this] { OnEnterVertical(1); };
+	keyForward->onKeyStay = [this] { OnStayVertical(1); };
+	keyForward->onKeyExit = [this] { OnExitVertical(1); };
+
+	keyBackward = new KeyObject(sf::Keyboard::S);
+	keyBackward->onKeyEnter = [this] { OnEnterVertical(-1); };
+	keyBackward->onKeyStay = [this] { OnStayVertical(-1); };
+	keyBackward->onKeyExit = [this] { OnExitVertical(-1); };
 }
 
 void PlayerMovementComponent::Update(float timeStep)
 {
-	//std::cout << "DIRECTION: " << currentDirection << std::endl;
-
+	//Apply speed tile bonus or penalty
 	if (glm::length(m_rigidbody->velocity) > 0)
 	{
 		TileComponent* tile = m_grid->GetTileOnPos(m_gameObject->transform->LocalPosition());
@@ -41,8 +61,16 @@ void PlayerMovementComponent::Update(float timeStep)
 			}
 		}
 	}
-	ApplyDirection();
 
+	//Updating all KeyObjects
+	bool isMoved = false;
+	isMoved+=keyLeft->KeyPressed();
+	isMoved += keyRight->KeyPressed();
+	isMoved += keyForward->KeyPressed();
+	isMoved += keyBackward->KeyPressed();
+
+	m_oldDirection = m_currentDirection;
+	ApplyMovement(isMoved);
 }
 
 void PlayerMovementComponent::ApplyDirection()
@@ -55,7 +83,7 @@ void PlayerMovementComponent::ApplyDirection()
 
 	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::D : sf::Keyboard::Right))
 	{
-		if (m_oldFirection == LEFT || m_oldFirection == RIGHT)
+		if (m_oldDirection == LEFT || m_oldDirection == RIGHT)
 		{
 			priorityDirection = RIGHT;
 		}
@@ -64,7 +92,7 @@ void PlayerMovementComponent::ApplyDirection()
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::A : sf::Keyboard::Left))
 	{
-		if (m_oldFirection == LEFT || m_oldFirection == RIGHT)
+		if (m_oldDirection == LEFT || m_oldDirection == RIGHT)
 		{
 			priorityDirection = LEFT;
 		}
@@ -74,7 +102,7 @@ void PlayerMovementComponent::ApplyDirection()
 
 	if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::S : sf::Keyboard::Down))
 	{
-		if (m_oldFirection == FORWARD || m_oldFirection == BACKWARD)
+		if (m_oldDirection == FORWARD || m_oldDirection == BACKWARD)
 		{
 			priorityDirection = BACKWARD;
 		}
@@ -83,7 +111,7 @@ void PlayerMovementComponent::ApplyDirection()
 	}
 	else if (sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? sf::Keyboard::W : sf::Keyboard::Up))
 	{
-		if (m_oldFirection == FORWARD || m_oldFirection == BACKWARD)
+		if (m_oldDirection == FORWARD || m_oldDirection == BACKWARD)
 		{
 			priorityDirection = FORWARD;
 		}
@@ -96,12 +124,45 @@ void PlayerMovementComponent::ApplyDirection()
 		m_currentDirection = priorityDirection;
 	}
 
-	m_oldFirection = m_currentDirection;
+	m_oldDirection = m_currentDirection;
 	ApplyMovement(keyPressed);
 }
+void PlayerMovementComponent::OnEnterHorizontal(int direction)
+{
+	m_currentDirection = direction == 1 ? RIGHT : LEFT;
+}
+void PlayerMovementComponent::OnEnterVertical(int direction)
+{
+	m_currentDirection = direction == 1 ? FORWARD : BACKWARD;
+}
+void PlayerMovementComponent::OnStayHorizontal(int direction)
+{
+	if (isAnyKeyReleased)
+	{
+		isAnyKeyReleased = false;
+		m_currentDirection = direction == 1 ? RIGHT : LEFT;
+		std::cout << "Switch STAY HORIZONTAL" << std::endl;
+	}
+}
+void PlayerMovementComponent::OnStayVertical(int direction)
+{
+	if (isAnyKeyReleased)
+	{
+		isAnyKeyReleased = false;
+		m_currentDirection = direction == 1 ? FORWARD : BACKWARD;
+		std::cout << "Switch STAY VERTICAL" << std::endl;
+	}
+}
+void PlayerMovementComponent::OnExitHorizontal(int direciton)
+{
+	isAnyKeyReleased = true;
+	
 
-
-
+}
+void PlayerMovementComponent::OnExitVertical(int direction)
+{
+	isAnyKeyReleased = true;
+}
 void PlayerMovementComponent::ApplyMovement(bool isMoved)
 {
 	if (m_playerData->IsDead()) return;
@@ -134,38 +195,29 @@ void PlayerMovementComponent::ApplyMovement(bool isMoved)
 	}
 
 }
-
 void PlayerMovementComponent::SetPlayerNumber(int playerNumber)
 {
 	m_playerNumber = playerNumber;
 }
-
 void PlayerMovementComponent::SetArenaData(glm::vec2 pos, glm::vec2 size)
 {
 	m_arenaPosition = pos;
 	m_arenaSize = size;
 }
-
 void PlayerMovementComponent::SetSpeed(float speed)
 {
 	m_speed = speed;
 }
-
 PlayerMovementComponent::Direction PlayerMovementComponent::GetCurrentDirection()
 {
 	return m_currentDirection;
 }
-
 PlayerMovementComponent::PlayerMovementComponent()
 {
 }
-
-
 PlayerMovementComponent::~PlayerMovementComponent()
 {
 }
-
-
 void PlayerMovementComponent::SetRotation(glm::vec3 worldDirection, glm::vec3 localDirection)
 {
 	//COMPARE LEFT TO LEFT
@@ -177,7 +229,6 @@ void PlayerMovementComponent::SetRotation(glm::vec3 worldDirection, glm::vec3 lo
 	m_gameObject->transform->Rotate(glm::radians(-currentAngle), glm::vec3(0, 1, 0));
 
 }
-
 void PlayerMovementComponent::Parse(rapidxml::xml_node<>* compNode)
 {
 	for (rapidxml::xml_attribute<>* a = compNode->first_attribute();
