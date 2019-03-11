@@ -28,13 +28,19 @@ void ShootingComponent::Start()
 	m_playerDataCompoent = m_gameObject->GetComponent<PlayerDataComponent>();
 
 	HUD::GetHudComponent()->SetMaxInk(m_inkMaxLevel);
-	//asdasd
+	
+	keyOne = new KeyObject(sf::Keyboard::F);
+	keyOne->onKeyEnter = ([this]() {OnKeyOneEnter(); });
+	keyOne->onKeyStay = ([this]() {OnKeyOneStay(); });
+	keyOne->onKeyExit= ([this]() {OnKeyOneExit(); });
 }
 
 void ShootingComponent::Update(float timeStep)
 {
 	XMLComponent::Update(timeStep);
-	OnKeyOnePressed(sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace)));
+	keyOne->KeyPressed();
+
+	//OnKeyOnePressed(sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace)));
 }
 
 void ShootingComponent::Parse(rapidxml::xml_node<>* compNode)

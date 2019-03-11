@@ -173,6 +173,7 @@
     <ClInclude Include="..\src\game\components\GridComponent.h" />
     <ClInclude Include="..\src\game\components\GridElement.h" />
     <ClInclude Include="..\src\game\components\HUDComponent.h" />
+    <ClInclude Include="..\src\game\components\KeyObject.h" />
     <ClInclude Include="..\src\game\components\KeyMoveComponent.h" />
     <ClInclude Include="..\src\game\components\PlayerDataComponent.h" />
     <ClInclude Include="..\src\game\components\PlayerMovementComponent.h" />
@@ -248,6 +249,7 @@
     <ClCompile Include="..\src\game\components\GridComponent.cpp" />
     <ClCompile Include="..\src\game\components\GridElement.cpp" />
     <ClCompile Include="..\src\game\components\HUDComponent.cpp" />
+    <ClCompile Include="..\src\game\components\KeyObject.cpp" />
     <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp" />
     <ClCompile Include="..\src\game\components\PlayerDataComponent.cpp" />
     <ClCompile Include="..\src\game\components\PlayerMovementComponent.cpp" />

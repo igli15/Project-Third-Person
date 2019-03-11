@@ -259,6 +259,9 @@
     <ClInclude Include="..\src\mge\core\Tweener.h">
       <Filter>MGE Source files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game\components\KeyObject.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -452,6 +455,9 @@
     </ClCompile>
     <ClCompile Include="..\src\mge\core\Tweener.cpp">
       <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\KeyObject.cpp">
+      <Filter>game\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

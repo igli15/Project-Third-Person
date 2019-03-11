@@ -2,6 +2,7 @@
 #include "mge/core/XMLComponent.h"
 #include "SFML/System.hpp"
 #include "tweeny/tweeny.h"
+#include "game/components/KeyObject.h"
 
 class PlayerDataComponent;
 class PlayerMovementComponent;
@@ -32,6 +33,9 @@ public:
 	void OnKeyOneExit();
 
 private:
+	KeyObject* keyOne;
+	KeyObject* keyTwo;
+
 	PlayerMovementComponent* m_playerMovementComponent;
 	GridComponent* m_gridComponent;
 	sf::Clock m_clock;
