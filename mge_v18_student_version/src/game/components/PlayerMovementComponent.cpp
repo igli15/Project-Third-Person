@@ -17,22 +17,22 @@ void PlayerMovementComponent::Start()
 	m_initSpeed = m_rigidbody->GetMaxSpeed();
 
 	//Registering KeyObjects
-	keyLeft = new KeyObject(sf::Keyboard::A);
+	keyLeft = new KeyObject(m_playerNumber==1? sf::Keyboard::A:sf::Keyboard::Left);
 	keyLeft->onKeyEnter = [this] { OnEnterHorizontal(-1); };
 	keyLeft->onKeyStay = [this] { OnStayHorizontal(-1); };
 	keyLeft->onKeyExit = [this] { OnExitHorizontal(-1); };
 
-	keyRight = new KeyObject(sf::Keyboard::D);
+	keyRight = new KeyObject(m_playerNumber == 1 ? sf::Keyboard::D : sf::Keyboard::Right);
 	keyRight->onKeyEnter = [this] { OnEnterHorizontal(1); };
 	keyRight->onKeyStay = [this] { OnStayHorizontal(1); };
 	keyRight->onKeyExit = [this] { OnExitHorizontal(1); };
 
-	keyForward = new KeyObject(sf::Keyboard::W);
+	keyForward = new KeyObject(m_playerNumber == 1 ? sf::Keyboard::W : sf::Keyboard::Up);
 	keyForward->onKeyEnter = [this] { OnEnterVertical(1); };
 	keyForward->onKeyStay = [this] { OnStayVertical(1); };
 	keyForward->onKeyExit = [this] { OnExitVertical(1); };
 
-	keyBackward = new KeyObject(sf::Keyboard::S);
+	keyBackward = new KeyObject(m_playerNumber == 1 ? sf::Keyboard::S : sf::Keyboard::Down);
 	keyBackward->onKeyEnter = [this] { OnEnterVertical(-1); };
 	keyBackward->onKeyStay = [this] { OnStayVertical(-1); };
 	keyBackward->onKeyExit = [this] { OnExitVertical(-1); };
