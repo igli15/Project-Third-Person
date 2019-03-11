@@ -17,7 +17,6 @@ void CannonComponent::OnPainted(PlayerDataComponent* playerData)
 {
 	ShootInFacingDir(playerData);
 
-	std::cout << "ROTATED" << std::endl;
 	m_gameObject->transform->Rotate(glm::radians(-90.0f), glm::vec3(0, 1, 0));
 
 	switch (m_facingDir)
@@ -40,7 +39,6 @@ void CannonComponent::OnPainted(PlayerDataComponent* playerData)
 
 	ShootInFacingDir(playerData);
 
-	std::cout << "FacingDir::::: " << m_facingDir << std::endl;
 }
 
 void CannonComponent::Parse(rapidxml::xml_node<>* compNode)
