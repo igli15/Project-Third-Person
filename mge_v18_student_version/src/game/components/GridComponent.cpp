@@ -262,7 +262,7 @@ std::vector<TileComponent*> GridComponent::GetTilesInTriangleRange(glm::vec3 pla
 		yDelta *= -1;
 	}
 
-	for (int rowIndex = 1; rowIndex < rows; rowIndex++)
+	for (int rowIndex = 0; rowIndex < rows; rowIndex++)
 	{
 		//Geting originTile for each row
 		TileComponent* gateTile = GetTileAt(currentTile->GridPos().x + rowIndex*xDelta, currentTile->GridPos().y+rowIndex*yDelta);

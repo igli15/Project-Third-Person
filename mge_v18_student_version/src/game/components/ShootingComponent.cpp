@@ -180,7 +180,7 @@ void ShootingComponent::OnKeyOneEnter()
 	//std::cout << "OnKeyEnter" << std::endl;
 
 	//Start charging
-	if (m_clock.getElapsedTime().asSeconds() < m_reloadTime) return;
+	if (m_clock1.getElapsedTime().asSeconds() < m_reloadTime1) return;
 
 	if (!m_isChraging)
 	{
@@ -215,19 +215,18 @@ void ShootingComponent::OnKeyOneExit()
 	{
 		//Shoot ink on range of m_currentAmmo
 		//stop charging
-		//std::cout << "	Shoot" << std::endl;
-		//std::cout << "	Stop Charging" << std::endl;
 		ShootInk((int)m_currentAmmo, true);
 		m_currentAmmo = 0;
 		m_isChraging = false;
-		m_clock.restart();
+		m_clock1.restart();
 	}
 }
 
 void ShootingComponent::OnKeyTwoEnter()
 {
-	std::cout << "AAAAAAAAAA" << std::endl;
-	ShootInk((int)3, false);
+	if (m_clock2.getElapsedTime().asSeconds() < m_relaodTime2) return;
+	ShootInk(3, false);
+	m_clock2.restart();
 }
 
 void ShootingComponent::OnKeyTwoStay()
