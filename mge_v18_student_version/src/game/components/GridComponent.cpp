@@ -254,6 +254,7 @@ std::vector<TileComponent*> GridComponent::GetTilesInTriangleRange(glm::vec3 pla
 	TileComponent* currentTile = GetTileOnPos(playerPos);
 	TileComponent* enemyTile = GetTileOnPos(enemyPos);
 
+	
 	if (currentTile == nullptr) return tiles;
 
 	//Getting direction of triangle shooting
@@ -266,7 +267,7 @@ std::vector<TileComponent*> GridComponent::GetTilesInTriangleRange(glm::vec3 pla
 		yDelta *= -1;
 	}
 
-	for (int rowIndex = 1; rowIndex < rows; rowIndex++)
+	for (int rowIndex = 0; rowIndex < rows; rowIndex++)
 	{
 		//Geting originTile for each row
 		TileComponent* gateTile = GetTileAt(currentTile->GridPos().x + rowIndex*xDelta, currentTile->GridPos().y+rowIndex*yDelta);
@@ -281,11 +282,12 @@ std::vector<TileComponent*> GridComponent::GetTilesInTriangleRange(glm::vec3 pla
 		tiles.insert(tiles.end(), newTiles.begin(), newTiles.end());
 	}
 
+	if (enemyTile == nullptr) return tiles;
 	for (int i = 0; i < tiles.size(); i++)
 	{
 		//Checling if enemy stayed on one of the painted tiles
 		auto condition = glm::equal(enemyTile->GridPos(),tiles[i]->GridPos());
-		if (condition.x && condition.y)
+		if (condition.x && condition.y&&tiles[i]->IsPaintable())
 		{
 			onEnemyFoundCallback();
 		}

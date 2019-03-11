@@ -2,6 +2,7 @@
 #include "mge/core/XMLComponent.h"
 #include "SFML/System.hpp"
 #include "tweeny/tweeny.h"
+#include "game/components/KeyObject.h"
 
 class PlayerDataComponent;
 class PlayerMovementComponent;
@@ -19,23 +20,33 @@ public:
 	// Inherited via XMLComponent
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 
-	void ShootInk(float tileAmount);
+	void ShootInk(float tileAmount, bool isPrimaryShooting);
 	void SetPlayerNumber(int playerNumber);
 	void SetGrid(GridComponent* grid);
 	void SetInkLevel(float newInkLevel);
 	void ResetInkLevel();
 	void AddInk(float inkLevel);
 
-	void OnKeyPressed(bool isKeyPressedThisFrame);
-	void OnKeyEnter();
-	void OnKeyStay();
-	void OnKeyExit();
+	void OnKeyOneEnter();
+	void OnKeyOneStay();
+	void OnKeyOneExit();
+
+	void OnKeyTwoEnter();
+	void OnKeyTwoStay();
+	void OnKeyTwoExit();
+
 private:
+	KeyObject* keyOne;
+	KeyObject* keyTwo;
+
 	PlayerMovementComponent* m_playerMovementComponent;
 	GridComponent* m_gridComponent;
-	sf::Clock m_clock;
+	sf::Clock m_clock1;
+	sf::Clock m_clock2;
 
 	PlayerDataComponent* m_playerDataCompoent;
+	float m_reloadTime1 = 0.5f;
+	float m_relaodTime2 = 1;
 
 	int m_inkMaxLevel = 100;
 	float m_inkLevel = 0;
