@@ -60,10 +60,10 @@ void BalloonComponent::OnDestroy()
 {
 }
 
-void BalloonComponent::OnPainted(TileType type)
+void BalloonComponent::OnPainted(PlayerDataComponent* playerData)
 {
-	GridElement::OnPainted(type);
+	GridElement::OnPainted(playerData);
 
-	Explode(type);
+	Explode(playerData->MatType());
 
 }

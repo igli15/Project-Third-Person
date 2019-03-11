@@ -11,6 +11,7 @@ meshes =
 	["planeMesh"] = meshesLoadPath.."plane.obj",
 	["cubeMesh"] = meshesLoadPath.."cube_smooth.obj",
 	["cylinderMesh"] = meshesLoadPath.."cylinder_smooth.obj",
+	["suzanna"] = meshesLoadPath.. "suzanna_smooth.obj",
 	["Sphere"] = meshesLoadPath.."sphere_smooth.obj",
 	["GroundTile"] = meshesLoadPath.."GroundTile.obj",
 	["players"] = meshesLoadPath.."players.obj",
@@ -28,12 +29,6 @@ meshes =
 	["wall_icorner"] = meshesLoadPath.."wall_icorner.obj",
 	["wall_flat"] = meshesLoadPath.."wall_flat.obj",
 	["wall_single"] = meshesLoadPath.."wall_single.obj",
-
-
-
-
-
-
 
 
 }

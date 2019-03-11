@@ -6,6 +6,7 @@
 #include "mge/core/AbstractGame.hpp"
 #include "game/components/GridComponent.h"
 #include "game/components/GridElement.h"
+#include "PlayerDataComponent.h"
 
 TileComponent::TileComponent()
 {
@@ -138,11 +139,11 @@ void TileComponent::RemoveGridElement(GridElement * gridElement)
 	gridElement->SetTile(nullptr);
 }
 
-void TileComponent::ActivateGridElement(TileType type)
+void TileComponent::ActivateGridElement(PlayerDataComponent* playerData)
 {
 	if (m_gridElement != nullptr)
 	{
-		m_gridElement->OnPainted(type);
+		m_gridElement->OnPainted(playerData);
 	}
 }
 

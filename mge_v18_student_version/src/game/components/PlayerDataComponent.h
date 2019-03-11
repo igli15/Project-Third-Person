@@ -31,6 +31,8 @@ public:
 
 	TileType MatType();
 	bool IsDead();
+
+	GameObject* GetEnemy();
 private:
 	//PLayer id 1 or 2
 	int m_playerNumber;
@@ -51,5 +53,6 @@ private:
 	TileType m_tileMaterial;
 	TextureMaterial* m_material;
 	GridComponent* m_levelGrid;
+
 };
 

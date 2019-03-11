@@ -18,7 +18,7 @@ public:
 
 	void OnDestroy() override;
 
-	virtual void OnPainted(TileType type) override;
+	virtual void OnPainted(PlayerDataComponent* playerData) override;
 
 private:
 	bool m_exploded = false;

@@ -106,16 +106,17 @@ void ShootingComponent::ShootInk(float tileAmount)
 	//std::cout << m_gameObject->transform->WorldPosition() << " ==== " << otherPlayerPos << std::endl;
 
 	auto tiles = m_gridComponent->GetTilesInTriangleRange(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
-	for (size_t i = 0; i < tiles.size(); i++)
+	//auto tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
+	for (int i = 0; i < tiles.size(); i++)
 	{
 		if (m_playerDataCompoent-> MatType() == TileType::LAVA)
 		{
-			tiles[i]->ActivateGridElement(TileType::LAVA);
+			tiles[i]->ActivateGridElement(m_playerDataCompoent);
 			tiles[i]->PaintTile(TileType::LAVA);
 		}
 		else
 		{
-			tiles[i]->ActivateGridElement(TileType::ICE);
+			tiles[i]->ActivateGridElement(m_playerDataCompoent);
 			tiles[i]->PaintTile(TileType::ICE);
 		}
 	}

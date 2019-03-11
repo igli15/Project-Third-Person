@@ -253,6 +253,9 @@
     <ClInclude Include="..\src\game\Balloon.h">
       <Filter>game</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\game\components\CannonComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
@@ -440,6 +443,9 @@
     </ClCompile>
     <ClCompile Include="..\src\game\Balloon.cpp">
       <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\CannonComponent.cpp">
+      <Filter>game\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

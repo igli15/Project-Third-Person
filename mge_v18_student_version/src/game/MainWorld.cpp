@@ -26,6 +26,7 @@
 #include "game/components/ShootingComponent.h"
 #include "HUD.h"
 #include "mge/core/PlayerPrefs.h"
+#include "components/CannonComponent.h"
 
 MainWorld::MainWorld()
 {
@@ -73,6 +74,11 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 	{
 		newNode->AddComponent<ShootingComponent>()->Parse(componentNode);
 		newNode->GetComponent<ShootingComponent>()->SetGrid(levelGrid);
+	}
+	else if (strcmp(componentNode->name(), "CannonComponent") == 0)
+	{
+		newNode->AddComponent<CannonComponent>()->Parse(componentNode);
+		newNode->GetComponent<CannonComponent>()->SetGrid(levelGrid);
 	}
 	
 }

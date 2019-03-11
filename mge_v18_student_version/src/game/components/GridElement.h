@@ -4,6 +4,7 @@
 
 class GridComponent;
 class TileComponent;
+class PlayerDataComponent;
 
 class GridElement : public XMLComponent
 {
@@ -14,13 +15,13 @@ public:
 
 	void Awake() override;
 
-	virtual void OnPainted(TileType type);
+	virtual void OnPainted(PlayerDataComponent* playerData);
 
 	// Inherited via XMLComponent
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;
 
 	void SetTile(TileComponent* tile);
-
+	void SetGrid(GridComponent* grid);
 
 
 protected:
