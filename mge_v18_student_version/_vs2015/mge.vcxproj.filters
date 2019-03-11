@@ -257,7 +257,7 @@
       <Filter>game\components</Filter>
     </ClInclude>
     <ClInclude Include="..\src\mge\core\Tweener.h">
-      <Filter>MGE Source files</Filter>
+      <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
