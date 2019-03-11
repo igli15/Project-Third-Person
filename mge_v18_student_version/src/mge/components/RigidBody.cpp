@@ -40,7 +40,7 @@ void RigidBody::Update(float timeStep)
 	//std::cout << "pos: " << m_gameObject->transform->LocalPosition() << m_gameObject->ID()<< std::endl;
 
 	m_gameObject->transform->SetLocalPosition(m_gameObject->transform->LocalPosition() + velocity3d);
-	//m_collider->DetectCollision();
+	m_collider->DetectCollision();
 
 }
 

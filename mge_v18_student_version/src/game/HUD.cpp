@@ -122,8 +122,8 @@ void HUD::Update(float pStep)
 
 	if (m_gameLength <= 0)
 	{
-		PlayerPrefs::SetFloat("IcePercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::ICE)/100);
-		PlayerPrefs::SetFloat("LavaPercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTileCount(TileType::LAVA)/100);
+		PlayerPrefs::SetFloat("IcePercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTilePercantage(TileType::ICE)/100);
+		PlayerPrefs::SetFloat("LavaPercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTilePercantage(TileType::LAVA)/100);
 
 
 		AbstractGame::Instance()->GetWorldManager()->CreateWorld<ResolutionScreen>("ResolutionScreen");

@@ -70,8 +70,6 @@ void PlayerMovementComponent::Update(float timeStep)
 	isMoved += keyBackward->KeyPressed();
 
 	m_oldDirection = m_currentDirection;
-
-	//std::cout << "isMoved: " << isMoved << std::endl;
 	ApplyMovement(isMoved);
 }
 
@@ -133,12 +131,10 @@ void PlayerMovementComponent::OnEnterHorizontal(int direction)
 {
 	m_currentDirection = direction == 1 ? RIGHT : LEFT;
 }
-
 void PlayerMovementComponent::OnEnterVertical(int direction)
 {
 	m_currentDirection = direction == 1 ? FORWARD : BACKWARD;
 }
-
 void PlayerMovementComponent::OnStayHorizontal(int direction)
 {
 	if (isAnyKeyReleased)
@@ -148,7 +144,6 @@ void PlayerMovementComponent::OnStayHorizontal(int direction)
 		std::cout << "Switch STAY HORIZONTAL" << std::endl;
 	}
 }
-
 void PlayerMovementComponent::OnStayVertical(int direction)
 {
 	if (isAnyKeyReleased)
@@ -158,19 +153,16 @@ void PlayerMovementComponent::OnStayVertical(int direction)
 		std::cout << "Switch STAY VERTICAL" << std::endl;
 	}
 }
-
 void PlayerMovementComponent::OnExitHorizontal(int direciton)
 {
 	isAnyKeyReleased = true;
 	
 
 }
-
 void PlayerMovementComponent::OnExitVertical(int direction)
 {
 	isAnyKeyReleased = true;
 }
-
 void PlayerMovementComponent::ApplyMovement(bool isMoved)
 {
 	if (m_playerData->IsDead()) return;

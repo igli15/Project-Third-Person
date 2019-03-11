@@ -93,7 +93,7 @@ void PlayerDataComponent::OnDeath()
 
 	m_respawnClock.restart();
 	m_isDead = true;
-	m_penaltyTime = m_levelGrid->GetTileCount(m_playerNumber == 1 ? TileType::LAVA : TileType::ICE)*m_maxPenaltyTime/100.0f;
+	m_penaltyTime = m_levelGrid->GetTileCount(m_playerNumber == 1 ? TileType::LAVA : TileType::ICE)*m_penaltyTimePerTile;
 	
 	HUD* hud = dynamic_cast<HUD*>(HUD::GetHudComponent()->GetGameObject());
 	hud->SetRespawnTime(m_playerNumber, m_penaltyTime);
