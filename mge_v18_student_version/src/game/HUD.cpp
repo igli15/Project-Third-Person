@@ -115,7 +115,6 @@ void HUD::Update(float pStep)
 	GameObject::Update(pStep);
 	float cD = m_gameClock.restart().asSeconds();
 	m_gameLength = m_gameLength - cD;
-	std::cout << cD << std::endl;
 	sf::FloatRect textRect = timerText->getLocalBounds();
 	timerText->setOrigin(textRect.width / 2, textRect.height / 2);
 	timerText->setString("" + std::to_string((int) m_gameLength));

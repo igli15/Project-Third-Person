@@ -176,14 +176,19 @@ void ShootingComponent::AddInk(float inkLevel)
 
 void ShootingComponent::OnKeyOneEnter()
 {
+	
+}
+
+void ShootingComponent::OnKeyOneStay()
+{
+	//std::cout << "OnKeyStay" << std::endl;
 	if (m_playerDataCompoent->IsDead()) return;
 	//std::cout << "OnKeyEnter" << std::endl;
 
 	//Start charging
-	if (m_clock1.getElapsedTime().asSeconds() < m_reloadTime1) return;
-
-	if (!m_isChraging)
+	if (!m_isChraging && m_clock1.getElapsedTime().asSeconds() >= m_reloadTime1)
 	{
+		//std::cout << "TIME: " << m_clock1.getElapsedTime().asSeconds() <<"|"<< m_reloadTime1 << std::endl;
 		//Dont charge if player doesnt have enough ink
 		if (m_inkLevel - m_minRange < 0) return;
 		//std::cout << "	Start Charging" << std::endl;
@@ -192,11 +197,6 @@ void ShootingComponent::OnKeyOneEnter()
 
 		m_isChraging = true;
 	}
-}
-
-void ShootingComponent::OnKeyOneStay()
-{
-	//std::cout << "OnKeyStay" << std::endl;
 	if (m_isChraging)
 	{
 		//Update HUD info

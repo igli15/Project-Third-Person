@@ -45,7 +45,7 @@ private:
 	sf::Clock m_clock2;
 
 	PlayerDataComponent* m_playerDataCompoent;
-	float m_reloadTime1 = 0.5f;
+	float m_reloadTime1 = 2.5f;
 	float m_relaodTime2 = 1;
 
 	int m_inkMaxLevel = 100;
