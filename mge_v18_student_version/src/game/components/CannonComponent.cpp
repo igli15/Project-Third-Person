@@ -109,7 +109,7 @@ void CannonComponent::ShootInFacingDir(PlayerDataComponent* playerData)
 		break;
 	}
 	auto tiles = m_grid->GetNeighbourTiles(m_gameObject->transform->LocalPosition(), playerData->GetEnemy()->transform->LocalPosition(),
-		m_shootingRange, horizontal, positive, []() {});
+		m_shootingRange, horizontal, positive, [playerData]() { playerData->GetEnemy()->GetComponent<PlayerDataComponent>()->OnDeath(); });
 
 	for (int i = 0; i < tiles.size(); i++)
 	{
