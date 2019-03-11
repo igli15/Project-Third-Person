@@ -1,5 +1,4 @@
-#ifndef COMPONENT_H
-#define COMPONENT_H
+#pragma once
 
 class GameObject;
 class CollisionInfo;
@@ -38,5 +37,3 @@ protected:
 	GameObject* m_gameObject = nullptr;
 
 };
-
-#endif // COMPONENT_H

@@ -21,7 +21,7 @@ GameObject::GameObject()
 GameObject::~GameObject()
 {
     //detach all children
-    std::cout << "GC running on:" << _name << std::endl;
+   // std::cout << "GC running on:" << _name << std::endl;
 
     while (_children.size() > 0) {
         GameObject* child = _children[0];
@@ -36,7 +36,7 @@ GameObject::~GameObject()
 		m_attachedComponents.pop_back();
 	}
 
-	std::cout <<"Components Left "<< m_attachedComponents.size()<<std::endl;
+	//std::cout <<"Components Left "<< m_attachedComponents.size()<<std::endl;
 
     //do not forget to delete behaviour, material, mesh, collider manually if required!
 }
