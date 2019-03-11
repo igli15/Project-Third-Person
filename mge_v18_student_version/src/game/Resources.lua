@@ -18,6 +18,7 @@ meshes =
 	["orb"] = meshesLoadPath.."orb.obj",
 	["refillStation"] = meshesLoadPath.."refillStation.obj",
 	["balloon"] = meshesLoadPath.."Balloon.obj",
+	["cannon"] = meshesLoadPath.."cannon.obj",
 
 
 	--walls
@@ -48,6 +49,7 @@ diffuseTextures =
 	["orbLavaDiffuse"] = texturesLoadPath.."orbLavaDiffuse.jpg",
 	["refillStationDiffuse"] = texturesLoadPath.."refillStationDiffuse.jpg",
 	["BalloonDiffuse"] = texturesLoadPath.."BalloonDiffuse.png",
+	["cannonDiffuse"] = texturesLoadPath.."cannonDiffuse.jpg",
 
 	--walls
 
@@ -71,6 +73,7 @@ specularTextures =
 	["playerLavaSpecular"] = texturesLoadPath.."playerLavaSpecular.jpg",
 	["refillStationSpecular"] = meshesLoadPath.."refillStationSpecular.jpg",
 	["BalloonSpecular"] = texturesLoadPath.."BalloonSpecular.png",
+	["cannonSpecular"] = texturesLoadPath.."cannonSpecular.jpg",
 
 	--walls
 
@@ -96,6 +99,9 @@ emissionTextures =
 	["orbLavaEmissive"] = texturesLoadPath.."orbLavaEmissive.jpg",
 	["refillStationEmission"] = texturesLoadPath.."refillStationEmission.jpg",
 	["BalloonEmission"] = texturesLoadPath.."BalloonEmission.png",
+	["cannonEmission"] = texturesLoadPath.."cannonEmission.jpg",
+	["cannonRedEmission"] = texturesLoadPath.."cannonRedEmission.jpg",
+	["cannonBlueEmission"] = texturesLoadPath.."cannonBlueEmission.jpg",
 }
 
 --normal maps here

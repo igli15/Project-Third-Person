@@ -18,7 +18,8 @@ void Balloon::Load()
 	GameObject::Load();
 
 	AddComponent<MeshRenderer>()->SetMesh(AbstractGame::Instance()->GetResourceManager()->GetMesh("balloon"));
-	setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("whiteMat"));
+	setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("balloonMat"));
+
 
 	m_balloonComponent = AddComponent<BalloonComponent>();
 

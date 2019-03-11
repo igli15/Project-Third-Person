@@ -443,7 +443,7 @@ void GridComponent::SpawnBalloon()
 
 	Balloon* balloon = m_gameObject->GetWorld()->Instantiate<Balloon>();
 
-	balloon->transform->SetLocalPosition(randomTile->GetGameObject()->transform->WorldPosition());
+	balloon->transform->SetLocalPosition(randomTile->GetGameObject()->transform->WorldPosition() + glm::vec3(0,1,0));
 
 	randomTile->SetGridElement(balloon->GetBalloonComponent());
 }
