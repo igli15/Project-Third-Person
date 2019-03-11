@@ -8,6 +8,8 @@
 #include "MainWorld.h"
 #include "mge/core/WorldManager.h"
 #include "mge/core/PlayerPrefs.h"
+#include "mge/components/AudioSource.h"
+#include "ResolutionScreen.h"
 
 MenuUI::MenuUI()
 {
@@ -37,6 +39,10 @@ void MenuUI::Load()
 
 	m_menuBGSprite = AddComponent<UISpriteRenderer>();
 	m_menuBGSprite->ApplyTexture(m_menuBGTexture);
+
+	pressButton = AbstractGame::Instance()->GetResourceManager()->GetMusic("expmusic");
+	buttonSFX = AddComponent<AudioSource>();
+	buttonSFX->SetMusic(pressButton);
 	GameObject::Load();
 
 
@@ -54,6 +60,8 @@ void MenuUI::Start()
 	bool m_controlsLocked = false;
 	bool m_levelSelect = false;
 	float m_pressCD = 1.5f;
+
+//	buttonSFX->PlayMusic();
 }
 
 void MenuUI::Update(float pStep)
@@ -69,7 +77,6 @@ void MenuUI::Update(float pStep)
 			{
 				m_Selected = PlayGame;
 				std::cout << "show playGame Selected Sprite" << std::endl;
-
 				m_menuBGSprite->ApplyTexture(m_playSelectedTexture);
 
 			}
@@ -152,7 +159,9 @@ void MenuUI::OnHoldControls()
 				break;
 			case Level2:
 				PlayerPrefs::SetInt("LevelIndex", 2);
-				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
+				PlayerPrefs::SetFloat("IcePercentage", 0.7f);
+				PlayerPrefs::SetFloat("LavaPercentage", 0.3f);
+				AbstractGame::Instance()->GetWorldManager()->CreateWorld<ResolutionScreen>("ResolutionScreen");
 				m_pressCD = 1.5f;
 				break;
 			case LevelBackButton:

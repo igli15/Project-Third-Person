@@ -30,21 +30,25 @@ void ResolutionUI::Load()
 	m_resoLavaBar = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("resoLavaBar");
 	m_resoIceBar = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("resoIceBar");
 	m_scoreBarBGTexture = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("scoreBarBG");
-	m_scoreBarOverlayTexture = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("scoreBarOverlay");
+	// = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("scoreBarOverlay");
 
 	m_resoNone = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("resoNone");
 	m_resoReplay = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("resoReplay");
 	m_resoMenu = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("resoMenu");
 
-
+	m_timerFont = AbstractGame::Instance()->GetResourceManager()->GetSFMLFont("theBoldFont");
+	m_leftNumbers = AddComponent<TextComponent>();
+	m_leftNumberText = m_leftNumbers->CreateText(m_timerFont);
+	m_leftNumberText->setFillColor(sf::Color(224, 201, 166));
+	m_rightNumbers = AddComponent<TextComponent>();
+	m_rightNumberText = m_rightNumbers->CreateText(m_timerFont);
+	m_rightNumberText->setFillColor(sf::Color(224, 201, 166));
 	//BOTTOM PART
 	//BackgroundSprite
 	m_botResoBGSprite = AddComponent<UISpriteRenderer>();
 	m_botResoBGSprite->ApplyTexture(m_resoNone);
 
 	//add ScoreBar Overlay
-	m_scoreBarOverlaySprite = AddComponent<UISpriteRenderer>();
-	m_scoreBarOverlaySprite->ApplyTexture(m_scoreBarOverlayTexture);
 
 	//add Right BackgroundImage with Winner
 	m_topResoBGSprite = AddComponent<UISpriteRenderer>();
@@ -63,20 +67,48 @@ void ResolutionUI::Load()
 	//add ScoreBars
 	m_blazeScoreBarSprite = AddComponent<UISpriteRenderer>();
 	m_blazeScoreBarSprite->ApplyTexture(m_resoLavaBar);
+
 	m_blazeScoreBarSprite->GetSprite()->setOrigin(0, m_blazeScoreBarSprite->GetSprite()->getGlobalBounds().height/2);
 	m_blazeScoreBarSprite->GetSprite()->setPosition(451, 660);
+
+	m_leftNumberText->setFont(*m_timerFont);
+	m_leftNumberText->setCharacterSize(36);
+	std::string lavaPercentage = std::to_string((int)(PlayerPrefs::GetFloat("LavaPercentage")*100));
+	m_leftNumberText->setString("" + lavaPercentage +  "%");
+
+	sf::FloatRect textRectLava = m_leftNumberText->getLocalBounds();
+	m_leftNumberText->setOrigin(textRectLava.width / 2,0);
+
+	m_leftNumberText->setPosition(
+		462,
+		m_blazeScoreBarSprite->GetSprite()->getPosition().y -25
+	);
+
 	m_blazeScoreBarSprite->GetSprite()->setScale(PlayerPrefs::GetFloat("LavaPercentage"),1);
 
 	m_briskScoreBarSprite = AddComponent<UISpriteRenderer>();
 	m_briskScoreBarSprite->ApplyTexture(m_resoIceBar);
 	m_briskScoreBarSprite->GetSprite()->setOrigin(m_briskScoreBarSprite->GetSprite()->getGlobalBounds().width, m_briskScoreBarSprite->GetSprite()->getGlobalBounds().height / 2);
 	m_briskScoreBarSprite->GetSprite()->setPosition(451 + m_briskScoreBarSprite->GetSprite()->getGlobalBounds().width, 660);
+	
+	m_rightNumberText->setFont(*m_timerFont);
+	m_rightNumberText->setCharacterSize(36);
+	std::string icePercent = std::to_string((int)(PlayerPrefs::GetFloat("IcePercentage") * 100));
+	m_rightNumberText->setString("" + icePercent + "%");
+	
+	sf::FloatRect textRectIce = m_rightNumberText->getLocalBounds();
+	m_rightNumberText->setOrigin(textRectIce.width / 2, 0);
+
+	m_rightNumberText->setPosition(1455,m_blazeScoreBarSprite->GetSprite()->getPosition().y - 25);
+
 	m_briskScoreBarSprite->GetSprite()->setScale(PlayerPrefs::GetFloat("IcePercentage"), 1);
 
 
 	//add Background of scores
 	m_scoreBarBGSprite = AddComponent<UISpriteRenderer>();
 	m_scoreBarBGSprite->ApplyTexture(m_scoreBarBGTexture);
+
+
 	GameObject::Load();
 }
 
@@ -89,6 +121,7 @@ void ResolutionUI::Awake()
 void ResolutionUI::Start()
 {
 	GameObject::Start();
+	m_selectCD = 2.0f;
 }
 
 void ResolutionUI::Update(float pStep)
@@ -96,7 +129,7 @@ void ResolutionUI::Update(float pStep)
 	GameObject::Update(pStep);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		std::cout << "Show me replay sprite" << std::endl;
+		/*std::cout << "Show me replay sprite" << std::endl;*/
 		//show Play again Selected Sprite
 		m_Selected = PlayAgain;
 		m_botResoBGSprite->ApplyTexture(m_resoReplay);
@@ -104,7 +137,7 @@ void ResolutionUI::Update(float pStep)
 
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		std::cout << "Show me Menu sprite" << std::endl;
+		//std::cout << "Show me Menu sprite" << std::endl;
 
 		//show Menu selected sprite
 		m_Selected = MainMenu;
@@ -123,21 +156,22 @@ void ResolutionUI::OnDestroy()
 
 void ResolutionUI::OnSelected()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F) | sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
+	m_selectCD -= 0.03f;
+	if (m_selectCD <= 0)
 	{
-		switch (m_Selected)
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F) | sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
 		{
-		case PlayAgain:
-			//change later on to playerprefs of selected level (1|2)
-			
+			switch (m_Selected)
+			{
+			case PlayAgain:
 				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
-			
-			break;
-		case MainMenu:
-			AbstractGame::Instance()->GetWorldManager()->CreateWorld<MenuScene>("MenuScene");
-			break;
-		default:
-			break;
+				break;
+			case MainMenu:
+				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MenuScene>("MenuScene");
+				break;
+			default:
+				break;
+			}
 		}
 	}
 }

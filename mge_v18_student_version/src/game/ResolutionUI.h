@@ -45,5 +45,13 @@ private:
 	sf::Texture* m_scoreBarBGTexture;
 	sf::Texture* m_scoreBarOverlayTexture;
 
+	float m_selectCD;
+	TextComponent* m_leftNumbers;
+	TextComponent* m_rightNumbers;
+
+	sf::Text * m_leftNumberText;
+	sf::Text * m_rightNumberText;
+	sf::Font * m_timerFont;
+	
 };
 

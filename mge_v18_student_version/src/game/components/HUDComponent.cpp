@@ -27,7 +27,7 @@ void HUDComponent::UpdateInkStatus(float pCurrentInk, int pPlayer)
 	{
 		m_currentInkPOne = pCurrentInk;
 		float spriteScaleP1 = m_currentInkPOne / m_maxInk;
-		dynamic_cast<HUD*> (m_gameObject)->playerOneInkSpriteBar->GetSprite()->setScale(1, spriteScaleP1);
+		dynamic_cast<HUD*> (m_gameObject)->lavaInkSpriteBar->GetSprite()->setScale(spriteScaleP1, 1);
 		
 	}
 
@@ -35,7 +35,7 @@ void HUDComponent::UpdateInkStatus(float pCurrentInk, int pPlayer)
 	{
 		m_currentInkPTwo = pCurrentInk;
 		float spriteScaleP2 = m_currentInkPTwo / m_maxInk;
-		dynamic_cast<HUD*> (m_gameObject)->playerTwoInkSpriteBar->GetSprite()->setScale(1, spriteScaleP2);
+		dynamic_cast<HUD*> (m_gameObject)->iceInkSpriteBar->GetSprite()->setScale(spriteScaleP2, 1);
 	}
 	else {
 		std::cout << "Player with this number doesn't exit " << pPlayer << std::endl;

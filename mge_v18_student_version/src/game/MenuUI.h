@@ -6,6 +6,7 @@
 #include <SFML/System.hpp>
 #include "lua.h"
 #include "mge\components\UISpriteRenderer.h"
+#include "mge\components\AudioSource.h"
 class MenuUI : public GameObject
 {
 public:
@@ -45,6 +46,8 @@ private:
 	sf::Texture* m_levelSelected1;
 	sf::Texture* m_levelSelected2;
 	sf::Texture* m_levelSelectedBack;
+	sf::Music* pressButton;
 
+	AudioSource* buttonSFX;
 };
 

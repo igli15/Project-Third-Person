@@ -33,6 +33,7 @@ void AudioSource::SetMusic(sf::Music * music)
 	m_music = music;
 }
 
+
 AudioSource::AudioSource()
 {
     m_music = new sf::Music();
@@ -47,5 +48,10 @@ void AudioSource::SetVolume(const float &volume)
 {
 	if(m_music != nullptr) m_music->setVolume(volume);
     m_volume = volume;
+}
+
+void AudioSource::SetMusicPitch(sf::Music * music, float pPitch)
+{
+	if (m_music != nullptr) m_music->setPitch(pPitch);
 }
 

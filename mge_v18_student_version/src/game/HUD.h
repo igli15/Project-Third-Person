@@ -21,38 +21,45 @@ public:
 	virtual void OnDestroy() override;
 	float GetMirroredPostionX(float xPosition, UISpriteRenderer* sprite);
 	//Sprites
-	UISpriteRenderer* playerOneInkSpriteText;
-	UISpriteRenderer*playerTwoInkSpriteText;
-	UISpriteRenderer*playerOneInkSpriteBar;
-	UISpriteRenderer*playerTwoInkSpriteBar;
+	UISpriteRenderer*lavaInkSpriteBar;
+	UISpriteRenderer*iceInkSpriteBar;
 	UISpriteRenderer* inkUIOverlay;
 	UISpriteRenderer* inkUIBackground;
-	TextComponent * leftNumbers;
-	TextComponent * colon;
-	TextComponent * rightNumbers;
+	UISpriteRenderer* percentLavaBar;
+	UISpriteRenderer* percentIceBar;
 
-	sf::Text * leftNumberText;
-	sf::Text * rightNumberText;
-	sf::Text * colonText;
+	TextComponent * timerNumber;
+	TextComponent * iceRespawnText;
+	TextComponent * lavaRespawnText;
+
+	sf::Text * timerText;
+	sf::Text * lavaRespawnTimer;
+	sf::Text * iceRespawnTimer;
 
 
 	float icePercantage = 0;
 	float lavaPercatange = 0;
 
 	static HUDComponent* GetHudComponent();
+	void SetRespawnTime(int pPlayer, float pRespawnTime);
+	void SetPlayerTilePercentage(int pPlayer, float pPercent);
 private:
-	sf::Texture * m_playerOneInkText;
-	sf::Texture * m_playerTwoInkText;
-	sf::Texture * m_inkBarPlayerOne;
-	sf::Texture * m_inkBarPlayerTwo;
+
+	sf::Texture * m_inkBarLava;
+	sf::Texture * m_inkBarIce;
 	sf::Texture * m_inkUIOverlay;
 	sf::Texture * m_inkUIBackground;
+	sf::Texture * m_percentLavaBarTexture;
+	sf::Texture * m_percentIceBarTexture;
+
 	sf::Font * m_timerFont;
 	sf::Clock m_gameClock;
-	int m_gameLength;
-	std::string m_time;
-
+	float m_gameLength;
+	bool lavaDead = false;
+	bool iceDead = false;
+	float m_time;
+	float m_lavaRespawnTime;
+	float m_iceRespawnTime;
 	static HUDComponent* m_hudComponent;
-
 };
 

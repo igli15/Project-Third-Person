@@ -130,10 +130,12 @@ sfmlTextures =
 	["brickTex"] = texturesLoadPath.."bricks.jpg",
 	["playerOneInkText"] = texturesLoadPath.."playerInkText.png",
 	["playerTwoInkText"] = texturesLoadPath.."playerInkText.png",
-	["inkPlayerOne"] = texturesLoadPath.."iceFillBar.png",
-	["inkPlayerTwo"] = texturesLoadPath.."lavaFillBar.png",
+	["iceFillBar"] = texturesLoadPath.."iceFillBar.png",
+	["lavaFillBar"] = texturesLoadPath.."lavaFillBar.png",
 	["inkUIOverlay"] = texturesLoadPath.."inkUIOverlay.png",
 	["inkUIBackground"] = texturesLoadPath.."inkUIBackground.png",
+	["percentageLavaBar"] = texturesLoadPath.."percentageLavaBar.png",
+	["percentageIceBar"] = texturesLoadPath.."percentageIceBar.png",
 
 	--MENU
 	["menuBG"] = texturesLoadPath.."background.png",

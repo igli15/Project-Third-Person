@@ -73,7 +73,7 @@ void PlayerDataComponent::OnDeath()
 	//EXPLODE PLAYER in enemy color
 	auto tiles = m_levelGrid->GetTilesInARange(GetGameObject()->transform->WorldPosition(),5,5);
 	TileType enemyTileType;
-
+	 
 	if (m_tileMaterial == TileType::ICE)
 	{
 		enemyTileType = TileType::LAVA;
@@ -93,6 +93,9 @@ void PlayerDataComponent::OnDeath()
 	m_respawnClock.restart();
 	m_isDead = true;
 	m_penaltyTime = m_levelGrid->GetTileCount(m_playerNumber == 1 ? TileType::LAVA : TileType::ICE)*m_maxPenaltyTime/100.0f;
+
+	HUD* hud=dynamic_cast<HUD*>(HUD::GetHudComponent()->GetGameObject());
+	hud->SetRespawnTime(m_playerNumber, m_penaltyTime);
 }
 
 void PlayerDataComponent::Respawn()
