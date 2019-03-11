@@ -76,7 +76,7 @@ void MenuUI::Update(float pStep)
 			{
 				if (m_Selected != PlayGame)
 				{
-					m_selectingButton->PlayOneShotSound("selectingButton");
+				//	m_selectingButton->PlayOneShotSound("selectingButton");
 					m_menuBGSprite->ApplyTexture(m_playSelectedTexture);
 				}
 				m_Selected = PlayGame;
