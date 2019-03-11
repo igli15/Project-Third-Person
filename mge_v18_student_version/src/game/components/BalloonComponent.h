@@ -20,7 +20,7 @@ public:
 
 	virtual void OnPainted(PlayerDataComponent* playerData) override;
 
-private:
+protected:
 	bool m_exploded = false;
 
 
