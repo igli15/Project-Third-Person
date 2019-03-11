@@ -6,6 +6,8 @@
 #include "game/components/BalloonComponent.h"
 #include "game/components/GridElement.h"
 #include "mge/util/Utils.h"
+#include "game\HUD.h"
+#include "game/components/HUDComponent.h"
 
 GridComponent::GridComponent()
 {
@@ -382,43 +384,63 @@ std::vector<TileComponent*> GridComponent::GetTilesInARange(TileComponent* tile,
 
 void GridComponent::IncreaseTileCount(TileType type)
 {
+	HUD* hud = dynamic_cast<HUD*>(HUD::GetHudComponent()->GetGameObject());
 	if (type == TileType::ICE)
 	{
 		m_iceTileCount += 1;
+		hud->SetPlayerTilePercentage(2, GetTileCount(ICE));
 	}
 	else if (type == TileType::LAVA)
 	{
 		m_lavaTileCount += 1;
+		hud->SetPlayerTilePercentage(1, GetTileCount(LAVA));
 	}
 	std::cout << std::endl << "STATS: " << std::endl;
-	std::cout << "ICE    : " << m_iceTileCount<< std::endl;
-	std::cout << "LAVA   : " <<m_lavaTileCount << std::endl;
-	std::cout << "NEUTRAL: " <<(m_width*m_height)-m_iceTileCount-m_lavaTileCount<< std::endl;
+	std::cout << "ICE    : " << m_iceTileCount << std::endl;
+	std::cout << "LAVA   : " << m_lavaTileCount << std::endl;
+	std::cout << "NEUTRAL: " << (m_width*m_height)-m_iceTileCount - m_lavaTileCount << std::endl;
+
 }
 
 void GridComponent::DecreaseTileCount(TileType type)
 {
+	HUD* hud = dynamic_cast<HUD*>(HUD::GetHudComponent()->GetGameObject());
 	if (type == TileType::ICE)
 	{
 		m_iceTileCount -= 1;
+		hud->SetPlayerTilePercentage(2, GetTileCount(ICE));
 	}
 	else if (type == TileType::LAVA)
 	{
 		m_lavaTileCount -= 1;
+		hud->SetPlayerTilePercentage(1, GetTileCount(LAVA));
 	}
 }
 
 float GridComponent::GetTileCount(TileType type)
 {
+	float combinedCount = m_iceTileCount + m_lavaTileCount;
 	if (type == TileType::ICE)
 	{
-		return (float)m_iceTileCount/(m_width*m_height) *100.0f;
+		return m_iceTileCount / ((float)combinedCount) *100.0f;
 	}
 	else if (type == TileType::LAVA)
 	{
-		return(float)m_lavaTileCount / (m_width*m_height) *100.0f;
+		return m_lavaTileCount / ((float)combinedCount) *100.0f;
 	}
+
 }
+//float GridComponent::GetTileCount(TileType type)
+//{
+//	if (type == TileType::ICE)
+//	{
+//		return (float)m_iceTileCount/(m_width*m_height) *100.0f;
+//	}
+//	else if (type == TileType::LAVA)
+//	{
+//		return(float)m_lavaTileCount / (m_width*m_height) *100.0f;
+//	}
+//}
 
 void GridComponent::SpawnBalloon()
 {

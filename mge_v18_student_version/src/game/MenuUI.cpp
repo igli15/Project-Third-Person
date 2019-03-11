@@ -159,9 +159,7 @@ void MenuUI::OnHoldControls()
 				break;
 			case Level2:
 				PlayerPrefs::SetInt("LevelIndex", 2);
-				PlayerPrefs::SetFloat("IcePercentage", 0.7f);
-				PlayerPrefs::SetFloat("LavaPercentage", 0.3f);
-				AbstractGame::Instance()->GetWorldManager()->CreateWorld<ResolutionScreen>("ResolutionScreen");
+				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
 				m_pressCD = 1.5f;
 				break;
 			case LevelBackButton:
