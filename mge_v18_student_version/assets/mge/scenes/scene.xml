@@ -74,12 +74,6 @@
         <Components />
       </GameObject>
     </GameObject>
-    <GameObject name="rocks" position="(-14.1096, 6.1364, 2.8753)" rotation="(0.0000, -0.9995, 0.0000, -0.0308)" scale="(1.3844, 1.3844, 1.3844)">
-      <Components />
-      <GameObject name="Rocks" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="rocks">
-        <Components />
-      </GameObject>
-    </GameObject>
     <GameObject name="bigTemple" position="(1.2700, 6.0700, 2.8400)" rotation="(0.0000, 1.0000, 0.0000, 0.0000)" scale="(1.2000, 1.2000, 1.2000)">
       <Components />
       <GameObject name="bigTemple:bigTemple" position="(0.0000, 0.0000, -0.8400)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="bigTemple">
@@ -97,13 +91,9 @@
     <GameObject name="sidePillar" position="(-12.7800, 7.2864, -3.5300)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
       <Components />
       <GameObject name="pillar:pillar" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="sidePillar">
-        <Components />
-      </GameObject>
-    </GameObject>
-    <GameObject name="cornerPillar" position="(-12.1406, 7.5864, 0.5543)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="corner:corner" position="(0.0000, -0.0100, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
-        <Components />
+        <Components>
+          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
       </GameObject>
     </GameObject>
     <GameObject name="bush1" position="(14.5700, 8.2700, -7.3147)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
@@ -149,7 +139,9 @@
     <GameObject name="cornerPillar (1)" position="(14.8554, 7.5864, 0.4873)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
       <Components />
       <GameObject name="corner:corner" position="(0.0000, -0.0100, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
-        <Components />
+        <Components>
+          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
       </GameObject>
     </GameObject>
     <GameObject name="sideTemple" position="(-11.1596, 7.1964, -14.4847)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
@@ -157,6 +149,14 @@
       <GameObject name="sideTemple (1)" position="(-3.0500, 1.1000, 2.9700)" rotation="(0.0000, -0.7071, 0.0000, -0.7071)" scale="(1.0000, 1.0000, 1.0000)" mesh="sideTemple">
         <Components>
           <TextureMaterial materialName="sideTemple2" shininess="16" emissionScale="0.8" diffuseTexture="sideTempleBlueDiffuse" specularTexture="sideTempleBlueDiffuse" emissionTexture="sideTempleBlueDiffuse" normalTexture="sideTempleBlueDiffuse" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="cornerPillar (2)" position="(-12.1400, 7.5864, 0.4873)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="corner:corner" position="(0.0000, -0.0100, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
+        <Components>
+          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
         </Components>
       </GameObject>
     </GameObject>
