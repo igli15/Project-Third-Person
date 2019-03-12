@@ -111,6 +111,7 @@ void CannonComponent::ShootInFacingDir(PlayerDataComponent* playerData)
 
 	for (int i = 0; i < tiles.size(); i++)
 	{
+		tiles[i]->ActivateGridElement(playerData);
 		tiles[i]->PaintTile(playerData->MatType());
 	}
 }

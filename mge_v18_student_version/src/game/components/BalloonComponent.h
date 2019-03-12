@@ -14,13 +14,13 @@ public:
 
 	void Awake();
 	
-	void Explode(TileType type);
+	void Explode(PlayerDataComponent* playerData);
 
 	void OnDestroy() override;
 
 	virtual void OnPainted(PlayerDataComponent* playerData) override;
 
-private:
+protected:
 	bool m_exploded = false;
 
 
