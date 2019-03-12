@@ -8,6 +8,7 @@
 #include "game/components/GridComponent.h"
 #include "game/MainWorld.h"
 
+
 PlayerDataComponent::PlayerDataComponent()
 {
 }
@@ -30,15 +31,36 @@ void PlayerDataComponent::Start()
 
 void PlayerDataComponent::Update(float timeStep)
 {
-	if(m_isDead) std::cout << "time left: " << (m_respawnTime + m_penaltyTime) - m_respawnClock.getElapsedTime().asSeconds() << std::endl;
+	
+	if (m_isDead)
+	{
+		m_tween->onStep([this](float x, float y, float z) {tweenedVector.x = x; tweenedVector.y = y; tweenedVector.z = z; return false; });
+		
+
+		//When animation is finsihed
+		if (m_tween->progress() >= 1)
+		{
+			//Remove player from the board
+			m_gameObject->transform->SetLocalPosition(glm::vec3(999, 0, 999));
+			
+		}
+		else
+		{
+			m_gameObject->transform->SetLocalPosition(tweenedVector);
+		}
+		std::cout << "VECTOR " << tweenedVector << std::endl;
+		std::cout << "Progress " << m_tween->progress() << std::endl;
+	}
 	if (m_isDead && m_respawnClock.getElapsedTime().asSeconds()>=(m_respawnTime +m_penaltyTime ))
 	{
+		Tweener::DeleteTween<float>(m_tween);
 		Respawn();
 	}
 }
 
 void PlayerDataComponent::OnCollision(CollisionInfo * collisionInfo)
 {
+	return; //LEGACY CODE
 	//Only objects with rigidBody are players
 	if (collisionInfo->collider->getName() == "player")
 	{
@@ -74,7 +96,6 @@ void PlayerDataComponent::OnDeath()
 	auto tiles = m_levelGrid->GetTilesInARange(GetGameObject()->transform->WorldPosition(),m_explosionWidth,m_explosionHeight);
 	TileType enemyTileType;
 
-	m_gameObject->transform->SetLocalPosition(glm::vec3(999, 0, 999));
 
 	if (m_tileMaterial == TileType::ICE)
 	{
@@ -97,6 +118,7 @@ void PlayerDataComponent::OnDeath()
 	
 	HUD* hud = dynamic_cast<HUD*>(HUD::GetHudComponent()->GetGameObject());
 	hud->SetRespawnTime(m_playerNumber, m_penaltyTime);
+	StartDeathAnimation();
 }
 
 void PlayerDataComponent::Respawn()
@@ -169,4 +191,16 @@ GameObject * PlayerDataComponent::GetEnemy()
 	{
 		return dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetPlayer(0);
 	}
+}
+
+void PlayerDataComponent::StartDeathAnimation()
+{
+	glm::vec3 currentPos = m_gameObject->transform->LocalPosition();
+	float duration = 0.5f;
+
+	 m_tween= Tweener::GenerateTween<float>(
+		 currentPos.x, currentPos.x, //X
+		 currentPos.y, currentPos.y-4, //Y
+		 currentPos.z, currentPos.z, //Z
+		 duration*1000, duration * 1000, duration * 1000);
 }

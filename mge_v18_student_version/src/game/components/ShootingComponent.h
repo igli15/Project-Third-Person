@@ -48,6 +48,8 @@ private:
 	float m_reloadTime1 = 0.5f;
 	float m_relaodTime2 = 1;
 
+
+
 	int m_inkMaxLevel = 100;
 	float m_inkLevel = 0;
 
