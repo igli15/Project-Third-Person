@@ -176,17 +176,20 @@ sfmlFonts =
 --Music are big chunks of memory that play music. This is used for music that loops or that is large
 sounds = 
 {
-	--["balloonExplode"] = musicLoadPath.."BalloonExplode.wav",
-	--["cannonShot"] = musicLoadPath.."CanonShot.wav",
-	--["iceAttack"] = musicLoadPath.."IceAttack.wav",
+	["balloonExplode"] = musicLoadPath.."BalloonExplode.wav",
+	["cannonShot"] = musicLoadPath.."CanonShot.wav",
+	["iceAttack"] = musicLoadPath.."IceAttack.wav",
 	--["iceCharge"] = musicLoadPath.."iceCharge.wav",
 	["iceDeath"] = musicLoadPath.."IceDeath.wav",
-	--["lavaAttack"] = musicLoadPath.."LavaAttack.wav",
+	["lavaAttack"] = musicLoadPath.."LavaAttack.wav",
 	--["lavaCharge"] = musicLoadPath.."LavaCharge.wav",
-	--["lavaDeath"] = musicLoadPath.."LavaDeath.wav",
+	["lavaDeath"] = musicLoadPath.."LavaDeath.wav",
 	--["noAmmo"] = musicLoadPath.."Outofammo.wav",
-	--["refillSound"] = musicLoadPath.."Refill.wav",
-	--["playerRespawnSound"] = musicLoadPath.."Respawn.wav",
+	["refillSound"] = musicLoadPath.."refilling.wav",
+	
+	["playerRespawnSound"] = musicLoadPath.."Respawn.wav",
+	["briskWins"] = musicLoadPath.."briskWins.wav",
+	["blazeWins"] = musicLoadPath.."blazeWins.wav",
 
 	["pressingButton"] = musicLoadPath.."PressingButton.wav",
 	["selectingButton"] = musicLoadPath.."SelectingButtons.wav",

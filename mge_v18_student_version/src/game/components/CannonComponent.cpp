@@ -2,6 +2,10 @@
 #include "GridComponent.h"
 #include "mge/core/GameObject.hpp"
 #include "PlayerDataComponent.h"
+#include "mge/components/AudioSource.h"
+#include <SFML\Audio.hpp>
+#include "mge/core/AbstractGame.hpp"
+#include "mge/core/ResourceManager.h"
 
 CannonComponent::CannonComponent()
 {
@@ -78,13 +82,18 @@ void CannonComponent::Parse(rapidxml::xml_node<>* compNode)
 void CannonComponent::Start()
 {
 	m_grid->GetTileOnPos(m_gameObject->transform->WorldPosition())->SetGridElement(this);
+	m_initMusic = AbstractGame::Instance()->GetResourceManager()->GetMusic("");
+	m_audioSource = m_gameObject->AddComponent<AudioSource>();
+	m_audioSource->SetMusic(m_initMusic);
 }
 
 void CannonComponent::ShootInFacingDir(PlayerDataComponent* playerData)
 {
 	bool horizontal;
 	bool positive;
-
+	
+	m_audioSource->PlayOneShotSound("cannonShot");
+	
 	switch (m_facingDir)
 	{
 	case Direction::UP:

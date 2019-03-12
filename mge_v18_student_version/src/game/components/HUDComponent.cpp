@@ -3,6 +3,8 @@
 #include "mge\components\UISpriteRenderer.h"
 #include "game\HUD.h"
 #include <iostream>
+#include "mge\components\AudioSource.h"
+#include "mge/core/AbstractGame.hpp"
 
 HUDComponent::HUDComponent()
 {
@@ -19,15 +21,18 @@ void HUDComponent::Start()
 {
 	m_maxInk = 100;
 	SetMaxInk(m_maxInk);
+	
+	hud = dynamic_cast<HUD*> (m_gameObject);
 }
 
 void HUDComponent::UpdateInkStatus(float pCurrentInk, int pPlayer)
 {
 	if (pPlayer == 1)
 	{
+		
 		m_currentInkPOne = pCurrentInk;
 		float spriteScaleP1 = m_currentInkPOne / m_maxInk;
-		dynamic_cast<HUD*> (m_gameObject)->lavaInkSpriteBar->GetSprite()->setScale(spriteScaleP1, 1);
+		hud->lavaInkSpriteBar->GetSprite()->setScale(spriteScaleP1, 1);
 		
 	}
 
@@ -35,7 +40,7 @@ void HUDComponent::UpdateInkStatus(float pCurrentInk, int pPlayer)
 	{
 		m_currentInkPTwo = pCurrentInk;
 		float spriteScaleP2 = m_currentInkPTwo / m_maxInk;
-		dynamic_cast<HUD*> (m_gameObject)->iceInkSpriteBar->GetSprite()->setScale(spriteScaleP2, 1);
+		hud->iceInkSpriteBar->GetSprite()->setScale(spriteScaleP2, 1);
 	}
 	else {
 		std::cout << "Player with this number doesn't exit " << pPlayer << std::endl;

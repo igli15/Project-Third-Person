@@ -44,6 +44,7 @@ public:
 	static HUDComponent* GetHudComponent();
 	void SetRespawnTime(int pPlayer, float pRespawnTime);
 	void SetPlayerTilePercentage(int pPlayer, float pPercent);
+	AudioSource* m_audioSource;
 private:
 
 	sf::Texture * m_inkBarLava;
@@ -63,7 +64,6 @@ private:
 	float m_iceRespawnTime;
 	static HUDComponent* m_hudComponent;
 
-	AudioSource* m_audioSource;
 	sf::Music* m_backgroundMusic;
 	sf::Sound* m_counter;
 };

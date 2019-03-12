@@ -99,7 +99,6 @@ void HUD::Load()
 	m_audioSource = AddComponent<AudioSource>();
 	m_audioSource->SetMusic(m_backgroundMusic);
 
-
 }
 
 void HUD::Awake()
@@ -110,10 +109,11 @@ void HUD::Awake()
 void HUD::Start()
 {
 	GameObject::Start();
-	m_gameLength = 130;
+	m_gameLength = 121;
 	m_gameClock.restart();
 	SetRespawnTime(1, 22);
 	SetRespawnTime(2, 22);
+	m_audioSource->SetVolume(90);
 	m_audioSource->PlayMusic();
 }
 
@@ -147,6 +147,7 @@ void HUD::Update(float pStep)
 		lavaRespawnTimer->setPosition(826, 1035);
 		if (m_lavaRespawnTime <= 0)
 		{
+			m_audioSource->PlayOneShotSound("playerRespawnSound");
 			lavaRespawnTimer->setString("");
 			lavaDead = false;
 		}
@@ -160,6 +161,7 @@ void HUD::Update(float pStep)
 		iceRespawnTimer->setPosition(1085, 1035);
 		if (m_iceRespawnTime <= 0)
 		{
+			m_audioSource->PlayOneShotSound("playerRespawnSound");
 			iceRespawnTimer->setString("");
 			iceDead = false;
 		}
@@ -189,14 +191,14 @@ void HUD::SetRespawnTime(int pPlayer, float pRespawnTime)
 	if (pPlayer == 1)
 	{
 		m_audioSource->PlayOneShotSound("iceDeath");
-		m_lavaRespawnTime = pRespawnTime + 2.3f;
+		m_lavaRespawnTime = pRespawnTime + 1.9f;
 		lavaRespawnTimer->setString("" + std::to_string((int)pRespawnTime));
 		lavaDead = true;
 	}
 	if (pPlayer == 2)
 	{
-		m_audioSource->PlayOneShotSound("iceDeath");
-		m_iceRespawnTime = pRespawnTime + 2.3f;
+		m_audioSource->PlayOneShotSound("lavaDeath");
+		m_iceRespawnTime = pRespawnTime + 1.9f;
 		iceRespawnTimer->setString("" + std::to_string((int)pRespawnTime));
 		iceDead = true;
 	}
@@ -208,14 +210,15 @@ void HUD::SetPlayerTilePercentage(int pPlayer, float pPercent)
 	{
 		percentLavaBar->GetSprite()->setScale(pPercent/100.0f, 1);
 		percentIceBar->GetSprite()->setScale(1-(pPercent / 100.0f), 1);
-		m_audioSource->PlayOneShotSound("iceDeath");
+		m_audioSource->PlayOneShotSound("lavaAttack");
+		
 	}
 
 	if (pPlayer == 2)
 	{
 		percentIceBar->GetSprite()->setScale(pPercent / 100.0f, 1);
 		percentLavaBar->GetSprite()->setScale(1 - (pPercent / 100.0f), 1);
-		m_audioSource->PlayOneShotSound("iceDeath");
+		m_audioSource->PlayOneShotSound("iceAttack");
 	}
 }
 

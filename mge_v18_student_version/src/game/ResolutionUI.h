@@ -6,6 +6,11 @@
 #include <SFML/System.hpp>
 #include "lua.h"
 #include "mge\components\UISpriteRenderer.h"
+#include "mge/components/AudioSource.h"
+#include <SFML\Audio.hpp>
+#include "mge/core/AbstractGame.hpp"
+#include "mge/core/ResourceManager.h"
+#include "mge/core/GameObject.hpp"
 
 class ResolutionUI : public GameObject
 {
@@ -53,5 +58,7 @@ private:
 	sf::Text * m_rightNumberText;
 	sf::Font * m_timerFont;
 	
+	AudioSource* m_audioSource;
+	sf::Music * m_initMusic;
 };
 

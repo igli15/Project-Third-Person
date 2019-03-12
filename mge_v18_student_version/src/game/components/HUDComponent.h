@@ -3,6 +3,7 @@
 #include "mge\components\CanvasComponent.h"
 #include "mge\components\UISpriteRenderer.h"
 #include "game\HUD.h"
+#include "mge\components\AudioSource.h"
 
 class HUDComponent : public Component
 {
@@ -19,5 +20,11 @@ private:
 	float m_currentInkPTwo;
 	float m_maxInk;
 	float m_tileCoverPercentage;
+
+	HUD* hud;
+
+	AudioSource* m_audioSource;
+	sf::Music * m_initMusic;
+	float m_timeTillPlay = 1.6f;
 };
 
