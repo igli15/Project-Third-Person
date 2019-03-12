@@ -48,12 +48,9 @@ private:
 	sf::Texture* m_levelSelected2;
 	sf::Texture* m_levelSelectedBack;
 
-	sf::Music* m_menuMusicSF;
 	AudioSource* m_menuMusic;
 
-	AudioSource* m_selectingButton;
-
-	AudioSource* m_pressingButton;
+	sf::Music* m_menuMusicSF;
 
 
 };

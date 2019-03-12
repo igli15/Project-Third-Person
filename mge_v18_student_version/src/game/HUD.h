@@ -3,6 +3,7 @@
 #include "mge\components\CanvasComponent.h"
 #include "mge\components\UISpriteRenderer.h"
 #include "mge\components\TextComponent.h"
+#include "mge/components/AudioSource.h"
 #include <SFML/System.hpp>
 #include "lua.h"
 //include uispriterenderer
@@ -61,5 +62,9 @@ private:
 	float m_lavaRespawnTime;
 	float m_iceRespawnTime;
 	static HUDComponent* m_hudComponent;
+
+	AudioSource* m_audioSource;
+	sf::Music* m_backgroundMusic;
+	sf::Sound* m_counter;
 };
 

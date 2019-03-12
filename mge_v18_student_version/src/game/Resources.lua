@@ -180,7 +180,7 @@ sounds =
 	--["cannonShot"] = musicLoadPath.."CanonShot.wav",
 	--["iceAttack"] = musicLoadPath.."IceAttack.wav",
 	--["iceCharge"] = musicLoadPath.."iceCharge.wav",
-	--["iceDeath"] = musicLoadPath.."IceDeath.wav",
+	["iceDeath"] = musicLoadPath.."IceDeath.wav",
 	--["lavaAttack"] = musicLoadPath.."LavaAttack.wav",
 	--["lavaCharge"] = musicLoadPath.."LavaCharge.wav",
 	--["lavaDeath"] = musicLoadPath.."LavaDeath.wav",
@@ -197,5 +197,5 @@ musics =
 {
 	--["expmusic"] = musicLoadPath.."expmusic.wav",
 	["menuMusic"] = musicLoadPath.."MenuMusic.wav",
-	--["levelMusic"] = musicLoadPath.."Music2Minutes.wav",
+	["levelMusic"] = musicLoadPath.."Music2Minutes.wav",
 }

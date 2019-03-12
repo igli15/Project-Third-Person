@@ -93,6 +93,13 @@ void HUD::Load()
 	percentIceBar->GetSprite()->setPosition(1034, 965);
 	percentIceBar->GetSprite()->setOrigin(percentIceBar->GetSprite()->getGlobalBounds().width, 0);
 	percentIceBar->GetSprite()->setScale(0.5f, 1);
+
+	//--------------------------------MUSIC
+	m_backgroundMusic = AbstractGame::Instance()->GetResourceManager()->GetMusic("levelMusic");
+	m_audioSource = AddComponent<AudioSource>();
+	m_audioSource->SetMusic(m_backgroundMusic);
+
+
 }
 
 void HUD::Awake()
@@ -107,7 +114,7 @@ void HUD::Start()
 	m_gameClock.restart();
 	SetRespawnTime(1, 22);
 	SetRespawnTime(2, 22);
-
+	m_audioSource->PlayMusic();
 }
 
 void HUD::Update(float pStep)
@@ -124,7 +131,7 @@ void HUD::Update(float pStep)
 	{
 		PlayerPrefs::SetFloat("IcePercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTilePercantage(TileType::ICE)/100);
 		PlayerPrefs::SetFloat("LavaPercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTilePercantage(TileType::LAVA)/100);
-
+		m_audioSource->StopMusic();
 
 		AbstractGame::Instance()->GetWorldManager()->CreateWorld<ResolutionScreen>("ResolutionScreen");
 		//covered tile function
@@ -181,12 +188,14 @@ void HUD::SetRespawnTime(int pPlayer, float pRespawnTime)
 {
 	if (pPlayer == 1)
 	{
+		m_audioSource->PlayOneShotSound("iceDeath");
 		m_lavaRespawnTime = pRespawnTime + 2.3f;
 		lavaRespawnTimer->setString("" + std::to_string((int)pRespawnTime));
 		lavaDead = true;
 	}
 	if (pPlayer == 2)
 	{
+		m_audioSource->PlayOneShotSound("iceDeath");
 		m_iceRespawnTime = pRespawnTime + 2.3f;
 		iceRespawnTimer->setString("" + std::to_string((int)pRespawnTime));
 		iceDead = true;
@@ -199,12 +208,14 @@ void HUD::SetPlayerTilePercentage(int pPlayer, float pPercent)
 	{
 		percentLavaBar->GetSprite()->setScale(pPercent/100.0f, 1);
 		percentIceBar->GetSprite()->setScale(1-(pPercent / 100.0f), 1);
+		m_audioSource->PlayOneShotSound("iceDeath");
 	}
 
 	if (pPlayer == 2)
 	{
 		percentIceBar->GetSprite()->setScale(pPercent / 100.0f, 1);
 		percentLavaBar->GetSprite()->setScale(1 - (pPercent / 100.0f), 1);
+		m_audioSource->PlayOneShotSound("iceDeath");
 	}
 }
 
