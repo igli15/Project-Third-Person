@@ -43,7 +43,7 @@ private:
 	bool m_isDead = false;
 	float m_respawnTime = 2;
 	float m_penaltyTime = 0;
-	float m_penaltyTimePerTile = 0.2f;
+	float m_penaltyTimePerTile = 0.05f;
 
 	float m_explosionWidth = 6;
 	float m_explosionHeight = 6;

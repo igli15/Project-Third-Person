@@ -82,7 +82,7 @@ void CannonComponent::Parse(rapidxml::xml_node<>* compNode)
 void CannonComponent::Start()
 {
 	m_grid->GetTileOnPos(m_gameObject->transform->WorldPosition())->SetGridElement(this);
-	m_initMusic = AbstractGame::Instance()->GetResourceManager()->GetMusic("");
+	m_initMusic = AbstractGame::Instance()->GetResourceManager()->GetMusic("menuMusic");
 	m_audioSource = m_gameObject->AddComponent<AudioSource>();
 	m_audioSource->SetMusic(m_initMusic);
 }

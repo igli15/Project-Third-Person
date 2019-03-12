@@ -19,6 +19,7 @@ meshes =
 	["refillStation"] = meshesLoadPath.."cube_smooth.obj",
 	["balloon"] = meshesLoadPath.."Balloon.obj",
 	["cannon"] = meshesLoadPath.."cannon.obj",
+	["refillStation"] = meshesLoadPath.."refillStation.obj",
 
 
 	--walls
@@ -38,7 +39,7 @@ meshes =
 	["bush1"] = meshesLoadPath.. "BackgroundModels/bush1.obj",
 	["bush2"] = meshesLoadPath.. "BackgroundModels/bush2.obj",
 	["cornerPillar"] = meshesLoadPath.. "BackgroundModels/cornerPillar.obj",
-	["refillPoint"] = meshesLoadPath.. "BackgroundModels/refillPoint.obj",
+	--["refillPoint"] = meshesLoadPath.. "BackgroundModels/refillPoint.obj",
 	--["rocks"] = meshesLoadPath.. "BackgroundModels/rocks.obj",
 	["sidePillar"] = meshesLoadPath.. "BackgroundModels/sidePillar.obj",
 	["sideTemple"] = meshesLoadPath.. "BackgroundModels/sideTemple.obj",

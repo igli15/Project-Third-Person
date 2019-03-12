@@ -32,10 +32,9 @@ void UISpriteRenderer::DrawSprite(sf::RenderWindow* window)
 
 	glActiveTexture(GL_TEXTURE0);
 
-	if (m_sprite != nullptr)
-	{	
-		window->pushGLStates();
-		window->draw(*m_sprite);
+	if (m_sprite!=nulptr)
+		
+		windw>uhLtts)		window->draw(*m_sprite);
 		window->popGLStates();
 	}
 	//Custom rendering
