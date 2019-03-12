@@ -467,7 +467,6 @@ void GridComponent::SpawnBalloon()
 	Balloon* balloon = m_gameObject->GetWorld()->Instantiate<Balloon>();
 
 	balloon->transform->SetLocalPosition(randomTile->GetGameObject()->transform->WorldPosition() + glm::vec3(0,1,0));
-	balloon->transform->SetScale(glm::vec3(0.1f,0.1f,0.1f));
 	balloon->ScaleUp();
 	randomTile->SetGridElement(balloon->GetBalloonComponent());
 }

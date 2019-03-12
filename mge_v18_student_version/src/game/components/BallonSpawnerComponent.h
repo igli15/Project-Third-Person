@@ -4,6 +4,7 @@
 #include "SFML/Window.hpp"
 
 class TileComponent;
+class Balloon;
 
 class BallonSpawnerComponent : public XMLComponent
 {
@@ -18,7 +19,7 @@ public:
 
 	void OnDestroy() override;
 
-	void SpawnBalloon();
+	Balloon* SpawnBalloon();
 
 	// Inherited via XMLComponent
 	virtual void Parse(rapidxml::xml_node<>* compNode) override;

@@ -1702,6 +1702,7 @@
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
           <TileComponent TileType="DEFAULT" isPaintable="True" />
+          <BalloonSpawner spawnOnStart="True" spawnTime="5" />
         </Components>
       </GameObject>
     </GameObject>
