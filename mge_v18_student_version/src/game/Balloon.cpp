@@ -43,7 +43,7 @@ void Balloon::OnDestroy()
 
 void Balloon::ScaleUp()
 {
-	m_scaleTween = Tweener::GenerateTween<float>(0, 1, 0, 1, 0, 1, 1000, 1000, 1000);
+	m_scaleTween = Tweener::GenerateTween<float>(0, 1, 0, 1, 0, 1, 1500, 1500, 1500);
 	*m_scaleTween = m_scaleTween->via(tweeny::easing::bounceOut);
 }
 
