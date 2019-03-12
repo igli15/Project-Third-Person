@@ -3,6 +3,10 @@
 #include "game/components/GridComponent.h"
 #include "game/components/PlayerDataComponent.h"
 #include "mge/core/GameObject.hpp"
+#include "mge/components/AudioSource.h"
+#include <SFML\Audio.hpp>
+#include "mge/core/AbstractGame.hpp"
+#include "mge/core/ResourceManager.h"
 
 BalloonComponent::BalloonComponent()
 {
@@ -21,12 +25,16 @@ void BalloonComponent::Parse(rapidxml::xml_node<>* compNode)
 void BalloonComponent::Awake()
 {
 	Component::Awake();
+	m_initMusic = AbstractGame::Instance()->GetResourceManager()->GetMusic("");
+	m_audioSource = m_gameObject->AddComponent<AudioSource>();
+	m_audioSource->SetMusic(m_initMusic);
 }
 
 void BalloonComponent::Explode(PlayerDataComponent* playerData)
 {
 	if (!m_exploded)
 	{
+		m_audioSource->PlayOneShotSound("balloonExplode");
 		GameObject* player1 = dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetPlayer(0);
 		GameObject* player2 = dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetPlayer(1);
 		

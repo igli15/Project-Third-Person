@@ -1,7 +1,11 @@
 #pragma once
 
 #include "GridElement.h"
-
+#include "mge/components/AudioSource.h"
+#include <SFML\Audio.hpp>
+#include "mge/core/AbstractGame.hpp"
+#include "mge/core/ResourceManager.h"
+#include "mge/core/GameObject.hpp"
 class PlayerDataComponent;
 
 enum Direction
@@ -35,5 +39,9 @@ private:
 	int m_dirInt;
 	
 	void ShootInFacingDir(PlayerDataComponent* playerData);
+
+	AudioSource* m_audioSource;
+	float m_timeTillPlay = 1.6f;
+	sf::Music * m_initMusic;
 };
 

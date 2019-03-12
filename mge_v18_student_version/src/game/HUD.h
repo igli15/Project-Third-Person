@@ -3,6 +3,7 @@
 #include "mge\components\CanvasComponent.h"
 #include "mge\components\UISpriteRenderer.h"
 #include "mge\components\TextComponent.h"
+#include "mge/components/AudioSource.h"
 #include <SFML/System.hpp>
 #include "lua.h"
 //include uispriterenderer
@@ -43,6 +44,7 @@ public:
 	static HUDComponent* GetHudComponent();
 	void SetRespawnTime(int pPlayer, float pRespawnTime);
 	void SetPlayerTilePercentage(int pPlayer, float pPercent);
+	AudioSource* m_audioSource;
 private:
 
 	sf::Texture * m_inkBarLava;
@@ -61,5 +63,8 @@ private:
 	float m_lavaRespawnTime;
 	float m_iceRespawnTime;
 	static HUDComponent* m_hudComponent;
+
+	sf::Music* m_backgroundMusic;
+	sf::Sound* m_counter;
 };
 
