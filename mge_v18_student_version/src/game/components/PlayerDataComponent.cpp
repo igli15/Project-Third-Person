@@ -28,6 +28,8 @@ void PlayerDataComponent::Start()
 
 	m_levelGrid = dynamic_cast<MainWorld*>(GetGameObject()->GetWorld())->GetGrid();
 
+
+
 	
 }
 
@@ -39,6 +41,7 @@ void PlayerDataComponent::Update(float timeStep)
 		m_position_tween->onStep([this](float x, float y, float z) {tweenedVector.x = x; tweenedVector.y = y; tweenedVector.z = z; return false; });
 		m_scale_tween->onStep([this](float x, float y, float z) {tweenedScale.x = x; tweenedScale.y = y; tweenedScale.z = z; return false; });
 
+		m_helmet_tween->onStep([this](float x, float y, float z) {tweenedHelmetPosition.x = x; tweenedHelmetPosition.y = y; tweenedHelmetPosition.z = z; return false; });
 		//std::cout << "POSITION Progress " << m_position_tween->progress() << std::endl;
 		//::cout << "SCALE    Progress " << m_scale_tween->progress() << std::endl;
 		//When animation is finsihed
@@ -53,8 +56,8 @@ void PlayerDataComponent::Update(float timeStep)
 		{
 
 			m_gameObject->transform->SetScale(tweenedScale);
-			std::cout << "SCALE" << tweenedScale << std::endl;
 			m_gameObject->transform->SetLocalPosition(tweenedVector);
+			m_helmetObject->transform->SetLocalPosition(tweenedHelmetPosition);
 		}
 		//::cout << "VECTOR " << tweenedVector << std::endl;
 		
@@ -128,7 +131,17 @@ void PlayerDataComponent::OnDeath()
 	HUD* hud = dynamic_cast<HUD*>(HUD::GetHudComponent()->GetGameObject());
 	hud->SetRespawnTime(m_playerNumber, m_penaltyTime);
 
+	//Getting player object
+	m_helmetObject = m_gameObject->getChildAt(1);
 	//UNPARRENT
+	m_gameObject->remove(m_helmetObject);
+
+	//Setting default trasform settings
+	m_helmetObject->transform->SetLocalPosition(m_gameObject->transform->WorldPosition() + glm::vec3(0, 0.1f, 0));
+	m_helmetObject->transform->SetScale(glm::vec3(2, 2, 2));
+
+	//Setting parretn to world
+	m_helmetObject->setParent(m_gameObject->GetWorld());
 
 	StartDeathAnimation();
 }
@@ -139,6 +152,11 @@ void PlayerDataComponent::Respawn()
 	std::cout << "Respawning player to " << m_spawnPosition << std::endl;
 	m_shootingComponent->ResetInkLevel();
 	m_gameObject->transform->SetLocalPosition(m_spawnPosition);
+	m_gameObject->transform->SetScale(glm::vec3(2, 2, 2));
+	m_helmetObject->transform->SetScale(glm::vec3(1, 1, 1));
+	m_helmetObject->transform->SetLocalPosition(glm::vec3(0, 0, 0));
+
+	m_gameObject->add(m_helmetObject);
 	
 	m_isDead = false;
 }
@@ -209,8 +227,17 @@ GameObject * PlayerDataComponent::GetEnemy()
 void PlayerDataComponent::StartDeathAnimation()
 {
 	glm::vec3 currentPos = m_gameObject->transform->LocalPosition();
-	float position_duration = .50f;
-	float scale_duration = 1.0f;
+
+	float helmet_falling_duration = 0.15f;
+	float position_duration = .250f;
+	float scale_duration = .30f;
+
+	m_helmet_tween = Tweener::GenerateTween<float>(
+		currentPos.x, currentPos.x, //X
+		currentPos.y, -1, //Y
+		currentPos.z, currentPos.z, //Z
+		helmet_falling_duration * 1000, helmet_falling_duration * 1000, helmet_falling_duration * 1000);
+
 
 	 m_position_tween= Tweener::GenerateTween<float>(
 		 currentPos.x, currentPos.x, //X
@@ -224,4 +251,6 @@ void PlayerDataComponent::StartDeathAnimation()
 		 2, 3.5f, //Z
 		 scale_duration * 1000, scale_duration * 1000, scale_duration * 1000);
 	 tweenedScale = glm::vec3(2, 2, 2);
+
+	 *m_scale_tween = m_scale_tween->via(tweeny::easing::quadraticOut);
 }
