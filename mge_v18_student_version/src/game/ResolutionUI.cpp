@@ -10,6 +10,9 @@
 #include "mge/core/PlayerPrefs.h"
 #include "game/MenuScene.h"
 
+#include "mge/components/AudioSource.h"
+#include <SFML\Audio.hpp>
+
 ResolutionUI::ResolutionUI()
 {
 }
@@ -122,6 +125,17 @@ void ResolutionUI::Start()
 {
 	GameObject::Start();
 	m_selectCD = 2.0f;
+	m_initMusic = AbstractGame::Instance()->GetResourceManager()->GetMusic("menuMusic");
+	m_audioSource = AddComponent<AudioSource>();
+	m_audioSource->SetMusic(m_initMusic);
+	if (PlayerPrefs::GetFloat("LavaPercentage") > PlayerPrefs::GetFloat("IcePercentage"))
+	{
+		m_audioSource->PlayOneShotSound("blazeWins");
+	}
+	else if (PlayerPrefs::GetFloat("LavaPercentage") < PlayerPrefs::GetFloat("IcePercentage"))
+	{
+		m_audioSource->PlayOneShotSound("briskWins");
+	}
 }
 
 void ResolutionUI::Update(float pStep)
@@ -129,20 +143,24 @@ void ResolutionUI::Update(float pStep)
 	GameObject::Update(pStep);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		/*std::cout << "Show me replay sprite" << std::endl;*/
+		if (m_Selected != PlayAgain)
+		{
+			m_audioSource->PlayOneShotSound("selectingButton");
+			m_botResoBGSprite->ApplyTexture(m_resoReplay);
+		}
 		//show Play again Selected Sprite
 		m_Selected = PlayAgain;
-		m_botResoBGSprite->ApplyTexture(m_resoReplay);
 	}
 
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		//std::cout << "Show me Menu sprite" << std::endl;
-
+		if (m_Selected != MainMenu)
+		{
+			m_audioSource->PlayOneShotSound("selectingButton");
+			m_botResoBGSprite->ApplyTexture(m_resoMenu);
+		}
 		//show Menu selected sprite
 		m_Selected = MainMenu;
-		m_botResoBGSprite->ApplyTexture(m_resoMenu);
-
 	}
 
 	OnSelected();
@@ -164,9 +182,11 @@ void ResolutionUI::OnSelected()
 			switch (m_Selected)
 			{
 			case PlayAgain:
+				m_audioSource->PlayOneShotSound("pressingButton");
 				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
 				break;
 			case MainMenu:
+				m_audioSource->PlayOneShotSound("pressingButton");
 				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MenuScene>("MenuScene");
 				break;
 			default:

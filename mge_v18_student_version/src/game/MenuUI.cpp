@@ -40,12 +40,12 @@ void MenuUI::Load()
 	m_menuBGSprite = AddComponent<UISpriteRenderer>();
 	m_menuBGSprite->ApplyTexture(m_menuBGTexture);
 
-	pressButton = AbstractGame::Instance()->GetResourceManager()->GetMusic("expmusic");
-	buttonSFX = AddComponent<AudioSource>();
-	buttonSFX->SetMusic(pressButton);
+	m_menuMusicSF = AbstractGame::Instance()->GetResourceManager()->GetMusic("menuMusic");
+	m_menuMusic = AddComponent<AudioSource>();
+	m_menuMusic->SetMusic(m_menuMusicSF);
+
+
 	GameObject::Load();
-
-
 }
 
 void MenuUI::Awake()
@@ -61,7 +61,7 @@ void MenuUI::Start()
 	bool m_levelSelect = false;
 	float m_pressCD = 1.5f;
 
-//	buttonSFX->PlayMusic();
+	m_menuMusic->PlayMusic();
 }
 
 void MenuUI::Update(float pStep)
@@ -75,26 +75,37 @@ void MenuUI::Update(float pStep)
 		{
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) | sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 			{
+				if (m_Selected != PlayGame)
+				{
+					m_menuMusic->PlayOneShotSound("selectingButton");
+					m_menuBGSprite->ApplyTexture(m_playSelectedTexture);
+				}
 				m_Selected = PlayGame;
 				std::cout << "show playGame Selected Sprite" << std::endl;
-				m_menuBGSprite->ApplyTexture(m_playSelectedTexture);
-
 			}
 
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 			{
+				if (m_Selected != Controls)
+				{
+					m_menuMusic->PlayOneShotSound("selectingButton");
+					m_menuBGSprite->ApplyTexture(m_controlsSelectedTexture);
+				}
 				m_Selected = Controls;
 				//show Controls Selected Sprite
 				std::cout << "show Controls Selected Sprite" << std::endl;
-				m_menuBGSprite->ApplyTexture(m_controlsSelectedTexture);
 			}
 
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 			{
+				if (m_Selected != ExitGame)
+				{
+					m_menuMusic->PlayOneShotSound("selectingButton");
+					m_menuBGSprite->ApplyTexture(m_exitGameSelectedTexture);	
+				}
 				m_Selected = ExitGame;
 				//show Exit selected sprite
 				std::cout << "show Exit selected sprite" << std::endl;
-				m_menuBGSprite->ApplyTexture(m_exitGameSelectedTexture);
 
 			}
 
@@ -109,6 +120,7 @@ void MenuUI::Update(float pStep)
 			{
 				if (m_pressCD <= 0)
 				{
+					m_menuMusic->PlayOneShotSound("pressingButton");
 					m_menuBGSprite->ApplyTexture(m_controlsSelectedTexture);
 					m_Selected = Controls;
 					m_controlsLocked = false;
@@ -134,6 +146,8 @@ void MenuUI::OnHoldControls()
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::F) | sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
 		{
+			
+			m_menuMusic->PlayOneShotSound("pressingButton");
 			switch (m_Selected)
 			{
 			case PlayGame:
@@ -141,7 +155,6 @@ void MenuUI::OnHoldControls()
 				m_pressCD = 1.5f;
 				m_levelSelect = true;
 				m_menuBGSprite->ApplyTexture(m_levelSelectedNone);
-				//AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
 				break;
 			case Controls:
 				m_controlsLocked = true;
@@ -154,11 +167,13 @@ void MenuUI::OnHoldControls()
 				break;
 			case Level1:
 				PlayerPrefs::SetInt("LevelIndex", 1);
+				m_menuMusic->StopMusic();
 				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
 				m_pressCD = 1.5f;
 				break;
 			case Level2:
 				PlayerPrefs::SetInt("LevelIndex", 2);
+				m_menuMusic->StopMusic();
 				AbstractGame::Instance()->GetWorldManager()->CreateWorld<MainWorld>("MainWorld");
 				m_pressCD = 1.5f;
 				break;
@@ -182,17 +197,29 @@ void MenuUI::OnLevelSelect()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left) | sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
+		if (m_Selected != Level1)
+		{
+			m_menuMusic->PlayOneShotSound("selectingButton");
+			m_menuBGSprite->ApplyTexture(m_levelSelected1);
+		}
 		m_Selected = Level1;
-		m_menuBGSprite->ApplyTexture(m_levelSelected1);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right) | sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
+		if (m_Selected != Level2)
+		{
+			m_menuMusic->PlayOneShotSound("selectingButton");
+			m_menuBGSprite->ApplyTexture(m_levelSelected2);
+		}
 		m_Selected = Level2;
-		m_menuBGSprite->ApplyTexture(m_levelSelected2);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) | sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
+		if (m_Selected != LevelBackButton)
+		{
+			m_menuMusic->PlayOneShotSound("selectingButton");
+			m_menuBGSprite->ApplyTexture(m_levelSelectedBack);
+		}
 		m_Selected = LevelBackButton;
-		m_menuBGSprite->ApplyTexture(m_levelSelectedBack);
 	}
 }
