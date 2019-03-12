@@ -50,6 +50,25 @@ void Transform::SetLocalPosition(glm::vec3 position)
 	m_transform[3] = glm::vec4(position, 1);
 }
 
+void Transform::SetScale(glm::vec3 scale)
+{
+	m_transform[0] = glm::normalize(m_transform[0]) *scale.x;
+	m_transform[1] = glm::normalize(m_transform[1]) *scale.y;
+	m_transform[2] = glm::normalize(m_transform[2]) *scale.z;
+}
+
+glm::vec3 Transform::GetScale()
+{
+	glm::vec3 scale;
+
+	scale.x = glm::length(m_transform[0]);
+	std::cout << "LENGTH X: " << glm::length(m_transform[0])<<" / "<<m_transform[0] << std::endl;
+	scale.y = glm::length(m_transform[1]);
+	scale.z = glm::length(m_transform[2]);
+
+	return scale;
+}
+
 void Transform::Translate(glm::vec3 translation)
 {
 	SetTransform(glm::translate(m_transform, translation));

@@ -4,6 +4,7 @@
 #include "mge/materials/TextureMaterial.hpp"
 #include "game/components/TileComponent.h"
 #include "SFML/System.hpp"
+#include "mge/core/Tweener.h"
 
 class PlayerMovementComponent;
 class ShootingComponent;
@@ -38,6 +39,18 @@ private:
 	int m_playerNumber;
 	//spawn position will be taken as position when Start() was called
 	glm::vec3 m_spawnPosition;
+	//Tween is needed for the death position animation
+	tweeny::tween<float,float,float>* m_position_tween;
+	//Tween is needed for the death scale animation
+	tweeny::tween<float, float, float>* m_scale_tween;
+	//Tween is needed for the falling of helmet
+	tweeny::tween<float, float, float>* m_helmet_tween;
+
+	//
+	//
+	glm::vec3 tweenedVector;
+	glm::vec3 tweenedScale;
+	glm::vec3 tweenedHelmetPosition;
 
 	sf::Clock m_respawnClock;
 	bool m_isDead = false;
@@ -48,11 +61,14 @@ private:
 	float m_explosionWidth = 6;
 	float m_explosionHeight = 6;
 
+	GameObject* m_helmetObject;
+
 	PlayerMovementComponent* m_playerMovement;
 	ShootingComponent* m_shootingComponent;
 	TileType m_tileMaterial;
 	TextureMaterial* m_material;
 	GridComponent* m_levelGrid;
 
+	void StartDeathAnimation();
 };
 

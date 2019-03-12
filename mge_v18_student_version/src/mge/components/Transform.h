@@ -22,6 +22,8 @@ public:
 
 	void SetLocalPosition(glm::vec3);
 
+	void SetScale(glm::vec3 scale);
+	glm::vec3 GetScale();
 	void Translate(glm::vec3 translation);
 	void Rotate(float angle, glm::vec3 axis);
 	void Scale(glm::vec3 scale);
