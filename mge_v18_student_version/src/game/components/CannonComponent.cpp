@@ -91,6 +91,8 @@ void CannonComponent::ShootInFacingDir(PlayerDataComponent* playerData)
 {
 	bool horizontal;
 	bool positive;
+
+	if (shot)return;
 	
 	m_audioSource->PlayOneShotSound("cannonShot");
 	
@@ -116,7 +118,7 @@ void CannonComponent::ShootInFacingDir(PlayerDataComponent* playerData)
 		break;
 	}
 	auto tiles = m_grid->GetNeighbourTiles(m_gameObject->transform->LocalPosition(), playerData->GetEnemy()->transform->LocalPosition(),
-		m_shootingRange, horizontal, positive, [playerData]() { playerData->GetEnemy()->GetComponent<PlayerDataComponent>()->OnDeath(); });
+		m_shootingRange, horizontal, positive, [playerData, this]() {shot = true;  playerData->GetEnemy()->GetComponent<PlayerDataComponent>()->OnDeath(); shot = false; });
 
 	for (int i = 0; i < tiles.size(); i++)
 	{

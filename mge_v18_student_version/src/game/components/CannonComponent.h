@@ -40,6 +40,8 @@ private:
 	
 	void ShootInFacingDir(PlayerDataComponent* playerData);
 
+	bool shot = false;
+
 	AudioSource* m_audioSource;
 	float m_timeTillPlay = 1.6f;
 	sf::Music * m_initMusic;
