@@ -127,6 +127,7 @@ void ShootingComponent::ShootInk(float tileAmount, bool isPrimaryShooting)
 	{
 		tiles = m_gridComponent->GetTilesInTriangleRange(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
 	}
+
 	for (int i = 0; i < tiles.size(); i++)
 	{
 		if (m_playerDataCompoent->MatType() == TileType::LAVA)
@@ -176,7 +177,6 @@ void ShootingComponent::AddInk(float inkLevel)
 
 void ShootingComponent::OnKeyOneEnter()
 {
-	
 }
 
 void ShootingComponent::OnKeyOneStay()
@@ -184,6 +184,43 @@ void ShootingComponent::OnKeyOneStay()
 	//std::cout << "OnKeyStay" << std::endl;
 	if (m_playerDataCompoent->IsDead()) return;
 	//std::cout << "OnKeyEnter" << std::endl;
+
+
+
+	bool horizontalShooting = false;
+	bool negtiveDirection = false;
+	switch (m_playerMovementComponent->GetCurrentDirection())
+	{
+	case PlayerMovementComponent::BACKWARD:
+
+		break;
+	case PlayerMovementComponent::FORWARD:
+		negtiveDirection = true;
+		break;
+	case PlayerMovementComponent::LEFT:
+		horizontalShooting = true;
+		negtiveDirection = true;
+		break;
+	case PlayerMovementComponent::RIGHT:
+		horizontalShooting = true;
+		break;
+	default:
+		break;
+	}
+
+	for (int i = 0; i < m_selectedTiles.size(); i++)
+	{
+		m_selectedTiles[i]->DeSelectTile();
+	}
+	m_selectedTiles.clear();
+
+	m_selectedTiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), glm::vec3(0, 0, 0), m_currentAmmo, horizontalShooting, negtiveDirection, []() {});
+	for (int i = 0; i < m_selectedTiles.size(); i++)
+	{
+		m_selectedTiles[i]->SelectTile(m_playerDataCompoent);
+	}
+
+
 
 	//Start charging
 	if (!m_isChraging && m_clock1.getElapsedTime().asSeconds() >= m_reloadTime1)
@@ -210,6 +247,12 @@ void ShootingComponent::OnKeyOneStay()
 }
 void ShootingComponent::OnKeyOneExit()
 {
+	for (int i = 0; i < m_selectedTiles.size(); i++)
+	{
+		m_selectedTiles[i]->DeSelectTile();
+	}
+	m_selectedTiles.clear();
+
 	//std::cout << "OnKeyExit" << std::endl;
 	if (m_isChraging && m_currentAmmo >= m_minRange)
 	{

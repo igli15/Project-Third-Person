@@ -33,12 +33,17 @@ void BallonSpawnerComponent::Update(float timeStep)
 	if (m_spawnOnStart)
 	{
 		SpawnBalloon();
+
 		m_spawnOnStart = false;
 	}
 
 	if (m_balloonSpawnClock.getElapsedTime().asSeconds() > m_balloonSpawnTime)
 	{
-		SpawnBalloon();
+		Balloon* b = SpawnBalloon();
+		if (b != nullptr)
+		{
+			b->ScaleUp();
+		}
 		m_balloonSpawnClock.restart();
 	}
 
@@ -50,17 +55,17 @@ void BallonSpawnerComponent::OnDestroy()
 	m_parentTile->SetGridElement(nullptr);
 }
 
-void BallonSpawnerComponent::SpawnBalloon()
+Balloon* BallonSpawnerComponent::SpawnBalloon()
 {
-	if (!m_parentTile->IsFree()) return;
+	if (!m_parentTile->IsFree()) return nullptr;
+
 
 	Balloon* balloon = m_gameObject->GetWorld()->Instantiate<Balloon>();
 
-	balloon->ScaleUp();
-
 	balloon->transform->SetLocalPosition(m_parentTile->GetGameObject()->transform->WorldPosition() + glm::vec3(0, 1, 0));
-
 	m_parentTile->SetGridElement(balloon->GetBalloonComponent());
+
+	return balloon;
 }
 
 void BallonSpawnerComponent::Parse(rapidxml::xml_node<>* compNode)
