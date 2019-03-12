@@ -105,8 +105,8 @@ diffuseTextures =
 	["cornerPillarDiffuse"] = texturesLoadPath.."BackgroundTextures/cornerPillarDiffuse.jpg",
 
 	
-
-
+	["iceSelectionDiffuse"] = texturesLoadPath.."iceSelectionDiffuse.jpg",
+	["lavaSelectionDiffuse"] = texturesLoadPath.."lavaSelectedDiffuse.jpg",
 
 
 	
@@ -181,6 +181,10 @@ emissionTextures =
 	["respawnPointLavaEmission"] = texturesLoadPath.."BackgroundTextures/respawnPointLavaEmission.jpg",
 	["sideTempleRedEmission"] = texturesLoadPath.."BackgroundTextures/sideTempleRedEmission.jpg",
 	["sideTempleBlueEmission"] = texturesLoadPath.."BackgroundTextures/sideTempleBlueEmission.jpg",
+
+
+	["iceSelectionEmission"] = texturesLoadPath.."iceSelectionEmission.jpg",
+	["lavaSelectionEmission"] = texturesLoadPath.."lavaSelectedEmission.jpg",
 }
 
 --normal maps here

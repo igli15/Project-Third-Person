@@ -217,7 +217,7 @@ void ShootingComponent::OnKeyOneStay()
 	m_selectedTiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), glm::vec3(0, 0, 0), m_currentAmmo, horizontalShooting, negtiveDirection, []() {});
 	for (int i = 0; i < m_selectedTiles.size(); i++)
 	{
-		m_selectedTiles[i]->SelectTile();
+		m_selectedTiles[i]->SelectTile(m_playerDataCompoent);
 	}
 
 

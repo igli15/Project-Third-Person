@@ -155,15 +155,23 @@ bool TileComponent::IsFree()
 	return (m_gridElement == nullptr);
 }
 
-void TileComponent::SelectTile()
+void TileComponent::SelectTile(PlayerDataComponent* playerData)
 {
+
 	oldMat = dynamic_cast<TextureMaterial*>(m_gameObject->getMaterial());
-	m_gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("testMat"));
+	if (playerData->GetPlayerNumber() == 1)
+	{
+		m_gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaSelection"));
+	}
+	else
+	{
+		m_gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceSelection"));
+	}
 }
 
 void TileComponent::DeSelectTile()
 {
-	if(oldMat != nullptr && oldMat != AbstractGame::Instance()->GetResourceManager()->GetMaterial("testMat"))
+	if(oldMat != nullptr && (oldMat != AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaSelection") || oldMat != AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceSelection")) )
 	m_gameObject->setMaterial(oldMat);
 }
 

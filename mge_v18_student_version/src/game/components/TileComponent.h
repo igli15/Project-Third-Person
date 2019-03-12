@@ -43,7 +43,7 @@ public:
 	//returns if it has a grid element on it or not
 	bool IsFree();
 
-	void SelectTile();
+	void SelectTile(PlayerDataComponent* playerData);
 	void DeSelectTile();
 
 private:
