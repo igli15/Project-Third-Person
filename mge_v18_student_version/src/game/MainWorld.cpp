@@ -106,7 +106,7 @@ void MainWorld::Initialize()
 		LoadXmlWorld("scene.xml");
 		break;
 	case 2:
-		LoadXmlWorld("scene2.xml");
+		LoadXmlWorld("scene4.xml");
 			break;
 	case 3:
 		LoadXmlWorld("scene2.xml");
