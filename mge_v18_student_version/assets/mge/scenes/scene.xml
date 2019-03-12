@@ -12,7 +12,7 @@
       </Components>
     </GameObject>
   </GameObject>
-  <GameObject name="tree2" position="(4.4400, -1.6800, 18.1300)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.6364, 0.6364, 0.6364)">
+  <GameObject name="tree2" position="(-0.5600, -1.6800, 24.6300)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.6364, 0.6364, 0.6364)">
     <Components />
     <GameObject name="tree2" position="(4.9300, 0.0000, -9.5200)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="tree2">
       <Components>
@@ -31,7 +31,9 @@
   <GameObject name="topBorderDetail" position="(12.4700, 0.3500, 14.9900)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
     <Components />
     <GameObject name="topBorderDetail" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="topBorderDetail">
-      <Components />
+      <Components>
+        <TextureMaterial materialName="topBorderDetailMat" shininess="16" emissionScale="0.8" diffuseTexture="topBorderDetail_initialShadingGroup_Diffuse" specularTexture="topBorderDetail_initialShadingGroup_Specular" emissionTexture="NONE" normalTexture="topBorderDetail_initialShadingGroup_Normal" diffuseColor="(1.0, 1.0, 1.0)" />
+      </Components>
     </GameObject>
   </GameObject>
   <GameObject name="cannon (2)" position="(-8.0000, 0.5000, 3.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
@@ -71,13 +73,17 @@
     <GameObject name="statue" position="(14.9400, 10.3600, -0.1700)" rotation="(0.0000, 0.9939, -0.1097, 0.0061)" scale="(1.0000, 1.0000, 1.0000)">
       <Components />
       <GameObject name="statue" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="statue">
-        <Components />
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
       </GameObject>
     </GameObject>
     <GameObject name="bigTemple" position="(1.2700, 6.0700, 2.8400)" rotation="(0.0000, 1.0000, 0.0000, 0.0000)" scale="(1.2000, 1.2000, 1.2000)">
       <Components />
       <GameObject name="bigTemple:bigTemple" position="(0.0000, 0.0000, -0.8400)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="bigTemple">
-        <Components />
+        <Components>
+          <TextureMaterial materialName="bigTempleMat" shininess="16" emissionScale="0.8" diffuseTexture="bigTempleDiffuse" specularTexture="bigTempleSpecular" emissionTexture="bigTempleEmission" normalTexture="bigTempleNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
       </GameObject>
     </GameObject>
     <GameObject name="sideTemple" position="(-11.1596, 7.1964, -14.4847)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
@@ -3798,7 +3804,7 @@
       <Components />
       <GameObject name="singleFlatBlockEdge" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="wall_single">
         <Components>
-          <TextureMaterial materialName="wallMat1" shininess="16" emissionScale="0.8" diffuseTexture="wall_singleDiffuse" specularTexture="wall_singleSpecular" emissionTexture="NONE" normalTexture="wall_singleNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+          <TextureMaterial materialName="wallMat5" shininess="16" emissionScale="0.8" diffuseTexture="wall_singleDiffuse" specularTexture="wall_singleSpecular" emissionTexture="NONE" normalTexture="wall_singleNormal" diffuseColor="(1.0, 1.0, 1.0)" />
         </Components>
       </GameObject>
     </GameObject>
@@ -3838,7 +3844,7 @@
       <Components />
       <GameObject name="singleFlatBlockEdge" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="wall_single">
         <Components>
-          <TextureMaterial materialName="wallMat1" shininess="16" emissionScale="0.8" diffuseTexture="wall_singleDiffuse" specularTexture="wall_singleSpecular" emissionTexture="NONE" normalTexture="wall_singleNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+          <TextureMaterial materialName="wallMat5" shininess="16" emissionScale="0.8" diffuseTexture="wall_singleDiffuse" specularTexture="wall_singleSpecular" emissionTexture="NONE" normalTexture="wall_singleNormal" diffuseColor="(1.0, 1.0, 1.0)" />
         </Components>
       </GameObject>
     </GameObject>

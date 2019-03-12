@@ -72,6 +72,9 @@ diffuseTextures =
 	["refillStationDiffuse"] = texturesLoadPath.."refillStationDiffuse.jpg",
 	["BalloonDiffuse"] = texturesLoadPath.."BalloonDiffuse.png",
 	["cannonDiffuse"] = texturesLoadPath.."cannonDiffuse.jpg",
+	["topBorderDetail_initialShadingGroup_Diffuse"] = texturesLoadPath.."topBorderDetail_initialShadingGroup_Diffuse.jpg",
+	["bigTempleDiffuse"] = texturesLoadPath.."bigTempleDiffuse.jpg",
+
 
 	--walls
 
@@ -100,6 +103,7 @@ diffuseTextures =
 	["sideTempleBlueDiffuse"] = texturesLoadPath.."BackgroundTextures/sideTempleBlueDiffuse.jpg",
 	["sideTempleRedDiffuse"] = texturesLoadPath.."BackgroundTextures/sideTempleRedDiffuse.jpg",
 	["cornerPillarDiffuse"] = texturesLoadPath.."BackgroundTextures/cornerPillarDiffuse.jpg",
+
 	
 
 
@@ -121,6 +125,9 @@ specularTextures =
 	["refillStationSpecular"] = texturesLoadPath.."refillStationSpecular.jpg",
 	["BalloonSpecular"] = texturesLoadPath.."BalloonSpecular.png",
 	["cannonSpecular"] = texturesLoadPath.."cannonSpecular.jpg",
+	["topBorderDetail_initialShadingGroup_Specular"] = texturesLoadPath.."topBorderDetail_initialShadingGroup_Specular.jpg",
+	["bigTempleSpecular"] = texturesLoadPath.."bigTempleSpecular.jpg",
+
 
 	--walls
 
@@ -163,6 +170,7 @@ emissionTextures =
 	["cannonEmission"] = texturesLoadPath.."cannonEmission.jpg",
 	["cannonRedEmission"] = texturesLoadPath.."cannonRedEmission.jpg",
 	["cannonBlueEmission"] = texturesLoadPath.."cannonBlueEmission.jpg",
+	["bigTempleEmission"] = texturesLoadPath.."bigTempleEmission.jpg",
 
 	--backgroundEmission
 
@@ -183,6 +191,8 @@ normalMapTextures =
 	["wallNormal"] = texturesLoadPath.."wallNormal.png",
 	["neutralNormal"] = texturesLoadPath.."neutralNormal.jpg",
 	["refillStation"] = texturesLoadPath.."refillStationNormal.jpg",
+	["topBorderDetail_initialShadingGroup_Normal"] = texturesLoadPath.."topBorderDetail_initialShadingGroup_Normal.jpg",
+	["bigTempleNormal"] = texturesLoadPath.."bigTempleNormal.jpg",
 
 	--walls
 
