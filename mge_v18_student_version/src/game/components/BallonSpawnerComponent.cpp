@@ -56,6 +56,8 @@ void BallonSpawnerComponent::SpawnBalloon()
 
 	Balloon* balloon = m_gameObject->GetWorld()->Instantiate<Balloon>();
 
+	balloon->ScaleUp();
+
 	balloon->transform->SetLocalPosition(m_parentTile->GetGameObject()->transform->WorldPosition() + glm::vec3(0, 1, 0));
 
 	m_parentTile->SetGridElement(balloon->GetBalloonComponent());
