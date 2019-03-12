@@ -38,7 +38,7 @@ void Balloon::OnDestroy()
 	GameObject::OnDestroy();
 
 	Tweener::DeleteTween(m_scaleTween);
-
+	m_scaleTween = nullptr;
 }
 
 void Balloon::ScaleUp()
