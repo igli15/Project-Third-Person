@@ -164,6 +164,7 @@ public:
 	template<typename T>
 	static void DeleteTween(tweeny::tween<T, T, T>* tween)
 	{
+
 		if constexpr (std::is_same<T, int>())
 		{
 			delete tween;
@@ -172,7 +173,7 @@ public:
 		else if constexpr (std::is_same<T, float>())
 		{
 			delete tween;
-			m_tripleFloatTweens(std::find(m_tripleFloatTweens.begin(), m_tripleFloatTweens.end(), tween));
+			m_tripleFloatTweens.erase(std::find(m_tripleFloatTweens.begin(), m_tripleFloatTweens.end(), tween));
 		}
 		else
 		{

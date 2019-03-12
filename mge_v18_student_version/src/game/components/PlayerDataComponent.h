@@ -39,11 +39,15 @@ private:
 	int m_playerNumber;
 	//spawn position will be taken as position when Start() was called
 	glm::vec3 m_spawnPosition;
-	//Tween is needed for the death animation
-	tweeny::tween<float,float,float>* m_tween;
+	//Tween is needed for the death position animation
+	tweeny::tween<float,float,float>* m_position_tween;
+	//Tween is needed for the death scale animation
+	tweeny::tween<float, float, float>* m_scale_tween;
 
 	//--------
+	//
 	glm::vec3 tweenedVector;
+	glm::vec3 tweenedScale;
 
 	sf::Clock m_respawnClock;
 	bool m_isDead = false;
