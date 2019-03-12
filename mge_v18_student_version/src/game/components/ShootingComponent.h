@@ -7,6 +7,7 @@
 class PlayerDataComponent;
 class PlayerMovementComponent;
 class GridComponent;
+class TileComponent;
 
 class ShootingComponent : public XMLComponent
 {
@@ -48,7 +49,7 @@ private:
 	float m_reloadTime1 = 0.5f;
 	float m_relaodTime2 = 1;
 
-
+	std::vector<TileComponent*> m_selectedTiles;
 
 	int m_inkMaxLevel = 100;
 	float m_inkLevel = 0;
@@ -64,7 +65,6 @@ private:
 	int m_playerNumber = 1;
 
 	bool m_isKeyPresedLastFrame=false;
-
-	//tweeny::tween<float>* testTween;
+	
 };
 

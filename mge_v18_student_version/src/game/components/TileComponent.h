@@ -6,6 +6,7 @@ class GridComponent;
 class BalloonComponent;
 class GridElement;
 class PlayerDataComponent;
+class TextureMaterial;
 
 enum TileType
 {
@@ -42,6 +43,9 @@ public:
 	//returns if it has a grid element on it or not
 	bool IsFree();
 
+	void SelectTile();
+	void DeSelectTile();
+
 private:
 
 	GridComponent* m_grid;
@@ -49,7 +53,7 @@ private:
 	TileType m_tileType = TileType::DEFAULT;
 	bool m_isPainted = false;
 	bool m_isPaintable = true;
-
+	TextureMaterial* oldMat = nullptr;
 	GridElement* m_gridElement = nullptr;
 };
 

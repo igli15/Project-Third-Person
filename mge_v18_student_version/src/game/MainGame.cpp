@@ -46,8 +46,10 @@ void MainGame::LoadResources(ResourceManager * resourceManager)
 	ColorMaterial* whiteColor = new ColorMaterial();
 	whiteColor->SetDiffuseColor(glm::vec3(1, 1, 1));
 
+	TextureMaterial* testMat = new TextureMaterial(resourceManager->GetTexture("wallDiffuse"), nullptr, nullptr, nullptr);
 
 	resourceManager->RegisterMaterial(whiteColor, "whiteMat");
+	resourceManager->RegisterMaterial(testMat, "testMat");
 }
 
 void MainGame::CreateWorld()

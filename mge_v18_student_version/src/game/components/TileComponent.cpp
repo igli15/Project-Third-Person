@@ -83,7 +83,7 @@ void TileComponent::PaintTile(TileType type)
 {
 	if (!m_isPaintable) return;
 
-
+	
 	m_isPainted = true;
 
 	if (type == TileType::ICE)
@@ -98,6 +98,8 @@ void TileComponent::PaintTile(TileType type)
 		m_grid->IncreaseTileCount(TileType::ICE);
 
 		m_gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceMat"));
+
+		oldMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceMat"));
 		m_tileType = TileType::ICE;
 		
 	}
@@ -113,6 +115,7 @@ void TileComponent::PaintTile(TileType type)
 		m_grid->IncreaseTileCount(TileType::LAVA);
 
 		m_gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
+		oldMat = dynamic_cast<TextureMaterial*>(AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaMat"));
 		m_tileType = TileType::LAVA;
 	}
 }
@@ -150,5 +153,17 @@ void TileComponent::ActivateGridElement(PlayerDataComponent* playerData)
 bool TileComponent::IsFree()
 {
 	return (m_gridElement == nullptr);
+}
+
+void TileComponent::SelectTile()
+{
+	oldMat = dynamic_cast<TextureMaterial*>(m_gameObject->getMaterial());
+	m_gameObject->setMaterial(AbstractGame::Instance()->GetResourceManager()->GetMaterial("testMat"));
+}
+
+void TileComponent::DeSelectTile()
+{
+	if(oldMat != nullptr && oldMat != AbstractGame::Instance()->GetResourceManager()->GetMaterial("testMat"))
+	m_gameObject->setMaterial(oldMat);
 }
 
