@@ -16,7 +16,7 @@ meshes =
 	["GroundTile"] = meshesLoadPath.."GroundTile.obj",
 	["players"] = meshesLoadPath.."players.obj",
 	["orb"] = meshesLoadPath.."orb.obj",
-	["refillStation"] = meshesLoadPath.."refillStation.obj",
+	["refillStation"] = meshesLoadPath.."cube_smooth.obj",
 	["balloon"] = meshesLoadPath.."Balloon.obj",
 	["cannon"] = meshesLoadPath.."cannon.obj",
 
@@ -30,6 +30,28 @@ meshes =
 	["wall_icorner"] = meshesLoadPath.."wall_icorner.obj",
 	["wall_flat"] = meshesLoadPath.."wall_flat.obj",
 	["wall_single"] = meshesLoadPath.."wall_single.obj",
+
+	["bigTemple"] = meshesLoadPath.. "BackgroundModels/bigTemple.obj",
+	["borderLeft"] = meshesLoadPath.. "BackgroundModels/borderLeft.obj",
+	["borderRight"] = meshesLoadPath.. "BackgroundModels/borderRight.obj",
+	["bottomBorder"] = meshesLoadPath.. "BackgroundModels/bottomBorder.obj",
+	["bush1"] = meshesLoadPath.. "BackgroundModels/bush1.obj",
+	["bush2"] = meshesLoadPath.. "BackgroundModels/bush2.obj",
+	["cornerPillar"] = meshesLoadPath.. "BackgroundModels/cornerPillar.obj",
+	["refillPoint"] = meshesLoadPath.. "BackgroundModels/refillPoint.obj",
+	["rocks"] = meshesLoadPath.. "BackgroundModels/rocks.obj",
+	["sidePillar"] = meshesLoadPath.. "BackgroundModels/sidePillar.obj",
+	["sideTemple"] = meshesLoadPath.. "BackgroundModels/sideTemple.obj",
+	["statue"] = meshesLoadPath.. "BackgroundModels/statue.obj",
+	--["templeBackground"] = meshesLoadPath.. "BackgroundModels/templeBackground.obj",
+	["topBorder"] = meshesLoadPath.. "BackgroundModels/topBorder.obj",
+	["topBorderDetail"] = meshesLoadPath.. "BackgroundModels/topBorderDetail.obj",
+	["tree1"] = meshesLoadPath.. "BackgroundModels/tree1.obj",
+	["respawnPointIce"] = meshesLoadPath.. "BackgroundModels/respawnPointIce.obj",
+	["tree2"] = meshesLoadPath.. "BackgroundModels/tree2.obj",
+	["respawnPointLava"] = meshesLoadPath.. "BackgroundModels/respawnPointLava.obj",
+ 
+
 
 
 }
@@ -60,6 +82,31 @@ diffuseTextures =
 	["wall_icornerDiffuse"] = texturesLoadPath.."wall_icornerDiffuse.jpg",
 	["wall_flatDiffuse"] = texturesLoadPath.."wall_flatDiffuse.jpg",
 	["wall_singleDiffuse"] = texturesLoadPath.."wall_singleDiffuse.jpg",
+	
+
+	--backgroundDiffuse
+
+
+	["borderLeftDiffuse"] = texturesLoadPath.."BackgroundTextures/borderLeftDiffuse.jpg",
+	["borderRightDiffuse"] = texturesLoadPath.."BackgroundTextures/borderRightDiffuse.jpg",
+	["bottomBorderDiffuse"] = texturesLoadPath.."BackgroundTextures/bottomBorderDiffuse.jpg",
+	["bush1Diffuse"] = texturesLoadPath.."BackgroundTextures/bush1Diffuse.jpg",
+	["respawnPointDiffuse"] = texturesLoadPath.."BackgroundTextures/respawnPointDiffuse.jpg",
+	["sidePillarDiffuse"] = texturesLoadPath.."BackgroundTextures/sidePillarDiffuse.jpg",
+	["statueDiffuse"] = texturesLoadPath.."BackgroundTextures/statueDiffuse.jpg",
+	["topBorderDiffuse"] = texturesLoadPath.."BackgroundTextures/topBorderDiffuse.jpg",
+	["tree1Diffuse"] = texturesLoadPath.."BackgroundTextures/tree1Diffuse.jpg",
+	["tree2Diffuse"] = texturesLoadPath.."BackgroundTextures/tree2Diffuse.jpg",
+	["sideTempleBlueDiffuse"] = texturesLoadPath.."BackgroundTextures/sideTempleBlueDiffuse.jpg",
+	["sideTempleRedDiffuse"] = texturesLoadPath.."BackgroundTextures/sideTempleRedDiffuse.jpg",
+	["cornerPillarDiffuse"] = texturesLoadPath.."BackgroundTextures/cornerPillarDiffuse.jpg",
+	
+
+
+
+
+	
+
 
 }
 
@@ -71,19 +118,33 @@ specularTextures =
 	["playerLavaSpecular"] = texturesLoadPath.."playerLavaSpecular.jpg",
 	["playerIceSpecular"] = texturesLoadPath.."playerIceSpecular.jpg",
 	["playerLavaSpecular"] = texturesLoadPath.."playerLavaSpecular.jpg",
-	["refillStationSpecular"] = meshesLoadPath.."refillStationSpecular.jpg",
+	["refillStationSpecular"] = texturesLoadPath.."refillStationSpecular.jpg",
 	["BalloonSpecular"] = texturesLoadPath.."BalloonSpecular.png",
 	["cannonSpecular"] = texturesLoadPath.."cannonSpecular.jpg",
 
 	--walls
 
-	["WallBlock1x1Specular"] = meshesLoadPath.."WallBlock1x1Specular.jpg",
-	["WallBlock2x2Specular"] = meshesLoadPath.."WallBlock2x2Specular.jpg",
-	["wall_msingleSpecular"] = meshesLoadPath.."wall_msingleSpecular.jpg",
-	["wall_ocornerSpecular"] = meshesLoadPath.."wall_ocornerSpecular.jpg",
-	["wall_icornerSpecular"] = meshesLoadPath.."wall_icornerSpecular.jpg",
-	["wall_flatSpecular"] = meshesLoadPath.."wall_flatSpecular.jpg",
-	["wall_singleSpecular"] = meshesLoadPath.."wall_singleSpecular.jpg",
+	["WallBlock1x1Specular"] = texturesLoadPath.."WallBlock1x1Specular.jpg",
+	["WallBlock2x2Specular"] = texturesLoadPath.."WallBlock2x2Specular.jpg",
+	["wall_msingleSpecular"] = texturesLoadPath.."wall_msingleSpecular.jpg",
+	["wall_ocornerSpecular"] = texturesLoadPath.."wall_ocornerSpecular.jpg",
+	["wall_icornerSpecular"] = texturesLoadPath.."wall_icornerSpecular.jpg",
+	["wall_flatSpecular"] = texturesLoadPath.."wall_flatSpecular.jpg",
+	["wall_singleSpecular"] = texturesLoadPath.."wall_singleSpecular.jpg",
+
+	--backgroundSpecular
+
+	["bush1Specular"] = texturesLoadPath.."BackgroundTextures/bush1Specular.jpg",
+	["respawnPointIceSpecular"] = texturesLoadPath.."BackgroundTextures/respawnPointIceSpecular.jpg",
+	["respawnPointLavaSpecular"] = texturesLoadPath.."BackgroundTextures/respawnPointLavaSpecular.jpg",
+	["statueSpecular"] = texturesLoadPath.."BackgroundTextures/statueSpecular.jpg",
+	["tree1Specular"] = texturesLoadPath.."BackgroundTextures/tree1Specular.jpg",
+	["tree2Specular"] = texturesLoadPath.."BackgroundTextures/tree2Specular.jpg",
+	["sideTempleRedSpecular"] = texturesLoadPath.."BackgroundTextures/sideTempleRedSpecular.jpg",
+	["sideTempleBlueSpecular"] = texturesLoadPath.."BackgroundTextures/sideTempleBlueSpecular.jpg",
+	
+
+
 
 }
 
@@ -102,6 +163,16 @@ emissionTextures =
 	["cannonEmission"] = texturesLoadPath.."cannonEmission.jpg",
 	["cannonRedEmission"] = texturesLoadPath.."cannonRedEmission.jpg",
 	["cannonBlueEmission"] = texturesLoadPath.."cannonBlueEmission.jpg",
+
+	--backgroundEmission
+
+
+	["borderLeftEmission"] = texturesLoadPath.."BackgroundTextures/borderLeftEmission.jpg",
+	["borderRightEmission"] = texturesLoadPath.."BackgroundTextures/borderRightEmission.jpg",
+	["respawnPointIceEmission"] = texturesLoadPath.."BackgroundTextures/respawnPointIceEmission.jpg",
+	["respawnPointLavaEmission"] = texturesLoadPath.."BackgroundTextures/respawnPointLavaEmission.jpg",
+	["sideTempleRedEmission"] = texturesLoadPath.."BackgroundTextures/sideTempleRedEmission.jpg",
+	["sideTempleBlueEmission"] = texturesLoadPath.."BackgroundTextures/sideTempleBlueEmission.jpg",
 }
 
 --normal maps here
@@ -115,13 +186,35 @@ normalMapTextures =
 
 	--walls
 
-	["WallBlock1x1Normal"] = meshesLoadPath.."WallBlock1x1Normal.jpg",
-	["WallBlock2x2Normal"] = meshesLoadPath.."WallBlock2x2Normal.jpg",
-	["wall_msingleNormal"] = meshesLoadPath.."wall_msingleNormal.jpg",
-	["wall_ocornerNormal"] = meshesLoadPath.."wall_ocornerNormal.jpg",
-	["wall_icornerNormal"] = meshesLoadPath.."wall_icornerNormal.jpg",
-	["wall_flatNormal"] = meshesLoadPath.."wall_flatNormal.jpg",
-	["wall_singleNormal"] = meshesLoadPath.."wall_singleNormal.jpg",
+	["WallBlock1x1Normal"] = texturesLoadPath.."WallBlock1x1Normal.jpg",
+	["WallBlock2x2Normal"] = texturesLoadPath.."WallBlock2x2Normal.jpg",
+	["wall_msingleNormal"] = texturesLoadPath.."wall_msingleNormal.jpg",
+	["wall_ocornerNormal"] = texturesLoadPath.."wall_ocornerNormal.jpg",
+	["wall_icornerNormal"] = texturesLoadPath.."wall_icornerNormal.jpg",
+	["wall_flatNormal"] = texturesLoadPath.."wall_flatNormal.jpg",
+	["wall_singleNormal"] = texturesLoadPath.."wall_singleNormal.jpg",
+
+	--backgroundNormal
+
+
+
+	["borderLeftNormal"] = texturesLoadPath.."BackgroundTextures/borderLeftNormal.jpg",
+	["borderRightNormal"] = texturesLoadPath.."BackgroundTextures/borderRightNormal.jpg",
+	["bottomBorderNormal"] = texturesLoadPath.."BackgroundTextures/bottomBorderNormal.jpg",
+	["cornerPillarNormal"] = texturesLoadPath.."BackgroundTextures/cornerPillarNormal.jpg",
+	["respawnPointIceNormal"] = texturesLoadPath.."BackgroundTextures/respawnPointIceNormal.jpg",
+	["respawnPointLavaNormal"] = texturesLoadPath.."BackgroundTextures/respawnPointLavaNormal.jpg",
+	["sidePillarNormal"] = texturesLoadPath.."BackgroundTextures/sidePillarNormal.jpg",
+	["sideTempleRedNormal"] = texturesLoadPath.."BackgroundTextures/sideTempleRedNormal.jpg",
+	["sideTempleBlueNormal"] = texturesLoadPath.."BackgroundTextures/sideTempleBlueNormal.jpg",
+	
+
+	
+
+	
+
+
+
 }
 
 --Since we are using SFML for ui textures we need to load the sepperatly here!
