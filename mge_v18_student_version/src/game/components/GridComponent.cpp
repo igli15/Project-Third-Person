@@ -171,7 +171,7 @@ std::vector<TileComponent*> GridComponent::GetNeighbourTiles(glm::vec3 playerPos
 	//std::cout <<"MYPOS: "<< playerPos << std::endl;
 	//std::cout << "ENEMYPOS: " << enemyPos << std::endl;
 
-	for (int i = 1; i <= amount; i++)
+	for (int i = 0; i <= amount; i++)
 	{
 		if (horizontal)
 		{
