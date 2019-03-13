@@ -46,7 +46,7 @@ void BalloonComponent::Explode(PlayerDataComponent* playerData)
 
 		m_exploded = true;
 
-		auto tiles = m_grid->GetTilesInARange(m_gameObject->transform->LocalPosition(), 6, 6);
+		auto tiles = m_grid->GetTilesInARange(m_gameObject->transform->LocalPosition(), 7, 7);
 		for (int i = 0; i < tiles.size(); i++)
 		{
 			if (p1Tile != nullptr && tiles[i]->GridPos() == p1Tile->GridPos() && p1Data->MatType() != playerData->MatType())

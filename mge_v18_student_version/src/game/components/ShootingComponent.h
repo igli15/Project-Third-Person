@@ -46,7 +46,7 @@ private:
 	sf::Clock m_clock2;
 
 	PlayerDataComponent* m_playerDataCompoent;
-	float m_reloadTime1 = 0.5f;
+	float m_reloadTime1 = 0.125f;
 	float m_relaodTime2 = 1;
 
 	std::vector<TileComponent*> m_selectedTiles;
