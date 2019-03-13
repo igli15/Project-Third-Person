@@ -72,7 +72,7 @@ diffuseTextures =
 	["refillStationDiffuse"] = texturesLoadPath.."refillStationDiffuse.jpg",
 	["BalloonDiffuse"] = texturesLoadPath.."BalloonDiffuse.png",
 	["cannonDiffuse"] = texturesLoadPath.."cannonDiffuse.jpg",
-	["topBorderDetail_initialShadingGroup_Diffuse"] = texturesLoadPath.."topBorderDetail_initialShadingGroup_Diffuse.jpg",
+	["topBorderDetailDiffuse"] = texturesLoadPath.."topBorderDetailDiffuse.jpg",
 	["bigTempleDiffuse"] = texturesLoadPath.."bigTempleDiffuse.jpg",
 
 
@@ -125,7 +125,7 @@ specularTextures =
 	["refillStationSpecular"] = texturesLoadPath.."refillStationSpecular.jpg",
 	["BalloonSpecular"] = texturesLoadPath.."BalloonSpecular.png",
 	["cannonSpecular"] = texturesLoadPath.."cannonSpecular.jpg",
-	["topBorderDetail_initialShadingGroup_Specular"] = texturesLoadPath.."topBorderDetail_initialShadingGroup_Specular.jpg",
+	["topBorderDetailSpecular"] = texturesLoadPath.."topBorderDetailSpecular.jpg",
 	["bigTempleSpecular"] = texturesLoadPath.."bigTempleSpecular.jpg",
 
 
@@ -171,6 +171,7 @@ emissionTextures =
 	["cannonRedEmission"] = texturesLoadPath.."cannonRedEmission.jpg",
 	["cannonBlueEmission"] = texturesLoadPath.."cannonBlueEmission.jpg",
 	["bigTempleEmission"] = texturesLoadPath.."bigTempleEmission.jpg",
+	["statueEmission"] = texturesLoadPath.."statueEmission.jpg",
 
 	--backgroundEmission
 
@@ -191,7 +192,7 @@ normalMapTextures =
 	["wallNormal"] = texturesLoadPath.."wallNormal.png",
 	["neutralNormal"] = texturesLoadPath.."neutralNormal.jpg",
 	["refillStation"] = texturesLoadPath.."refillStationNormal.jpg",
-	["topBorderDetail_initialShadingGroup_Normal"] = texturesLoadPath.."topBorderDetail_initialShadingGroup_Normal.jpg",
+	["topBorderDetailNormal"] = texturesLoadPath.."topBorderDetailNormal.jpg",
 	["bigTempleNormal"] = texturesLoadPath.."bigTempleNormal.jpg",
 
 	--walls
@@ -217,6 +218,7 @@ normalMapTextures =
 	["sidePillarNormal"] = texturesLoadPath.."BackgroundTextures/sidePillarNormal.jpg",
 	["sideTempleRedNormal"] = texturesLoadPath.."BackgroundTextures/sideTempleRedNormal.jpg",
 	["sideTempleBlueNormal"] = texturesLoadPath.."BackgroundTextures/sideTempleBlueNormal.jpg",
+	["statueNormal"] = texturesLoadPath.."statueNormal.jpg",
 	
 
 	
