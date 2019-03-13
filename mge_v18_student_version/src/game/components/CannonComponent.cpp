@@ -41,7 +41,7 @@ void CannonComponent::OnPainted(PlayerDataComponent* playerData)
 		break;
 	}
 
-	ShootInFacingDir(playerData);
+	//ShootInFacingDir(playerData);
 
 }
 
