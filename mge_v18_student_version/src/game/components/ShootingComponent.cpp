@@ -118,14 +118,14 @@ void ShootingComponent::ShootInk(float tileAmount, bool isPrimaryShooting)
 
 	std::vector<TileComponent*> tiles;
 
-	if (isPrimaryShooting)
+	if (isPrimaryShooting&&!m_playerDataCompoent->IsDead())
 	{
 
 		tiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
 	}
 	else 
 	{
-		tiles = m_gridComponent->GetTilesInTriangleRange(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
+		//tiles = m_gridComponent->GetTilesInTriangleRange(m_gameObject->transform->WorldPosition(), otherPlayerPos, tileAmount, horizontalShooting, negtiveDirection, [enemy]() {enemy->GetComponent<PlayerDataComponent>()->OnDeath(); });
 	}
 
 	for (int i = 0; i < tiles.size(); i++)
@@ -175,6 +175,15 @@ void ShootingComponent::AddInk(float inkLevel)
 	HUD::GetHudComponent()->UpdateInkStatus(m_inkLevel, m_playerNumber);
 }
 
+void ShootingComponent::ClearSelectedTiles()
+{
+	for (int i = 0; i < m_selectedTiles.size(); i++)
+	{
+		m_selectedTiles[i]->DeSelectTile();
+	}
+	m_selectedTiles.clear();
+}
+
 void ShootingComponent::OnKeyOneEnter()
 {
 }
@@ -186,38 +195,40 @@ void ShootingComponent::OnKeyOneStay()
 	//std::cout << "OnKeyEnter" << std::endl;
 
 
-
-	bool horizontalShooting = false;
-	bool negtiveDirection = false;
-	switch (m_playerMovementComponent->GetCurrentDirection())
+	if (m_inkLevel > 0)
 	{
-	case PlayerMovementComponent::BACKWARD:
+		bool horizontalShooting = false;
+		bool negtiveDirection = false;
+		switch (m_playerMovementComponent->GetCurrentDirection())
+		{
+		case PlayerMovementComponent::BACKWARD:
 
-		break;
-	case PlayerMovementComponent::FORWARD:
-		negtiveDirection = true;
-		break;
-	case PlayerMovementComponent::LEFT:
-		horizontalShooting = true;
-		negtiveDirection = true;
-		break;
-	case PlayerMovementComponent::RIGHT:
-		horizontalShooting = true;
-		break;
-	default:
-		break;
-	}
+			break;
+		case PlayerMovementComponent::FORWARD:
+			negtiveDirection = true;
+			break;
+		case PlayerMovementComponent::LEFT:
+			horizontalShooting = true;
+			negtiveDirection = true;
+			break;
+		case PlayerMovementComponent::RIGHT:
+			horizontalShooting = true;
+			break;
+		default:
+			break;
+		}
 
-	for (int i = 0; i < m_selectedTiles.size(); i++)
-	{
-		m_selectedTiles[i]->DeSelectTile();
-	}
-	m_selectedTiles.clear();
+		for (int i = 0; i < m_selectedTiles.size(); i++)
+		{
+			m_selectedTiles[i]->DeSelectTile();
+		}
+		m_selectedTiles.clear();
 
-	m_selectedTiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), glm::vec3(0, 0, 0), m_currentAmmo, horizontalShooting, negtiveDirection, []() {});
-	for (int i = 0; i < m_selectedTiles.size(); i++)
-	{
-		m_selectedTiles[i]->SelectTile(m_playerDataCompoent);
+		m_selectedTiles = m_gridComponent->GetNeighbourTiles(m_gameObject->transform->WorldPosition(), glm::vec3(0, 0, 0), m_currentAmmo, horizontalShooting, negtiveDirection, []() {});
+		for (int i = 0; i < m_selectedTiles.size(); i++)
+		{
+			m_selectedTiles[i]->SelectTile(m_playerDataCompoent);
+		}
 	}
 
 
