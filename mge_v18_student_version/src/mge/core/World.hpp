@@ -13,6 +13,7 @@ class World : public GameObject
 {
 	public:
         World();
+		~World();
 		virtual void Initialize() ;
 		void setMainCamera (CameraComponent* pCamera);
 		CameraComponent* getMainCamera();

@@ -38,10 +38,10 @@ void PlayerDataComponent::Update(float timeStep)
 	
 	if (m_isDead)
 	{
-		m_position_tween->onStep([this](float x, float y, float z) {tweenedVector.x = x; tweenedVector.y = y; tweenedVector.z = z; return false; });
-		m_scale_tween->onStep([this](float x, float y, float z) {tweenedScale.x = x; tweenedScale.y = y; tweenedScale.z = z; return false; });
+		if (m_helmet_tween != nullptr)m_position_tween->onStep([this](float x, float y, float z) {tweenedVector.x = x; tweenedVector.y = y; tweenedVector.z = z; return false; });
+		if (m_helmet_tween != nullptr)m_scale_tween->onStep([this](float x, float y, float z) {tweenedScale.x = x; tweenedScale.y = y; tweenedScale.z = z; return false; });
 
-		m_helmet_tween->onStep([this](float x, float y, float z) {tweenedHelmetPosition.x = x; tweenedHelmetPosition.y = y; tweenedHelmetPosition.z = z; return false; });
+		if(m_helmet_tween != nullptr)m_helmet_tween->onStep([this](float x, float y, float z) {tweenedHelmetPosition.x = x; tweenedHelmetPosition.y = y; tweenedHelmetPosition.z = z; return false; });
 		//std::cout << "POSITION Progress " << m_position_tween->progress() << std::endl;
 		//::cout << "SCALE    Progress " << m_scale_tween->progress() << std::endl;
 		//When animation is finsihed
@@ -49,7 +49,7 @@ void PlayerDataComponent::Update(float timeStep)
 		{
 			//Remove player from the board
 			std::cout << "TP OUT TP OUT TP OUT TP OUT TP OUT TP OUT" << std::endl;
-			//m_gameObject->transform->SetLocalPosition(glm::vec3(999, 0, 999));
+			m_gameObject->transform->SetLocalPosition(glm::vec3(999, 0, 999));
 			
 		}
 		else
@@ -66,6 +66,7 @@ void PlayerDataComponent::Update(float timeStep)
 	{
 		Tweener::DeleteTween<float>(m_position_tween);
 		Tweener::DeleteTween<float>(m_scale_tween);
+		Tweener::DeleteTween<float>(m_helmet_tween);
 		Respawn();
 	}
 }
@@ -253,4 +254,11 @@ void PlayerDataComponent::StartDeathAnimation()
 	 tweenedScale = glm::vec3(2, 2, 2);
 
 	 *m_scale_tween = m_scale_tween->via(tweeny::easing::quadraticOut);
+}
+
+void PlayerDataComponent::OnDestroy()
+{
+	if (m_position_tween != nullptr) Tweener::DeleteTween<float>(m_position_tween);
+	if (m_scale_tween != nullptr) Tweener::DeleteTween<float>(m_scale_tween);
+	if (m_helmet_tween != nullptr) Tweener::DeleteTween<float>(m_helmet_tween);
 }

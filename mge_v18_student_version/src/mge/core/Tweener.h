@@ -167,13 +167,15 @@ public:
 
 		if constexpr (std::is_same<T, int>())
 		{
-			delete tween;
 			m_tripleIntTweens.erase(std::find(m_tripleIntTweens.begin(), m_tripleIntTweens.end(), tween));
+			delete tween;
 		}
 		else if constexpr (std::is_same<T, float>())
 		{
-			delete tween;
+			if (std::find(m_tripleFloatTweens.begin(), m_tripleFloatTweens.end(), tween) != m_tripleFloatTweens.end())
 			m_tripleFloatTweens.erase(std::find(m_tripleFloatTweens.begin(), m_tripleFloatTweens.end(), tween));
+
+			delete tween;
 		}
 		else
 		{

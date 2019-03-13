@@ -52,6 +52,8 @@ void BallonSpawnerComponent::Update(float timeStep)
 void BallonSpawnerComponent::OnDestroy()
 {
 	XMLComponent::OnDestroy();
+
+	if(!m_parentTile->IsFree())
 	m_parentTile->SetGridElement(nullptr);
 }
 
