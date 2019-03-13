@@ -149,7 +149,7 @@ void AbstractGame::run()
 		{
 
             glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-			_window->clear();
+			_window->clear(sf::Color(104,131,173,255));
 
 			m_worldManager->ClearOldWorld();
 
