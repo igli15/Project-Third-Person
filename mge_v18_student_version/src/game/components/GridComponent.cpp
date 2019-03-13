@@ -8,6 +8,7 @@
 #include "mge/util/Utils.h"
 #include "game\HUD.h"
 #include "game/components/HUDComponent.h"
+#include "game/MainWorld.h"
 
 GridComponent::GridComponent()
 {
@@ -386,6 +387,9 @@ std::vector<TileComponent*> GridComponent::GetTilesInARange(TileComponent* tile,
 
 void GridComponent::IncreaseTileCount(TileType type)
 {
+	dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->ScaleIceEmission(GetTilePercantage(ICE) / 100.0f);
+	dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->ScaleLavaEmission(GetTilePercantage(LAVA) / 100.0f);
+
 	HUD* hud = dynamic_cast<HUD*>(HUD::GetHudComponent()->GetGameObject());
 	if (type == TileType::ICE)
 	{
@@ -403,6 +407,9 @@ void GridComponent::IncreaseTileCount(TileType type)
 
 void GridComponent::DecreaseTileCount(TileType type)
 {
+	dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->ScaleIceEmission(GetTilePercantage(ICE) / 100.0f);
+	dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->ScaleLavaEmission(GetTilePercantage(LAVA) / 100.0f);
+
 	HUD* hud = dynamic_cast<HUD*>(HUD::GetHudComponent()->GetGameObject());
 	if (type == TileType::ICE)
 	{
