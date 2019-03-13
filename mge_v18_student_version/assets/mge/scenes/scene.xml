@@ -193,7 +193,7 @@
   </GameObject>
   <GameObject name="Grid 1" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
     <Components>
-      <GridComponent gridSizeX="26" gridSizeY="15" tileRadius="0.5" playerPosOffsetX="1" playerPosOffsetY="0" balloonSpawnTime="10">
+      <GridComponent gridSizeX="26" gridSizeY="15" tileRadius="0.5" playerPosOffsetX="0.45" playerPosOffsetY="0.3" balloonSpawnTime="10">
         <BallonTilePositions>
           <ballonTile pos="(7.0000, 0.0000, 11.0000)" />
           <ballonTile pos="(18.0000, 0.0000, 3.0000)" />
@@ -227,6 +227,7 @@
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
           <TileComponent TileType="LAVA" isPaintable="True" />
+          <BalloonSpawner spawnOnStart="True" spawnTime="110" />
         </Components>
       </GameObject>
     </GameObject>
@@ -1712,7 +1713,6 @@
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
           <TileComponent TileType="DEFAULT" isPaintable="True" />
-          <BalloonSpawner spawnOnStart="True" spawnTime="5" />
         </Components>
       </GameObject>
     </GameObject>
@@ -3693,6 +3693,7 @@
         <Components>
           <TextureMaterial materialName="NeuturalMat" shininess="16" emissionScale="0.8" diffuseTexture="neutralDiffuse" specularTexture="neutralSpecular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
           <TileComponent TileType="ICE" isPaintable="True" />
+          <BalloonSpawner spawnOnStart="True" spawnTime="110" />
         </Components>
       </GameObject>
     </GameObject>
