@@ -16,7 +16,7 @@ meshes =
 	["GroundTile"] = meshesLoadPath.."GroundTile.obj",
 	["players"] = meshesLoadPath.."players.obj",
 	["orb"] = meshesLoadPath.."orb.obj",
-	["refillStation"] = meshesLoadPath.."cube_smooth.obj",
+	["refillStation"] = meshesLoadPath.."refillStation.obj",
 	["balloon"] = meshesLoadPath.."Balloon.obj",
 	["cannon"] = meshesLoadPath.."cannon.obj",
 
@@ -39,7 +39,7 @@ meshes =
 	["bush2"] = meshesLoadPath.. "BackgroundModels/bush2.obj",
 	["cornerPillar"] = meshesLoadPath.. "BackgroundModels/cornerPillar.obj",
 	["refillPoint"] = meshesLoadPath.. "BackgroundModels/refillPoint.obj",
-	--["rocks"] = meshesLoadPath.. "BackgroundModels/rocks.obj",
+	["rocks"] = meshesLoadPath.. "BackgroundModels/rocks.obj",
 	["sidePillar"] = meshesLoadPath.. "BackgroundModels/sidePillar.obj",
 	["sideTemple"] = meshesLoadPath.. "BackgroundModels/sideTemple.obj",
 	["statue"] = meshesLoadPath.. "BackgroundModels/statue.obj",
@@ -103,6 +103,9 @@ diffuseTextures =
 	["sideTempleBlueDiffuse"] = texturesLoadPath.."BackgroundTextures/sideTempleBlueDiffuse.jpg",
 	["sideTempleRedDiffuse"] = texturesLoadPath.."BackgroundTextures/sideTempleRedDiffuse.jpg",
 	["cornerPillarDiffuse"] = texturesLoadPath.."BackgroundTextures/cornerPillarDiffuse.jpg",
+	["rocksLightDiffuse"] = texturesLoadPath.."BackgroundTextures/rocksLightDiffuse.jpg",
+	["rocksMediumDiffuse"] = texturesLoadPath.."BackgroundTextures/rocksMediumDiffuse.jpg",
+	["rocksDarkDiffuse"] = texturesLoadPath.."BackgroundTextures/rocksDarkDiffuse.jpg",
 
 	
 	["iceSelectionDiffuse"] = texturesLoadPath.."iceSelectionDiffuse.jpg",
