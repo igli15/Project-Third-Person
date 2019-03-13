@@ -27,6 +27,8 @@ public:
 	void SetInkLevel(float newInkLevel);
 	void ResetInkLevel();
 	void AddInk(float inkLevel);
+	
+	void ClearSelectedTiles();
 
 	void OnKeyOneEnter();
 	void OnKeyOneStay();

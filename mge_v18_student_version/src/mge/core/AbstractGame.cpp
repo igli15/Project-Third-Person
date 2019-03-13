@@ -10,6 +10,7 @@
 #include "mge/core/EventQueue.h"
 #include "game/MenuScene.h"
 #include "mge/core/Tweener.h"
+#include "mge/config.hpp"
 
 AbstractGame* AbstractGame::m_instance = nullptr;
 
@@ -43,6 +44,38 @@ void AbstractGame::Initialize() {
     std::cout << "Initializing engine..." << std::endl << std::endl;
 
     _initializeWindow();
+
+	sf::Texture* metroLogoTex = m_resourceManager->LoadSFMLTexture(config::MGE_TEXTURE_PATH + "Engine/BackgroundOverlay.png", "metroLogos");
+	sf::Texture* logoTex = m_resourceManager->LoadSFMLTexture(config::MGE_TEXTURE_PATH + "Engine/mgeLogoInTheMiddle.png", "logo");
+	sf::Texture* backgrosliderundTex = m_resourceManager->LoadSFMLTexture(config::MGE_TEXTURE_PATH + "Engine/white_line.png", "slider");
+
+	sf::Sprite* metroLogo = new sf::Sprite();
+	metroLogo->setTexture(*metroLogoTex);
+
+	sf::Sprite* logo = new sf::Sprite();
+	logo->setTexture(*logoTex);
+
+	sf::Sprite* slider = new sf::Sprite();
+	slider->setTexture(*backgrosliderundTex);
+	
+	_window->clear();
+	_window->draw(*logo);
+	_window->draw(*metroLogo);
+	slider->setPosition(755, 575);
+	slider->setScale(0, 1);
+	auto t  = Tweener::GenerateTween<float>(0, 1, 15000);
+	*t = t->via(tweeny::easing::quadraticOut);
+	while (t->progress() < 1)
+	{
+		_window->clear();
+		_window->draw(*logo);
+		_window->draw(*metroLogo);
+		slider->setScale(t->step(16),1);
+		_window->draw(*slider);
+		_window->display();
+	}
+	_window->display();
+
     _printVersionInfo();
     _initializeGlew();
     _initializeRenderer();
@@ -64,7 +97,7 @@ void AbstractGame::_initializeWindow()
 
 	std::cout << "Initializing window with Width: "<<m_windowWidth<<" and Height: "<<m_windowHeight << std::endl;
 
-	_window = new sf::RenderWindow( sf::VideoMode(m_windowWidth,m_windowHeight), "My Game!", sf::Style::Default, sf::ContextSettings(24,8,8,3,3));
+	_window = new sf::RenderWindow( sf::VideoMode(m_windowWidth,m_windowHeight), "MGE", sf::Style::Default, sf::ContextSettings(24,8,8,3,3));
 	//_window->setVerticalSyncEnabled(true);
     std::cout << "Window initialized." << std::endl << std::endl;
 }
@@ -149,7 +182,9 @@ void AbstractGame::run()
 		{
 
             glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-			_window->clear(sf::Color(104,131,173,255));
+			_window->clear(sf::Color(47,64,51,255));
+
+
 
 			m_worldManager->ClearOldWorld();
 

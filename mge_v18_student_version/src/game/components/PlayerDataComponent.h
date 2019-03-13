@@ -53,10 +53,13 @@ private:
 	glm::vec3 tweenedHelmetPosition;
 
 	sf::Clock m_respawnClock;
+
+	sf::Clock m_blinkingClock;
+
 	bool m_isDead = false;
 	float m_respawnTime = 2;
 	float m_penaltyTime = 0;
-	float m_penaltyTimePerTile = 0.025f;
+	float m_penaltyTimePerTile = 0.09f;
 
 	float m_explosionWidth = 6;
 	float m_explosionHeight = 6;

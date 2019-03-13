@@ -157,6 +157,8 @@ bool TileComponent::IsFree()
 
 void TileComponent::SelectTile(PlayerDataComponent* playerData)
 {
+	if(m_gameObject->getMaterial()==  AbstractGame::Instance()->GetResourceManager()->GetMaterial("lavaSelection") ||
+		m_gameObject->getMaterial() == AbstractGame::Instance()->GetResourceManager()->GetMaterial("iceSelection") )return;
 
 	oldMat = dynamic_cast<TextureMaterial*>(m_gameObject->getMaterial());
 	if (playerData->GetPlayerNumber() == 1)
