@@ -88,6 +88,8 @@ class AbstractGame
 
 		float m_tweenDeltaTime;
 
+		bool m_sceneLoaded;
+
     private:
         AbstractGame(const AbstractGame&);
         AbstractGame& operator=(const AbstractGame&);
