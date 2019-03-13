@@ -360,6 +360,7 @@
       <GameObject name="sideTemple" position="(27.8600, 1.0500, 10.8300)" rotation="(0.0000, -0.7071, 0.0000, 0.7071)" scale="(1.0000, 1.0000, 1.0000)" mesh="sideTemple">
         <Components>
           <TextureMaterial materialName="sideTemple" shininess="16" emissionScale="0.8" diffuseTexture="sideTempleRedDiffuse" specularTexture="sideTempleRedSpecular" emissionTexture="sideTempleRedEmission" normalTexture="sideTempleRedNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+          <LavaEmission />
         </Components>
       </GameObject>
     </GameObject>
@@ -392,6 +393,7 @@
       <GameObject name="borderPlayer1Side" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="borderRight">
         <Components>
           <TextureMaterial materialName="borderRight" shininess="16" emissionScale="0.8" diffuseTexture="borderRightDiffuse" specularTexture="NONE" emissionTexture="borderRightEmission" normalTexture="borderRightNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+          <IceEmission />
         </Components>
       </GameObject>
     </GameObject>
@@ -400,6 +402,7 @@
       <GameObject name="borderPlayer1Side" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="borderLeft">
         <Components>
           <TextureMaterial materialName="borderLeft" shininess="16" emissionScale="0.8" diffuseTexture="borderLeftDiffuse" specularTexture="NONE" emissionTexture="borderLeftEmission" normalTexture="borderLeftNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+          <LavaEmission />
         </Components>
       </GameObject>
     </GameObject>
@@ -424,6 +427,7 @@
       <GameObject name="sideTemple (1)" position="(-3.0500, 1.1000, 2.9700)" rotation="(0.0000, -0.7071, 0.0000, -0.7071)" scale="(1.0000, 1.0000, 1.0000)" mesh="sideTemple">
         <Components>
           <TextureMaterial materialName="sideTemple2" shininess="16" emissionScale="0.8" diffuseTexture="sideTempleBlueDiffuse" specularTexture="sideTempleBlueSpecular" emissionTexture="sideTempleBlueEmission" normalTexture="sideTempleBlueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+          <IceEmission />
         </Components>
       </GameObject>
     </GameObject>
