@@ -49,7 +49,25 @@ void PlayerDataComponent::Update(float timeStep)
 		{
 			//Remove player from the board
 			std::cout << "TP OUT TP OUT TP OUT TP OUT TP OUT TP OUT" << std::endl;
-			m_gameObject->transform->SetLocalPosition(glm::vec3(999, 0, 999));
+			Respawn();//Bad
+
+			float step1 = 0.2f;
+			float step2 = 0.6f;
+
+			if (m_blinkingClock.getElapsedTime().asSeconds() < step1)
+			{
+				//o-1 seconds
+				m_gameObject->transform->SetScale(glm::vec3(0.1f, 0.1f, 0.1f));
+			}
+			if (m_blinkingClock.getElapsedTime().asSeconds() >step1  && m_blinkingClock.getElapsedTime().asSeconds() <=step2)
+			{
+				//1-2 seconds
+				m_gameObject->transform->SetScale(glm::vec3(2, 2, 2));
+			}
+			if (m_blinkingClock.getElapsedTime().asSeconds() > step2)
+			{
+				m_blinkingClock.restart();
+			}
 			
 		}
 		else
@@ -64,10 +82,11 @@ void PlayerDataComponent::Update(float timeStep)
 	}
 	if (m_isDead && m_respawnClock.getElapsedTime().asSeconds()>=(m_respawnTime +m_penaltyTime ))
 	{
+		m_gameObject->transform->SetScale(glm::vec3(2, 2, 2));
 		Tweener::DeleteTween<float>(m_position_tween);
 		Tweener::DeleteTween<float>(m_scale_tween);
 		Tweener::DeleteTween<float>(m_helmet_tween);
-		Respawn();
+		m_isDead = false; 
 	}
 }
 
@@ -155,11 +174,11 @@ void PlayerDataComponent::Respawn()
 	m_gameObject->transform->SetLocalPosition(m_spawnPosition);
 	m_gameObject->transform->SetScale(glm::vec3(2, 2, 2));
 	m_helmetObject->transform->SetScale(glm::vec3(1, 1, 1));
-	m_helmetObject->transform->SetLocalPosition(glm::vec3(0, 0, 0));
-
+	m_helmetObject->transform->SetLocalPosition(glm::vec3(0,0,0));
+	
 	m_gameObject->add(m_helmetObject);
 	
-	m_isDead = false;
+	
 }
 
 void PlayerDataComponent::SetSpawnPosition(glm::vec3 newSpawnPosition)

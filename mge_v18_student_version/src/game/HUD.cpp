@@ -109,7 +109,7 @@ void HUD::Awake()
 void HUD::Start()
 {
 	GameObject::Start();
-	m_gameLength = 30;
+	m_gameLength = 90;
 	m_gameClock.restart();
 	SetRespawnTime(1, 22);
 	SetRespawnTime(2, 22);
