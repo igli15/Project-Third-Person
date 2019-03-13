@@ -40,11 +40,11 @@ private:
 	//spawn position will be taken as position when Start() was called
 	glm::vec3 m_spawnPosition;
 	//Tween is needed for the death position animation
-	tweeny::tween<float,float,float>* m_position_tween;
+	tweeny::tween<float,float,float>* m_position_tween = nullptr;
 	//Tween is needed for the death scale animation
-	tweeny::tween<float, float, float>* m_scale_tween;
+	tweeny::tween<float, float, float>* m_scale_tween = nullptr;
 	//Tween is needed for the falling of helmet
-	tweeny::tween<float, float, float>* m_helmet_tween;
+	tweeny::tween<float, float, float>* m_helmet_tween = nullptr;
 
 	//
 	//
@@ -53,6 +53,9 @@ private:
 	glm::vec3 tweenedHelmetPosition;
 
 	sf::Clock m_respawnClock;
+
+	sf::Clock m_blinkingClock;
+
 	bool m_isDead = false;
 	float m_respawnTime = 2;
 	float m_penaltyTime = 0;
@@ -70,5 +73,7 @@ private:
 	GridComponent* m_levelGrid;
 
 	void StartDeathAnimation();
+
+	void OnDestroy() override;
 };
 

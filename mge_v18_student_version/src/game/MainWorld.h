@@ -24,11 +24,16 @@ public:
 	void AddPlayer(GameObject* player);
 	GameObject* GetPlayer(int playerNumber);
 
+	void ScaleLavaEmission(float amount);
+	void ScaleIceEmission(float amount);
+
 private:
 	GridComponent* levelGrid = nullptr;
 
 	int playerNumber = 2;
 
 	std::vector<GameObject*> m_players;
+	std::vector<GameObject*> m_lavaEmissionGameObjects;
+	std::vector<GameObject*> m_iceEmissionGameObjects;
 };
 

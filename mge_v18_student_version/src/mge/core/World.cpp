@@ -6,9 +6,25 @@
 #include "mge/components/LightComponent.h"
 #include "mge/components/CameraComponent.h"
 
+#include "Tweener.h"
+
 World::World()
 {
 	_world = this;
+}
+
+World::~World()
+{
+	/*
+	for (int i = _children.size() - 1; i >= 0; --i)
+	{
+		_children[i]->OnDestroy();
+		for (int j = _children[i]->getChildCount() - 1; j >= 0; --j)
+		{
+			_children[i]->getChildAt(j)->OnDestroy();
+		}
+	}
+	*/
 }
 
 void World::Initialize()

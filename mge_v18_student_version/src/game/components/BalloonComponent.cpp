@@ -69,6 +69,8 @@ void BalloonComponent::Explode(PlayerDataComponent* playerData)
 
 void BalloonComponent::OnDestroy()
 {
+	Component::OnDestroy();
+	std::cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" << std::endl;
 }
 
 void BalloonComponent::OnPainted(PlayerDataComponent* playerData)

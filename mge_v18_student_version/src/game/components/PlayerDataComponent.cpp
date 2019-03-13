@@ -38,10 +38,10 @@ void PlayerDataComponent::Update(float timeStep)
 	
 	if (m_isDead)
 	{
-		m_position_tween->onStep([this](float x, float y, float z) {tweenedVector.x = x; tweenedVector.y = y; tweenedVector.z = z; return false; });
-		m_scale_tween->onStep([this](float x, float y, float z) {tweenedScale.x = x; tweenedScale.y = y; tweenedScale.z = z; return false; });
+		if (m_helmet_tween != nullptr)m_position_tween->onStep([this](float x, float y, float z) {tweenedVector.x = x; tweenedVector.y = y; tweenedVector.z = z; return false; });
+		if (m_helmet_tween != nullptr)m_scale_tween->onStep([this](float x, float y, float z) {tweenedScale.x = x; tweenedScale.y = y; tweenedScale.z = z; return false; });
 
-		m_helmet_tween->onStep([this](float x, float y, float z) {tweenedHelmetPosition.x = x; tweenedHelmetPosition.y = y; tweenedHelmetPosition.z = z; return false; });
+		if(m_helmet_tween != nullptr)m_helmet_tween->onStep([this](float x, float y, float z) {tweenedHelmetPosition.x = x; tweenedHelmetPosition.y = y; tweenedHelmetPosition.z = z; return false; });
 		//std::cout << "POSITION Progress " << m_position_tween->progress() << std::endl;
 		//::cout << "SCALE    Progress " << m_scale_tween->progress() << std::endl;
 		//When animation is finsihed
@@ -49,7 +49,25 @@ void PlayerDataComponent::Update(float timeStep)
 		{
 			//Remove player from the board
 			std::cout << "TP OUT TP OUT TP OUT TP OUT TP OUT TP OUT" << std::endl;
-			//m_gameObject->transform->SetLocalPosition(glm::vec3(999, 0, 999));
+			Respawn();//Bad
+
+			float step1 = 0.2f;
+			float step2 = 0.6f;
+
+			if (m_blinkingClock.getElapsedTime().asSeconds() < step1)
+			{
+				//o-1 seconds
+				m_gameObject->transform->SetScale(glm::vec3(0.1f, 0.1f, 0.1f));
+			}
+			if (m_blinkingClock.getElapsedTime().asSeconds() >step1  && m_blinkingClock.getElapsedTime().asSeconds() <=step2)
+			{
+				//1-2 seconds
+				m_gameObject->transform->SetScale(glm::vec3(2, 2, 2));
+			}
+			if (m_blinkingClock.getElapsedTime().asSeconds() > step2)
+			{
+				m_blinkingClock.restart();
+			}
 			
 		}
 		else
@@ -64,9 +82,11 @@ void PlayerDataComponent::Update(float timeStep)
 	}
 	if (m_isDead && m_respawnClock.getElapsedTime().asSeconds()>=(m_respawnTime +m_penaltyTime ))
 	{
+		m_gameObject->transform->SetScale(glm::vec3(2, 2, 2));
 		Tweener::DeleteTween<float>(m_position_tween);
 		Tweener::DeleteTween<float>(m_scale_tween);
-		Respawn();
+		Tweener::DeleteTween<float>(m_helmet_tween);
+		m_isDead = false; 
 	}
 }
 
@@ -154,11 +174,11 @@ void PlayerDataComponent::Respawn()
 	m_gameObject->transform->SetLocalPosition(m_spawnPosition);
 	m_gameObject->transform->SetScale(glm::vec3(2, 2, 2));
 	m_helmetObject->transform->SetScale(glm::vec3(1, 1, 1));
-	m_helmetObject->transform->SetLocalPosition(glm::vec3(0, 0, 0));
-
+	m_helmetObject->transform->SetLocalPosition(glm::vec3(0,0,0));
+	
 	m_gameObject->add(m_helmetObject);
 	
-	m_isDead = false;
+	
 }
 
 void PlayerDataComponent::SetSpawnPosition(glm::vec3 newSpawnPosition)
@@ -253,4 +273,11 @@ void PlayerDataComponent::StartDeathAnimation()
 	 tweenedScale = glm::vec3(2, 2, 2);
 
 	 *m_scale_tween = m_scale_tween->via(tweeny::easing::quadraticOut);
+}
+
+void PlayerDataComponent::OnDestroy()
+{
+	if (m_position_tween != nullptr) Tweener::DeleteTween<float>(m_position_tween);
+	if (m_scale_tween != nullptr) Tweener::DeleteTween<float>(m_scale_tween);
+	if (m_helmet_tween != nullptr) Tweener::DeleteTween<float>(m_helmet_tween);
 }

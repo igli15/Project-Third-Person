@@ -85,6 +85,14 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 	{
 		newNode->AddComponent<BallonSpawnerComponent>()->Parse(componentNode);
 	}
+	else if (strcmp(componentNode->name(), "IceEmission") == 0)
+	{
+		m_iceEmissionGameObjects.push_back(newNode);
+	}
+	else if (strcmp(componentNode->name(), "LavaEmission") == 0)
+	{
+		m_lavaEmissionGameObjects.push_back(newNode);
+	}
 	
 }
 
@@ -166,4 +174,22 @@ void MainWorld::AddPlayer(GameObject * player)
 GameObject * MainWorld::GetPlayer(int playerNumber)
 {
 	return m_players.at(playerNumber);
+}
+
+void MainWorld::ScaleLavaEmission(float amount)
+{
+	for (int i = 0; i < m_lavaEmissionGameObjects.size(); i++)
+	{
+		TextureMaterial* t = dynamic_cast<TextureMaterial*>(m_lavaEmissionGameObjects[i]->getMaterial());
+		t->SetEmissionScale(amount);
+	}
+}
+
+void MainWorld::ScaleIceEmission(float amount)
+{
+	for (int i = 0; i < m_iceEmissionGameObjects.size(); i++)
+	{
+		TextureMaterial* t = dynamic_cast<TextureMaterial*>(m_iceEmissionGameObjects[i]->getMaterial());
+		t->SetEmissionScale(amount);
+	}
 }
