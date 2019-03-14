@@ -249,6 +249,9 @@ sfmlTextures =
 	["inkUIBackground"] = texturesLoadPath.."inkUIBackground.png",
 	["percentageLavaBar"] = texturesLoadPath.."percentageLavaBar.png",
 	["percentageIceBar"] = texturesLoadPath.."percentageIceBar.png",
+	["inkWarningLava"] = texturesLoadPath.."inkWarningLava.png",
+	["inkWarningIce"] = texturesLoadPath.."inkWarningIce.png",
+	["blank"] = texturesLoadPath.."blank.png",
 
 	--MENU
 	["menuBG"] = texturesLoadPath.."background.png",
@@ -297,7 +300,7 @@ sounds =
 	--["lavaCharge"] = musicLoadPath.."LavaCharge.wav",
 	["lavaDeath"] = musicLoadPath.."LavaDeath.wav",
 	--["noAmmo"] = musicLoadPath.."Outofammo.wav",
-	["refillSound"] = musicLoadPath.."refilling.wav",
+	["refillSound"] = musicLoadPath.."Refill.wav",
 	
 	["playerRespawnSound"] = musicLoadPath.."Respawn.wav",
 	["briskWins"] = musicLoadPath.."briskWins.wav",
@@ -305,7 +308,7 @@ sounds =
 
 	["pressingButton"] = musicLoadPath.."PressingButton.wav",
 	["selectingButton"] = musicLoadPath.."SelectingButtons.wav",
-
+	["timeOut"] = musicLoadPath.."timeOut.wav",
 }
 
 musics =

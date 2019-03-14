@@ -34,15 +34,11 @@ public:
 
 		if constexpr (std::is_same<T, int>())
 		{
-			Tweener::m_singleIntTweens.push_back(tween);
+			Tweener::m_singleFloatTweens.push_back(tween);
 		}
 		else if constexpr (std::is_same<T, float>())
 		{
 			Tweener::m_singleFloatTweens.push_back(tween);
-		}
-		else if constexpr (std::is_same<T, char>())
-		{
-			Tweener::m_singlecharTweens.push_back(tween);
 		}
 		else
 		{
