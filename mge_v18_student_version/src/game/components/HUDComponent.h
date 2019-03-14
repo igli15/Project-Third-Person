@@ -4,6 +4,8 @@
 #include "mge\components\UISpriteRenderer.h"
 #include "game\HUD.h"
 #include "mge\components\AudioSource.h"
+#include "mge\components\UISpriteRenderer.h"
+#include <SFML\Graphics.hpp>
 
 class HUDComponent : public Component
 {
@@ -22,6 +24,8 @@ private:
 	float m_tileCoverPercentage;
 
 	HUD* hud;
+	
+
 
 	AudioSource* m_audioSource;
 	sf::Music * m_initMusic;

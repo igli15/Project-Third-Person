@@ -38,7 +38,9 @@ void HUD::Load()
 	m_percentLavaBarTexture = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("percentageLavaBar");
 	m_percentIceBarTexture = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("percentageIceBar");
 	m_timerFont = AbstractGame::Instance()->GetResourceManager()->GetSFMLFont("theBoldFont");
-
+	m_inkWarningLava = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkWarningLava");
+	m_inkWarningIce = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkWarningIce");
+	m_blank = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("blank");
 
 	////Create Sprite and assign Texture to Sprite
 
@@ -48,7 +50,6 @@ void HUD::Load()
 	timerText->setCharacterSize(36);
 	timerText->setString("");
 	timerText->setPosition(930, 985);
-
 
 	lavaRespawnText = AddComponent<TextComponent>();
 	lavaRespawnTimer = lavaRespawnText->CreateText(m_timerFont);
@@ -63,6 +64,12 @@ void HUD::Load()
 	iceRespawnTimer->setCharacterSize(36);
 	iceRespawnTimer->setString("");
 	iceRespawnTimer->setPosition(1075, 1023);
+
+	inkWarningLava = AddComponent<UISpriteRenderer>();
+	inkWarningLava->ApplyTexture(m_blank);
+
+	inkWarningIce = AddComponent<UISpriteRenderer>();
+	inkWarningIce->ApplyTexture(m_blank);
 
 	inkUIOverlay = AddComponent<UISpriteRenderer>();
 	inkUIOverlay->ApplyTexture(m_inkUIOverlay);
@@ -109,10 +116,8 @@ void HUD::Awake()
 void HUD::Start()
 {
 	GameObject::Start();
-	m_gameLength = 121;
+	m_gameLength = 120;
 	m_gameClock.restart();
-	SetRespawnTime(1, 22);
-	SetRespawnTime(2, 22);
 	m_audioSource->SetVolume(90);
 	m_audioSource->PlayMusic();
 }
@@ -126,7 +131,16 @@ void HUD::Update(float pStep)
 	timerText->setOrigin(textRect.width / 2, textRect.height / 2);
 	timerText->setString("" + std::to_string((int) m_gameLength));
 	timerText->setPosition(956, 999);
-
+	if (m_gameLength <= 20)
+	{
+		timerText->setFillColor(sf::Color(130, 0, 0));
+		timeRunningOut = timeRunningOut - cD;
+		if (timeRunningOut <= 0)
+		{
+			m_audioSource->PlayOneShotSound("timeOut");
+			timeRunningOut = 1.0f;
+		}
+	}
 	if (m_gameLength <= 0)
 	{
 		PlayerPrefs::SetFloat("IcePercentage", dynamic_cast<MainWorld*>(GetWorld())->GetGrid()->GetTilePercantage(TileType::ICE)/100);
@@ -179,6 +193,26 @@ float HUD::GetMirroredPostionX(float xPosition, UISpriteRenderer* sprite)
 	float spriteWidth = sprite->GetSprite()->getGlobalBounds().width;
 	float desiredSpritePositionX = (1920.0f - xPosition - spriteWidth);
 	return desiredSpritePositionX;
+}
+
+void HUD::ShowInkWarningLava()
+{
+	inkWarningLava->ApplyTexture(m_inkWarningLava);
+}
+
+void HUD::ShowInkWarningIce()
+{
+	inkWarningIce->ApplyTexture(m_inkWarningIce);
+}
+
+void HUD::DontShowInkWarningLava()
+{
+	inkWarningLava->ApplyTexture(m_blank);
+}
+
+void HUD::DontShowInkWarningIce()
+{
+	inkWarningIce->ApplyTexture(m_blank);
 }
 
 HUDComponent * HUD::GetHudComponent()

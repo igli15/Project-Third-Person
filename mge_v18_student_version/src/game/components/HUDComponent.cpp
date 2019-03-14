@@ -5,6 +5,7 @@
 #include <iostream>
 #include "mge\components\AudioSource.h"
 #include "mge/core/AbstractGame.hpp"
+#include "mge/core/GameObject.hpp"
 
 HUDComponent::HUDComponent()
 {
@@ -33,7 +34,10 @@ void HUDComponent::UpdateInkStatus(float pCurrentInk, int pPlayer)
 		m_currentInkPOne = pCurrentInk;
 		float spriteScaleP1 = m_currentInkPOne / m_maxInk;
 		hud->lavaInkSpriteBar->GetSprite()->setScale(spriteScaleP1, 1);
-		
+		if (spriteScaleP1 < 0.3f)
+		{
+			hud->ShowInkWarningLava();
+		} else { hud->DontShowInkWarningLava(); }
 	}
 
 	else if (pPlayer == 2)
@@ -41,6 +45,11 @@ void HUDComponent::UpdateInkStatus(float pCurrentInk, int pPlayer)
 		m_currentInkPTwo = pCurrentInk;
 		float spriteScaleP2 = m_currentInkPTwo / m_maxInk;
 		hud->iceInkSpriteBar->GetSprite()->setScale(spriteScaleP2, 1);
+		if (spriteScaleP2 < 0.3f)
+		{
+			hud->ShowInkWarningIce();
+		}
+		else { hud->DontShowInkWarningIce(); }
 	}
 	else {
 		std::cout << "Player with this number doesn't exit " << pPlayer << std::endl;
