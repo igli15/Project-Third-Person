@@ -111,7 +111,7 @@ void MainWorld::Initialize()
 	switch (currentLevelIndex)
 	{
 	case 1:
-		LoadXmlWorld("scene1.xml");
+		LoadXmlWorld("scene.xml");
 		break;
 	case 2:
 		LoadXmlWorld("scene2.xml");
