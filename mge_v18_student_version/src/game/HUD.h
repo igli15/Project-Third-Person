@@ -75,7 +75,8 @@ private:
 	float m_gameLength;
 	bool lavaDead = false;
 	bool iceDead = false;
-	bool leadChanged = false;
+	bool lavaLead = false;
+	bool iceLead = false;
 	float m_time;
 	float m_lavaRespawnTime;
 	float m_iceRespawnTime;
