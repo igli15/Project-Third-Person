@@ -17,7 +17,7 @@ meshes =
 	["players"] = meshesLoadPath.."players.obj",
 	["orb"] = meshesLoadPath.."orb.obj",
 	["refillStation"] = meshesLoadPath.."refillStation.obj",
-	["balloon"] = meshesLoadPath.."Balloon.obj",
+	["balloon"] = meshesLoadPath.."Bomb.obj",
 	["cannon"] = meshesLoadPath.."cannon.obj",
 
 

@@ -3845,31 +3845,31 @@
   <GameObject name="GamePlayModels" position="(6.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
     <Components />
   </GameObject>
-  <GameObject name="cannon" position="(14.0000, 0.5000, 8.0000)" rotation="(0.0000, -1.0000, 0.0000, 0.0000)" scale="(0.7000, 0.7000, 0.7000)">
+  <GameObject name="cannon" position="(14.0000, 0.5000, 8.0000)" rotation="(0.0000, -1.0000, 0.0000, 0.0000)" scale="(0.6500, 0.6500, 0.6500)">
     <Components>
       <CannonComponent shootingRange="15" FacingDir="DOWN" />
     </Components>
-    <GameObject name="pCylinder12" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.0000, 2.0000, 2.0000)" mesh="cannon">
+    <GameObject name="pCylinder12" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, -1.0000, 0.0000, 0.0000)" scale="(2.0000, 2.0000, 2.0000)" mesh="cannon">
       <Components>
         <TextureMaterial materialName="cannonMat" shininess="16" emissionScale="0.8" diffuseTexture="cannonDiffuse" specularTexture="cannonSpecular" emissionTexture="cannonEmission" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
       </Components>
     </GameObject>
   </GameObject>
-  <GameObject name="cannon (1)" position="(6.0000, 0.5000, 4.0000)" rotation="(0.0000, -0.7071, 0.0000, -0.7071)" scale="(0.7000, 0.7000, 0.7000)">
+  <GameObject name="cannon (1)" position="(6.0000, 0.5000, 4.0000)" rotation="(0.0000, -0.7071, 0.0000, -0.7071)" scale="(0.6500, 0.6500, 0.6500)">
     <Components>
       <CannonComponent shootingRange="15" FacingDir="LEFT" />
     </Components>
-    <GameObject name="pCylinder12" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.0000, 2.0000, 2.0000)" mesh="cannon">
+    <GameObject name="pCylinder12" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, -1.0000, 0.0000, 0.0000)" scale="(2.0000, 2.0000, 2.0000)" mesh="cannon">
       <Components>
         <TextureMaterial materialName="cannonMat" shininess="16" emissionScale="0.8" diffuseTexture="cannonDiffuse" specularTexture="cannonSpecular" emissionTexture="cannonEmission" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
       </Components>
     </GameObject>
   </GameObject>
-  <GameObject name="cannon (5)" position="(20.0000, 0.5000, 10.0000)" rotation="(0.0000, -0.7071, 0.0000, 0.7071)" scale="(0.7000, 0.7000, 0.7000)">
+  <GameObject name="cannon (5)" position="(20.0000, 0.5000, 10.0000)" rotation="(0.0000, -0.7071, 0.0000, 0.7071)" scale="(0.6500, 0.6500, 0.6500)">
     <Components>
       <CannonComponent shootingRange="15" FacingDir="RIGHT" />
     </Components>
-    <GameObject name="pCylinder12" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.0000, 2.0000, 2.0000)" mesh="cannon">
+    <GameObject name="pCylinder12" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, -1.0000, 0.0000, 0.0000)" scale="(2.0000, 2.0000, 2.0000)" mesh="cannon">
       <Components>
         <TextureMaterial materialName="cannonMat" shininess="16" emissionScale="0.8" diffuseTexture="cannonDiffuse" specularTexture="cannonSpecular" emissionTexture="cannonEmission" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
       </Components>
@@ -4521,11 +4521,11 @@
       </Components>
     </GameObject>
   </GameObject>
-  <GameObject name="cannon (4)" position="(12.0000, 0.5000, 6.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.7000, 0.7000, 0.7000)">
+  <GameObject name="cannon (4)" position="(12.0000, 0.5000, 6.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.6500, 0.6500, 0.6500)">
     <Components>
       <CannonComponent shootingRange="15" FacingDir="UP" />
     </Components>
-    <GameObject name="pCylinder12" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(2.0000, 2.0000, 2.0000)" mesh="cannon">
+    <GameObject name="pCylinder12" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, -1.0000, 0.0000, 0.0000)" scale="(2.0000, 2.0000, 2.0000)" mesh="cannon">
       <Components>
         <TextureMaterial materialName="cannonMat" shininess="16" emissionScale="0.8" diffuseTexture="cannonDiffuse" specularTexture="cannonSpecular" emissionTexture="cannonEmission" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
       </Components>
