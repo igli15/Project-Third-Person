@@ -65,7 +65,7 @@ private:
 	float m_explosionHeight = 6;
 
 	GameObject* m_helmetObject;
-
+	
 	PlayerMovementComponent* m_playerMovement;
 	ShootingComponent* m_shootingComponent;
 	TileType m_tileMaterial;

@@ -3845,6 +3845,22 @@
   <GameObject name="GamePlayModels" position="(6.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
     <Components />
   </GameObject>
+  <GameObject name="respawnPointIce" position="(1.0000, -0.5000, 1.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+    <Components />
+    <GameObject name="respawnPoint" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="respawnPointIce">
+      <Components>
+        <TextureMaterial materialName="respawnPointIce" shininess="16" emissionScale="0.8" diffuseTexture="respawnPointDiffuse" specularTexture="respawnPointIceSpecular" emissionTexture="respawnPointIceEmission" normalTexture="respawnPointIceNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      </Components>
+    </GameObject>
+  </GameObject>
+  <GameObject name="respawnPointLava" position="(25.0000, -0.5000, 13.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+    <Components />
+    <GameObject name="respawnPoint" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="respawnPointLava">
+      <Components>
+        <TextureMaterial materialName="respawnPointLava" shininess="16" emissionScale="0.8" diffuseTexture="respawnPointDiffuse" specularTexture="respawnPointLavaSpecular" emissionTexture="respawnPointLavaEmission" normalTexture="respawnPointIceLavaNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+      </Components>
+    </GameObject>
+  </GameObject>
   <GameObject name="cannon" position="(14.0000, 0.5000, 8.0000)" rotation="(0.0000, -1.0000, 0.0000, 0.0000)" scale="(0.6500, 0.6500, 0.6500)">
     <Components>
       <CannonComponent shootingRange="15" FacingDir="DOWN" />
@@ -4531,7 +4547,514 @@
       </Components>
     </GameObject>
   </GameObject>
-  <GameObject name="RocksAndTrees" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+  <GameObject name="BackgroundAssetsLevel2 (1)" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+    <Components />
+    <GameObject name="topBorder" position="(12.4920, 0.2638, 15.0070)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="topBorderl" position="(0.0000, 0.1500, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="topBorder">
+        <Components>
+          <TextureMaterial materialName="topBorder" shininess="16" emissionScale="0.8" diffuseTexture="topBorderDiffuse" specularTexture="NONE" emissionTexture="topBorderEmission" normalTexture="topBorderNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="statue" position="(26.0996, 3.1636, 14.3147)" rotation="(0.0000, 0.9939, -0.1097, 0.0061)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="statue" position="(11.1950, 1.1180, -1.9730)" rotation="(-0.1845, -0.2815, 0.0011, 0.9416)" scale="(0.6317, 0.6317, 0.6317)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (1)" position="(15.9010, 1.2300, -1.9250)" rotation="(-0.2078, 0.2885, 0.0022, 0.9347)" scale="(0.6317, 0.6317, 0.6317)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (2)" position="(13.6990, 1.2450, -2.4860)" rotation="(-0.1478, 0.0060, 0.0222, 0.9887)" scale="(0.8288, 0.8288, 0.8288)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (10)" position="(0.0510, 0.7710, 1.2230)" rotation="(-0.0385, 0.6505, -0.0781, 0.7545)" scale="(1.1751, 1.1751, 1.1751)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (11)" position="(-0.6480, 0.8310, 0.5830)" rotation="(-0.0168, 0.9826, -0.1777, -0.0505)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (12)" position="(-0.6330, 1.1030, 1.7980)" rotation="(0.0407, -0.0330, 0.0237, -0.9983)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (13)" position="(0.2300, 2.3000, 8.0400)" rotation="(-0.0385, 0.6505, -0.0781, 0.7545)" scale="(1.1751, 1.1751, 1.1751)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (14)" position="(-0.5600, 2.3600, 7.4000)" rotation="(-0.0168, 0.9826, -0.1777, -0.0505)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (15)" position="(-0.5400, 2.6300, 8.6100)" rotation="(0.0407, -0.0330, 0.0237, -0.9983)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (19)" position="(27.3100, 3.3600, 12.7100)" rotation="(-0.0285, -0.7036, 0.0888, 0.7045)" scale="(1.1751, 1.1751, 1.1751)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (20)" position="(28.0100, 3.5300, 13.4500)" rotation="(-0.0403, 0.0116, -0.0199, 0.9989)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (21)" position="(28.0700, 3.2500, 12.2000)" rotation="(0.0182, -0.9837, 0.1785, 0.0143)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (22)" position="(27.1100, 1.7700, 5.4700)" rotation="(-0.0285, -0.7036, 0.0888, 0.7045)" scale="(1.1751, 1.1751, 1.1751)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (23)" position="(27.8100, 1.9400, 6.2100)" rotation="(-0.0403, 0.0116, -0.0199, 0.9989)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="statue (24)" position="(27.8700, 1.6600, 4.9600)" rotation="(0.0182, -0.9837, 0.1785, 0.0143)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
+        <Components>
+          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="bigTemple" position="(12.4296, -1.1264, 17.3247)" rotation="(0.0000, 1.0000, 0.0000, 0.0000)" scale="(1.2000, 1.2000, 1.2000)">
+      <Components />
+      <GameObject name="bigTemple:bigTemple" position="(0.0000, 0.0000, -1.0700)" rotation="(-0.0625, 0.0000, 0.0000, 0.9980)" scale="(1.2225, 1.2225, 1.2225)" mesh="bigTemple">
+        <Components>
+          <TextureMaterial materialName="bigTempleMat" shininess="16" emissionScale="0.8" diffuseTexture="bigTempleDiffuse" specularTexture="bigTempleSpecular" emissionTexture="bigTempleEmission" normalTexture="bigTempleNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="sideTemple" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="sideTemple (1)" position="(28.8000, 1.3900, 10.1900)" rotation="(0.0434, -0.7058, 0.0434, 0.7058)" scale="(0.8948, 0.8948, 0.8948)" mesh="sideTemple">
+        <Components>
+          <TextureMaterial materialName="sideTemple" shininess="16" emissionScale="0.8" diffuseTexture="sideTempleRedDiffuse" specularTexture="sideTempleRedSpecular" emissionTexture="sideTempleRedEmission" normalTexture="sideTempleRedNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="sidePillar" position="(-1.6204, 0.0900, 10.9547)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="pillar:pillar" position="(0.4642, 1.5000, -2.7900)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="sidePillar">
+        <Components>
+          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="pillar:pillar (2)" position="(0.4642, 1.5000, -10.2200)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="sidePillar">
+        <Components>
+          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="pillar:pillar (4)" position="(28.8900, 1.4600, 2.0900)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="sidePillar">
+        <Components>
+          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="pillar:pillar (7)" position="(28.7900, 1.4600, -4.9000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="sidePillar">
+        <Components>
+          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="pillar:pillar (5)" position="(17.2600, 1.9234, 6.2700)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.7788, 1.1790, 0.7788)" mesh="sidePillar">
+        <Components>
+          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="pillar:pillar (6)" position="(11.4500, 1.9234, 6.2700)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.7788, 1.1790, 0.7788)" mesh="sidePillar">
+        <Components>
+          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="bush1" position="(25.7296, 1.0736, 7.1700)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="bush1 (2)" position="(-18.7000, -0.3500, 6.8000)" rotation="(-0.0544, 0.3981, -0.0440, 0.9147)" scale="(1.1946, 1.1946, 1.1946)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (3)" position="(-21.1200, -0.1500, 3.6300)" rotation="(-0.2580, 0.2877, -0.1297, 0.9131)" scale="(0.7452, 0.7452, 0.7452)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (5)" position="(-30.0900, 1.2400, 3.0400)" rotation="(-0.0781, 0.0066, -0.2414, 0.9673)" scale="(0.5197, 0.5197, 0.5197)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (6)" position="(-30.1200, 3.9700, 2.8100)" rotation="(-0.0781, 0.0066, -0.2414, 0.9673)" scale="(0.3937, 0.3937, 0.3937)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (7)" position="(-30.3280, 4.4770, 2.6660)" rotation="(-0.3298, 0.0223, -0.3202, 0.8878)" scale="(0.3937, 0.3937, 0.3937)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (8)" position="(-27.2800, 0.2100, -6.1300)" rotation="(0.0393, -0.3726, -0.3161, 0.8716)" scale="(0.6364, 0.6364, 0.6364)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (9)" position="(-27.9400, 0.1100, -7.4000)" rotation="(-0.0157, 0.4731, -0.2929, 0.8308)" scale="(0.9148, 0.9148, 0.9148)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (10)" position="(-23.1925, 0.4431, -8.6756)" rotation="(0.1662, -0.2185, -0.1659, 0.9472)" scale="(0.9791, 0.9791, 0.9791)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (11)" position="(-21.3000, 0.0800, -8.2500)" rotation="(-0.1294, -0.9427, -0.1825, 0.2476)" scale="(0.8558, 0.8558, 0.8558)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (13)" position="(-4.9260, -0.1770, -2.2410)" rotation="(0.0070, 0.1139, 0.0342, 0.9929)" scale="(1.1376, 1.1376, 1.1376)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (14)" position="(-3.2760, -0.3980, -4.4400)" rotation="(-0.0539, 0.3503, 0.2573, 0.8990)" scale="(0.7234, 0.7234, 0.7234)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (15)" position="(-5.1400, 1.3300, -6.6900)" rotation="(0.1437, 0.4390, 0.0514, 0.8854)" scale="(1.0726, 1.0726, 1.0726)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (16)" position="(-6.7500, 0.1500, 8.2700)" rotation="(-0.0997, -0.0589, 0.1474, 0.9823)" scale="(1.1376, 1.1376, 1.1376)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (17)" position="(-6.9000, 1.0100, 9.9300)" rotation="(-0.3343, 0.3273, 0.0449, 0.8827)" scale="(0.7288, 0.7288, 0.7288)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (18)" position="(-20.7300, -0.2600, 3.9400)" rotation="(-0.1090, 0.4152, -0.3827, 0.8181)" scale="(0.8226, 0.8226, 0.8226)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (19)" position="(-19.4000, -0.3630, 1.4700)" rotation="(0.0327, 0.0827, 0.1435, 0.9857)" scale="(0.8226, 0.8226, 0.8226)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (20)" position="(-1.6140, 0.6950, -5.1500)" rotation="(0.0070, 0.1139, 0.0342, 0.9929)" scale="(0.8176, 0.8176, 0.8176)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (21)" position="(-0.8900, 0.0400, -2.2100)" rotation="(-0.0071, 0.4957, 0.0342, 0.8678)" scale="(0.8176, 0.8176, 0.8176)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (22)" position="(-23.7700, -0.8500, 7.1200)" rotation="(0.1492, 0.3146, -0.2602, 0.9006)" scale="(0.9070, 0.9070, 0.9070)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (24)" position="(1.5200, 0.7300, 4.8000)" rotation="(-0.3252, 0.2325, 0.3526, 0.8461)" scale="(0.5973, 0.5973, 0.5973)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (25)" position="(-1.8256, 0.8844, 7.9126)" rotation="(-0.4566, 0.1023, 0.1761, 0.8661)" scale="(0.8343, 0.8343, 0.8343)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (26)" position="(-2.3900, 1.4640, 10.0350)" rotation="(-0.0628, 0.3452, -0.0241, 0.9361)" scale="(0.4708, 0.4708, 0.4708)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (27)" position="(-1.8644, 1.1472, 9.8103)" rotation="(-0.2994, 0.3585, -0.0967, 0.8789)" scale="(0.7944, 0.7944, 0.7944)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (28)" position="(-3.1060, 1.4700, 10.4610)" rotation="(0.0408, 0.3073, 0.0589, 0.9489)" scale="(0.4659, 0.4659, 0.4659)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (32)" position="(-26.4500, 0.5800, 1.2000)" rotation="(-0.3142, 0.0521, -0.3004, 0.8991)" scale="(0.9070, 0.9070, 0.9070)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (34)" position="(-9.2100, 0.3455, 8.4100)" rotation="(-0.2534, 0.0293, -0.0885, 0.9628)" scale="(0.7568, 0.7568, 0.7568)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="bush1 (35)" position="(-17.4987, 0.1459, 7.0122)" rotation="(-0.1279, 0.0723, -0.0371, 0.9885)" scale="(0.7568, 0.7568, 0.7568)" mesh="bush1">
+        <Components>
+          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="bottomBorder" position="(12.3540, 0.4630, -0.0163)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="bottomBorder" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="bottomBorder">
+        <Components>
+          <TextureMaterial materialName="bottomBorder" shininess="16" emissionScale="0.8" diffuseTexture="bottomBorderDiffuse" specularTexture="NONE" emissionTexture="bottomBorderEmission" normalTexture="bottomBorderNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="borderRight" position="(-1.0194, 0.4879, 6.7355)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="borderPlayer1Side" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="borderRight">
+        <Components>
+          <TextureMaterial materialName="borderRight" shininess="16" emissionScale="0.8" diffuseTexture="borderRightDiffuse" specularTexture="NONE" emissionTexture="borderRightEmission" normalTexture="borderRightNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="borderLeft" position="(25.9810, 0.4879, 6.7314)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="borderPlayer1Side" position="(1.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="borderLeft">
+        <Components>
+          <TextureMaterial materialName="borderLeft" shininess="16" emissionScale="0.8" diffuseTexture="borderLeftDiffuse" specularTexture="NONE" emissionTexture="borderLeftEmission" normalTexture="borderLeftNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="tree1" position="(20.2796, -1.4200, 6.0147)" rotation="(0.0000, 0.6800, 0.0000, 0.7332)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="tree1 (1)" position="(-10.9700, 2.2200, -11.0600)" rotation="(-0.0753, 0.1784, -0.0859, 0.9773)" scale="(0.4213, 0.4213, 0.4213)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (6)" position="(-5.2900, 2.5400, 10.4400)" rotation="(0.0350, 0.9216, 0.0856, -0.3769)" scale="(0.5014, 0.5014, 0.5014)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (8)" position="(3.6600, 2.6272, 5.6600)" rotation="(0.0225, 0.9804, 0.0353, 0.1927)" scale="(0.5396, 0.5396, 0.5396)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (10)" position="(-12.4700, 1.8000, 2.3300)" rotation="(0.0000, -0.3412, 0.0000, -0.9400)" scale="(0.4554, 0.4554, 0.4554)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (11)" position="(-9.2300, 1.6000, 13.5100)" rotation="(0.2901, 0.8228, 0.0126, -0.4886)" scale="(0.5036, 0.5036, 0.5036)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (12)" position="(7.5922, 3.1484, -5.2836)" rotation="(0.0251, 0.9895, -0.0768, -0.1197)" scale="(0.5837, 0.5837, 0.5837)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (13)" position="(8.6644, 0.6750, -8.9893)" rotation="(0.0438, 0.3993, 0.2168, 0.8897)" scale="(0.7059, 0.7059, 0.7059)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (17)" position="(2.4300, 3.9500, 6.4600)" rotation="(-0.3253, 0.7229, -0.0719, 0.6053)" scale="(0.3189, 0.3188, 0.3189)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (21)" position="(-12.1100, 0.8000, 11.9900)" rotation="(0.1492, 0.7883, -0.1110, -0.5866)" scale="(0.5036, 0.5036, 0.5036)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (23)" position="(5.2700, 2.8200, -0.4500)" rotation="(-0.2655, 0.0073, 0.2013, 0.9428)" scale="(0.3866, 0.3866, 0.3866)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (24)" position="(5.5925, 1.0831, -22.7536)" rotation="(0.0646, 0.9324, -0.0511, -0.3520)" scale="(0.7389, 0.7389, 0.7389)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (15)" position="(-11.9034, 3.5099, -0.9450)" rotation="(0.0000, -0.0046, 0.0000, -1.0000)" scale="(0.4706, 0.4706, 0.4706)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (19)" position="(-14.2400, 0.4000, 7.8400)" rotation="(0.0403, -0.7543, 0.0906, -0.6490)" scale="(0.4386, 0.4386, 0.4386)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (26)" position="(-7.1500, 2.9200, -23.7900)" rotation="(0.1117, -0.3847, -0.2007, 0.8940)" scale="(0.3236, 0.3236, 0.3236)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (27)" position="(-12.4700, 0.9600, -16.8900)" rotation="(-0.0085, -0.0632, -0.0171, 0.9978)" scale="(0.3722, 0.3722, 0.3722)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (28)" position="(7.6000, 2.2000, -14.3400)" rotation="(-0.2120, 0.9509, 0.0529, -0.2193)" scale="(0.4542, 0.4542, 0.4542)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (29)" position="(7.5100, 1.6400, -10.9200)" rotation="(-0.0835, 0.6143, 0.1085, 0.7771)" scale="(0.4542, 0.4542, 0.4542)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (30)" position="(3.7800, 2.1500, 1.8200)" rotation="(0.0420, 0.3367, -0.0541, 0.9391)" scale="(0.3189, 0.3189, 0.3189)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (31)" position="(1.9600, 1.5500, 2.5300)" rotation="(-0.0239, 0.9878, -0.0304, -0.1505)" scale="(0.3189, 0.3189, 0.3189)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (32)" position="(-4.7700, 1.0900, -18.7000)" rotation="(0.0957, 0.2404, 0.0099, 0.9659)" scale="(0.5538, 0.5538, 0.5538)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (14)" position="(-10.8721, 0.4490, -3.3725)" rotation="(0.0851, 0.1368, -0.0541, 0.9855)" scale="(0.3815, 0.3815, 0.3815)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (7)" position="(-6.6400, 2.4900, 8.8800)" rotation="(-0.0838, 0.9282, -0.0274, 0.3616)" scale="(0.3991, 0.3991, 0.3991)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (16)" position="(-10.8481, 3.3131, 2.1096)" rotation="(-0.2008, -0.8672, -0.1681, 0.4235)" scale="(0.4093, 0.3522, 0.4870)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (33)" position="(-10.2100, 2.2900, 6.3300)" rotation="(-0.1270, -0.9713, 0.0196, -0.2001)" scale="(0.4363, 0.3522, 0.4870)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (34)" position="(-12.0100, 4.2000, -2.2900)" rotation="(-0.1863, -0.8731, 0.0232, -0.4499)" scale="(0.3261, 0.2697, 0.3730)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (2)" position="(-12.1400, 2.2300, -12.2900)" rotation="(0.0192, 0.8718, -0.1126, 0.4763)" scale="(0.4213, 0.4213, 0.4213)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (3)" position="(-13.5213, 1.7431, -18.1150)" rotation="(-0.0906, -0.0157, -0.0696, 0.9933)" scale="(0.4213, 0.4213, 0.4213)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (36)" position="(-3.7305, 3.0162, -24.5400)" rotation="(0.1544, 0.4078, 0.0197, 0.8997)" scale="(0.5297, 0.5270, 0.5028)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (9)" position="(3.6000, 1.7000, 7.7600)" rotation="(0.0850, 0.9770, 0.0180, 0.1947)" scale="(0.4512, 0.4512, 0.4512)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (4)" position="(-8.2400, 3.6200, -17.9200)" rotation="(0.0573, 0.9752, 0.1771, 0.1196)" scale="(0.5013, 0.5013, 0.5013)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (5)" position="(-10.2100, 1.7800, -15.7400)" rotation="(-0.0366, 0.8041, 0.2113, -0.5545)" scale="(0.5013, 0.5013, 0.5013)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="tree1 (35)" position="(-6.3400, 4.1500, -19.8800)" rotation="(0.0253, 0.1419, 0.0276, -0.9892)" scale="(0.3909, 0.3909, 0.3909)" mesh="tree1">
+        <Components>
+          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="cornerPillar (1)" position="(26.0150, 0.3900, 14.9720)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="corner:corner" position="(0.0300, -0.2600, -0.0500)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
+        <Components>
+          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="corner:corner (1)" position="(-9.3900, 0.1300, 1.7500)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
+        <Components>
+          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="corner:corner (2)" position="(-17.9700, 0.1300, 1.7500)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
+        <Components>
+          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="corner:corner (3)" position="(-11.2000, -0.6600, 0.1400)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
+        <Components>
+          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+      <GameObject name="corner:corner (4)" position="(-15.9400, -0.6600, 0.1400)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
+        <Components>
+          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="sideTemple" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="sideTemple (2)" position="(-2.8700, 1.3100, 3.8300)" rotation="(-0.0392, -0.7060, 0.0392, -0.7060)" scale="(0.8710, 0.9083, 0.8710)" mesh="sideTemple">
+        <Components>
+          <TextureMaterial materialName="sideTemple2" shininess="16" emissionScale="0.8" diffuseTexture="sideTempleBlueDiffuse" specularTexture="sideTempleBlueSpecular" emissionTexture="sideTempleBlueEmission" normalTexture="sideTempleBlueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+    <GameObject name="cornerPillar (2)" position="(-0.9804, 0.3900, 14.9720)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
+      <Components />
+      <GameObject name="corner:corner (2)" position="(-0.0076, -0.2469, -15.9421)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
+        <Components>
+          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
+    </GameObject>
+  </GameObject>
+  <GameObject name="RocksAndTrees (2)" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
     <Components />
     <GameObject name="topBorderDetail" position="(12.5900, 0.4900, 14.9800)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
       <Components />
@@ -4587,7 +5110,7 @@
     </GameObject>
     <GameObject name="rocks (7)" position="(-2.6200, -5.9900, 18.7500)" rotation="(-0.1366, 0.2250, 0.0018, -0.9647)" scale="(2.3919, 2.3919, 2.3919)">
       <Components />
-      <GameObject name="Rocks" position="(-0.2400, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="rocks">
+      <GameObject name="Rocks" position="(-0.2400, 0.0000, 0.0000)" rotation="(-0.0704, -0.1725, 0.0124, 0.9824)" scale="(1.0000, 1.0000, 1.0000)" mesh="rocks">
         <Components>
           <TextureMaterial materialName="rocksDarkNONE" shininess="16" emissionScale="0.8" diffuseTexture="rocksDarkDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
         </Components>
@@ -4618,17 +5141,17 @@
           <TextureMaterial materialName="rocksDarkNONE" shininess="16" emissionScale="0.8" diffuseTexture="rocksDarkDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
         </Components>
       </GameObject>
-      <GameObject name="Rocks (2)" position="(0.9200, 3.0600, 1.9700)" rotation="(0.0000, 0.0372, 0.0000, 0.9993)" scale="(0.4425, 0.4425, 0.4425)" mesh="rocks">
+      <GameObject name="Rocks (2)" position="(1.0700, 3.2900, 1.7300)" rotation="(0.0000, 0.0372, 0.0000, 0.9993)" scale="(0.4425, 0.4425, 0.4425)" mesh="rocks">
         <Components>
           <TextureMaterial materialName="rocksDarkNONE1" shininess="16" emissionScale="0.8" diffuseTexture="rocksMediumDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
         </Components>
       </GameObject>
-      <GameObject name="Rocks (3)" position="(0.2250, 1.3666, 2.1770)" rotation="(0.0000, 0.9535, 0.0000, 0.3015)" scale="(0.5199, 0.5199, 0.5199)" mesh="rocks">
+      <GameObject name="Rocks (3)" position="(0.3800, 2.4800, 2.3200)" rotation="(0.0000, 0.1665, 0.0000, -0.9860)" scale="(0.5199, 0.5199, 0.5199)" mesh="rocks">
         <Components>
           <TextureMaterial materialName="rocksDarkNONE" shininess="16" emissionScale="0.8" diffuseTexture="rocksDarkDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
         </Components>
       </GameObject>
-      <GameObject name="Rocks (4)" position="(0.8972, 0.2070, 3.0774)" rotation="(0.0000, -0.2433, 0.0000, 0.9699)" scale="(0.7481, 0.7481, 0.7481)" mesh="rocks">
+      <GameObject name="Rocks (4)" position="(-0.0100, 0.8900, 3.3200)" rotation="(0.0000, -0.2433, 0.0000, 0.9699)" scale="(0.7481, 0.7481, 0.7481)" mesh="rocks">
         <Components>
           <TextureMaterial materialName="rocksDarkNONE" shininess="16" emissionScale="0.8" diffuseTexture="rocksDarkDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
         </Components>
@@ -4817,6 +5340,11 @@
           <TextureMaterial materialName="rocksDarkNONE" shininess="16" emissionScale="0.8" diffuseTexture="rocksDarkDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
         </Components>
       </GameObject>
+      <GameObject name="Rocks (4)" position="(1.0800, 0.0000, 3.6200)" rotation="(-0.0239, 0.1083, -0.0325, 0.9933)" scale="(1.2034, 1.2034, 1.2034)" mesh="rocks">
+        <Components>
+          <TextureMaterial materialName="rocksDarkNONE" shininess="16" emissionScale="0.8" diffuseTexture="rocksDarkDiffuse" specularTexture="NONE" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+        </Components>
+      </GameObject>
     </GameObject>
     <GameObject name="rocks (4)" position="(29.7200, -2.3100, 18.9300)" rotation="(0.0000, 0.7116, 0.0000, -0.7025)" scale="(1.2274, 1.2274, 1.2274)">
       <Components />
@@ -4911,16 +5439,6 @@
             <TextureMaterial materialName="tree2" shininess="16" emissionScale="0.8" diffuseTexture="tree2Diffuse" specularTexture="tree2Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
           </Components>
         </GameObject>
-        <GameObject name="tree2 (6)" position="(-5.9400, 1.8900, -49.6500)" rotation="(-0.0604, 0.1156, 0.0606, 0.9896)" scale="(0.9699, 0.9699, 0.9699)" mesh="tree2">
-          <Components>
-            <TextureMaterial materialName="tree2" shininess="16" emissionScale="0.8" diffuseTexture="tree2Diffuse" specularTexture="tree2Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-          </Components>
-        </GameObject>
-        <GameObject name="tree2 (7)" position="(-5.7200, 2.5900, -48.2800)" rotation="(-0.1076, 0.9704, 0.1346, 0.1693)" scale="(0.6555, 0.6555, 0.6555)" mesh="tree2">
-          <Components>
-            <TextureMaterial materialName="tree2" shininess="16" emissionScale="0.8" diffuseTexture="tree2Diffuse" specularTexture="tree2Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-          </Components>
-        </GameObject>
         <GameObject name="tree2 (8)" position="(-3.6600, 3.2900, -40.1100)" rotation="(0.0419, 0.1212, 0.0483, 0.9906)" scale="(1.1057, 1.1057, 1.1057)" mesh="tree2">
           <Components>
             <TextureMaterial materialName="tree2" shininess="16" emissionScale="0.8" diffuseTexture="tree2Diffuse" specularTexture="tree2Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
@@ -4931,7 +5449,12 @@
             <TextureMaterial materialName="tree2" shininess="16" emissionScale="0.8" diffuseTexture="tree2Diffuse" specularTexture="tree2Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
           </Components>
         </GameObject>
-        <GameObject name="tree2 (10)" position="(-10.9600, 1.8600, -48.9100)" rotation="(0.1486, 0.5733, 0.1170, 0.7972)" scale="(0.9699, 0.9699, 0.9699)" mesh="tree2">
+        <GameObject name="tree2 (10)" position="(-2.9500, 3.9400, -45.2400)" rotation="(0.0366, 0.1144, 0.0078, 0.9927)" scale="(1.1057, 1.1057, 1.1057)" mesh="tree2">
+          <Components>
+            <TextureMaterial materialName="tree2" shininess="16" emissionScale="0.8" diffuseTexture="tree2Diffuse" specularTexture="tree2Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
+          </Components>
+        </GameObject>
+        <GameObject name="tree2 (11)" position="(-4.9300, 6.9400, -57.2900)" rotation="(0.0773, 0.0754, 0.2664, 0.9578)" scale="(1.1057, 1.1057, 1.1057)" mesh="tree2">
           <Components>
             <TextureMaterial materialName="tree2" shininess="16" emissionScale="0.8" diffuseTexture="tree2Diffuse" specularTexture="tree2Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
           </Components>
@@ -4968,543 +5491,6 @@
       <GameObject name="tree2" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="tree2">
         <Components>
           <TextureMaterial materialName="tree2" shininess="16" emissionScale="0.8" diffuseTexture="tree2Diffuse" specularTexture="tree2Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-  </GameObject>
-  <GameObject name="BackgroundAssetsLevel2" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-    <Components />
-    <GameObject name="topBorder" position="(12.4920, 0.2638, 15.0070)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="topBorderl" position="(0.0000, 0.1500, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="topBorder">
-        <Components>
-          <TextureMaterial materialName="topBorder" shininess="16" emissionScale="0.8" diffuseTexture="topBorderDiffuse" specularTexture="NONE" emissionTexture="topBorderEmission" normalTexture="topBorderNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="statue" position="(26.0996, 3.1636, 14.3147)" rotation="(0.0000, 0.9939, -0.1097, 0.0061)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="statue" position="(11.1950, 1.1180, -1.9730)" rotation="(-0.1845, -0.2815, 0.0011, 0.9416)" scale="(0.6317, 0.6317, 0.6317)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (1)" position="(15.9010, 1.2300, -1.9250)" rotation="(-0.2078, 0.2885, 0.0022, 0.9347)" scale="(0.6317, 0.6317, 0.6317)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (2)" position="(13.6990, 1.2450, -2.4860)" rotation="(-0.1478, 0.0060, 0.0222, 0.9887)" scale="(0.8288, 0.8288, 0.8288)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (10)" position="(0.0510, 0.7710, 1.2230)" rotation="(-0.0385, 0.6505, -0.0781, 0.7545)" scale="(1.1751, 1.1751, 1.1751)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (11)" position="(-0.6480, 0.8310, 0.5830)" rotation="(-0.0168, 0.9826, -0.1777, -0.0505)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (12)" position="(-0.6330, 1.1030, 1.7980)" rotation="(0.0407, -0.0330, 0.0237, -0.9983)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (13)" position="(0.2300, 2.3000, 8.0400)" rotation="(-0.0385, 0.6505, -0.0781, 0.7545)" scale="(1.1751, 1.1751, 1.1751)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (14)" position="(-0.5600, 2.3600, 7.4000)" rotation="(-0.0168, 0.9826, -0.1777, -0.0505)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (15)" position="(-0.5400, 2.6300, 8.6100)" rotation="(0.0407, -0.0330, 0.0237, -0.9983)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (19)" position="(27.3100, 3.3600, 12.7100)" rotation="(-0.0285, -0.7036, 0.0888, 0.7045)" scale="(1.1751, 1.1751, 1.1751)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (20)" position="(28.0100, 3.5300, 13.4500)" rotation="(-0.0403, 0.0116, -0.0199, 0.9989)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (21)" position="(28.0700, 3.2500, 12.2000)" rotation="(0.0182, -0.9837, 0.1785, 0.0143)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (22)" position="(27.1100, 1.7700, 5.4700)" rotation="(-0.0285, -0.7036, 0.0888, 0.7045)" scale="(1.1751, 1.1751, 1.1751)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (23)" position="(27.8100, 1.9400, 6.2100)" rotation="(-0.0403, 0.0116, -0.0199, 0.9989)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="statue (24)" position="(27.8700, 1.6600, 4.9600)" rotation="(0.0182, -0.9837, 0.1785, 0.0143)" scale="(0.9580, 0.9580, 0.9580)" mesh="statue">
-        <Components>
-          <TextureMaterial materialName="statueMat" shininess="16" emissionScale="0.8" diffuseTexture="statueDiffuse" specularTexture="NONE" emissionTexture="statueEmission" normalTexture="statueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="bigTemple" position="(12.4296, -1.1264, 17.3247)" rotation="(0.0000, 1.0000, 0.0000, 0.0000)" scale="(1.2000, 1.2000, 1.2000)">
-      <Components />
-      <GameObject name="bigTemple:bigTemple" position="(0.0000, 0.0000, -1.0700)" rotation="(-0.0625, 0.0000, 0.0000, 0.9980)" scale="(1.2225, 1.2225, 1.2225)" mesh="bigTemple">
-        <Components>
-          <TextureMaterial materialName="bigTempleMat" shininess="16" emissionScale="0.8" diffuseTexture="bigTempleDiffuse" specularTexture="bigTempleSpecular" emissionTexture="bigTempleEmission" normalTexture="bigTempleNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="sideTemple" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="sideTemple (1)" position="(28.8000, 1.3900, 10.1900)" rotation="(0.0434, -0.7058, 0.0434, 0.7058)" scale="(0.8948, 0.8948, 0.8948)" mesh="sideTemple">
-        <Components>
-          <TextureMaterial materialName="sideTemple" shininess="16" emissionScale="0.8" diffuseTexture="sideTempleRedDiffuse" specularTexture="sideTempleRedSpecular" emissionTexture="sideTempleRedEmission" normalTexture="sideTempleRedNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="sidePillar" position="(-1.6204, 0.0900, 10.9547)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="pillar:pillar" position="(0.4642, 1.5000, -2.7900)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="sidePillar">
-        <Components>
-          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="pillar:pillar (2)" position="(0.4642, 1.5000, -10.2200)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="sidePillar">
-        <Components>
-          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="pillar:pillar (4)" position="(28.8900, 1.4600, 2.0900)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="sidePillar">
-        <Components>
-          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="pillar:pillar (7)" position="(28.7900, 1.4600, -4.9000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="sidePillar">
-        <Components>
-          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="pillar:pillar (5)" position="(17.2600, 1.9234, 6.2700)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.7788, 1.1790, 0.7788)" mesh="sidePillar">
-        <Components>
-          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="pillar:pillar (6)" position="(11.4500, 1.9234, 6.2700)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(0.7788, 1.1790, 0.7788)" mesh="sidePillar">
-        <Components>
-          <TextureMaterial materialName="sidePillar" shininess="16" emissionScale="0.8" diffuseTexture="sidePillarDiffuse" specularTexture="sidePillarSpecular" emissionTexture="sidePillarEmission" normalTexture="sidePillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="bush1" position="(25.7296, 1.0736, 7.1700)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="bush1 (2)" position="(-18.7000, -0.3500, 6.8000)" rotation="(-0.0544, 0.3981, -0.0440, 0.9147)" scale="(1.1946, 1.1946, 1.1946)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (3)" position="(-21.3720, -0.3230, 3.3280)" rotation="(-0.2016, 0.2424, -0.2362, 0.9191)" scale="(0.7452, 0.7452, 0.7452)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (4)" position="(-22.9800, 0.6100, 7.0600)" rotation="(0.0122, 0.3438, -0.2245, 0.9117)" scale="(0.9070, 0.9070, 0.9070)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (5)" position="(-30.0900, 1.2400, 3.0400)" rotation="(-0.0781, 0.0066, -0.2414, 0.9673)" scale="(0.5197, 0.5197, 0.5197)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (6)" position="(-30.1200, 3.9700, 2.8100)" rotation="(-0.0781, 0.0066, -0.2414, 0.9673)" scale="(0.3937, 0.3937, 0.3937)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (7)" position="(-30.3280, 4.4770, 2.6660)" rotation="(-0.3298, 0.0223, -0.3202, 0.8878)" scale="(0.3937, 0.3937, 0.3937)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (8)" position="(-27.2800, 0.2100, -6.1300)" rotation="(0.0393, -0.3726, -0.3161, 0.8716)" scale="(0.6364, 0.6364, 0.6364)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (9)" position="(-27.9400, 0.1100, -7.4000)" rotation="(-0.0157, 0.4731, -0.2929, 0.8308)" scale="(0.9148, 0.9148, 0.9148)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (10)" position="(-23.1925, 0.4431, -8.6756)" rotation="(0.1662, -0.2185, -0.1659, 0.9472)" scale="(0.9791, 0.9791, 0.9791)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (11)" position="(-21.3000, 0.0800, -8.2500)" rotation="(-0.1294, -0.9427, -0.1825, 0.2476)" scale="(0.8558, 0.8558, 0.8558)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (13)" position="(-4.9260, -0.1770, -2.2410)" rotation="(0.0070, 0.1139, 0.0342, 0.9929)" scale="(1.1376, 1.1376, 1.1376)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (14)" position="(-3.2760, -0.3980, -4.4400)" rotation="(-0.0539, 0.3503, 0.2573, 0.8990)" scale="(0.7234, 0.7234, 0.7234)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (15)" position="(-5.1400, 1.3300, -6.6900)" rotation="(0.1437, 0.4390, 0.0514, 0.8854)" scale="(1.0726, 1.0726, 1.0726)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (16)" position="(-6.7500, 0.1500, 8.2700)" rotation="(-0.0997, -0.0589, 0.1474, 0.9823)" scale="(1.1376, 1.1376, 1.1376)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (17)" position="(-6.9000, 1.0100, 9.9300)" rotation="(-0.3343, 0.3273, 0.0449, 0.8827)" scale="(0.7288, 0.7288, 0.7288)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (18)" position="(-19.3600, -0.3900, 2.8300)" rotation="(0.0327, 0.0827, 0.1435, 0.9857)" scale="(0.8226, 0.8226, 0.8226)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (19)" position="(-19.4000, -0.3630, 1.4700)" rotation="(0.0327, 0.0827, 0.1435, 0.9857)" scale="(0.8226, 0.8226, 0.8226)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (20)" position="(-1.6140, 0.6950, -5.1500)" rotation="(0.0070, 0.1139, 0.0342, 0.9929)" scale="(0.8176, 0.8176, 0.8176)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (21)" position="(-0.8900, 0.0400, -2.2100)" rotation="(-0.0071, 0.4957, 0.0342, 0.8678)" scale="(0.8176, 0.8176, 0.8176)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (22)" position="(-23.7700, -0.8500, 7.1200)" rotation="(0.1492, 0.3146, -0.2602, 0.9006)" scale="(0.9070, 0.9070, 0.9070)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (23)" position="(-24.2700, -0.6900, 4.9600)" rotation="(-0.1474, 0.0937, -0.1328, 0.9756)" scale="(0.9070, 0.9070, 0.9070)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (24)" position="(1.5200, 0.7300, 4.8000)" rotation="(-0.3252, 0.2325, 0.3526, 0.8461)" scale="(0.5973, 0.5973, 0.5973)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (25)" position="(-1.8256, 0.8844, 7.9126)" rotation="(-0.4566, 0.1023, 0.1761, 0.8661)" scale="(0.8343, 0.8343, 0.8343)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (26)" position="(-2.3900, 1.4640, 10.0350)" rotation="(-0.0628, 0.3452, -0.0241, 0.9361)" scale="(0.4708, 0.4708, 0.4708)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (27)" position="(-1.8644, 1.1472, 9.8103)" rotation="(-0.2994, 0.3585, -0.0967, 0.8789)" scale="(0.7944, 0.7944, 0.7944)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (28)" position="(-3.1060, 1.4700, 10.4610)" rotation="(0.0408, 0.3073, 0.0589, 0.9489)" scale="(0.4659, 0.4659, 0.4659)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (12)" position="(-26.1070, 2.8400, 6.2620)" rotation="(-0.0069, 0.3634, -0.2067, 0.9084)" scale="(0.3836, 0.3836, 0.3836)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (29)" position="(-27.6453, 3.3119, 5.5621)" rotation="(-0.2023, 0.1435, -0.1699, 0.9537)" scale="(0.3836, 0.3836, 0.3836)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (30)" position="(-27.2600, 3.3630, 5.5860)" rotation="(-0.0807, 0.0652, -0.3203, 0.9416)" scale="(0.1317, 0.1317, 0.1317)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (31)" position="(-27.6680, 3.3770, 5.0520)" rotation="(0.0364, 0.6351, -0.1686, 0.7529)" scale="(0.1648, 0.1648, 0.1648)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (32)" position="(-26.1400, 0.9600, 0.8300)" rotation="(-0.3142, 0.0521, -0.3004, 0.8991)" scale="(0.9070, 0.9070, 0.9070)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (33)" position="(-21.4900, 0.0128, 8.6751)" rotation="(-0.1307, 0.3499, -0.1693, 0.9120)" scale="(1.5982, 1.5982, 1.5982)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (34)" position="(-9.2100, 0.3455, 8.4100)" rotation="(-0.2534, 0.0293, -0.0885, 0.9628)" scale="(0.7568, 0.7568, 0.7568)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="bush1 (35)" position="(-17.4987, 0.1459, 7.0122)" rotation="(-0.1279, 0.0723, -0.0371, 0.9885)" scale="(0.7568, 0.7568, 0.7568)" mesh="bush1">
-        <Components>
-          <TextureMaterial materialName="bush1" shininess="16" emissionScale="0.8" diffuseTexture="bush1Diffuse" specularTexture="bush1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="bottomBorder" position="(12.3540, 0.4630, -0.0163)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="bottomBorder" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="bottomBorder">
-        <Components>
-          <TextureMaterial materialName="bottomBorder" shininess="16" emissionScale="0.8" diffuseTexture="bottomBorderDiffuse" specularTexture="NONE" emissionTexture="bottomBorderEmission" normalTexture="bottomBorderNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="borderRight" position="(-1.0194, 0.4879, 6.7355)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="borderPlayer1Side" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="borderRight">
-        <Components>
-          <TextureMaterial materialName="borderRight" shininess="16" emissionScale="0.8" diffuseTexture="borderRightDiffuse" specularTexture="NONE" emissionTexture="borderRightEmission" normalTexture="borderRightNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="borderLeft" position="(25.9810, 0.4879, 6.7314)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="borderPlayer1Side" position="(1.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="borderLeft">
-        <Components>
-          <TextureMaterial materialName="borderLeft" shininess="16" emissionScale="0.8" diffuseTexture="borderLeftDiffuse" specularTexture="NONE" emissionTexture="borderLeftEmission" normalTexture="borderLeftNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="tree1" position="(20.2796, -1.4200, 6.0147)" rotation="(0.0000, 0.6800, 0.0000, 0.7332)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="tree1 (1)" position="(-10.9700, 2.2200, -11.0600)" rotation="(-0.0753, 0.1784, -0.0859, 0.9773)" scale="(0.4213, 0.4213, 0.4213)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (6)" position="(-5.2900, 2.5400, 10.4400)" rotation="(0.0350, 0.9216, 0.0856, -0.3769)" scale="(0.5014, 0.5014, 0.5014)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (8)" position="(3.6600, 2.6272, 5.6600)" rotation="(0.0225, 0.9804, 0.0353, 0.1927)" scale="(0.5396, 0.5396, 0.5396)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (10)" position="(-12.4700, 1.8000, 2.3300)" rotation="(0.0000, -0.3412, 0.0000, -0.9400)" scale="(0.4554, 0.4554, 0.4554)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (11)" position="(-9.2300, 1.6000, 13.5100)" rotation="(0.2901, 0.8228, 0.0126, -0.4886)" scale="(0.5036, 0.5036, 0.5036)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (12)" position="(7.5922, 3.1484, -5.2836)" rotation="(0.0251, 0.9895, -0.0768, -0.1197)" scale="(0.5837, 0.5837, 0.5837)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (13)" position="(8.6644, 0.6750, -8.9893)" rotation="(0.0438, 0.3993, 0.2168, 0.8897)" scale="(0.7059, 0.7059, 0.7059)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (17)" position="(2.4300, 3.9500, 6.4600)" rotation="(-0.3253, 0.7229, -0.0719, 0.6053)" scale="(0.3189, 0.3188, 0.3189)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (21)" position="(-12.1100, 0.8000, 11.9900)" rotation="(0.1492, 0.7883, -0.1110, -0.5866)" scale="(0.5036, 0.5036, 0.5036)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (23)" position="(5.2700, 2.8200, -0.4500)" rotation="(-0.2655, 0.0073, 0.2013, 0.9428)" scale="(0.3866, 0.3866, 0.3866)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (24)" position="(5.5925, 1.0831, -22.7536)" rotation="(0.0646, 0.9324, -0.0511, -0.3520)" scale="(0.7389, 0.7389, 0.7389)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (15)" position="(-11.9034, 3.5099, -0.9450)" rotation="(0.0000, -0.0046, 0.0000, -1.0000)" scale="(0.4706, 0.4706, 0.4706)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (19)" position="(-14.2400, 0.4000, 7.8400)" rotation="(0.0403, -0.7543, 0.0906, -0.6490)" scale="(0.4386, 0.4386, 0.4386)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (25)" position="(-8.2700, 2.0000, -16.4700)" rotation="(0.1250, -0.2345, -0.1781, 0.9474)" scale="(0.4352, 0.4352, 0.4352)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (26)" position="(-7.1500, 2.9200, -23.7900)" rotation="(0.1117, -0.3847, -0.2007, 0.8940)" scale="(0.3236, 0.3236, 0.3236)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (27)" position="(-12.4700, 0.9600, -16.8900)" rotation="(-0.0085, -0.0632, -0.0171, 0.9978)" scale="(0.3722, 0.3722, 0.3722)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (28)" position="(7.6000, 2.2000, -14.3400)" rotation="(-0.2120, 0.9509, 0.0529, -0.2193)" scale="(0.4542, 0.4542, 0.4542)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (29)" position="(7.5100, 1.6400, -10.9200)" rotation="(-0.0835, 0.6143, 0.1085, 0.7771)" scale="(0.4542, 0.4542, 0.4542)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (30)" position="(3.7800, 2.1500, 1.8200)" rotation="(0.0420, 0.3367, -0.0541, 0.9391)" scale="(0.3189, 0.3189, 0.3189)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (31)" position="(1.9600, 1.5500, 2.5300)" rotation="(-0.0239, 0.9878, -0.0304, -0.1505)" scale="(0.3189, 0.3189, 0.3189)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (32)" position="(-4.7700, 1.0900, -18.7000)" rotation="(0.0957, 0.2404, 0.0099, 0.9659)" scale="(0.5538, 0.5538, 0.5538)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (14)" position="(-10.8721, 0.4490, -3.3725)" rotation="(0.0851, 0.1368, -0.0541, 0.9855)" scale="(0.3815, 0.3815, 0.3815)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (7)" position="(-6.6400, 2.4900, 8.8800)" rotation="(-0.0838, 0.9282, -0.0274, 0.3616)" scale="(0.3991, 0.3991, 0.3991)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (16)" position="(-10.8481, 3.3131, 2.1096)" rotation="(-0.2008, -0.8672, -0.1681, 0.4235)" scale="(0.4093, 0.3522, 0.4870)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (33)" position="(-10.2100, 2.2900, 6.3300)" rotation="(-0.1270, -0.9713, 0.0196, -0.2001)" scale="(0.4363, 0.3522, 0.4870)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (34)" position="(-12.0100, 4.2000, -2.2900)" rotation="(-0.1863, -0.8731, 0.0232, -0.4499)" scale="(0.3261, 0.2697, 0.3730)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (2)" position="(-12.1400, 2.2300, -12.2900)" rotation="(0.0192, 0.8718, -0.1126, 0.4763)" scale="(0.4213, 0.4213, 0.4213)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (3)" position="(-13.5213, 1.7431, -18.1150)" rotation="(-0.0906, -0.0157, -0.0696, 0.9933)" scale="(0.4213, 0.4213, 0.4213)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (35)" position="(-5.6387, 2.8350, -20.2610)" rotation="(0.0633, 0.9199, 0.1286, 0.3651)" scale="(0.5420, 0.5048, 0.5048)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (36)" position="(-3.7305, 3.0162, -24.5400)" rotation="(0.1544, 0.4078, 0.0197, 0.8997)" scale="(0.5297, 0.5270, 0.5028)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="tree1 (9)" position="(3.6000, 1.7000, 7.7600)" rotation="(0.0850, 0.9770, 0.0180, 0.1947)" scale="(0.4512, 0.4512, 0.4512)" mesh="tree1">
-        <Components>
-          <TextureMaterial materialName="tree1" shininess="16" emissionScale="0.8" diffuseTexture="tree1Diffuse" specularTexture="tree1Specular" emissionTexture="NONE" normalTexture="NONE" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="cornerPillar (1)" position="(26.0150, 0.3900, 14.9720)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="corner:corner" position="(0.0300, -0.2600, -0.0500)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
-        <Components>
-          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="corner:corner (1)" position="(-9.3900, 0.1300, 1.7500)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
-        <Components>
-          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="corner:corner (2)" position="(-17.9700, 0.1300, 1.7500)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
-        <Components>
-          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="corner:corner (3)" position="(-11.2000, -0.6600, 0.1400)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
-        <Components>
-          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-      <GameObject name="corner:corner (4)" position="(-15.9400, -0.6600, 0.1400)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
-        <Components>
-          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="sideTemple" position="(0.0000, 0.0000, 0.0000)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="sideTemple (2)" position="(-2.8700, 1.3100, 3.8300)" rotation="(-0.0392, -0.7060, 0.0392, -0.7060)" scale="(0.8710, 0.9083, 0.8710)" mesh="sideTemple">
-        <Components>
-          <TextureMaterial materialName="sideTemple2" shininess="16" emissionScale="0.8" diffuseTexture="sideTempleBlueDiffuse" specularTexture="sideTempleBlueSpecular" emissionTexture="sideTempleBlueEmission" normalTexture="sideTempleBlueNormal" diffuseColor="(1.0, 1.0, 1.0)" />
-        </Components>
-      </GameObject>
-    </GameObject>
-    <GameObject name="cornerPillar (2)" position="(-0.9804, 0.3900, 14.9720)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)">
-      <Components />
-      <GameObject name="corner:corner (2)" position="(-0.0076, -0.2469, -15.9421)" rotation="(0.0000, 0.0000, 0.0000, 1.0000)" scale="(1.0000, 1.0000, 1.0000)" mesh="cornerPillar">
-        <Components>
-          <TextureMaterial materialName="cornerPillar" shininess="16" emissionScale="0.8" diffuseTexture="cornerPillarDiffuse" specularTexture="cornerPillarSpecular" emissionTexture="cornerPillarEmission" normalTexture="cornerPillarNormal" diffuseColor="(1.0, 1.0, 1.0)" />
         </Components>
       </GameObject>
     </GameObject>

@@ -313,6 +313,7 @@ sounds =
 	["pressingButton"] = musicLoadPath.."PressingButton.wav",
 	["selectingButton"] = musicLoadPath.."SelectingButtons.wav",
 	["timeOut"] = musicLoadPath.."timeOut.wav",
+	["newLead"] = musicLoadPath.."newLead.wav",
 }
 
 musics =

@@ -262,11 +262,26 @@ void HUD::SetPlayerTilePercentage(int pPlayer, float pPercent)
 	if (percentIceBar->GetSprite()->getScale().x < percentLavaBar->GetSprite()->getScale().x)
 	{
 		crownLead->ApplyTexture(m_crownLava);
+		//sound
+		if (lavaLead == false)
+		{
+			m_audioSource->PlayOneShotSound("newLeadfdws");
+			lavaLead = true;
+		}
+		iceLead = false;
+		//hasLead
 
 	}
 	else if (percentIceBar->GetSprite()->getScale().x > percentLavaBar->GetSprite()->getScale().x)
 	{
 		crownLead->ApplyTexture(m_crownIce);
+		//sound
+		if (iceLead == false)
+		{
+			m_audioSource->PlayOneShotSound("newLead");
+			iceLead = true;
+		}
+		lavaLead = false;
 	}
 	else {
 		crownLead->ApplyTexture(m_blank);
