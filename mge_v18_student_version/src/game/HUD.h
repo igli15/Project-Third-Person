@@ -30,6 +30,7 @@ public:
 	UISpriteRenderer* percentIceBar;
 	UISpriteRenderer* inkWarningIce;
 	UISpriteRenderer* inkWarningLava;
+	UISpriteRenderer* crownLead;
 
 	TextComponent * timerNumber;
 	TextComponent * iceRespawnText;
@@ -66,12 +67,15 @@ private:
 	sf::Texture * m_inkWarningIce;
 	sf::Texture * m_inkWarningLava;
 	sf::Texture* m_blank;
+	sf::Texture* m_crownLava;
+	sf::Texture* m_crownIce;
 
 	sf::Font * m_timerFont;
 	sf::Clock m_gameClock;
 	float m_gameLength;
 	bool lavaDead = false;
 	bool iceDead = false;
+	bool leadChanged = false;
 	float m_time;
 	float m_lavaRespawnTime;
 	float m_iceRespawnTime;

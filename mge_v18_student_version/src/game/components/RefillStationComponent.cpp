@@ -26,8 +26,8 @@ void RefillStationComponent::OnTrigger(CollisionInfo * collisionInfo)
 {
 	std::cout << "Refilling" << std::endl;
 	
-	m_timeTillPlay -= 0.4f;
-	if (m_timeTillPlay < 0)
+	m_timeTillPlay -= 0.05f;
+	if (m_timeTillPlay < -1)
 	{
 		m_audioSource->PlayOneShotSound("refillSound");
 		m_timeTillPlay = 1.6f;
