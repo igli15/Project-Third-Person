@@ -116,7 +116,7 @@ void HUD::Awake()
 void HUD::Start()
 {
 	GameObject::Start();
-	m_gameLength = 28;
+	m_gameLength = 120;
 	m_gameClock.restart();
 	m_audioSource->SetVolume(90);
 	m_audioSource->PlayMusic();
