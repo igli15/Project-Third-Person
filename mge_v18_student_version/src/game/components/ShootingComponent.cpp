@@ -11,6 +11,7 @@
 #include "SFML/Window.hpp"
 #include "mge/core/ResourceManager.h"
 #include "game/components/PlayerDataComponent.h"
+#include "game/components/RefillStationComponent.h"
 
 ShootingComponent::ShootingComponent()
 {
@@ -45,6 +46,13 @@ void ShootingComponent::Update(float timeStep)
 	XMLComponent::Update(timeStep);
 	keyOne->KeyPressed();
 	keyTwo->KeyPressed();
+
+	auto refills = dynamic_cast<MainWorld*>(m_gameObject->GetWorld())->GetRefillStations();
+	for (int i = 0; i < refills.size(); i++)
+	{
+		refills[i]->GetComponent<RefillStationComponent>()->Blink((m_inkLevel <= 20));
+	}
+
 	//OnKeyOnePressed(sf::Keyboard::isKeyPressed((m_playerNumber == 1) ? (sf::Keyboard::F) : (sf::Keyboard::BackSpace)));
 }
 

@@ -27,10 +27,13 @@ public:
 	void ScaleLavaEmission(float amount);
 	void ScaleIceEmission(float amount);
 
+	std::vector<GameObject*> GetRefillStations() const;
 private:
 	GridComponent* levelGrid = nullptr;
 
 	int playerNumber = 2;
+
+	std::vector<GameObject*> m_refillStations;
 
 	std::vector<GameObject*> m_players;
 	std::vector<GameObject*> m_lavaEmissionGameObjects;

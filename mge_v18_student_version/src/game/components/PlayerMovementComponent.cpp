@@ -40,6 +40,8 @@ void PlayerMovementComponent::Start()
 
 void PlayerMovementComponent::Update(float timeStep)
 {
+
+
 	//Apply speed tile bonus or penalty
 	if (glm::length(m_rigidbody->velocity) > 0)
 	{

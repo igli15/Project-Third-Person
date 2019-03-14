@@ -28,6 +28,7 @@
 #include "mge/core/PlayerPrefs.h"
 #include "components/CannonComponent.h"
 #include "components/BallonSpawnerComponent.h"
+#include "game/components/RefillStationComponent.h"
 
 MainWorld::MainWorld()
 {
@@ -51,6 +52,11 @@ void MainWorld::ParseComponents(rapidxml::xml_node<>* componentNode, GameObject 
 	{
 		newNode->AddComponent<GridComponent>()->Parse(componentNode);
 		levelGrid = newNode->GetComponent<GridComponent>();
+	}
+	else if (strcmp(componentNode->name(), "RefillStationComponent") == 0)
+	{
+		(newNode)->AddComponent<RefillStationComponent>()->Parse(componentNode);
+		m_refillStations.push_back(newNode);
 	}
 	else if (strcmp(componentNode->name(), "TileComponent") == 0)
 	{
@@ -192,4 +198,9 @@ void MainWorld::ScaleIceEmission(float amount)
 		TextureMaterial* t = dynamic_cast<TextureMaterial*>(m_iceEmissionGameObjects[i]->getMaterial());
 		t->SetEmissionScale(amount);
 	}
+}
+
+std::vector<GameObject*> MainWorld::GetRefillStations() const
+{
+	return m_refillStations;
 }
