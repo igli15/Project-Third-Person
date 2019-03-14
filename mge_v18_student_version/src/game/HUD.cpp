@@ -41,7 +41,8 @@ void HUD::Load()
 	m_inkWarningLava = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkWarningLava");
 	m_inkWarningIce = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("inkWarningIce");
 	m_blank = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("blank");
-
+	m_crownLava = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("crownLava");
+	m_crownIce = AbstractGame::Instance()->GetResourceManager()->GetSFMLTexture("crownIce");
 	////Create Sprite and assign Texture to Sprite
 
 	timerNumber = AddComponent<TextComponent>();
@@ -70,6 +71,9 @@ void HUD::Load()
 
 	inkWarningIce = AddComponent<UISpriteRenderer>();
 	inkWarningIce->ApplyTexture(m_blank);
+
+	crownLead = AddComponent<UISpriteRenderer>();
+	crownLead->ApplyTexture(m_blank);
 
 	inkUIOverlay = AddComponent<UISpriteRenderer>();
 	inkUIOverlay->ApplyTexture(m_inkUIOverlay);
@@ -254,6 +258,20 @@ void HUD::SetPlayerTilePercentage(int pPlayer, float pPercent)
 		percentLavaBar->GetSprite()->setScale(1 - (pPercent / 100.0f), 1);
 		m_audioSource->PlayOneShotSound("iceAttack");
 	}
+
+	if (percentIceBar->GetSprite()->getScale().x < percentLavaBar->GetSprite()->getScale().x)
+	{
+		crownLead->ApplyTexture(m_crownLava);
+
+	}
+	else if (percentIceBar->GetSprite()->getScale().x > percentLavaBar->GetSprite()->getScale().x)
+	{
+		crownLead->ApplyTexture(m_crownIce);
+	}
+	else {
+		crownLead->ApplyTexture(m_blank);
+	}
+
 }
 
 

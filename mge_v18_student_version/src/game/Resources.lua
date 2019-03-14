@@ -17,7 +17,7 @@ meshes =
 	["players"] = meshesLoadPath.."players.obj",
 	["orb"] = meshesLoadPath.."orb.obj",
 	["refillStation"] = meshesLoadPath.."refillStation.obj",
-	["balloon"] = meshesLoadPath.."Balloon.obj",
+	["balloon"] = meshesLoadPath.."Bomb.obj",
 	["cannon"] = meshesLoadPath.."cannon.obj",
 
 
@@ -253,6 +253,8 @@ sfmlTextures =
 	["inkWarningLava"] = texturesLoadPath.."inkWarningLava.png",
 	["inkWarningIce"] = texturesLoadPath.."inkWarningIce.png",
 	["blank"] = texturesLoadPath.."blank.png",
+	["crownLava"] = texturesLoadPath.."CrownLava.png",
+	["crownIce"] = texturesLoadPath.."CrownIce.png",
 
 	--MENU
 	["menuBG"] = texturesLoadPath.."background.png",
@@ -280,6 +282,7 @@ sfmlTextures =
 	["resoNone"] = texturesLoadPath.."resoNone.png",
 	["resoReplay"] = texturesLoadPath.."resoReplay.png",
 	["resoMenu"] = texturesLoadPath.."resoMenu.png",
+	
 }
 
 sfmlFonts =
