@@ -8,9 +8,6 @@
     <Filter Include="MGE Source files\mge">
       <UniqueIdentifier>{5808a1e3-17c6-41a4-bf66-b872468a8c7c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MGE Source files\mge\behaviours">
-      <UniqueIdentifier>{62606aaf-8ae3-4195-9a83-22a2c9d20af1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MGE Source files\mge\core">
       <UniqueIdentifier>{4394d90a-ffa0-485d-98ea-1e91842edda6}</UniqueIdentifier>
     </Filter>
@@ -20,13 +17,31 @@
     <Filter Include="MGE Source files\mge\util">
       <UniqueIdentifier>{7d824c34-4bb6-43a4-a48a-0d68b7aad6e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MGE Source files\mge\test">
+      <UniqueIdentifier>{be8e6ab2-3305-4569-8461-8855fc21a916}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MGE Source files\mge\components">
+      <UniqueIdentifier>{b0fac4cd-0544-4181-b086-6650be19eadd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{36d3b9b2-f9ce-4b3d-93f9-1f2be72a4716}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\components">
+      <UniqueIdentifier>{d844faa5-0523-493a-a973-835d7da1d702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MGE Source files\mge\lua">
+      <UniqueIdentifier>{28a611e6-2be2-4fbf-9e2a-83571269532b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MGE Source files\mge\eventTypes">
+      <UniqueIdentifier>{70ddbfaf-777b-400b-b24c-6e7b06b744ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tweeny">
+      <UniqueIdentifier>{a2848f22-3931-4505-ba55-370d8fce2d80}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\glm.hpp">
       <Filter>MGE Source files</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
     </ClInclude>
     <ClInclude Include="..\src\mge\core\AbstractGame.hpp">
       <Filter>MGE Source files\mge\core</Filter>
@@ -46,9 +61,6 @@
     <ClInclude Include="..\src\mge\core\GameObject.hpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mge\core\Mesh.hpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
@@ -64,14 +76,8 @@
     <ClInclude Include="..\src\mge\core\World.hpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp">
       <Filter>MGE Source files\mge\materials</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\mge\MGEDemo.hpp">
-      <Filter>MGE Source files\mge</Filter>
     </ClInclude>
     <ClInclude Include="..\src\mge\config.hpp">
       <Filter>MGE Source files\mge</Filter>
@@ -79,16 +85,190 @@
     <ClInclude Include="..\src\mge\core\Light.hpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClInclude>
-    <ClInclude Include="TestWorld.h">
-      <Filter>MGE Source files</Filter>
+    <ClInclude Include="..\src\mge\core\Component.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\test\TestComponent.h">
+      <Filter>MGE Source files\mge\test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\Transform.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\MeshRenderer.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\CameraComponent.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\LightComponent.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\WorldManager.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\MainWorld.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\MainGame.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\ResourceManager.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\KeyMoveComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\RotatingComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\lua\LuaProgram.h">
+      <Filter>MGE Source files\mge\lua</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\ColliderComponent.hpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\CollisionManager.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\IlyasWorld.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\AudioSource.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\EventQueue.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\EventType.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\eventTypes\TestEvent.h">
+      <Filter>MGE Source files\mge\eventTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\RectangleCollider.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\CircleCollider.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\UISpriteRenderer.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\CanvasComponent.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\XMLWorld.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\XMLComponent.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\GridComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\TileComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\CollisionInfo.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\RigidBody.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\PhysicsTestObject.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\Player.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\PlayerMovementComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\HUD.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\HUDComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\ShootingComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\PlayerDataComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\components\TextComponent.h">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\PlayerPrefs.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\dispatcher.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\easing.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\easingresolve.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\int2type.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\tween.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\tweenpoint.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\tweentraits.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tweeny\tweeny.h">
+      <Filter>tweeny</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\RefillStationComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\ResolutionUI.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\ResolutionScreen.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\MenuUI.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\MenuScene.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\BalloonComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\GridElement.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\util\Utils.h">
+      <Filter>MGE Source files\mge\util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\Balloon.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\CannonComponent.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mge\core\Tweener.h">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\KeyObject.h">
+      <Filter>game\components</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\game\components\BallonSpawnerComponent.h">
+      <Filter>game\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">
       <Filter>MGE Source files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp">
       <Filter>MGE Source files\mge\core</Filter>
@@ -108,9 +288,6 @@
     <ClCompile Include="..\src\mge\core\GameObject.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\mge\core\Mesh.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
@@ -126,20 +303,185 @@
     <ClCompile Include="..\src\mge\core\World.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp">
-      <Filter>MGE Source files\mge\behaviours</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp">
       <Filter>MGE Source files\mge\materials</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\mge\MGEDemo.cpp">
-      <Filter>MGE Source files\mge</Filter>
     </ClCompile>
     <ClCompile Include="..\src\mge\core\Light.cpp">
       <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
-    <ClCompile Include="TestWorld.cpp">
-      <Filter>MGE Source files</Filter>
+    <ClCompile Include="..\src\mge\core\Component.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\mge\test\TestComponent.cpp">
+      <Filter>MGE Source files\mge\test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\Transform.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\MeshRenderer.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\CameraComponent.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\LightComponent.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\WorldManager.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\MainWorld.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\MainGame.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\ResourceManager.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\RotatingComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\lua\LuaProgram.cpp">
+      <Filter>MGE Source files\mge\lua</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\CollisionManager.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\ColliderComponent.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\IlyasWorld.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\AudioSource.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\EventQueue.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\EventType.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\eventTypes\TestEvent.cpp">
+      <Filter>MGE Source files\mge\eventTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\RectangleCollider.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\CircleCollider.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\UISpriteRenderer.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\CanvasComponent.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\XMLWorld.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\XMLComponent.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\GridComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\TileComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\CollisionInfo.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\RigidBody.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\PhysicsTestObject.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\Player.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\PlayerMovementComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\HUD.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\HUDComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\ShootingComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\PlayerDataComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\components\TextComponent.cpp">
+      <Filter>MGE Source files\mge\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\PlayerPrefs.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\RefillStationComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\ResolutionUI.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\ResolutionScreen.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\MenuUI.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\MenuScene.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\BalloonComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\GridElement.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\util\Utils.cpp">
+      <Filter>MGE Source files\mge\util</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\Balloon.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\CannonComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mge\core\Tweener.cpp">
+      <Filter>MGE Source files\mge\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\KeyObject.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\game\components\BallonSpawnerComponent.cpp">
+      <Filter>game\components</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="..\src\game\Resources.lua">
+      <Filter>game</Filter>
+    </None>
+    <None Include="..\src\tweeny\tween.tcc">
+      <Filter>tweeny</Filter>
+    </None>
+    <None Include="..\src\tweeny\tweenone.tcc">
+      <Filter>tweeny</Filter>
+    </None>
+    <None Include="..\src\tweeny\tweenpoint.tcc">
+      <Filter>tweeny</Filter>
+    </None>
+    <None Include="..\src\tweeny\tweeny.tcc">
+      <Filter>tweeny</Filter>
+    </None>
   </ItemGroup>
 </Project>

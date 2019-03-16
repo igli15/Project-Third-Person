@@ -1,18 +1,27 @@
 #include <iostream>
 #include "GameObject.hpp"
-#include "mge/behaviours/AbstractBehaviour.hpp"
+#include "mge/materials/AbstractMaterial.hpp"
+#include "../components/RigidBody.h"
+#include "CollisionInfo.h"
 
-GameObject::GameObject(const std::string& pName, const glm::vec3& pPosition )
-:	_name( pName ), _transform( glm::translate( pPosition ) ), _parent(nullptr), _children(),
-    _mesh( nullptr ),_behaviour( nullptr ), _material(nullptr), _world(nullptr)
+unsigned GameObject::m_idCounter = 0;
+
+GameObject::GameObject()
+:	_name( "" ), _parent(nullptr), _children(),
+    _material(nullptr), _world(nullptr)
 
 {
+
+	m_idCounter += 1;
+	m_id = m_idCounter;
+	transform = AddComponent<Transform>();
+
 }
 
 GameObject::~GameObject()
 {
     //detach all children
-    std::cout << "GC running on:" << _name << std::endl;
+   // std::cout << "GC running on:" << _name << std::endl;
 
     while (_children.size() > 0) {
         GameObject* child = _children[0];
@@ -20,7 +29,22 @@ GameObject::~GameObject()
         delete child;
     }
 
+	//erase all attached components;
+	for (unsigned int i = m_attachedComponents.size(); i > 0;) {
+		--i;
+		delete m_attachedComponents[i];
+		m_attachedComponents.pop_back();
+	}
+
+	//std::cout <<"Components Left "<< m_attachedComponents.size()<<std::endl;
+
     //do not forget to delete behaviour, material, mesh, collider manually if required!
+}
+
+
+World * GameObject::GetWorld()
+{
+	return _world;
 }
 
 void GameObject::setName (const std::string& pName)
@@ -33,28 +57,24 @@ std::string GameObject::getName() const
 	return _name;
 }
 
-void GameObject::setTransform (const glm::mat4& pTransform)
+void GameObject::SetRigidBody(RigidBody * rigidBody)
 {
-    _transform = pTransform;
+	_rigidBody = rigidBody;
 }
 
-const glm::mat4& GameObject::getTransform() const
+RigidBody * GameObject::GetRigidBody()
 {
-    return _transform;
+	return _rigidBody;
 }
 
-void GameObject::setLocalPosition (glm::vec3 pPosition)
-{
-    _transform[3] = glm::vec4 (pPosition,1);
-}
-
-glm::vec3 GameObject::getLocalPosition() const
-{
-	return glm::vec3(_transform[3]);
-}
 
 void GameObject::setMaterial(AbstractMaterial* pMaterial)
 {
+	if (!pMaterial->IsRegistered())
+	{
+		std::cout << "Material has to be registered by the ResourceManager in order to be used" << std::endl;
+		throw;
+	}
     _material = pMaterial;
 }
 
@@ -63,25 +83,56 @@ AbstractMaterial * GameObject::getMaterial() const
     return _material;
 }
 
-void GameObject::setMesh(Mesh* pMesh)
+void GameObject::Destroy()
 {
-	_mesh = pMesh;
+	m_markedForDestruction = true;
+	OnDestroy();
 }
 
-Mesh * GameObject::getMesh() const
+bool GameObject::IsMarkedForDestruction()
 {
-    return _mesh;
+	return m_markedForDestruction;
 }
 
-void GameObject::setBehaviour(AbstractBehaviour* pBehaviour)
+void GameObject::SetMeshRenderer(MeshRenderer * meshRenderer)
 {
-	_behaviour = pBehaviour;
-	_behaviour->setOwner(this);
+	m_meshRenderer = meshRenderer;
 }
 
-AbstractBehaviour* GameObject::getBehaviour() const
+MeshRenderer * GameObject::GetMeshRenderer() const
 {
-    return _behaviour;
+	return m_meshRenderer;
+}
+
+void GameObject::Load()
+{
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Load();
+	}
+}
+
+void GameObject::Awake()
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->Awake();
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Awake();
+	}
+}
+
+void GameObject::Start()
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->Start();
+	}
+	
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Start();
+	}
 }
 
 void GameObject::setParent (GameObject* pParent) {
@@ -136,48 +187,55 @@ GameObject* GameObject::getParent() const {
     return _parent;
 }
 
-////////////
 
-//costly operation, use with care
-glm::vec3 GameObject::getWorldPosition() const
+
+void GameObject::Update(float pStep)
 {
-	return glm::vec3(getWorldTransform()[3]);
-}
 
-//costly operation, use with care
-glm::mat4 GameObject::getWorldTransform() const
-{
-	if (_parent == nullptr) return _transform;
-	else return _parent->getWorldTransform() * _transform;
-}
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
 
-////////////
-
-void GameObject::translate(glm::vec3 pTranslation)
-{
-	setTransform(glm::translate(_transform, pTranslation));
-}
-
-void GameObject::scale(glm::vec3 pScale)
-{
-	setTransform(glm::scale(_transform, pScale));
-}
-
-void GameObject::rotate(float pAngle, glm::vec3 pAxis)
-{
-	setTransform(glm::rotate(_transform, pAngle, pAxis));
-}
-
-void GameObject::update(float pStep)
-{
-    //make sure behaviour is updated after worldtransform is set
-	if (_behaviour) {
-		_behaviour->update(pStep);
+		m_attachedComponents[i]->Update(pStep);
 	}
 
-    for (int i = _children.size()-1; i >= 0; --i ) {
-        _children[i]->update(pStep);
-    }
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->Update(pStep);
+	}
+}
+
+void GameObject::OnCollision(CollisionInfo * collisionInfo)
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->OnCollision(collisionInfo);
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->OnCollision(collisionInfo);
+	}
+}
+
+void GameObject::OnTrigger(CollisionInfo * collisionInfo)
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->OnTrigger(collisionInfo);
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->OnTrigger(collisionInfo);
+	}
+}
+
+void GameObject::OnDestroy()
+{
+	for (int i = 0; i < m_attachedComponents.size(); ++i) {
+
+		m_attachedComponents[i]->OnDestroy();
+	}
+
+	for (int i = _children.size() - 1; i >= 0; --i) {
+		_children[i]->OnDestroy();
+	}
 }
 
 void GameObject::_setWorldRecursively (World* pWorld) {
@@ -188,11 +246,22 @@ void GameObject::_setWorldRecursively (World* pWorld) {
     }
 }
 
+bool GameObject::operator==(const GameObject & other)
+{
+	return m_id == other.ID();
+		
+}
+
 int GameObject::getChildCount() const {
     return _children.size();
 }
 
 GameObject* GameObject::getChildAt(int pIndex) const {
     return _children[pIndex];
+}
+
+unsigned GameObject::ID() const
+{
+	return m_id;
 }
 

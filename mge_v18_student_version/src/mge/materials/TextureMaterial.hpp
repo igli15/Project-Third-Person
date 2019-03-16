@@ -14,16 +14,24 @@ class Texture;
 class TextureMaterial : public AbstractMaterial
 {
     public:
-        TextureMaterial (Texture* pDiffuseTexture);
+        TextureMaterial (Texture* pDiffuseTexture,Texture* specularTexture,Texture* emissionTexture,Texture* normalMap = nullptr);
         virtual ~TextureMaterial ();
 
-        virtual void render(World* pWorld, Mesh* pMesh, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) override;
+        virtual void render(World* pWorld, MeshRenderer* meshRenderer, const glm::mat4& pModelMatrix, const glm::mat4& pViewMatrix, const glm::mat4& pProjectionMatrix) override;
 
         void setDiffuseTexture (Texture* pDiffuseTexture);
+		void SetSpecularTexture(Texture* specularTexture);
+		void SetEmissionTexture(Texture* emissionTexture);
+		void SetNormalTexture(Texture* normalTexture);
+		void SetDiffuseColor(glm::vec3 color);
+		void SetShininess(float shininess);
+		void SetEmissionScale(float emissionScale);
+
+		static ShaderProgram* m_shaderProgram;
 
     protected:
     private:
-        static ShaderProgram* _shader;
+       
         static void _lazyInitializeShader();
 
         //in this example we cache all identifiers for uniforms & attributes
@@ -34,10 +42,46 @@ class TextureMaterial : public AbstractMaterial
         static GLint _aNormal;
         static GLint _aUV ;
 
-        Texture* _diffuseTexture;
+		static GLint m_uSpecularTexture;
+		static GLint m_uEmissionTexture;
+		static GLint m_uNormalTexture;
+
+		static GLint m_uPointLightCount;
+		static GLint m_uDirectionalLightCount;
+		static GLint m_uSpotLightCount;
+
+		static GLint m_uShineness;
+		static GLint m_uEmissionScale;
+		static GLint m_uDiffuseColor;
+
+		static GLint m_uProjectionMatrix;
+		static GLint m_uModelMatrix;
+		static GLint m_uViewMatrix;
+
+		static GLint m_aTangent;
+		static GLint m_aBiTangent;
+
+        Texture* _diffuseTexture = nullptr;
+		Texture* m_spcecularTexture = nullptr;
+		Texture* m_emissionTexture = nullptr;
+		Texture* m_normalMap = nullptr;
+
+		float m_shineness = 8;
+		float m_emissionScale = 0.8f;
+
+		glm::vec3 m_diffuseColor = glm::vec3(1, 1, 1);
 
         TextureMaterial(const TextureMaterial&);
         TextureMaterial& operator=(const TextureMaterial&);
+
+		Texture* m_whiteTex;
+		Texture* m_blackTex;
+		Texture* m_normalFlatTex;
+
+		std::string pointLightstring;
+		std::string dirLightstring;
+		std::string spotLightstring;
+		std::string lightString;
 
 };
 

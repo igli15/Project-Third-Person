@@ -3,55 +3,54 @@
 
 #include <vector>
 #include "glm.hpp"
+#include "Component.h"
+#include "../components/Transform.h"
+#include "../components/MeshRenderer.h"
 
-class AbstractCollider;
-class AbstractBehaviour;
 class AbstractMaterial;
 class World;
 class Mesh;
-
+class Transform;
+class RigidBody;
+class CollisionInfo;
 /**
  * A GameObject wraps all data required to display an object, but knows nothing about OpenGL or rendering.
  */
 class GameObject
 {
 	public:
-		GameObject(const std::string& pName = nullptr, const glm::vec3& pPosition = glm::vec3( 0.0f, 0.0f, 0.0f ));
+		GameObject();
 		virtual ~GameObject();
+
+		Transform* transform = nullptr;
+
+		World* GetWorld();
 
         void setName (const std::string& pName);
         std::string getName() const;
 
-        //contains local rotation, scale, position
-		void setTransform (const glm::mat4& pTransform);
-        const glm::mat4& getTransform() const;
+		void SetRigidBody(RigidBody* rigidBody);
+		RigidBody* GetRigidBody();
 
-        //access just the local position
-		void setLocalPosition (glm::vec3 pPosition);
-		glm::vec3 getLocalPosition() const;
+		void Destroy();
+		bool IsMarkedForDestruction();
 
-        //get the objects world position by combining transforms, SLOW use with care
-		glm::vec3 getWorldPosition() const;
-		glm::mat4 getWorldTransform() const;
-
-        //change LOCAL position, rotation, scaling
-		void translate(glm::vec3 pTranslation);
-		void rotate(float pAngle, glm::vec3 pAxis);
-		void scale(glm::vec3 pScale);
-
-        //mesh and material should be shared as much as possible
-		void setMesh(Mesh* pMesh);
-		Mesh* getMesh() const;
+		void SetMeshRenderer(MeshRenderer* meshRenderer);
+		MeshRenderer* GetMeshRenderer() const;
 
         //mesh and material should be shared as much as possible
 		void setMaterial (AbstractMaterial* pMaterial);
 		AbstractMaterial* getMaterial() const;
 
-        //behaviour is expected to be unique per game object, in general do NOT share them between objects
-		void setBehaviour(AbstractBehaviour* pBehaviour);
-		AbstractBehaviour* getBehaviour() const;
+		//Load is used to attach comonents only!!
+		virtual void Load();
 
-		virtual void update(float pStep);
+		virtual void Awake();
+		virtual void Start();
+		virtual void Update(float pStep);
+		virtual void OnCollision(CollisionInfo* collisionInfo);
+		virtual void OnTrigger(CollisionInfo* collisionInfo);
+		virtual void OnDestroy();
 
         //child management, note that add/remove and setParent are closely coupled.
         //a.add(b) has the same effect as b.setParent(a)
@@ -68,15 +67,54 @@ class GameObject
         int getChildCount() const;
         GameObject* getChildAt (int pIndex) const;
 
+		unsigned ID() const; //Get ID
+
+		//Add a Component of the specified type to the GameObject
+		template<typename T>
+		T* AddComponent()
+		{
+			if (std::is_base_of<Component, T>())
+			{
+				T* component = new T();
+				m_attachedComponents.push_back(component);
+				component->SetGameObject(this);
+				return component;
+			}
+			else
+			{
+				std::cout << "you can only attach a component" << std::endl;
+				return nullptr;
+				throw;
+			}
+
+		}
+		
+		//Get a Component attached to this GameObject
+		template<typename T>
+		T* GetComponent()     //Gets a component from the list of attached components
+		{
+			for (int i = 0; i < m_attachedComponents.size(); ++i)
+			{
+				//if (typeid(T) == typeid(*m_attachedComponents[i]))
+				if(dynamic_cast<T*>(m_attachedComponents[i]) != NULL)
+				{
+					return (T*)m_attachedComponents[i];
+				}
+			}
+
+			std::cout << "could not find an component of that type: "<<typeid(T).name()  << std::endl;
+			return nullptr;
+		}
+
 	protected:
 		std::string _name;
-		glm::mat4 _transform;
 
-        GameObject* _parent;
+        GameObject* _parent = nullptr;
 		std::vector<GameObject*> _children;
 
-        Mesh* _mesh;
-		AbstractBehaviour* _behaviour;
+		MeshRenderer* m_meshRenderer = nullptr;
+
+		RigidBody* _rigidBody;
 		AbstractMaterial* _material;
 		World* _world;
 
@@ -90,6 +128,15 @@ class GameObject
     private:
         GameObject (const GameObject&);
 		GameObject& operator= (const GameObject&);
+		bool operator == (const GameObject & other);
+
+		std::vector<Component*> m_attachedComponents;
+
+		bool m_markedForDestruction = false;
+
+		static unsigned m_idCounter; 
+
+		unsigned m_id;
 };
 
 #endif // GAMEOBJECT_HPP

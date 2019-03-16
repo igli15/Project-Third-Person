@@ -1,9 +1,10 @@
 #include "glm.hpp"
 #include "mge/core/Camera.hpp"
+#include "../components/CameraComponent.h"
 
-Camera::Camera( std::string pName, glm::vec3 pPosition, glm::mat4 pProjectionMatrix )
-:	GameObject(pName, pPosition), _projection(pProjectionMatrix)
+Camera::Camera( )
 {
+	
 }
 
 Camera::~Camera()
@@ -11,7 +12,14 @@ Camera::~Camera()
 	//dtor
 }
 
-glm::mat4& Camera::getProjection() {
-    return _projection;
+void Camera::Load()
+{
+	m_cameraComponent = AddComponent<CameraComponent>();
 }
+
+CameraComponent * Camera::GetCameraComponent()
+{
+	return m_cameraComponent;
+}
+
 

@@ -4,22 +4,43 @@
 #include <map>
 #include <string>
 #include <GL/glew.h>
+#include "SFML/Graphics.hpp"
+
+enum TextureType
+{
+	DIFFUSE,
+	SPECULAR,
+	EMISSION,
+	NORMAL,
+	RGBAREPLACEMENT,
+	SRGBREPLACEMENT
+};
 
 class Texture
 {
 	public:
-		static Texture* load(const std::string& pTexturePath);
+		Texture();
+		virtual ~Texture();
 
 		GLuint getId();
 
-	protected:
-	    Texture();
-		virtual ~Texture();
+		TextureType Type();
 
-        static Texture* _loadFromFile(const std::string pTexturePath);
+		void SetType(TextureType type);
+
+		void InnerSetImage(sf::Image* image);
+
+		sf::Image* Image();
+
+	protected:
 
 	    //OpenGL id for texture buffer
 		GLuint _id;
+
+		TextureType m_type;
+
+		sf::Image* m_image;
+
 };
 
 #endif // TEXTURE_HPP

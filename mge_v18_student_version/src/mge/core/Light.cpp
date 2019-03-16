@@ -1,10 +1,16 @@
 #include "mge/core/Light.hpp"
 #include "mge/core/World.hpp"
+#include "mge/components/LightComponent.h"
 
-Light::Light(const std::string& pName, const glm::vec3& pPosition):GameObject(pName, pPosition)
+Light::Light()
 {}
 
 Light::~Light() {
+}
+
+void Light::Load()
+{
+	m_lightComponent = AddComponent<LightComponent>();
 }
 
 //Override setWorldRecursively to make sure we are registered
@@ -17,9 +23,14 @@ void Light::_setWorldRecursively (World* pWorld) {
     World* newWorld = _world;
 
     //check whether we need to register or unregister
-    if (previousWorld != nullptr) previousWorld->unregisterLight(this);
-	if (newWorld != nullptr) newWorld->registerLight(this);
+   // if (previousWorld != nullptr) previousWorld->unregisterLight(m_lightComponent);
+	if (newWorld != nullptr) newWorld->registerLight(m_lightComponent);
 
+}
+
+LightComponent * Light::GetLightComponent()
+{
+	return m_lightComponent;
 }
 
 

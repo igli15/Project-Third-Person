@@ -7,6 +7,10 @@
 
 class World;
 class Renderer;
+class WorldManager;
+class ResourceManager;
+class CollisionManager;
+class EventQueue;
 
 /**
  * Defines the basic structure for a game, with defaults already filled in.
@@ -21,9 +25,26 @@ class AbstractGame
         virtual ~AbstractGame();
 
         //creates a window, initializes glew, a renderer and a world instance
-        virtual void initialize();
+        void Initialize();
+		virtual void CreateWorld();
+
+		virtual void LoadResources(ResourceManager* resourceManager);
+
         //run the actual process of updating all objects, rendering them and processing events
         virtual void run();
+
+		static AbstractGame* Instance();
+		sf::RenderWindow * GetWindow();
+
+		WorldManager* GetWorldManager();
+		ResourceManager* GetResourceManager();
+		CollisionManager* GetCollisionManager();
+		EventQueue* GetEventQueue();
+
+		unsigned WindowWidth() const;
+		unsigned WindowHeight() const;
+
+		float deltaTime = 0;
 
     protected:
 
@@ -40,8 +61,7 @@ class AbstractGame
         //initialize a scene root to which we can attach/add objects
         virtual void _initializeWorld();
 
-        //initialize the actual scene, HAS to be done by a subclass
-        virtual void _initializeScene() = 0;
+		virtual void InitializeWorldManager();
 
         //call update on all game objects in the display root
         virtual void _update(float pStep);
@@ -53,12 +73,26 @@ class AbstractGame
 		sf::RenderWindow* _window;  //sfml window to render into
 		Renderer* _renderer;        //the renderer class to render the world
 		World* _world;              //the root game object that represents our scene
+		WorldManager* m_worldManager;
+		EventQueue* m_eventQueue;
+		ResourceManager* m_resourceManager;
+		CollisionManager* m_collisionManager;
+
 		float _fps;                 //stores the real fps
+
+		static AbstractGame* m_instance;
+		
+		unsigned m_windowWidth = 800;
+		unsigned m_windowHeight = 600;
+	
+
+		float m_tweenDeltaTime;
+
+		bool m_sceneLoaded;
 
     private:
         AbstractGame(const AbstractGame&);
         AbstractGame& operator=(const AbstractGame&);
-
 
 };
 

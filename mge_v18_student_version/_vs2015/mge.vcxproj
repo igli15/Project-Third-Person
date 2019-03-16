@@ -102,6 +102,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -117,6 +118,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SFML_STATIC;GLEW_STATIC;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,6 +136,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -153,6 +156,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;SFML_STATIC;GLEW_STATIC;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>../src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -166,49 +170,170 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\src\game\Balloon.h" />
+    <ClInclude Include="..\src\game\components\BallonSpawnerComponent.h" />
+    <ClInclude Include="..\src\game\components\BalloonComponent.h" />
+    <ClInclude Include="..\src\game\components\CannonComponent.h" />
+    <ClInclude Include="..\src\game\components\GridComponent.h" />
+    <ClInclude Include="..\src\game\components\GridElement.h" />
+    <ClInclude Include="..\src\game\components\HUDComponent.h" />
+    <ClInclude Include="..\src\game\components\KeyObject.h" />
+    <ClInclude Include="..\src\game\components\KeyMoveComponent.h" />
+    <ClInclude Include="..\src\game\components\PlayerDataComponent.h" />
+    <ClInclude Include="..\src\game\components\PlayerMovementComponent.h" />
+    <ClInclude Include="..\src\game\components\RefillStationComponent.h" />
+    <ClInclude Include="..\src\game\components\RotatingComponent.h" />
+    <ClInclude Include="..\src\game\components\ShootingComponent.h" />
+    <ClInclude Include="..\src\game\components\TileComponent.h" />
+    <ClInclude Include="..\src\game\HUD.h" />
+    <ClInclude Include="..\src\game\IlyasWorld.h" />
+    <ClInclude Include="..\src\game\MainGame.h" />
+    <ClInclude Include="..\src\game\MainWorld.h" />
+    <ClInclude Include="..\src\game\MenuScene.h" />
+    <ClInclude Include="..\src\game\MenuUI.h" />
+    <ClInclude Include="..\src\game\PhysicsTestObject.h" />
+    <ClInclude Include="..\src\game\Player.h" />
+    <ClInclude Include="..\src\game\ResolutionScreen.h" />
+    <ClInclude Include="..\src\game\ResolutionUI.h" />
     <ClInclude Include="..\src\glm.hpp" />
-    <ClInclude Include="..\src\mge\behaviours\AbstractBehaviour.hpp" />
-    <ClInclude Include="..\src\mge\behaviours\KeysBehaviour.hpp" />
-    <ClInclude Include="..\src\mge\behaviours\RotatingBehaviour.hpp" />
+    <ClInclude Include="..\src\mge\components\AudioSource.h" />
+    <ClInclude Include="..\src\mge\components\CameraComponent.h" />
+    <ClInclude Include="..\src\mge\components\CanvasComponent.h" />
+    <ClInclude Include="..\src\mge\components\ColliderComponent.hpp" />
+    <ClInclude Include="..\src\mge\components\LightComponent.h" />
+    <ClInclude Include="..\src\mge\components\MeshRenderer.h" />
+    <ClInclude Include="..\src\mge\components\CircleCollider.h" />
+    <ClInclude Include="..\src\mge\components\RectangleCollider.h" />
+    <ClInclude Include="..\src\mge\components\RigidBody.h" />
+    <ClInclude Include="..\src\mge\components\TextComponent.h" />
+    <ClInclude Include="..\src\mge\components\Transform.h" />
+    <ClInclude Include="..\src\mge\components\UISpriteRenderer.h" />
     <ClInclude Include="..\src\mge\config.hpp" />
     <ClInclude Include="..\src\mge\core\AbstractGame.hpp" />
     <ClInclude Include="..\src\mge\core\Camera.hpp" />
+    <ClInclude Include="..\src\mge\core\CollisionInfo.h" />
+    <ClInclude Include="..\src\mge\core\CollisionManager.h" />
+    <ClInclude Include="..\src\mge\core\Component.h" />
+    <ClInclude Include="..\src\mge\core\EventQueue.h" />
+    <ClInclude Include="..\src\mge\core\EventType.h" />
     <ClInclude Include="..\src\mge\core\GameObject.hpp" />
     <ClInclude Include="..\src\mge\core\Light.hpp" />
     <ClInclude Include="..\src\mge\core\Mesh.hpp" />
+    <ClInclude Include="..\src\mge\core\PlayerPrefs.h" />
     <ClInclude Include="..\src\mge\core\Renderer.hpp" />
+    <ClInclude Include="..\src\mge\core\ResourceManager.h" />
     <ClInclude Include="..\src\mge\core\ShaderProgram.hpp" />
     <ClInclude Include="..\src\mge\core\Texture.hpp" />
+    <ClInclude Include="..\src\mge\core\Tweener.h" />
     <ClInclude Include="..\src\mge\core\World.hpp" />
+    <ClInclude Include="..\src\mge\core\WorldManager.h" />
+    <ClInclude Include="..\src\mge\core\XMLComponent.h" />
+    <ClInclude Include="..\src\mge\core\XMLWorld.h" />
+    <ClInclude Include="..\src\mge\eventTypes\TestEvent.h" />
+    <ClInclude Include="..\src\mge\lua\LuaProgram.h" />
     <ClInclude Include="..\src\mge\materials\AbstractMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\ColorMaterial.hpp" />
     <ClInclude Include="..\src\mge\materials\TextureMaterial.hpp" />
-    <ClInclude Include="..\src\mge\MGEDemo.hpp" />
+    <ClInclude Include="..\src\mge\test\TestComponent.h" />
     <ClInclude Include="..\src\mge\util\DebugHud.hpp" />
-    <ClInclude Include="TestWorld.h" />
+    <ClInclude Include="..\src\mge\util\Utils.h" />
+    <ClInclude Include="..\src\tweeny\dispatcher.h" />
+    <ClInclude Include="..\src\tweeny\easing.h" />
+    <ClInclude Include="..\src\tweeny\easingresolve.h" />
+    <ClInclude Include="..\src\tweeny\int2type.h" />
+    <ClInclude Include="..\src\tweeny\tween.h" />
+    <ClInclude Include="..\src\tweeny\tweenpoint.h" />
+    <ClInclude Include="..\src\tweeny\tweentraits.h" />
+    <ClInclude Include="..\src\tweeny\tweeny.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\game\Balloon.cpp" />
+    <ClCompile Include="..\src\game\components\BallonSpawnerComponent.cpp" />
+    <ClCompile Include="..\src\game\components\BalloonComponent.cpp" />
+    <ClCompile Include="..\src\game\components\CannonComponent.cpp" />
+    <ClCompile Include="..\src\game\components\GridComponent.cpp" />
+    <ClCompile Include="..\src\game\components\GridElement.cpp" />
+    <ClCompile Include="..\src\game\components\HUDComponent.cpp" />
+    <ClCompile Include="..\src\game\components\KeyObject.cpp" />
+    <ClCompile Include="..\src\game\components\KeyMoveComponent.cpp" />
+    <ClCompile Include="..\src\game\components\PlayerDataComponent.cpp" />
+    <ClCompile Include="..\src\game\components\PlayerMovementComponent.cpp" />
+    <ClCompile Include="..\src\game\components\RefillStationComponent.cpp" />
+    <ClCompile Include="..\src\game\components\RotatingComponent.cpp" />
+    <ClCompile Include="..\src\game\components\ShootingComponent.cpp" />
+    <ClCompile Include="..\src\game\components\TileComponent.cpp" />
+    <ClCompile Include="..\src\game\HUD.cpp" />
+    <ClCompile Include="..\src\game\IlyasWorld.cpp" />
+    <ClCompile Include="..\src\game\MainGame.cpp" />
+    <ClCompile Include="..\src\game\MainWorld.cpp" />
+    <ClCompile Include="..\src\game\MenuScene.cpp" />
+    <ClCompile Include="..\src\game\MenuUI.cpp" />
+    <ClCompile Include="..\src\game\PhysicsTestObject.cpp" />
+    <ClCompile Include="..\src\game\Player.cpp" />
+    <ClCompile Include="..\src\game\ResolutionScreen.cpp" />
+    <ClCompile Include="..\src\game\ResolutionUI.cpp" />
     <ClCompile Include="..\src\main.cpp" />
-    <ClCompile Include="..\src\mge\behaviours\AbstractBehaviour.cpp" />
-    <ClCompile Include="..\src\mge\behaviours\KeysBehaviour.cpp" />
-    <ClCompile Include="..\src\mge\behaviours\RotatingBehaviour.cpp" />
+    <ClCompile Include="..\src\mge\components\AudioSource.cpp" />
+    <ClCompile Include="..\src\mge\components\CameraComponent.cpp" />
+    <ClCompile Include="..\src\mge\components\CanvasComponent.cpp" />
+    <ClCompile Include="..\src\mge\components\ColliderComponent.cpp" />
+    <ClCompile Include="..\src\mge\components\LightComponent.cpp" />
+    <ClCompile Include="..\src\mge\components\MeshRenderer.cpp" />
+    <ClCompile Include="..\src\mge\components\CircleCollider.cpp" />
+    <ClCompile Include="..\src\mge\components\RectangleCollider.cpp" />
+    <ClCompile Include="..\src\mge\components\RigidBody.cpp" />
+    <ClCompile Include="..\src\mge\components\TextComponent.cpp" />
+    <ClCompile Include="..\src\mge\components\Transform.cpp" />
+    <ClCompile Include="..\src\mge\components\UISpriteRenderer.cpp" />
     <ClCompile Include="..\src\mge\core\AbstractGame.cpp" />
     <ClCompile Include="..\src\mge\core\Camera.cpp" />
+    <ClCompile Include="..\src\mge\core\CollisionInfo.cpp" />
+    <ClCompile Include="..\src\mge\core\CollisionManager.cpp" />
+    <ClCompile Include="..\src\mge\core\Component.cpp" />
+    <ClCompile Include="..\src\mge\core\EventQueue.cpp" />
+    <ClCompile Include="..\src\mge\core\EventType.cpp" />
     <ClCompile Include="..\src\mge\core\GameObject.cpp" />
     <ClCompile Include="..\src\mge\core\Light.cpp" />
     <ClCompile Include="..\src\mge\core\Mesh.cpp" />
+    <ClCompile Include="..\src\mge\core\PlayerPrefs.cpp" />
     <ClCompile Include="..\src\mge\core\Renderer.cpp" />
+    <ClCompile Include="..\src\mge\core\ResourceManager.cpp" />
     <ClCompile Include="..\src\mge\core\ShaderProgram.cpp" />
     <ClCompile Include="..\src\mge\core\Texture.cpp" />
+    <ClCompile Include="..\src\mge\core\Tweener.cpp" />
     <ClCompile Include="..\src\mge\core\World.cpp" />
+    <ClCompile Include="..\src\mge\core\WorldManager.cpp" />
+    <ClCompile Include="..\src\mge\core\XMLComponent.cpp" />
+    <ClCompile Include="..\src\mge\core\XMLWorld.cpp" />
+    <ClCompile Include="..\src\mge\eventTypes\TestEvent.cpp" />
+    <ClCompile Include="..\src\mge\lua\LuaProgram.cpp" />
     <ClCompile Include="..\src\mge\materials\AbstractMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\ColorMaterial.cpp" />
     <ClCompile Include="..\src\mge\materials\TextureMaterial.cpp" />
-    <ClCompile Include="..\src\mge\MGEDemo.cpp" />
+    <ClCompile Include="..\src\mge\test\TestComponent.cpp" />
     <ClCompile Include="..\src\mge\util\DebugHud.cpp" />
-    <ClCompile Include="TestWorld.cpp" />
+    <ClCompile Include="..\src\mge\util\Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\game\Resources.lua" />
+    <None Include="..\src\tweeny\tween.tcc" />
+    <None Include="..\src\tweeny\tweenone.tcc" />
+    <None Include="..\src\tweeny\tweenpoint.tcc" />
+    <None Include="..\src\tweeny\tweeny.tcc" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="packages\lua.redist.5.3.5\build\native\lua.redist.targets" Condition="Exists('packages\lua.redist.5.3.5\build\native\lua.redist.targets')" />
+    <Import Project="packages\lua.5.3.5\build\native\lua.targets" Condition="Exists('packages\lua.5.3.5\build\native\lua.targets')" />
+    <Import Project="packages\rapidxml.1.13\build\native\rapidxml.targets" Condition="Exists('packages\rapidxml.1.13\build\native\rapidxml.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\lua.redist.5.3.5\build\native\lua.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\lua.redist.5.3.5\build\native\lua.redist.targets'))" />
+    <Error Condition="!Exists('packages\lua.5.3.5\build\native\lua.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\lua.5.3.5\build\native\lua.targets'))" />
+    <Error Condition="!Exists('packages\rapidxml.1.13\build\native\rapidxml.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\rapidxml.1.13\build\native\rapidxml.targets'))" />
+  </Target>
 </Project>
