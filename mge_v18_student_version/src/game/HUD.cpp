@@ -265,7 +265,7 @@ void HUD::SetPlayerTilePercentage(int pPlayer, float pPercent)
 		//sound
 		if (lavaLead == false)
 		{
-			m_audioSource->PlayOneShotSound("newLeadfdws");
+			m_audioSource->PlayOneShotSound("newLead");
 			lavaLead = true;
 		}
 		iceLead = false;
