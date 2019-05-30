@@ -1,7 +1,7 @@
 # Project-Third-Person
 
 "Project Third Person" was a 4 week project where we had to create a Engine and Game using only c++ and OpenGL.
-The project was worked on by 8 people (3 Engineers,3 Artists and 3 Designers).
+The project was worked on by 8 people (3 Engineers,3 Artists and 2 Designers).
 The project developement is split into 2 main Parts: Engine and Game.
 
 
